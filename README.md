@@ -5,7 +5,7 @@
 
 `voice-simulator` は、声道、声帯、喉頭などの発声機構をソフトウェア上で物理的にシミュレーションし、音声を生成することを目指すプロジェクトです。
 
-このプロジェクトは、録音音声の接続や深層学習を主軸とする音声合成ではなく、人間の発声器官そのものの構造や振る舞いをモデル化して音を生み出す方向を中心に扱います。方向性としては [Pink Trombone](https://dood.al/pinktrombone/) に近く、最終的にはそれをさらに発展させた、より高度な音声シミュレーターを目標としています。
+このプロジェクトは、録音音声の接続や深層学習を主軸とする音声合成ではなく、人間の発声器官そのものの構造や振る舞いをモデル化して音を生み出す方向を中心に扱います。方向性としては [Pink Trombone](https://dood.al/pinktrombone/) や [VocalTractLab](https://www.vocaltractlab.de/) に近く、最終的にはそれらをさらに発展させた、より高度な音声シミュレーターを目標としています。
 
 将来的には、母音・子音の生成、声道の形状や材質の違い、声帯の調整、より高度な物理シミュレーションなどを扱えるようにしたいと考えています。また、2D で十分か、3D 表現まで必要か、どのような操作系が直感的かといった点も検討対象です。
 
@@ -19,3 +19,4 @@
 
 - [Pink Trombone](https://dood.al/pinktrombone/)
 - [Pink Trombone on Imaginary](https://www.imaginary.org/program/pink-trombone)
+- [VocalTractLab](https://www.vocaltractlab.de/)
