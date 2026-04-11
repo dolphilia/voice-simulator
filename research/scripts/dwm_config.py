@@ -10,6 +10,10 @@ DEFAULT_WALL_REFLECTION = 0.995
 DEFAULT_OPEN_REFLECTION = -0.92
 DEFAULT_SOURCE_REFLECTION = 0.85
 DEFAULT_LIP_PROBE = "lip"
+DEFAULT_COURANT_FACTOR = 0.95
+DEFAULT_OUTPUT_MODE = "radiated"
+DEFAULT_RADIATION_CUTOFF_HZ = 1200.0
+DEFAULT_RADIATION_GAIN = 1.0
 
 
 def make_default_config() -> dict:
@@ -26,5 +30,8 @@ def make_default_config() -> dict:
         "open_reflection": DEFAULT_OPEN_REFLECTION,
         "source_reflection": DEFAULT_SOURCE_REFLECTION,
         "lip_probe": DEFAULT_LIP_PROBE,
+        "courant_factor": DEFAULT_COURANT_FACTOR,
+        "output_mode": DEFAULT_OUTPUT_MODE,
+        "radiation_cutoff_hz": DEFAULT_RADIATION_CUTOFF_HZ,
+        "radiation_gain": DEFAULT_RADIATION_GAIN,
     }
-

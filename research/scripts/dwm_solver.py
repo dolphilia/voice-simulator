@@ -5,6 +5,24 @@ from typing import Any
 import numpy as np
 
 
+def compute_internal_timestep(config: dict) -> tuple[float, int]:
+    """Compute a stable internal timestep and substep count for the mesh."""
+
+    dx = float(config["grid_step_m"])
+    c = float(config["sound_speed"])
+    audio_fs = int(config["sample_rate"])
+    courant = float(config.get("courant_factor", 0.95))
+    if dx <= 0 or c <= 0 or audio_fs <= 0:
+        raise ValueError("grid_step_m, sound_speed, and sample_rate must be positive.")
+
+    # 2D rectilinear DWM stability target; keep a small safety margin.
+    max_dt = dx / (np.sqrt(2.0) * c)
+    internal_dt = courant * max_dt
+    audio_dt = 1.0 / audio_fs
+    substeps = max(1, int(np.ceil(audio_dt / internal_dt)))
+    return internal_dt, substeps
+
+
 def initialize_state(mesh: dict) -> dict[str, np.ndarray]:
     shape = mesh["active"].shape
     zeros = np.zeros(shape, dtype=np.float64)
@@ -93,6 +111,29 @@ def step_dwm(state: dict, mesh: dict, source_value: float, config: dict) -> dict
     return _scatter_step(state=state, mesh=mesh, source_value=source_value, config=config)
 
 
+def _sample_probe_signals(state: dict, probe_mask: np.ndarray) -> tuple[float, float]:
+    pressure = state["pressure"]
+    out_e = pressure - state["in_e"]
+    in_e = state["in_e"]
+    lip_flux = out_e[probe_mask] - in_e[probe_mask]
+    return float(np.mean(pressure[probe_mask])), float(np.mean(lip_flux))
+
+
+def _sample_probe(state: dict, probe_mask: np.ndarray, output_mode: str) -> float:
+    pressure_mean, lip_flow_mean = _sample_probe_signals(state=state, probe_mask=probe_mask)
+
+    if output_mode == "pressure":
+        return pressure_mean
+
+    if output_mode == "flow":
+        return lip_flow_mean
+
+    if output_mode == "radiated":
+        return lip_flow_mean
+
+    raise ValueError(f"Unsupported output_mode: {output_mode}")
+
+
 def run_dwm(mesh: dict, source: np.ndarray, config: dict, probe: str = "lip") -> dict[str, Any]:
     source = np.asarray(source, dtype=np.float64)
     if source.ndim != 1:
@@ -105,11 +146,40 @@ def run_dwm(mesh: dict, source: np.ndarray, config: dict, probe: str = "lip") ->
 
     state = initialize_state(mesh)
     output = np.zeros(source.size, dtype=np.float64)
+    internal_dt, substeps = compute_internal_timestep(config)
+    audio_dt = 1.0 / int(config["sample_rate"])
+    output_mode = str(config.get("output_mode", "pressure"))
+    radiation_cutoff_hz = float(config.get("radiation_cutoff_hz", 800.0))
+    radiation_gain = float(config.get("radiation_gain", 1.0))
+
+    # 1st-order high-pass on lip flow as a simple radiation proxy.
+    rc = 1.0 / (2.0 * np.pi * max(radiation_cutoff_hz, 1e-6))
+    radiation_alpha = rc / (rc + audio_dt)
+    previous_flow_value = 0.0
+    previous_radiated_value = 0.0
 
     for index, source_value in enumerate(source):
-        state = step_dwm(state=state, mesh=mesh, source_value=float(source_value), config=config)
-        pressure = state["pressure"]
-        output[index] = float(np.mean(pressure[probe_mask]))
+        accumulated_probe = 0.0
+        source_per_substep = float(source_value) / substeps
+
+        for _ in range(substeps):
+            state = step_dwm(state=state, mesh=mesh, source_value=source_per_substep, config=config)
+            accumulated_probe += _sample_probe(
+                state=state,
+                probe_mask=probe_mask,
+                output_mode=output_mode,
+            )
+
+        probe_value = accumulated_probe / substeps
+        if output_mode == "radiated":
+            radiated_value = radiation_alpha * (
+                previous_radiated_value + probe_value - previous_flow_value
+            )
+            output[index] = radiation_gain * radiated_value
+            previous_flow_value = probe_value
+            previous_radiated_value = radiated_value
+        else:
+            output[index] = probe_value
 
     return {
         "output": output,
@@ -118,5 +188,10 @@ def run_dwm(mesh: dict, source: np.ndarray, config: dict, probe: str = "lip") ->
             "num_samples": int(source.size),
             "probe": probe,
             "active_cells": int(np.count_nonzero(mesh["active"])),
+            "internal_dt_sec": float(internal_dt),
+            "internal_fs_hz": float(1.0 / internal_dt),
+            "substeps_per_sample": int(substeps),
+            "output_mode": output_mode,
+            "radiation_cutoff_hz": radiation_cutoff_hz,
         },
     }
