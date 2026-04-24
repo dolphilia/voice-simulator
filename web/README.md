@@ -5,5 +5,6 @@
 現在のプロトタイプ:
 
 - `prototypes/vowel-formant-prototype/`
+- `prototypes/acoustic-fdtd-2d/`
 
 このプロトタイプは、単純な連続音から母音らしい音へ寄せる最初の試作です。起動方法や構成は、各プロトタイプ配下の README を参照してください。
