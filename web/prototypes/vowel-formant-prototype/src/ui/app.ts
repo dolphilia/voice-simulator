@@ -1,5 +1,20 @@
 import { VoiceEngine } from "../audio/engine";
-import { VOWEL_ORDER, VOWEL_PROFILES, type VowelId } from "../audio/vowels";
+import {
+  VOWEL_ORDER,
+  VOWEL_PROFILE_SETS,
+  type VowelId,
+  type VowelSetId,
+} from "../audio/vowels";
+
+const SPEAKER_PRESETS = [
+  { id: "neutral", label: "Neutral", tractScale: 1 },
+  { id: "maoto", label: "消臭妖精ノール", tractScale: 1.006 },
+  { id: "sora-lon", label: "天羽ソラtypeLON", tractScale: 1.047 },
+  { id: "fumika", label: "星野フミカ", tractScale: 0.925 },
+  { id: "mitsuko", label: "みつこ", tractScale: 0.98 },
+  { id: "sanane", label: "アサ音さな", tractScale: 0.951 },
+  { id: "maita", label: "まいた", tractScale: 1.062 },
+] as const;
 
 function createSlider(options: {
   label: string;
@@ -8,7 +23,7 @@ function createSlider(options: {
   step: number;
   value: number;
   onInput: (value: number) => void;
-}): HTMLLabelElement {
+}): { element: HTMLLabelElement; setValue: (value: number) => void } {
   const wrapper = document.createElement("label");
   wrapper.className = "control";
 
@@ -33,7 +48,13 @@ function createSlider(options: {
   });
 
   wrapper.append(title, valueText, input);
-  return wrapper;
+  return {
+    element: wrapper,
+    setValue: (value: number) => {
+      input.value = String(value);
+      valueText.textContent = input.value;
+    },
+  };
 }
 
 function createSelect(options: {
@@ -104,18 +125,40 @@ export function createApp(): HTMLElement {
   controls.className = "controls";
 
   const params = engine.getParams();
+  const tractScaleSlider = createSlider({
+    label: "Tract Scale",
+    min: 0.7,
+    max: 1.4,
+    step: 0.01,
+    value: params.tractScale,
+    onInput: (value) => {
+      engine.setParams({ tractScale: value });
+    },
+  });
+
   const vowelDescription = document.createElement("p");
   vowelDescription.className = "status";
   vowelDescription.textContent =
-    "Current approach: excitation source plus three approximate formant filters.";
+    "UTAU analysis mode adds measured vowel presets, speaker scale, smooth transitions, breath noise, and first-pass /shi/ /su/ noise.";
 
   controls.append(
+    createSelect({
+      label: "Preset Set",
+      value: params.vowelSet,
+      choices: [
+        { value: "reference", label: "Reference" },
+        { value: "utau", label: "UTAU analysis" },
+      ],
+      onChange: (value) => {
+        engine.setParams({ vowelSet: value as VowelSetId });
+      },
+    }),
     createSelect({
       label: "Vowel",
       value: params.vowel,
       choices: VOWEL_ORDER.map((vowelId) => ({
         value: vowelId,
-        label: VOWEL_PROFILES[vowelId].label,
+        label: VOWEL_PROFILE_SETS.reference[vowelId].label,
       })),
       onChange: (value) => {
         engine.setParams({ vowel: value as VowelId });
@@ -130,17 +173,24 @@ export function createApp(): HTMLElement {
       onInput: (value) => {
         engine.setParams({ frequency: value });
       },
-    }),
-    createSlider({
-      label: "Tract Scale",
-      min: 0.7,
-      max: 1.4,
-      step: 0.01,
-      value: params.tractScale,
-      onInput: (value) => {
-        engine.setParams({ tractScale: value });
+    }).element,
+    createSelect({
+      label: "Speaker",
+      value: "neutral",
+      choices: SPEAKER_PRESETS.map((preset) => ({
+        value: preset.id,
+        label: preset.label,
+      })),
+      onChange: (value) => {
+        const preset = SPEAKER_PRESETS.find((candidate) => candidate.id === value);
+        if (!preset) {
+          return;
+        }
+        tractScaleSlider.setValue(preset.tractScale);
+        engine.setParams({ tractScale: preset.tractScale });
       },
     }),
+    tractScaleSlider.element,
     createSlider({
       label: "Gain",
       min: 0.02,
@@ -150,15 +200,60 @@ export function createApp(): HTMLElement {
       onInput: (value) => {
         engine.setParams({ gain: value });
       },
-    }),
+    }).element,
+    createSlider({
+      label: "Brightness",
+      min: 0,
+      max: 1,
+      step: 0.01,
+      value: params.brightness,
+      onInput: (value) => {
+        engine.setParams({ brightness: value });
+      },
+    }).element,
+    createSlider({
+      label: "Breathiness",
+      min: 0,
+      max: 1,
+      step: 0.01,
+      value: params.breathiness,
+      onInput: (value) => {
+        engine.setParams({ breathiness: value });
+      },
+    }).element,
     vowelDescription,
   );
+
+  const consonants = document.createElement("section");
+  consonants.className = "controls controls--compact";
+
+  const consonantLabel = document.createElement("p");
+  consonantLabel.className = "status";
+  consonantLabel.textContent = "Sibilant noise probes";
+
+  const consonantButtons = document.createElement("div");
+  consonantButtons.className = "button-row";
+
+  const shiButton = document.createElement("button");
+  shiButton.textContent = "し";
+  shiButton.addEventListener("click", () => {
+    engine.triggerConsonant("shi");
+  });
+
+  const suButton = document.createElement("button");
+  suButton.textContent = "す";
+  suButton.addEventListener("click", () => {
+    engine.triggerConsonant("su");
+  });
+
+  consonantButtons.append(shiButton, suButton);
+  consonants.append(consonantLabel, consonantButtons);
 
   const status = document.createElement("p");
   status.className = "status";
   status.textContent =
-    "Current scope: first-pass vowel coloring, preset selection, and coarse tract scaling.";
+    "Current scope: measured vowel candidates, speaker scaling, 166 ms vowel transitions, and first noise-source probes.";
 
-  container.append(heading, intro, buttonRow, controls, status);
+  container.append(heading, intro, buttonRow, controls, consonants, status);
   return container;
 }
