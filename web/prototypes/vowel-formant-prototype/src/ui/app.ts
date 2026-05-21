@@ -1,10 +1,12 @@
 import { VoiceEngine } from "../audio/engine";
+import { SIBILANT_PROFILES, type SibilantId } from "../audio/phonemes";
 import {
   VOWEL_ORDER,
   VOWEL_PROFILE_SETS,
   type VowelId,
   type VowelSetId,
 } from "../audio/vowels";
+import { SpectrumView } from "./spectrum-view";
 
 const SPEAKER_PRESETS = [
   { id: "neutral", label: "Neutral", tractScale: 1 },
@@ -95,6 +97,16 @@ export function createApp(): HTMLElement {
   const engine = new VoiceEngine();
   const container = document.createElement("main");
   container.className = "app";
+  const spectrumCanvas = document.createElement("canvas");
+  spectrumCanvas.className = "spectrum";
+  spectrumCanvas.width = 720;
+  spectrumCanvas.height = 220;
+  const spectrumView = new SpectrumView(spectrumCanvas);
+
+  const applyParams = (nextParams: Parameters<VoiceEngine["setParams"]>[0]) => {
+    const updatedParams = engine.setParams(nextParams);
+    updateFormantReadout(updatedParams);
+  };
 
   const heading = document.createElement("h1");
   heading.textContent = "voice-simulator";
@@ -111,12 +123,18 @@ export function createApp(): HTMLElement {
   startButton.textContent = "Start";
   startButton.addEventListener("click", async () => {
     await engine.start();
+    const analyser = engine.analyser;
+    if (analyser) {
+      spectrumView.setAnalyser(analyser);
+      spectrumView.start();
+    }
   });
 
   const stopButton = document.createElement("button");
   stopButton.textContent = "Stop";
   stopButton.addEventListener("click", () => {
     engine.stop();
+    spectrumView.stop();
   });
 
   buttonRow.append(startButton, stopButton);
@@ -132,9 +150,50 @@ export function createApp(): HTMLElement {
     step: 0.01,
     value: params.tractScale,
     onInput: (value) => {
-      engine.setParams({ tractScale: value });
+      applyParams({ tractScale: value });
     },
   });
+
+  const formantReadout = document.createElement("section");
+  formantReadout.className = "formant-readout";
+
+  const updateFormantReadout = (currentParams = engine.getParams()) => {
+    const profile = VOWEL_PROFILE_SETS[currentParams.vowelSet][currentParams.vowel];
+    spectrumView.setTarget({
+      vowel: currentParams.vowel,
+      vowelSet: currentParams.vowelSet,
+      tractScale: currentParams.tractScale,
+    });
+    const rows = profile.formants
+      .map((formant, index) => {
+        const scaledFrequency = formant.frequency / currentParams.tractScale;
+        return `<tr>
+          <th scope="row">F${index + 1}</th>
+          <td>${Math.round(scaledFrequency)} Hz</td>
+          <td>${Math.round(formant.bandwidth)} Hz</td>
+          <td>${formant.gain.toFixed(2)}</td>
+        </tr>`;
+      })
+      .join("");
+
+    formantReadout.innerHTML = `
+      <h2>Current vowel target</h2>
+      <p>${currentParams.vowelSet} ${profile.label}, tractScale ${currentParams.tractScale.toFixed(3)}</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Frequency</th>
+            <th scope="col">Bandwidth</th>
+            <th scope="col">Gain</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+  };
+
+  updateFormantReadout(params);
 
   const vowelDescription = document.createElement("p");
   vowelDescription.className = "status";
@@ -148,9 +207,10 @@ export function createApp(): HTMLElement {
       choices: [
         { value: "reference", label: "Reference" },
         { value: "utau", label: "UTAU analysis" },
+        { value: "tuned", label: "Tuned experiment" },
       ],
       onChange: (value) => {
-        engine.setParams({ vowelSet: value as VowelSetId });
+        applyParams({ vowelSet: value as VowelSetId });
       },
     }),
     createSelect({
@@ -161,7 +221,7 @@ export function createApp(): HTMLElement {
         label: VOWEL_PROFILE_SETS.reference[vowelId].label,
       })),
       onChange: (value) => {
-        engine.setParams({ vowel: value as VowelId });
+        applyParams({ vowel: value as VowelId });
       },
     }),
     createSlider({
@@ -171,7 +231,7 @@ export function createApp(): HTMLElement {
       step: 1,
       value: params.frequency,
       onInput: (value) => {
-        engine.setParams({ frequency: value });
+        applyParams({ frequency: value });
       },
     }).element,
     createSelect({
@@ -187,7 +247,7 @@ export function createApp(): HTMLElement {
           return;
         }
         tractScaleSlider.setValue(preset.tractScale);
-        engine.setParams({ tractScale: preset.tractScale });
+        applyParams({ tractScale: preset.tractScale });
       },
     }),
     tractScaleSlider.element,
@@ -198,7 +258,7 @@ export function createApp(): HTMLElement {
       step: 0.01,
       value: params.gain,
       onInput: (value) => {
-        engine.setParams({ gain: value });
+        applyParams({ gain: value });
       },
     }).element,
     createSlider({
@@ -208,7 +268,7 @@ export function createApp(): HTMLElement {
       step: 0.01,
       value: params.brightness,
       onInput: (value) => {
-        engine.setParams({ brightness: value });
+        applyParams({ brightness: value });
       },
     }).element,
     createSlider({
@@ -218,9 +278,10 @@ export function createApp(): HTMLElement {
       step: 0.01,
       value: params.breathiness,
       onInput: (value) => {
-        engine.setParams({ breathiness: value });
+        applyParams({ breathiness: value });
       },
     }).element,
+    formantReadout,
     vowelDescription,
   );
 
@@ -229,31 +290,72 @@ export function createApp(): HTMLElement {
 
   const consonantLabel = document.createElement("p");
   consonantLabel.className = "status";
-  consonantLabel.textContent = "Sibilant noise probes";
+  consonantLabel.textContent = "Sibilant probes and syllable events";
 
   const consonantButtons = document.createElement("div");
   consonantButtons.className = "button-row";
 
   const shiButton = document.createElement("button");
-  shiButton.textContent = "し";
+  shiButton.textContent = "し noise";
   shiButton.addEventListener("click", () => {
     engine.triggerConsonant("shi");
   });
 
   const suButton = document.createElement("button");
-  suButton.textContent = "す";
+  suButton.textContent = "す noise";
   suButton.addEventListener("click", () => {
     engine.triggerConsonant("su");
   });
 
   consonantButtons.append(shiButton, suButton);
-  consonants.append(consonantLabel, consonantButtons);
+
+  const syllableButtons = document.createElement("div");
+  syllableButtons.className = "syllable-grid";
+
+  const syllableTargets: Array<{ consonant: SibilantId; vowel: VowelId }> = [
+    { consonant: "shi", vowel: "a" },
+    { consonant: "shi", vowel: "i" },
+    { consonant: "shi", vowel: "e" },
+    { consonant: "su", vowel: "a" },
+    { consonant: "su", vowel: "u" },
+    { consonant: "su", vowel: "o" },
+  ];
+
+  for (const target of syllableTargets) {
+    const button = document.createElement("button");
+    button.textContent = `${SIBILANT_PROFILES[target.consonant].label}-${target.vowel}`;
+    button.addEventListener("click", () => {
+      const updatedParams = engine.triggerSyllable(target.consonant, target.vowel);
+      updateFormantReadout(updatedParams);
+    });
+    syllableButtons.append(button);
+  }
+
+  const syllableDescription = document.createElement("p");
+  syllableDescription.className = "status";
+  syllableDescription.textContent =
+    "Syllable buttons attenuate the current vowel, play filtered sibilant noise, then ramp into the selected vowel with a small overlap.";
+
+  consonants.append(consonantLabel, consonantButtons, syllableButtons, syllableDescription);
 
   const status = document.createElement("p");
   status.className = "status";
   status.textContent =
     "Current scope: measured vowel candidates, speaker scaling, 166 ms vowel transitions, and first noise-source probes.";
 
-  container.append(heading, intro, buttonRow, controls, consonants, status);
+  const spectrumPanel = document.createElement("section");
+  spectrumPanel.className = "spectrum-panel";
+
+  const spectrumHeading = document.createElement("h2");
+  spectrumHeading.textContent = "Spectrum";
+
+  const spectrumCaption = document.createElement("p");
+  spectrumCaption.className = "status";
+  spectrumCaption.textContent =
+    "Solid markers show the selected preset set. Faint markers show the other preset sets for the same vowel.";
+
+  spectrumPanel.append(spectrumHeading, spectrumCanvas, spectrumCaption);
+
+  container.append(heading, intro, buttonRow, controls, spectrumPanel, consonants, status);
   return container;
 }

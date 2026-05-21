@@ -1,4 +1,5 @@
-import { VOWEL_PROFILE_SETS, type VowelId, type VowelSetId } from "./vowels";
+import { SIBILANT_PROFILES, type SibilantId } from "./phonemes";
+import { VOWEL_PROFILE_SETS, type Formant, type VowelId, type VowelSetId } from "./vowels";
 
 export type VoiceParams = {
   frequency: number;
@@ -22,6 +23,8 @@ const DEFAULT_PARAMS: VoiceParams = {
 
 const VOWEL_TRANSITION_SECONDS = 0.167;
 const DEFAULT_NOISE_BUFFER_SECONDS = 2;
+const SOURCE_GAIN = 0.3;
+const MUTED_SOURCE_GAIN = 0.018;
 
 export class VoiceEngine {
   private context: AudioContext | null = null;
@@ -31,9 +34,14 @@ export class VoiceEngine {
   private breathNoiseSource: AudioBufferSourceNode | null = null;
   private breathFilterNode: BiquadFilterNode | null = null;
   private breathGainNode: GainNode | null = null;
+  private analyserNode: AnalyserNode | null = null;
   private filterNodes: BiquadFilterNode[] = [];
   private filterGainNodes: GainNode[] = [];
   private params: VoiceParams = { ...DEFAULT_PARAMS };
+
+  get analyser(): AnalyserNode | null {
+    return this.analyserNode;
+  }
 
   async start(): Promise<void> {
     if (!this.context) {
@@ -51,10 +59,13 @@ export class VoiceEngine {
     this.oscillator = this.context.createOscillator();
     this.sourceGainNode = this.context.createGain();
     this.masterGainNode = this.context.createGain();
+    this.analyserNode = this.context.createAnalyser();
 
     this.oscillator.type = "sawtooth";
-    this.sourceGainNode.gain.value = 0.3;
+    this.sourceGainNode.gain.value = SOURCE_GAIN;
     this.masterGainNode.gain.value = this.params.gain;
+    this.analyserNode.fftSize = 4096;
+    this.analyserNode.smoothingTimeConstant = 0.82;
 
     this.oscillator.connect(this.sourceGainNode);
     this.configureFilters();
@@ -70,6 +81,7 @@ export class VoiceEngine {
     this.oscillator?.disconnect();
     this.sourceGainNode?.disconnect();
     this.masterGainNode?.disconnect();
+    this.analyserNode?.disconnect();
     this.breathNoiseSource?.stop();
     this.breathNoiseSource?.disconnect();
     this.breathFilterNode?.disconnect();
@@ -79,6 +91,7 @@ export class VoiceEngine {
     this.oscillator = null;
     this.sourceGainNode = null;
     this.masterGainNode = null;
+    this.analyserNode = null;
     this.breathNoiseSource = null;
     this.breathFilterNode = null;
     this.breathGainNode = null;
@@ -98,35 +111,66 @@ export class VoiceEngine {
     return { ...this.params };
   }
 
-  triggerConsonant(kind: "shi" | "su"): void {
-    if (!this.context || !this.masterGainNode) {
+  triggerConsonant(kind: SibilantId): void {
+    if (!this.context || !this.analyserNode) {
+      return;
+    }
+
+    const profile = SIBILANT_PROFILES[kind];
+    this.triggerNoise(profile, this.context.currentTime);
+  }
+
+  triggerSyllable(consonant: SibilantId, vowel: VowelId): VoiceParams {
+    this.params = { ...this.params, vowel };
+
+    if (!this.context || !this.sourceGainNode || !this.analyserNode) {
+      return this.params;
+    }
+
+    const profile = SIBILANT_PROFILES[consonant];
+    const now = this.context.currentTime;
+    const vowelStart = now + Math.max(0, profile.durationSeconds - profile.overlapSeconds);
+    const releaseEnd = now + profile.durationSeconds + 0.08;
+
+    this.sourceGainNode.gain.cancelScheduledValues(now);
+    this.sourceGainNode.gain.setValueAtTime(this.sourceGainNode.gain.value, now);
+    this.sourceGainNode.gain.linearRampToValueAtTime(MUTED_SOURCE_GAIN, now + 0.012);
+    this.sourceGainNode.gain.setValueAtTime(MUTED_SOURCE_GAIN, vowelStart);
+    this.sourceGainNode.gain.linearRampToValueAtTime(SOURCE_GAIN, releaseEnd);
+
+    this.triggerNoise(profile, now);
+    this.scheduleVowelProfile(vowelStart, VOWEL_TRANSITION_SECONDS);
+
+    return this.params;
+  }
+
+  private triggerNoise(profile: (typeof SIBILANT_PROFILES)[SibilantId], startTime: number): void {
+    if (!this.context || !this.analyserNode) {
       return;
     }
 
     const source = this.context.createBufferSource();
     const filter = this.context.createBiquadFilter();
     const gain = this.context.createGain();
-    const now = this.context.currentTime;
-    const duration = kind === "shi" ? 0.13 : 0.15;
 
     source.buffer = this.createNoiseBuffer(0.25);
     filter.type = "bandpass";
-    filter.frequency.value = kind === "shi" ? 6100 : 6000;
-    filter.Q.value = kind === "shi" ? 1.4 : 1.0;
+    filter.frequency.value = profile.centerFrequency;
+    filter.Q.value = profile.q;
 
-    gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(kind === "shi" ? 0.08 : 0.07, now + 0.015);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(profile.peakGain, startTime + profile.attackSeconds);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + profile.durationSeconds);
 
     source.connect(filter);
     filter.connect(gain);
-    gain.connect(this.masterGainNode);
-    source.start(now);
-    source.stop(now + duration + 0.02);
+    gain.connect(this.analyserNode);
+    source.start(startTime);
+    source.stop(startTime + profile.durationSeconds + 0.02);
   }
 
   private configureFilters(): void {
-    if (!this.context || !this.sourceGainNode || !this.masterGainNode) {
+    if (!this.context || !this.sourceGainNode || !this.masterGainNode || !this.analyserNode) {
       return;
     }
 
@@ -141,17 +185,18 @@ export class VoiceEngine {
 
       this.sourceGainNode.connect(filter);
       filter.connect(gain);
-      gain.connect(this.masterGainNode);
+      gain.connect(this.analyserNode);
 
       this.filterNodes.push(filter);
       this.filterGainNodes.push(gain);
     }
 
+    this.analyserNode.connect(this.masterGainNode);
     this.masterGainNode.connect(this.context.destination);
   }
 
   private configureBreathNoise(): void {
-    if (!this.context || !this.masterGainNode) {
+    if (!this.context || !this.analyserNode) {
       return;
     }
 
@@ -168,7 +213,7 @@ export class VoiceEngine {
 
     this.breathNoiseSource.connect(this.breathFilterNode);
     this.breathFilterNode.connect(this.breathGainNode);
-    this.breathGainNode.connect(this.masterGainNode);
+    this.breathGainNode.connect(this.analyserNode);
   }
 
   private updateNodes(): void {
@@ -188,24 +233,37 @@ export class VoiceEngine {
 
     const profile = VOWEL_PROFILE_SETS[this.params.vowelSet][this.params.vowel];
 
+    this.scheduleFormants(profile.formants, now, VOWEL_TRANSITION_SECONDS);
+  }
+
+  private scheduleVowelProfile(startTime: number, rampSeconds: number): void {
+    const profile = VOWEL_PROFILE_SETS[this.params.vowelSet][this.params.vowel];
+    this.scheduleFormants(profile.formants, startTime, rampSeconds);
+  }
+
+  private scheduleFormants(
+    formants: readonly [Formant, Formant, Formant],
+    startTime: number,
+    rampSeconds: number,
+  ): void {
     this.filterNodes.forEach((filter, index) => {
-      const formant = profile.formants[index];
+      const formant = formants[index];
       const scaledFrequency = formant.frequency / this.params.tractScale;
       const q = Math.max(0.1, scaledFrequency / Math.max(1, formant.bandwidth));
 
-      this.setAudioParam(filter.frequency, scaledFrequency, now, VOWEL_TRANSITION_SECONDS);
-      this.setAudioParam(filter.Q, q, now, VOWEL_TRANSITION_SECONDS);
+      this.setAudioParam(filter.frequency, scaledFrequency, startTime, rampSeconds);
+      this.setAudioParam(filter.Q, q, startTime, rampSeconds);
     });
 
     this.filterGainNodes.forEach((gainNode, index) => {
-      const formant = profile.formants[index];
+      const formant = formants[index];
       const brightnessGain = 1 + this.params.brightness * index * 0.45;
       const breathCompensation = Math.max(0.55, 1 - this.params.breathiness * 0.2);
       this.setAudioParam(
         gainNode.gain,
         formant.gain * brightnessGain * breathCompensation,
-        now,
-        VOWEL_TRANSITION_SECONDS,
+        startTime,
+        rampSeconds,
       );
     });
   }

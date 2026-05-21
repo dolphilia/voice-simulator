@@ -10,10 +10,27 @@
 
 現段階では、励振源と簡易フォルマントフィルタを組み合わせ、母音プリセットと `tractScale` による粗い声道長変化を試しています。
 
+現在は UTAU 音声サンプル分析の結果も取り込み、以下を試せます。
+
+- `reference` / `utau` / `tuned` の母音プリセット切り替え
+- UTAU 由来の話者 `tractScale` プリセット
+- 166 ms の母音遷移補間
+- `brightness` / `breathiness`
+- `し` / `す` の sibilant ノイズ試作
+- `し-a` / `し-i` / `す-u` などの簡易音素イベント
+- 0〜4 kHz のスペクトル表示と F1/F2/F3 マーカー
+
+`tuned` プリセットは、研究側の波形比較ツールと反復生成実験の結果を Web で試聴するための調整候補です。現時点では `/a/` に `research/data/processed/analysis/vowel-match-a-improved-iterations.csv` の結果を反映し、他の母音は UTAU 値を初期値として残しています。
+
 関連資料:
 
 - `../../../docs/plans/web-vowel-design-first-step.md`
 - `../../../docs/plans/web-vowel-listening-checklist.md`
+- `../../../docs/plans/utau-informed-next-implementation-plan.md`
+- `../../../docs/plans/waveform-comparison-tool-plan.md`
+- `../../../docs/note/vowel-matching-experiment-summary.md`
+- `../../../docs/note/vowel-preset-listening-notes.md`
+- `../../../docs/note/sibilant-syllable-event-notes.md`
 
 ## 主なファイル
 

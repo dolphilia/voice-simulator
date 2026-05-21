@@ -12,7 +12,7 @@ export type VowelProfile = {
   formants: [Formant, Formant, Formant];
 };
 
-export type VowelSetId = "reference" | "utau";
+export type VowelSetId = "reference" | "utau" | "tuned";
 
 export const VOWEL_PROFILES: Record<VowelId, VowelProfile> = {
   a: {
@@ -110,9 +110,23 @@ export const UTAU_VOWEL_PROFILES: Record<VowelId, VowelProfile> = {
   },
 };
 
+export const TUNED_VOWEL_PROFILES: Record<VowelId, VowelProfile> = {
+  ...UTAU_VOWEL_PROFILES,
+  a: {
+    id: "a",
+    label: "/a/",
+    formants: [
+      { frequency: 1073, bandwidth: 123, gain: 0.45 },
+      { frequency: 1405, bandwidth: 74, gain: 1.0 },
+      { frequency: 2053, bandwidth: 102, gain: 0.25 },
+    ],
+  },
+};
+
 export const VOWEL_PROFILE_SETS: Record<VowelSetId, Record<VowelId, VowelProfile>> = {
   reference: VOWEL_PROFILES,
   utau: UTAU_VOWEL_PROFILES,
+  tuned: TUNED_VOWEL_PROFILES,
 };
 
 export const VOWEL_ORDER: VowelId[] = ["a", "i", "u", "e", "o"];
