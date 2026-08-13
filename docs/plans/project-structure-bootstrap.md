@@ -1,5 +1,8 @@
 # 初期ディレクトリ設計と最初のファイル群
 
+> **Status: Historical**
+> この文書は初期構成を決めた時点の記録である。現在の `research/` の運用方針は `research/README.md` を正とし、研究言語を Python に限定せず、Notebook も必要な場合にのみ使用する。
+
 ## 概要
 
 この文書は、[initial-execution-plan-safe-a.md](/Users/dolphilia/github/voice-simulator/docs/plans/initial-execution-plan-safe-a.md) をもとに、初期フェーズで採用するディレクトリ設計と、最初に置くファイル群を整理したものである。

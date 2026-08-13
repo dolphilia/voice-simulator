@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "locked_at": "2026-08-13",
+  "status": "provisional-locked-before-holdout-listening",
+  "inputs": {
+    "vowel_a_initial_analysis": {
+      "path": "vowel-a-initial/analysis.json",
+      "sha256": "21557db26a1387c2c4f4363a3eb163b39850d37a904d259d81293a42c5995d32"
+    },
+    "calibration_anchors_analysis": {
+      "path": "calibration-anchors/analysis.json",
+      "sha256": "7db4aed32420390ebc1f688faedcdc7c4895de1d941a5afaa964c3bff4569dad"
+    },
+    "vowel_a_development_benchmark": {
+      "path": "../vowel-a-development.json",
+      "sha256": "23fcdf4f0369881713a55d3f6109f7ca21235aa6ef1dd78ea6950c9e191a80f7"
+    },
+    "calibration_anchors_benchmark": {
+      "path": "../calibration-anchors.json",
+      "sha256": "c5759e51666f001d0c81f24dd0a1aa3330afabd5824aa24613aaa5a7be860f91"
+    }
+  },
+  "calibration": {
+    "path": "development-calibration.json",
+    "sha256": "6e02c5e84e578905affa7281788ed46b73bd6311de1ecab3ee3689961bb8e7ef"
+  },
+  "holdout": {
+    "benchmark_sha256": "66c18e6fa255a516ba00e668d3b1d06d50244a90c5d47698faefe0087369ce1c",
+    "session_key_sha256": "c0348d15e92e9696d243a24e2b48e8563e0b996e1a0af9116d44cf6a892b03b8",
+    "responses_status": "answered-after-lock",
+    "responses_sha256": "f9e6f66b976405bcbef1fa168f39a597e02c7ed6ba685c3c91b1727cced20496",
+    "analysis_sha256": "bf6f3f4fd3be64c64340c1970a9fb23e4ab025cef6b372c54df94b420ccc7c32",
+    "validation_sha256": "4612d9bfb1e7afce826283e66ada73f0596ac6db70311ad08ebffc10278b404a",
+    "validation_status": "rejected"
+  },
+  "rules": [
+    "holdout回答前後にdevelopment入力、校正重み、holdout候補を変更しない",
+    "holdout結果を見て重みを再調整しない",
+    "検証不合格でも結果をそのまま記録する",
+    "採用判断まではactivated=falseを維持する"
+  ]
+}

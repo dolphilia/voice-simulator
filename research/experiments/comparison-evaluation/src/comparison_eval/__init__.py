@@ -1,0 +1,6 @@
+"""説明可能な音声比較評価基盤。"""
+
+SCHEMA_VERSION = "1.0.0"
+METRIC_PROFILE_VERSION = "1.0.0"
+BASELINE_VERSION = "1.0.0"
+

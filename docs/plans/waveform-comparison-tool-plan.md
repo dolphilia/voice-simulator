@@ -1,5 +1,8 @@
 # 計画書：生成波形とリファレンス波形の比較ツール
 
+> **Status: Implemented baseline**
+> この文書に記載したフェーズ 0〜4 は、現行比較 CLI の基礎として実装済みである。自己比較を超えた校正、複数参照、人間音声の基準分布、holdout、知覚評価を含む次段階は [`comparison-evaluation-framework-plan.md`](comparison-evaluation-framework-plan.md) を参照する。
+
 ## 概要
 
 この文書は、Voice Simulator が生成した WAV と、UTAU などのリファレンス WAV を比較し、近似度や相違を数値・図で確認するための研究ツール計画である。
