@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "B7の低周波制御端点バイアスを除き、F0変動量の寄与を分離する",
+  "control_lowpass_hz": 6.0,
+  "amplitude_std_db": 0.67,
+  "pitch_amplitude_correlation": 0.5,
+  "seed_offset": 401,
+  "conditions": [
+    {
+      "condition": "B9-corrected-subtle-variation",
+      "f0_std_fraction": 0.0064,
+      "meaning": "当初意図した微細変動量"
+    },
+    {
+      "condition": "B10-corrected-matched-variation",
+      "f0_std_fraction": 0.05644,
+      "meaning": "合格したB7の実測F0変動量に合わせた安定制御"
+    }
+  ],
+  "pass_interpretation": {
+    "B9_human_yes": "意図した微細変動で十分",
+    "B10_only_human_yes": "微細変動ではなく、より大きなピッチ漂動が必要",
+    "legacy_B7_only_human_yes": "変動量以外の制御形状または端点artifactに依存"
+  },
+  "contains_human_audio": false,
+  "holdout_opened": false
+}

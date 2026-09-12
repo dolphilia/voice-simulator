@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1.0",
+  "status": "superseded-before-generation",
+  "superseded_by": "voice-quality-correction.json",
+  "superseded_reason": "legacy B7の実測F0変動量が設定値0.64%ではなく約5.64%だとテストで判明したため",
+  "purpose": "B7の人声同一性が特定seedに依存しないか検証する",
+  "seed_offsets": [301, 317, 353],
+  "candidate_family": "B7-tilted-varied-saw-cascade",
+  "comparisons": [
+    "B6対seed-301のanchor比較",
+    "3 seed間の全ペア比較",
+    "anchor比較の隠し重複"
+  ],
+  "pass_rule": {
+    "all_seed_variants_vowel_identity": true,
+    "all_seed_variants_human_voice_identity": true,
+    "artifact_on_any_seed_variant": false,
+    "anchor_duplicate_consistent": true
+  },
+  "contains_human_audio": false,
+  "holdout_opened": false
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "合格済みB9持続部に対する開始自然さの副次アブレーション",
+  "canonical_seed_offset": 401,
+  "conditions": [
+    {"condition": "O0-b9-common-edge", "addition": "none"},
+    {"condition": "O1-b9-gain-attack", "addition": "60 ms gain attack"},
+    {"condition": "O2-b9-gain-aspiration", "addition": "O1 + 80 ms decaying aspiration"},
+    {"condition": "O3-b9-coupled-onset", "addition": "O2 + F0 0.97 to 1.0 settlement over 80 ms"}
+  ],
+  "gain_attack_ms": 60.0,
+  "aspiration_duration_ms": 80.0,
+  "aspiration_output_rms_relative_db": -24.0,
+  "aspiration_band_hz": [500.0, 8000.0],
+  "f0_start_ratio": 0.97,
+  "f0_settlement_ms": 80.0,
+  "stable_normalization_start_sec": 0.15,
+  "seed_offset": 501,
+  "primary_axis": "more_natural_onset",
+  "identity_gates": ["vowel_identity", "human_voice_identity"],
+  "contains_human_audio": false,
+  "holdout_opened": false,
+  "scope": "H1の再検証ではなく、開始自然さの副次最適化"
+}

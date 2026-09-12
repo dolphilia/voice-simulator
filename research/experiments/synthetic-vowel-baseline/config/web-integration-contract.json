@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "status": "design-only-awaiting-listener-qualified-release",
+  "purpose": "研究側B9+G40をWebへ移植するときの意味的・回帰的な境界を固定する",
+  "target_workspace": "web/prototypes/vowel-formant-prototype",
+  "integration_mode": "separate-explicit-dsp-engine",
+  "must_implement": [
+    "saw source with phase accumulation from instantaneous F0",
+    "600 Hz first-order low-pass spectral tilt",
+    "bounded <=6 Hz pitch and amplitude controls",
+    "0.64 percent F0 standard deviation",
+    "0.67 dB amplitude standard deviation",
+    "0.5 pitch-amplitude control correlation",
+    "three-section cascade all-pole vocal-tract filter",
+    "40 ms sine-squared gain attack or later listener-selected scaling rule",
+    "per-vowel F1-F3 and bandwidth profiles",
+    "deterministic seed for regression mode"
+  ],
+  "must_not_do": [
+    "replace current default engine before listener qualification",
+    "map research cascade filters to the existing parallel bandpass graph and call it equivalent",
+    "use recorded phoneme fragments",
+    "use generated-AI audio as final source",
+    "promote signal-qualified candidates as release"
+  ],
+  "acceptance": {
+    "legacy_web_build_passes": true,
+    "legacy_engine_remains_selectable": true,
+    "research_engine_is_opt_in_until_release": true,
+    "220_hz_a_parameter_manifest_matches_release": true,
+    "offline_cross_runtime_metrics_required": [
+      "duration",
+      "RMS",
+      "peak",
+      "F0 mean and standard deviation",
+      "formant pole frequencies and bandwidths",
+      "gain attack duration"
+    ],
+    "sample_hash_equality_required": false,
+    "sample_hash_equality_reason": "Web Audio sample rate and runtime arithmetic may differ; parameter and acoustic regression is required instead"
+  }
+}

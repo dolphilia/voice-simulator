@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0",
+  "study_id": "single-listener-longitudinal-v1",
+  "design": "single-listener repeated-session blinded validation",
+  "listener_count": 1,
+  "planned_runs": 3,
+  "minimum_interval_hours": 24,
+  "study_seed": 20260825,
+  "duplicate_minimum_separation": 2,
+  "advance_gate": {
+    "minimum_passing_runs_per_target": 2,
+    "minimum_duplicate_consistency_rate": 0.9,
+    "population_generalization_allowed": false
+  },
+  "stimuli": {
+    "B6-tilted-saw-cascade": {
+      "relative_path": "results/voice-quality-correction-candidates/B6-tilted-saw-cascade.wav",
+      "sha256": "a7ba77e4e7d347ca75b7836c7bc08940da557ed8a93c59ae0250e02b36f01185"
+    },
+    "B9-corrected-subtle-variation": {
+      "relative_path": "results/voice-quality-correction-candidates/B9-corrected-subtle-variation.wav",
+      "sha256": "7538817f9140c07ced4bccd899d10c542c1b9b69cc8b222b7eb0dce27755a3b7"
+    },
+    "O0-b9-common-edge": {
+      "relative_path": "results/gain-attack-duration-candidates/O0-b9-common-edge.wav",
+      "sha256": "7538817f9140c07ced4bccd899d10c542c1b9b69cc8b222b7eb0dce27755a3b7"
+    },
+    "G40-b9-gain-attack": {
+      "relative_path": "results/gain-attack-duration-candidates/G40-b9-gain-attack.wav",
+      "sha256": "faccc03962abcc0a50271476c6532a8438a091718d710ed562dd7c7b6e701223"
+    }
+  },
+  "pairs": [
+    {
+      "pair_id": "longitudinal-b6-vs-b9",
+      "hypothesis": "baseline-longitudinal",
+      "control": "B6-tilted-saw-cascade",
+      "target": "B9-corrected-subtle-variation",
+      "comparison_axis": "more_human",
+      "acceptable_choices": ["B9-corrected-subtle-variation"]
+    },
+    {
+      "pair_id": "longitudinal-o0-vs-g40",
+      "hypothesis": "onset-secondary",
+      "control": "O0-b9-common-edge",
+      "target": "G40-b9-gain-attack",
+      "comparison_axis": "more_natural_onset",
+      "acceptable_choices": ["G40-b9-gain-attack", "SAME"]
+    }
+  ]
+}

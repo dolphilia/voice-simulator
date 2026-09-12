@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "study_id": "gain-attack-scaling-listening-v1",
+  "purpose": "40 ms固定と8.8周期比例の開始自然さを160 Hz・300 Hzで比較する",
+  "seed": 20260833,
+  "duplicate_minimum_separation": 2,
+  "prerequisite": "vowel-generalization-listening-v1 all_tested_vowels_passed",
+  "pairs": [
+    {
+      "pair_id": "a160-fixed-vs-cycle",
+      "f0_hz": 160.0,
+      "fixed": "A160-fixed-gain-attack",
+      "cycle": "A160-cycle-gain-attack"
+    },
+    {
+      "pair_id": "a300-fixed-vs-cycle",
+      "f0_hz": 300.0,
+      "fixed": "A300-fixed-gain-attack",
+      "cycle": "A300-cycle-gain-attack"
+    }
+  ],
+  "validity_rule": {
+    "both_duplicate_presentations_required": true,
+    "duplicate_preference_must_match_within_pitch": true,
+    "both_conditions_vowel_identity": true,
+    "both_conditions_human_voice_identity": true,
+    "both_conditions_artifact_free": true
+  },
+  "selection_rule": {
+    "cycle": "cycle is preferred in both duplicate presentations at both pitches",
+    "fixed": "cycle criterion is not met and no pitch consistently prefers cycle against a fixed preference at the other pitch",
+    "pitch_dependent": "one pitch consistently prefers fixed and the other consistently prefers cycle",
+    "inconclusive": "duplicate preferences disagree or an identity/artifact gate fails",
+    "same_tiebreak": "retain fixed 40 ms for lower complexity"
+  },
+  "contains_human_audio": false,
+  "holdout_opened": false
+}

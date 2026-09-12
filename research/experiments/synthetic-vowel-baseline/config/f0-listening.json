@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "study_id": "f0-generalization-listening-v1",
+  "purpose": "B9+G40 /a/ の160 Hz・300 Hzへの知覚的一般化を確認する",
+  "seed": 20260831,
+  "duplicate_minimum_separation": 2,
+  "prerequisite": "single-listener-longitudinal-v1 advance_gate_passed",
+  "excluded_pitch": {
+    "f0_hz": 220.0,
+    "reason": "既存releaseと個人内反復で評価するため、このセッションでは再提示しない"
+  },
+  "pairs": [
+    {
+      "pair_id": "f160-b9-vs-g40",
+      "f0_hz": 160.0,
+      "sustain": "F160-B9-sustain",
+      "onset": "F160-G40-onset",
+      "acceptable_onset_choices": ["F160-G40-onset", "SAME"]
+    },
+    {
+      "pair_id": "f300-b9-vs-g40",
+      "f0_hz": 300.0,
+      "sustain": "F300-B9-sustain",
+      "onset": "F300-G40-onset",
+      "acceptable_onset_choices": ["F300-G40-onset", "SAME"]
+    }
+  ],
+  "pass_rule": {
+    "both_duplicate_presentations_required": true,
+    "sustain_and_onset_vowel_identity": true,
+    "sustain_and_onset_human_voice_identity": true,
+    "sustain_and_onset_artifact_free": true,
+    "onset_not_worse_than_sustain": true,
+    "all_tested_pitches_required": true
+  },
+  "contains_human_audio": false,
+  "holdout_opened": false
+}

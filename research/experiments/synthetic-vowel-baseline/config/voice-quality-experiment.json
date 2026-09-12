@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "B2の母音明瞭さを保った声質残差の加算的アブレーション",
+  "reference_measurement": {
+    "relative_path": "../phonation-onset-nonstationarity/results/stimuli/onset-reaudit-external-v1/jvs075-initial-long-a--R0-stable-only-40ms.wav",
+    "sha256": "a346c4e60b206573de6a7bf9be3aa552ec42b8c40faf38d00a47fef49afea7ee",
+    "contains_human_audio": true,
+    "use": "パラメータ範囲の測定のみ。合成音への波形・音素の連結は行わない",
+    "measured_f0_hz": 226.415,
+    "measured_cpp_proxy": 0.275,
+    "measured_spectral_centroid_hz": 678.818,
+    "measured_hnr_db": 9.303,
+    "measured_spectral_flatness": 0.004
+  },
+  "spectral_tilt": {
+    "model": "first-order Butterworth low-pass on periodic glottal source",
+    "cutoff_hz": 600.0,
+    "selection_reason": "B2出力のスペクトル重心とCPP proxyを、同程度のF0を持つJVS075測定値へ近づける事前スイープで固定"
+  },
+  "microvariation": {
+    "control_lowpass_hz": 6.0,
+    "f0_std_fraction": 0.0064,
+    "amplitude_std_db": 0.67,
+    "pitch_amplitude_correlation": 0.5,
+    "selection_reason": "8件の既存持続母音測定の中央値丸め"
+  },
+  "aspiration": {
+    "source_rms_relative_db": -32.0,
+    "highpass_hz": 500.0,
+    "lowpass_hz": 8000.0,
+    "selection_reason": "-38〜-26 dBの事前スイープで、定期性を壊しすぎず比較可能な中間値として固定"
+  },
+  "seed_offset": 300,
+  "limitations": [
+    "JVS測定値は120 msの文頭長母音であり、生理パラメータの推定値ではない",
+    "微細変動は低域通過確率過程であり、声帯運動の力学モデルではない",
+    "aspirationは声門位置の帯域制限ノイズで、流体の直接数値解析ではない"
+  ]
+}

@@ -1,9 +1,12 @@
 CLAUDE.md
 AGENTS.md
 .DS_Store
+.venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
 .ipynb_checkpoints/
-research/.cache/matplotlib/
+research/.cache/
 
 # 音声研究用の参考データ。管理用ファイルだけを追跡する。
 research/data/raw/reference/*
@@ -17,9 +20,10 @@ research/data/raw/reference/utau-samples/*
 research/data/**/*.wav
 research/data/**/*.png
 research/notebooks/*.png
-research/experiments/comparison-evaluation/results/listening-sessions/**/audio/*.wav
-research/experiments/phonation-onset-nonstationarity/results/**/*.wav
-research/experiments/phonation-onset-nonstationarity/results/**/*.png
+# 新しい実験や試聴用コピー・音量確認音も共通で除外する。
+# 回答・操作履歴・manifest・hash固定用lockは研究記録として残す。
+research/experiments/*/results/**/*.wav
+research/experiments/*/results/**/*.png
 
 web/**/node_modules/
 web/**/dist/

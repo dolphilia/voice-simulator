@@ -8,7 +8,13 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from phonation_onset.stimuli import apply_microvariation, loop_with_crossfade, render_a_stimuli, seam_jump_ratio
+from phonation_onset.stimuli import (
+    apply_microvariation,
+    loop_with_crossfade,
+    render_a_stimuli,
+    render_onset_reaudit_stimuli,
+    seam_jump_ratio,
+)
 from phonation_onset.synthesis import render_suite
 
 
@@ -44,6 +50,30 @@ class StimulusTests(unittest.TestCase):
         varied = apply_microvariation(audio, control, control, 48000)
         self.assertEqual(varied.size, audio.size)
         self.assertGreater(float(np.sqrt(np.mean((varied - audio) ** 2))), 1e-4)
+
+    def test_onset_reaudit_matches_duration_edges_and_stable_level(self) -> None:
+        sample_rate = 16000
+        time = np.arange(sample_rate * 2) / sample_rate
+        envelope = np.clip((time - 0.35) / 0.18, 0.0, 1.0)
+        audio = envelope * np.sin(2 * np.pi * 180 * time)
+        suite = render_onset_reaudit_stimuli(
+            audio, sample_rate, stable_onset_sec=0.55,
+            output_duration_sec=0.8, context_lengths_ms=(40, 80), edge_fade_ms=10,
+        )
+        self.assertEqual(len(suite), 4)
+        for item in suite:
+            self.assertEqual(item["audio"].size, int(0.8 * sample_rate))
+            self.assertAlmostEqual(float(item["audio"][0]), 0.0, places=12)
+            self.assertAlmostEqual(float(item["audio"][-1]), 0.0, places=12)
+        by_condition = {item["condition"]: item for item in suite}
+        for context_ms in (40, 80):
+            onset = by_condition[f"R1-onset-context-{context_ms}ms"]
+            stable = by_condition[f"R0-stable-only-{context_ms}ms"]
+            start, end = onset["metadata"]["normalization_region_samples"]
+            onset_rms = float(np.sqrt(np.mean(onset["audio"][start:end] ** 2)))
+            stable_rms = float(np.sqrt(np.mean(stable["audio"][start:end] ** 2)))
+            self.assertAlmostEqual(onset_rms, stable_rms, places=7)
+            self.assertGreater(float(np.sqrt(np.mean((onset["audio"] - stable["audio"]) ** 2))), 1e-4)
 
     def test_synthesis_suite_is_fully_generated_and_finite(self) -> None:
         suite = render_suite(16000, 0.4, 180.0, (800.0, 1300.0, 2500.0), 123)

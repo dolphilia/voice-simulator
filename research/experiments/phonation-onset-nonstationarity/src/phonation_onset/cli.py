@@ -17,8 +17,15 @@ from . import SCHEMA_VERSION
 from .audio import read_audio, sha256_file, write_audio, write_json
 from .boundaries import detect_boundaries
 from .manifest import Record, load_manifest, validate_manifest
+from .listening_wizard import (
+    ListeningWizard,
+    analyze_wizard_session,
+    detect_player,
+    prepare_candidate_wizard_session,
+    prepare_wizard_session,
+)
 from .reporting import derive_model_parameters, markdown_analysis, markdown_model_parameters, write_summary_csv
-from .stimuli import render_a_stimuli
+from .stimuli import render_a_stimuli, render_onset_reaudit_stimuli
 from .synthesis import render_suite
 from .trajectories import extract_trajectory, summarize_trajectory
 from .validation import apply_gate
@@ -267,8 +274,263 @@ def command_test(_: argparse.Namespace) -> int:
     return 0 if result.wasSuccessful() else 1
 
 
+def _listening_session(value: str | None, default_name: str) -> Path:
+    if not value:
+        return (result_dir() / "listening" / default_name).resolve()
+    candidate = Path(value)
+    if candidate.is_absolute() or candidate.exists() or "/" in value:
+        return candidate.resolve()
+    return (result_dir() / "listening" / value).resolve()
+
+
+def command_prepare_listening_wizard(args: argparse.Namespace) -> int:
+    legacy = _listening_session(args.source_session, "checkpoint")
+    output = _listening_session(args.session, "checkpoint-wizard-v1")
+    try:
+        result = prepare_wizard_session(legacy, output, int(args.seed))
+    except (FileExistsError, FileNotFoundError, RuntimeError, ValueError) as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_prepare_onset_reaudit(args: argparse.Namespace) -> int:
+    session = _listening_session(args.session, "onset-reaudit-wizard-v1")
+    if session.exists():
+        print(f"出力先がすでに存在します。既存セッションは上書きしません: {session}", file=sys.stderr)
+        return 2
+    spec = config()
+    sample_rate = int(spec["sample_rate"])
+    records, analyses = _load_analysis("onset-checkpoint")
+    output = result_dir() / "stimuli/onset-reaudit-v1"
+    manifest: list[dict[str, Any]] = []
+    pairs: list[dict[str, Any]] = []
+    context_lengths = (40, 80, 160, 240)
+    try:
+        for record in records:
+            actual_rate, audio = read_audio(record.path, sample_rate)
+            stable_onset = float(analyses[record.sample_id]["boundaries"]["stable_vowel_onset_sec"])
+            rendered = render_onset_reaudit_stimuli(
+                audio,
+                actual_rate,
+                stable_onset,
+                output_duration_sec=float(spec["stimuli"]["output_duration_sec"]),
+                context_lengths_ms=context_lengths,
+                edge_fade_ms=float(spec["stimuli"]["crossfade_ms"]),
+                target_dbfs=float(spec["stimuli"]["target_dbfs"]),
+            )
+            by_condition: dict[str, dict[str, Any]] = {}
+            for item in rendered:
+                rendered_audio = item.pop("audio")
+                stimulus_id = f"{record.sample_id}--{item['condition']}"
+                path = output / f"{stimulus_id}.wav"
+                write_audio(path, actual_rate, rendered_audio)
+                entry = {
+                    "stimulus_id": stimulus_id,
+                    "sample_id": record.sample_id,
+                    "condition": item["condition"],
+                    "relative_path": str(path.relative_to(root())),
+                    "sha256": sha256_file(path),
+                    "contains_human_audio": True,
+                    "export_allowed": False,
+                    "seam_jump_ratio": item["seam_jump_ratio"],
+                    "integrity": item["integrity"],
+                    "metadata": item["metadata"],
+                }
+                manifest.append(entry)
+                by_condition[str(item["condition"])] = entry
+            for context_ms in context_lengths:
+                onset = by_condition[f"R1-onset-context-{context_ms}ms"]
+                stable = by_condition[f"R0-stable-only-{context_ms}ms"]
+                pairs.append({
+                    "pair_id": f"{record.sample_id}--reaudit-{context_ms}ms",
+                    "hypothesis": "H1-reaudit",
+                    "left": {
+                        "path": root() / onset["relative_path"],
+                        "condition": onset["condition"],
+                        "stimulus_id": onset["stimulus_id"],
+                    },
+                    "right": {
+                        "path": root() / stable["relative_path"],
+                        "condition": stable["condition"],
+                        "stimulus_id": stable["stimulus_id"],
+                    },
+                })
+        write_json(output / "manifest.json", {
+            "schema_version": SCHEMA_VERSION,
+            "purpose": "H1 re-audit with matched duration, edge fades, and stable-region RMS",
+            "holdout_opened": False,
+            "stimuli": manifest,
+        })
+        duplicate_pair_ids = [f"{record.sample_id}--reaudit-80ms" for record in records]
+        result = prepare_candidate_wizard_session(
+            pairs,
+            session,
+            int(args.seed),
+            duplicate_pair_ids,
+            provenance={
+                "source_split": "onset-checkpoint",
+                "stimulus_manifest": str((output / "manifest.json").relative_to(root())),
+                "controls": ["duration", "edge-fade", "stable-region-rms"],
+                "context_lengths_ms": list(context_lengths),
+                "holdout_opened": False,
+            },
+        )
+    except (FileExistsError, FileNotFoundError, RuntimeError, ValueError) as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_prepare_external_reaudit(args: argparse.Namespace) -> int:
+    session = _listening_session(args.session, "onset-reaudit-jvs-wizard-v1")
+    if session.exists():
+        print(f"出力先がすでに存在します。既存セッションは上書きしません: {session}", file=sys.stderr)
+        return 2
+    external_config_path = root() / "config/reaudit-external-references.json"
+    external = json.loads(external_config_path.read_text(encoding="utf-8"))
+    spec = config()
+    sample_rate = int(spec["sample_rate"])
+    output = result_dir() / "stimuli/onset-reaudit-external-v1"
+    manifest: list[dict[str, Any]] = []
+    pairs: list[dict[str, Any]] = []
+    context_lengths = tuple(int(value) for value in external["context_lengths_ms"])
+    output_duration = float(external["output_duration_sec"])
+    try:
+        for reference in external["references"]:
+            source = (root() / "config" / reference["relative_path"]).resolve()
+            actual_rate, audio = read_audio(source, sample_rate)
+            crop_end = int(round(float(reference["analysis_crop_end_sec"]) * actual_rate))
+            detected, _ = detect_boundaries(
+                audio[:crop_end], actual_rate,
+                float(spec["analysis"]["frame_ms"]), float(spec["analysis"]["hop_ms"]),
+            )
+            configured_stable = float(reference["stable_vowel_onset_sec"])
+            if abs(detected.stable_vowel_onset_sec - configured_stable) > 0.035:
+                raise ValueError(f"{reference['sample_id']}: frozen stable boundary no longer matches detector")
+            safe_end = float(reference["safe_vowel_end_sec"])
+            if configured_stable + output_duration > safe_end + 1e-9:
+                raise ValueError(f"{reference['sample_id']}: output reaches beyond safe vowel end")
+            rendered = render_onset_reaudit_stimuli(
+                audio,
+                actual_rate,
+                configured_stable,
+                output_duration_sec=output_duration,
+                context_lengths_ms=context_lengths,
+                edge_fade_ms=float(external["edge_fade_ms"]),
+                target_dbfs=float(spec["stimuli"]["target_dbfs"]),
+            )
+            by_condition: dict[str, dict[str, Any]] = {}
+            for item in rendered:
+                rendered_audio = item.pop("audio")
+                stimulus_id = f"{reference['sample_id']}--{item['condition']}"
+                path = output / f"{stimulus_id}.wav"
+                write_audio(path, actual_rate, rendered_audio)
+                entry = {
+                    "stimulus_id": stimulus_id,
+                    "sample_id": reference["sample_id"],
+                    "speaker_id": reference["speaker_id"],
+                    "condition": item["condition"],
+                    "relative_path": str(path.relative_to(root())),
+                    "sha256": sha256_file(path),
+                    "source_relative_path": reference["relative_path"],
+                    "source_sha256": sha256_file(source),
+                    "contains_human_audio": True,
+                    "export_allowed": False,
+                    "integrity": item["integrity"],
+                    "metadata": {
+                        **item["metadata"],
+                        "configured_activity_onset_sec": reference["acoustic_activity_onset_sec"],
+                        "configured_stable_onset_sec": configured_stable,
+                        "detected_boundaries": detected.to_dict(),
+                        "safe_vowel_end_sec": safe_end,
+                    },
+                }
+                manifest.append(entry)
+                by_condition[str(item["condition"])] = entry
+            for context_ms in context_lengths:
+                onset = by_condition[f"R1-onset-context-{context_ms}ms"]
+                stable = by_condition[f"R0-stable-only-{context_ms}ms"]
+                pairs.append({
+                    "pair_id": f"{reference['sample_id']}--external-reaudit-{context_ms}ms",
+                    "hypothesis": "H1-external-reaudit",
+                    "left": {
+                        "path": root() / onset["relative_path"],
+                        "condition": onset["condition"],
+                        "stimulus_id": onset["stimulus_id"],
+                    },
+                    "right": {
+                        "path": root() / stable["relative_path"],
+                        "condition": stable["condition"],
+                        "stimulus_id": stable["stimulus_id"],
+                    },
+                })
+        write_json(output / "manifest.json", {
+            "schema_version": SCHEMA_VERSION,
+            "purpose": "non-UTAU replication of H1 re-audit",
+            "reference_config_sha256": sha256_file(external_config_path),
+            "source_corpus": external["source_corpus"],
+            "utterance_id": external["utterance_id"],
+            "transcript": external["transcript"],
+            "limitations": external["limitations"],
+            "holdout_opened": False,
+            "stimuli": manifest,
+        })
+        duplicate_pair_ids = [
+            f"{reference['sample_id']}--external-reaudit-80ms"
+            for reference in external["references"]
+        ]
+        result = prepare_candidate_wizard_session(
+            pairs,
+            session,
+            int(args.seed),
+            duplicate_pair_ids,
+            provenance={
+                "source_corpus": external["source_corpus"],
+                "reference_config": str(external_config_path.relative_to(root())),
+                "stimulus_manifest": str((output / "manifest.json").relative_to(root())),
+                "controls": ["duration", "edge-fade", "stable-region-rms"],
+                "context_lengths_ms": list(context_lengths),
+                "limitations": external["limitations"],
+                "holdout_opened": False,
+            },
+            duplicate_minimum_separation=3,
+        )
+    except (FileExistsError, FileNotFoundError, RuntimeError, ValueError) as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_listen(args: argparse.Namespace) -> int:
+    session = _listening_session(args.session, "checkpoint-wizard-v1")
+    if not session.is_dir():
+        print(f"試聴セッションがありません。先にprepare-listening-wizardを実行してください: {session}", file=sys.stderr)
+        return 2
+    try:
+        player = detect_player(args.player)
+        wizard = ListeningWizard(session, player)
+        return wizard.run(check_only=bool(args.check_only))
+    except (FileNotFoundError, RuntimeError, ValueError, json.JSONDecodeError) as error:
+        print(str(error), file=sys.stderr)
+        return 2
+
+
 def command_analyze_listening(args: argparse.Namespace) -> int:
-    session = Path(args.session).resolve()
+    session = _listening_session(args.session, "checkpoint-wizard-v1")
+    if (session / "responses.json").is_file() and (session / "private-session-key.json").is_file():
+        try:
+            result = analyze_wizard_session(session)
+        except (FileNotFoundError, RuntimeError, ValueError, json.JSONDecodeError) as error:
+            print(json.dumps({"valid": False, "errors": [str(error)]}, ensure_ascii=False, indent=2))
+            return 2
+        output_path = Path(args.output).resolve() if args.output else session / "analysis.json"
+        write_json(output_path, result)
+        print(f"listening wizard responses valid -> {output_path}")
+        return 0
     key_path, responses_path, lock_path = session / "presentation-key.csv", session / "responses.csv", session / "lock.json"
     if not all(path.is_file() for path in (key_path, responses_path, lock_path)):
         print("listening session is incomplete", file=sys.stderr); return 2
@@ -343,8 +605,9 @@ def command_analyze_listening(args: argparse.Namespace) -> int:
         "hypotheses": hypotheses,
         "holdout_opened": False,
     }
-    write_json(Path(args.output), output)
-    print(f"listening responses valid -> {Path(args.output).resolve()}")
+    output_path = Path(args.output) if args.output else result_dir() / "listening/checkpoint-analysis.json"
+    write_json(output_path, output)
+    print(f"listening responses valid -> {output_path.resolve()}")
     return 0
 
 
@@ -370,7 +633,28 @@ def build_parser() -> argparse.ArgumentParser:
         child = commands.add_parser(name); child.set_defaults(function=function)
     analyze = commands.add_parser("analyze"); analyze.add_argument("--split", default="onset-development", choices=sorted({"onset-development", "onset-checkpoint", "onset-holdout"})); analyze.add_argument("--allow-holdout", action="store_true"); analyze.set_defaults(function=command_analyze)
     render = commands.add_parser("render-stimuli"); render.add_argument("--split", default="onset-development", choices=["onset-development", "onset-checkpoint"]); render.set_defaults(function=command_render_stimuli)
-    listening = commands.add_parser("analyze-listening"); listening.add_argument("--session", default=str(result_dir() / "listening/checkpoint")); listening.add_argument("--output", default=str(result_dir() / "listening/checkpoint-analysis.json")); listening.set_defaults(function=command_analyze_listening)
+    prepare_wizard = commands.add_parser("prepare-listening-wizard")
+    prepare_wizard.add_argument("--source-session", default="checkpoint")
+    prepare_wizard.add_argument("--session", default="checkpoint-wizard-v1")
+    prepare_wizard.add_argument("--seed", type=int, default=20260914)
+    prepare_wizard.set_defaults(function=command_prepare_listening_wizard)
+    prepare_reaudit = commands.add_parser("prepare-onset-reaudit")
+    prepare_reaudit.add_argument("--session", default="onset-reaudit-wizard-v1")
+    prepare_reaudit.add_argument("--seed", type=int, default=20260825)
+    prepare_reaudit.set_defaults(function=command_prepare_onset_reaudit)
+    prepare_external = commands.add_parser("prepare-external-reaudit")
+    prepare_external.add_argument("--session", default="onset-reaudit-jvs-wizard-v1")
+    prepare_external.add_argument("--seed", type=int, default=20260826)
+    prepare_external.set_defaults(function=command_prepare_external_reaudit)
+    listen = commands.add_parser("listen")
+    listen.add_argument("--session", default="checkpoint-wizard-v1")
+    listen.add_argument("--player")
+    listen.add_argument("--check-only", action="store_true")
+    listen.set_defaults(function=command_listen)
+    listening = commands.add_parser("analyze-listening")
+    listening.add_argument("--session", default=str(result_dir() / "listening/checkpoint-wizard-v1"))
+    listening.add_argument("--output")
+    listening.set_defaults(function=command_analyze_listening)
     return parser
 
 

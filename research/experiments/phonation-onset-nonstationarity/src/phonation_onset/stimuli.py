@@ -4,13 +4,101 @@ import math
 
 import numpy as np
 
-from .audio import integrity, normalize
+from .audio import integrity, normalize, rms
 
 
 def _fit_length(audio: np.ndarray, length: int) -> np.ndarray:
     if audio.size >= length:
         return audio[:length].copy()
     return np.pad(audio, (0, length - audio.size))
+
+
+def _fade_edges(audio: np.ndarray, fade_samples: int) -> np.ndarray:
+    output = audio.copy()
+    count = min(max(0, fade_samples), output.size // 2)
+    if count:
+        fade = np.sin(np.linspace(0.0, np.pi / 2.0, count, endpoint=True)) ** 2
+        output[:count] *= fade
+        output[-count:] *= fade[::-1]
+    return output
+
+
+def _normalize_by_region(
+    audio: np.ndarray,
+    region_start: int,
+    region_end: int,
+    target_dbfs: float,
+    peak_limit_dbfs: float = -1.0,
+) -> np.ndarray:
+    output = audio.copy()
+    start = max(0, min(output.size, region_start))
+    end = max(start + 1, min(output.size, region_end))
+    current = rms(output[start:end])
+    if current <= 1e-12:
+        return output
+    output *= (10.0 ** (target_dbfs / 20.0)) / current
+    peak = float(np.max(np.abs(output))) if output.size else 0.0
+    peak_limit = 10.0 ** (peak_limit_dbfs / 20.0)
+    if peak > peak_limit:
+        output *= peak_limit / peak
+    return output
+
+
+def render_onset_reaudit_stimuli(
+    audio: np.ndarray,
+    sample_rate: int,
+    stable_onset_sec: float,
+    output_duration_sec: float = 0.8,
+    context_lengths_ms: tuple[int, ...] = (40, 80, 160, 240),
+    edge_fade_ms: float = 10.0,
+    target_dbfs: float = -20.0,
+) -> list[dict[str, object]]:
+    """長さ、端点、定常部音量を揃えたonset文脈の再監査刺激を作る。"""
+    stable = max(0, min(audio.size, int(round(stable_onset_sec * sample_rate))))
+    output_length = int(round(output_duration_sec * sample_rate))
+    fade_samples = int(round(edge_fade_ms * sample_rate / 1000.0))
+    stable_material = audio[stable:]
+    if stable_material.size < output_length:
+        raise ValueError("stable region is too short for onset re-audit")
+
+    results: list[dict[str, object]] = []
+    for context_ms in context_lengths_ms:
+        context_samples = int(round(context_ms * sample_rate / 1000.0))
+        context_start = max(0, stable - context_samples)
+        context = audio[context_start:stable]
+        # ファイル先頭に到達した場合も長さを変えず、左側を無音で補う。
+        context = np.pad(context, (max(0, context_samples - context.size), 0))
+        onset_value = np.concatenate([context, stable_material[: output_length - context_samples]])
+        stable_value = stable_material[:output_length].copy()
+
+        # 両条件に同じ端点処理を施し、比較対象を切り出し位置に限定する。
+        onset_value = _fade_edges(onset_value, fade_samples)
+        stable_value = _fade_edges(stable_value, fade_samples)
+        region_start = max(context_samples, int(round(min(0.25, output_duration_sec / 3.0) * sample_rate)))
+        region_end = output_length - fade_samples
+        onset_value = _normalize_by_region(onset_value, region_start, region_end, target_dbfs)
+        stable_value = _normalize_by_region(stable_value, region_start, region_end, target_dbfs)
+
+        common = {
+            "context_ms": context_ms,
+            "output_duration_sec": output_duration_sec,
+            "edge_fade_ms": edge_fade_ms,
+            "normalization": "stable-region-rms",
+            "normalization_region_samples": [region_start, region_end],
+        }
+        for condition, value, includes_context in (
+            (f"R1-onset-context-{context_ms}ms", onset_value, True),
+            (f"R0-stable-only-{context_ms}ms", stable_value, False),
+        ):
+            results.append({
+                "condition": condition,
+                "audio": value,
+                "seams": [],
+                "seam_jump_ratio": 0.0,
+                "integrity": integrity(value, sample_rate),
+                "metadata": {**common, "includes_pre_stable_context": includes_context},
+            })
+    return results
 
 
 def _best_loop_segment(audio: np.ndarray, center: int, requested: int, sample_rate: int) -> tuple[np.ndarray, int]:

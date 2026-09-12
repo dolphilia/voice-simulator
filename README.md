@@ -31,6 +31,8 @@
 
 これまでの調査、解析、数値実験、Web プロトタイプの成果と課題は、[`docs/note/research-review-2026-08-13.md`](docs/note/research-review-2026-08-13.md) に総括しています。
 
+旧 `synth-lab` で蓄積した音合成・音響解析・物理数理モデルの調査と探索 Notebook も、出典と適用範囲を分けて移管しています。現在の研究への接続方針は [`docs/note/synth-lab-research-integration.md`](docs/note/synth-lab-research-integration.md)、原資料の索引は [`docs/reference/imported-synth-lab/README.md`](docs/reference/imported-synth-lab/README.md) を参照してください。
+
 ## References
 
 - [Pink Trombone](https://dood.al/pinktrombone/)
