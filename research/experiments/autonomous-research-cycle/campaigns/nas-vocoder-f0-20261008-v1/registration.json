@@ -1,0 +1,160 @@
+{
+  "next_campaign": "vocoder-f0-v1",
+  "source_summary_sha256": "041fbf1960f257bdb26150b05ea1bb42974491cf48afc30f3f9594afaf7d9e9b",
+  "source_aggregate_sha256": "8423bdc8a185ff2dbdaf782e96250382a7fd5300007fef0fe10176288aec39c2",
+  "source_seal_sha256": "5aa6e8ac578f8be3795f6678c473fff57abbd2587db58a8270271bcb993349a6",
+  "source_decision_sha256": "90422989d82d30ff94b248d7eacdbd7a69bf22bda4e60cedb6a99e53e0a91f1b",
+  "question": "同じ文章から生成するMCP/LF0/LPFを使い、WORLD変換とHTS pulse/noise MLSAのrenderer要因を分ければ、絶対F0/有声補完の支持・内容損失を回復できるか。",
+  "renderer": [
+    "WORLD",
+    "HTS-pulse-noise-MLSA"
+  ],
+  "LF0": [
+    "native",
+    "calibrated",
+    "voicing"
+  ],
+  "variants": [
+    "native",
+    "calibrated",
+    "voicing",
+    "hts_native",
+    "hts_calibrated",
+    "hts_voicing"
+  ],
+  "factor_rules": "WORLDのAP係数は1へ固定。有声補完・絶対校正は前契約の共有規則のまま。HTSは当該パラメータの全フレームを直接vocoderへ渡す。state/MSD/MCP/LPF/voice/gainを保持。renderer要因にはAP近似/生成filter/補間の差が含まれ、純粋な位相だけと呼ばない。",
+  "native_support": "WORLD nativeだけから同じ5ms/native状態時計で固定。候補から支持を選ばない。",
+  "compatibility": "同じnativeパラメータに対する新HTS配列入口と旧HTS engine経路のbyte一致を最初に工学fixtureで確認。WORLD native/calibratedの旧hash一致も検査。品質証拠にしない。",
+  "new_short": 8,
+  "new_long": 8,
+  "conditions": {
+    "neutral": {
+      "requested_f0": 220.0,
+      "speed": 1.0
+    },
+    "higher": {
+      "requested_f0": 280.0,
+      "speed": 1.15
+    }
+  },
+  "expected_comparison": 192,
+  "expected_normal_isolated_pairs": 192,
+  "expected_CLI": 4,
+  "expected_ASR": 384,
+  "cost_estimate": {
+    "comparison_render": 192,
+    "normal_isolated_render": 384,
+    "CLI_render": 4,
+    "compatibility_fixture_render": 4,
+    "planned_render": 584,
+    "failed_render_reserve": 616,
+    "DSP_comparison": 576,
+    "DSP_normal_isolated": 388,
+    "DSP_compatibility": 4,
+    "DSP_planned_max": 1000,
+    "failed_DSP_reserve": 1500,
+    "ASR": 384,
+    "failed_AI_reserve": 616,
+    "external_artifacts_max_bytes": 600000000,
+    "metadata_max_bytes": 20000000,
+    "temporary_peak_max_bytes": 16000000,
+    "shared_assets_sources_max_bytes": 8000000,
+    "artifact_retry_max_bytes": 300000000,
+    "total_peak_max_bytes": 944000000
+  },
+  "gates": {
+    "pitch": {
+      "DIO_absolute_median_error_semitones_max": 1.0,
+      "ACF_absolute_global_error_semitones_max": 1.0,
+      "ACF_confidence_min": 0.6,
+      "minimum_native_fixed_voiced_support": 3,
+      "candidate_missing_support_allowed": 0,
+      "missing_or_unreliable": "不通過。分母から除外しない。",
+      "threshold_status": "工学的指定値応答の事前値。知覚保証値ではない。"
+    },
+    "content": {
+      "engines": [
+        "whisper",
+        "reazon"
+      ],
+      "groups_per_engine": 33,
+      "groups": "both/neutral/higher × all/short/long/group0..7",
+      "errors": "全群でnative以下。固定正規化。欠測不通過。"
+    },
+    "engineering": "全E0・全192通常/隔離hash一致・CLI4・全不変量。欠測不通過。"
+  },
+  "upstream": {
+    "HTS_gstream_sha256": "2acf702a5811f6df160b4b37419474c4420a0c39fc7e0fa5c1fc2d984bfdbcdc",
+    "HTS_vocoder_sha256": "f5b97b331639af246dea3871a74bca512f40d96618702f6512d8e0fbed86cdd9",
+    "headers": {
+      "HTS_engine.h": "3baa7a3fba5854cb026711ea927334ff0381d18b8e320cd0a1f0bdcb740d2511",
+      "HTS_hidden.h": "01e20942a1e25a9e5c5b3a7a89625d11da17c88a06e70c04bf9d526bca4815aa"
+    }
+  },
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1000000000,
+    "render": 1200,
+    "dsp": 2500,
+    "ai": 1000,
+    "setup": 60,
+    "audit": 60,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "input_pool_sha256": "f75bbe1e6fc55151a154aabd4a8d4c53eb0ecccb9847bd8cbcf180eb67e9bd52",
+  "checkpoint_draft_sha256": "7c9280212c04b77cd05b01208e0f3b40aa808a289b025f925c2ba04e862ef3de",
+  "pitch_gate": {
+    "DIO_absolute_median_error_semitones_max": 1.0,
+    "ACF_absolute_global_error_semitones_max": 1.0,
+    "ACF_confidence_min": 0.6,
+    "minimum_native_fixed_voiced_support": 3,
+    "candidate_missing_support_allowed": 0,
+    "missing_or_unreliable": "不通過。分母から除外しない。",
+    "threshold_status": "工学的指定値応答の事前値。知覚保証値ではない。"
+  },
+  "content_gate": {
+    "engines": [
+      "whisper",
+      "reazon"
+    ],
+    "groups_per_engine": 33,
+    "groups": "both/neutral/higher × all/short/long/group0..7",
+    "errors": "全群でnative以下。固定正規化。欠測不通過。"
+  },
+  "support_rule": {
+    "eligible_phones": [
+      "a",
+      "i",
+      "u",
+      "e",
+      "o",
+      "N",
+      "m",
+      "n",
+      "my",
+      "ny"
+    ],
+    "native_DIO_minimum_frames": 3,
+    "native_DIO_minimum_fraction": 0.5,
+    "DIO_range_hz": [
+      70,
+      800
+    ],
+    "frame_period_ms": 5,
+    "clock": "native状態長と同一。native波形のみから支持固定。"
+  },
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "AP_noise_power_factor": 1.0,
+  "output_gain": 0.25,
+  "no_optimization_after_first_audio": true,
+  "factorial_analysis": "renderer2×LF0 3水準。各LF0でrenderer差、校正差、補完差、交互作用を同じ32条件・二ASRで記述。候補採択はnative WORLD以下の全33群と全工学・ピッチ条件。欠測不通過。",
+  "technical_retry_job_maximum": 2,
+  "technical_retry_campaign_maximum": 10,
+  "source_contract": "当該文章の生成3streamを使用。保存波形/発話ID/教師/NN/保存軌跡を条件にしない。両rendererでinput stream・状態長・MSD・voice・gainを実hash照合。",
+  "perceptual_qualification": false
+}

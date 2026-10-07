@@ -1,0 +1,39 @@
+{
+  "protocol_sha256": "45dc6d3058a98a5a27d6dca2575b07580936467665ef3a017a39108472fc0191",
+  "registration_sha256": "d4cfad0441027ff82b37f86bfc22503a211c3bf25bcf28a22b1095e3a8f0e3eb",
+  "source_hashes": {
+    "asr_worker.py": "d92a845c562ee30e80e3dd92db44d637e90b8aa86178c9222ed97a2edf07c1ef",
+    "build.py": "b99395388d0321df0f7b4e06ea7b038ec429515c00c251800c7df12bea33d042",
+    "closeout.py": "33b9331238fc39ca4beaef4411e34d8907157114e41738029e9293ef60ad3998",
+    "controller.py": "62cfada9ae79e39cb5812d49f85ac35ef6377cf126dd6a78e91536cdbbcedc9c",
+    "controls_v2.py": "23b26d8453b77e404a0ae005d69ead50fdaa4f0655476b4078fd0e9579fc150c",
+    "hts_arrays.py": "cec376788ddeee6848fcb60756c49dae14a741adca54fa7d1b0289b1c2737a49",
+    "measurement.py": "50b29c383d1af4d01f89e5e4665d6d4e96897191fe19df37c5dff1a2d8637580",
+    "paths.py": "6cd3bc320d3cfcf80bbb7bf52675ed514fa841c9bf9faf882c7989605944a0cd",
+    "preflight.py": "b1229983839ab3faa4ed8cdc564ea54a45f5d7a51d940ff9a17a259ae3c3603e",
+    "prepare.py": "2b7b9d3bf90fd212c2b0effa9c9fc4a6b444d703afec61233851797fb2693f1d",
+    "runtime.py": "8494894cc91d76542d07db7bfa41d849653b1648f472218b567b2f47b7e93efb",
+    "runtime_batch.py": "5f251d3171e361ddc04c0ce3ae3b45d76155c7ddd134671c4a7be0d17e55a939",
+    "summarize.py": "b562a09f31074fbc4e52e4a686e6bf13ded35d10f792583e01b09cc8c22546d3",
+    "temporary_storage.py": "1ab21fe6767bf00c5b81ac5aeff35096cf98cba5da510c7b6177e87db9153d0c",
+    "test_controls.py": "3448d910bf0e7b3be12c971830fcd76725fc182f12845964863281b1a142b949"
+  },
+  "runtime_manifest_sha256": "5b734dbd0dd0139aa63cd950495a5801ec099759d9a3cc9ec63a8c7f6eb7e53f",
+  "engine_contract_sha256": "66f539ec69aae8a01b470fcbe30b1c1be8beb03410ae205ac017a25df8d76f47",
+  "output_gain": 0.25,
+  "native_half_tone": "12*log2(requestedHz/220)",
+  "absolute_calibration": "補完後の有声LF0へ一律log偏移、原有声相対輪郭保持",
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "renderer_rule": "WORLDのAP係数は1へ固定。有声補完・絶対校正は前契約の共有規則のまま。HTSは当該パラメータの全フレームを直接vocoderへ渡す。state/MSD/MCP/LPF/voice/gainを保持。renderer要因にはAP近似/生成filter/補間の差が含まれ、純粋な位相だけと呼ばない。",
+  "AP_noise_power_factor": 1.0,
+  "factor_baseline_byte_exact": true,
+  "renderer": [
+    "WORLD",
+    "HTS-pulse-noise-MLSA"
+  ],
+  "waveform_transfer": "pipe/メモリ。子の一時音声ファイルなし。",
+  "tmp_maximum_bytes": 8000000,
+  "tmp_maximum_write_bytes": 16000000,
+  "fixed_before_first_wave": true,
+  "quality_certified": false
+}
