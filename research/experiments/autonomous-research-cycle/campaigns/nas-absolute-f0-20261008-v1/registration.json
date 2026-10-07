@@ -1,0 +1,118 @@
+{
+  "question": "文章から生成したnative LF0の絶対中央値を指定Hzへ合わせ、実波形のDIO/ACF応答を校正し、内容を各群・二ASRで保護できるか。",
+  "causal_change": "時間経路3回不通過から切替。有声LF0へ一律log偏移だけを加え、相対輪郭・有声mask/sentinel・状態長・MCP・LPF・MSD・voice・設定・利得を固定。",
+  "variants": [
+    "native",
+    "calibrated"
+  ],
+  "conditions": {
+    "neutral": {
+      "requested_f0": 220.0,
+      "speed": 1.0
+    },
+    "higher": {
+      "requested_f0": 280.0,
+      "speed": 1.15
+    }
+  },
+  "input_pool_sha256": "4b05d835566c058d2fd4113f425b9925e8b1eb0c0350a061aafb538c61f7ca46",
+  "new_short": 8,
+  "new_long": 8,
+  "previous_summary_sha256": "64ed2458d9eac731e08ef5ec86cbd287cc3becdd2ac870ef59956ce74696538d",
+  "previous_seal_sha256": "7159940f18727bc0e79d6e0a7a3fa8be359ca7b2df076e49f1f72017360ddf04",
+  "checkpoint_draft_sha256": "698559d2cc0f3ee77e974ce0555defbe2e85ef6cc62a2eef8ec08d1fea8d7efb",
+  "preparation_sha256": "ac824045e86be98aaff1138dc995ee66013e8ef8d6f047d854eda9be89c18ade",
+  "prior_timing_route_consecutive_failures": 3,
+  "engineering_gate": {
+    "E0_all": true,
+    "invariants": "MCP/LPF/state duration/MSD/voice/settings/gain・LF0 mask/sentinel保持",
+    "relative_LF0_absolute_tolerance": 2e-15,
+    "normal_isolated_pairs": 64,
+    "CLI_checks": 4,
+    "waveform_hash_exact": true
+  },
+  "pitch_gate": {
+    "DIO_absolute_median_error_semitones_max": 1.0,
+    "ACF_absolute_global_error_semitones_max": 1.0,
+    "ACF_confidence_min": 0.6,
+    "minimum_native_fixed_voiced_support": 3,
+    "candidate_missing_support_allowed": 0,
+    "missing_or_unreliable": "不通過。分母から除外しない。",
+    "threshold_status": "工学的指定値応答の事前値。知覚保証値ではない。"
+  },
+  "content_gate": {
+    "engines": [
+      "whisper",
+      "reazon"
+    ],
+    "groups_per_engine": 33,
+    "groups": "both/neutral/higher × all/short/long/group0..7",
+    "errors": "全群でnative以下。固定正規化。欠測不通過。"
+  },
+  "support_rule": {
+    "eligible_phones": [
+      "a",
+      "i",
+      "u",
+      "e",
+      "o",
+      "N",
+      "m",
+      "n",
+      "my",
+      "ny"
+    ],
+    "native_DIO_minimum_frames": 3,
+    "native_DIO_minimum_fraction": 0.5,
+    "DIO_range_hz": [
+      70,
+      800
+    ],
+    "frame_period_ms": 5,
+    "clock": "native状態長と同一。native波形のみから支持固定。"
+  },
+  "no_optimization_after_first_audio": true,
+  "shared_control": "当該文章のnative有声LF0にlog(requestedHz)-median(native LF0)を加える。保存波形/発話ID/高密度軌跡/教師/ニューラルを参照しない。",
+  "neural_pathway_used": false,
+  "direct_non_neural_only": true,
+  "protected_confirmation_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 500000000,
+    "render": 300,
+    "dsp": 600,
+    "ai": 200,
+    "setup": 50,
+    "audit": 50,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "cost_estimate": {
+    "comparison_renders": 64,
+    "normal_isolated_renders": 128,
+    "CLI_renders": 4,
+    "sine_fixtures_max": 4,
+    "ASR": 128,
+    "DSP": 336,
+    "failed_attempt_render_reserve": 100,
+    "AI_retry_reserve": 72,
+    "local_sources_assets_max_bytes": 4000000,
+    "external_artifacts_max_bytes": 350000000,
+    "metadata_max_bytes": 12000000,
+    "temporary_peak_max_bytes": 16000000,
+    "artifact_retry_max_bytes": 100000000,
+    "total_peak_max_bytes": 482000000,
+    "active_seconds_max": 14400,
+    "closing_global_seconds_preserved": 14400
+  },
+  "temp_strategy": "子の結果はpipe/メモリで受け渡す。必要な一時領域のみ識別済み外部で所有manifest・事前予約・削除記録。通常/隔離双方に同じ環境指定。",
+  "reason": "旧訓練native80の220指定に対するDIO中央値約353.6Hzを動機とする。独立品質証拠ではない。",
+  "alternatives": [
+    "励振/APの共有変換",
+    "教師・音響境界の資格点検"
+  ]
+}
