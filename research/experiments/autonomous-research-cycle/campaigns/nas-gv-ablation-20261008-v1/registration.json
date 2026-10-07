@@ -1,0 +1,94 @@
+{
+  "question": "共有模型で既に有効なMCP/LF0のGV補正を除いたとき、既存有声補完・校正の支持/内容保護が改善するか。",
+  "causal_change": "USE_GV[MCP]/[LF0]の該当1byteだけを0へ変更。模型データ本体、位置、状態長、MSD、平均/分散、LPF、設定と利得は保持。GV重みは全1のまま。",
+  "variants": [
+    "native",
+    "voicing",
+    "voicing_no_mcp_gv",
+    "voicing_no_lf0_gv",
+    "voicing_no_gv"
+  ],
+  "conditions": {
+    "neutral": {
+      "requested_f0": 220.0,
+      "speed": 1.0
+    },
+    "higher": {
+      "requested_f0": 280.0,
+      "speed": 1.15
+    }
+  },
+  "new_short": 8,
+  "new_long": 8,
+  "input_pool_sha256": "ec180a68fbdb61f07102151feb042d7c2cc57d61dc5f0fc8b3f9371f2ef10c3f",
+  "previous_seal_sha256": "e79a93c5170d475adfbee1b46a01aff6654f5f33193170506670608820b5d979",
+  "previous_summary_sha256": "7c32bee79d1f478b3947c78c810b18b0ce9e3370715af914d0c67d55dfca4183",
+  "direct_non_neural_only": true,
+  "neural_pathway_used": false,
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "factor_rules": "β=0、WORLD/AP=1、既存LF0補完・中央値校正を固定。GVフラグだけを共有模型から除く。初波形後の変更なし。",
+  "gates": {
+    "engineering": "全件E0・状態/MSD/音響状態分布/LPF/設定/利得保持。GV C内部照合。通常/隔離全160組・CLI4件byte一致。",
+    "pitch": {
+      "DIO_absolute_median_error_semitones_max": 1.0,
+      "ACF_absolute_global_error_semitones_max": 1.0,
+      "ACF_confidence_min": 0.6,
+      "minimum_native_fixed_voiced_support": 3,
+      "candidate_missing_support_allowed": 0,
+      "missing_or_unreliable": "不通過。分母から除外しない。",
+      "threshold_status": "工学的指定値応答の事前値。知覚保証値ではない。"
+    },
+    "content": {
+      "engines": [
+        "whisper",
+        "reazon"
+      ],
+      "groups_per_engine": 33,
+      "groups": "both/neutral/higher × all/short/long/group0..7",
+      "errors": "全群でnative以下。固定正規化。欠測不通過。"
+    },
+    "quality": "この比較は内容/指定制御の研究資格。日本語非ニューラル知覚資格と独立P5なしに全体品質合格へ昇格しない。"
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1500000000,
+    "render": 1000,
+    "dsp": 3000,
+    "ai": 1000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 60,
+    "audit": 60
+  },
+  "cost_estimate": {
+    "comparison_render": 160,
+    "normal_isolated_render": 320,
+    "CLI_render": 4,
+    "compatibility_render": 2,
+    "planned_render": 486,
+    "planned_DSP": 1126,
+    "planned_AI": 320,
+    "external_output": 600000000,
+    "metadata": 60000000,
+    "shared_assets": 20000000,
+    "temporary_peak": 16000000,
+    "retry_storage": 700000000,
+    "estimated_peak_total": 1396000000,
+    "retry_render": 514,
+    "retry_DSP": 1874,
+    "retry_AI": 680
+  },
+  "model_generation": "状態/MLPGの追加検証は新波形ではない。各出力は共有native模型のパラメータ対照を再計算し、保存軌跡を参照しない。",
+  "primary_context": {
+    "url": "https://www.isca-archive.org/interspeech_2005/toda05b_interspeech.pdf",
+    "scope": "GVの過平滑対策という一次根拠。現行の日本語Mei/WORLDの絶対知覚資格は与えない。"
+  },
+  "no_optimization_after_first_audio": true,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "budget_review": "20/24の事前登録。70%見直しの独立因果要因。21以降は新経路を足さず既存候補の比較・監査・終了を優先。"
+}

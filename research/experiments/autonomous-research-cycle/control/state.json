@@ -23,10 +23,10 @@
     "campaigns": 24
   },
   "counts": {
-    "setup": 359,
-    "audit": 200,
-    "render": 9287,
-    "dsp": 22366,
+    "setup": 367,
+    "audit": 202,
+    "render": 9289,
+    "dsp": 22368,
     "ai": 9648,
     "train": 11,
     "download": 1669706871,
@@ -570,15 +570,41 @@
       "payload_bytes": 502613127,
       "closed": true,
       "end_seconds": 50022.492035865784
+    },
+    "gv-ablation-v1": {
+      "prefix": "campaigns/nas-gv-ablation-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1500000000,
+        "render": 1000,
+        "dsp": 3000,
+        "ai": 1000,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 60,
+        "audit": 60
+      },
+      "counts": {
+        "setup": 8,
+        "audit": 2,
+        "render": 2,
+        "dsp": 2
+      },
+      "start_seconds": 50371.68606495857,
+      "protocol_sha256": "6d047edc1a19a0aff31b0b4c4b64ef6336feb7799ba620e1a53d182536ac5c83",
+      "payload_bytes": 8167506,
+      "closed": false
     }
   },
   "jobs": {},
-  "payload_bytes": 6991760111,
-  "seconds": 50077.4809448719,
-  "write_bytes": 27985272505,
+  "payload_bytes": 7000000484,
+  "seconds": 50781.0141749382,
+  "write_bytes": 28163529598,
   "session": {
     "id": "c968a05d10e04bfeadc91562e6c7eed8",
-    "checkpoint": 1791416824.81709
+    "checkpoint": 1791417528.35032
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -610,26 +636,15 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "mcp-postfilter-completed-20261008-0001",
-    "active_campaign": null,
-    "campaign_closed": true,
+    "id": "gv-ablation-prepared-20261008-0001",
+    "active_campaign": "gv-ablation-v1",
+    "campaign_closed": false,
     "quality_goal_completed": false,
-    "qualifications": {
-      "native": false,
-      "postfilter": false,
-      "voicing": false,
-      "voicing_postfilter": false,
-      "hts_native": false,
-      "hts_postfilter": false,
-      "hts_voicing": false,
-      "hts_voicing_postfilter": false
-    },
-    "seal_sha256": "e79a93c5170d475adfbee1b46a01aff6654f5f33193170506670608820b5d979",
-    "external_hash_verified": 20418,
-    "all_temporary_work_removed": true,
     "protected_confirmation_opened": false,
-    "next_campaign": "gv-ablation-v1",
-    "next": "MCP/LF0のGV補正だけを外す新比較を生成前に登録。85%以降は経路追加せず比較・監査。",
+    "execution_contract_sha256": "9c9aa3e073f971944b4586fb87f45a79d8f49e34b9f7c96d8c79adfd745440d7",
+    "fixture_amendment_sha256": "073a37bb29f28a9d841d45a508d575a2258b46448249481a0c9a938f8ffb8ed7",
+    "all_temporary_removed": true,
+    "next": "controller.py comparison/isolate/asr → summarize.py → closeout_v3.py",
     "git_save_pending": true
   },
   "storage_maintenance": {
@@ -2196,6 +2211,96 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "gv-ablation-9299e69c5e36492691553c3c512addb0": {
+      "owner": "gv-ablation-9299e69c5e36492691553c3c512addb0",
+      "job": "c20d8872f7204e16b4d8075710780792",
+      "campaign": "gv-ablation-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ablation-9299e69c5e36492691553c3c512addb0",
+      "purpose": "clang中間物・cache",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ablation-44b36fcf443948e7b62b8be380bb7e4b": {
+      "owner": "gv-ablation-44b36fcf443948e7b62b8be380bb7e4b",
+      "job": "26670fe6db92421790db4b62d8df6856",
+      "campaign": "gv-ablation-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ablation-44b36fcf443948e7b62b8be380bb7e4b",
+      "purpose": "辞書初期化と入力履歴の照合",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ablation-c8f541d2bd3148cba3382a75df4cc0de": {
+      "owner": "gv-ablation-c8f541d2bd3148cba3382a75df4cc0de",
+      "job": "d736869d44714466a78c2a3bb97a178e",
+      "campaign": "gv-ablation-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ablation-c8f541d2bd3148cba3382a75df4cc0de",
+      "purpose": "GV内部・旧波形互換のライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ablation-e0a52afdd5df4725be5f7a0dc07c5d70": {
+      "owner": "gv-ablation-e0a52afdd5df4725be5f7a0dc07c5d70",
+      "job": "a681f0d6687749908a4bf9b2190367f1",
+      "campaign": "gv-ablation-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ablation-e0a52afdd5df4725be5f7a0dc07c5d70",
+      "purpose": "GV内部・旧波形互換のライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ablation-b4d69435bde443e3a65db4d407a54595": {
+      "owner": "gv-ablation-b4d69435bde443e3a65db4d407a54595",
+      "job": "55a34ec4bc4c4d37a9a643f2497d29ef",
+      "campaign": "gv-ablation-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ablation-b4d69435bde443e3a65db4d407a54595",
+      "purpose": "GV内部・旧波形互換のライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -2409,6 +2514,50 @@
       "protected_confirmation_opened": false,
       "quality_goal_completed": false,
       "git_save_pending": true
+    },
+    {
+      "id": "mcp-postfilter-completed-20261008-0001",
+      "active_campaign": null,
+      "campaign_closed": true,
+      "quality_goal_completed": false,
+      "qualifications": {
+        "native": false,
+        "postfilter": false,
+        "voicing": false,
+        "voicing_postfilter": false,
+        "hts_native": false,
+        "hts_postfilter": false,
+        "hts_voicing": false,
+        "hts_voicing_postfilter": false
+      },
+      "seal_sha256": "e79a93c5170d475adfbee1b46a01aff6654f5f33193170506670608820b5d979",
+      "external_hash_verified": 20418,
+      "all_temporary_work_removed": true,
+      "protected_confirmation_opened": false,
+      "next_campaign": "gv-ablation-v1",
+      "next": "MCP/LF0のGV補正だけを外す新比較を生成前に登録。85%以降は経路追加せず比較・監査。",
+      "git_save_pending": false,
+      "completion_commit": "0cc09f9286a1f3af3976836bda702cfed96db68e",
+      "push_origin_verified": true
+    },
+    {
+      "id": "gv-ablation-registered-20261008-0001",
+      "active_campaign": "gv-ablation-v1",
+      "campaign_closed": false,
+      "next": "build → prepare → preflight static/compat → comparison/isolate/二ASR → summarize → closeout",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "git_save_pending": true
+    },
+    {
+      "id": "gv-preparation-recovery-v2-20261008-0001",
+      "active_campaign": "gv-ablation-v1",
+      "campaign_closed": false,
+      "next": "preflight_v2.py static/compat → controller.py comparison/isolate/asr → summarize.py → closeout_v3.py",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "git_save_pending": true,
+      "preflight_amendment_sha256": "073a37bb29f28a9d841d45a508d575a2258b46448249481a0c9a938f8ffb8ed7"
     }
   ]
 }
