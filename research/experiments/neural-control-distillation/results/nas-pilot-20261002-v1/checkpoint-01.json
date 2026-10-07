@@ -1,0 +1,113 @@
+{
+  "created_epoch": 1790940293.062347,
+  "goal_status": "未完了。比較・監査・移出・総括を継続する",
+  "elapsed_seconds": 1008.0475840568542,
+  "counts": {
+    "teacher": 25,
+    "render": 95,
+    "ai": 0,
+    "train": 0,
+    "setup": 19,
+    "audit": 1
+  },
+  "failed": [
+    {
+      "id": "65961b839fd2440ba8228b3ec30803d1",
+      "kind": "setup",
+      "label": "教師読み込み・前段検査",
+      "error": {
+        "error": "ModuleNotFoundError(\"No module named 'attr'\")"
+      }
+    },
+    {
+      "id": "cbe946285e7d4532a9d14d82595e5a60",
+      "kind": "setup",
+      "label": "教師重みの完全読込検査",
+      "error": {
+        "error": "ValueError('教師の重み読込が完全一致しません: predictor')"
+      }
+    },
+    {
+      "id": "e0036fed78954469b9cb3334b317a0c5",
+      "kind": "setup",
+      "label": "教師読み込み・前段検査",
+      "error": {
+        "error": "ValueError(\"教師の重み読込が完全一致しません: predictor, missing=[], extra=['F0.0.norm1.norm.bias', 'F0.0.norm1.norm.weight', 'F0.0.norm2.norm.bias', 'F0.0.norm2.norm.weight', 'F0.1.norm1.norm.bias', 'F0.1.norm1.norm.weight', 'F0.1.norm2.norm.bias', 'F0.1.norm2.norm.weight', 'F0.2.norm1.norm.bias', 'F0.2.norm1.norm.weight', 'F0.2.norm2.norm.bias', 'F0.2.norm2.norm.weight', 'N.0.norm1.norm.bias', 'N.0.norm1.norm.weight', 'N.0.norm2.norm.bias', 'N.0.norm2.norm.weight', 'N.1.norm1.norm.bias', 'N.1.norm1.norm.weight', 'N.1.norm2.norm.bias', 'N.1.norm2.norm.weight', 'N.2.norm1.norm.bias', 'N.2.norm1.norm.weight', 'N.2.norm2.norm.bias', 'N.2.norm2.norm.weight'], changed=[]\")"
+      }
+    },
+    {
+      "id": "557290be0d5840018ab72e3160e2331d",
+      "kind": "render",
+      "label": "selection-02/fit-0",
+      "error": {
+        "error": "IndexError('index 0 is out of bounds for axis 0 with size 0')"
+      }
+    }
+  ],
+  "pending": [
+    {
+      "event": "start",
+      "id": "2f8c195cdbbd4ab395e250ceee0f71d9",
+      "kind": "render",
+      "label": "selection-04/fit-3",
+      "epoch": 1790940292.60507,
+      "reserved_bytes": 3000000,
+      "inventory": {
+        "bytes": 621749175,
+        "files": 649,
+        "seconds": 0.01244691712781787
+      },
+      "pid": 76363,
+      "source_hashes": {
+        "acoustics.py": "d94d8ee84e8ce567a8931094666873847547105bffa7ba2b0ec77eb3f0394f43",
+        "budget.py": "8e638a8e8ab94c734b17132bbf0db3f9d52dde692fa5ae6693cc13cf30712970",
+        "compare_controls.py": "5e310e67630097d47a6fb3ab3e8bc125ec2828cdb981b2321da90132cfd7eb63",
+        "evaluate_content.py": "cf79e08d5bc6b9d85ff9cc939157fc2125366efefe42da0eab1546404cb848ee",
+        "extract_controls.py": "04724668dbc8ee9368caecc63a4123cf773629d03d72970cb369d1ca650fb52f",
+        "fetch_teacher.py": "8874b90140a0cbdb187924762b9af2ee63113abb0a85084bfdffe2709059217d",
+        "fit_controls.py": "a9037850ad55f0a6cc837fe0ace16efece0a769e7c4a4c16762b1a35c6dff627",
+        "install_teacher.py": "e69985c7d9f89e6d9774aac3657ae57044b9a796a839f47897131ac3551c29e2",
+        "prepare.py": "124b7cdd5f46ad89e8bd9d935ddc1c5699e924fdd686d7a81f9ed18658bb83f3",
+        "protocol.py": "8268438825efec4c841da1b12f97966588d5952b970e65221f5b8d658c84a9a6",
+        "qualify_renderer.py": "679cc02d206c9c1a727689bf8d05ddd9dd3492b2d412e1a803206374995fe426",
+        "quality_gate.py": "7f3be76bd1b24a3cc002657bc047fbfeba6596a4acd7a5d6c3c6739d0bc94672",
+        "renderer.py": "2adffe54799101d96f291f8f9839f69fe250db4a210fd66025ab714e076df9b9",
+        "shared_control.py": "2f9bfb7f67717cf535dfabc622949ed0d3b3fa583ef83e6f1110bd1d49bd766a",
+        "teacher.py": "c53fd2b5567439deb68b305c021abe68f58326326e39dd668dc3226c4d1c20e3",
+        "train_controls.py": "79c39967e978bc661eff7ca7ad30eb9b7627d4a47420f33d1fc51eb09ccd2626"
+      }
+    }
+  ],
+  "pending_note": "台帳だけでプロセス生存を断定しない。ツールのsessionまたはOSプロセスを別途確認する",
+  "inventory": {
+    "bytes": 621753455,
+    "files": 650,
+    "seconds": 0.011899250093847513
+  },
+  "evidence": {
+    "teacher-provenance.json": true,
+    "teacher-load-verification.json": true,
+    "splits.json": true,
+    "control-schema.json": true,
+    "protocol.json": true,
+    "teacher-controls-v2.json": true,
+    "renderer-qualification.json": true,
+    "fit-qualification.json": true,
+    "acoustic-repair-audit.json": true,
+    "model-selection.json": false,
+    "runtime-audit.json": false,
+    "comparison-summary.json": false,
+    "completion-audit.json": false
+  },
+  "fitted_utterances": 16,
+  "completed_comparison_renders": 0,
+  "completed_content_evaluations": 0,
+  "next": [
+    "開発/選別18文の適合を完了",
+    "train_controls.pyで選択を凍結",
+    "fit_controls.py --include-audit",
+    "compare_controls.pyで実音比較",
+    "evaluate_content.py、自然参照・別方式対照、蒸留誤差分析",
+    "単独bundleと未知入力の隔離検査、費用・失敗・残課題の監査"
+  ]
+}

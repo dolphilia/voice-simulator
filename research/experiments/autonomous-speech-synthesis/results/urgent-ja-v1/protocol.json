@@ -1,0 +1,36 @@
+{
+  "version": "urgent-ja-v1",
+  "registered_at": "2026-10-02T09:56:13.481382+00:00",
+  "dataset": "urgent-challenge/urgent2026-sqa",
+  "revision": "3cd196cfcf4f15740592929e0fd0d772efc34589",
+  "subset": "acr/test",
+  "charge_campaign": "ans-spectral-multistart-v1",
+  "max_unique_predictions": 96,
+  "max_total_predictions": 108,
+  "selection": {
+    "language": "jpn",
+    "duration_seconds": [
+      2,
+      12
+    ],
+    "require_japanese_script_in_text": true,
+    "systems_per_utterance": 6,
+    "max_speakers": 16,
+    "utterances_per_speaker": 1,
+    "order": "SHA256(speaker_id)昇順、同一話者はSHA256(utterance_id)昇順。MOSを選別に使わない。"
+  },
+  "objective": "固定済みUTMOSv2による日本語雑音除去音声の評点順位診断",
+  "input": "配布元の原音声。プレビュー用の非可逆変換しか得られない場合は推論を開始しない。",
+  "evaluation_seed": 20261002,
+  "repeat": "選択先頭話者の6システムを同seedで1回再評価し、さらにseed7で各1回",
+  "metrics": [
+    "発話内Spearman相関",
+    "MOS差の符号と予測差の符号の一致率",
+    "話者を再標本化単位とする95%区間",
+    "同seed再現誤差と別seed感度"
+  ],
+  "promotion_allowed": false,
+  "reason": "日本語の雑音除去音声に限定した診断。物理合成への転移資格・非劣性幅の根拠にはしない。",
+  "training_overlap": "2026年公開評点と既存のモデル取得履歴を照合する。元発話のSSL事前学習との重複は未検証。",
+  "download_byte_cap": 1500000000
+}

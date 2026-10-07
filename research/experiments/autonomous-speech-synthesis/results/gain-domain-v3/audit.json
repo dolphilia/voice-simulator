@@ -1,0 +1,126 @@
+{
+  "utc": "2026-10-02T10:14:23.918381+00:00",
+  "current_campaign_changed": false,
+  "current_campaign": "ans-spectral-multistart-v1",
+  "limitation": "第1共鳴器利得を1に固定し、残る利得を0.05〜1へ制限したため、g2/g1>1またはg3/g1>1の旧6変数応答は表せない。全体利得の重複除去だけと解釈してはいけない。",
+  "mathematical_domain": {
+    "coordinates": "u=log(g2/g1), v=log(g3/g1), L=log(20)",
+    "original_relative_domain": "max(0,u,v)-min(0,u,v)<=L",
+    "current_relative_domain": "-L<=u<=0, -L<=v<=0",
+    "new_mapping": "正方形から六角形への放射写像。最大利得で正規化した代表を返す。絶対出力レベルは保持しない。"
+  },
+  "counterexample": {
+    "old_valid_gains": [
+      0.1,
+      1.0,
+      0.1
+    ],
+    "current_can_represent": false,
+    "new_point": [
+      0.8843108934201205,
+      0.5
+    ],
+    "new_representative_gains": [
+      0.09999999999999998,
+      1.0,
+      0.09999999999999998
+    ]
+  },
+  "partial_boundary_observations": [
+    {
+      "task": "vowel-a-160",
+      "point": [
+        0.8812124189614077,
+        0.9166322404145806,
+        0.8193350029517711,
+        0.9993463781517835,
+        0.7194829196731661
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-a-220",
+      "point": [
+        0.4610717524256458,
+        0.9973473597712661,
+        0.7758142190214492,
+        0.9993993978857801,
+        0.6163319538442217
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-a-300",
+      "point": [
+        0.5425849631510521,
+        0.8703196950159904,
+        0.8547566051355779,
+        0.9992816228642677,
+        0.5704483364259927
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-i-160",
+      "point": [
+        0.287761869813823,
+        0.999687119820265,
+        0.5686608815008665,
+        0.986769872003871,
+        0.9986921453415372
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-i-220",
+      "point": [
+        0.9999997505780053,
+        0.8424559612579711,
+        0.6865093693754113,
+        0.9479811980973941,
+        0.9999998587898757
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-i-300",
+      "point": [
+        4.679946042650255e-09,
+        0.9928665035165855,
+        0.45200519614606793,
+        0.9999994671831645,
+        0.9999999932062046
+      ],
+      "gain_upper_boundary_001": true
+    },
+    {
+      "task": "vowel-u-220",
+      "point": [
+        0.8166377184102719,
+        0.9358345301461886,
+        0.19857319999618855,
+        0.7572703117185089,
+        0.9528133388472647
+      ],
+      "gain_upper_boundary_001": false
+    },
+    {
+      "task": "vowel-u-300",
+      "point": [
+        0.9999999999052466,
+        0.9999999999999225,
+        7.088517119903793e-06,
+        0.9999999999620358,
+        0.9999999972670286
+      ],
+      "gain_upper_boundary_001": true
+    }
+  ],
+  "new_code_sha256": "bf579d199c77fdc32716c70340fbf69b9b10f7de2166eefe5b081e4de80d3d3a",
+  "tests_sha256": "866dd1c734a25c7f2d0d1bae54332b4c33451ff281eb192c0b73d7af91d8e824",
+  "coefficient_tests_passed": true,
+  "audio_self_recovery_qualified": false,
+  "audio_renders": 0,
+  "adoption_allowed": false,
+  "next_requirement": "新しい波形自己回復とE0を事前登録してから、共有規則との同じ条件比較で検証する。今回の3 campaignには適用しない。"
+}

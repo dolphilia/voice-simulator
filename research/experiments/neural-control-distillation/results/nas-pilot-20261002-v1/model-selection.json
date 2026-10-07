@@ -1,0 +1,114 @@
+{
+  "chosen": {
+    "direct_non_neural": {
+      "path": "results/nas-pilot-20261002-v1/models/direct_non_neural.json",
+      "sha256": "b04767fbaa006fdcc893c32a3b8442382f7677d54513da7c923c7732b57afd8c",
+      "alpha": 1.0,
+      "selection_score": 0.18878088851280914
+    },
+    "distilled_non_neural": {
+      "path": "results/nas-pilot-20261002-v1/models/distilled_non_neural.json",
+      "sha256": "746b993783f4e0416275fda29713f75e77dc7c3fc3f3b8aba06f0f8eb3721f6a",
+      "alpha": 1.0,
+      "selection_score": 0.18906957615462405
+    },
+    "neural_control": {
+      "path": "results/nas-pilot-20261002-v1/models/neural_control.pt",
+      "sha256": "8b9bfa73005b66f7cb356575b3d9bb49a256cdc81acad4c61b7d0b2cd555ca4b",
+      "epoch": 1000,
+      "selection_score": 0.18834283096891577
+    }
+  },
+  "frozen_before_audit": true,
+  "audit_opened": false,
+  "development_phone_rows": 113,
+  "development_utterances": 12,
+  "selection_phone_rows": 65,
+  "selection_utterances": 6,
+  "feature_count": 101,
+  "seconds": 1.611367458011955,
+  "candidates": {
+    "direct": [
+      {
+        "alpha": 0.01,
+        "score": 0.2158219945509757
+      },
+      {
+        "alpha": 0.1,
+        "score": 0.20149789639954116
+      },
+      {
+        "alpha": 1.0,
+        "score": 0.18878088851280914
+      },
+      {
+        "alpha": 10.0,
+        "score": 0.22913198387428282
+      },
+      {
+        "alpha": 100.0,
+        "score": 0.43805749110185904
+      }
+    ],
+    "neural": [
+      {
+        "epoch": 200,
+        "score": 0.19843418348707234
+      },
+      {
+        "epoch": 500,
+        "score": 0.1900592846506681
+      },
+      {
+        "epoch": 1000,
+        "score": 0.18834283096891577
+      },
+      {
+        "epoch": 2000,
+        "score": 0.193738754165078
+      }
+    ],
+    "student": [
+      {
+        "alpha": 0.01,
+        "score": 0.21473832892178302
+      },
+      {
+        "alpha": 0.1,
+        "score": 0.20098424173342636
+      },
+      {
+        "alpha": 1.0,
+        "score": 0.18906957615462405
+      },
+      {
+        "alpha": 10.0,
+        "score": 0.22937527132851152
+      },
+      {
+        "alpha": 100.0,
+        "score": 0.43813858905367037
+      }
+    ]
+  },
+  "limitations": "制御誤差による候補選択のみ。実音比較と内容保護を経て採択を決める",
+  "source_hashes": {
+    "compare_controls.py": "5e310e67630097d47a6fb3ab3e8bc125ec2828cdb981b2321da90132cfd7eb63",
+    "qualify_renderer.py": "679cc02d206c9c1a727689bf8d05ddd9dd3492b2d412e1a803206374995fe426",
+    "teacher.py": "c53fd2b5567439deb68b305c021abe68f58326326e39dd668dc3226c4d1c20e3",
+    "checkpoint.py": "95ff8a40ff65d537157492e6451413a07c294d67ca2441bf20fe4ae483e5b386",
+    "extract_controls.py": "04724668dbc8ee9368caecc63a4123cf773629d03d72970cb369d1ca650fb52f",
+    "fit_controls.py": "a9037850ad55f0a6cc837fe0ace16efece0a769e7c4a4c16762b1a35c6dff627",
+    "renderer.py": "2adffe54799101d96f291f8f9839f69fe250db4a210fd66025ab714e076df9b9",
+    "budget.py": "8e638a8e8ab94c734b17132bbf0db3f9d52dde692fa5ae6693cc13cf30712970",
+    "protocol.py": "8268438825efec4c841da1b12f97966588d5952b970e65221f5b8d658c84a9a6",
+    "shared_control.py": "2f9bfb7f67717cf535dfabc622949ed0d3b3fa583ef83e6f1110bd1d49bd766a",
+    "evaluate_content.py": "cf79e08d5bc6b9d85ff9cc939157fc2125366efefe42da0eab1546404cb848ee",
+    "acoustics.py": "d94d8ee84e8ce567a8931094666873847547105bffa7ba2b0ec77eb3f0394f43",
+    "train_controls.py": "79c39967e978bc661eff7ca7ad30eb9b7627d4a47420f33d1fc51eb09ccd2626",
+    "quality_gate.py": "7f3be76bd1b24a3cc002657bc047fbfeba6596a4acd7a5d6c3c6739d0bc94672",
+    "install_teacher.py": "e69985c7d9f89e6d9774aac3657ae57044b9a796a839f47897131ac3551c29e2",
+    "fetch_teacher.py": "8874b90140a0cbdb187924762b9af2ee63113abb0a85084bfdffe2709059217d",
+    "prepare.py": "124b7cdd5f46ad89e8bd9d935ddc1c5699e924fdd686d7a81f9ed18658bb83f3"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "question": "教師スペクトルの低次元な文脈依存残差を、文章だけから生成する共有非ニューラル制御へ移せるか。直接回帰と研究NN→同サイズ回帰学生を比較する。",
+  "choice": "Kokoro jf_alphaを内容診断に有用な研究目標として維持。境界新8では原音Reazon0/159、Whisper9/159、WORLD原音0/159と10/159。JVNV原音/境界処理の全群支持がなく、音声境界の追加探索や教師声選択を続けない。自然さ教師認定ではない。",
+  "alternatives": [
+    "別教師の取得",
+    "全F0/継続長を学び直す",
+    "教師スペクトルを音素共有関数へ移す",
+    "調音モデルの次元拡張"
+  ],
+  "changes": "これまでLF0中心だった共有制御を、MCP c1..c8の低次元残差へ切替。c0/c9以降、LF0、LPF、HMM状態長と指定F0/速度は維持。rendererは既存検証済みHMM→WORLD固定。",
+  "training": "既存SRES受理17訓練文のみ。既存Kokoro音声・内部予測25ms/frameを再利用し、新教師0。IPA片/音素対応と全時間sumを事前仕様で検査。教師内部時刻は予測で音響上の正解ではない。",
+  "alignment": "KokoroはBOS/EOSを含むlen(IPA)+2 durationを要求。全sum*600sample==24k原音sample数を確認。IPAはcutlet一次ソースとOpenJTalk音素の対応規則で正規化し、黙音/空白/句読点を除いた全音素列を順序一対一照合。長音ːは直前母音、ʔはcl、Cʲはi前C/他Cy、ɲはi前n/他ny、çはi前h/他hy、ɴ/ŋはN。HTS Nの文脈同化m/nは対応を記録。未知記号/非同値/不足を文単位失敗とし分母17に残す。",
+  "target": "baselineでvoicedとなる母音/鼻音の各区間の教師予測時刻中央50%を使い、最低3の5msフレームを要求。同時刻のCheapTrick power median→.5log(power)を0..12kの1025周波数で平均中心化する。HMM生成MCPの同音素区間平均包絡との差を、48kFFT4096/alpha.55のc1..c8基底（周波数平均を除去）へlambda .001 ridgeで投影する。c0は変えず、係数L1<=.5へ比例投影。位相/F0/AP/声差を切り分けた音響GTとは扱わない。",
+  "target_gate": "全17失敗を保持。全音素一対一・時計・有限性・全対象区間3フレーム成立の文だけfit可。最低12文、短5以上長3以上、全5母音を含む。不足ならfit/未知生成前に終了し別表現へ。音響上のphone alignment正解認定ではない。",
+  "models": {
+    "features": "既存16 phone/context/accent features、eligible母音/鼻音のみ",
+    "direct": "lambda10、同文内phone数の逆数重み、標準化16×8係数",
+    "research_NN": "16→16tanh→16tanh→8、seed20261005、500step Adam .005 weight_decay .001、同重みtargetL1制約",
+    "student": "同16×8/lambda10、同訓練資料のみでNN出力を蒸留。入力発話IDなし。",
+    "fits": 3,
+    "complexity": "最終直接/学生各128係数+標準化32値、固定サイズ。NN重みをruntimeへ変換して残さない。"
+  },
+  "runtime": "HTS native MCP生成後、同入力から各対象音素の共有8残差を予測しL1<=.5へ投影。各音素の前後10%をsin²fadeとしてフレームMCP c1..c8へ加算。対象外は0。境界丸めはduration frame列から決定。c0/c9以降/LF0/LPF/時計の完全一致を要求。WORLD固定変換、同nativeの共通.25gain、追加wavepeak正規化なし。",
+  "diagnostic": "旧境界12からID順短4/長4の8診断と、全既知履歴照合した新短4/長4の8を出力前固定。4方法native/direct/NN/student×2指定×16文で128音声。指定neutral220Hz/1.0、higher280Hz/1.15。二固定ASR全読みと工学/制御を各指定/cohort/7群で保持。教師音声を未知生成入力にしない。",
+  "candidate_pool_short": [
+    "橋を渡る。",
+    "羽を広げる。",
+    "針を抜く。",
+    "種をまく。",
+    "盆を運ぶ。",
+    "鍵を回す。",
+    "草を刈る。",
+    "蓋を取る。"
+  ],
+  "candidate_pool_long": [
+    "朝の港で白い船を見送り砂の上に残った足跡を数えました。",
+    "畑の向こうに細い道が続き村の入り口で古い時計が鳴りました。",
+    "夕食の前に手を洗い丸い机の周りへ椅子を静かに並べました。",
+    "休みの日に近くの森を歩き木の下で柔らかいパンを食べました。",
+    "遠い町から届いた包みを開け窓のそばで写真を見ました。",
+    "夕方の庭で小さな種をまき土の上に水をそっと注ぎました。"
+  ],
+  "evaluation": "未知診断はモデル固定後だけ。train waveform68は損失検査/参考診断で品質独立証拠ではない。128waveの両ASR256を固定engineで集計。全case整数誤り/全文字・全群非悪化・欠損/空群拒否。generated LF0/AP基礎の不変性、波形E0/固定baselineのF0支持と制御を監査。自然さ資格は未達のまま。",
+  "final_dependency_test": "native/direct/studentを16組程度のnormal/隔離実行で同波形確認。NN/teacher/audio/訓練軌跡/旧結果/network実拒否。教師由来条件/通知保持。",
+  "planned": {
+    "teacher": 0,
+    "train": 3,
+    "inverse_max": 17,
+    "training_renders": 68,
+    "diagnostic_renders": 128,
+    "runtime_renders_max": 96,
+    "selftest_renders_max": 8,
+    "ASR_diag": 256,
+    "ASR_train_max": 136,
+    "NN_inference_batches_max": 49
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "teacher": 0,
+    "render": 320,
+    "dsp": 1500,
+    "ai": 512,
+    "train": 3,
+    "inverse": 32,
+    "download": 0,
+    "setup": 80,
+    "audit": 100
+  },
+  "stop": "target gate不足・描画clip/nonfinite・旧依存変化・全分母欠損は不通過。科学条件を事後調整しない。retry2/job10campaign。限度終了は個別終了、全体品質終了ではない。",
+  "quality_certified": false,
+  "previous_summary_sha256": "2278a83399daa0dd0aea20dc39341a62371e9ecec6abe5d21b2ad4567190a272"
+}

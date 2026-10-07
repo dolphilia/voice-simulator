@@ -1,0 +1,42 @@
+{
+  "adopted_as_primary_gate": false,
+  "old_primary_gates_changed": false,
+  "purpose": "診断/設計案。旧CER/F0-MSE/支持域採択契約は保持",
+  "components": [
+    {
+      "name": "イベント時刻・占有率",
+      "drive": "MSD/状態durationは内部駆動契約",
+      "measurement": "事前固定音素区間の有声TP FN FP、onset/offset偏差、区間長/有声音長を別々に記録",
+      "teacher": "未資格教師境界は研究目標のみ",
+      "reject": "時間伸長だけによる支持回復を成功としない"
+    },
+    {
+      "name": "固定有声core F0",
+      "measurement": "baseline側だけで事前固定した時刻/支持域で半音MSE",
+      "reject": "欠損・偽有声・境界大誤りと全分母を別欄に残す。候補で共通域を選び直さない。境界除外で採択を救済しない"
+    },
+    {
+      "name": "スペクトル・非周期性",
+      "measurement": "MCP/LPF内部値と実波形スペクトルを分離、F0/時刻/音量交絡を監査",
+      "reject": "c0保持＝RMS保持と仮定しない。内容低下をF0回復で相殺しない"
+    },
+    {
+      "name": "内容保持",
+      "measurement": "Whisper base int8とReazon k2 int8、編集距離整数と全文字分母、既存正規化・全群条件",
+      "reject": "両ASRを別判定。失敗/欠損を除外しない。多数決/事後読み修正をしない",
+      "qualification": "診断のみ、統計的非劣性/知覚資格ではない"
+    },
+    {
+      "name": "最終資産/依存",
+      "measurement": "実bytes/files、固定係数数、禁止依存、textのみから隔離bit一致",
+      "reject": "NN/教師重み/参照波形/保存軌跡/発話IDを最終入力にしない"
+    },
+    {
+      "name": "知覚資格",
+      "measurement": "日本語用評価者/尺度の事前資格と独立確認",
+      "reject": "未資格のAI評点/代理量を知覚合格へ転用しない"
+    }
+  ],
+  "loss_policy": "各量を別出力にする。任意の重み付き合計で欠損/内容低下を隠さない。係数/閾値探索は未登録",
+  "teacher_role": "Kokoroは研究目標/比較。人間の真値ではなく最終音源にも入れない"
+}

@@ -1,0 +1,129 @@
+{
+  "all_requirements_met": false,
+  "original_goal_objective_unchanged": true,
+  "previous_goal_turn_classification": "progress",
+  "current_turn_classification": "progress",
+  "new_authorization_received": false,
+  "pending_processes": [],
+  "old_seals_verified": [
+    {
+      "seal": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/artifact-seal.json",
+      "sha256": "e454d6c4a84054d75df56bbea956f8a9b2ca375a5e510b4c81dab8e6739b1176",
+      "verified_files": 1264,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/post-pilot/artifact-seal.json",
+      "sha256": "f7b36432ca97d33c3f9ce24105b937e4e88c4777dd64f71e1cb9adbddcda486f",
+      "verified_files": 77,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/artifact-seal.json",
+      "sha256": "dc2200ad45eebc0129ee98dab3273784c843b745c762933b3d6a49d4b5fbe335",
+      "verified_files": 859,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/post-analysis/artifact-seal.json",
+      "sha256": "3970e352252a86acb4994409a279b57d8fad412178ad0cd884a7506e3b6cd50a",
+      "verified_files": 8,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/artifact-seal.json",
+      "sha256": "a0938fae1ce3b74c452f2097f91c86402b67885581ff115632798093bb21230d",
+      "verified_files": 252,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/artifact-seal.json",
+      "sha256": "903d88ccfbf05fea578507d7100fd018b5a61daf571f8dbfbc68cb3bbbad8acd",
+      "verified_files": 223,
+      "mismatches": []
+    },
+    {
+      "seal": "research/experiments/acoustic-revision-content-evaluation/post-evaluation/artifact-seal.json",
+      "sha256": "88a38b246de176f7db89a0ab014601b9a7f2756838300c5d93387f8779d30118",
+      "verified_files": 12,
+      "mismatches": []
+    }
+  ],
+  "contracts": [
+    {
+      "campaign": "nas-pilot-20261002-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 3000000000,
+        "teacher": 48,
+        "render": 2000,
+        "ai": 300
+      },
+      "elapsed_seconds_at_audit": 15198.755508899689,
+      "time_expired": true
+    },
+    {
+      "campaign": "nas-extension-20261002-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 1000000000,
+        "teacher": 24,
+        "render": 400,
+        "ai": 300
+      },
+      "elapsed_seconds_at_audit": 8211.08818101883,
+      "time_expired": true
+    },
+    {
+      "campaign": "nas-content-20261002-v1",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 100000000,
+        "ai": 200,
+        "teacher": 0,
+        "render": 0,
+        "train": 0
+      },
+      "elapsed_seconds_at_audit": 2078.861480951309,
+      "time_expired": false
+    }
+  ],
+  "completed_ai_calls_in_current_authorization": 200,
+  "current_ai_limit": 200,
+  "current_render_limit": 0,
+  "safe_work_completed": [
+    "固定100WAVの200認識と比較",
+    "辞書読み候補の原稿なし診断",
+    "提案文章の既使用検出と差し替え",
+    "固定32共同補正の再計算照合と単独32軸固定の検査"
+  ],
+  "completion_contradictions": [
+    "Whisperの一部条件群で内容保護が不通過。読み変換の疑義は品質資格でなく診断",
+    "全条件の絶対F0・応答保護が未充足",
+    "局所イベント・声質・境界計測の資格が未充足",
+    "日本語非ニューラルの知覚資格・未使用最終確認が未充足"
+  ],
+  "same_blocking_condition": "追加の実生成・AI比較には新しい枠の承認が必要。旧枠を自動延長できない",
+  "consecutive_resumed_turns": [
+    {
+      "turn": 1,
+      "evidence": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/completion-checkpoint.json",
+      "ai_used": 200,
+      "proposal_executed": false
+    },
+    {
+      "turn": 2,
+      "evidence": "research/experiments/acoustic-revision-content-evaluation/post-evaluation/reading-followup-checkpoint.json",
+      "new_execution_approval_received": false
+    },
+    {
+      "turn": 3,
+      "evidence": "research/experiments/acoustic-control-factorial/preparation-20261003-v2/readiness.json",
+      "authorization_received": false,
+      "campaign_started": false
+    }
+  ],
+  "why_at_impasse": "保存済みの認識・波形と辞書から得られる診断、制御の純粋関数と入力の準備は完了。次の仮説を実音響・内容で確認するには新しい生成・認識が必要。静的設定を実波形や知覚の証明へ置き換えない",
+  "user_action_needed": "元の追加実験案と2026-10-03の入力補足を含む枠（レンダー256・AI240、最大2時間200MB）の承認",
+  "goal_status_after_audit": "blocked"
+}

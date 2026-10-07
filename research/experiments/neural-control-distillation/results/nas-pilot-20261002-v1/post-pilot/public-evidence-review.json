@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-02",
+  "sources": [
+    {
+      "id": "ttsds2-listening-test",
+      "url": "https://huggingface.co/datasets/ttsds/listening_test",
+      "observed": "English、11.3k評点行。音声ID・system・rating_type・annotator等の列がある",
+      "decision": "日本語HMM/VTLの知覚資格へ自動転用しない",
+      "status": "out-of-domain-language"
+    },
+    {
+      "id": "mos-bench",
+      "url": "https://wenchinhuang.com/sheet/mos-bench/",
+      "observed": "公式一覧ではTTSDS2/BVCC/SOMOSは英語、日本語を含むSingMOSは歌声",
+      "decision": "発話の日本語非ニューラル候補に適した資格資料はこの一覧では確認できない",
+      "status": "no-matched-domain-confirmed"
+    },
+    {
+      "id": "kurihara2024",
+      "url": "https://www.isca-archive.org/interspeech_2024/kurihara24_interspeech.pdf",
+      "observed": "日本語でMOSを測定しているが、G2P比較の音響側はFastSpeech2とParallel WaveGAN",
+      "decision": "Open JTalkという比較名だけから非ニューラルHMMのMOSと解釈しない",
+      "status": "neural-acoustic-backend"
+    },
+    {
+      "id": "yanagita2018",
+      "url": "https://www.isca-archive.org/interspeech_2018/yanagita18_interspeech.pdf",
+      "observed": "日本語HMM系の増分TTS、16人の主観試験と条件平均MOSが記載される",
+      "decision": "本文から波形と個票の対応付き公開配布を確認できず、システム平均値を個別音声へ貼り付けない。今回のMeiモデルの点数でもない",
+      "status": "paired-utterance-ratings-unverified"
+    },
+    {
+      "id": "autovot",
+      "url": "https://github.com/mlml/autovot",
+      "observed": "正のVOTのみ対応。対象資料の約100件の手動注釈で学習することを推奨。付属モデルは英語系",
+      "decision": "日本語の負VOTと対象方式の境界資格を満たす証拠にはしない",
+      "status": "unqualified-for-target"
+    },
+    {
+      "id": "paidologos-japanese",
+      "url": "https://talkbank.org/phon/access/Japanese/PaidoJapanese.html",
+      "observed": "日本語の音声と注釈への公式リンクはあるが、取得先2件は319byteの認証UI用HTMLを返した",
+      "decision": "取得できたHTMLを音声/注釈と数えない。ログイン・利用規約への同意・外部連絡を代行しない",
+      "status": "authentication-required",
+      "responses": [
+        "local-measurement-references-2/paidologos-data.html",
+        "local-measurement-references-2/paidologos-media.html"
+      ]
+    },
+    {
+      "id": "kong2012",
+      "url": "https://talkbank.org/phon/access/0docs/kong2012.pdf",
+      "observed": "日本語ではVOTが重なる有声/無声破裂音を区別するため、F0、H1−H2等の情報も解析",
+      "decision": "VOT単独を日本語子音品質の最適化目標・合格条件にしない。境界正解と複数の局所指標を別途検証する",
+      "status": "measurement-design-evidence"
+    },
+    {
+      "id": "haskins-vot",
+      "url": "https://www.haskinslaboratories.org/vot",
+      "observed": "−150〜150msの外部人工VOT連続体。+140ms欠落、複数ファイルに約5msの録音差の注記。実WAV30件を取得",
+      "decision": "生成器から独立した信号点検に使用。日本語の自然音声/主観評点の資格資料にはしない",
+      "status": "acquired-signal-reference",
+      "archive_sha256": "7fae5550dc3b0133e6913dfdf80f91623dc902db6a905232ca08c2d549771781"
+    }
+  ],
+  "new_target_perception_qualification": false,
+  "claim_limit": "確認した候補で資格を取得できていない。世界中に適格資料が存在しないとは主張しない",
+  "human_contact_made": false,
+  "new_ai_evaluations": 0,
+  "new_candidate_renders": 0
+}

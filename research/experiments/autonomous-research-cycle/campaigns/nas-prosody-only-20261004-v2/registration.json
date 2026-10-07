@@ -1,0 +1,69 @@
+{
+  "question": "音素種類のF0補正を外し、韻律4特徴のみへ同じ教師由来制御を共有すると未知文の内容保護と両立するか",
+  "causal_change": "特徴集合16→[high,mora_position,phrase_position,after_accent]4。目的、資料、λ10、射影、HTS時間/励起/包絡は維持",
+  "hypothesis": "音素/隣接音素を介したF0残差の偏りが一部の音響/認識悪化に関与し、文脈の韻律成分に制限すると過適合を減らせる。改善保証ではない",
+  "alternatives_considered": [
+    "包絡倍率の追加探索は今回不採択につき優先しない",
+    "新教師とスペクトル教師転移は高情報量だが今回は原因を一つに保つため後続候補",
+    "既存16特徴を増やす前に音素依存の寄与を切り分ける"
+  ],
+  "duplicates": "発話別4基底逆推定は既出。今回の直接/蒸留4係数を全17文へ共有する比較は未実施",
+  "training": "同じ受理済み17文/209音素残差。directは同じ実波形制御目標、studentは保存NNの訓練出力。各1fit、選別なし",
+  "variants": [
+    "native",
+    "direct_non_neural",
+    "neural",
+    "distilled_non_neural",
+    "direct_prosody",
+    "distilled_prosody"
+  ],
+  "features": [
+    10,
+    11,
+    12,
+    13
+  ],
+  "ridge_lambda": 10.0,
+  "projection": "同じ全eligible音素で中心化・一様縮尺±3半音",
+  "content": "固定二ASR・各cohort21群・欠損0・誤り整数差<=0。旧ゲート維持、平均だけで救済しない",
+  "engineering": "E0・内部不変・固定native支持・全体F0差5%/活動長3%。DIO資格不足は維持",
+  "runtime": "固定4係数と入力文だけ。教師/NN/保存軌道/ID/ネットワーク禁止。8通常/8隔離bit一致",
+  "gain": "全方法で旧min(1,.95/raw_peak)を同じ処理として適用。個別gain/peak/RMSを記録し、gain変動があり得ることを保持",
+  "independence": "旧wave-new8は再利用診断、新8は出力前に履歴text/label照合。保護最終確認は開封しない",
+  "new_texts": [
+    "波が光る。",
+    "絹を染める。",
+    "舟が進む。",
+    "栗を煮る。",
+    "昼の公園で緑のベンチに座り静かに本を読みました。",
+    "山道を登り石の階段の先に見える白い建物へ向かいました。",
+    "夕食の支度を終えたので机の上に箸と茶碗を置きました。",
+    "バスを降りて橋の手前にある小さな花屋へ寄りました。"
+  ],
+  "frozen_requests": "neutral1/220。challenge短長対応4群0.85/180,1.15/180,0.85/260,1.15/260",
+  "no_tuning_after_asr": true,
+  "stop": "入力衝突/依存変更/clip非有限/内部違反で止める。欠損/群悪化を保持し再調整しない。技術retry2/job10/campaign。予算は開始後拡張しない",
+  "quality_goal_completed": false,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 192,
+    "dsp": 448,
+    "ai": 600,
+    "train": 2,
+    "teacher": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 50,
+    "audit": 100
+  },
+  "prior_summary_sha256": "5bff61fcbca5a959d42f6d84ede1a86879e7cfd905a1ab8fe1232e9e31a6c51f",
+  "preparation_amendment": {
+    "source_seal_sha256": "d6aac88ab2aad3e3276872002e325ff32f3330ce75edd46482201de50e474650",
+    "initial_input_collision": "糸を結ぶ。",
+    "initial_fit_render_AI": 0,
+    "alternative_preflight_all8_passed": true,
+    "aliasing_in_preparation_stop": "preparation-stop.jsonのinitial checksにはリスト共有のため変更後の文が記載された。旧registrationとfailed jobが初期候補・停止の証拠。旧ファイルは保持し、今回初期と変更後を別配列で確認する。",
+    "scientific_conditions_change": "新文1だけ生成前に変更。目的/係数/閾値/資料/比較/予算は同じ"
+  }
+}

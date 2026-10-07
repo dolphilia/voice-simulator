@@ -1,0 +1,176 @@
+{
+  "proposal_sha256": "7f2353a1f51de3e43b484885cdee2eb10eee078415b284779396872f6f3133e0",
+  "source": "docs/note/independent-voice-synthesis-proposal-v3.md",
+  "Fs": 16000,
+  "band_hz": [
+    100,
+    5000
+  ],
+  "models": [
+    "P5",
+    "P5Z"
+  ],
+  "pole_pairs": 5,
+  "bounds": {
+    "f_hz": [
+      100,
+      7500
+    ],
+    "B_hz": [
+      1,
+      3000
+    ],
+    "rho": [
+      0,
+      0.999
+    ],
+    "gain": "positive"
+  },
+  "split": {
+    "fit": "1始まり偶数行",
+    "check": "1始まり奇数行",
+    "order": "周波数昇順"
+  },
+  "objective": {
+    "formula": "max(R/1dB,M/3dB)",
+    "tau_R_db": 1,
+    "tau_M_db": 3,
+    "gain_bisection_tolerance": 1e-08
+  },
+  "selection": [
+    "J",
+    "R",
+    "M",
+    "start",
+    "evaluation"
+  ],
+  "epsilon": 0.001,
+  "optimizer": {
+    "method": "Powell",
+    "normalization": "f線形・B対数・rho線形、[0,1]",
+    "directions": "identity",
+    "sort": "保存時のみ極とBを同時にソート",
+    "rng": "PCG64",
+    "seed": 20260913,
+    "starts": 4
+  },
+  "settings": {
+    "S1": {
+      "xtol": 0.0001,
+      "ftol": 1e-06
+    },
+    "S2": {
+      "xtol": 1e-06,
+      "ftol": 1e-08
+    }
+  },
+  "budget": {
+    "measured_per_start": 2000,
+    "measured_total": 32000,
+    "qualification_per_start": 1000,
+    "qualification_total": 32000,
+    "auxiliary": 1000,
+    "total": 65000,
+    "reallocation": false
+  },
+  "diagnostics": {
+    "fractions": [
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "plateau_improvement": 0.01,
+    "plateau_starts": 2,
+    "exclude_p5z_start_zero": true,
+    "boundary_distance": 0.005,
+    "interpolation": "fit合格域かつcheck不合格域"
+  },
+  "qualification": {
+    "grid_hz": [
+      100,
+      5000,
+      1
+    ],
+    "truth_max_db": 1e-08,
+    "inclusion_relative": 1e-12,
+    "recovery_R_db": 0.05,
+    "recovery_M_db": 0.15,
+    "K2_notch_db": 6
+  },
+  "input_files": [
+    "s1-01-bahn-tense-a-vvtf-measured.txt",
+    "s1-03-tiere-tense-i-vvtf-measured.txt"
+  ],
+  "initial_p5": [
+    {
+      "f": [
+        500.0,
+        1500.0,
+        2500.0,
+        3500.0,
+        4500.0
+      ],
+      "B": [
+        119.99999999999997,
+        119.99999999999997,
+        119.99999999999997,
+        119.99999999999997,
+        119.99999999999997
+      ],
+      "g": 1.0
+    },
+    {
+      "f": [
+        1686.8717101275492,
+        2714.398634538977,
+        2305.1892820606377,
+        4138.479988115107,
+        1585.6419660967629
+      ],
+      "B": [
+        116.51320407890928,
+        1717.2389372281189,
+        9.094811007030524,
+        73.35930634374773,
+        12.973470070879674
+      ],
+      "g": 1.0
+    },
+    {
+      "f": [
+        4157.724333721717,
+        5386.31169855244,
+        4575.265293002536,
+        5021.695733674656,
+        3372.228366574811
+      ],
+      "B": [
+        27.356691025550067,
+        23.087899579196954,
+        76.12961442441429,
+        975.7611818079714,
+        28.233988122676283
+      ],
+      "g": 1.0
+    },
+    {
+      "f": [
+        3240.725818786583,
+        2496.6758100042916,
+        5698.57816215297,
+        7189.509572852652,
+        421.0977092921759
+      ],
+      "B": [
+        192.26662606890997,
+        4.296689773032085,
+        111.81769466511683,
+        1974.3991514418813,
+        18.419279003504936
+      ],
+      "g": 1.0
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "avs-a220-v1.1",
+  "supersedes_campaign_id": "avs-a220-v1",
+  "measurement_adapter_version": "1.0.1",
+  "decision": "do-not-freeze-a3-yet",
+  "completed": {
+    "sensitivity_settings": 11,
+    "sensitivity_renders": 33,
+    "engineering_passed_renders": 33,
+    "acoustic_f0_available_renders": 33,
+    "reference_speakers": 4,
+    "reference_comparisons": 132,
+    "holdout_opened": false
+  },
+  "findings": [
+    "adapter 1.0.1 exposes acoustic F0 for all 33 generated renders",
+    "baseline acoustic F0 median is 219.959 Hz across the three pilot seeds",
+    "the B10-scale variation setting spans 216.444 to 223.376 Hz in the stable-window acoustic estimate despite exact 220 Hz internal mean control",
+    "f0_std_fraction is the only pilot axis with a clearly large effect on several current diagnostics",
+    "amplitude_std_db and correlation changes are mostly small compared with seed variation",
+    "large f0 variation improves median pitch_voicing target similarity while degrading worst-case resonance and signal-integrity similarities",
+    "source_voice_quality target similarity remains nearly saturated and is unsuitable as a sole selection objective",
+    "existing listening evidence prefers B9 to the B10-scale variation, so current proxy improvement is not a perceptual adoption rule"
+  ],
+  "axis_roles_for_next_revision": {
+    "f0_std_fraction": "active diversity and sensitivity axis; no monotonic maximize/minimize rule",
+    "amplitude_std_db": "sparse ablation axis",
+    "f0_amplitude_correlation": "diversity axis",
+    "spectral_tilt_lowpass_hz": "fixed pending range provenance",
+    "variation_lowpass_hz": "fixed pending range provenance"
+  },
+  "required_before_a3": [
+    "add compatible time-structure diagnostics and reference uncertainty",
+    "register B9-over-B10 as a local direction regression rather than a universal score",
+    "freeze category-specific candidate selection with median, worst-case, coverage, and diversity slots",
+    "retain formal aggregate score as null"
+  ],
+  "next_parallel_campaign": "prepare G40 onset measurement contract without waiting for listening",
+  "formal_aggregate_score": null,
+  "perceptual_claim_allowed": false
+}
+

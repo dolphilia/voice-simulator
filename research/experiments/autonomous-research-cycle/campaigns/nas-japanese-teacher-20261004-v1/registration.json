@@ -1,0 +1,93 @@
+{
+  "question": "日本語コーパスJVNV学習のStyle-Bert-VITS2 JP-Extra教師は既存Kokoro jf_alpha教師と比べ固定文の内容保持に有用か。その音声をWORLD分析再合成で保持できるか",
+  "stage": "教師導入・固定内容診断・再合成。共有未知文制御の学習/最終移出は次stage。品質完了に昇格しない",
+  "alternatives": [
+    "ESPnet JSUT VITS",
+    "MMS日本語VITS",
+    "既存教師のスペクトル共有補正"
+  ],
+  "choice": "公式CPU経路・日本語G2P/アクセント入力とJVNVデフォルトモデルの明示条件を確認。モデル全体/声/話者/スタイル差を含む比較で、言語学習だけの因果効果ではない",
+  "previous_teacher_scope": "Kokoro jf_alphaを対照。過去jf_gongitsune比較も存在するが同アーキテクチャなので別日本語教師アーキテクチャの独立数へ加算しない",
+  "code_repo": "litagin02/Style-Bert-VITS2",
+  "code_tag": "2.7.0",
+  "model_repo": "litagin/style_bert_vits2_jvnv",
+  "model_files": [
+    "jvnv-F1-jp/config.json",
+    "jvnv-F1-jp/jvnv-F1-jp_e160_s14000.safetensors",
+    "jvnv-F1-jp/style_vectors.npy"
+  ],
+  "bert_repo": "ku-nlp/deberta-v2-large-japanese-char-wwm",
+  "licenses": {
+    "code": "AGPL-3.0、user_dictはLGPL-3.0",
+    "voice_model": "CC-BY-SA-4.0、JVNV継承",
+    "BERT": "CC-BY-SA-4.0"
+  },
+  "license_refs": [
+    "https://github.com/litagin02/Style-Bert-VITS2/blob/2.7.0/docs/TERMS_OF_USE.md",
+    "https://huggingface.co/litagin/style_bert_vits2_jvnv",
+    "https://huggingface.co/ku-nlp/deberta-v2-large-japanese-char-wwm"
+  ],
+  "license_handling": "全通知・model card・由来を保持。研究利用のみ。後続係数を学習する場合も教師由来とCC-BY-SA条件を保持し、最終資産の利用条件を消さない",
+  "allocation_reason": "日本語BERT大モデルと声モデル、分離依存・取得キャッシュを同時保持するため通常2GBを超え得る。開始前に8h/4GBを配分。コード/環境・波形/評価/終了監査を含み上限は事後増加しない",
+  "environment": "凍結済みenvは変更せず新campaign内に取得/展開。必要版torch2.3.1/transformers4.44.2/tokenizers0.19.1/numpy1.26.4を専用prefixで使う。研究のみ、CPU、既存ASRは別プロセスの固定旧環境",
+  "input_policy": "accepted training17からID順短2/長2の4既知文。新候補poolを全既知文字/全ラベルと照合し先頭短4/長4を出力前固定。生成後変更なし。protected final集合未開封",
+  "candidate_pool_short": [
+    "鉛筆を削る。",
+    "花を摘む。",
+    "縄をほどく。",
+    "鏡を磨く。",
+    "星を数える。",
+    "針を拾う。",
+    "羽が揺れる。",
+    "箱を閉じる。"
+  ],
+  "candidate_pool_long": [
+    "昼過ぎに庭の隅で黄色い花を摘み小さな瓶に挿しました。",
+    "朝の市場で新しい魚を選び店の人に袋を渡しました。",
+    "静かな道を曲がり赤い橋の向こうで母の姿を探しました。",
+    "部屋の窓を開けて机に広げた紙を重い石で押さえました。",
+    "山の麓で靴のひもを結び細い道をゆっくり歩き始めました。",
+    "駅の外でバスを待ち青い看板の下に並んで座りました。"
+  ],
+  "teacher_settings": {
+    "CPU_threads": 2,
+    "seed": 42,
+    "language": "JP",
+    "speaker_id": 0,
+    "style": "Neutral",
+    "style_weight": 1.0,
+    "sdp_ratio": 0.2,
+    "noise": 0.6,
+    "noise_w": 0.8,
+    "length": 1.0,
+    "line_split": false,
+    "reference_audio_path": null,
+    "pitch_scale": 1.0,
+    "intonation_scale": 1.0,
+    "assist_text": null
+  },
+  "normalization": "先生入口の由来を記録。両教師を24kfloat32へresampleして共通.25 headroom。旧先生と新teacherの入力情報はtext onlyだが、モデル/声/内部正規化の違いを因果単要素にしない",
+  "WORLD_analysis": "24k DIO+StoneMask70..800/5ms、CheapTrickFFT2048、D4C threshold.85。解析由来F0/sp/APで再合成。これは保存波形を使う研究用再合成で最終text合成ではない。固定gain・長さを記録。失敗/欠損は除外しない",
+  "evaluation": "固定Whisper/Reazon、読み正規化。cohort/短長/4群、全文字・整数誤り・欠損保持。老師同士と各教師の分析再合成を別集計。新8の7群で全群非悪化を限定診断としてだけ判定。自然さ資格はなし",
+  "fit_or_transfer_before_diagnostic": false,
+  "planned_teacher_calls": 20,
+  "planned_WORLD_render_calls": 24,
+  "planned_ASR_calls": 96,
+  "limits": {
+    "seconds": 28800,
+    "bytes": 4000000000,
+    "teacher": 64,
+    "render": 128,
+    "dsp": 512,
+    "ai": 256,
+    "train": 0,
+    "inverse": 0,
+    "download": 2500000000,
+    "setup": 120,
+    "audit": 120
+  },
+  "max_model_RAM_bytes": 8000000000,
+  "stop": "依存取得不足/指定モデルhash不一致/利用条件不明/clip非有限/未知生成前入力不足で停止し枠内の他経路へ。技術retry2/job10/campaign、生成/評価後救済なし",
+  "quality_certified": false,
+  "previous_summary_sha256": "d8dbb816ac6667bdf82df7472b02e2baa89e358a524dffdce5696db00271fe92"
+}

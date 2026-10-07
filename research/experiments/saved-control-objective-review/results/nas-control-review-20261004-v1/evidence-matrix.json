@@ -1,0 +1,1505 @@
+{
+  "version": 1,
+  "method": "100保存参照hash照合。数値は原JSON/終了報告、解釈は別記。未測定を通過/不通過へ変更しない",
+  "rows": [
+    {
+      "id": "pilot",
+      "question": "ニューラル教師から非ニューラル制御へ移せるか",
+      "teacher_provenance": "Kokoro-82M jf_alpha / Apache2.0（保存来歴）",
+      "split_and_reuse": "学習・選択・新監査。旧確認の再利用あり",
+      "available_information": "音素継続長/F0、小さい制御モデル",
+      "renderer": "主VTL JD3・限定LF、追加HTS監査",
+      "comparison": "直接/NN/学生比較。HTSはLFより内容保持が良い保存例。独立確認不足",
+      "qualification_scope": "単独非ニューラルは工学的証拠。教師の日本語品質/独立品質は未資格",
+      "unknowns": [
+        "教師を人間の真値と呼べない",
+        "独立最終品質"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/protocol.json",
+          "sha256": "923fd6955dae29439998be8380ff05588285fb14937c97bf80696386969d9aac",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/teacher-provenance.json",
+          "sha256": "8f08a52030e40a29d3c26806d55bda46aa94e231450835f2578934d6465910a7",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/teacher-load-verification.json",
+          "sha256": "ce5147c954624ed7d4914009c7ec525ec142f24fbdcbc490b1bcca5da73d422b",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/main-comparison-summary.json",
+          "sha256": "7fcf229b305e83f7e5724b34ba5fec8ededb6a44e8377b5ddc4485f109c68134",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/extended-comparison-summary-v2.json",
+          "sha256": "96cfc5ad9c35339245e5d8d589b93d04e9740e98e0dfc907401441b2672b516e",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/quality-decision.json",
+          "sha256": "755f64cbc90877f70a2c69ca3e81f273d6ce3a30e0e7c3d2dfc1b4f1aa68b74a",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/bundle-audit.json",
+          "sha256": "7a6cd15191216084a5c6361728e3803d0d45f036a69a24558f2e3e8d16fbee14",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-runtime-audit-v2.json",
+          "sha256": "4c9f2aa866984406559bb0a9b3d009b21f1aa77110564e30c1a949a16630b2e9",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/completion-audit.json",
+          "sha256": "d5f1ba2dd7ef0c5ba34369a90efedaf663167f915c986de25d5d4089666f82cf",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/cost-audit.json",
+          "sha256": "e5f7824fa49b82156c9fcff222189f5320c7c5e3bed041e0e2a53fb2ac899b5d",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/control-schema.json",
+          "sha256": "78cee649d3fb4d6f67890c9e933609b00bc27905518cceceb3cd670a2458d9ae",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/neural-assisted-non-neural-speech-pilot-result-2026-10-02.md",
+          "sha256": "040708402d245393858ea3e892b2e104d543a8d5133528ca8c2b51e3df79c575"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 50,
+            "teacher": 32,
+            "render": 307,
+            "audit": 8,
+            "train": 1,
+            "ai": 299
+          },
+          "job_seconds": {
+            "setup": 226.26989221572876,
+            "teacher": 16.27687168121338,
+            "render": 565.13880443573,
+            "audit": 7.262020111083984,
+            "train": 1.6145670413970947,
+            "ai": 527.6881594657898
+          },
+          "wall_seconds": 3074.9776997566223,
+          "inventory": {
+            "bytes": 879908418,
+            "files": 2533,
+            "seconds": 0.07052270811982453
+          },
+          "failures": [
+            {
+              "kind": "setup",
+              "label": "教師読み込み・前段検査",
+              "count": 1,
+              "details": {
+                "error": "ModuleNotFoundError(\"No module named 'attr'\")"
+              }
+            },
+            {
+              "kind": "setup",
+              "label": "教師重みの完全読込検査",
+              "count": 1,
+              "details": {
+                "error": "ValueError('教師の重み読込が完全一致しません: predictor')"
+              }
+            },
+            {
+              "kind": "setup",
+              "label": "教師読み込み・前段検査",
+              "count": 1,
+              "details": {
+                "error": "ValueError(\"教師の重み読込が完全一致しません: predictor, missing=[], extra=['F0.0.norm1.norm.bias', 'F0.0.norm1.norm.weight', 'F0.0.norm2.norm.bias', 'F0.0.norm2.norm.weight', 'F0.1.norm1.norm.bias', 'F0.1.norm1.norm.weight', 'F0.1.norm2.norm.bias', 'F0.1.norm2.norm.weight', 'F0.2.norm1.norm.bias', 'F0.2.norm1.norm.weight', 'F0.2.norm2.norm.bias', 'F0.2.norm2.norm.weight', 'N.0.norm1.norm.bias', 'N.0.norm1.norm.weight', 'N.0.norm2.norm.bias', 'N.0.norm2.norm.weight', 'N.1.norm1.norm.bias', 'N.1.norm1.norm.weight', 'N.1.norm2.norm.bias', 'N.1.norm2.norm.weight', 'N.2.norm1.norm.bias', 'N.2.norm1.norm.weight', 'N.2.norm2.norm.bias', 'N.2.norm2.norm.weight'], changed=[]\")"
+              }
+            },
+            {
+              "kind": "render",
+              "label": "selection-02/fit-0",
+              "count": 1,
+              "details": {
+                "error": "IndexError('index 0 is out of bounds for axis 0 with size 0')"
+              }
+            },
+            {
+              "kind": "setup",
+              "label": "教師の分離依存を導入",
+              "count": 1,
+              "details": {
+                "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-m', 'pip', 'install', '--no-cache-dir', '--no-deps', '--target', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/.cache/packages', 'pyworld==0.3.5'], \"Collecting pyworld==0.3.5\\n  Downloading pyworld-0.3.5.tar.gz (261 kB)\\n  Installing build dependencies: started\\n  Installing build dependencies: finished with status 'done'\\n  Getting requirements to build wheel: started\\n  Getting requirements to build wheel: finished with status 'done'\\n  Preparing metadata (pyproject.toml): started\\n  Preparing metadata (pyproject.toml): finished with status 'done'\\nBuilding wheels for collected packages: pyworld\\n  Building wheel for pyworld (pyproject.toml): started\\n  Building wheel for pyworld (pyproject.toml): finished with status 'error'\\nFailed to build pyworld\\n\", \"  error: subprocess-exited-with-error\\n  \\n  × Building wheel for pyworld (pyproject.toml) did not run successfully.\\n  │ exit code: 1\\n  ╰─> [73 lines of output]\\n      running bdist_wheel\\n      running build\\n      running build_py\\n      creating build/lib.macosx-15.0-arm64-cpython-311/pyworld\\n      copying pyworld/__init__.py -> build/lib.macosx-15.0-arm64-cpython-311/pyworld\\n      running build_ext\\n      Compiling pyworld/pyworld.pyx because it changed.\\n      [1/1] Cythonizing pyworld/pyworld.pyx\\n      building 'pyworld.pyworld' extension\\n      clang++ -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -I/opt/homebrew/opt/llvm@19/include -I/opt/homebrew/opt/llvm@19/include -Ilib/World/src -I/private/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/pip-build-env-yzhh3hdo/overlay/lib/python3.11/site-packages/numpy/_core/include -I/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/include -I/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/include/python3.11 -c lib/World/src/cheaptrick.cpp -o build/temp.macosx-15.0-arm64-cpython-311/lib/World/src/cheaptrick.o\\n      In file included from lib/World/src/cheaptrick.cpp:10:\\n      In file included from /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:380:\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:143:30: error: unknown type name 'ldiv_t'\\n        143 | inline _LIBCPP_HIDE_FROM_ABI ldiv_t div(long __x, long __y) _NOEXCEPT { return ::ldiv(__x, __y); }\\n            |                              ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:143:82: error: no member named 'ldiv' in the global namespace\\n        143 | inline _LIBCPP_HIDE_FROM_ABI ldiv_t div(long __x, long __y) _NOEXCEPT { return ::ldiv(__x, __y); }\\n            |                                                                                ~~^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:145:30: error: unknown type name 'lldiv_t'\\n        145 | inline _LIBCPP_HIDE_FROM_ABI lldiv_t div(long long __x, long long __y) _NOEXCEPT { return ::lldiv(__x, __y); }\\n            |                              ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:145:93: error: no member named 'lldiv' in the global namespace\\n        145 | inline _LIBCPP_HIDE_FROM_ABI lldiv_t div(long long __x, long long __y) _NOEXCEPT { return ::lldiv(__x, __y); }\\n            |                                                                                           ~~^\\n      In file included from lib/World/src/cheaptrick.cpp:10:\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:31: error: use of undeclared identifier 'FP_NAN'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:39: error: use of undeclared identifier 'FP_INFINITE'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:52: error: use of undeclared identifier 'FP_NORMAL'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:77: error: use of undeclared identifier 'FP_ZERO'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:31: error: use of undeclared identifier 'FP_NAN'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:39: error: use of undeclared identifier 'FP_INFINITE'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:52: error: use of undeclared identifier 'FP_NORMAL'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:77: error: use of undeclared identifier 'FP_ZERO'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:31: error: use of undeclared identifier 'FP_NAN'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:39: error: use of undeclared identifier 'FP_INFINITE'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:52: error: use of undeclared identifier 'FP_NORMAL'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:77: error: use of undeclared identifier 'FP_ZERO'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      fatal error: too many errors emitted, stopping now [-ferror-limit=]\\n      20 errors generated.\\n      error: Command '['clang++', '-Wsign-compare', '-Wunreachable-code', '-fno-common', '-dynamic', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-I/opt/homebrew/opt/llvm@19/include', '-I/opt/homebrew/opt/llvm@19/include', '-Ilib/World/src', '-I/private/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/pip-build-env-yzhh3hdo/overlay/lib/python3.11/site-packages/numpy/_core/include', '-I/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/include', '-I/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/include/python3.11', '-c', 'lib/World/src/cheaptrick.cpp', '-o', 'build/temp.macosx-15.0-arm64-cpython-311/lib/World/src/cheaptrick.o']' returned non-zero exit status 1.\\n      [end of output]\\n  \\n  note: This error originates from a subprocess, and is likely not a problem with pip.\\n  ERROR: Failed building wheel for pyworld\\n\\n[notice] A new release of pip is available: 24.2 -> 26.2.1\\n[notice] To update, run: /Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python -m pip install --upgrade pip\\nERROR: ERROR: Failed to build installable wheels for some pyproject.toml based projects (pyworld)\\n\")"
+              }
+            },
+            {
+              "kind": "render",
+              "label": "HMM未知文/direct_non_neural-0-normal",
+              "count": 2,
+              "details": {
+                "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-I', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py', '--text', '赤い傘を閉じる。', '--model', 'direct_non_neural', '--output', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-runtime-audit/direct_non_neural-0-normal.wav'], '', 'Traceback (most recent call last):\\n  File \"/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py\", line 53, in <module>\\n    if __name__==\\'__main__\\':main()\\n                            ^^^^^^\\n  File \"/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py\", line 39, in main\\n    if not evaluation[\\'E0_pass\\']:raise ValueError(\\'生成波形の工学条件を満たしません\\')\\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nValueError: 生成波形の工学条件を満たしません\\n')"
+              }
+            },
+            {
+              "kind": "ai",
+              "label": "hts-runtime-content/direct_non_neural/runtime-00",
+              "count": 1,
+              "details": {
+                "error": "AttributeError(\"'str' object has no attribute 'transcribe'\")"
+              }
+            }
+          ],
+          "pending": [],
+          "limits": {
+            "seconds": 14400,
+            "bytes": 3000000000,
+            "teacher": 48,
+            "render": 2000,
+            "ai": 300
+          },
+          "within_limits": true,
+          "accounting": "countを持たない過去予約は1回。二段HMM実行は2回を開始前に予約し失敗しても返却しない",
+          "timing_scope": "job_secondsは読込/管理を含む予約処理。wallとの差は実装・調査・記録を含み、純粋な演算時間ではない"
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "単独非ニューラルは工学的証拠。教師の日本語品質/独立品質は未資格"
+    },
+    {
+      "id": "extension",
+      "question": "共有制御の相対変化・長い発話への適用",
+      "teacher_provenance": "保存pilot制御",
+      "split_and_reuse": "旧短文/長文/相対変化",
+      "available_information": "合計時間と重み付きF0→speed/半音。新共有fitなし",
+      "renderer": "HTS",
+      "comparison": "二ASRの全群内容条件は直接/学生とも未達",
+      "qualification_scope": "工学的操作・内容保持を区別",
+      "unknowns": [
+        "局所時刻・声質",
+        "改訂前cost snapshotの時点差"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/protocol.json",
+          "sha256": "c200977d0cc5934f989d7e628de7c71630f97d938387e5e7bdc667e2209479c1",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/summary.json",
+          "sha256": "2f467bccded5157b58ef13b67f8c2b28b90c5571c8c4ce2896cc0fe96acaa880",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/extended-summary.json",
+          "sha256": "6b3f9ac1b3aace9b13f2298c7a30b32c6f46ae837d8c16f9ab3c056c1e04189b",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/requirements-audit.json",
+          "sha256": "a475bc386ff39797d17ba2b92e43690e6f8966185b072bc7f427afd1bc0832bf",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/cost-audit.json",
+          "sha256": "b99cd0f27d123b5a689b0cacc5d56200f9099fb842f41dfb5532b5397d9e7e25",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/neural-assisted-extension-result-2026-10-02.md",
+          "sha256": "2db2186609e460e4cc4ae24e1240ed605ffb3f9217a47a3501ac198d47879550"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "teacher": 24,
+            "render": 228,
+            "ai": 300,
+            "setup": 15,
+            "audit": 169
+          },
+          "limits": {
+            "seconds": 7200,
+            "bytes": 1000000000,
+            "teacher": 24,
+            "render": 400,
+            "ai": 300
+          },
+          "wall_seconds": 1505.0386190414429,
+          "inventory": {
+            "bytes": 45277846,
+            "files": 857,
+            "seconds": 0.02486333390697837
+          },
+          "failures": [
+            {
+              "event": "finish",
+              "id": "18dee89dab664fc28b16ea55234f3c11",
+              "status": "failed",
+              "seconds": 0.024747133255004883,
+              "details": {
+                "error": "URLError(gaierror(8, 'nodename nor servname provided, or not known'))"
+              }
+            }
+          ],
+          "pending": [],
+          "within_limits": true,
+          "seconds_by_kind": {
+            "teacher": 25.17546319961548,
+            "render": 18.964249849319458,
+            "ai": 106.61036777496338,
+            "setup": 22.439868211746216,
+            "audit": 15.418219327926636
+          },
+          "inventory_scan_seconds": 10.187568097840995,
+          "remaining_ai": 0,
+          "campaign_extension_automatic": false
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "工学的操作・内容保持を区別"
+    },
+    {
+      "id": "acoustic_revision",
+      "question": "固定音響目標への共有低次元制御",
+      "teacher_provenance": "教師音声の実測長/F0中央値",
+      "split_and_reuse": "21学習/12選択/新8文。選択一部旧文",
+      "available_information": "10特徴・直接/学生20係数、NN2層16幅",
+      "renderer": "HTS",
+      "comparison": "選択loss直接0.3808/NN0.6626/学生0.3815。NN優位なし",
+      "qualification_scope": "隔離/操作を確認、内容は後続へ",
+      "unknowns": [
+        "model-comparison.json欠損、summaryに比較あり",
+        "知覚/独立確認"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/protocol.json",
+          "sha256": "805235de0efd37aaf77c28702e307fbddcdb446bc2601d82c35869715418a919",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/summary.json",
+          "sha256": "9921a9aa8bc8e1b9c4212e78a3698685f6222ac8d944ccfd763c8c1fa6fcac5f",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/runtime-audit.json",
+          "sha256": "27fddec90cdff05b2773ef7592c8862d91f815d33efb5c1a82cad016ff1bf16f",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/acoustic-control-revision-result-2026-10-02.md",
+          "sha256": "200854ec99c72c6a939a7b4c4107b8c143fca4b05a883d98c2d3d55498ebc4c2"
+        }
+      ],
+      "cost": {
+        "available": false,
+        "reason": "独立cost参照なし。親extension/改訂報告を参照、時点差を維持"
+      },
+      "conclusion": "隔離/操作を確認、内容は後続へ"
+    },
+    {
+      "id": "content_evaluation",
+      "question": "保存改訂波形の内容保持を二ASRで監査",
+      "teacher_provenance": "新教師なし",
+      "split_and_reuse": "保存改訂新8文を観測、以後既知",
+      "available_information": "保存波形・fit/render0",
+      "renderer": "改訂HTS",
+      "comparison": "直接/NN/学生/補正直接/補正学生すべて内容支持false",
+      "qualification_scope": "二ASR診断。統計的非劣性や知覚資格ではない",
+      "unknowns": [
+        "独立最終確認",
+        "自然さ"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/protocol.json",
+          "sha256": "ae8a9583f160e445192d55630e78804cf0beccbd2316e701a1146c0190b58a59",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/summary.json",
+          "sha256": "0f9abee5305d70fd1344b46a4af171e14ca77f888d9f34da1ace4a99b94200d0",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/interpretation.json",
+          "sha256": "83ed8e9b63e6bf4d748eb9eb6e0ebaaf24b7e2eb87f0b6ed8673664918b41353",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/final-cost-audit.json",
+          "sha256": "c90189d872f5d9966ef544d66988509d4545a3163a2679493b90fa5988cdcd92",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/acoustic-revision-content-evaluation-result-2026-10-02.md",
+          "sha256": "6c2736db4c582d91ebc73a999ac6a685d557911b31817df1fac4203b8e637cfe"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/final-cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "audit": 5,
+            "setup": 2,
+            "ai": 200
+          },
+          "wall_seconds_before_seal": 642.9068160057068,
+          "seconds_by_kind": {
+            "audit": 6.1337854862213135,
+            "setup": 2.194854259490967,
+            "ai": 44.5357871055603
+          },
+          "inventory_before_final_audit_and_seal": {
+            "bytes": 930608,
+            "files": 223,
+            "seconds": 0.007800749968737364
+          },
+          "external_report_and_proposal_bytes": 12863,
+          "limits": {
+            "seconds": 3600,
+            "bytes": 100000000,
+            "ai": 200,
+            "teacher": 0,
+            "render": 0,
+            "train": 0
+          },
+          "all_jobs_completed": true,
+          "outstanding_jobs": [],
+          "previous_campaigns_unmodified": true,
+          "later_seal_and_audit_capacity_reserve": 65536
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "二ASR診断。統計的非劣性や知覚資格ではない"
+    },
+    {
+      "id": "factorial",
+      "question": "global F0のみ・長さのみ・両方・学生を同じHTSで比較する",
+      "teacher_provenance": "保存教師制御、新fitなし",
+      "split_and_reuse": "新12文6短6長、以後既知",
+      "available_information": "global F0のみ/長さのみ/joint/学生joint/native",
+      "renderer": "HTS",
+      "comparison": "120診断波形・240ASR、4候補すべて二ASR全21群不合格",
+      "qualification_scope": "既にF0と長さの分離を比較済み",
+      "unknowns": [
+        "局所時刻・声質",
+        "新独立品質"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/protocol.json",
+          "sha256": "a395a5b9eae2098c8abeaf5dae7cbab5fdcad1689f0f07526c5e7968a6432f13",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/summary.json",
+          "sha256": "389132370085f2ce8666b69991ed8d301e9661ed9c3f65e899ed277f096f9b73",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/measurement-audit.json",
+          "sha256": "d8f71d876b4a299566b06f1d96788bb60db634314f0c4f1acc34a0331ecebbf8",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/solo-runtime-audit.json",
+          "sha256": "0386ad007a74b8874e83dcb8d57e4466b0eb5e8cd34823f924bc3d5ea95df292",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/cost-audit.json",
+          "sha256": "0efce1a7671c87a8fd8c6ff23ea816bb847fe609e792e649e9f8284c2753cef7",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/acoustic-control-factorial-result-2026-10-03.md",
+          "sha256": "1ab170be2f9c721b552f014b29131b27769f05a70b6335439e74f426fff6bc5b"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 4,
+            "render": 240,
+            "ai": 240,
+            "audit": 5
+          },
+          "wall_seconds_before_seal": 732.9214189052582,
+          "seconds_by_kind": {
+            "setup": 2.935070037841797,
+            "render": 38.4846465587616,
+            "ai": 54.36382436752319,
+            "audit": 1.374044418334961
+          },
+          "inventory_before_cost_audit": {
+            "bytes": 64746213,
+            "files": 750,
+            "seconds": 0.016709791030734777
+          },
+          "limits": {
+            "seconds": 7200,
+            "bytes": 200000000,
+            "render": 256,
+            "ai": 240,
+            "teacher": 0,
+            "train": 0
+          },
+          "all_jobs_finished": true,
+          "all_jobs_succeeded": false,
+          "failed_jobs": [
+            {
+              "event": "finish",
+              "id": "0d187965de3445b7856dc5998cedf050",
+              "status": "failed",
+              "seconds": 0.015450716018676758,
+              "details": {
+                "error": "CalledProcessError(71, ['/usr/bin/sandbox-exec', '-f', '/Users/dolphilia/github/voice-simulator/research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/solo-runtime-audit/profile.sb', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-I', '/Users/dolphilia/github/voice-simulator/research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/solo-runtime-audit/probe.py', '--inputs', '/Users/dolphilia/github/voice-simulator/research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/solo-runtime-audit/probe-inputs.json'], '', 'sandbox-exec: sandbox_apply: Operation not permitted\\n')"
+              }
+            }
+          ],
+          "failure_resolution": "入れ子sandbox起動拒否を保存。権限付き再実行で同じ隔離profileの遮断検査と4組の生成一致を確認。音声生成とAI評価の失敗は0。",
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "既にF0と長さの分離を比較済み",
+      "catalog_question_label": "固定F0・利得・教師成分の要因比較",
+      "question_label_correction": "準備catalogのラベルは利得/教師成分と書かれていたが、実際の比較はF0と長さ。保存protocol/終了報告に合わせて訂正"
+    },
+    {
+      "id": "local_transfer",
+      "question": "局所LF0制御を直接・ニューラル・学生で比較",
+      "teacher_provenance": "保存教師状態LF0",
+      "split_and_reuse": "保存学習/選択と新文、後続でモデル再使用",
+      "available_information": "局所4基底、直接/NN/学生",
+      "renderer": "HTS局所LF0",
+      "comparison": "選択MSE native7.4385/直接5.0352/NN5.4516/学生5.0379。3候補内容支持false",
+      "qualification_scope": "NNtrain低下は選択優位へ対応しない",
+      "unknowns": [
+        "状態目標と実波形差",
+        "独立品質"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/protocol.json",
+          "sha256": "aaf0ce8eedef0fa6892d3859529618f398379fba9b698efcffe98ce0a63617c3",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/summary.json",
+          "sha256": "5183f22b67a94002d117b856b8aba183bd932f94c8b34456312e7ee74455fe4b",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/model-comparison.json",
+          "sha256": "055681e88fad450f9423fc5bec5ba19be65748ffc775d4658c557db00f0bd194",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/training-contract.json",
+          "sha256": "f55f5d303a112e97c52db934fbe4ad1e8f37030a9c03b202f3488a3889b3be92",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/runtime-audit.json",
+          "sha256": "30403eaf2e97d21c5aa8adb5b51cd89e62689f049c35c3ed443cf8e6c894d3f2",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/cost-audit.json",
+          "sha256": "267c8cfc6671e1c5b8ee76ee213aa2f1571291897e0625d85faeffa100acfee8",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/local-f0-transfer-result-2026-10-03.md",
+          "sha256": "5913379d985e71fb2aeb4076a1589795e8ae00f8eaba6a16eaefda6d417ea859"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 14,
+            "render": 181,
+            "audit": 6,
+            "train": 3,
+            "ai": 128
+          },
+          "seconds_before_report": 1193.5860249996185,
+          "inventory_before_cost_audit": {
+            "bytes": 63653326,
+            "files": 675,
+            "seconds": 0.015567791881039739
+          },
+          "limits": {
+            "seconds": 7200,
+            "bytes": 200000000,
+            "render": 192,
+            "ai": 128,
+            "teacher": 0,
+            "train": 4
+          },
+          "source_download_bytes": 77527,
+          "failed_jobs": [
+            {
+              "event": "finish",
+              "id": "af4b05cf08844da18f78cc72ae180c07",
+              "status": "failed",
+              "seconds": 0.024750709533691406,
+              "details": {
+                "error": "URLError(gaierror(8, 'nodename nor servname provided, or not known'))"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "f9697343d8d044f5a34a7ddc0fb3bd40",
+              "status": "failed",
+              "seconds": 0.33856725692749023,
+              "details": {
+                "error": "CalledProcessError(1, ['clang', '-dynamiclib', '-O2', '-undefined', 'dynamic_lookup', '-I/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/vendor', '/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/shim.c', '-o', '/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/local_hts.dylib'], '', \"In file included from /Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/shim.c:2:\\n/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/vendor/HTS_engine.h:58:10: fatal error: 'stdio.h' file not found\\n   58 | #include <stdio.h>\\n      |          ^~~~~~~~~\\n1 error generated.\\n\")"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "ff4b523aa8c646d3afa9430a8a9a7d21",
+              "status": "failed",
+              "seconds": 0.008999109268188477,
+              "details": {
+                "error": "ValueError('残差の内部範囲検査に不通過')"
+              }
+            }
+          ],
+          "all_jobs_finished": true,
+          "all_jobs_succeeded": false,
+          "failures_resolved": [
+            "ソース取得のネットワーク拒否→承認範囲の権限付き取得",
+            "既定clangのSDK不足→既存Apple clangで構築",
+            "無声状態のゼロ残差拒否→範囲を緩和せず別版で厳密一致再検査"
+          ],
+          "no_further_generation_evaluation_training": true,
+          "unused_render_calls": 11,
+          "unused_ai_calls": 0,
+          "unused_train_calls": 1,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "NNtrain低下は選択優位へ対応しない"
+    },
+    {
+      "id": "local_projection",
+      "question": "射影の時間表現を変えた共有制御",
+      "teacher_provenance": "新教師/fitなし",
+      "split_and_reuse": "local_transferと同じモデル、評価後既知化",
+      "available_information": "状態からフレーム時間射影へ変更",
+      "renderer": "同じHTS",
+      "comparison": "旧モデルhash同一。3候補内容支持false",
+      "qualification_scope": "旧lossを新射影品質へ転用しない",
+      "unknowns": [
+        "独立品質",
+        "時刻と波形目標"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/protocol.json",
+          "sha256": "3fc4185d792074fdebc73d46abe376fa4626cd4938865a9e6c90032dc67467c7",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/summary.json",
+          "sha256": "37f0651c26706dc2af4e416a47e9d34c93c2f7c00242e365edeff4e3225dd9bb",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/model-comparison.json",
+          "sha256": "369b609fc472b47e4d7b2c795956e77157ed6e672642707ec6dc6ee5b28e2265",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/novelty-audit.json",
+          "sha256": "b9c4e6d1f4d3d11632e15957dced5b834623070f15d4e726bc5edcbc856bfdef",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/runtime-audit.json",
+          "sha256": "2d17c16119e4db3a6e3e367617b513d7a3d73df12328a46fd713669cdfe50a68",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/cost-audit.json",
+          "sha256": "74d6236e1d4b2ddbbd1663abb5a5aed0704f31ff707112ab60837d3ad5f4b7bf",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/local-f0-projection-revision-result-2026-10-03.md",
+          "sha256": "35d0651cd4ef81daacc8a948da53d5b7a2fcf09f3fb21b69a59c8d4ea3ee45b2"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 7,
+            "render": 80,
+            "ai": 128,
+            "audit": 5
+          },
+          "failed_jobs": [],
+          "all_jobs_finished": true,
+          "limits": {
+            "seconds": 3600,
+            "bytes": 100000000,
+            "render": 96,
+            "ai": 128,
+            "teacher": 0,
+            "train": 0
+          },
+          "seconds_before_report": 298.57720613479614,
+          "inventory_before_cost_audit": {
+            "bytes": 28735496,
+            "files": 430,
+            "seconds": 0.010117457946762443
+          },
+          "source_download_bytes": 0,
+          "no_further_generation_evaluation_training": true,
+          "unused_render_calls": 16,
+          "unused_ai_calls": 0,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "旧lossを新射影品質へ転用しない"
+    },
+    {
+      "id": "wave_reachability",
+      "question": "実波形F0目標へ到達できるか",
+      "teacher_provenance": "保存教師波形F0目標",
+      "split_and_reuse": "開発4文の逆推定、一般化ではない",
+      "available_information": "波形目標への局所逆推定",
+      "renderer": "HTS",
+      "comparison": "内容支持true/音響支持false/次共有研究支持false",
+      "qualification_scope": "研究逆推定のみ、到達上限の数学的証明ではない",
+      "unknowns": [
+        "共有未知文",
+        "短イベント計測適用",
+        "知覚"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/protocol.json",
+          "sha256": "68f857669b0ee1eecc140e40af15674118b9ab0e839ee7ed9536f81e85d5ae4f",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/summary.json",
+          "sha256": "bdb305f6e490bebdf0ca03f66de15ec6b19b011d0d977ff353802493d11f6908",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/measurement-sensitivity.json",
+          "sha256": "2ea6a0af80fbd1298dede1f750ff2f0dbdf6233439aff557bab86fb047bee393",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/recovery-contract.json",
+          "sha256": "6e83ac55b10467e5a24e748bdf2964cc0036304c8f56d6be5ee8d756e4d812ca",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/cost-audit.json",
+          "sha256": "c479048e1cfd96de623c43659c3dbd1099b2a9a7e5ae2e600d1378823c8733fc",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/waveform-local-f0-reachability-result-2026-10-03.md",
+          "sha256": "ffa9bc13309406fbd4b8b16bef1371cb940c3275ae0eba520828ba012048bb5e"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 6,
+            "render": 93,
+            "ai": 22,
+            "audit": 4
+          },
+          "failed_jobs": [
+            {
+              "event": "finish",
+              "id": "d162ccd048a2460ab2de4e8c7bc0933e",
+              "status": "failed",
+              "seconds": 0.21714282035827637,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "980165b078e5449da932e3465b08a979",
+              "status": "failed",
+              "seconds": 23.79702925682068,
+              "details": {
+                "error": "ModuleNotFoundError(\"No module named 'matplotlib'\")"
+              }
+            }
+          ],
+          "all_jobs_finished": true,
+          "limits": {
+            "seconds": 3600,
+            "bytes": 100000000,
+            "render": 128,
+            "ai": 32,
+            "teacher": 0,
+            "train": 0
+          },
+          "seconds_before_report": 548.247622013092,
+          "inventory_before_cost_audit": {
+            "bytes": 82134825,
+            "files": 361,
+            "seconds": 0.006608749972656369
+          },
+          "source_download_bytes": 0,
+          "unused_render_calls": 35,
+          "unused_ai_calls": 10,
+          "no_automatic_extension": true,
+          "failures_resolved": [
+            "固定支持域欠損は基準を緩和せず候補を棄却して停止",
+            "描画依存不足は保存済み測定結果を既存別環境で図示。測定を再実行しない"
+          ],
+          "no_further_generation_evaluation_training": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "研究逆推定のみ、到達上限の数学的証明ではない"
+    },
+    {
+      "id": "wave_target",
+      "question": "波形目標から共有制御へ接続できるか",
+      "teacher_provenance": "保存教師/21文の波形目標",
+      "split_and_reuse": "学習21文、資格10<最小12",
+      "available_information": "4基底/固定支持域/3反復",
+      "renderer": "HTS",
+      "comparison": "618render予約598完了20失敗。fit/AI開始0",
+      "qualification_scope": "未実行学習/内容は未評価。全MSE改善だけでは採択しない",
+      "unknowns": [
+        "未知文共有制御",
+        "内容・知覚",
+        "後続17目標は別契約"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/protocol.json",
+          "sha256": "6ec191307dfce83036b53e1ff0290b39d7d187ead6e3517e5aa9438731b39e1f",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/cause-audit.json",
+          "sha256": "afa600cf2935c3ae40bedd1fac16712b10267d6499e7a3766256c0a385e3091a",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/target-manifest.json",
+          "sha256": "a5dcd0c4b1b004848746e15310a6ab5bb73f70702f66d4d597e3b87ac17084bc",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/training-gate-negative-test.json",
+          "sha256": "577351b917cbdf9d31ff099c16fbdaf1253ebe4a4d12dbcec45d9f3b08c3287b",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/closeout.json",
+          "sha256": "5d62d8c5dc965f1bbcd54bd624415c67d002445628c76463fd622a899e661e91",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/cost-audit.json",
+          "sha256": "80f3d1722c2c18afcf0a9bbf4309f9a33e5f06e5bd8ed20e573273458236c12d",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/waveform-target-shared-control-result-2026-10-03.md",
+          "sha256": "5b539020a2769e38f0ccf1e59c61a80f27b9d41ea8db8b0b184f767b3e0089a6"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 3,
+            "render": 618,
+            "audit": 2
+          },
+          "failed_jobs": [
+            {
+              "event": "finish",
+              "id": "b77a347dbbfa463e97dbcfa802f38f1f",
+              "status": "failed",
+              "seconds": 0.0751039981842041,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "387c2fbc7add4270a7e17d18142cf4c5",
+              "status": "failed",
+              "seconds": 0.09390807151794434,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "dda9fa44eedc4ff8ae7e7cf33977cf4f",
+              "status": "failed",
+              "seconds": 0.09362196922302246,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "0ff0a575f8854c09b01882e3265e1052",
+              "status": "failed",
+              "seconds": 0.0927419662475586,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "8635d9657dc04e858dacd244d0d1aed1",
+              "status": "failed",
+              "seconds": 0.09351181983947754,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "2965a4e3899640f58af61eb315eb03c1",
+              "status": "failed",
+              "seconds": 0.09246301651000977,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "2d6a812f5dc94d8290a7501454df8397",
+              "status": "failed",
+              "seconds": 0.09453511238098145,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "9d6022ccbd774da7a6833062e1b0462b",
+              "status": "failed",
+              "seconds": 0.09344601631164551,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "0c3738844e5946cbb8dc5bbfe828dfb7",
+              "status": "failed",
+              "seconds": 0.09401082992553711,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "8fffd683a27e4c33b5d4b75cc24cd6fd",
+              "status": "failed",
+              "seconds": 0.09538817405700684,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "eba6b0259c5447eab6a2a99b56b9f149",
+              "status": "failed",
+              "seconds": 0.31853699684143066,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "26dd485239d54929aac896f131e43fb8",
+              "status": "failed",
+              "seconds": 0.23949170112609863,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "53a874b8e9b04cc495bcb2f994c5a47d",
+              "status": "failed",
+              "seconds": 0.2397909164428711,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "bdfbed78be194139ae11e698f5f038c1",
+              "status": "failed",
+              "seconds": 0.1530618667602539,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "542cd7583f4d4d35a5ab387c53a4693c",
+              "status": "failed",
+              "seconds": 0.1514601707458496,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "a12015dfc1254c4fba6169f7f35ea88b",
+              "status": "failed",
+              "seconds": 0.15103793144226074,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "e35c7261ae7748eab74cf8f309b6934d",
+              "status": "failed",
+              "seconds": 0.1553511619567871,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "abec3fc38c8041dc9ab430eafb7e2343",
+              "status": "failed",
+              "seconds": 0.21720123291015625,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "107380fd4c3a44f19effa673d76ddf1c",
+              "status": "failed",
+              "seconds": 0.21992802619934082,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            },
+            {
+              "event": "finish",
+              "id": "7e65e3e7a7684ae2b05e85f57724862a",
+              "status": "failed",
+              "seconds": 0.21422886848449707,
+              "details": {
+                "error": "ValueError('固定局所有声支持域が欠損しました')"
+              }
+            }
+          ],
+          "all_jobs_finished": true,
+          "seconds_before_report": 403.2641589641571,
+          "inventory_before_cost_audit": {
+            "bytes": 463785047,
+            "files": 1960,
+            "seconds": 0.036052457988262177
+          },
+          "source_download_bytes": 0,
+          "unused_render_calls": 282,
+          "unused_ai_calls": 320,
+          "unused_shared_fits": 3,
+          "no_automatic_extension": true,
+          "no_further_generation_evaluation_training": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "未実行学習/内容は未評価。全MSE改善だけでは採択しない"
+    },
+    {
+      "id": "saved_shared",
+      "question": "保存波形目標を学習し未知文で比較",
+      "teacher_provenance": "保存17目標（状態7/波形10）",
+      "split_and_reuse": "旧選択12＋新8文を生成、ASR前固定",
+      "available_information": "直接/学生16係数、NN16幅2層500steps",
+      "renderer": "HTS",
+      "comparison": "train MSE直接0.445620/NN0.064886/学生0.447843。160波形後容量超過",
+      "qualification_scope": "隔離32/ASR320開始0。後続成功で容量違反を消さない",
+      "unknowns": [
+        "この枠の内容・隔離未評価",
+        "NNtrain優位の蒸留/一般化",
+        "容量違反"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/protocol.json",
+          "sha256": "ad51f56736adbff5ccf70fa10be7c11382c3ffff09aa36fbcf424d327967b54d",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/partial-summary.json",
+          "sha256": "3abeacfc8345c26819eaab9ed75a40fe75c9dc8c27bd396e2d8d8e4147183720",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/model-comparison.json",
+          "sha256": "1dafa3cacf1913e89c85ec2512932aadf91c3ee8a2f03f64dd1e8d33b708be09",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/training-contract.json",
+          "sha256": "0c17e64cef2b811366dfed581e536e6ad7ebbd3a84a06a9d3ab0f50c7a128221",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/completion-audit-v2.json",
+          "sha256": "f87c901c01de27f5f14dc8cbb8b7f090b5c4bb45aa3f6ab96d2dd84d297b95f7",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/closeout.json",
+          "sha256": "7a6c08c024eeba2ad671f38bd9dd6a2386666e06dd5a117fdf6ebe49bc2c7d55",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/cost-audit-v2.json",
+          "sha256": "409541e8098945535946206392797cabf988bec777cd52a10f12db08590a0a5f",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/saved-waveform-shared-control-result-2026-10-03.md",
+          "sha256": "0b39296c34f8d54cc465bb563bf4e62a0efe4887091fa735a3dacdb20e19fc1c"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/saved-waveform-shared-control/results/nas-saved-wave-shared-20261003-v1/cost-audit-v2.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 4,
+            "train": 3,
+            "audit": 2,
+            "render": 160
+          },
+          "all_reserved_jobs_finished": true,
+          "reserved_job_failures": 0,
+          "unreserved_action_rejections": [
+            {
+              "action": "非ニューラルbundle setup",
+              "reason": "容量の上限です",
+              "calls_started": 0
+            }
+          ],
+          "resource_limit_compliance": false,
+          "resource_limit_violation": true,
+          "peak_observed_bytes": 537281384,
+          "before_recovery_bytes": 485850405,
+          "final_inventory_before_report": {
+            "bytes": 301870254,
+            "files": 585,
+            "seconds": 0.01173474988900125
+          },
+          "seconds_before_report": 3278.124449968338,
+          "source_download_bytes": 0,
+          "new_inverse_calls": 0,
+          "remaining_isolated_renders": 32,
+          "remaining_ai_calls": 320,
+          "no_automatic_extension": true,
+          "no_further_generation_evaluation_training": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "隔離32/ASR320開始0。後続成功で容量違反を消さない"
+    },
+    {
+      "id": "saved_content",
+      "question": "保存共有制御の単独実行・二ASR内容評価",
+      "teacher_provenance": "同じ固定教師目標、fitなし",
+      "split_and_reuse": "旧12/新8は以後観測済み、ASR後最適化なし",
+      "available_information": "160保存波形/32隔離render/320新ASR",
+      "renderer": "HTS、直接/学生16係数単独",
+      "comparison": "新8は3候補全群内容不合格。直接/学生3条件ずつ支持欠損、NN5条件。旧12の直接/学生MSE改善",
+      "qualification_scope": "runtime independence true、any非ニューラル研究資格false",
+      "unknowns": [
+        "独立最終品質",
+        "NN学生誤差だけを唯一原因にできない",
+        "自然さ"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/protocol.json",
+          "sha256": "ad51f56736adbff5ccf70fa10be7c11382c3ffff09aa36fbcf424d327967b54d",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/summary.json",
+          "sha256": "1e88178b2c14f5ef0ab8086035407f9aac1156143242d36e3c9f22fd6cfb8b86",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/runtime-audit.json",
+          "sha256": "aacc34cc1d21e9f0d1d83933707373fa8dcc43e45c125d41e91efeec6446884a",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/support-cause-audit.json",
+          "sha256": "3728fd363eb227c00738878f25674833322e0c504e693fe7ae31c79bc6f34e27",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/completion-audit.json",
+          "sha256": "6b7201bb0884f992eeed17a85ea1984996f58175c4df5a13ab9ebd52d920338c",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/cost-audit.json",
+          "sha256": "d98e0aa3f3f4ae0729298ee2bd440185b978058747d4af62c57191f7d7013b1c",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/saved-shared-control-evaluation-result-2026-10-03.md",
+          "sha256": "7b3185607c448a6e9dd1b5ce30deab0d56e91dd5293aec389c016af15d0a9d27"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 5,
+            "audit": 6,
+            "render": 32,
+            "ai": 320
+          },
+          "asr_reused": 0,
+          "all_reserved_jobs_finished": true,
+          "reserved_job_failures": 2,
+          "source_download_bytes": 0,
+          "resource_limit_compliance": true,
+          "inventory_before_report": {
+            "bytes": 13622074,
+            "files": 450,
+            "seconds": 0.010559249902144074
+          },
+          "seconds_before_report": 469.9751389026642,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "runtime independence true、any非ニューラル研究資格false"
+    },
+    {
+      "id": "source_filter",
+      "question": "LF0固定で音源・フィルタを分ける対照",
+      "teacher_provenance": "教師/AI/fit/逆推定なし",
+      "split_and_reuse": "欠損を含む選択18行、偏りある既知診断",
+      "available_information": "同じ時間/LF0、MCP c1+を0、追加LPF無効",
+      "renderer": "HTSの音源/フィルタ反実仮想",
+      "comparison": "54render/DIO。18baseline bit一致。候補欠損11中5平坦回復/2単純励起回復/4継続",
+      "qualification_scope": "機構と計測の相互作用。日本語品質を未評価",
+      "unknowns": [
+        "内容ASR0",
+        "包絡中間値の効果",
+        "一般化/知覚"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/protocol.json",
+          "sha256": "68b5e8632a2fb35a4aaedeaec5eca6992117db7f191c5dcc5d1aa6022a104fca",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/summary.json",
+          "sha256": "43044b73bacd9c28db946778974415093f24e221256f96a20c2a0abfea4535cc",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/timing-audit.json",
+          "sha256": "00878fb09fac9ced6eecc67fbbc3bcd4492beee9198dd100394436008d1b2207",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/baseline-gate.json",
+          "sha256": "3602a20401fc3b94fdfa7e1e9cafc8b387549d90b5f3a8f1ecc71e1cf8cbe9bf",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/completion-audit.json",
+          "sha256": "86c33580b07510b1755fdc8e08ed10590d81e3c7632e8fb6b72ad7a4f8386928",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/cost-audit.json",
+          "sha256": "611ddabdcbd57eb1ee83353b647d71771dc4cf4984c65e47f0ed71863b7c1bc6",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/source-filter-counterfactual-result-2026-10-03.md",
+          "sha256": "30d781969bc079649edf7178729d2154eb81f33784238d476b723baf29126af0"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/source-filter-counterfactual/results/nas-source-filter-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 4,
+            "audit": 4,
+            "render": 54
+          },
+          "dsp_measurements_completed": 54,
+          "reserved_job_failures": 1,
+          "all_reserved_jobs_finished": true,
+          "seconds_before_report": 560.4917430877686,
+          "inventory_before_report": {
+            "bytes": 16694504,
+            "files": 222,
+            "seconds": 0.00346995797008276
+          },
+          "source_download_bytes": 0,
+          "resource_limit_compliance": true,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "機構と計測の相互作用。日本語品質を未評価"
+    },
+    {
+      "id": "short_dio",
+      "question": "55msを境界込みで測れるか",
+      "teacher_provenance": "教師なし、既知マスク",
+      "split_and_reuse": "開発12/確認12。後続再利用",
+      "available_information": "55ms境界を含む24限定信号",
+      "renderer": "限定合成信号、日本語音声ではない",
+      "comparison": "24render/測定。開発5/12確認7/12、資格false",
+      "qualification_scope": "限定計測資格のみ。すべての品質研究を止めない",
+      "unknowns": [
+        "日本語真値境界",
+        "独立確認",
+        "知覚"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/short-voiced-event-meter/results/nas-short-event-meter-20261003-v1/protocol.json",
+          "sha256": "67f5dab5bf133f8f1b5e2c08c7fa9b4b1eaaa036eb914b7e63dea1e75d9d179c",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/short-voiced-event-meter/results/nas-short-event-meter-20261003-v1/summary.json",
+          "sha256": "5fc86874cafff47ccdf1c5a7894d34fdb7ce5faa9b961d825bf888ba60cc51f2",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/short-voiced-event-meter/results/nas-short-event-meter-20261003-v1/completion-audit.json",
+          "sha256": "e892f8c4893e3611fe7282624d6344399545c3de5a0fb477c62a3416d0d473f9",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/short-voiced-event-meter/results/nas-short-event-meter-20261003-v1/cost-audit.json",
+          "sha256": "7b7a2f9f55e90dd7d866bd47c5a38a627d36de7bd6a945303bc41928863dec00",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/short-voiced-event-meter-result-2026-10-03.md",
+          "sha256": "37ef515fa20c7e75cea4a5a8e87c8b5ebaf07bef02742b6a1958ea1aeebc1017"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/short-voiced-event-meter/results/nas-short-event-meter-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 2,
+            "render": 24,
+            "audit": 28
+          },
+          "dsp_measurements": 24,
+          "reserved_job_failures": 0,
+          "all_reserved_jobs_finished": true,
+          "seconds_before_report": 334.6130340099335,
+          "inventory_before_report": {
+            "bytes": 10515871,
+            "files": 152,
+            "seconds": 0.0021877919789403677
+          },
+          "resource_limit_compliance": true,
+          "source_download_bytes": 0,
+          "inverse_fit_teacher_calls": 0,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "限定計測資格のみ。すべての品質研究を止めない"
+    },
+    {
+      "id": "short_alternatives",
+      "question": "二つの局所周期性方式の限定資格",
+      "teacher_provenance": "教師・生成なし",
+      "split_and_reuse": "同じ24保存信号、確認観測済み",
+      "available_information": "ACF/調波48測定",
+      "renderer": "保存限定信号",
+      "comparison": "ACF開発9/12確認12/12でも資格false、調波0/12ずつ",
+      "qualification_scope": "計測器資格と日本語品質を区別",
+      "unknowns": [
+        "境界/欠損/偽有声",
+        "日本語適用",
+        "独立確認"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/saved-short-event-alternative-meters/results/nas-saved-short-meters-20261003-v1/protocol.json",
+          "sha256": "969d9dae3fea31be80ad7d123d52a22cf05f4aec45738797d23515cd5fad7ce3",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-short-event-alternative-meters/results/nas-saved-short-meters-20261003-v1/summary.json",
+          "sha256": "60e4309bb0defd8fb4a656a7c7edd536f4c87fb92be350f89010fff4220735cb",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-short-event-alternative-meters/results/nas-saved-short-meters-20261003-v1/completion-audit.json",
+          "sha256": "9ba689b3067afcaef1b01bb1a594c1755aa6ed579a2a29a2746f0b9f08894573",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/saved-short-event-alternative-meters/results/nas-saved-short-meters-20261003-v1/cost-audit.json",
+          "sha256": "86fc505b3a1cfe577fcde5cfdf0f26bbf178e3a27b938ca782e950fe47d61142",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/saved-short-event-alternative-meters-result-2026-10-03.md",
+          "sha256": "c27adc79c48ef5040bdd858ca83776e60b980f40e0e6d095f15798df2a1e4d69"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/saved-short-event-alternative-meters/results/nas-saved-short-meters-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 3,
+            "audit": 51
+          },
+          "dsp_measurement_reservations": 48,
+          "dsp_measurement_calls": 48,
+          "reserved_job_failures": 0,
+          "all_reserved_jobs_finished": true,
+          "seconds_before_report": 304.46288800239563,
+          "inventory_before_report": {
+            "bytes": 730728,
+            "files": 126,
+            "seconds": 0.0019268749747425318
+          },
+          "resource_limit_compliance": true,
+          "source_download_bytes": 0,
+          "inverse_fit_teacher_calls": 0,
+          "retries": 0,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "計測器資格と日本語品質を区別"
+    },
+    {
+      "id": "short_window",
+      "question": "基底窓変換だけで計測一致が変わるか",
+      "teacher_provenance": "教師・生成なし",
+      "split_and_reuse": "同じ24保存信号、独立確認ではない",
+      "available_information": "調波基底だけ平均除去/Hann窓",
+      "renderer": "保存限定信号",
+      "comparison": "開発8/12確認9/12。境界14大誤り/7条件。内側246/246は後付診断",
+      "qualification_scope": "資格false。境界除外で救済しない",
+      "unknowns": [
+        "日本語適用",
+        "境界全体計測",
+        "独立確認"
+      ],
+      "sources": [
+        {
+          "path": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/protocol.json",
+          "sha256": "b1a7e685ce47c8cd6067b9f2b9d7ac705cbade17ce1d2d95b71f42c3f3f8ec2a",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/summary.json",
+          "sha256": "8d145970c9eb469d97cd35329d00eb691ab4ecea8b2143043a50ca8cc58b9628",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/boundary-audit.json",
+          "sha256": "13c9e9054486ed25804b9259bf43d75939a33cc8e6d3903863b48482e17e532b",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/completion-audit.json",
+          "sha256": "8e9e53e37d4388b08b925aa8684b2433c7a628ece693e391af505572df3dc0d8",
+          "json_pointer": "/"
+        },
+        {
+          "path": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/cost-audit.json",
+          "sha256": "978e52ad83bc4424f708db519c7faf2d1962dc0720922842680e3da9a0211e41",
+          "json_pointer": "/"
+        },
+        {
+          "path": "docs/note/window-consistent-harmonic-meter-result-2026-10-03.md",
+          "sha256": "8f92c74da853799291189a5d01bff8f3f3f5db3c545c22e5e5363ca215e1cb30"
+        }
+      ],
+      "cost": {
+        "source": "research/experiments/window-consistent-harmonic-meter/results/nas-window-harmonic-20261003-v1/cost-audit.json",
+        "saved_snapshot": {
+          "counts": {
+            "setup": 3,
+            "audit": 27
+          },
+          "dsp_measurement_reservations": 24,
+          "dsp_measurement_calls": 24,
+          "reserved_job_failures": 0,
+          "all_reserved_jobs_finished": true,
+          "seconds_before_report": 375.87348914146423,
+          "inventory_before_report": {
+            "bytes": 600993,
+            "files": 76,
+            "seconds": 0.0012370420154184103
+          },
+          "resource_limit_compliance": true,
+          "source_download_bytes": 0,
+          "inverse_fit_teacher_calls": 0,
+          "retries": 0,
+          "no_automatic_extension": true
+        },
+        "do_not_sum_with_parent_or_child": true
+      },
+      "conclusion": "資格false。境界除外で救済しない"
+    }
+  ],
+  "missing_expected_sources": [
+    "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/model-comparison.json"
+  ],
+  "repeated_confirmation_is_not_independent": true,
+  "overlapping_cost_snapshots_are_not_summed": true
+}

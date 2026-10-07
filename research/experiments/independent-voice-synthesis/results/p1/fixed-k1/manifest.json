@@ -1,0 +1,95 @@
+{
+  "status": "stimuli_ready_perception_pending",
+  "created": "2026-09-12T21:30:20.340271+00:00",
+  "e0_summary_sha256": "d24541c6d37838dcd3c96e9637a33486af751ba221554e008c3013547e67c626",
+  "config_sha256": "b688430c5ca3d5b2c837495d4e690c479a2be40d9af3f60f48773716c18fe340",
+  "listening_contract_sha256": "8eeae42ff0496bee27b66ee00f2e8b16d1860f7054fc23c11666513f15b89d4d",
+  "code_sha256": {
+    "src/independent_voice_synthesis/__init__.py": "675f285b0a2d2fdfb029d6d1ec2ecdd08d8892c3364e43fc1ed40b2571c7cb5e",
+    "src/independent_voice_synthesis/models.py": "73964fc306e3ec5c6c0ef244e2b2d0ca2d0edf09dca489c0f411eeefaca2a18b",
+    "src/independent_voice_synthesis/objective.py": "d21a10cb9ace8e9d5d4440c92a4eb359118103120cfa62167b70681f1d270d0c",
+    "src/independent_voice_synthesis/optimization.py": "08a8699161154a99a1e1468558949bfede245b36e0bd7fb617dabd896a94da92",
+    "src/independent_voice_synthesis/p1_connection.py": "b6f14ca943e18f4c753b111d1e6995b7ae0b5950f31bebd7f51205f0da42a7ad",
+    "src/independent_voice_synthesis/qualification.py": "6fcadbe9e3126f5dfe0fdb7227c0b88d3dbe07f96efaeca3a043e347b2bfc226",
+    "src/independent_voice_synthesis/reporting.py": "697eee3e0e661690b6beddc0f9d2ffc588373a460894f171aeda77a9fb352045"
+  },
+  "configuration": {
+    "status": "刺激生成前に固定",
+    "source": "LF解析式、周期で正規化した流量微分を積分して交流流量へ戻す",
+    "source_reference": "https://www.speech.kth.se/qpsr/1985/1985_26_4_001-013.pdf",
+    "Fs": 16000,
+    "F0_hz": 160.0,
+    "tp": 0.4,
+    "te": 0.6,
+    "ta": 0.05,
+    "U0_m3_per_s": 0.0001,
+    "duration_seconds": 3.0,
+    "fade_seconds": 0.05,
+    "target_rms": 0.08,
+    "peak_ceiling": 0.9,
+    "rho_air_kg_m3": 1.2,
+    "distance_m": 1.0,
+    "window_hz": [
+      100,
+      200,
+      4500,
+      5000
+    ],
+    "candidates": [
+      "K1-P5"
+    ],
+    "model_origin": "v3の既知P5。測定適合の成功例ではない",
+    "perceptual_status": "未確認",
+    "selection_reason": "E0点検不通過時の接続用既知モデル。音源定数は試聴や探索をせず設計値として固定"
+  },
+  "parameters": {
+    "f": [
+      650.0,
+      1350.0,
+      2500.0,
+      3650.0,
+      4650.0
+    ],
+    "B": [
+      80.0,
+      100.0,
+      120.0,
+      150.0,
+      180.0
+    ],
+    "g": 1.0
+  },
+  "lf_constants": {
+    "epsilon": 19.99327266898377,
+    "alpha": 1.0502723051897433,
+    "E0": 0.5325047916081667,
+    "omega": 7.853981633974483,
+    "area_error": -4.163336342344337e-17
+  },
+  "levels": [
+    {
+      "pre_scalar_rms_pa": 0.017030866204579786,
+      "rms_scalar": 4.697353560236832,
+      "common_downscale": 1.0,
+      "final_rms": 0.08,
+      "final_peak": 0.15786872587427384
+    }
+  ],
+  "file": "K1-P5.wav",
+  "sha256": "8ca205af42ff3eaef6a90f5e4d2bd568e595790f1cc605caffc7e1b2f1d95237",
+  "samples": 48000,
+  "sample_rate": 16000,
+  "sample_format": "IEEE float32",
+  "finite": true,
+  "max_harmonic_hz": 7840.0,
+  "highest_nonzero_pressure_harmonic_hz": 4960.0,
+  "after_fade_outside_energy_ratio": 1.648595371328554e-09,
+  "final_peak_float32": 0.15786872804164886,
+  "final_rms_float32": 0.07999999991751959,
+  "limitations": [
+    "K1は合成した既知モデル。公開測定への適合例ではない",
+    "測定位相は未確認",
+    "知覚回答未収集",
+    "フェード後には有限長窓による微小な帯域外漏れがある"
+  ]
+}

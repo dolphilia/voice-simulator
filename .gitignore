@@ -2,11 +2,14 @@ CLAUDE.md
 AGENTS.md
 .DS_Store
 .venv/
+.venv-*/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .ipynb_checkpoints/
-research/.cache/
+research/**/.cache/
+research/**/.matplotlib-cache/
+research/experiments/**/hf-home/
 
 # 音声研究用の参考データ。管理用ファイルだけを追跡する。
 research/data/raw/reference/*
@@ -15,15 +18,107 @@ research/data/raw/reference/*
 research/data/raw/reference/utau-samples/*
 !research/data/raw/reference/utau-samples/README.md
 
-# 研究で生成・分析した音声/画像アーティファクト。
-# CSV/Markdown/スクリプトを成果物として残し、重い WAV/PNG は必要時に再生成する。
+# 研究で生成・分析した音声/画像アーティファクト（外部保存へのリンクも含む）。
+# CSV/Markdown/スクリプトを成果物として残し、音声/画像は Git の対象外とする。
 research/data/**/*.wav
+research/data/**/*.flac
+research/data/**/*.mp3
+research/data/**/*.ogg
 research/data/**/*.png
 research/notebooks/*.png
-# 新しい実験や試聴用コピー・音量確認音も共通で除外する。
-# 回答・操作履歴・manifest・hash固定用lockは研究記録として残す。
-research/experiments/*/results/**/*.wav
-research/experiments/*/results/**/*.png
+# results/ 以外の campaigns/ や試聴用コピー・音量確認音も共通で除外する。
+research/experiments/**/*.wav
+research/experiments/**/*.flac
+research/experiments/**/*.mp3
+research/experiments/**/*.ogg
+research/experiments/**/*.png
+
+# 大容量の解析配列、取得データセット、研究用重み、出力アーカイブ。
+# モデルの設定・係数 JSON、取得元・依存関係・hash の manifest は残す。
+research/data/**/*.npz
+research/data/**/*.npy
+research/experiments/**/*.npz
+research/experiments/**/*.npy
+research/experiments/**/*.parquet
+research/experiments/**/*.pt
+research/experiments/**/*.pth
+research/experiments/**/*.onnx
+research/experiments/**/*.safetensors
+research/experiments/**/*.htsvoice
+research/experiments/**/*.zip
+research/experiments/**/*.whl
+research/data/**/*.tar
+research/data/**/*.tar.*
+research/data/**/*.gz
+research/data/**/*.xz
+research/data/**/*.zst
+research/experiments/**/*.tar
+research/experiments/**/*.tar.*
+research/experiments/**/*.gz
+research/experiments/**/*.xz
+research/experiments/**/*.zst
+
+# 生成音声ごとの高密度軌跡・探索履歴・ASR個票はデータとして保持する。
+# 結果ディレクトリ全体やJSON全体は除外せず、コード・契約・集計・係数を残す。
+research/experiments/*/results/**/render/**/*.json
+research/experiments/*/results/**/inverse-render/**/*.json
+research/experiments/*/results/**/trials/**/*.json
+research/experiments/*/results/**/searches/**/*.json
+research/experiments/*/results/**/asr/**/*.json
+research/experiments/*/results/**/audio/**/*.json
+research/experiments/*/results/**/training-inputs/**/*.json
+research/experiments/*/results/**/entry-audit/**/*.json
+research/experiments/*/results/**/entry-audit-v2/**/*.json
+research/experiments/*/campaigns/*/render/**/*.json
+research/experiments/*/campaigns/*/inverse-render/**/*.json
+research/experiments/*/campaigns/*/native/**/*.json
+research/experiments/*/campaigns/*/trials/**/*.json
+research/experiments/*/campaigns/*/searches/**/*.json
+research/experiments/*/campaigns/*/asr/**/*.json
+research/experiments/*/campaigns/*/audio/**/*.json
+research/experiments/*/campaigns/*/runtime-check/**/*.json
+research/experiments/*/campaigns/*/runtime-cli/**/*.json
+# E0点検の全探索履歴。結果のsummary.jsonは残す。
+research/experiments/independent-voice-synthesis/results/e0/qualification/S[12]-K*.json
+# 出力フォルダに置いた集計・契約・manifestも追跡候補として残す。
+!research/experiments/**/summary.json
+!research/experiments/**/manifest.json
+!research/experiments/**/decision.json
+!research/experiments/**/protocol.json
+!research/experiments/**/registration.json
+!research/experiments/**/verification.json
+
+# mtime・inode・外部保存先を含む端末固有の索引と移動中の操作記録。
+# 再開に必要なJSON台帳、承認・集計・hash記録は残す。
+research/experiments/*/control/*.sqlite
+research/experiments/*/control/*.sqlite-*
+research/storage-migrations/**/manifest.sqlite
+research/storage-migrations/**/manifest.sqlite-*
+research/storage-migrations/**/before.json
+research/storage-migrations/**/directory-mode-adjustments.jsonl
+
+# pip で展開した依存ライブラリと取得 wheel。metadata/wheels/ の取得記録は残す。
+research/experiments/**/packages/
+research/experiments/**/packages-*/
+research/experiments/*/campaigns/*/wheels/
+
+# 再ビルド可能なネイティブライブラリ。shim と vendor のソースは残す。
+research/experiments/**/*.dylib
+research/experiments/**/*.so
+research/experiments/**/*.o
+research/experiments/**/*.a
+research/experiments/**/*.dll
+
+# 実行時の排他ロックと標準出力ログ。依存固定用 *.lock は一括除外しない。
+research/experiments/**/.lock
+research/experiments/**/.run.lock
+research/experiments/**/.ai.lock
+research/experiments/**/.registration.lock
+research/experiments/autonomous-research-cycle/control/lock
+research/experiments/**/*.log
+# 回答・manifest・hash固定記録、state.json・jobs.jsonl等の予算台帳は残す。
+# OSメタデータを証拠保存した実体リンクは除外し、観測JSONを残す。
+research/experiments/**/storage-os-metadata-*/*.dsstore
 
 web/**/node_modules/
 web/**/dist/

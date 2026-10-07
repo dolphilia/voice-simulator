@@ -1,0 +1,72 @@
+"""状態時計だけを変え、固定HMM/MLPG/WORLDの実波形で比較する。"""
+from paths import *
+import sys,io,math,hashlib
+SRC=ROOT/'campaigns/nas-source-identity-20261004-v1'
+sys.path[:0]=[str(HERE),str(SRC),str(WORLD),str(SHARED),str(BUNDLE)]
+import numpy as np
+from timing_engine import Engine
+from world_renderer2 import synthesize
+from timing_control import durations,predict,descriptions,LOWER,UPPER,FEATURES
+from local_control import describe,ELIGIBLE
+from research_nn import predictor
+from teacher_common import wavbytes
+from measurement import measure
+from objective import extract_local,centered_semitones
+def ah(x):return hashlib.sha256(np.asarray(x,dtype='<f8').tobytes()).hexdigest()
+def packed(**v):
+ f=io.BytesIO();np.savez_compressed(f,**v);return f.getvalue()
+def static(snapshot):return {k:v for k,v in snapshot.items() if k!='duration'}
+def run_one(b,row,condition,variant,mode,predictors):
+ base=HERE/'render'/mode/row['id']/condition/variant
+ if base.with_suffix('.json').exists():return read(base.with_suffix('.json'))
+ request=row['requests'][condition];settings=dict(speed=request['speed'],half_tone=12*math.log2(request['requested_f0']/220))
+ with b.job(NAME,'render',mode+'/'+row['id']+'/'+condition+'/'+variant,reserve_bytes=7000000) as j:
+  with Engine(row,BUNDLE/'mei_normal.htsvoice',**settings) as e:
+   before=e.snapshot();variance=e.variance();vocoder=e.get_settings();notes=[]
+   if variant=='native':after=before
+   else:
+    if variant=='oracle':
+     assert mode=='training';t=read(HERE/'targets'/(row['id']+'.json'));desc=descriptions(row);assert [q['label_index'] for q in t['targets']]==[q['label_index'] for q in desc];fun=lambda x:np.array([q['target_log_ratio'] for q in t['targets']])
+    else:fun=predictors[variant]
+    if variant=='neural':
+     with b.job(NAME,'ai','研究NN時計 '+mode+'/'+row['id']+'/'+condition,reserve_bytes=1000):d,notes=durations(row,before,fun)
+    else:d,notes=durations(row,before,fun)
+    prior,after=e.modify_duration(d);assert prior==before
+   assert static(before)==static(after) and sum(before['duration'])==sum(after['duration']) and np.array_equal(variance,e.variance()) and e.get_settings()==vocoder
+   params=e.parameters();assert len({len(q) for q in params})==1 and len(params[0])==sum(after['duration']) and e.snapshot()==after and np.array_equal(variance,e.variance())
+   raw,conversion=synthesize(params,vocoder);assert e.snapshot()==after
+  audio=(raw*.25).astype(np.float32);assert np.isfinite(audio).all() and np.max(abs(audio))<1,'clip/nonfinite：出力後救済なし'
+  b.write(base.with_suffix('.wav'),wavbytes(audio),j);b.write(base.with_suffix('.npz'),packed(spectrum=params[0],lf0=params[1],lpf=params[2],duration=after['duration'],native_duration=before['duration']),j)
+  r={k:row[k] for k in ['text','length','challenge_group','cohort']};r.update(id=row['id']+'/'+condition+'/'+variant,condition=condition,variant=variant,mode=mode,factor=0 if variant=='native' else 1,status='rendered',wav=str(base.with_suffix('.wav').relative_to(REPO)),wav_sha256=digest(base.with_suffix('.wav')),parameters=str(base.with_suffix('.npz').relative_to(REPO)),parameters_sha256=digest(base.with_suffix('.npz')),duration=after['duration'],native_duration=before['duration'],msd=after['msd'],vocoder_settings=vocoder,parameter_hashes=[ah(q) for q in params],static_state_hash=hashlib.sha256(encode(static(before))).hexdigest(),variance_sha256=ah(variance),means_variance_MSD_layout_voice_settings_unchanged=True,duration_only_state_change=True,total_frame_count_fixed=True,sil_pau_unchanged=True,time_phone_controls=notes,state_clock_changed=before['duration']!=after['duration'],output_gain=.25,output_peak=float(np.max(abs(audio))),runtime_neural=variant=='neural',teacher_time_control_used=variant=='oracle',teacher_wave_runtime_used=False,WORLD_conversion=conversion,quality_certified=False)
+  native=HERE/'render'/mode/row['id']/condition/'native.render.json'
+  if variant!='native':
+   nr=read(native);assert r['static_state_hash']==nr['static_state_hash'] and r['variance_sha256']==nr['variance_sha256'] and r['native_duration']==nr['duration'] and r['msd']==nr['msd'] and r['vocoder_settings']==nr['vocoder_settings']
+  b.save(base.with_suffix('.render.json'),r,j)
+ with b.job(NAME,'dsp','固定DIO/ACF/E0 '+mode+'/'+r['id'],count=3,reserve_bytes=300000) as j:
+  path=HERE/'support'/mode/row['id']/(condition+'.json');eligible=[q['label_index'] for q in describe(row) if q['phone'] in ELIGIBLE and any(after['msd'][k]>.5 for k in range(q['label_index']*5,(q['label_index']+1)*5))]
+  if path.exists():support=read(path)['indices']
+  else:assert variant=='native';support=[]
+  value=measure(audio,params[1][:,0],after['duration'],support,eligible);f0,t=value.pop('f0'),value.pop('times')
+  if not path.exists():
+   found,excluded=extract_local(f0,t,after,eligible);support=[q['label_index'] for q in found];b.save(path,dict(indices=support,excluded_native_intervals=excluded,frozen_from_native=True,source_wave_sha256=r['wav_sha256'],native_duration=before['duration'],candidate_measurement_uses_candidate_state_clock=True,teacher_available=False),j)
+  found,missing=extract_local(f0,t,after,support) if support else ([],[]);complete=len(support)>=3 and not missing and [q['label_index'] for q in found]==support
+  b.write(base.with_suffix('.dio.npz'),packed(f0=f0,times=t),j);r.update(status='completed',measurement=value,E0_pass=value['E0']['E0_pass'],local_measurements=found,missing_support=missing,support_complete=complete,support_sha256=digest(path),wave_shape=centered_semitones([q['wave_log_f0'] for q in found]).tolist() if complete else None,new_dsp_calls=3)
+  b.save(base.with_suffix('.json'),r,j)
+ return r
+def main():
+ b=Budget();p=read(HERE/'protocol.json');models=read(HERE/'model-comparison.json');assert read(HERE/'self-test.json')['passed']
+ for n,h in p['dependencies'].items():assert digest(REPO/n)==h
+ for n,h in models['model_hashes'].items():assert digest(HERE/'models'/n)==h
+ with b.job(NAME,'setup','同voice/状態平均/分散と固定利得・時計制約を初比較波形前固定',reserve_bytes=300000) as j:
+  b.save(HERE/'execution-contract.json',dict(protocol_sha256=digest(HERE/'protocol.json'),model_hashes=models['model_hashes'],gain_contract_sha256=digest(HERE/'gain-contract.json'),source_hashes={q.name:digest(q) for q in HERE.iterdir() if q.is_file() and q.suffix in ['.py','.sb','.c','.dylib']},external_generation_sources={str((directory/n).relative_to(REPO)):digest(directory/n) for directory,names in [(SRC,['source_renderer.py','counter.dylib','local_renderer.py','local_hts-v2.dylib']),(WORLD,['world_renderer2.py','packages-v2/pyworld/__init__.py'])] for n in names},models_and_sources_fixed_before_first_comparison_wave=True,no_optimization_after_ASR=True,all_state_duration_only_change=True),j)
+ predictors={v:(lambda x,m=read(HERE/'models'/(v+'.json')):predict(m,x)) for v in ['direct','student']};predictors['neural']=predictor();records=[]
+ for row in p['training_rows']:
+  for v in p['training_variants']:records.append(run_one(b,row,'neutral',v,'training',predictors))
+  print('時間訓練wave',row['id'],flush=True)
+ for row in p['rows']:
+  for c in row['requests']:
+   for v in p['variants']:records.append(run_one(b,row,c,v,'diagnostic',predictors))
+  print('時間診断wave',row['id'],flush=True)
+ assert len(records)==592
+ b.save(HERE/'render-manifest.json',dict(rows=[dict(id=r['mode']+'/'+r['id'],record=str((HERE/'render'/r['mode']/(r['id']+'.json')).relative_to(REPO)),wav=r['wav'],wav_sha256=r['wav_sha256']) for r in records],search_completed_before_ASR=True,training_renders=400,diagnostic_renders=192,planned_ASR_records=1184,training_ASR_not_independent_quality=True,all_models_fixed_before_audio=True,quality_certified=False));print(b.reconcile(),flush=True)
+if __name__=='__main__':main()

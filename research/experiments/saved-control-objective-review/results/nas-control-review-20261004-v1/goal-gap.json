@@ -1,0 +1,62 @@
+{
+  "quality_goal_completed": false,
+  "final_non_neural": true,
+  "neural_research_allowed": true,
+  "items": [
+    {
+      "goal": "非ニューラル単独未知文生成",
+      "status": "工学的確認あり",
+      "sources": [
+        "pilot/bundle-audit.json",
+        "saved_content/runtime-audit.json"
+      ],
+      "limit": "教師/NN/波形/ネットワークなしの固定係数HTS隔離生成。品質合格ではない"
+    },
+    {
+      "goal": "教師改善の移転",
+      "status": "限定数値改善、品質移転未達",
+      "sources": [
+        "saved_shared/model-comparison.json",
+        "saved_content/summary.json"
+      ],
+      "limit": "NNtrain優位は学生と未知文内容に結び付かない"
+    },
+    {
+      "goal": "共有制御一般化",
+      "status": "未達",
+      "sources": [
+        "factorial/summary.json",
+        "saved_content/summary.json"
+      ],
+      "limit": "新文二ASR全群と局所支持を満たさない"
+    },
+    {
+      "goal": "内容の独立監査",
+      "status": "二ASR診断あり、独立最終確認未達",
+      "limit": "再使用集合は既知。新文出力前の履歴照合/凍結/一度評価/調整禁止が必要"
+    },
+    {
+      "goal": "自然さ・明瞭さ・声質の知覚資格",
+      "status": "未達",
+      "limit": "教師と日本語非ニューラルの知覚資格不足。ASR/F0では代替しない"
+    },
+    {
+      "goal": "短有声イベント計測",
+      "status": "限定資格未達",
+      "limit": "境界/欠損/偽有声の分母を保持。資格不足を全品質研究の停止条件にしない"
+    },
+    {
+      "goal": "予算/再現性",
+      "status": "過去容量違反あり、今回別監査",
+      "limit": "saved_shared容量超過を後続評価成功で消さない"
+    }
+  ],
+  "next_priority": "音源フィルタ一要素と内容保持の直交比較。教師/蒸留を追加する前に同じ時間・F0で切り分ける",
+  "forbidden_inferences": [
+    "選択改善＝未知文品質",
+    "NNtrain loss改善＝蒸留成功",
+    "DIO回復＝自然さ改善",
+    "ASR一致＝知覚資格",
+    "再利用確認＝独立最終確認"
+  ]
+}

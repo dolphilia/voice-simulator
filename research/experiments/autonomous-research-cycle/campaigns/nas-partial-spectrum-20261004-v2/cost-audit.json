@@ -1,0 +1,163 @@
+{
+  "global_snapshot": {
+    "version": 1,
+    "cycle": "arc-20261004-v1",
+    "authorization": {
+      "approved_budget_path": "docs/plans/autonomous-research-budget-proposal-2026-10-04.md",
+      "approved_budget_sha256": "8a398675861f34e262513df3fc62d824cea08ec36883e226aded976685e11d81",
+      "user_authorization": "予算案を承認します。包括予算内で既存研究を継続する指示。",
+      "execution_prompt_sha256": "3a31db230740bdcf33d19d5de85aba68d0c8108eb00f79a31488c530286ea657",
+      "bootstrap_accounting": "初期読取・管理実装・予算否定検査について、台帳前の作業を保守的に30分として初期加算する。実測時刻と混同しない。"
+    },
+    "limits": {
+      "seconds": 172800,
+      "bytes": 20000000000,
+      "experiment_bytes": 18000000000,
+      "write_bytes": 60000000000,
+      "download": 5000000000,
+      "render": 20000,
+      "teacher": 1000,
+      "ai": 50000,
+      "dsp": 100000,
+      "train": 60,
+      "inverse": 300,
+      "campaigns": 24
+    },
+    "counts": {
+      "setup": 19,
+      "audit": 5,
+      "render": 370,
+      "dsp": 793,
+      "ai": 384
+    },
+    "campaigns": {
+      "partial-spectrum-v1": {
+        "prefix": "campaigns/nas-partial-spectrum-20261004-v1",
+        "limits": {
+          "seconds": 14400,
+          "bytes": 2000000000,
+          "render": 288,
+          "ai": 512,
+          "dsp": 768,
+          "teacher": 0,
+          "train": 0,
+          "inverse": 0,
+          "download": 0,
+          "setup": 50,
+          "audit": 50
+        },
+        "counts": {
+          "setup": 8,
+          "audit": 1
+        },
+        "start_seconds": 1800.0006639957428,
+        "protocol_sha256": "9f305e4670655fbf170fc809262fb17c7f01252d4f6b7bc5da8f20cb4a3cef6e",
+        "payload_bytes": 3706395,
+        "closed": true,
+        "end_seconds": 3008.2346699237823
+      },
+      "partial-spectrum-v2": {
+        "prefix": "campaigns/nas-partial-spectrum-20261004-v2",
+        "limits": {
+          "seconds": 14400,
+          "bytes": 2000000000,
+          "render": 384,
+          "ai": 512,
+          "dsp": 800,
+          "teacher": 0,
+          "train": 0,
+          "inverse": 0,
+          "download": 0,
+          "setup": 50,
+          "audit": 100
+        },
+        "counts": {
+          "setup": 11,
+          "render": 370,
+          "dsp": 793,
+          "audit": 4,
+          "ai": 384
+        },
+        "start_seconds": 3008.2357239723206,
+        "protocol_sha256": "9f305e4670655fbf170fc809262fb17c7f01252d4f6b7bc5da8f20cb4a3cef6e",
+        "payload_bytes": 125237110,
+        "closed": false
+      }
+    },
+    "jobs": {},
+    "payload_bytes": 128965028,
+    "seconds": 4333.192620038986,
+    "write_bytes": 446640392,
+    "session": {
+      "id": "fc0d000785c54b229a06ff5e73daf20f",
+      "checkpoint": 1791118673.960843
+    },
+    "created_epoch": 1791116140.7660968,
+    "closed": false
+  },
+  "local_counts": {
+    "setup": 11,
+    "render": 370,
+    "dsp": 793,
+    "audit": 4,
+    "ai": 384
+  },
+  "local_seconds_so_far": 1324.9568960666656,
+  "technical_failed_jobs": [
+    {
+      "event": "finish",
+      "id": "abe0a2b93237490b88309b4c50258c5d",
+      "campaign": "partial-spectrum-v2",
+      "kind": "setup",
+      "label": "起動時の旧budget名前衝突（生成前）",
+      "count": 1,
+      "reserve_bytes": 0,
+      "status": "failed",
+      "pid": 64366,
+      "started_epoch": 1791117762.8558779,
+      "error": "RuntimeError('生成前のimport不通過を台帳へ保持')",
+      "finished_epoch": 1791117762.858952
+    },
+    {
+      "event": "finish",
+      "id": "ea80991b66184163bab8cd0144fac4a9",
+      "campaign": "partial-spectrum-v2",
+      "kind": "dsp",
+      "label": "runtime E0 isolated/spectral-fresh-00/neutral/native",
+      "count": 1,
+      "reserve_bytes": 0,
+      "status": "failed",
+      "pid": 65398,
+      "started_epoch": 1791117891.801088,
+      "error": "CalledProcessError(71, ['/usr/bin/sandbox-exec', '-f', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/isolation.sb', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-I', '-B', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/runtime-bundle/runtime.py', '--text', '花が揺れる。', '--method', 'native', '--speed', '1.0', '--pitch', '220.0', '--output', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/runtime-check/isolated/spectral-fresh-00/neutral/native.wav'])",
+      "finished_epoch": 1791117891.903019
+    },
+    {
+      "event": "finish",
+      "id": "5159ab8139bd4c2ebf39e40eecd35548",
+      "campaign": "partial-spectrum-v2",
+      "kind": "render",
+      "label": "runtime isolated/spectral-fresh-00/neutral/native",
+      "count": 2,
+      "reserve_bytes": 0,
+      "status": "failed",
+      "pid": 65398,
+      "started_epoch": 1791117891.800572,
+      "error": "CalledProcessError(71, ['/usr/bin/sandbox-exec', '-f', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/isolation.sb', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-I', '-B', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/runtime-bundle/runtime.py', '--text', '花が揺れる。', '--method', 'native', '--speed', '1.0', '--pitch', '220.0', '--output', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/runtime-check/isolated/spectral-fresh-00/neutral/native.wav'])",
+      "finished_epoch": 1791117891.903648
+    }
+  ],
+  "active_jobs": 0,
+  "unfinished_process_handles": 0,
+  "new_downloads": 0,
+  "teacher_calls": 0,
+  "fits": 0,
+  "ai_new": 384,
+  "ai_reused": 128,
+  "renders": 370,
+  "DSP_attempts": 793,
+  "successful_runtime_renders": 48,
+  "runtime_nested_sandbox_failed_render_attempts": 2,
+  "limits_not_raised_after_start": true,
+  "note": "包括時間は初期管理30分の保守的加算を含む。seal/報告/台帳の終了書込は以後にも計数する。"
+}

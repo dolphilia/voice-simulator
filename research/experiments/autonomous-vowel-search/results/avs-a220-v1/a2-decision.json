@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "avs-a220-v1",
+  "decision": "do-not-freeze-a3-yet",
+  "completed": {
+    "inventory_candidates": 46,
+    "hash_verified_candidates": 46,
+    "candidates_with_listening_evidence": 24,
+    "sensitivity_settings": 11,
+    "sensitivity_renders": 33,
+    "reference_speakers": 4,
+    "reference_comparisons": 132,
+    "holdout_opened": false
+  },
+  "evidence": [
+    "all 33 pilot renders passed engineering constraints",
+    "f0_std_fraction clearly changes HNR, CPP, and several spectral diagnostics",
+    "amplitude_std_db and f0_amplitude_correlation effects are mostly comparable to within-setting seed spread",
+    "measurement adapter 1.0.0 omitted estimates.f0_hz when flattening the feature bundle, so the stored F0 column is invalid; direct qualification found 77/77 B9 frames available",
+    "the B10-scale f0 variation improves median pitch_voicing target similarity but worsens the worst resonance and signal-integrity similarities",
+    "existing listening evidence prefers B9 over B10, so maximizing the current pitch proxy can reverse a known perceptual direction",
+    "source_voice_quality target similarity is nearly saturated across settings and is not sufficiently discriminative for selection"
+  ],
+  "parameter_decisions": {
+    "f0_std_fraction": "retain as a measurable diversity axis, but do not optimize monotonically toward the current pitch score",
+    "amplitude_std_db": "retain for ablation; do not allocate a dense search until its effect exceeds seed variability",
+    "f0_amplitude_correlation": "retain as a diversity axis only",
+    "spectral_tilt_lowpass_hz": "remain fixed because range provenance is missing",
+    "variation_lowpass_hz": "remain fixed because range provenance is missing"
+  },
+  "required_before_a3": [
+    "rerun A1 through A2b with measurement adapter 1.0.1 and preserve v1 as superseded evidence",
+    "add time-structure targets whose reference distributions and estimator meanings are compatible",
+    "define candidate objectives that preserve known B9-over-B10 perceptual direction without treating it as a universal score",
+    "freeze the revised objective and its regression before generating 64 settings"
+  ],
+  "parallel_next_work": [
+    "prepare an onset-specific G40 measurement contract and sensitivity campaign",
+    "keep longitudinal listening and autonomous engineering work independent"
+  ],
+  "resource_cap_basis": {
+    "measured_mean_render_and_extract_sec": 0.030186438121635354,
+    "measured_mean_wav_bytes": 153658.0,
+    "configured_wall_time_sec": 300,
+    "configured_storage_bytes": 134217728,
+    "note": "caps include substantial margin for reference comparisons and reporting; reaching a cap stops rather than expands the campaign"
+  },
+  "a2_campaign_config_sha256": "59117b6ffc9786323eaa9d77b8e47eebc698b76f5783becfd9c8503bd88c0531",
+  "superseded_measurement_field": {
+    "feature": "f0_hz",
+    "cause": "adapter 1.0.0 did not copy FeatureBundle.estimates.f0_hz.value into values",
+    "scope": "stored f0_hz values and availability only; raw audio and other scalar features remain available",
+    "replacement_campaign_id": "avs-a220-v1.1"
+  },
+  "perceptual_claim_allowed": false
+}

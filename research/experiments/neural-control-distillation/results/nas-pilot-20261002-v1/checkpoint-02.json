@@ -1,0 +1,104 @@
+{
+  "created_epoch": 1790942516.634824,
+  "goal_status": "pilot比較・監査・移出済み。最終品質目標は未達",
+  "elapsed_seconds": 3231.620059967041,
+  "counts": {
+    "teacher": 32,
+    "render": 307,
+    "ai": 299,
+    "train": 1,
+    "setup": 50,
+    "audit": 8
+  },
+  "failed": [
+    {
+      "id": "65961b839fd2440ba8228b3ec30803d1",
+      "kind": "setup",
+      "label": "教師読み込み・前段検査",
+      "error": {
+        "error": "ModuleNotFoundError(\"No module named 'attr'\")"
+      }
+    },
+    {
+      "id": "cbe946285e7d4532a9d14d82595e5a60",
+      "kind": "setup",
+      "label": "教師重みの完全読込検査",
+      "error": {
+        "error": "ValueError('教師の重み読込が完全一致しません: predictor')"
+      }
+    },
+    {
+      "id": "e0036fed78954469b9cb3334b317a0c5",
+      "kind": "setup",
+      "label": "教師読み込み・前段検査",
+      "error": {
+        "error": "ValueError(\"教師の重み読込が完全一致しません: predictor, missing=[], extra=['F0.0.norm1.norm.bias', 'F0.0.norm1.norm.weight', 'F0.0.norm2.norm.bias', 'F0.0.norm2.norm.weight', 'F0.1.norm1.norm.bias', 'F0.1.norm1.norm.weight', 'F0.1.norm2.norm.bias', 'F0.1.norm2.norm.weight', 'F0.2.norm1.norm.bias', 'F0.2.norm1.norm.weight', 'F0.2.norm2.norm.bias', 'F0.2.norm2.norm.weight', 'N.0.norm1.norm.bias', 'N.0.norm1.norm.weight', 'N.0.norm2.norm.bias', 'N.0.norm2.norm.weight', 'N.1.norm1.norm.bias', 'N.1.norm1.norm.weight', 'N.1.norm2.norm.bias', 'N.1.norm2.norm.weight', 'N.2.norm1.norm.bias', 'N.2.norm1.norm.weight', 'N.2.norm2.norm.bias', 'N.2.norm2.norm.weight'], changed=[]\")"
+      }
+    },
+    {
+      "id": "557290be0d5840018ab72e3160e2331d",
+      "kind": "render",
+      "label": "selection-02/fit-0",
+      "error": {
+        "error": "IndexError('index 0 is out of bounds for axis 0 with size 0')"
+      }
+    },
+    {
+      "id": "6a1aa4ee74fa4fe8a5a542e0728a29d4",
+      "kind": "setup",
+      "label": "教師の分離依存を導入",
+      "error": {
+        "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-m', 'pip', 'install', '--no-cache-dir', '--no-deps', '--target', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/.cache/packages', 'pyworld==0.3.5'], \"Collecting pyworld==0.3.5\\n  Downloading pyworld-0.3.5.tar.gz (261 kB)\\n  Installing build dependencies: started\\n  Installing build dependencies: finished with status 'done'\\n  Getting requirements to build wheel: started\\n  Getting requirements to build wheel: finished with status 'done'\\n  Preparing metadata (pyproject.toml): started\\n  Preparing metadata (pyproject.toml): finished with status 'done'\\nBuilding wheels for collected packages: pyworld\\n  Building wheel for pyworld (pyproject.toml): started\\n  Building wheel for pyworld (pyproject.toml): finished with status 'error'\\nFailed to build pyworld\\n\", \"  error: subprocess-exited-with-error\\n  \\n  × Building wheel for pyworld (pyproject.toml) did not run successfully.\\n  │ exit code: 1\\n  ╰─> [73 lines of output]\\n      running bdist_wheel\\n      running build\\n      running build_py\\n      creating build/lib.macosx-15.0-arm64-cpython-311/pyworld\\n      copying pyworld/__init__.py -> build/lib.macosx-15.0-arm64-cpython-311/pyworld\\n      running build_ext\\n      Compiling pyworld/pyworld.pyx because it changed.\\n      [1/1] Cythonizing pyworld/pyworld.pyx\\n      building 'pyworld.pyworld' extension\\n      clang++ -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -I/opt/homebrew/opt/llvm@19/include -I/opt/homebrew/opt/llvm@19/include -Ilib/World/src -I/private/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/pip-build-env-yzhh3hdo/overlay/lib/python3.11/site-packages/numpy/_core/include -I/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/include -I/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/include/python3.11 -c lib/World/src/cheaptrick.cpp -o build/temp.macosx-15.0-arm64-cpython-311/lib/World/src/cheaptrick.o\\n      In file included from lib/World/src/cheaptrick.cpp:10:\\n      In file included from /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:380:\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:143:30: error: unknown type name 'ldiv_t'\\n        143 | inline _LIBCPP_HIDE_FROM_ABI ldiv_t div(long __x, long __y) _NOEXCEPT { return ::ldiv(__x, __y); }\\n            |                              ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:143:82: error: no member named 'ldiv' in the global namespace\\n        143 | inline _LIBCPP_HIDE_FROM_ABI ldiv_t div(long __x, long __y) _NOEXCEPT { return ::ldiv(__x, __y); }\\n            |                                                                                ~~^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:145:30: error: unknown type name 'lldiv_t'\\n        145 | inline _LIBCPP_HIDE_FROM_ABI lldiv_t div(long long __x, long long __y) _NOEXCEPT { return ::lldiv(__x, __y); }\\n            |                              ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/stdlib.h:145:93: error: no member named 'lldiv' in the global namespace\\n        145 | inline _LIBCPP_HIDE_FROM_ABI lldiv_t div(long long __x, long long __y) _NOEXCEPT { return ::lldiv(__x, __y); }\\n            |                                                                                           ~~^\\n      In file included from lib/World/src/cheaptrick.cpp:10:\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:31: error: use of undeclared identifier 'FP_NAN'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:39: error: use of undeclared identifier 'FP_INFINITE'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:52: error: use of undeclared identifier 'FP_NORMAL'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:392:77: error: use of undeclared identifier 'FP_ZERO'\\n        392 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:31: error: use of undeclared identifier 'FP_NAN'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:39: error: use of undeclared identifier 'FP_INFINITE'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:52: error: use of undeclared identifier 'FP_NORMAL'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:397:77: error: use of undeclared identifier 'FP_ZERO'\\n        397 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:31: error: use of undeclared identifier 'FP_NAN'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:39: error: use of undeclared identifier 'FP_INFINITE'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                       ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:52: error: use of undeclared identifier 'FP_NORMAL'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                    ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:63: error: use of undeclared identifier 'FP_SUBNORMAL'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                               ^\\n      /opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/math.h:402:77: error: use of undeclared identifier 'FP_ZERO'\\n        402 |   return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, __x);\\n            |                                                                             ^\\n      fatal error: too many errors emitted, stopping now [-ferror-limit=]\\n      20 errors generated.\\n      error: Command '['clang++', '-Wsign-compare', '-Wunreachable-code', '-fno-common', '-dynamic', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-I/opt/homebrew/opt/llvm@19/include', '-I/opt/homebrew/opt/llvm@19/include', '-Ilib/World/src', '-I/private/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/pip-build-env-yzhh3hdo/overlay/lib/python3.11/site-packages/numpy/_core/include', '-I/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/include', '-I/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/include/python3.11', '-c', 'lib/World/src/cheaptrick.cpp', '-o', 'build/temp.macosx-15.0-arm64-cpython-311/lib/World/src/cheaptrick.o']' returned non-zero exit status 1.\\n      [end of output]\\n  \\n  note: This error originates from a subprocess, and is likely not a problem with pip.\\n  ERROR: Failed building wheel for pyworld\\n\\n[notice] A new release of pip is available: 24.2 -> 26.2.1\\n[notice] To update, run: /Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python -m pip install --upgrade pip\\nERROR: ERROR: Failed to build installable wheels for some pyproject.toml based projects (pyworld)\\n\")"
+      }
+    },
+    {
+      "id": "48b002ef576d47cc98db0264fbeb9d2d",
+      "kind": "render",
+      "label": "HMM未知文/direct_non_neural-0-normal",
+      "error": {
+        "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-I', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py', '--text', '赤い傘を閉じる。', '--model', 'direct_non_neural', '--output', '/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-runtime-audit/direct_non_neural-0-normal.wav'], '', 'Traceback (most recent call last):\\n  File \"/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py\", line 53, in <module>\\n    if __name__==\\'__main__\\':main()\\n                            ^^^^^^\\n  File \"/Users/dolphilia/github/voice-simulator/research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-bundle/hts_runtime.py\", line 39, in main\\n    if not evaluation[\\'E0_pass\\']:raise ValueError(\\'生成波形の工学条件を満たしません\\')\\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nValueError: 生成波形の工学条件を満たしません\\n')"
+      }
+    },
+    {
+      "id": "9ec5c1afdc7b44548f45af1103d52e22",
+      "kind": "ai",
+      "label": "hts-runtime-content/direct_non_neural/runtime-00",
+      "error": {
+        "error": "AttributeError(\"'str' object has no attribute 'transcribe'\")"
+      }
+    }
+  ],
+  "pending": [],
+  "pending_note": "台帳だけでプロセス生存を断定しない。ツールのsessionまたはOSプロセスを別途確認する",
+  "inventory": {
+    "bytes": 879926414,
+    "files": 2536,
+    "seconds": 0.1092605828307569
+  },
+  "evidence": {
+    "teacher-provenance.json": true,
+    "teacher-load-verification.json": true,
+    "splits.json": true,
+    "control-schema.json": true,
+    "protocol.json": true,
+    "teacher-controls-v2.json": true,
+    "renderer-qualification.json": true,
+    "fit-qualification.json": true,
+    "acoustic-repair-audit.json": true,
+    "model-selection.json": true,
+    "runtime-audit.json": true,
+    "main-comparison-summary.json": true,
+    "hts-runtime-audit-v2.json": true,
+    "extended-comparison-summary-v2.json": true,
+    "completion-audit.json": true
+  },
+  "fitted_utterances": 24,
+  "completed_comparison_renders": 72,
+  "completed_content_evaluations": 144,
+  "next": [
+    "日本語HMM/VTLへの知覚評価の適用資格を調べる",
+    "VOT/局所遷移を実波形から測る独立な整列方法を設計する",
+    "次の比較は新しい文・文脈・教師/自然参照と費用契約を固定し、同じ監査資料で再調整しない",
+    "現campaignはAI評価299/300。上限・campaign数を自動延長しない"
+  ]
+}

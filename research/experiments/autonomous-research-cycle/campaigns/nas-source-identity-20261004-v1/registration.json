@@ -1,0 +1,67 @@
+{
+  "question": "スペクトル・時間・LF0を元のまま、混合励起LPFだけを単位インパルスへ置換すると内容保護と有声支持が両立するか",
+  "causal_change": "3streamを保持し、各LPFフレームの中央1・他0。元LPFを対照。MCP全係数/LF0/状態時間/MSD/alpha/beta/volume/初期seedを固定",
+  "why_next": "共有LF0関数の追加微調整は切り替える。旧完全平坦＋LPFなしは包絡と遅延/乱数経路も変わるため、元包絡の励起単独因果対照ではなかった",
+  "hypothesis": "一部のDIO欠損は混合励起で調波が弱くなることに由来し、単位LPFで有声パルスを明確にすると元包絡の内容を保って回復できるかもしれない。内容や知覚改善は未保証",
+  "official_source": "https://github.com/r9y9/hts_engine_API/blob/214e26dfb7f728ff9db39c14a59db709abcc121d/src/lib/HTS_vocoder.c",
+  "source_version": "pyopenjtalk0.4.1の旧provenanceと対応するHTS submodule。今回ソースを取得して確認。masterとは混同しない",
+  "source_claim_scope": "同じ3streamとLPF長を保持するため元のring長/遅延と毎sampleのwhite_noise呼出経路を保持する設計。内部乱数stateそのものは未計測。境界の履歴影響を除去して評価しない",
+  "self_test": "旧既知文を全無声LF0で2生成し、元LPF/単位LPFの同波形を要求。これは励起の工学検査で知覚資格ではない",
+  "variants": [
+    "native",
+    "direct_non_neural",
+    "neural",
+    "distilled_non_neural",
+    "direct_prosody",
+    "distilled_prosody"
+  ],
+  "models": "旧16特徴/NNと固定4係数を再使用。追加fit/教師/逆推定0",
+  "gain": "同row/同methodの元LPF baselineのgainを候補へ固定。candidate peak再正規化は禁止。runtimeはbaselineとcandidate2生成してgainを再現",
+  "input_policy": "prosody-fresh8は診断再利用。candidate_poolから文字/全context label未使用の先頭短4/長4を生成前選定しprotocol固定。候補poolだけの前段解析は確認生成ではない。固定後差替なし",
+  "candidate_pool_short": [
+    "雲が流れる。",
+    "笛を磨く。",
+    "豆を量る。",
+    "網を編む。",
+    "竹を削る。",
+    "桃を包む。",
+    "窓を拭く。",
+    "貝が開く。"
+  ],
+  "candidate_pool_long": [
+    "夜の台所で小さな鍋に水を注ぎゆっくり火を弱めました。",
+    "川沿いの道を歩き青い屋根の店で甘い菓子を買いました。",
+    "雨上がりの庭で落ちた葉を集め竹のかごに入れました。",
+    "駅前の階段を上り広い歩道の端で白い車を待ちました。",
+    "明るい部屋で木の箱に丸い石と細いひもを並べました。",
+    "午前の市場で黄色い果物を選び紙の袋に入れて帰りました。"
+  ],
+  "content": "固定二ASR21群×2cohort、同method元LPF対照と標準baseline対照を別集計。全文字/整数差<=0/欠損拒否。閾値変更なし",
+  "engineering": "固定baseline native支持、F0差5%/活動長3%/E0/全stream固定とLPF式/戻しを監査。DIO資格不足を品質認定へ昇格しない",
+  "runtime": "標準+直接16+学生16+直接4+学生4の5非NN方法×新短/長各1×2指定=20通常/隔離組。40実行80render、教師/NN/保存軌道/旧研究/networkをOS拒否",
+  "planned_renders": {
+    "diagnostic": 384,
+    "unvoiced_self_test": 2,
+    "runtime": 80,
+    "total": 466
+  },
+  "planned_DSP": 1192,
+  "AI_max": 1000,
+  "retry": "技術2/job10/campaign。科学条件の事後変更なし。失敗を計数",
+  "stop": "入力固定後衝突/依存不足/旧baseline不一致/指定外stream変更/clip非有限で停止し別経路。全予算上限維持",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 512,
+    "dsp": 1280,
+    "ai": 1000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 200000,
+    "setup": 60,
+    "audit": 100
+  },
+  "quality_certified": false,
+  "previous_summary_sha256": "249333b662fd898a988bdbb98e06b9ef3980dc33c00bfd45fb5e0e3d7dc833d0"
+}

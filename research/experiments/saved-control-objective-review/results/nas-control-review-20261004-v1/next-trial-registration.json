@@ -1,0 +1,403 @@
+{
+  "registered_trials": 1,
+  "executed": false,
+  "old_primary_gates_changed": false,
+  "independent_confirmation_claimed": false,
+  "id": "nas-partial-spectrum-20261004-v1",
+  "title": "固定部分スペクトル平滑化と内容保持の直交比較",
+  "question": "同じ時刻/LF0で包絡を弱めたときF0支持と内容保持が共に変化するか。直接/NN/学生/標準の差を区別する",
+  "changed_factor": {
+    "name": "MCP非零次数の一様倍率",
+    "baseline": 1.0,
+    "candidate": 0.75,
+    "formula": "フレームごとにc0は同一、k>=1はc_new[k]=0.75*c_old[k]",
+    "reason": "完全平坦alpha0と元alpha1の間を一つだけ固定。性能予測で選んだ値ではない。alpha探索なし",
+    "caveat": "c0固定でも実RMS/peakは変わり得る。測定し音量正規化で救済しない"
+  },
+  "controls": {
+    "methods": [
+      "native",
+      "direct_non_neural",
+      "neural",
+      "distilled_non_neural"
+    ],
+    "models": "saved_shared凍結3モデル、直接/学生16係数、fit0",
+    "renderer": "同じHTS voice/front end/vocoder、既存shimは改変しない。新hook以外hash固定",
+    "fixed": [
+      "全text/読み/ラベル",
+      "duration/MSD",
+      "投影後全LF0",
+      "LPF",
+      "MCP c0",
+      "sample/frame period",
+      "seed/volume/出力処理"
+    ],
+    "conditions": "各入力のrequestsをそのまま全制御/両包絡に適用",
+    "baseline_gate": "旧8×2条件×4制御=64のalpha1が旧WAVと全stream/時刻bit一致してからcandidate/新文を開始"
+  },
+  "inputs": [
+    {
+      "id": "wave-new-00",
+      "text": "泡が消える。",
+      "length": "short",
+      "challenge_group": 0,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-01",
+      "text": "枝を束ねる。",
+      "length": "short",
+      "challenge_group": 1,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-02",
+      "text": "鈴が鳴る。",
+      "length": "short",
+      "challenge_group": 2,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-03",
+      "text": "種をまく。",
+      "length": "short",
+      "challenge_group": 3,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-04",
+      "text": "夕方の庭で青い椅子を日陰へ動かしました。",
+      "length": "long",
+      "challenge_group": 0,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-05",
+      "text": "坂の途中にある小さな店で温かい豆乳を買いました。",
+      "length": "long",
+      "challenge_group": 1,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-06",
+      "text": "冬の海岸で白い貝殻を拾い布の袋に入れました。",
+      "length": "long",
+      "challenge_group": 2,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "wave-new-07",
+      "text": "玄関の前に届いた荷物を静かに部屋へ運びました。",
+      "length": "long",
+      "challenge_group": 3,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "legacy_diagnostic"
+    },
+    {
+      "id": "spectral-fresh-00",
+      "text": "花が揺れる。",
+      "length": "short",
+      "challenge_group": 0,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-01",
+      "text": "羽を広げる。",
+      "length": "short",
+      "challenge_group": 1,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-02",
+      "text": "梨を洗う。",
+      "length": "short",
+      "challenge_group": 2,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-03",
+      "text": "布を畳む。",
+      "length": "short",
+      "challenge_group": 3,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-04",
+      "text": "朝の台所で赤い皿に焼いた野菜を並べました。",
+      "length": "long",
+      "challenge_group": 0,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-05",
+      "text": "細い橋を渡り川の向こうにある古い図書館へ歩きました。",
+      "length": "long",
+      "challenge_group": 1,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 180.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-06",
+      "text": "窓の外で雨が止んだので庭に置いた鉢を動かしました。",
+      "length": "long",
+      "challenge_group": 2,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 0.85
+        }
+      },
+      "cohort": "prospective_once"
+    },
+    {
+      "id": "spectral-fresh-07",
+      "text": "電車を降りて駅の近くの広場で友達を待ちました。",
+      "length": "long",
+      "challenge_group": 3,
+      "requests": {
+        "neutral": {
+          "requested_f0": 220.0,
+          "speed": 1.0
+        },
+        "challenge": {
+          "requested_f0": 260.0,
+          "speed": 1.15
+        }
+      },
+      "cohort": "prospective_once"
+    }
+  ],
+  "source_protocol": {
+    "path": "research/experiments/saved-shared-control-evaluation/results/nas-saved-shared-eval-20261003-v1/protocol.json",
+    "sha256": "ad51f56736adbff5ccf70fa10be7c11382c3ffff09aa36fbcf424d327967b54d"
+  },
+  "design": {
+    "texts": 16,
+    "cohorts": 2,
+    "conditions": 2,
+    "methods": 4,
+    "envelopes": 2,
+    "diagnostic_waves": 256,
+    "isolation_pairs": 12,
+    "isolation_render_calls": 24,
+    "isolation": "fresh00/fresh04 ×2条件×native/直接/学生。candidateの通常12/隔離12を別計数しtextのみから生成",
+    "no_interim_fresh_analysis": true
+  },
+  "evaluation": {
+    "content": "全256波形×二ASR、最大512新calls。旧baselineはWAVhash/engine/settings/正規化が一致する保存ASRだけ再利用。hit/miss別記、浮いた枠は使用しない",
+    "comparisons": "cohort/method別に.75対1。各cohortの全/短/長/4challenge群×neutral/challenge/combined=21群で各ASR編集距離差<=0。直接/学生.75対native1も別判定。群/文字分母は生成前固定、欠損reject",
+    "acoustic": "既存DIO全256一回。baselineだけで固定した旧支持/MSE閾値、全境界誤り/欠損/偽有声、globalF0/duration/E0/saturationを保持。短イベントは限定診断",
+    "technical": "finite/E0/saturation、全duration/LF0/MSD/LPF/c0同一、MCP式一致、RMS/peak、12隔離bit一致",
+    "success": "候補ごとに二ASR全群・旧工学/支持を全て満たす場合だけ研究継続を支持。F0のみや一ASRのみで採択しない",
+    "quality": "自然さ/独立最終品質はこの枠で認定しない"
+  },
+  "complexity": {
+    "new_fit_parameters": 0,
+    "new_renderer_scalar": 1,
+    "utterance_tables": 0,
+    "neural_final_runtime": false,
+    "final_bundle_budget_bytes": 2000000
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 250000000,
+    "render": 288,
+    "planned_render": 280,
+    "ai": 512,
+    "dsp_measurements": 256,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "retries": 0,
+    "paid_api": false,
+    "new_environment": false,
+    "automatic_extension": false
+  },
+  "stop_rules": [
+    "freshの全既知履歴照合でtext/label重複、未解決読み、群不足なら生成前停止。事後文差替えなし",
+    "旧64baselineのbit不一致なら停止",
+    "依存/モデル不足なら取得/インストールせず停止",
+    "指定外stream/時刻変化、nonfinite/clipなら失敗を保持して停止",
+    "予約前/後の実容量/時間/calls上限で停止。失敗attempt計数、再試行/自動延長0",
+    "支持/CER不合格は候補不採択。境界/支持域/alpha/読み/群を変えて救済しない",
+    "fresh独立性未解決なら一般化確認扱い禁止。保護された未使用確認を開封しない",
+    "全参照/コード/群を凍結、排他・符号化後容量予約・外部変更検出・終了封印。終了後追加実行0"
+  ],
+  "novelty_audit": {
+    "checked": "100凍結参照のtext値と15campaign比較",
+    "normalized_history_texts": 90,
+    "fresh_exact_collisions": 0,
+    "all_history_audit_completed": false,
+    "draft_rejection": "霧が晴れる。はlocal_projectionで既出のため登録前に除外。生成0",
+    "existing": [
+      "global F0/長さfactorial",
+      "局所状態→フレーム射影",
+      "波形逆推定/共有目標fit",
+      "MCP c1+全消去alpha0/LPF無効",
+      "短イベント三方式"
+    ],
+    "difference": "一つの中間alpha .75と二ASR内容の直交比較は保存対象で未実施。旧欠損選択18行だけでなく全8×2×4とfresh8を使う",
+    "independence_procedure": "次枠開始前に既に観測済みの全manifest履歴をhash付きで照合しfresh重複/読み/文脈を監査、全モデル/係数/群を固定。freshは一度生成、ASR後調整なし。未使用保護群は対象外。独立性をいま確定とは主張しない"
+  },
+  "paths_considered": [
+    {
+      "path": "イベント時刻/F0分離共有制御",
+      "decision": "今回は見送る",
+      "reason": "教師イベント境界未資格、時間伸長と検出の交絡。研究禁止にはしない"
+    },
+    {
+      "path": "音源/フィルタ一要素",
+      "decision": "今回登録",
+      "reason": "LF0固定の平坦化で5欠損回復。内容未評価の穴を一つの固定倍率で調べる"
+    },
+    {
+      "path": "文脈/時間表現拡張蒸留",
+      "decision": "今回は見送る",
+      "reason": "NNtrain優位はあるがNN自身も未知文内容未支持。容量だけを失敗原因にせず機構比較を先に行う"
+    }
+  ],
+  "current_campaign_execution_calls": 0
+}

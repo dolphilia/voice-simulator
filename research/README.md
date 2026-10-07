@@ -51,6 +51,8 @@ experiments/<experiment-name>/
 
 2026-08-13 時点までの調査、解析、数値実験、Web プロトタイプを横断した評価は、[`docs/note/research-review-2026-08-13.md`](../docs/note/research-review-2026-08-13.md) にまとめています。
 
+人の逐次試聴を必須にせず、非ニューラル生成と研究側のAI評価を組み合わせる2026-10-02の提案は、[再調査メモ](../docs/note/autonomous-non-neural-speech-research-2026-10-02.md)と[実装・検証計画](../docs/plans/autonomous-non-neural-speech-plan-2026-10-02.md)を参照してください。既存の凍結結果・知覚評価を保持し、別の自動検証契約で研究を進める計画です。 実装と初回3 campaignの結果は[実行報告](../docs/note/autonomous-non-neural-speech-execution-report-2026-10-02.md)に保存しています。生成の独立性は検証済みですが、品質目標は未達です。[追加検証](../docs/note/autonomous-non-neural-speech-followup-2026-10-02.md)を含む途中経過は4 campaign・2,596レンダーです。[サイクル終了結果](../docs/note/autonomous-non-neural-speech-cycle-result-2026-10-02.md)では、計画上限の6 campaign・2,730台帳レンダーを完了し、品質未達で終了しています。
+
 ## Notebook の選択基準
 
 次のような場合は Notebook が適しています。
@@ -104,3 +106,19 @@ jupyter notebook
 ```
 
 各音声ファイルの由来は、既存の `data/sample-index.csv` または各実験の `README.md` で管理します。
+
+## 大容量データの保存先
+
+2026-10-06以降は、[承認済みの外部保存・容量追補](../docs/plans/autonomous-research-external-storage-amendment-2026-10-06.md)に従い、今後の大容量音声・解析配列・研究用モデルを `/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/` に保存します。コード、主資料、計画、台帳、メタデータとhash一覧は内蔵に残します。包括研究サイクルでは `StorageBudget` を使い、専用領域の識別と両保存先の予約・監査を共有します。メディアが利用できない場合は停止し、内蔵へ自動的に代替保存しません。旧封印済み成果は従来の場所に保持します。[更新した継続実行指示](../docs/plans/autonomous-research-execution-prompt-2026-10-06.md)を参照してください。
+
+2026-10-08の既存データ移動指示は、[保存方針の追補](../docs/plans/repository-data-storage-amendment-2026-10-08.md)に記録しています。既存の大容量データも内容・論理パス・封印を保持したまま外部へ移し、元のファイルを個別のシンボリックリンクへ置き換えます。コード・文書・設定・台帳、仮想環境、展開済みライブラリ、小容量の最終モデルは内蔵に残します。従来のパスでデータを読むには指定メディアの接続が必要です。
+
+移動一覧・処理段階・SHA-256と最終照合結果は `storage-migrations/2026-10-08-v1/` に保存します。包括サイクルの位置台帳も更新しますが、研究の回数・既存論理容量・科学的結果は引き継ぎます。今後の独立性試験は、外部専用領域全体も参照データの読取禁止対象に含めます。
+
+## Gitで管理する研究成果
+
+コード・文書・実験契約・入力分割・集計結果・共有モデル係数・manifest・封印hash・回答はGitの追跡候補に残します。`control/state.json` と `control/jobs.jsonl` の予算・操作記録も保持します。
+
+音声・解析配列・研究用重み・取得アーカイブに加え、生成音声ごとの高密度なJSON、探索の全履歴、ASR個票などはデータとして保管し、Gitから除外します。対象は `.gitignore` に明示した出力ディレクトリ内に限り、`results/` やJSON全体を一括除外しません。コード、契約、集計JSON、manifest等は同じ実験の中でも残します。除外は実体の削除や科学的な封印の変更を意味しません。
+
+`control/files.sqlite` と移動台帳の `manifest.sqlite` は、ローカルのmtime・inode・外部保存先に依存する索引としてGitから除外します。実験再開や移動検証には引き続き必要なので、実体は内蔵に残し、研究データとともに別途保管します。移動前の端末状態と一時的な権限操作の記録もローカルに残します。移動の方針・結果・hash照合結果はGitの追跡候補に残します。

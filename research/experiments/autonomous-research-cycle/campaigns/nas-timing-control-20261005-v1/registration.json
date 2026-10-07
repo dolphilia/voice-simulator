@@ -1,0 +1,96 @@
+{
+  "question": "低次元スペクトル共有制御が3不通過となった場合、HMMの音素間時間配分をニューラル教師の予測時計から学ぶと内容・制御を非ニューラルへ移せるか。",
+  "alternatives": [
+    "少数の励振/AP/声門パラメータを比較",
+    "調音標的と遷移をVTLで再推定",
+    "音素時間を再配置して既存MLPGとWORLDを再実行"
+  ],
+  "rationale": "既存状態長は全spectral比較で固定されていた。教師とnativeの音素内時計の差を単独で調べる。新教師や逆推定を追加せず、公開教師予測の既存80整列文を再利用できる。",
+  "training": "coverage固定96文中の80整列・target受理文を条件付き既存資料として使う。16非同値/不足は履歴と分母96へ保持。内容ASRでtrain文を再選択しない。教師内部時間は音響GTではない。",
+  "target": "全spoken phoneの教師予測25ms単位長を、nativeの*.8..1.25/min5frames・総spoken時間native同一にwaterfill+整数最大剰余で配分。targetは割当済みphone_frames/native_framesのlog。sil/pauはnative固定。モデル出力から同制約の整数phone/5state時計を実行時に生成する。teacherのraw予測時計は音響GTではない。",
+  "models": "固定42phone onehot+16文脈特徴の58→1直接ridge、58→16tanh→16tanh→1研究NN、同58→1学生。各最終モデル58係数+116標準化値、発話IDなし。3fits、等発話重み、平均目的penalty10/17、NN500step/seed20261005。",
+  "runtime": "新C shimでMLPG前の状態durationだけ変更。状態means/variance/MSD/layout、voice/pitch/speed/settingsは保持。総frame数保持。WORLD既存変換、固定gain .25。音素長を5stateへ最低1frameで比例整数配分。実生成parameter波形の不変と時間変更を区別。",
+  "diagnostics": "旧8+出力前固定の新短8/長8。native/direct/NN/student×2指定×24診断=192波形。訓練80×5(native/direct/NN/student/oracle)=400波形は独立品質証拠ではない。oracleは訓練のみ。",
+  "evaluation": "固定両ASR全592波形、工学E0・変更時計でのDIO固定native支持・駆動LF0対応。新16の33群/旧8の21群、全欠損込み。学生対直接、NN対学生移行差。資格不足と自然さは区別。",
+  "final": "新16×2指定×native/direct/studentの96通常/隔離pair、192生成。NN/教師/旧資料/音声/訓練軌跡/学習資料/通信のOS実拒否。C shimと対応ヘッダ・ライブラリ版をhash固定。",
+  "planned": {
+    "teacher": 0,
+    "render": 792,
+    "ai": 1312,
+    "train": 3,
+    "inverse": 0,
+    "dsp": 2056
+  },
+  "proposed_limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "teacher": 0,
+    "render": 1000,
+    "ai": 2000,
+    "train": 6,
+    "inverse": 0,
+    "dsp": 3000,
+    "download": 0,
+    "setup": 100,
+    "audit": 100
+  },
+  "scientific_stop": "同経路3失敗で励振/調音へ切替。資格不足は品質主張保留、研究そのものの完了へ読み替えない。",
+  "status": "生成・学習前の実行登録",
+  "previous_summary_sha256": "a59b6da15e97fffd980e93a89af878adcad6b7d2820fa68bf176b526a4a36ad1",
+  "candidate_pool_short": [
+    "栗を拾う。",
+    "麦を刈る。",
+    "桶を置く。",
+    "帆を張る。",
+    "輪を回す。",
+    "札を並べる。",
+    "琴を弾く。",
+    "腕を伸ばす。",
+    "柱を立てる。",
+    "峰を越える。",
+    "窪みを埋める。",
+    "蓮が開く。",
+    "火花が散る。",
+    "瓶を振る。",
+    "岸に上がる。",
+    "溝を掘る。"
+  ],
+  "candidate_pool_long": [
+    "旅の途中で丸い石を見つけ、青い袋へ入れて家まで持ち帰りました。",
+    "朝の門を開け、白い雲が山の頂を隠す様子を静かに眺めました。",
+    "机の下で小さな鍵を拾い、隣の棚にある黒い箱へ入れました。",
+    "冷たい川の水に手を浸し、岸に座って濡れた靴を日なたへ置きました。",
+    "昼の畑で柔らかな土を掘り、細い苗を並べて根の周りに水をかけました。",
+    "広い部屋に丸い椅子を運び、壁の前へ二つずつ並べました。",
+    "木陰の道を歩くと鳥の声が聞こえ、遠くの池に白い羽が浮かんでいました。",
+    "棚の端にある重い瓶を取り、薄い布で表面を拭いて元の場所へ戻しました。",
+    "夕方の丘に立って灯りを数え、暗くなる前に坂をゆっくり下りました。",
+    "細い糸を針へ通して布を縫い、最後に小さな結び目を作りました。",
+    "駅の裏を歩いて古い店に入り、小さな皿と赤い布を買いました。",
+    "朝の風で旗が揺れ、丘を越えた人が白い帽子を手に持っていました。"
+  ],
+  "quality_certified": false,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "teacher": 0,
+    "render": 1000,
+    "ai": 2000,
+    "train": 6,
+    "inverse": 0,
+    "dsp": 3000,
+    "download": 0,
+    "setup": 100,
+    "audit": 100
+  },
+  "previous_seal_sha256": "17b0acfa53d82affc8d2e8f8cca41f4398e2a229236c86aef73cbd2f5bf0f6e0",
+  "route_switch": {
+    "previous_failures": 3,
+    "details": [
+      "中央50%目標gate不足",
+      "17文共有制御の未知文悪化群",
+      "96候補/80受理の共有制御で総誤り改善も悪化群残存"
+    ],
+    "new_primary_change": "HMM状態長だけ。状態平均/分散/MSD/voice/設定固定でMLPGを再生成。"
+  }
+}

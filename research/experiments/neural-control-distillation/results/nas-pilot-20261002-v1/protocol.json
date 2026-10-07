@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "teacher_cost_probe": {
+    "id": "development-00",
+    "seconds": 0.4226208331529051,
+    "duration_seconds": 1.775
+  },
+  "splits_sha256": "4f009bd3429fcf7ce4ebb4077f1a0d2b0ca104f8111455a18043e47bfe0ecf41",
+  "comparisons": [
+    "handwritten",
+    "reference_fitted",
+    "direct_non_neural",
+    "neural_control",
+    "distilled_non_neural"
+  ],
+  "primary_renderer": "VTL JD3",
+  "secondary_renderer": "既存の解析LF DSP、限定対照",
+  "controls": [
+    "音素継続長",
+    "音素ごとのF0標的"
+  ],
+  "free_fit": {
+    "max_renders_per_utterance": 32,
+    "parameters": [
+      "共有継続長倍率",
+      "共有F0倍率"
+    ],
+    "base": "教師の音素タイミングとF0分析。音素対応は厳密照合し、不一致を隠さない"
+  },
+  "model_limits": {
+    "neural": "最大2層、各64ユニット、最大2000 epoch、固定seed",
+    "direct": "ridge、共有特徴の2出力回帰",
+    "student": "同じridge特徴、または最大深さ4の決定木",
+    "ridge_alphas": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "student_extra_features": "位置の2次項と音素系列×位置。発話ID・音声特徴は禁止"
+  },
+  "selection": {
+    "unit": "文章の平均。音素数やseed数を独立例数としない",
+    "objective": "開発で標準化したlog継続長とlogF0の誤差。実音声の内容悪化を別途保護",
+    "audit_used_for_training_or_selection": false
+  },
+  "evaluation": {
+    "engineering": [
+      "有限値",
+      "クリップなし",
+      "無音でない",
+      "端点連続",
+      "再生成一致"
+    ],
+    "diagnostics": [
+      "実波形のF0",
+      "有声比率",
+      "長さ",
+      "帯域スペクトル",
+      "かなCER"
+    ],
+    "naturalness": "未資格の自動MOSは診断のみ。教師評点を人間の正解とみなさない",
+    "primary_losses": [
+      "F0誤差",
+      "発話長誤差"
+    ],
+    "content_protection": "かなCERの監査群集計が手書き規則より悪化した候補を採択しない",
+    "quality_margin": null,
+    "reason_margin_null": "知覚的非劣性幅の裏付けがない。診断上の改善と最終品質認定を分離"
+  },
+  "planned_counts": {
+    "teacher": 32,
+    "render": 1000,
+    "ai": 250
+  },
+  "hard_limits": {
+    "seconds": 14400,
+    "bytes": 3000000000,
+    "teacher": 48,
+    "render": 2000,
+    "ai": 300
+  },
+  "failure_policy": "原因と適用範囲を保存し自動分岐。欠損を成功値に置換せず、終わりのない探索へ延長しない",
+  "confirmation": "旧最終確認群を開封せず、6つの新規文を一度の監査へ使用する",
+  "completion": [
+    "教師来歴",
+    "分割",
+    "制御schema",
+    "実レンダラー比較",
+    "直接学習対照",
+    "ニューラル制御",
+    "蒸留制御",
+    "失敗例",
+    "時間容量台帳",
+    "単独実行の独立性検査"
+  ],
+  "success_claim": "非ニューラルへ移せた改善か、移行で失われる段階を特定する。品質達成は別途証拠が必要"
+}

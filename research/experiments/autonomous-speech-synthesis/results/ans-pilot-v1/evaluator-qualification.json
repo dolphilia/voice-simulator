@@ -1,0 +1,212 @@
+{
+  "version": "gate-v1",
+  "mandatory": [
+    "signal",
+    "content",
+    "perception",
+    "natural-reference-separation"
+  ],
+  "metrics": {
+    "signal": {
+      "status": "qualified",
+      "family": "nonlearned",
+      "scope": "数値破綻・全体無音・全体欠落。音素欠落検出は未資格"
+    },
+    "f0": {
+      "status": "qualified",
+      "family": "nonlearned",
+      "scope": "160/220/300 Hzの既知周期音、60ms以上"
+    },
+    "content": {
+      "status": "unavailable",
+      "family": "asr",
+      "reason": "独立した音素認識/CERの校正が必要"
+    },
+    "perception": {
+      "status": "diagnostic-only",
+      "family": "UTMOSv2",
+      "reason": "日本語物理合成の対応する公開評点による校正なし"
+    },
+    "natural-reference-separation": {
+      "status": "diagnostic-only",
+      "family": "nonlearned",
+      "reason": "帯域距離に自然さの閾値を設定しない"
+    }
+  },
+  "signal_thresholds": {
+    "peak_max": 0.99,
+    "absolute_dc_max": 0.01,
+    "rms_min": 1e-05,
+    "endpoint_max": 1e-06
+  },
+  "f0_relative_error_max": 0.03,
+  "f0_confidence_min": 0.65,
+  "noninferiority_margin": null,
+  "margin_reason": "校正資料が不足。自然さの採否に使用しない",
+  "fixtures": [
+    {
+      "name": "nan",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": false
+      }
+    },
+    {
+      "name": "infinite",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": false
+      }
+    },
+    {
+      "name": "clip",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": true,
+        "no_clipping": false,
+        "bounded_dc": true,
+        "not_silent": true,
+        "endpoint_continuity": true,
+        "complete_duration": true
+      }
+    },
+    {
+      "name": "dc",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": true,
+        "no_clipping": true,
+        "bounded_dc": false,
+        "not_silent": true,
+        "endpoint_continuity": false,
+        "complete_duration": true
+      }
+    },
+    {
+      "name": "silence",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": true,
+        "no_clipping": true,
+        "bounded_dc": true,
+        "not_silent": false,
+        "endpoint_continuity": true,
+        "complete_duration": true
+      }
+    },
+    {
+      "name": "missing",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": true,
+        "no_clipping": true,
+        "bounded_dc": true,
+        "not_silent": true,
+        "endpoint_continuity": false,
+        "complete_duration": false
+      }
+    },
+    {
+      "name": "endpoint",
+      "detected": true,
+      "checks": {
+        "nonempty": true,
+        "finite": true,
+        "no_clipping": true,
+        "bounded_dc": true,
+        "not_silent": true,
+        "endpoint_continuity": false,
+        "complete_duration": true
+      }
+    }
+  ],
+  "f0_sensitivity": [
+    {
+      "target_hz": 160,
+      "measured_hz": 159.70253415266188,
+      "confidence": 0.998618257040199,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": false,
+      "relative_error": 0.001859161545863186
+    },
+    {
+      "target_hz": 160,
+      "measured_hz": 160.16551925328224,
+      "confidence": 1.0,
+      "gain": 0.5,
+      "shift_samples": 17,
+      "resampled": false,
+      "relative_error": 0.0010344953330139184
+    },
+    {
+      "target_hz": 160,
+      "measured_hz": 159.70267405185666,
+      "confidence": 0.9986182290883111,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": true,
+      "relative_error": 0.0018582871758958674
+    },
+    {
+      "target_hz": 220,
+      "measured_hz": 219.94402379656495,
+      "confidence": 0.9996137603267379,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": false,
+      "relative_error": 0.0002544372883411805
+    },
+    {
+      "target_hz": 220,
+      "measured_hz": 220.1136968810867,
+      "confidence": 1.0,
+      "gain": 0.5,
+      "shift_samples": 17,
+      "resampled": false,
+      "relative_error": 0.0005168040049394751
+    },
+    {
+      "target_hz": 220,
+      "measured_hz": 219.94385792798417,
+      "confidence": 0.9996137244398273,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": true,
+      "relative_error": 0.0002551912364355813
+    },
+    {
+      "target_hz": 300,
+      "measured_hz": 299.5547272684662,
+      "confidence": 1.0,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": false,
+      "relative_error": 0.0014842424384460262
+    },
+    {
+      "target_hz": 300,
+      "measured_hz": 300.38175895769416,
+      "confidence": 0.9999999999999998,
+      "gain": 0.5,
+      "shift_samples": 17,
+      "resampled": false,
+      "relative_error": 0.001272529858980631
+    },
+    {
+      "target_hz": 300,
+      "measured_hz": 299.5546966209055,
+      "confidence": 0.999999866162089,
+      "gain": 1.0,
+      "shift_samples": 0,
+      "resampled": true,
+      "relative_error": 0.0014843445969817681
+    }
+  ]
+}

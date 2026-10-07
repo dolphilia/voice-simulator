@@ -1,0 +1,65 @@
+{
+  "counts": {
+    "setup": 14,
+    "render": 181,
+    "audit": 6,
+    "train": 3,
+    "ai": 128
+  },
+  "seconds_before_report": 1193.5860249996185,
+  "inventory_before_cost_audit": {
+    "bytes": 63653326,
+    "files": 675,
+    "seconds": 0.015567791881039739
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "render": 192,
+    "ai": 128,
+    "teacher": 0,
+    "train": 4
+  },
+  "source_download_bytes": 77527,
+  "failed_jobs": [
+    {
+      "event": "finish",
+      "id": "af4b05cf08844da18f78cc72ae180c07",
+      "status": "failed",
+      "seconds": 0.024750709533691406,
+      "details": {
+        "error": "URLError(gaierror(8, 'nodename nor servname provided, or not known'))"
+      }
+    },
+    {
+      "event": "finish",
+      "id": "f9697343d8d044f5a34a7ddc0fb3bd40",
+      "status": "failed",
+      "seconds": 0.33856725692749023,
+      "details": {
+        "error": "CalledProcessError(1, ['clang', '-dynamiclib', '-O2', '-undefined', 'dynamic_lookup', '-I/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/vendor', '/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/shim.c', '-o', '/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/local_hts.dylib'], '', \"In file included from /Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/shim.c:2:\\n/Users/dolphilia/github/voice-simulator/research/experiments/local-f0-transfer/vendor/HTS_engine.h:58:10: fatal error: 'stdio.h' file not found\\n   58 | #include <stdio.h>\\n      |          ^~~~~~~~~\\n1 error generated.\\n\")"
+      }
+    },
+    {
+      "event": "finish",
+      "id": "ff4b523aa8c646d3afa9430a8a9a7d21",
+      "status": "failed",
+      "seconds": 0.008999109268188477,
+      "details": {
+        "error": "ValueError('残差の内部範囲検査に不通過')"
+      }
+    }
+  ],
+  "all_jobs_finished": true,
+  "all_jobs_succeeded": false,
+  "failures_resolved": [
+    "ソース取得のネットワーク拒否→承認範囲の権限付き取得",
+    "既定clangのSDK不足→既存Apple clangで構築",
+    "無声状態のゼロ残差拒否→範囲を緩和せず別版で厳密一致再検査"
+  ],
+  "no_further_generation_evaluation_training": true,
+  "unused_render_calls": 11,
+  "unused_ai_calls": 0,
+  "unused_train_calls": 1,
+  "no_automatic_extension": true
+}

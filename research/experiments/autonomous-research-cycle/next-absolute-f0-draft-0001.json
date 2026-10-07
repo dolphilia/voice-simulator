@@ -1,0 +1,36 @@
+{
+  "question": "220/280という入力が実測Hzを表すよう、文章から生成するnative LF0の絶対水準を校正できるか。",
+  "conditional_on_third_timing_route_failure": true,
+  "current_post_mlpg_ASR_not_observed": true,
+  "existing_training_evidence": {
+    "N": 80,
+    "requested_neutral": 220,
+    "minimum_DIO": 277.2539934002453,
+    "median_DIO": 353.63192145079194,
+    "maximum_DIO": 402.88813976596987,
+    "new_DSP": 0,
+    "source_protocol_sha256": "f6dd432f922865ac05fdae622e2a6e209c3f41a0c81a715cbf530730aa202fb4",
+    "not_quality_qualification": true
+  },
+  "candidate": "nativeの時計/MCP/LPFを保持し、同じ文章から計算したnative LF0の有声値へ一律log偏移を与える。共有voiceからその場で生成した列の中央値を指定Hzへ合わせ、F0の相対輪郭は保持する。保存音声/発話ID/教師時刻/軌跡lookupは使わない。",
+  "causal_change": "時間配分の探索を止め、絶対F0指定だけを別要因として比較。新fit/NN/教師/逆推定0。",
+  "verification": "LF0有声mask/相対差・MCP/LPF・全state長を独立再確認。実波形DIOと別ACFの指定値応答、内容・native固定支持・欠損/全悪化群を評価。係数の言語化や駆動値一致だけで実波形F0の達成とはしない。",
+  "not_rescue": "前3時間比較の入力220/280は220基準半音指定で、旧結果をさかのぼってHz保証や合格へ変更しない。新F0校正の確認文・ゲートは初出力前に固定する。",
+  "choice_pending_current_comparison": true,
+  "alternatives": [
+    "励振/APの共有補正",
+    "音響整列による教師時計の資格点検"
+  ],
+  "budget_preliminary": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 600,
+    "ai": 1000,
+    "dsp": 1500,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "quality_goal_completed": false
+}

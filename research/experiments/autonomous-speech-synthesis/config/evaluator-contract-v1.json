@@ -1,0 +1,45 @@
+{
+  "version": "gate-v1",
+  "mandatory": [
+    "signal",
+    "content",
+    "perception",
+    "natural-reference-separation"
+  ],
+  "metrics": {
+    "signal": {
+      "status": "pending",
+      "family": "nonlearned"
+    },
+    "f0": {
+      "status": "pending",
+      "family": "nonlearned",
+      "scope": "有声母音のみ"
+    },
+    "content": {
+      "status": "unavailable",
+      "family": "asr",
+      "reason": "独立した音素認識/CERの校正が必要"
+    },
+    "perception": {
+      "status": "diagnostic-only",
+      "family": "UTMOSv2",
+      "reason": "日本語物理合成の対応する公開評点による校正なし"
+    },
+    "natural-reference-separation": {
+      "status": "diagnostic-only",
+      "family": "nonlearned",
+      "reason": "帯域距離に自然さの閾値を設定しない"
+    }
+  },
+  "signal_thresholds": {
+    "peak_max": 0.99,
+    "absolute_dc_max": 0.01,
+    "rms_min": 1e-05,
+    "endpoint_max": 1e-06
+  },
+  "f0_relative_error_max": 0.03,
+  "f0_confidence_min": 0.65,
+  "noninferiority_margin": null,
+  "margin_reason": "校正資料が不足。自然さの採否に使用しない"
+}

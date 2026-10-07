@@ -1,0 +1,214 @@
+{
+  "groups": {
+    "early": {
+      "all": {
+        "count": 12,
+        "kana_CER": 0.5851063829787234
+      },
+      "development": {
+        "count": 8,
+        "kana_CER": 0.7209302325581395
+      },
+      "novel": {
+        "count": 4,
+        "kana_CER": 0.47058823529411764
+      }
+    },
+    "late": {
+      "all": {
+        "count": 12,
+        "kana_CER": 0.5425531914893617
+      },
+      "development": {
+        "count": 8,
+        "kana_CER": 0.5116279069767442
+      },
+      "novel": {
+        "count": 4,
+        "kana_CER": 0.5686274509803921
+      }
+    },
+    "mora-tap-calibrated": {
+      "all": {
+        "count": 12,
+        "kana_CER": 0.5212765957446809
+      },
+      "development": {
+        "count": 8,
+        "kana_CER": 0.5581395348837209
+      },
+      "novel": {
+        "count": 4,
+        "kana_CER": 0.49019607843137253
+      }
+    },
+    "mora": {
+      "all": {
+        "count": 12,
+        "kana_CER": 0.4787234042553192
+      },
+      "development": {
+        "count": 8,
+        "kana_CER": 0.5581395348837209
+      },
+      "novel": {
+        "count": 4,
+        "kana_CER": 0.4117647058823529
+      }
+    }
+  },
+  "decisions": [
+    {
+      "variant": "early",
+      "protected_diagnostic_pass": false,
+      "protections": [
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "all",
+          "delta_CER": 0.06382978723404253
+        },
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "development",
+          "delta_CER": 0.16279069767441856
+        },
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "novel",
+          "delta_CER": -0.019607843137254888
+        },
+        {
+          "comparator": "mora",
+          "group": "all",
+          "delta_CER": 0.10638297872340424
+        },
+        {
+          "comparator": "mora",
+          "group": "development",
+          "delta_CER": 0.16279069767441856
+        },
+        {
+          "comparator": "mora",
+          "group": "novel",
+          "delta_CER": 0.05882352941176472
+        }
+      ],
+      "quality_promotion": false
+    },
+    {
+      "variant": "late",
+      "protected_diagnostic_pass": false,
+      "protections": [
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "all",
+          "delta_CER": 0.02127659574468077
+        },
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "development",
+          "delta_CER": -0.046511627906976716
+        },
+        {
+          "comparator": "mora-tap-calibrated",
+          "group": "novel",
+          "delta_CER": 0.0784313725490196
+        },
+        {
+          "comparator": "mora",
+          "group": "all",
+          "delta_CER": 0.06382978723404248
+        },
+        {
+          "comparator": "mora",
+          "group": "development",
+          "delta_CER": -0.046511627906976716
+        },
+        {
+          "comparator": "mora",
+          "group": "novel",
+          "delta_CER": 0.1568627450980392
+        }
+      ],
+      "quality_promotion": false
+    }
+  ],
+  "mechanism": {
+    "early": {
+      "interval_count": 8,
+      "near_closure_count": 8,
+      "duration_seconds": [
+        0.01746031746031746,
+        0.01746031746031746,
+        0.009977324263038548,
+        0.002494331065759637,
+        0.029931972789115645,
+        0.019954648526077097,
+        0.03741496598639456,
+        0.01746031746031746
+      ],
+      "min_area_cm2": [
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "center": {
+      "interval_count": 8,
+      "near_closure_count": 8,
+      "duration_seconds": [
+        0.024943310657596373,
+        0.01746031746031746,
+        0.019954648526077097,
+        0.004988662131519274,
+        0.024943310657596373,
+        0.019954648526077097,
+        0.03741496598639456,
+        0.019954648526077097
+      ],
+      "min_area_cm2": [
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "late": {
+      "interval_count": 8,
+      "near_closure_count": 8,
+      "duration_seconds": [
+        0.029931972789115645,
+        0.012471655328798186,
+        0.022448979591836733,
+        0.004988662131519274,
+        0.022448979591836733,
+        0.022448979591836733,
+        0.03492063492063492,
+        0.01746031746031746
+      ],
+      "min_area_cm2": [
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    }
+  },
+  "state": "inconclusive",
+  "quality_goal_achieved": false,
+  "scope": "同じ12文への診断。既使用のnovel群は最終未使用群ではない。ASRは補助尺度で、自然さや正しい日本語弾音の証拠にしない。",
+  "source_sha256": "f517e0b8ad33ff533a625c0aba8a9fe1126aa5d851d3f057f0060ceb946c17dc"
+}

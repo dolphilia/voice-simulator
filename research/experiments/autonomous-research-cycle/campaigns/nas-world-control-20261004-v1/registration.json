@@ -1,0 +1,75 @@
+{
+  "question": "同じ文章・HMM駆動パラメータを明示変換したWORLD音源で内容保持と有声支持を両立できるか",
+  "change": "元HTS MLSAから非ニューラルWORLDへ。MCP→線形power、LPF→AP近似、フレーム時刻対応を含むレンダラー全体変更",
+  "causal_scope": "純粋な位相/励起一要素の因果比較ではない。保存波形の解析再合成ではなく文章からHMMが生成するMCP/LF0/LPFだけを使用",
+  "models": "固定16特徴/NN/学生16/直接4/学生4。追加fit・教師・逆推定0",
+  "variants": [
+    "native",
+    "direct_non_neural",
+    "neural",
+    "distilled_non_neural",
+    "direct_prosody",
+    "distilled_prosody"
+  ],
+  "gain": "同methodの元HTS baseline peakから min(1,.95/peak)*.25 を両renderに共通。候補正規化なし",
+  "conversion": {
+    "stage": 0,
+    "alpha": 0.55,
+    "fs": 48000,
+    "FFT": 4096,
+    "MCP_logH": "c0 + sum c[m]*((exp(-i*w)-alpha)/(1-alpha*exp(-i*w)))**m",
+    "filter_power": "exp(2*real(logH))/32768**2",
+    "LPF_AP": "中心化LPFのH、P=abs(H)**2、N=abs(1-H)**2、voiced sp=filter_power*(P+N), AP=sqrt(N/(P+N)) clipped [.001,.999999]。無声sp=filter_power, AP=1",
+    "timing": "PyWORLD0.3.5 wrapper N*5ms。先頭frame複製 N+1、出力末尾240sampleを切り N*240。元HTS最初frame一定/後続frame前→今のendpoint時計に対応。補間物理同一は主張しない",
+    "post": "48k→24k resample_poly 1/2、両端12ms sin² fade、float32",
+    "no_posthoc_adjustment": true
+  },
+  "self_test": "旧既知MCP選定固定frameと平坦/単一係数/有界乱数、HTS_freqt(-alpha) C独立対照でlogamp maxerr<1e-9。有声160/220/300と全無声のsynthetic4条件2repeat=8render:有限長/bit再現。unknown生成前通過必須",
+  "input_policy": "SRCの新8文は診断再利用。全観測履歴と文字/全ラベル照合したpool先頭短4/長4を出力前固定。保護最終確認は未開封",
+  "candidate_pool_short": [
+    "鈴を鳴らす。",
+    "土を運ぶ。",
+    "蜜を混ぜる。",
+    "枝を束ねる。",
+    "皿を洗う。",
+    "雲が流れる。",
+    "畑を耕す。",
+    "靴を揃える。"
+  ],
+  "candidate_pool_long": [
+    "朝の廊下で赤い傘を閉じ玄関の棚にそっと置きました。",
+    "港の近くを走り小さな丘の上で冷たいお茶を飲みました。",
+    "白い紙に長い線を引き丸い印の横へ名前を書きました。",
+    "夕方の駅で切符を買い二番の乗り場へ急いで向かいました。",
+    "木陰の椅子に座り遠くで鳴る鳥の声を静かに聞きました。",
+    "畑の隅に種をまき細い棒で土の表面を軽くならしました。"
+  ],
+  "content": "二ASR各21群、旧/新cohort別、全文字・整数差<=0・欠損拒否。same-method HTS対照と標準HTS対照。閾値不変",
+  "support": "固定native HTS支持。候補で支持/閾値再選定なし。DIO資格不足を知覚認定に昇格しない",
+  "runtime": "5非NN方法×new short/long×neutral/challenge=20通常/隔離pair40exec80render。NN/教師/旧結果/保存軌道/network OS拒否",
+  "planned_counts": {
+    "diagnostic_render": 384,
+    "fixture_render": 8,
+    "runtime_render": 80,
+    "render_total": 472,
+    "dsp_max": 1500,
+    "ASR_calls": 768,
+    "NN_control_calls": 64
+  },
+  "stop": "変換不一致/旧96波形不一致/入力衝突/非有限clipで比較停止。結果を見て入力・利得・変換式を救済しない。技術retry2/job10/campaign",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 512,
+    "dsp": 1500,
+    "ai": 1000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 200000,
+    "setup": 70,
+    "audit": 120
+  },
+  "quality_certified": false,
+  "previous_summary_sha256": "bbcda6027dfc717cd54291d706933aa44fe93bed92f5be5d7ffd74a9cc634c3b"
+}

@@ -1,0 +1,13 @@
+{
+  "factor": 0.25,
+  "same_both_modes_all_methods_rows": true,
+  "gain_policy": "旧min(1,.95/baseline_raw_peak)×0.25をbaselineに適用し、candidateはその同一gainを使用。candidate peakで変更しない。",
+  "reason": "元包絡で単位LPFにすると励起エネルギー配分が変わる。比較を飽和で止めないため、観測前に一律4倍の出力余裕を取る。倍率は結果で選んだものではない。",
+  "before_first_wave": true,
+  "baseline_reproduction": "出力余裕を適用する前の旧gain wave hashで旧96を厳密照合。評価は余裕を適用したbaseline/candidateの実波形に行う。",
+  "ASR_reuse": "共通gainでも波形hashが変わるため旧ASRは再使用しない。全384×2=768を新評価し、NN制御64batchを含めてもAI1000以内。",
+  "no_limits_changed": true,
+  "old_thresholds_unchanged": true,
+  "not_candidate_rescue_after_observation": true,
+  "quality_certified": false
+}

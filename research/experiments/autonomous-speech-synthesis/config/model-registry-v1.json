@@ -1,0 +1,31 @@
+{
+  "version": "models-v1",
+  "models": [
+    {
+      "id": "dsp-lf-gesture-v1",
+      "type": "non-neural",
+      "source": "解析LF/並列共鳴器/鼻腔近似/局所雑音",
+      "runtime": [
+        "numpy",
+        "scipy"
+      ]
+    },
+    {
+      "id": "vtl-jd3-v1",
+      "type": "non-neural",
+      "source": "VocalTractLabBackend-dev",
+      "license": "GPL-3.0-or-later",
+      "scope": "母音pilot。JD3のドイツ語調音標的を日本語合格とみなさない"
+    }
+  ],
+  "fixed_controls": [
+    "B9",
+    "G40"
+  ],
+  "branching": {
+    "same_structure_no_improvement_campaigns": 2,
+    "max_diagnostic_branch": 1,
+    "unavailable": "残るbackendで継続",
+    "unqualified_E2": "自然さはinconclusive"
+  }
+}

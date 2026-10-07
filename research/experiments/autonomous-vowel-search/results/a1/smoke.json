@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "suite_id": "avs-smoke-v1",
+  "passed": true,
+  "checks": [
+    {
+      "check": "canonical-b9-sha256",
+      "passed": true,
+      "expected": "7538817f9140c07ced4bccd899d10c542c1b9b69cc8b222b7eb0dce27755a3b7",
+      "actual": "7538817f9140c07ced4bccd899d10c542c1b9b69cc8b222b7eb0dce27755a3b7"
+    },
+    {
+      "check": "canonical-engineering-constraints",
+      "passed": true,
+      "details": [
+        {
+          "target_id": "signal-clipping",
+          "feature": "clipping_ratio",
+          "value": 0.0,
+          "state": "available",
+          "passed": true
+        },
+        {
+          "target_id": "signal-peak",
+          "feature": "peak_dbfs",
+          "value": -10.395293266484444,
+          "state": "available",
+          "passed": true
+        },
+        {
+          "target_id": "signal-dc",
+          "feature": "absolute_dc_offset",
+          "value": 3.0977174230879336e-05,
+          "state": "available",
+          "passed": true
+        },
+        {
+          "target_id": "signal-endpoint",
+          "feature": "maximum_endpoint_absolute",
+          "value": 0.0,
+          "state": "available",
+          "passed": true
+        },
+        {
+          "target_id": "control-f0-mean",
+          "feature": "rendered_f0_mean_hz",
+          "value": 220.0,
+          "state": "available",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "check": "different-seeds-are-distinct",
+      "passed": true,
+      "rms_difference": 0.1502261758420891
+    },
+    {
+      "check": "missing-state-semantics",
+      "passed": true,
+      "unavailable": "unavailable",
+      "unsupported": "unsupported"
+    }
+  ],
+  "independent_holdout": false,
+  "interpretation": "engineering regression only; not perceptual evidence"
+}

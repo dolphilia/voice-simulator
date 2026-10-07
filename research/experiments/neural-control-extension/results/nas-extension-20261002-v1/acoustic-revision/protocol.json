@@ -1,0 +1,54 @@
+{
+  "scope": "同一campaignの未使用レンダー枠のみ。追加ASRと教師生成なし",
+  "features": [
+    "bias",
+    "vowel_fraction",
+    "stop_fraction",
+    "fricative_fraction",
+    "nasal_fraction",
+    "liquid_fraction",
+    "palatal_fraction",
+    "unvoiced_vowel_fraction",
+    "high_mora_fraction",
+    "phrase_per_mora"
+  ],
+  "quantity": "波形で測った活動長と有声F0中央値",
+  "training": "旧開発12文＋追加jf_alphaのunknown-00〜09（誤読08を除く）",
+  "selection": "旧選別6文＋追加jf_alphaのunknown-10〜15",
+  "data_status": "いずれも研究で既知の資料。新規品質確認には使わない",
+  "models": [
+    "direct_non_neural",
+    "neural_control",
+    "distilled_non_neural"
+  ],
+  "ridge_alphas": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "neural_hidden": [
+    16,
+    16
+  ],
+  "epochs": [
+    250,
+    500,
+    1000
+  ],
+  "selection_loss": "標準化した対数活動長比と対数F0比の平均二乗誤差",
+  "control": "指定F0比・速度は予測後に明示的に適用。文長の単独回帰項を使わない",
+  "hts_bounds": {
+    "speed": [
+      0.5,
+      2.0
+    ],
+    "half_tone": [
+      -12.0,
+      12.0
+    ]
+  },
+  "planned_render_calls": 128,
+  "runtime_equality_pairs": 4,
+  "perceptual_or_content_certification": false
+}

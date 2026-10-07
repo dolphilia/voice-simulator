@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "target_set_id": "avs-a220-targets-v1",
+  "scope": {
+    "vowel": "/a/",
+    "f0_condition_hz": 220.0,
+    "segment_kind": "stable"
+  },
+  "targets": [
+    {
+      "target_id": "signal-clipping",
+      "feature": "clipping_ratio",
+      "unit": "ratio",
+      "target_interval": [0.0, 0.0],
+      "role": "constraint",
+      "reference_group_id": "synthetic-vowel-baseline-engineering-contract",
+      "provenance": "synthetic-vowel-baseline/config/experiment.json maximum_clipping_ratio",
+      "estimator": "comparison-evaluation.signal_integrity/1.0.0 whole-output",
+      "uncertainty": "deterministic signal check",
+      "missing_policy": "hard-failure"
+    },
+    {
+      "target_id": "signal-peak",
+      "feature": "peak_dbfs",
+      "unit": "dBFS",
+      "target_interval": [-240.0, -1.0],
+      "role": "constraint",
+      "reference_group_id": "synthetic-vowel-baseline-engineering-contract",
+      "provenance": "synthetic-vowel-baseline/config/experiment.json maximum_peak_dbfs",
+      "estimator": "comparison-evaluation.signal_integrity/1.0.0 whole-output",
+      "uncertainty": "deterministic signal check",
+      "missing_policy": "hard-failure"
+    },
+    {
+      "target_id": "signal-dc",
+      "feature": "absolute_dc_offset",
+      "unit": "amplitude",
+      "target_interval": [0.0, 0.01],
+      "role": "constraint",
+      "reference_group_id": "synthetic-vowel-baseline-engineering-contract",
+      "provenance": "synthetic-vowel-baseline/config/experiment.json maximum_dc_offset",
+      "estimator": "comparison-evaluation.signal_integrity/1.0.0 whole-output",
+      "uncertainty": "deterministic signal check",
+      "missing_policy": "hard-failure"
+    },
+    {
+      "target_id": "signal-endpoint",
+      "feature": "maximum_endpoint_absolute",
+      "unit": "amplitude",
+      "target_interval": [0.0, 0.000001],
+      "role": "constraint",
+      "reference_group_id": "synthetic-vowel-baseline-engineering-contract",
+      "provenance": "synthetic-vowel-baseline/config/experiment.json maximum_endpoint_absolute",
+      "estimator": "autonomous-vowel-search.measurement-adapter/1.0.0 first-and-last-sample",
+      "uncertainty": "deterministic signal check",
+      "missing_policy": "hard-failure"
+    },
+    {
+      "target_id": "control-f0-mean",
+      "feature": "rendered_f0_mean_hz",
+      "unit": "Hz",
+      "target_interval": [219.999999, 220.000001],
+      "role": "constraint",
+      "reference_group_id": "B9-generator-control-contract",
+      "provenance": "B9 active-region-normalized control and 220 Hz experiment condition",
+      "estimator": "synthetic-vowel-baseline corrected-control internal diagnostic/1.0.0",
+      "uncertainty": "internal generated-control truth; not an acoustic F0 estimator",
+      "missing_policy": "hard-failure"
+    },
+    {
+      "target_id": "reference-spectral-centroid",
+      "feature": "spectral_centroid_hz",
+      "unit": "Hz",
+      "target_interval": [678.818, 678.818],
+      "role": "diagnostic",
+      "reference_group_id": "jvs075-initial-long-a-single-reference",
+      "provenance": "synthetic-vowel-baseline/config/voice-quality-experiment.json frozen measurement",
+      "estimator": "legacy phonation-onset trajectory summary; not interchangeable with comparison-evaluation extractor",
+      "uncertainty": "single 120 ms utterance-initial reference; no pass tolerance and no population inference",
+      "missing_policy": "unavailable"
+    }
+  ],
+  "forbidden_interpretations": [
+    "diagnostic target match means human voice",
+    "generated baseline similarity is an independent holdout",
+    "internal rendered F0 truth equals estimated acoustic F0"
+  ]
+}
+

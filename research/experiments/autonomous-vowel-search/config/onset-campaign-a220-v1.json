@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "avs-onset-a220-v1.1",
+  "supersedes": "avs-onset-a220-v1",
+  "supersession_reason": "v1.0 did not enforce maximum_stable_rms_delta_db even though the constraint was configured",
+  "status": "sensitivity-pilot",
+  "scope": {
+    "vowel": "/a/",
+    "f0_hz": 220.0,
+    "sustain": "B9-corrected-subtle-variation",
+    "onset_model": "sine-squared gain attack",
+    "stable_normalization_start_sec": 0.15
+  },
+  "axis": {
+    "name": "gain_attack_ms",
+    "values": [0.0, 40.0, 60.0, 80.0],
+    "provenance": [
+      "O0-b9-common-edge",
+      "G40-b9-gain-attack",
+      "G60-b9-gain-attack",
+      "G80-b9-gain-attack"
+    ]
+  },
+  "seed_offsets": [2601, 2617, 2659],
+  "canonical_regression": {
+    "seed_offset": 401,
+    "gain_attack_ms": 40.0,
+    "wav_sha256": "faccc03962abcc0a50271476c6532a8438a091718d710ed562dd7c7b6e701223"
+  },
+  "diagnostics": [
+    "rms_rise_10_ms",
+    "rms_rise_50_ms",
+    "rms_rise_90_ms",
+    "rms_10_to_90_ms",
+    "leading_to_stable_rms_db",
+    "stable_rms_delta_db",
+    "leading_spectral_centroid_hz",
+    "stable_spectral_centroid_hz"
+  ],
+  "hard_constraints": {
+    "maximum_clipping_ratio": 0.0,
+    "maximum_peak_dbfs": -1.0,
+    "maximum_dc_offset": 0.01,
+    "maximum_endpoint_absolute": 0.000001,
+    "maximum_stable_rms_delta_db": 0.1
+  },
+  "interpretation": "onset engineering and local-direction diagnostics; not a human-likeness score"
+}

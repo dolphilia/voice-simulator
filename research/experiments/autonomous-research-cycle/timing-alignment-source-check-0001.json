@@ -1,0 +1,27 @@
+{
+  "purpose": "教師内部時計と音響時刻を区別する次段候補。現在の時間比較・閾値は変更しない。",
+  "sources": [
+    {
+      "url": "https://mfa-models.readthedocs.io/en/latest/acoustic/Japanese/Japanese%20MFA%20acoustic%20model%20v3_0_0.html",
+      "facts": "MFA日本語3.0はMFCC/gmm-hmm、CC BY4.0。読み上げ低雑音資料で訓練。公式のWER/CERは訓練資料の確認で、対象合成の境界精度を保証しない。",
+      "status": "モデル未取得。環境費・音素対応と自己回復を要見積もり"
+    },
+    {
+      "url": "https://github.com/darashi/narabas",
+      "facts": "公開実験用日本語音素Wav2Vec2整列。ReazonSpeech訓練で、無声母音を区別しない。コードMIT。",
+      "status": "重み未取得。重み自体の利用条件・サイズは未確認。Reazon ASRと資料系統が共通なので独立監査へ数えない"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/darashi/narabas/main/narabas/narabas.py",
+      "facts": "ONNX推論とCTC経路。ソース目視では時刻tでlikelihoodを音素i昇順にその場更新している。",
+      "inference": "likelihood[i-1]が同じ時刻の更新値を参照するため、単一フレーム内の複数前進が起こる疑い。採用前に前時刻コピーとの対照fixtureを必要とする。バイナリ実動未検証。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/darashi/narabas/main/pyproject.toml",
+      "facts": "torchaudio ^0.13.1 / onnxruntime ^1.14.0。既存凍結環境へ直接導入しない。"
+    }
+  ],
+  "not_quality_evidence": true,
+  "model_download_bytes": 0,
+  "current_campaign_unchanged": true
+}

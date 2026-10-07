@@ -1,0 +1,123 @@
+{
+  "question": "音素間の長さを変更したとき、有声/無声が混在する音素の5状態を一律比例配分することが、支持欠損や内容悪化に寄与するか。",
+  "decision_pending_current_results": true,
+  "primary_change": "モデル・特徴・voice・生成器を固定し、MSD>0.5の真偽が音素内で混在する5stateのdurationをnativeへ固定する。総時間の再配分は全5stateが有声または全5stateが無声のspoken phoneに限る。sil/pau固定、元の0.8..1.25/min5frames・global時間固定。",
+  "not_rescue": "DIO支持域・ASR結果・音素名を例外選択に使わない。駆動MSDの混在だけを全音素へ対称に適用する。旧判定や欠損は変更しない。",
+  "models": "現timing direct/NN/studentを封印後hash再利用。新fit/教師/逆推定なし。NN推論はAIへ計上。非NN最終各58係数+116正規化値。モデルの容量は変更せず時計投影だけを比較。",
+  "variants": [
+    "native",
+    "direct_original",
+    "neural_original",
+    "student_original",
+    "direct_mixed_fixed",
+    "neural_mixed_fixed",
+    "student_mixed_fixed"
+  ],
+  "data": "訓練80再利用は独立品質ではない。旧8診断+新16(短8/長8)を新出力前選定。訓練旧4方式320wave/ASRは全hash・engine・text一致の場合のみ再使用と区別する。未使用保護confirm開かない。",
+  "budget": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 1600,
+    "ai": 2000,
+    "dsp": 4000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 100,
+    "audit": 100
+  },
+  "choice_alternatives": [
+    "bounded CARTで学生容量を一段拡張",
+    "既存教師の音響整列を導入して内部時計との違いを調べる",
+    "励振/AP機構の共有補正"
+  ],
+  "why_before_alternatives": "訓練比のMSEだけからCARTへ進むより、既存の全固定モデルで状態時計の投影だけを対照にすると、モデル能力とイベントの配分を低費用に区別できる。教示時刻が音響GTでない不確かさは残る。",
+  "quality_goal_completed": false,
+  "runtime_management": {
+    "question": "予約と全ファイルの外部変更検査を保持しつつ、通常/隔離の生成を各1つのZIPへまとめる。",
+    "counts": "1音声×1方法×1条件につきrender/DSPを事前予約し、batchにまとめても回数を減らさない。",
+    "verification": "全wav/metadataのhashと既存診断waveとの一致を検査。単独CLIとbatchの工学対照も実施し、状態持ち越しを拒否。",
+    "budget_interface": "Budget.external_outputは単一ファイルだけ許すので変更せず、1 archiveを予約対象とする。childのWAVはメモリで封入。取り出しはBudget.writeで計数し、archiveも証拠として保持。",
+    "fallback": "batchの波形が一致しない場合は失敗attemptを保持し、登録済み回数枠内で単独CLIの対照へ戻す。旧budget.pyは改変しない。"
+  },
+  "candidate_pool_short": [
+    "鶴が空を飛ぶ。",
+    "虹の絵を描く。",
+    "椿の苗を植える。",
+    "靴の砂を払う。",
+    "朝の霧が晴れる。",
+    "舟を岸へ押す。",
+    "笠を静かにかぶる。",
+    "畑の土を耕す。",
+    "綿を箱に詰める。",
+    "露が葉から落ちる。",
+    "柿の枝を切る。",
+    "鯉が池を泳ぐ。",
+    "柳の枝が揺れる。",
+    "茶碗を布で拭く。",
+    "蓋をそっと閉める。",
+    "旗を高く掲げる。"
+  ],
+  "candidate_pool_long": [
+    "坂の下の店で新しい紐を選び、包みを腕に抱えて静かな通りを歩きました。",
+    "庭の奥にある椿へ水をかけ、濡れた葉を眺めながら小さな鉢を並べました。",
+    "雨が止んだので靴を履いて外へ出ると、遠くの山に薄い虹が見えました。",
+    "机の上に茶碗と皿を置き、窓から入る風で揺れる紙を重い本で押さえました。",
+    "川を渡る舟が岸に着くと、白い笠をかぶった人が荷物を運び始めました。",
+    "畑の端で乾いた土を崩し、細い根を傷つけないように苗を植えました。",
+    "朝の丘で鶴の羽を見つけ、柔らかな綿に包んで木の箱へしまいました。",
+    "暗い蔵から古い旗を取り出し、長い竿の先へ結んで門の横に立てました。",
+    "井戸の横に桶を並べ、冷たい水を汲んで石の上に置いた瓶へ注ぎました。",
+    "明るい縁側で薄い布を広げ、針に通した青い糸で小さな穴を縫いました。",
+    "夕方の池では鯉が泳ぎ、柳の枝が水面に触れるたびに丸い波が広がりました。",
+    "窓の下に置いた盆を拭き、丸い茶碗を運んで棚の右端へ重ねました。"
+  ],
+  "status": "現在の時間制御のASRを見る前の次候補記録。現campaignの終了後に正式登録し、未使用文を固定する。",
+  "current_observation": {
+    "training_support": {
+      "native": 80,
+      "direct": 49,
+      "neural": 59,
+      "student": 48,
+      "oracle": 61
+    },
+    "training_N": 80,
+    "fresh_support": {
+      "native": 32,
+      "direct": 26,
+      "neural": 27,
+      "student": 27
+    },
+    "fresh_N": 32,
+    "E0_all592": true,
+    "mixed_example": {
+      "native_states": [
+        5,
+        4,
+        2,
+        6,
+        7
+      ],
+      "MSD": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "candidate_states": [
+        5,
+        4,
+        2,
+        7,
+        8
+      ],
+      "native_driven_fraction": 0.4583333333333333,
+      "candidate_driven_fraction": 0.4230769230769231
+    },
+    "not_single_cause_established": true
+  },
+  "current_render_manifest_sha256": "335179c668852d7f97da5d6d25b57fc26534facc3c78f43be09a4fed976506ad",
+  "current_runtime_audit_sha256": "ce7a8a03ce7cee86668a4a2798c8d6ff46a19e75edf2a2165293ebcacec93c75"
+}

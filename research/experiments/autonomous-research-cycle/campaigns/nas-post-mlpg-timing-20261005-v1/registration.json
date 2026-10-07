@@ -1,0 +1,129 @@
+{
+  "question": "混在MSDの5状態長を固定しても支持欠損が残る原因に、変更時計で再計算するMLPGの隣接依存が寄与するか。",
+  "pending_final_current_ASR": false,
+  "evidence_before_current_ASR": {
+    "fresh_N": 32,
+    "direct_support": "20→25",
+    "neural_support": "26→29",
+    "student_support": "23→25",
+    "training_support": "direct49→68, neural59→63, student48→68",
+    "not_qualification": true
+  },
+  "single_causal_change": "同じ固定58入力モデル・混在state長固定・整数時計を使い、時計の適用位置だけをMLPG前から後へ変更する。native MLPGを当該文章から1度計算し、各stateの数値列を決定的に新state長へ補間する。",
+  "warping": "各5state区間ごとに中心格子で線形補間。長さ同一ならbyte copy。全無声state LF0はnative sentinelを保持。mixed phoneは全5state長がnative同一なので全MCP/LF0/LPF blockをbyte保持する。全有声/無声残りphoneのclockだけを再配分する。",
+  "controls": "保持するものは状態平均/分散/MSD/layout/voice/settings/総frame、混在音素の相対状態長・nativeパラメータblock。絶対開始時刻・出力波形・動的MLPG制約は不変と主張しない。",
+  "final": "生成時に文章から計算したnative parametersだけを用い、保存軌跡・teacher音声・発話lookupを読まない。NN重みのcode化ではなく固定直接/学生係数と手続き的state補間。",
+  "alternatives": [
+    "音響整列の新教師時刻へ移す",
+    "学生容量のCART拡張",
+    "励振/AP機構へ切替",
+    "実測F0と指定値の校正を別比較で実装"
+  ],
+  "choice_reason": "同モデルで元投影とmixed固定の支持が改善しても不通過が残ったため、次はモデル能力より時間の適用位置を低費用に切り分ける。教師内部時計oracleのASR悪化とNN MSEの音質不一致は保持する。",
+  "stop": "時間経路3回目の不通過なら同時計の微調整を打切り、別の励振/音源または制御校正へ切替。現在の確認集合は使い回さず新規16を出力前固定。",
+  "quality_goal_completed": false,
+  "current_results": {
+    "chars": 802,
+    "native": {
+      "whisper": 60,
+      "reazon": 19
+    },
+    "direct_pre": {
+      "whisper": 74,
+      "reazon": 19,
+      "support": 20
+    },
+    "direct_mixed": {
+      "whisper": 63,
+      "reazon": 15,
+      "support": 25
+    },
+    "neural_pre": {
+      "whisper": 69,
+      "reazon": 21,
+      "support": 26
+    },
+    "neural_mixed": {
+      "whisper": 75,
+      "reazon": 16,
+      "support": 29
+    },
+    "student_pre": {
+      "whisper": 76,
+      "reazon": 19,
+      "support": 23
+    },
+    "student_mixed": {
+      "whisper": 69,
+      "reazon": 16,
+      "support": 25
+    },
+    "all_candidate_qualifications": false
+  },
+  "decision": "混在state長固定でdirect/studentの支持と総誤りは改善したが、全候補の支持・群保護は不通過。現在の新同集合でNNはWhisperが悪化し、学生は同容量直接より両ASRで悪かった。再fitせず、時計適用の前後を同じモデルで切り分ける。",
+  "previous_seal_sha256": "606ac9179b5c2984167dfb0845751de67a22cf25f3375deafa5ed562f5bc5cbb",
+  "previous_summary_sha256": "eecd6fe8444c84a3653653ee5274bb9ea9629f251c058c7fb5ae7ae9aa01bd17",
+  "root_draft_sha256": "5acecebdd9a25f8daf321f92c13baa8de3f43fc2d9f2998839241d216ee76737",
+  "variants": [
+    "native",
+    "direct_pre",
+    "neural_pre",
+    "student_pre",
+    "direct_post",
+    "neural_post",
+    "student_post"
+  ],
+  "fits": 0,
+  "new_teachers": 0,
+  "previous_route_failure_count": 2,
+  "same_route_three_failures_switch": true,
+  "planned_new_renders": 910,
+  "planned_max_AI": 1408,
+  "planned_DSP": 2100,
+  "estimated_retained_bytes": 900000000,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "render": 1600,
+    "ai": 2000,
+    "dsp": 4000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 100,
+    "audit": 100
+  },
+  "candidate_pool_short": [
+    "笛の音が響く。",
+    "亀が岩へ登る。",
+    "菊の鉢を洗う。",
+    "栗を籠へ入れる。",
+    "霜が庭を覆う。",
+    "鈴を軽く振る。",
+    "筆の先を揃える。",
+    "蛍が草を照らす。",
+    "箸を盆に並べる。",
+    "滝の水を眺める。",
+    "梨の皮を剥く。",
+    "雲が丘を隠す。",
+    "枝の実を数える。",
+    "蜜を瓶に移す。",
+    "枕を日に干す。",
+    "鍵を袋に入れる。"
+  ],
+  "candidate_pool_long": [
+    "川沿いの道で笛の音を聞き、小さな橋を渡って坂の上の家へ向かいました。",
+    "庭の池にいる亀が岩へ登る様子を、窓のそばに座って静かに眺めました。",
+    "濡れた菊の鉢を布で拭いてから、日の当たる棚に置いて水を足しました。",
+    "栗を入れた籠を持ち帰り、台所の隅で殻を割って白い皿に並べました。",
+    "霜で白くなった庭を歩くと、枝の先に残った実が朝の光で輝きました。",
+    "玄関で小さな鈴を振り、帰ってきた猫の足を柔らかな布で拭きました。",
+    "筆の先を丁寧に揃え、机に広げた薄い紙へ丸い文字を書き始めました。",
+    "暗い草むらで蛍を見つけ、細い道を歩きながら川の音に耳を澄ませました。",
+    "低い棚から古い盆を取り出して拭き、長い箸と丸い皿を並べました。",
+    "滝の下で流れる水を眺め、濡れた石を避けながら山の道を下りました。",
+    "梨の皮をゆっくり剥いてから、薄く切った実を青い皿へ載せました。",
+    "丘を隠した雲が流れると、遠くの森から鳥の声が聞こえてきました。"
+  ]
+}

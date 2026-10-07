@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "avs-a220-v1.1",
+  "supersedes_campaign_id": "avs-a220-v1",
+  "status": "a2c-complete-superseded-by-search-campaign",
+  "scope": {
+    "vowel": "/a/",
+    "f0_hz": 220.0,
+    "segment_kind": "stable",
+    "source_model": "B9-corrected-subtle-variation",
+    "tract_policy": "freeze-B9-formants-and-bandwidths"
+  },
+  "adapters": {
+    "generator": "synthetic-vowel-baseline.corrected-variation/1.0.0",
+    "measurement": "comparison-evaluation.extract/1.0.0+adapter/1.0.1"
+  },
+  "baseline_parameters": {
+    "spectral_tilt_lowpass_hz": 600.0,
+    "variation_lowpass_hz": 6.0,
+    "f0_std_fraction": 0.0064,
+    "amplitude_std_db": 0.67,
+    "f0_amplitude_correlation": 0.5
+  },
+  "parameter_axes": {
+    "f0_std_fraction": {
+      "status": "pilot",
+      "bounds": [0.0, 0.05644],
+      "pilot_values": [0.0, 0.0032, 0.0064, 0.0128, 0.05644],
+      "provenance": [
+        "B6 static endpoint",
+        "config/voice-quality-correction.json B9=0.0064 and B10=0.05644"
+      ]
+    },
+    "amplitude_std_db": {
+      "status": "pilot-one-sided",
+      "bounds": [0.0, 0.67],
+      "pilot_values": [0.0, 0.335, 0.67],
+      "provenance": [
+        "B6 static endpoint",
+        "config/voice-quality-correction.json B9=0.67 dB"
+      ]
+    },
+    "f0_amplitude_correlation": {
+      "status": "pilot",
+      "bounds": [-1.0, 1.0],
+      "pilot_values": [0.0, 0.25, 0.5, 0.75, 1.0],
+      "provenance": [
+        "generator correlation coefficient mathematical domain [-1,1]",
+        "config/voice-quality-correction.json B9=0.5"
+      ]
+    },
+    "spectral_tilt_lowpass_hz": {
+      "status": "excluded-pending-range-provenance",
+      "fixed_value": 600.0,
+      "provenance": [
+        "config/voice-quality-experiment.json stores selected 600 Hz but not the full prior sweep"
+      ]
+    },
+    "variation_lowpass_hz": {
+      "status": "excluded-pending-range-provenance",
+      "fixed_value": 6.0,
+      "provenance": [
+        "config/voice-quality-experiment.json and voice-quality-correction.json store only 6 Hz"
+      ]
+    }
+  },
+  "seed_sets": {
+    "pilot": [1601, 1619, 1657],
+    "robustness": [1701, 1723, 1741, 1759, 1783, 1801, 1823, 1847, 1861, 1889],
+    "confirmation_reserved": [1901, 1913, 1931]
+  },
+  "known_forbidden_seed_offsets": [300, 301, 317, 353, 401, 402, 419, 457, 501, 502, 519, 557],
+  "formal_search": {
+    "frozen": false,
+    "reason": "this pilot contract remains unfrozen historically; A3 was revised and frozen separately as avs-a220-search-v1 behavior-space coverage",
+    "maximum_settings": 64,
+    "structured_settings": 32,
+    "stratified_random_settings": 32,
+    "seeds_per_setting": 3
+  },
+  "robustness_budget": {
+    "maximum_candidates": 8,
+    "seeds_per_candidate": 10,
+    "f0_values_hz": [160.0, 220.0, 300.0],
+    "maximum_renders": 240
+  },
+  "resource_caps": {
+    "wall_time_sec": 300,
+    "storage_bytes": 134217728,
+    "freeze_after_a2": true
+  },
+  "interpretation": "pilot measurements and search outputs are not perceptual human-likeness evidence"
+}

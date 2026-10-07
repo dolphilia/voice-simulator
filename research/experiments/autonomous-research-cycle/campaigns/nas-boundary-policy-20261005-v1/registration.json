@@ -1,0 +1,83 @@
+{
+  "question": "Reazonの先頭語欠落は無音padding入口差に由来するか。音声端点不連続とは別要因か。",
+  "hypothesis": "公式K2入口は16k正規化後に前後.9sをpaddingする。旧直接OfflineRecognizer入口はpaddingなし。新比較は全生成器の24k出力に前後.9sを付ける物理的入口対照で、16k後paddingとの厳密同値は主張しない。",
+  "prior_evidence": "JVNV12 teacher+12WORLD全てendpoint_continuity不通過、他E0全通過。Reazonの先頭語欠落が多い。旧ASR/教師認定を修正して救済しない。",
+  "changes": [
+    "raw",
+    "pad_900ms",
+    "taper12ms_pad900ms"
+  ],
+  "fixed": "2教師、同固定設定seed42/neutral、共通.25gain、WORLD DIO+StoneMask/5ms/CheapTrick2048/D4C.85、固定二ASR/読み正規化。12ms片端線形0..1taper。no new peak gain。",
+  "input_policy": "旧JP12は観測済み診断再利用、新8短4長4は全過去text/label照合後固定。protected final未開封。",
+  "candidate_pool_short": [
+    "糸を結ぶ。",
+    "鈴が響く。",
+    "笛を吹く。",
+    "道を渡る。",
+    "石を拾う。",
+    "風が止む。",
+    "布をたたむ。",
+    "椅子を運ぶ。"
+  ],
+  "candidate_pool_long": [
+    "夜の台所で薄い皿を並べ温かい汁をゆっくり注ぎました。",
+    "雨が上がった公園で白い靴を履き小さな池まで歩きました。",
+    "棚の上から厚い本を取り机の端に静かに置きました。",
+    "昼の川辺で長い糸を結び青い空を見ながら船を待ちました。",
+    "山道の途中で帽子を外し冷たい水を一口だけ飲みました。",
+    "電車の窓から遠い山を眺め駅に着くまで地図を読みました。"
+  ],
+  "teacher_settings": {
+    "CPU_threads": 2,
+    "seed": 42,
+    "language": "JP",
+    "speaker_id": 0,
+    "style": "Neutral",
+    "style_weight": 1.0,
+    "sdp_ratio": 0.2,
+    "noise": 0.6,
+    "noise_w": 0.8,
+    "length": 1.0,
+    "line_split": false,
+    "reference_audio_path": null,
+    "pitch_scale": 1.0,
+    "intonation_scale": 1.0,
+    "assist_text": null
+  },
+  "normalization": "先生入口の由来を記録。両教師を24kfloat32へresampleして共通.25 headroom。旧先生と新teacherの入力情報はtext onlyだが、モデル/声/内部正規化の違いを因果単要素にしない",
+  "engineering": "固定E0に加え埋め込み前のspeech両端amplitude<=1e-6を要求。pad外端0だけで内部stepを隠して工学認定しない。taperが修正するsample範囲と中間payload不変を検査。",
+  "evaluation": "新8全/短/長/4群の7群で二ASR整数誤り/全文字/欠損を保持。各teacher/modeのpadとtaperpadをown rawに比較。JVNV対Kokoroを同policy別比較。各結果独立に示し、平均や一群改善で採択しない。自然さ資格/最終移出は別。",
+  "alternatives": [
+    "別日本語teacher取得",
+    "教師由来スペクトル共有制御fit"
+  ],
+  "choice": "入力境界が内容測定を変えている可能性を先に検証し、その後に教師の採択と共有fitを判断する。教師modelの探索/声変更は行わない。",
+  "planned": {
+    "new_teacher": 16,
+    "new_WORLD": 16,
+    "boundary_renders": 240,
+    "ASR_total": 480,
+    "exact_old_wave_ASR_reuse_max": 96,
+    "new_ASR_max": 480
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 2000000000,
+    "teacher": 32,
+    "render": 320,
+    "dsp": 1200,
+    "ai": 600,
+    "train": 0,
+    "inverse": 0,
+    "download": 100000,
+    "setup": 60,
+    "audit": 80
+  },
+  "stop": "固定入力不足/clip非有限/依存hash不一致は停止。retry2/job10campaign。確認後policy/長さ/読み/閾値の調整なし。",
+  "quality_certified": false,
+  "previous_summary_sha256": "0b1b48ff1531baacc45557b4c7c4bb83ae8e43b635e250af4c22b18ace03b2a0",
+  "official_sources": [
+    "https://github.com/reazon-research/ReazonSpeech/blob/master/pkg/k2-asr/src/transcribe.py",
+    "https://github.com/reazon-research/ReazonSpeech/blob/master/pkg/k2-asr/src/audio.py"
+  ]
+}
