@@ -1,0 +1,71 @@
+{
+  "next_campaign": "voicing-ap-v1",
+  "source_summary_sha256": "5205d6984126ea74f0ad4b60a967b25af4f24b1cb658ed4d64be42aaae6020ad",
+  "source_diagnostic_sha256": "1fce560f70594b2be8c95d73d61ba7a9f79e719c2fe4f331ff673db1bebe0d39",
+  "source_seal_sha256": "bc8babdd02787fb93f51e29f6f66346040df22afa3e4f2931ead47484b3e5d28",
+  "question": "絶対F0校正後の短い/部分的な有声支持欠損を、文章から生成するLF0有声区間とAPの連続性に関する共有規則で改善し、内容を守れるか。",
+  "reason": {
+    "absolute_pitch_global_DIO_and_ACF_pass": 32,
+    "fixed_support_pass": 20,
+    "fixed_support_fail": 12,
+    "missing_intervals": 18,
+    "driving_voiced_fraction_below_half_intervals": 7,
+    "LPF_noise_fraction_at_fundamental_median": 0.00010768525451799995,
+    "causal_status": "診断のみ。低い基本波騒音比からAP単独が原因とは断定しない。LF0区間の共有規則とAPの主効果/相互作用を次の新入力で分ける。"
+  },
+  "factors": {
+    "LF0_voicing_fill": [
+      false,
+      true
+    ],
+    "voiced_AP_noise_power_factor": [
+      1.0,
+      0.5
+    ]
+  },
+  "variants": [
+    "native",
+    "calibrated",
+    "voicing",
+    "aperiodicity",
+    "combined"
+  ],
+  "design": "native対照と校正後の2×2。状態長・MCP・LPF・MSD・voice・利得を固定。LF0の原有声輪郭は一律log偏移のみ。変換が有声maskから導くAP/powerの変化を明記。",
+  "voicing_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "AP_rule": "WORLDへ渡すAP振幅をF0>0のframeだけsqrt(0.5)倍、下限0.001。無声AP=1と当該voicing条件のpower/f0を保持。固定総スペクトルpowerの非周期/周期配分だけを変える。",
+  "AP_source_sha256": "9888973e28f2194a0eb9807e18e36680f3d912bef3ddf174dc640fedc4e08b4c",
+  "AP_source_commit": "8d79b88b7dd92e8a132996cf74080b2d6f881b98",
+  "new_short": 8,
+  "new_long": 8,
+  "conditions": {
+    "neutral": {
+      "requested_f0": 220.0,
+      "speed": 1.0
+    },
+    "higher": {
+      "requested_f0": 280.0,
+      "speed": 1.15
+    }
+  },
+  "expected_comparison": 160,
+  "expected_normal_isolated_pairs": 160,
+  "expected_CLI": 4,
+  "expected_ASR": 320,
+  "proposed_limits": {
+    "seconds": 14400,
+    "bytes": 1000000000,
+    "render": 1000,
+    "dsp": 2500,
+    "ai": 700,
+    "setup": 60,
+    "audit": 60,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "gates": "DIO/ACFの指定値1半音、ACF信頼度0.6、native固定支持≥3と候補欠損0。内容は各二ASR33群すべてでnative以下。全通常/隔離・CLI hash一致。欠測不通過。入力・係数・ゲートは波形前固定。",
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "not_registered_or_generated": true
+}
