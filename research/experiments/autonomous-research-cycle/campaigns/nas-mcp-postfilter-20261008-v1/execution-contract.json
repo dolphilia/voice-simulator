@@ -1,0 +1,48 @@
+{
+  "protocol_sha256": "7d65b5417224088a1d56126b66c5cbc78eab88312b15089018e07c4f7044a2da",
+  "registration_sha256": "f09aaf6bf9d9bef642cd6ca4376d3fe09ebfa141a5fdd81f50d808199b3c483b",
+  "source_hashes": {
+    "asr_worker.py": "227157cf552ad5d905042e689160bce4d6f5ca3425f987f8c37f7dabb354225e",
+    "build.py": "e136ea743be03ed9b80fd0abee8113b168de5e2d1d70789cb7d3585ef3f62ba5",
+    "closeout.py": "ded72958f9930412c8f9a6e7489a441511d3b17b73f5db1c859bedc5ef2b8d67",
+    "controller.py": "e8b5b4da87ffd4fb610f878405f569ea4f5a18e60419a8c8fd333134702989c0",
+    "controls_v2.py": "23b26d8453b77e404a0ae005d69ead50fdaa4f0655476b4078fd0e9579fc150c",
+    "hts_arrays.py": "cec376788ddeee6848fcb60756c49dae14a741adca54fa7d1b0289b1c2737a49",
+    "measurement.py": "7473612cca26b3f69b547723aa4d0033803aa9ee483a37abf677b987e3766be1",
+    "paths.py": "22a3a31d96ee5eb54e9e8bf48de43cf4c75458c61b6ff0c1a1fb6ae757a0dc9d",
+    "period_measurement.py": "25b3110581bc960b46da3fb4106370b12e40789963c5d32a25b579c5dfe42c53",
+    "postfilter.py": "9436e277f0332440deda10f4a138048613e4c4a522d5431f9061c5fb6b6618f9",
+    "preflight.py": "ab033867111db18388832e2996482ca917120b2ac3001ed79a330d1468870ef9",
+    "prepare.py": "db3c692c5bdb04465e8cf56efb7b4a8ba0fe9e42f7990bc611ccf116e82c2a62",
+    "prepare_v2.py": "91b8e3197c95e4466a31c2b0c7b959bbf6fe69525e1aca0bf29f6cd8854c23c8",
+    "runtime.py": "2f6477260e0c4c075b1456f33646f2e6be8d6f51fee5c08a22b61ba9e9604346",
+    "runtime_batch.py": "18b27d3b23cc87b8d660c67c148f7718b9b4b7991fd08b2306d8a4d61f08732b",
+    "summarize.py": "7e1bec1fd5f89a63ad043c1a17b2c3d906fb8dd31fb1f5b2868d6b4ac93810bd",
+    "temporary_storage.py": "78d2073556de6bf9a21bd29443867a7535094e760acb3870329aa98a66b2fcd0",
+    "test_controls.py": "3448d910bf0e7b3be12c971830fcd76725fc182f12845964863281b1a142b949"
+  },
+  "runtime_manifest_sha256": "468120dd47fadadab2175bbdbf489ffcd49db17dbf510e95300c61ccb9a50a12",
+  "engine_contract_sha256": "66f539ec69aae8a01b470fcbe30b1c1be8beb03410ae205ac017a25df8d76f47",
+  "output_gain": 0.25,
+  "native_half_tone": "12*log2(requestedHz/220)",
+  "absolute_calibration": "補完後の有声LF0へ一律log偏移、原有声相対輪郭保持",
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "renderer_rule": "MCPだけへ一次HTS式β0/0.2を適用。LF0は既存native/voicing、LPF/state/MSD/variance/voice/gainは保持。WORLD AP=1、HTS内部β=0に固定して共有前処理を1回だけ適用。",
+  "AP_noise_power_factor": 1.0,
+  "MCP_postfilter_beta": [
+    0.0,
+    0.2
+  ],
+  "alpha": 0.55,
+  "energy_log_ratio_tolerance": 1e-10,
+  "factor_baseline_byte_exact": true,
+  "renderer": [
+    "WORLD",
+    "HTS-pulse-noise-MLSA"
+  ],
+  "waveform_transfer": "pipe/メモリ。子の一時音声ファイルなし。",
+  "tmp_maximum_bytes": 8000000,
+  "tmp_maximum_write_bytes": 16000000,
+  "fixed_before_first_wave": true,
+  "quality_certified": false
+}
