@@ -1,0 +1,35 @@
+{
+  "source_aggregate_sha256": "f1ac48cb6c17aab2053112cbf3d6e862e5e7caa50007f551a154e1a7d4d3de06",
+  "source_summary_sha256": "3a13cad90f617ded73aa1c6efed950bc39488f55ae3f23c4bd208b041eeadad1",
+  "qualifications": {
+    "native": false,
+    "calibrated": false,
+    "voicing": false,
+    "hts_native": false,
+    "hts_calibrated": false,
+    "hts_voicing": false
+  },
+  "selected": null,
+  "reason": "全6方式が全32条件ピッチ/支持または二ASRの全33群内容保護に不通過。",
+  "findings": {
+    "world_missing_support_intervals": {
+      "calibrated": 26,
+      "voicing": 5
+    },
+    "HTS_missing_support_intervals": {
+      "calibrated": 24,
+      "voicing": 2
+    },
+    "pitch_pass": {
+      "world_voicing": 24,
+      "HTS_voicing": 25
+    },
+    "HTS_native_missing_support": 16,
+    "renderer_LF0_interaction": "記述のみ。純粋な位相・測定誤りと断定しない。"
+  },
+  "route_review": "絶対F0/有声補完/AP/rendererを順に切り分けても保護条件未通過。係数の反復探索を行わず測定資格へ因果要因を移す。",
+  "next": "pitch-measurement-v1を生成前登録し、周期既知の短区間・基本波欠損・母音共鳴・雑音の固定256条件と16否定条件でDIO/Harvest/ACFの支持欠測を検証する。旧192比較へ同じ測定器を診断として適用し、旧判定は変更しない。",
+  "next_campaign": "pitch-measurement-v1",
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
