@@ -3,6 +3,8 @@
 2026-10-06の明示承認は `docs/plans/autonomous-research-external-storage-amendment-2026-10-06.md` に記録する。
 旧 `budget.py` と台帳の初期承認hash、科学的契約、消費済み分は保持する。
 
+2026-10-08の現在の再開判断・一時領域・Git保存は、[改訂研究計画](../../../docs/plans/neural-assisted-non-neural-speech-plan-2026-10-08.md)と[継続プロンプト](../../../docs/plans/autonomous-research-continuation-prompt-2026-10-08.md)を参照する。以下の保存APIの手順を使い、最新台帳の未実施部分から再開する。
+
 今後の新しい実験・再開入口は、次の保存バックエンドを明示的に使用する。
 
 ```python
@@ -16,7 +18,7 @@ with b.job(campaign, 'render', label, reserve_bytes=maximum) as token:
 
 WAV・NPZなどは外部の実体へ保存し、論理ファイルのリンクとメタデータは内蔵に残る。
 それ以外の大容量データは `write_data` を使う。ディレクトリ全体はリンクにしない。
-実行環境・小さい最終モデルを外部へ送らない。既存の成果は移動・再生成しない。
+実行環境・小さい最終モデルを外部へ送らない。既存データの検証済み外部移動には[2026-10-08追補](../../../docs/plans/repository-data-storage-amendment-2026-10-08.md)を適用し、内容・論理パス・封印を保持する。保存済みの比較は再生成しない。
 
 `external_output` で子プロセスの最大出力を予約する場合、その処理中は他のサイクルファイルを保存しない。
 子プロセスにも `storage_output.open_output` 相当のマウント確認とディレクトリFDによる出力を使用する。
@@ -28,11 +30,15 @@ WAV・NPZなどは外部の実体へ保存し、論理ファイルのリンク�
 媒体が外れた、UUIDが違う、識別marker不一致、読取専用、容量不足なら停止する。
 内蔵へ自動フォールバックしない。壊れたリンクや未完了保存を自動削除しない。
 
-現在の実験 `campaigns/nas-post-mlpg-timing-20261005-v1` は比較896件がそろい、
-`runtime-preflight-storage-02.json` に既知の通常/隔離波形一致と物理データ読取拒否を保存した。
-次の入口は `isolate-storage-02.py`。実行後に `evaluate-storage.py --engine whisper` と
-`evaluate-storage.py --engine reazon`、固定済み `summarize.py` の保存backendラッパー、
-`closeout-storage.py` を順に使う。旧 `run.py` を最初から再実行しない。
+2026-10-08確認時には `campaigns/nas-post-mlpg-timing-20261005-v1` の比較896件、
+未知文の通常/隔離160組、二ASRの1,792記録と終了監査が完了し、封印済みである。
+旧生成・隔離・評価・終了入口を再実行しない。次の未開始候補は絶対F0校正で、
+`control/state.json` のcheckpointと終了集計を確認し、新契約を生成前に固定する。
+
+`/private/tmp/` 等のシステム一時領域は極力使わない。必要な作業ファイルは外部専用領域で
+所有manifest・予算予約・照合・不要時削除を行う。現行APIは任意の一時ディレクトリを
+自動管理しないため、その用途が必要な入口には改訂計画の管理手順を先に実装・検証する。
+システム一時領域を使った場合も、自分が作成した不要なファイルを必ず削除し、残存を確認する。
 
 隔離controllerは自分でsandbox-execを起動するため、controllerに外側のsandboxを重ねない。
 二ASRの評価入口にはネットワーク禁止の `offline.sb` を使い、固定済みモデルだけを読む。

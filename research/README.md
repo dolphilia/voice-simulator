@@ -53,6 +53,8 @@ experiments/<experiment-name>/
 
 人の逐次試聴を必須にせず、非ニューラル生成と研究側のAI評価を組み合わせる2026-10-02の提案は、[再調査メモ](../docs/note/autonomous-non-neural-speech-research-2026-10-02.md)と[実装・検証計画](../docs/plans/autonomous-non-neural-speech-plan-2026-10-02.md)を参照してください。既存の凍結結果・知覚評価を保持し、別の自動検証契約で研究を進める計画です。 実装と初回3 campaignの結果は[実行報告](../docs/note/autonomous-non-neural-speech-execution-report-2026-10-02.md)に保存しています。生成の独立性は検証済みですが、品質目標は未達です。[追加検証](../docs/note/autonomous-non-neural-speech-followup-2026-10-02.md)を含む途中経過は4 campaign・2,596レンダーです。[サイクル終了結果](../docs/note/autonomous-non-neural-speech-cycle-result-2026-10-02.md)では、計画上限の6 campaign・2,730台帳レンダーを完了し、品質未達で終了しています。
 
+現在の包括サイクルを継続する際は、[2026-10-08改訂研究計画](../docs/plans/neural-assisted-non-neural-speech-plan-2026-10-08.md)と[同日版の継続プロンプト](../docs/plans/autonomous-research-continuation-prompt-2026-10-08.md)を使用してください。14件の開始済み実験は終了し、次の未開始候補は絶対F0校正です。実行時は最新台帳を優先し、外部保存、一時ファイルの不要時削除、まとまった成果ごとのcommit・push originを行います。
+
 ## Notebook の選択基準
 
 次のような場合は Notebook が適しています。
@@ -109,7 +111,7 @@ jupyter notebook
 
 ## 大容量データの保存先
 
-2026-10-06以降は、[承認済みの外部保存・容量追補](../docs/plans/autonomous-research-external-storage-amendment-2026-10-06.md)に従い、今後の大容量音声・解析配列・研究用モデルを `/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/` に保存します。コード、主資料、計画、台帳、メタデータとhash一覧は内蔵に残します。包括研究サイクルでは `StorageBudget` を使い、専用領域の識別と両保存先の予約・監査を共有します。メディアが利用できない場合は停止し、内蔵へ自動的に代替保存しません。旧封印済み成果は従来の場所に保持します。[更新した継続実行指示](../docs/plans/autonomous-research-execution-prompt-2026-10-06.md)を参照してください。
+2026-10-06以降は、[承認済みの外部保存・容量追補](../docs/plans/autonomous-research-external-storage-amendment-2026-10-06.md)に従い、大容量音声・解析配列・研究用モデルを `/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/` に保存します。コード、主資料、計画、台帳、メタデータとhash一覧は内蔵に残します。包括研究サイクルでは `StorageBudget` を使い、専用領域の識別と両保存先の予約・監査を共有します。メディアが利用できない場合は停止し、内蔵へ自動的に代替保存しません。既存成果の移動については、次の2026-10-08追補を適用します。
 
 2026-10-08の既存データ移動指示は、[保存方針の追補](../docs/plans/repository-data-storage-amendment-2026-10-08.md)に記録しています。既存の大容量データも内容・論理パス・封印を保持したまま外部へ移し、元のファイルを個別のシンボリックリンクへ置き換えます。コード・文書・設定・台帳、仮想環境、展開済みライブラリ、小容量の最終モデルは内蔵に残します。従来のパスでデータを読むには指定メディアの接続が必要です。
 
