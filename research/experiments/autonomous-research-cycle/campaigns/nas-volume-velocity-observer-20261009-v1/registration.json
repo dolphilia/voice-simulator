@@ -1,0 +1,138 @@
+{
+  "campaign": "volume-velocity-observer-v1",
+  "question": "正規化波から体積速度源/口元の圧力と流れをSI単位で構成し、理想バッフル円形開口の因果的軸上音圧を独立資格化できるか。数学的lossをmicへ読み替えない。",
+  "previous_seals": [
+    "4afe879d879b218aa829db5ac7898e51a9366e1c4e6bd98fa2916a082f3018b6",
+    "baf17a13fc8186104c28ea8356aca9c460f473d34a03f0e873136e82937ccd04"
+  ],
+  "MRI_PDF_unavailable_HTML_readable_kept": true,
+  "previous_two_sources_not_adopted": true,
+  "old_gain_geometry_source_timing_or_gates_rescue_frozen": true,
+  "primary": {
+    "URLs": {
+      "mit-plane.pdf": "https://ocw.mit.edu/courses/6-551j-acoustics-of-speech-and-hearing-fall-2004/7056ab51d5cb75810bf976ee38ac8f30_lec_3_2004.pdf",
+      "illinois-piston.pdf": "https://jontalle.web.engr.illinois.edu/uploads/473.F18/Lectures/Chapter_7b.pdf"
+    },
+    "MIT": "Lecture 3, 16-September-2004, page 1 equations 3.2–3.4: plane waves, pressure/particle velocity/intensity",
+    "Illinois": "Oelze ECE/TAM373 Chapter7, printed pages 14–16 (PDF 1–3): uniform circular piston in infinite rigid baffle, Rayleigh integral and exact axis solution",
+    "private_research_source_and_images_external_no_Git_redistribution": true,
+    "no_copied_code": true
+  },
+  "units": {
+    "area_input": "cm^2 -> m^2 *1e-4",
+    "normalized_wave": "pressure wave *sqrt(area_m^2), Pa*m",
+    "density_kg_m3": 1.2,
+    "speed_m_s": 343.0,
+    "physical_constants_are_predeclared_engineering_not_measured_human": true
+  },
+  "boundary": "Rnew=rho*c*Us/sqrt(Ag)+Lold. Source pressure=(Rnew+Lold)/sqrt(Ag), imposed Us=sqrt(Ag)*(Rnew-Lold)/(rho*c), net W=(Rnew^2-Lold^2)/(rho*c)=Us*pressure. Mouth p=(R+L)/sqrt(Al), U=sqrt(Al)*(R-L)/(rho*c). Ideal volume source has reflection +1, not old .75 source power injection, no lung/Bernoulli/vortex qualification.",
+  "observer": "Uniform infinitely baffled piston, axis distance r. Exact P/U=rho*c/(pi*a^2)*(exp(-j*k*r)-exp(-j*k*sqrt(r^2+a^2))). Far-axis P/U=j*omega*rho/(2*pi*r)*exp(-j*k*r). Independently integrate Rayleigh disk. Do not substitute the unbaffled monopole rho/(4*pi*r) beyond its low-ka scope.",
+  "discrete": {
+    "fs": 34300,
+    "distances_m": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "propagation_samples": [
+      50,
+      100,
+      200
+    ],
+    "derivative": "eighth-order centered 9tap, c1=4/5,c2=-1/5,c3=4/105,c4=-1/280; causal extra group delay4, h[4-j]=Fs*cj,h[4+j]=-Fs*cj",
+    "state": "D+8 most-recent flow history samples",
+    "reset_at_each_block": false,
+    "no_fractional_delay_fit_or_output_normalization": true
+  },
+  "fixtures": {
+    "samples": 8192,
+    "seed": 760910,
+    "area_cm2": [
+      0.05,
+      0.2,
+      1.0,
+      5.0,
+      12.0
+    ],
+    "dynamic_area": [
+      "ramp .05→12",
+      "7Hz sine 6.025±5.975",
+      "half .05→12"
+    ],
+    "flow_noise_SD_m3_s": 1e-06,
+    "left_wave_noise_SD_Pa_m": 0.03,
+    "observer_signals": [
+      "impulse 1e-6",
+      "noise SD1e-6"
+    ],
+    "radii_m": [
+      0.007,
+      0.008,
+      0.012,
+      0.016
+    ],
+    "frequency_Hz": {
+      "first": 1,
+      "last": 6000,
+      "step": 1
+    },
+    "Rayleigh_quadrature_Hz": [
+      1,
+      110,
+      220,
+      1000,
+      6000
+    ]
+  },
+  "gates": {
+    "source_volume_absolute_error_m3_s": 5e-19,
+    "power_absolute_error_W": 3e-17,
+    "pressure_vs_independent_Pa": 3e-13,
+    "derivative_weights_vs_polynomial_system": 3e-14,
+    "polynomial_moment_residual": 3e-12,
+    "discrete_derivative_relative_error": 0.01,
+    "observer_vs_exact_disk_relative_complex_error": 0.02,
+    "Rayleigh_quadrature_relative_error": 2e-12,
+    "observer_vs_SciPy_lfilter_and_convolution_Pa": 3e-14,
+    "FFT_vs_analytic_complex": 2e-09,
+    "partition_and_future_prefix_bytes_exact": true,
+    "invalid_rejected": 31
+  },
+  "input_domain": {
+    "area_cm2": [
+      0.05,
+      12.0
+    ],
+    "absolute_volume_m3_s_at_most": 0.001,
+    "absolute_normalized_wave_Pa_m_at_most": 100.0,
+    "observer_history_volume_limit": 0.001
+  },
+  "scope": "独立した線形SI境界と理想的軸上観測のみ。実人体の頭/移動する開口/非一様流/鼻/閉鎖/声門気流物理/日本語音声や知覚は未資格。6kHzは数値近似範囲の事前選択で旧8kHz波形/ゲートを再判定しない。",
+  "estimates": {
+    "render": 192,
+    "dsp": 1400,
+    "download": 4000000,
+    "temporary_peak": 24000000,
+    "temporary_write": 48000000,
+    "internal_blocks_and_references_and_closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 600,
+    "dsp": 4000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 4000000
+  },
+  "controller_sha256": "a1f1ca72421d5c642449804068dd2818446db47fa86201134698912547edfc56",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "通過時だけ、別契約でSI体積速度LF源と声道を結合し、flanged近似境界/口元flow/この理想観測の整合と非強制エネルギーを検証する。物理SIと数学的正規化lossを混同せず、新しい波形前に源振幅/帯域/バッフル/観測距離/因果を固定する。通過だけで日本語を採択しない。"
+}
