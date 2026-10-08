@@ -1,0 +1,60 @@
+{
+  "campaign": "hts-lattice-mechanism-v1",
+  "question": "MCPの有限power gridから全極/Yule-Walkerへ射影し、反射係数と対数gainを因果latticeで時間補間する別の声道表現を独立検証できるか。",
+  "factor": "alpha.55の解析MCP応答→16384点power逆FFTの自己相関r0..r34→正規化Levinson-Durbin→order34反射係数とsqrt予測誤差gain。前/currentをj/240補間。",
+  "controls": "原MCP/LF0/LPF/励振と時計不変、candidateは原HTS helperの源を別filterへ渡す。state0、追加delay0、係数clip/diagonal loading/波形gain救済なし。最終非ニューラル。",
+  "thresholds": {
+    "known_AR_response_relative": 1e-08,
+    "known_AR_coefficients_and_gain": 1e-07,
+    "dense_coefficient_absolute": 1e-10,
+    "static_direct_form_absolute": 1e-10,
+    "dynamic_analysis_inverse_absolute": 1e-10,
+    "causal_prefix_exact": true,
+    "native_exact": true,
+    "source_clock_and_all_parameters_exact": true,
+    "reflection_abs_below": 0.99999999,
+    "registered_instantaneous_roots_below": 1.0
+  },
+  "interpretation": "全極射影は一般MCP/MLSAの厳密再現ではない。瞬時係数の安定や有限人工動的trajectoryを任意時間変動の一様安定/自然さへ拡張しない。FIR係数救済でもない。",
+  "costs": {
+    "render": 62,
+    "dsp": 232,
+    "maximum_seconds": 3000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 10,
+    "audit": 10,
+    "render": 186,
+    "dsp": 696,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "sources": {
+    "urls": [
+      "https://sp-nitech.github.io/sptk/latest/main/levdur.html",
+      "https://sp-nitech.github.io/sptk/latest/main/par2lpc.html",
+      "https://sp-nitech.github.io/sptk/latest/main/poledf.html"
+    ],
+    "implementation": "一次式を読んだ独自C/Python実装。SPTKソースやlibraryは取得/コピーしていない。",
+    "native_parent_seal_sha256": "3aa4df0b54494c5b856aaa8b19fd8ca2cd664d4dd4d7a5e857a9cdd5407f267d",
+    "previous_seal_sha256": "d5cbbeb7d26069a83ea2b9944f7c4fa4a16df7352721808dcdb65eafd0b7eaa7"
+  },
+  "c_sha256": "af3ab39137a52856d08a6814d9db0d4125dd2617f65f77edbac78df43906e888",
+  "module_sha256": "a0c50ab5efdb9ddef2b1503dc79bcbdf5b483291ee73cf5032fda15ca96eded4",
+  "fixture_sha256": "4e83e3d573aa06677907b57a9af89363893bc04e11931f39adae50927a269609",
+  "controller_sha256": "1d244adc237e7d34d724a7d93c91236b954104a9e1a4ef3d50fee061569c5e26",
+  "next": "科学24件の定期レビュー後、保存済み新native全MCP frameで射影損失/安定性を別登録して確認。許容域を守る場合だけ新日本語の比較一式を登録。",
+  "old_allpass_output_bound_FIR_and_all_frozen_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
