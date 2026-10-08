@@ -1,0 +1,55 @@
+{
+  "campaign": "hts-fir-gain-mechanism-v1",
+  "question": "IR全体の算術補間と、形状/対数利得分離補間を独立式で区別できるか。静的応答を変えず時間表現だけを検証する。",
+  "factor": "b0=sum((-alpha)**m * MCP[m]);IR/exp(b0)の形状を算術補間し、exp(b0_prev+u*(b0_current-b0_prev))を出力に適用。u=j/240。",
+  "controls": "alpha=.55/IR2048/FFT16384/因果参照/源時計/LPF/波形後処理を保持。MLSA全係数時間補間との同一性は主張しない。波形別gain推定なし。",
+  "thresholds": {
+    "C_prefix_relative_error": 1e-10,
+    "b0_absolute_error": 1e-12,
+    "convolution_absolute_error": 1e-10,
+    "pure_gain_absolute_error": 1e-10,
+    "native_gain_absolute_error": 1e-10,
+    "causal_prefix_exact": true,
+    "original_native_exact": true
+  },
+  "costs": {
+    "render": 86,
+    "dsp": 46,
+    "maximum_seconds": 3000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 8,
+    "audit": 10,
+    "render": 258,
+    "dsp": 138,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "source": {
+    "urls": [
+      "https://sp-nitech.github.io/sptk/latest/main/mc2b.html",
+      "https://sp-nitech.github.io/sptk/latest/main/mglsadf.html"
+    ],
+    "original_gain_source": "campaigns/nas-hts-minphase-mechanism-20261008-v1/vendor/HTS_vocoder_shaped.c:903-945",
+    "original_gain_source_sha256": "89b1cb6277a89d89aabfde01aa26b5ecfa08e2a6237fbf4c1417ad75a1637897",
+    "parent_seal_sha256": "c64398ea29ae14b9a33ea0751ea7bc35f24965c12207539a50308e3fc75fc372",
+    "previous_failed_speech_seal_sha256": "6395539a05c2ed26399c61b5e7159a415293cc4bbebac0d3f445a8738dd2bbc8"
+  },
+  "module_sha256": "33e7e748fa26e69888cd5c8d91006f4fb5b9ff725b27e622068e3c2a91cbd4ba",
+  "fixture_sha256": "4800656eb6108ab532c1a69a629c256a8d2fca7fd4ee277823adb6a98c6b61ff",
+  "controller_sha256": "2c6be7f661d490b50a1fca87054de987aeb61cbe61aaff8ea044f959a44beaa3",
+  "next": "機構通過時だけ新16文のnative/線形IR/対数利得分離IR三方式96波形を登録。FIR経路三回目の全件不通過なら同補間/係数救済を封印し、別測定資格へ進む。",
+  "old_FIR1024_and_2048_results_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
