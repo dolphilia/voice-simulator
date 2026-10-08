@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 435,
-    "audit": 281,
-    "render": 13286,
-    "dsp": 46902,
+    "setup": 438,
+    "audit": 282,
+    "render": 13346,
+    "dsp": 46966,
     "ai": 11568,
     "train": 11,
     "download": 1669966871,
@@ -3079,13 +3079,16 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 60,
+        "dsp": 64,
+        "audit": 1
       },
       "start_seconds": 81440.25267863274,
       "start_write_bytes": 41603689105,
       "protocol_sha256": "18641fb0b3471c3327fc32b2a41dbe5d81e997f0872dde599a97a0f4f5d5951e",
-      "payload_bytes": 219007,
-      "closed": false,
+      "payload_bytes": 228050,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -3096,15 +3099,89 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:FFT IR・駆動源・HTS・因果FIRの全生成": [
+          {
+            "id": "ae3205c6a3f746b893198f616999b07e",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:独立C prefix・直接畳み込み・原対照の限定資格": [
+          {
+            "id": "9c55ee9ade38445f8f4137cc82b742ba",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:機構範囲・共有依存・費用・一時回収の終了照合": [
+          {
+            "id": "bd2e6feededa4a6b993f6f0cbc4005d2",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 81740.33641886711
+    },
+    "hts-fft-fir-comparison-v1": {
+      "prefix": "campaigns/nas-hts-fft-fir-comparison-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1800000000,
+        "write_bytes": 2800000000,
+        "setup": 30,
+        "audit": 40,
+        "render": 1000,
+        "dsp": 4000,
+        "ai": 384,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 3
+      },
+      "start_seconds": 82047.84121084213,
+      "start_write_bytes": 41684380892,
+      "protocol_sha256": "50d6a71efd2ab5a092f3e635a01c8178d6f71fada4419c69a9e91a3b20fc4ddd",
+      "payload_bytes": 4293699,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:原励振固定・最小位相FIR・全比較費を生成前登録": [
+          {
+            "id": "04039151c2ea41269908ceef7a3b3820",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:新source build・共有bundle固定": [
+          {
+            "id": "f708d16e5acf43fd998b54b0e07c9c4b",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:全履歴非衝突と入力条件の波形前固定": [
+          {
+            "id": "7d33881c785d4dd8914772de0ddab335",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 8823614713,
-  "seconds": 81711.50014662743,
-  "write_bytes": 41649550264,
+  "payload_bytes": 8827968074,
+  "seconds": 82359.1824567318,
+  "write_bytes": 41791198281,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -3204,9 +3281,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "FFT-FIR-mechanism-registered",
-    "active_campaign": "hts-fft-fir-mechanism-v1",
-    "next": "生成前push後の2048点FFT FIR機構fixture",
+    "id": "FFT-FIR-comparison-registered",
+    "active_campaign": "hts-fft-fir-comparison-v1",
+    "next": "生成前push後の新64波形・全隔離・二ASR・全MCP判定",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -7927,6 +8004,42 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-47de586ac6234429bbbd350cb5fd3e66": {
+      "owner": "additional-closeout-47de586ac6234429bbbd350cb5fd3e66",
+      "job": "ae3205c6a3f746b893198f616999b07e",
+      "campaign": "hts-fft-fir-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-47de586ac6234429bbbd350cb5fd3e66",
+      "purpose": "FFT FIR fixtureの科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-8e1b5d09ad104e49b7e0cf68af193f50": {
+      "owner": "additional-closeout-8e1b5d09ad104e49b7e0cf68af193f50",
+      "job": "7d33881c785d4dd8914772de0ddab335",
+      "campaign": "hts-fft-fir-comparison-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-8e1b5d09ad104e49b7e0cf68af193f50",
+      "purpose": "辞書と入力照合",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -8689,7 +8802,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 14,
+    "scientific_completed": 15,
     "last_review": {
       "seconds": 79452.7428278923,
       "scientific_completed": 12,
