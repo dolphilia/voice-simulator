@@ -1,0 +1,101 @@
+{
+  "campaign": "radiation-boundary-mechanism-v1",
+  "question": "円管放射の因果的Padé反射を、固定半径の離散時間境界として独立に再現し安定/受動/因果/状態継承を満たせるか。",
+  "primary": {
+    "title": "Approximation formulae for the acoustic radiation impedance of a cylindrical pipe",
+    "authors": [
+      "F. Silva",
+      "Ph. Guillemain",
+      "J. Kergomard",
+      "B. Mallaroni",
+      "A. N. Norris"
+    ],
+    "arxiv": "0811.3625v1",
+    "journal": "J. Sound Vib. 322(1-2),255-263(2009)",
+    "DOI": "10.1016/j.jsv.2008.11.008",
+    "URLs": {
+      "silva-2008.pdf": "https://arxiv.org/pdf/0811.3625",
+      "silva-2008.html": "https://arxiv.org/html/0811.3625v1"
+    },
+    "license": "arXiv perpetual non-exclusive。原PDF/図/本文のGit再配布なし。式/数値の引用から独自C/Pythonを実装、原コード転載なし。"
+  },
+  "factor": "一次式16/Table1の丸め値を固定。exp(+jwt)へ共役変換しR(s)=-(1+n1*tau*s)/(1+d1*tau*s+d2*tau^2*s^2),tau=a/c。s=2Fs(1-z^-1)/(1+z^-1)のbilinearを明示展開。",
+  "coefficients": {
+    "unflanged": [
+      0.167,
+      1.393,
+      0.457
+    ],
+    "flanged": [
+      0.182,
+      1.825,
+      0.649
+    ]
+  },
+  "rounding": "eta=(d1-n1)/2、beta=(d1^2-n1^2-2d2)/2の実値を記録し、論文の低周波値との完全一致を主張しない。出力後の係数補正なし。",
+  "fixtures": {
+    "fs": [
+      34300,
+      48000
+    ],
+    "radii_m": [
+      0.007,
+      0.008,
+      0.012,
+      0.016
+    ],
+    "terminations": [
+      "unflanged",
+      "flanged"
+    ],
+    "signals": [
+      "impulse",
+      "fixed-seed Gaussian noise"
+    ],
+    "samples": 8192,
+    "seed": 710810
+  },
+  "gates": {
+    "coefficients_vs_SciPy_bilinear": 1e-14,
+    "wave_vs_independent_lfilter": 3e-14,
+    "complex_response_vs_analytic_warped_s": 3e-12,
+    "stable_poles_abs_less_than": 1.0,
+    "analytic_bounded_real_delta_positive": true,
+    "cumulative_reflected_energy_excess_at_most": 1e-10,
+    "partition_and_future_input_prefix_bytes_exact": true,
+    "pressure_equals_incident_plus_reflected": true,
+    "normalized_flow_equals_incident_minus_reflected": true,
+    "invalid_rejected": 12
+  },
+  "scope": "固定半径/円管の近似反射のみ。Ka≤2で論文の近似誤差8%記述があり、bilinear周波数warpingとそれを超える帯域を区別。動く唇/全声道/人体頭部/遠方観測/日本語知覚/内容は未資格。",
+  "estimates": {
+    "render": 224,
+    "dsp": 512,
+    "source_and_block_calls_included": true,
+    "download": 2000000,
+    "temporary_peak": 24000000,
+    "temporary_write": 48000000,
+    "closeout_Git_included": true,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 600,
+    "dsp": 2000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 2000000
+  },
+  "controller_sha256": "fc239f4151da1710f16c997a2717472c4180db889269dc182e250d889c2dabea",
+  "all_prior_frozen_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "固定放射機構を通過した範囲で体積流量/唇flow観測と声道への結合を別契約で検証。動的半径や遠方音を無検証で資格移転しない。同じ語句のgain/径/終端/源/時刻で救済しない。"
+}
