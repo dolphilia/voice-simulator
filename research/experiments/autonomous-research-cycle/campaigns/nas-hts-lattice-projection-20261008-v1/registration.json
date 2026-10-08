@@ -1,0 +1,54 @@
+{
+  "campaign": "hts-lattice-projection-v1",
+  "question": "実native全MCP frameの固定order34全極射影が、有限grid振幅損失・独立密Toeplitz・反射係数安定域・gridrefinementの操作的条件を全件保持できるか。",
+  "input": "直前の未使用16文×2条件のnative保存32列、全20,276 frame。選別/除外なし。波形本体は読みも生成もしない。",
+  "factor": "alpha.55/order34/FFT16384/自己相関/元Levinson-Durbinを固定。32768は観測refinementのみで候補を変更しない。loading/clip/新係数/gain探索なし。",
+  "thresholds": {
+    "log_magnitude_RMSE_dB_at_most": 2.0,
+    "normalized_dense_coefficient_error_at_most": 1e-10,
+    "reflection_abs_below": 0.99999999,
+    "relative_refinement_coefficient_and_gain_error_at_most": 1e-08,
+    "batch_original_project_relative_error_at_most": 1e-12,
+    "all_frames_required": true,
+    "undefined_measures_fail": true
+  },
+  "root_radius_scope": "有限精度polynomial根は診断値として保存。瞬時反射係数域と有限gridを、任意時間変動の一様安定へ拡張しない。",
+  "approximation_scope": "2dB等は事前設計の工学的近似幅。既知AR2不通過を救済せず、日本語自然さ/動的pitch/内容を保証しない。",
+  "estimates": {
+    "render": 0,
+    "dsp": 160,
+    "dsp_unit": "32保存列×全frame射影、独立解、grid損失、refinement、安定域/batch照合の5監査。各監査は全frameを検査。",
+    "maximum_seconds": 6500,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 10,
+    "audit": 10,
+    "render": 0,
+    "dsp": 480,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "mechanism_bundle": "/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-hts-lattice-mechanism-20261008-v1/runtime-bundle",
+  "worker_sha256": "1f593d9d6dea4e419d9e094dfb9298ce410b918f51860e648f0c366f2398fb5a",
+  "controller_sha256": "2b47c11d594e91fdfaa21f36f0cc79e293b7dad947a9b1ea25114b8fe3be9807",
+  "source": {
+    "mechanism_seal_sha256": "3b1a4c67a6b9d0a528a3127a1fffa75cd8d6b64ca5d6a3f07deaf228f1257659",
+    "corpus_seal_sha256": "d5cbbeb7d26069a83ea2b9944f7c4fa4a16df7352721808dcdb65eafd0b7eaa7",
+    "review_sha256": "68861ca3851589b0bf4b07f4bddc629e8513b09b0d22251ebdead8fbcb93fca9"
+  },
+  "next_if_pass": "一回のみ新16文native/latticeの日本語比較を生成前登録し、全工学/二ASR/隔離を確認。",
+  "next_if_fail": "同order/warp/loadingの係数救済を封印し、別の共有音響モデル/文脈表現または調音制御へ移る。旧17→96同8残差/同learnerの救済は継承しない。",
+  "original_known_AR_qualification": false,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
