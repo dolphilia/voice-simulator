@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 522,
-    "audit": 388,
-    "render": 37398,
-    "dsp": 70294,
+    "setup": 523,
+    "audit": 390,
+    "render": 37415,
+    "dsp": 70464,
     "ai": 12976,
     "train": 13,
     "download": 1712746391,
@@ -7951,14 +7951,15 @@
       },
       "counts": {
         "setup": 2,
-        "render": 30,
-        "dsp": 300
+        "render": 47,
+        "dsp": 470,
+        "audit": 1
       },
       "start_seconds": 131551.36420583725,
       "start_write_bytes": 59690660003,
       "protocol_sha256": "4238244b2b825dc10ac378f8e0f1ef419a5cd00eaf659741a23ef6f3228c84d8",
-      "payload_bytes": 27500,
-      "closed": false,
+      "payload_bytes": 2164734,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -7990,18 +7991,117 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:原三条件の未実施17参照だけを継続": [
+          {
+            "id": "321e7f66ebe248faafc1454c045a0def",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:未実施17参照の固定E0/F0/包絡": [
+          {
+            "id": "04c72e8b85b6447d81ad2aadd3d4dfed",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:30分母の生成/不通過/未保存と残り17の診断を封印": [
+          {
+            "id": "2f7e6616769143ff8578811de33238d1",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 132690.83393383026
+    },
+    "long-horizon-review-v9": {
+      "prefix": "campaigns/nas-long-horizon-review-20261009-v9",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 64000000,
+        "write_bytes": 400000000,
+        "setup": 6,
+        "audit": 8,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "audit": 1
+      },
+      "start_seconds": 133152.53332781792,
+      "start_write_bytes": 60208474462,
+      "protocol_sha256": "f536a13620e2027c6121817c9b22f9199421b6d7d38506d44c800e1adb8759f2",
+      "payload_bytes": 12371,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "audit:新六封印/全分母/失敗/未実施/参照適格域/全費用を確認": [
+          {
+            "id": "2f1cbfc62ec64bc38c8f4545d21a097e",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 133153.9842197895
+    },
+    "vtl-qualified-vowel-fit-a-v1": {
+      "prefix": "campaigns/nas-vtl-qualified-vowel-fit-20261009-a-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1000000000,
+        "setup": 20,
+        "audit": 12,
+        "render": 6000,
+        "dsp": 600,
+        "ai": 0,
+        "teacher": 0,
+        "train": 1,
+        "inverse": 1,
+        "download": 0
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 134008.96357774734,
+      "start_write_bytes": 60272443462,
+      "protocol_sha256": "652f0c25fae27e4d71c47bfaffa7c45a287baa8cc318494bcb8ee4396bbcbff0",
+      "payload_bytes": 987834,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": "内部2376render/予約2380を前確認済み。開始前6000枠で有限な一回の技術再試行のみを確保。旧a/i/uの失敗費用・上限を初期化しない。新科学条件と再使用参照を初出力前固定。",
+      "attempts": {
+        "setup:別条件の適格参照/九候補/固定目的/全費用を初出力前固定": [
+          {
+            "id": "704d35f696f74403b868861f09d6912b",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9702831789,
-  "seconds": 132650.13719296455,
-  "write_bytes": 59961588121,
+  "payload_bytes": 9706022260,
+  "seconds": 134311.44622397423,
+  "write_bytes": 60400854487,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791486470.816503
+    "checkpoint": 1791486932.125534
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -8101,9 +8201,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "vtl-shared-vowel-u-completed",
-    "active_campaign": "vtl-native-reference-conditions-v1",
-    "next": "保存後、原条件の未実施17行だけを固定診断。失敗1行と未保存12行は未資格のまま残す。",
+    "id": "review9-completed-aiu-partial-training-ready",
+    "active_campaign": "vtl-qualified-vowel-fit-a-v1",
+    "next": "登録push後、新条件の実VTL18候補生成/測定→直接fit→限定訓練適合の封印。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -43748,6 +43848,164 @@
       "removed_files": 14,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-3fdc7124d32b46eda88c7b1eaeb34d45": {
+      "owner": "additional-closeout-3fdc7124d32b46eda88c7b1eaeb34d45",
+      "job": "321e7f66ebe248faafc1454c045a0def",
+      "campaign": "vtl-native-reference-conditions-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-3fdc7124d32b46eda88c7b1eaeb34d45",
+      "purpose": "再生成せず残り17参照だけを測り個票を随時保存",
+      "maximum_bytes": 64000000,
+      "maximum_write_bytes": 128000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "higher-longer-a-220.wav",
+          "bytes": 150778,
+          "inode": 99997,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-a-280.wav",
+          "bytes": 150778,
+          "inode": 99998,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-e-220.wav",
+          "bytes": 150778,
+          "inode": 100003,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-e-280.wav",
+          "bytes": 150778,
+          "inode": 100004,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-i-220.wav",
+          "bytes": 140698,
+          "inode": 99999,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-i-280.wav",
+          "bytes": 140698,
+          "inode": 100000,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-o-220.wav",
+          "bytes": 150778,
+          "inode": 100005,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-o-280.wav",
+          "bytes": 150778,
+          "inode": 100006,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-u-220.wav",
+          "bytes": 140698,
+          "inode": 100001,
+          "device": 16777241
+        },
+        {
+          "relative": "higher-longer-u-280.wav",
+          "bytes": 140698,
+          "inode": 100002,
+          "device": 16777241
+        },
+        {
+          "relative": "lower-longer-e-160.wav",
+          "bytes": 150778,
+          "inode": 99995,
+          "device": 16777241
+        },
+        {
+          "relative": "lower-longer-i-160.wav",
+          "bytes": 140698,
+          "inode": 99992,
+          "device": 16777241
+        },
+        {
+          "relative": "lower-longer-o-160.wav",
+          "bytes": 150778,
+          "inode": 99996,
+          "device": 16777241
+        },
+        {
+          "relative": "lower-longer-u-160.wav",
+          "bytes": 140698,
+          "inode": 99994,
+          "device": 16777241
+        },
+        {
+          "relative": "partial.json",
+          "bytes": 32925,
+          "inode": 99993,
+          "device": 16777241
+        },
+        {
+          "relative": "references.json",
+          "bytes": 33013,
+          "inode": 100007,
+          "device": 16777241
+        },
+        {
+          "relative": "remaining-stderr.txt",
+          "bytes": 0,
+          "inode": 99990,
+          "device": 16777241
+        },
+        {
+          "relative": "remaining-stdout.txt",
+          "bytes": 491,
+          "inode": 99989,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 2116841,
+      "peak_violation": false,
+      "removed_files": 18,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-b44d01b6b73444049a16d709bdb4a0d6": {
+      "owner": "additional-closeout-b44d01b6b73444049a16d709bdb4a0d6",
+      "job": "704d35f696f74403b868861f09d6912b",
+      "campaign": "vtl-qualified-vowel-fit-a-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-b44d01b6b73444049a16d709bdb4a0d6",
+      "purpose": "既存pyworld評価packageのimportだけを確認",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "dependency-import-stderr.txt",
+          "bytes": 0,
+          "inode": 100036,
+          "device": 16777241
+        },
+        {
+          "relative": "dependency-import-stdout.txt",
+          "bytes": 203,
+          "inode": 100035,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 203,
+      "peak_violation": false,
+      "removed_files": 2,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -44525,12 +44783,12 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 53,
+    "scientific_completed": 54,
     "last_review": {
-      "seconds": 126608.60562205315,
-      "scientific_completed": 48,
-      "path": "campaigns/nas-long-horizon-review-20261009-v8/decision.json",
-      "sha256": "6eb3426ae4019b67eb5b77a8c01b7938262d9dba513530403662f481fbdf6667"
+      "seconds": 133154.10836291313,
+      "scientific_completed": 54,
+      "path": "campaigns/nas-long-horizon-review-20261009-v9/decision.json",
+      "sha256": "61175d1c900badc6c30e25dbd7563443534586ab99c254f3bb4758c0a1a1ac36"
     },
     "closing_seconds": 43200,
     "science_enabled_after_validation": true,
@@ -44559,7 +44817,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 7429.950296163559,
+      "used_seconds": 9091.259327173233,
       "current": "C",
       "stages": [
         {
@@ -44579,7 +44837,7 @@
         {
           "id": "C",
           "maximum_seconds": 36000,
-          "used_seconds": 6041.466503858566,
+          "used_seconds": 7702.77553486824,
           "status": "running"
         },
         {
@@ -44598,7 +44856,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 132650.13719296455,
+    "last_accounted_seconds": 134311.44622397423,
     "segment": {
       "stage": "C",
       "foundation_only": false,

@@ -1,0 +1,145 @@
+{
+  "question": "別条件の適格a訓練参照に対して、二つの共有TCX/TCY係数の有限最適化で実VTL包絡距離を下げられるか。旧短母音120/160条件を救済しない。",
+  "vowel": "a",
+  "controller_sha256": "9f8289e6ab81f88357ebfdcf12afa9662721d8b7ab3d059215dfb616024b3815",
+  "preflight_seal_sha256": "067b5cbe53efa39e929e94cfec446eefa1644da99df8c91c0f9a5754826857c0",
+  "review9_decision_sha256": "61175d1c900badc6c30e25dbd7563443534586ab99c254f3bb4758c0a1a1ac36",
+  "reference_seal_sha256": "4f5a96c5301072075691633c7162081c8085e0b7709e9c25ce277a69c94c5261",
+  "F0_conditions": [
+    220,
+    280
+  ],
+  "native_training_speed": 0.5,
+  "reference_role": "三条件の五母音共通資格は不採択。aiuだけを新限定訓練範囲として明示。全参照を再使用扱いとし、成功済み波形を再生成しない。",
+  "candidate_scope": "aiu最大六共有係数。e/oは既定・未学習。旧a依存失敗は120/160Hzの未測定のまま保持。",
+  "candidates": [
+    {
+      "id": "grid-0",
+      "dx_cm": -0.4,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-1",
+      "dx_cm": -0.4,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-2",
+      "dx_cm": -0.4,
+      "dy_cm": 0.4
+    },
+    {
+      "id": "grid-3",
+      "dx_cm": 0.0,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-4",
+      "dx_cm": 0.0,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-5",
+      "dx_cm": 0.0,
+      "dy_cm": 0.4
+    },
+    {
+      "id": "grid-6",
+      "dx_cm": 0.4,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-7",
+      "dx_cm": 0.4,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-8",
+      "dx_cm": 0.4,
+      "dy_cm": 0.4
+    }
+  ],
+  "seed": 41,
+  "VTL_duration_seconds": 0.32,
+  "VTL_gain": 0.5,
+  "native_gain": 0.25,
+  "roles": {
+    "train": "native高F0・speed.5の二実波形の固定中央60%測定を再使用。内部境界は実音素真値ではない。",
+    "development": "モデル凍結後のA少数CVを別契約で診断。三母音外とチ/ツ/シ実写像を明示。",
+    "unused_selection": "未使用。訓練参照・旧結果を独立証拠へ戻さない。",
+    "P5_opened": false
+  },
+  "objective": {
+    "method": "direct non-neural independent 9-grid per vowel",
+    "parameters": 2,
+    "Welch": {
+      "fs": 24000,
+      "window": "hann",
+      "nperseg": 1024,
+      "noverlap": 512,
+      "nfft": 4096,
+      "detrend": "constant",
+      "scaling": "density",
+      "average": "mean"
+    },
+    "centers_Hz": {
+      "first": 500,
+      "last": 4000,
+      "geomspace_points": 20
+    },
+    "log_frequency_Gaussian_sigma": "ln(2)/6",
+    "power_floor": 1e-20,
+    "shape": "10log10(帯域平均power)から20帯域平均を引く",
+    "loss": "二F0のshape MSEを等重み平均 + .01*(dx^2+dy^2)",
+    "gain_optimized": false,
+    "regularization": 0.01,
+    "tie_break": "objective、offset平方和、grid登録順。zeroを候補に保持。"
+  },
+  "gates": {
+    "E0": "旧acoustics評価と同一。",
+    "pitch": "中央60%: DIO/stonemaskとACF±1半音/confidence.6。有声3frame/半数以上。一母音診断のみで旧三音素発話支持の資格ではない。",
+    "joint_F0": "両F0で候補と参照が全通過した候補だけ選ぶ。全18分母保持。",
+    "all_candidates_invalid": "0係数・未資格を保持し窓/条件/gain/ゲートを救済しない。",
+    "optimization_improvement": "baselineも同じ診断に通過したときだけ訓練MSEとobjectiveを比較。内容/自然さ/一般化とは別。"
+  },
+  "stopping": {
+    "fit_seconds": 1800,
+    "max_updates": 18,
+    "max_parameters": 2,
+    "fit_runs": 1,
+    "inverse_runs": 1,
+    "finite_candidates": 9,
+    "no_hidden_seed_CV_or_condition_fit": true
+  },
+  "estimates": {
+    "actual_render_expected": 2376,
+    "render_reservation": 2380,
+    "DSP_macro": 126,
+    "DSP_reservation": 160,
+    "training_reference_regeneration": 0,
+    "candidate_WAV_bytes_at_most": 1000000,
+    "grid_JSON_bytes_at_most": 1500000,
+    "work_peak_bytes": 32000000,
+    "work_write_bytes": 64000000,
+    "render_job_reservation_bytes": 100000000,
+    "RAM_expected_at_most": 1000000000,
+    "control_index_failure_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 1000000000,
+    "setup": 20,
+    "audit": 12,
+    "render": 6000,
+    "dsp": 600,
+    "ai": 0,
+    "teacher": 0,
+    "train": 1,
+    "inverse": 1,
+    "download": 0
+  },
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "next": "aiuの三つの新限定fitを各閉じて係数と不通過を統合。全五母音適格や自然さは主張せず、AのCV診断へ進む。"
+}
