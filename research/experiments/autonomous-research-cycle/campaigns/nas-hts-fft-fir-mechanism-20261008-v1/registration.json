@@ -1,0 +1,53 @@
+{
+  "campaign": "hts-fft-fir-mechanism-v1",
+  "question": "全実MCPで選んだ固定IR長のFFT生成と過去だけの直接畳み込みは、独立C prefix・静的畳み込みcrossfade・原HTSを保護できるか。",
+  "IR_length": 2048,
+  "FFT_length": 16384,
+  "alpha": 0.55,
+  "frame": 240,
+  "interpolation": "出力時刻のIR crossfade j/240。MLSA b補間と同一とは呼ばない。",
+  "source": {
+    "cutoff_seal_sha256": "95d92d317b7a0930179f6fd16609ea747afedbf5535c7bf235209d646cdcf53f",
+    "old_C_binary_sha256": "6eab0c2b1efc18feb845fe39dc012975fd87325534b2055dd8266793a8b7f1e9",
+    "urls": [
+      "https://sp-nitech.github.io/sptk/latest/main/freqt.html",
+      "https://sp-nitech.github.io/sptk/latest/main/c2mpir.html"
+    ]
+  },
+  "thresholds": {
+    "C_prefix_relative_error": 1e-10,
+    "convolution_absolute_error": 1e-10,
+    "causal_prefix_exact": true,
+    "native_wave_exact": true
+  },
+  "costs": {
+    "render": 60,
+    "dsp": 64,
+    "maximum_seconds": 3000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "module_sha256": "4fd40d672c1062bc41fbd5af8534b928f7eb23cdaefba24e8c14b2330b9d2925",
+  "fixture_sha256": "c57346d7b4093cd4a2a55e1bb9bc665b186c0fc65ced5d25d117e288c29a7bcf",
+  "controller_sha256": "276a24ab38a34ee6d6fe3858160800da18be2b7e489ae47c1c84b886a8ff956c",
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 8,
+    "audit": 10,
+    "render": 180,
+    "dsp": 192,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "next": "機構資格を同一共有bundleへ固定し、新16日本語文の原native/FFT FIR比較を生成前登録する。",
+  "old_selected_MCP_evidence_is_not_independent_quality": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
