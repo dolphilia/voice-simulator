@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 516,
-    "audit": 383,
-    "render": 28604,
-    "dsp": 69324,
+    "setup": 517,
+    "audit": 384,
+    "render": 29604,
+    "dsp": 69334,
     "ai": 12976,
     "train": 11,
     "download": 1712746391,
@@ -7603,13 +7603,16 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 1000,
+        "dsp": 10,
+        "audit": 1
       },
       "start_seconds": 126992.9049859047,
       "start_write_bytes": 58246066987,
       "protocol_sha256": "6aabc872d757e5c3797e4f614d553094e72cf2d590ed2105c6dc1c61ce82b6fc",
-      "payload_bytes": 975846,
-      "closed": false,
+      "payload_bytes": 1158610,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -7620,18 +7623,78 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:通常2/隔離2/CLI1の全内部VTL生成費": [
+          {
+            "id": "d89e8917f90548359081281db185dfec",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:五波形のhash/全E0/内部clockを独立比較": [
+          {
+            "id": "60722517218443488b0b03dbde7d5c57",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:共有標的学習入口/全費用/失敗/回収を封印": [
+          {
+            "id": "eb6b3adf07e344f8b795c70a6cdb9a4c",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 127397.25173401833
+    },
+    "vtl-shared-vowel-fit-a-v1": {
+      "prefix": "campaigns/nas-vtl-shared-vowel-fit-20261009-a-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1000000000,
+        "setup": 20,
+        "audit": 12,
+        "render": 3000,
+        "dsp": 300,
+        "ai": 0,
+        "teacher": 0,
+        "train": 1,
+        "inverse": 1,
+        "download": 0
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 127836.97462391853,
+      "start_write_bytes": 58521860911,
+      "protocol_sha256": "a76a464a8a1d326bf1878a818d9553ccceadcb3a8efb7ff7c2d280f5dd84952c",
+      "payload_bytes": 2070424,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:有限九標的/二F0/窓/目的関数/全費用/範囲を初出力前固定": [
+          {
+            "id": "4ec45056016942faaa5363e7655dc9d9",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9694735016,
-  "seconds": 127373.28249502182,
-  "write_bytes": 58325477820,
+  "payload_bytes": 9697008628,
+  "seconds": 128158.33696007729,
+  "write_bytes": 58662097962,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791483923.961805
+    "checkpoint": 1791484529.0162702
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -7731,9 +7794,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "review8-completed-stageC-ready",
-    "active_campaign": "vtl-shared-target-preflight-v1",
-    "next": "工程C: VTL共有標的の通常/隔離/CLI小検査を実行して直接学習へ進む。",
+    "id": "vtl-target-preflight-completed",
+    "active_campaign": "vtl-shared-vowel-fit-a-v1",
+    "next": "登録push後に全候補の実VTL生成/測定→直接finite fit→限定訓練適合を封印。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -42745,6 +42808,129 @@
       "removed_files": 4,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-e150619fe860470db09a99ea788d6c69": {
+      "owner": "additional-closeout-e150619fe860470db09a99ea788d6c69",
+      "job": "d89e8917f90548359081281db185dfec",
+      "campaign": "vtl-shared-target-preflight-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-e150619fe860470db09a99ea788d6c69",
+      "purpose": "VTL事前検査のnormal生成とclose後の自己WAV再読取",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "a.wav",
+          "bytes": 30778,
+          "inode": 99842,
+          "device": 16777241
+        },
+        {
+          "relative": "i.wav",
+          "bytes": 30778,
+          "inode": 99843,
+          "device": 16777241
+        },
+        {
+          "relative": "normal-stderr.txt",
+          "bytes": 0,
+          "inode": 99840,
+          "device": 16777241
+        },
+        {
+          "relative": "normal-stdout.txt",
+          "bytes": 4424,
+          "inode": 99839,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 65980,
+      "peak_violation": false,
+      "removed_files": 4,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-2fcb26a939e84a69ae6b769c8f4bc239": {
+      "owner": "additional-closeout-2fcb26a939e84a69ae6b769c8f4bc239",
+      "job": "d89e8917f90548359081281db185dfec",
+      "campaign": "vtl-shared-target-preflight-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-2fcb26a939e84a69ae6b769c8f4bc239",
+      "purpose": "VTL事前検査のisolated生成とclose後の自己WAV再読取",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "a.wav",
+          "bytes": 30778,
+          "inode": 99853,
+          "device": 16777241
+        },
+        {
+          "relative": "i.wav",
+          "bytes": 30778,
+          "inode": 99854,
+          "device": 16777241
+        },
+        {
+          "relative": "isolated-stderr.txt",
+          "bytes": 0,
+          "inode": 99851,
+          "device": 16777241
+        },
+        {
+          "relative": "isolated-stdout.txt",
+          "bytes": 5229,
+          "inode": 99850,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 66785,
+      "peak_violation": false,
+      "removed_files": 4,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-ccbc3e8011c04f4db3fbd79a1f6ace7c": {
+      "owner": "additional-closeout-ccbc3e8011c04f4db3fbd79a1f6ace7c",
+      "job": "d89e8917f90548359081281db185dfec",
+      "campaign": "vtl-shared-target-preflight-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-ccbc3e8011c04f4db3fbd79a1f6ace7c",
+      "purpose": "VTL事前検査のcli生成とclose後の自己WAV再読取",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "a.wav",
+          "bytes": 30778,
+          "inode": 99862,
+          "device": 16777241
+        },
+        {
+          "relative": "cli-stderr.txt",
+          "bytes": 0,
+          "inode": 99860,
+          "device": 16777241
+        },
+        {
+          "relative": "cli-stdout.txt",
+          "bytes": 3073,
+          "inode": 99859,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 33851,
+      "peak_violation": false,
+      "removed_files": 3,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -43522,7 +43708,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 48,
+    "scientific_completed": 49,
     "last_review": {
       "seconds": 126608.60562205315,
       "scientific_completed": 48,
@@ -43556,7 +43742,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 2153.095598220825,
+      "used_seconds": 2938.150063276291,
       "current": "C",
       "stages": [
         {
@@ -43576,7 +43762,7 @@
         {
           "id": "C",
           "maximum_seconds": 36000,
-          "used_seconds": 764.6118059158325,
+          "used_seconds": 1549.6662709712982,
           "status": "running"
         },
         {
@@ -43595,7 +43781,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 127373.28249502182,
+    "last_accounted_seconds": 128158.33696007729,
     "segment": {
       "stage": "C",
       "foundation_only": false,

@@ -1,0 +1,142 @@
+{
+  "question": "共有a母音のTCX/TCY二係数を、二F0の日本語native参照と実VTL波形の有限包絡損失から直接推定できるか。",
+  "vowel": "a",
+  "controller_sha256": "4df683c8550ba79020d4d973cb149ba966c10880d7942c0078aa57180871b13a",
+  "preflight_seal_sha256": "067b5cbe53efa39e929e94cfec446eefa1644da99df8c91c0f9a5754826857c0",
+  "stage_A_design_sha256": "f76ba1b1a822c14aa8d2021137533ef794f71ed11506d727b27fac8fde1d5edc",
+  "candidates": [
+    {
+      "id": "grid-0",
+      "dx_cm": -0.4,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-1",
+      "dx_cm": -0.4,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-2",
+      "dx_cm": -0.4,
+      "dy_cm": 0.4
+    },
+    {
+      "id": "grid-3",
+      "dx_cm": 0.0,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-4",
+      "dx_cm": 0.0,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-5",
+      "dx_cm": 0.0,
+      "dy_cm": 0.4
+    },
+    {
+      "id": "grid-6",
+      "dx_cm": 0.4,
+      "dy_cm": -0.4
+    },
+    {
+      "id": "grid-7",
+      "dx_cm": 0.4,
+      "dy_cm": 0.0
+    },
+    {
+      "id": "grid-8",
+      "dx_cm": 0.4,
+      "dy_cm": 0.4
+    }
+  ],
+  "seed": 41,
+  "F0_conditions": [
+    120,
+    160
+  ],
+  "VTL_duration_seconds": 0.32,
+  "VTL_gain": 0.5,
+  "native_gain": 0.25,
+  "roles": {
+    "train": "再使用のnative共有モデルが生成する当該単独母音。生成内部state中央60%を切出すが実測音素境界とはしない。",
+    "development": "本契約ではCV生成なし。五母音係数を統合後、A登録の少数CVを別契約で測定。",
+    "unused_selection": "本文未作成・未評価。訓練/開発出力を選別未使用証拠へ戻さない。",
+    "P5_opened": false
+  },
+  "objective": {
+    "method": "direct non-neural independent 9-grid per vowel",
+    "parameters": 2,
+    "Welch": {
+      "fs": 24000,
+      "window": "hann",
+      "nperseg": 1024,
+      "noverlap": 512,
+      "nfft": 4096,
+      "detrend": "constant",
+      "scaling": "density",
+      "average": "mean"
+    },
+    "centers_Hz": {
+      "first": 500,
+      "last": 4000,
+      "geomspace_points": 20
+    },
+    "log_frequency_Gaussian_sigma": "ln(2)/6",
+    "power_floor": 1e-20,
+    "shape": "10log10(帯域平均power)から20帯域平均を引く",
+    "loss": "二F0のshape MSEを等重み平均 + .01*(dx^2+dy^2)",
+    "gain_optimized": false,
+    "regularization": 0.01,
+    "tie_break": "objective、offset平方和、grid登録順。zeroを候補に保持。"
+  },
+  "gates": {
+    "E0": "既存acoustics評価の全E0。閾値を変更しない。",
+    "pitch": "固定中央一母音区間: DIO/stonemask中央値とACF±1半音/confidence.6。DIO3frame以上/区間の半数以上が有声。単独母音の診断だけであり旧発話最低3音素支持を満たしたとは称さない。",
+    "joint_F0": "両F0の候補とnative参照が全通過した候補だけを選ぶ。欠測/失敗を全18分母に保持。",
+    "all_candidates_invalid": "baseline二係数0を保存し未資格。ゲート・候補・窓・gainを救済しない。",
+    "optimization_improvement": "baselineが同じ診断を通過した場合だけobjective/shape MSEを比較。訓練適合を内容/自然さ/一般化へ移さない。"
+  },
+  "stopping": {
+    "fit_seconds": 1800,
+    "max_updates": 18,
+    "max_parameters": 2,
+    "fit_runs": 1,
+    "inverse_runs": 1,
+    "finite_candidates": 9,
+    "no_seed_CV_or_condition_hidden_fits": true
+  },
+  "estimates": {
+    "render": 3000,
+    "actual_render_expected": 2378,
+    "DSP": 300,
+    "fit": 1,
+    "inverse": 1,
+    "shared_runtime_size": 2061750,
+    "WAV_encoded_total_at_most": 2000000,
+    "grid_JSON_at_most": 1500000,
+    "temporary_peak": 32000000,
+    "temporary_write": 64000000,
+    "max_logs": 2000000,
+    "array_RAM_expected_at_most": 1000000000,
+    "ledger_index_failed_job_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 1000000000,
+    "setup": 20,
+    "audit": 12,
+    "render": 3000,
+    "dsp": 300,
+    "ai": 0,
+    "teacher": 0,
+    "train": 1,
+    "inverse": 1,
+    "download": 0
+  },
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "next": "全18実波形/二参照を計測してから一fit/一inverseで共有二係数を選別し凍結。次母音を別契約で登録し、54件終了後レビュー9を先に行う。"
+}
