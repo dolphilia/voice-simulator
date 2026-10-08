@@ -23,10 +23,10 @@
     "campaigns": 24
   },
   "counts": {
-    "setup": 373,
+    "setup": 379,
     "audit": 217,
-    "render": 10424,
-    "dsp": 25423,
+    "render": 10428,
+    "dsp": 25427,
     "ai": 10288,
     "train": 11,
     "download": 1669706871,
@@ -626,15 +626,40 @@
       "payload_bytes": 318748358,
       "closed": true,
       "end_seconds": 54995.33350586891
+    },
+    "source-period-audit-v1": {
+      "prefix": "campaigns/nas-source-period-audit-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 750000000,
+        "render": 400,
+        "dsp": 3000,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 60,
+        "audit": 60
+      },
+      "counts": {
+        "setup": 6,
+        "render": 4,
+        "dsp": 4
+      },
+      "start_seconds": 55200.14106988907,
+      "protocol_sha256": "aa7648e0d3372f9431d737dcc0715f60ba1222e2767210c8528ef6216a13a986",
+      "payload_bytes": 1420602,
+      "closed": false
     }
   },
   "jobs": {},
-  "payload_bytes": 7611518799,
-  "seconds": 55082.94067001343,
-  "write_bytes": 30544893620,
+  "payload_bytes": 7612941553,
+  "seconds": 55508.68635678291,
+  "write_bytes": 30654898588,
   "session": {
     "id": "c968a05d10e04bfeadc91562e6c7eed8",
-    "checkpoint": 1791421830.2768152
+    "checkpoint": 1791422256.022502
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -666,131 +691,39 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "gv-ap-interaction-completed-20261008-0001",
-    "active_campaign": null,
-    "campaign_closed": true,
+    "id": "source-period-audit-prepared-20261008-0001",
+    "active_campaign": "source-period-audit-v1",
+    "campaign_closed": false,
+    "next": "controller_v2.py observe → summarize_v2.py → closeout_v2.py",
     "quality_goal_completed": false,
-    "qualifications": {
-      "native": false,
-      "voicing_no_lf0_gv": false,
-      "voicing_no_lf0_gv_ap_half": false,
-      "voicing_no_gv": false,
-      "voicing_no_gv_ap_half": false
-    },
-    "seal_sha256": "846c057cb71c5a7f8ed4d0c126166f1952b40d7f8630455d2edea97f26f18765",
-    "external_hash_verified": 22685,
-    "all_temporary_work_removed": true,
     "protected_confirmation_opened": false,
-    "next_campaign": "source-period-audit-v1",
-    "next_entry": "source-period-audit-bootstrap-0001.py",
-    "next": "第22回の既存HTS励振周期観測監査を登録 → prepare/fixture4 → commit/push → 観測128 → 集計/封印。",
     "git_save_pending": true,
+    "execution_contract_sha256": "6d3bef4324faab2960ba11bdcfb9d5c902d685472fd7ce78d43e4e21b26710c5",
+    "actual_fixture_render": 4,
+    "technical_retries": 1,
+    "all_temporary_removed": true,
+    "expected_observation": 128,
+    "new_AI": 0,
+    "scope": "実励振周期の限定窓診断。知覚ピッチ・WORLD・日本語一般の資格にしない。旧波形hash一致必須。",
     "budget": {
-      "files": 63003,
-      "bytes": 7611515094,
-      "seconds": 55030.93008685112,
+      "files": 63058,
+      "bytes": 7612940450,
+      "seconds": 55445.712851047516,
       "counts": {
-        "setup": 373,
+        "setup": 379,
         "audit": 217,
-        "render": 10424,
-        "dsp": 25423,
+        "render": 10428,
+        "dsp": 25427,
         "ai": 10288,
         "train": 11,
         "download": 1669706871,
         "teacher": 117,
         "inverse": 97
       },
-      "write_bytes": 30514670805
+      "write_bytes": 30625262077
     },
-    "AP_interaction": {
-      "missing_support": {
-        "values": {
-          "native": 0,
-          "voicing_no_lf0_gv": 5,
-          "voicing_no_lf0_gv_ap_half": 4,
-          "voicing_no_gv": 2,
-          "voicing_no_gv_ap_half": 2
-        },
-        "complete": true,
-        "lower_is_better": true,
-        "AP_half_delta_at_each_MCP_GV": {
-          "MCP_GV_on": -1,
-          "MCP_GV_off": 0
-        },
-        "interaction_off_minus_on": 1,
-        "descriptive_only": true
-      },
-      "DIO_error": {
-        "values": {
-          "native": 8.187479486125653,
-          "voicing_no_lf0_gv": 0.07477000190115564,
-          "voicing_no_lf0_gv_ap_half": 0.07471893354800714,
-          "voicing_no_gv": 0.05887038358030944,
-          "voicing_no_gv_ap_half": 0.056544832379109566
-        },
-        "complete": true,
-        "lower_is_better": true,
-        "AP_half_delta_at_each_MCP_GV": {
-          "MCP_GV_on": -5.106835314849789e-05,
-          "MCP_GV_off": -0.0023255512011998714
-        },
-        "interaction_off_minus_on": -0.0022744828480513735,
-        "descriptive_only": true
-      },
-      "ACF_error": {
-        "values": {
-          "native": 8.018092447083545,
-          "voicing_no_lf0_gv": 0.16531239404575213,
-          "voicing_no_lf0_gv_ap_half": 0.1638342350085307,
-          "voicing_no_gv": 0.15697594451766314,
-          "voicing_no_gv_ap_half": 0.1569137321600699
-        },
-        "complete": true,
-        "lower_is_better": true,
-        "AP_half_delta_at_each_MCP_GV": {
-          "MCP_GV_on": -0.001478159037221427,
-          "MCP_GV_off": -6.221235759323873e-05
-        },
-        "interaction_off_minus_on": 0.0014159466796281883,
-        "descriptive_only": true
-      },
-      "whisper_errors": {
-        "values": {
-          "native": 62,
-          "voicing_no_lf0_gv": 62,
-          "voicing_no_lf0_gv_ap_half": 56,
-          "voicing_no_gv": 75,
-          "voicing_no_gv_ap_half": 78
-        },
-        "complete": true,
-        "lower_is_better": true,
-        "AP_half_delta_at_each_MCP_GV": {
-          "MCP_GV_on": -6,
-          "MCP_GV_off": 3
-        },
-        "interaction_off_minus_on": 9,
-        "descriptive_only": true
-      },
-      "reazon_errors": {
-        "values": {
-          "native": 11,
-          "voicing_no_lf0_gv": 20,
-          "voicing_no_lf0_gv_ap_half": 19,
-          "voicing_no_gv": 32,
-          "voicing_no_gv_ap_half": 33
-        },
-        "complete": true,
-        "lower_is_better": true,
-        "AP_half_delta_at_each_MCP_GV": {
-          "MCP_GV_on": -1,
-          "MCP_GV_off": 1
-        },
-        "interaction_off_minus_on": 2,
-        "descriptive_only": true
-      }
-    },
-    "free_internal": 71395368960,
-    "free_external": 223291432960
+    "free_internal": 71327023104,
+    "free_external": 223286607872
   },
   "storage_maintenance": {
     "repository-data-20261008-v1": {
@@ -2896,6 +2829,42 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "source-period-audit-e2cbeb2b71fe4247b8edbe00d0faff7c": {
+      "owner": "source-period-audit-e2cbeb2b71fe4247b8edbe00d0faff7c",
+      "job": "e91fa5453a4c47d186ede344e74baacf",
+      "campaign": "source-period-audit-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/source-period-audit-e2cbeb2b71fe4247b8edbe00d0faff7c",
+      "purpose": "clang中間物とcache",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "source-period-audit-cfc9681d01ce4cfcbe4b4e8bec5d6075": {
+      "owner": "source-period-audit-cfc9681d01ce4cfcbe4b4e8bec5d6075",
+      "job": "f71f335fa8864adcbe0eb0d416cc1849",
+      "campaign": "source-period-audit-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/source-period-audit-cfc9681d01ce4cfcbe4b4e8bec5d6075",
+      "purpose": "fixtureライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -3239,6 +3208,135 @@
       "free_internal": 71475175424,
       "free_external": 223602356224,
       "preparation_commit": "d655becd6a284e0ac1c2c389a698cb8e4d8a2dd5",
+      "push_origin_verified": true
+    },
+    {
+      "id": "gv-ap-interaction-completed-20261008-0001",
+      "active_campaign": null,
+      "campaign_closed": true,
+      "quality_goal_completed": false,
+      "qualifications": {
+        "native": false,
+        "voicing_no_lf0_gv": false,
+        "voicing_no_lf0_gv_ap_half": false,
+        "voicing_no_gv": false,
+        "voicing_no_gv_ap_half": false
+      },
+      "seal_sha256": "846c057cb71c5a7f8ed4d0c126166f1952b40d7f8630455d2edea97f26f18765",
+      "external_hash_verified": 22685,
+      "all_temporary_work_removed": true,
+      "protected_confirmation_opened": false,
+      "next_campaign": "source-period-audit-v1",
+      "next_entry": "source-period-audit-bootstrap-0001.py",
+      "next": "第22回の既存HTS励振周期観測監査を登録 → prepare/fixture4 → commit/push → 観測128 → 集計/封印。",
+      "git_save_pending": false,
+      "budget": {
+        "files": 63003,
+        "bytes": 7611515094,
+        "seconds": 55030.93008685112,
+        "counts": {
+          "setup": 373,
+          "audit": 217,
+          "render": 10424,
+          "dsp": 25423,
+          "ai": 10288,
+          "train": 11,
+          "download": 1669706871,
+          "teacher": 117,
+          "inverse": 97
+        },
+        "write_bytes": 30514670805
+      },
+      "AP_interaction": {
+        "missing_support": {
+          "values": {
+            "native": 0,
+            "voicing_no_lf0_gv": 5,
+            "voicing_no_lf0_gv_ap_half": 4,
+            "voicing_no_gv": 2,
+            "voicing_no_gv_ap_half": 2
+          },
+          "complete": true,
+          "lower_is_better": true,
+          "AP_half_delta_at_each_MCP_GV": {
+            "MCP_GV_on": -1,
+            "MCP_GV_off": 0
+          },
+          "interaction_off_minus_on": 1,
+          "descriptive_only": true
+        },
+        "DIO_error": {
+          "values": {
+            "native": 8.187479486125653,
+            "voicing_no_lf0_gv": 0.07477000190115564,
+            "voicing_no_lf0_gv_ap_half": 0.07471893354800714,
+            "voicing_no_gv": 0.05887038358030944,
+            "voicing_no_gv_ap_half": 0.056544832379109566
+          },
+          "complete": true,
+          "lower_is_better": true,
+          "AP_half_delta_at_each_MCP_GV": {
+            "MCP_GV_on": -5.106835314849789e-05,
+            "MCP_GV_off": -0.0023255512011998714
+          },
+          "interaction_off_minus_on": -0.0022744828480513735,
+          "descriptive_only": true
+        },
+        "ACF_error": {
+          "values": {
+            "native": 8.018092447083545,
+            "voicing_no_lf0_gv": 0.16531239404575213,
+            "voicing_no_lf0_gv_ap_half": 0.1638342350085307,
+            "voicing_no_gv": 0.15697594451766314,
+            "voicing_no_gv_ap_half": 0.1569137321600699
+          },
+          "complete": true,
+          "lower_is_better": true,
+          "AP_half_delta_at_each_MCP_GV": {
+            "MCP_GV_on": -0.001478159037221427,
+            "MCP_GV_off": -6.221235759323873e-05
+          },
+          "interaction_off_minus_on": 0.0014159466796281883,
+          "descriptive_only": true
+        },
+        "whisper_errors": {
+          "values": {
+            "native": 62,
+            "voicing_no_lf0_gv": 62,
+            "voicing_no_lf0_gv_ap_half": 56,
+            "voicing_no_gv": 75,
+            "voicing_no_gv_ap_half": 78
+          },
+          "complete": true,
+          "lower_is_better": true,
+          "AP_half_delta_at_each_MCP_GV": {
+            "MCP_GV_on": -6,
+            "MCP_GV_off": 3
+          },
+          "interaction_off_minus_on": 9,
+          "descriptive_only": true
+        },
+        "reazon_errors": {
+          "values": {
+            "native": 11,
+            "voicing_no_lf0_gv": 20,
+            "voicing_no_lf0_gv_ap_half": 19,
+            "voicing_no_gv": 32,
+            "voicing_no_gv_ap_half": 33
+          },
+          "complete": true,
+          "lower_is_better": true,
+          "AP_half_delta_at_each_MCP_GV": {
+            "MCP_GV_on": -1,
+            "MCP_GV_off": 1
+          },
+          "interaction_off_minus_on": 2,
+          "descriptive_only": true
+        }
+      },
+      "free_internal": 71395368960,
+      "free_external": 223291432960,
+      "completion_commit": "d17034614cfac1f6691a87f59dcca27887d845f9",
       "push_origin_verified": true
     }
   ]
