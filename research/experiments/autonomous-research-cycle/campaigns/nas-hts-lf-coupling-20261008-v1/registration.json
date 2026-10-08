@@ -1,0 +1,81 @@
+{
+  "campaign": "hts-lf-coupling-v1",
+  "question": "固定LF周期関数を原HTSのLPF前有声入力へ結合し、元native/時計/noise/独立混合/因果性を保持できるか。",
+  "factor": "元sqrt(period) impulseを、有声時だけ連続周期RMS=1の固定LF derivativeへ置換。noiseの算法/seed/呼出条件と元counter/period/LPF/MLSA/全入力を維持。",
+  "phase": "counter+=1、eventなら元periodを一度引く。period補間更新前にphase=fmod(counter/period,1)を評価。無声phase=-1。源の時間変動や有限区間面積0を保証しない。",
+  "coefficients": [
+    0.4,
+    0.6,
+    0.05,
+    19.99327266898377,
+    1.0502723051897425,
+    0.5325047916081669,
+    2.2310779262248825
+  ],
+  "controls": "C独自LF式・元HTS-BSDの混合ring手順、alpha.55/stage0/48k/fperiod240/24k resample/12msfade。波形別gain/係数/phase探索なし。LF0列縮小とは別。",
+  "fixture": {
+    "F0": [
+      110.0,
+      280.0,
+      "rising110to280",
+      "falling280to110"
+    ],
+    "LPF": [
+      "0",
+      "1",
+      "31tap fixed sinc(.12*n)*hann normalized"
+    ],
+    "frames": 100,
+    "voiced_frames": [
+      20,
+      80
+    ],
+    "all_eight_required": true,
+    "future_changes_at_frame": 50,
+    "native_wave_byte_exact": true,
+    "clock_noise_and_inputs_byte_exact": true,
+    "independent_phase_and_periodic_error_at_most": 1e-12,
+    "independent_mixed_excitation_error_at_most": 1e-10,
+    "causal_raw_prefix_exact": true
+  },
+  "estimates": {
+    "render": 56,
+    "render_breakdown": "8条件×(bare/native/LF/独立native源/独立LF源/未来native/未来LF)=56",
+    "dsp": 96,
+    "dsp_breakdown": "8条件×12のnative/clock/noise/phase/二周期成分/二混合励振/入力/有限/二因果監査",
+    "maximum_seconds": 6000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 16,
+    "audit": 16,
+    "render": 168,
+    "dsp": 288,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "scope": "人工結合機構だけ。未知日本語/短文・長文/固定音素支持/二ASR/通常隔離/CLI/aliasing/知覚品質は未資格。元native観測にも新Cを用いるためbare byte一致を全条件必須にする。",
+  "sources": {
+    "LF_seal_sha256": "9efed5df66e544006389b4f1485073569bddbbd77b5d3c5ef92e843f7cd3167d",
+    "HTS_parent_seal_sha256": "1d91f34d691889c7cb07552e8ea9e13ccf4f328780402d7d08320bd44fda31ef",
+    "review5_sha256": "df94a09562e5507eee4dacdbcf3fc19bd42697cae799130dacb0a3d5a09e7a3f"
+  },
+  "c_sha256": "0bd488574dfd6a011800023353824042bfb2da6cb8e52e1faff63cab5826680f",
+  "vendor_sha256": "f8a0ca08531eab5d1a3839d24a2d7235938bd94286c7640681e4635b70d1ddf7",
+  "wrapper_sha256": "c6e3a5185e145247dc9a4e838298cfe58f9d6d30ba7c6ee340323c223891361c",
+  "worker_sha256": "ec53a34c1145a25d0464a57ce410bcf2ffe9c9f254d32d4e36a18dfaca6a6932",
+  "controller_sha256": "29ad87b739c7122efee624553a15473d64b1ed2be364321604336bf91add92d1",
+  "next": "結合通過時だけ未使用16日本語文のnative/LF比較を出力前登録。失敗したコホートのLF係数/phase/LPF救済をしない。",
+  "old_consumption_and_all_frozen_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
