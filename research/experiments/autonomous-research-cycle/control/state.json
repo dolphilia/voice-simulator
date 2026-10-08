@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 537,
-    "audit": 402,
+    "setup": 538,
+    "audit": 403,
     "render": 58454,
-    "dsp": 72340,
+    "dsp": 72390,
     "ai": 12976,
     "train": 16,
     "download": 1712746391,
@@ -8849,13 +8849,15 @@
         "download": 0
       },
       "counts": {
-        "setup": 2
+        "setup": 2,
+        "dsp": 50,
+        "audit": 1
       },
       "start_seconds": 143818.39214801788,
       "start_write_bytes": 64105129627,
       "protocol_sha256": "cdfa5a627e1b1e2e8582d4156e29ddc4aae7a5b3b6e8b180ac98c934ca9bd8ce",
-      "payload_bytes": 2449,
-      "closed": false,
+      "payload_bytes": 34899,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -8873,18 +8875,71 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "dsp:保存済み短neutral全12の未実施固定支持測定": [
+          {
+            "id": "e87e8a7f9bc247478883bc32ca5d8827",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/失敗/費用/所有一時不存在を封印": [
+          {
+            "id": "3dd6c337542c4e2cb616275ba536f5a0",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 144028.18894600868
+    },
+    "vtl-frozen-phrase-normal-short-higher-v1": {
+      "prefix": "campaigns/nas-vtl-frozen-phrase-normal-short-higher-20261009-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1200000000,
+        "setup": 20,
+        "audit": 20,
+        "render": 3028,
+        "dsp": 200,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 144066.10096287727,
+      "start_write_bytes": 64275246539,
+      "protocol_sha256": "77c8f352f5ac22d6f001eb4fd91793db4c78d6e0152022f26b7b8d3315f65fad",
+      "payload_bytes": 748,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": "固定全体比較の同長さ/条件バッチに内部AddTract費を含め、通常3000を超えるため開始前理由付き上限内で予約。全体D36000/各6000/工程時計を保持。",
+      "attempts": {
+        "setup:固定全体比較の部分実行登録": [
+          {
+            "id": "02bb62d42f8a49f49cf47025d1a1133a",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9715841837,
-  "seconds": 144015.53842306137,
-  "write_bytes": 64160363743,
+  "payload_bytes": 9715875035,
+  "seconds": 144261.36169815063,
+  "write_bytes": 64322129622,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791490606.2177331
+    "checkpoint": 1791490672.0410082
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -8985,8 +9040,8 @@
   ],
   "continuation_checkpoint": {
     "id": "review10-completed-C-partial-D-ready",
-    "active_campaign": "vtl-frozen-phrase-measure-normal-short-neutral-v1",
-    "next": "measure-normal-short-neutral登録push後に未実施部分だけを実行。",
+    "active_campaign": "vtl-frozen-phrase-normal-short-higher-v1",
+    "next": "normal-short-higher登録push後に未実施部分だけを実行。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -46512,6 +46567,121 @@
       "removed_files": 7,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-35d72c1afde8472d8aa3cb9fece0b810": {
+      "owner": "additional-closeout-35d72c1afde8472d8aa3cb9fece0b810",
+      "job": "e87e8a7f9bc247478883bc32ca5d8827",
+      "campaign": "vtl-frozen-phrase-measure-normal-short-neutral-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-35d72c1afde8472d8aa3cb9fece0b810",
+      "purpose": "保存済みWAVだけの固定支持/全体ACF測定",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "measurement-input.json",
+          "bytes": 77362,
+          "inode": 100479,
+          "device": 16777241
+        },
+        {
+          "relative": "measurement-partial.json",
+          "bytes": 17472,
+          "inode": 100483,
+          "device": 16777241
+        },
+        {
+          "relative": "measurement-stderr.txt",
+          "bytes": 0,
+          "inode": 100481,
+          "device": 16777241
+        },
+        {
+          "relative": "measurement-stdout.txt",
+          "bytes": 17473,
+          "inode": 100480,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-00-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100477,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-00-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100478,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-00-neutral-native.wav",
+          "bytes": 108058,
+          "inode": 100476,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100470,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100473,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-native.wav",
+          "bytes": 99418,
+          "inode": 100467,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100471,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100474,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-native.wav",
+          "bytes": 111898,
+          "inode": 100468,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100472,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100475,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-native.wav",
+          "bytes": 107098,
+          "inode": 100469,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 1353323,
+      "peak_violation": false,
+      "removed_files": 16,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -47289,7 +47459,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 63,
+    "scientific_completed": 64,
     "last_review": {
       "seconds": 140220.32056593895,
       "scientific_completed": 60,
@@ -47323,7 +47493,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 18795.351526260376,
+      "used_seconds": 19041.17480134964,
       "current": "D",
       "stages": [
         {
@@ -47350,7 +47520,7 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 3795.152433156967,
+          "used_seconds": 4040.975708246231,
           "status": "running"
         }
       ]
@@ -47363,7 +47533,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 144015.53842306137,
+    "last_accounted_seconds": 144261.36169815063,
     "segment": {
       "stage": "D",
       "foundation_only": false,
