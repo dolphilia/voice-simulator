@@ -1,0 +1,100 @@
+{
+  "campaign": "hts-fir-gain-comparison-v1",
+  "status": "registered_before_output",
+  "question": "全体IRの算術補間と対数利得分離補間を新日本語で切り分け、原nativeの内容/固定支持/工学制御を守れるか。",
+  "variants": [
+    "native",
+    "fft_fir",
+    "fft_loggain"
+  ],
+  "conditions": {
+    "neutral": {
+      "speed": 1.0,
+      "requested_f0": 220.0
+    },
+    "higher": {
+      "speed": 1.15,
+      "requested_f0": 280.0
+    }
+  },
+  "factor_rules": {
+    "native": "原HTS Pade-MLSA alpha=.55完全一致対照",
+    "fft_fir": "解析IR2048の全利得込み算術出力crossfade j/240",
+    "fft_loggain": "IR/exp(b0)形状の算術補間×exp(線形補間b0)。b0=polyval(-.55,MCP)。"
+  },
+  "effective_alpha": {
+    "native": 0.55,
+    "fft_fir": 0.55,
+    "fft_loggain": 0.55
+  },
+  "IR_length": 2048,
+  "FFT_length": 16384,
+  "fixed_control": "校正LF0・全MCP/LPF/duration/state/MSD/variance・源period/counter/event/実励振をbyte固定。sqrt(period)、gain.25、resample24k、12ms fade、volume1、因果参照・ゼロ追加遅延を保持。MLSA状態/全b補間との同一性は主張しない。",
+  "normalization": "入力MCPと励振を保持。解析式b0のみを使い、波形別gain救済なし。",
+  "input": "未使用16文×2条件×3方式=96。全履歴文章/ラベル非衝突を出力前確認。P5本文は読まない。",
+  "source": {
+    "url": "https://sp-nitech.github.io/sptk/latest/main/mc2b.html",
+    "related_url": "https://sp-nitech.github.io/sptk/latest/main/mglsadf.html",
+    "mechanism_seal_sha256": "9745ea04fff5b386e5c29e4d2cc834d11a648bee0fe1879eceb0c52ff29deb26",
+    "previous_speech_seal_sha256": "6395539a05c2ed26399c61b5e7159a415293cc4bbebac0d3f445a8738dd2bbc8"
+  },
+  "support": "原nativeから一度固定し、欠測を除外せず二候補全件へ保持。旧249欠測/旧判定不変。",
+  "gates": {
+    "engineering": "E0、DIO/全体ACF両中央値±1半音、ACF confidence≥.6、固定支持3以上を全件。短窓/動的/知覚資格へ一般化しない。",
+    "content": "二固定ASR各33群で原native以下。群間/方式間の悪化相殺なし。",
+    "independence": "全96通常/隔離・CLI4と実読取/通信拒否。",
+    "FIR_mechanism": "全32nativeの全MCP frameで16384gridの複素応答相対誤差≤1e-3、参考IR2048以降tail energy割合≤1e-6。保存三方式列の全64対を物理照合。"
+  },
+  "CPU_limits": "生成/測定/隔離子のBLAS/VECLIB/OMP=1。二ASRの明示threads4/2と環境は既存契約を引継ぐ。",
+  "estimates": {
+    "comparison_render": 160,
+    "comparison_output_waves": 96,
+    "internal_MLSA_helpers": 64,
+    "comparison_dsp": 288,
+    "isolation_render": 320,
+    "isolation_dsp": 192,
+    "CLI_render": 6,
+    "CLI_dsp": 4,
+    "fixture_render": 0,
+    "inherited_fixture": true,
+    "all_frame_FIR_dsp": 96,
+    "two_ASR_ai": 192,
+    "total_without_retry": {
+      "render": 486,
+      "dsp": 580,
+      "ai": 192
+    },
+    "maximum_seconds": 11000,
+    "external_peak": 800000000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "setup": 30,
+    "audit": 40,
+    "render": 1000,
+    "dsp": 4000,
+    "ai": 384,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "failed_consumption_retained": true,
+  "controller_sha256": "56035f0075fbc7a2c03526a73a200a620417777ed37ca4f76d56ea36a2d777cc",
+  "closeout_source_sha256": "53948f68403b3b4885b1954aafe636a312fb91167abf197843916488b624816e",
+  "base_seal_sha256": "5387bd7cdae0a9654087b625ebf7d058fdd4e0ed7a2e900184f5a8f1a8c3504f",
+  "stop_rule": "FIR経路は1024/2048の既不通過を引継ぐ。この三回目でも全件保護不通過なら同補間・係数救済は封印し、別測定資格へ進む。",
+  "old_FIR_failures_kept": true,
+  "new_route_does_not_qualify_perception": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}

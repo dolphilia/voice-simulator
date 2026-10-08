@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 439,
-    "audit": 287,
-    "render": 13640,
-    "dsp": 47354,
+    "setup": 442,
+    "audit": 288,
+    "render": 13726,
+    "dsp": 47400,
     "ai": 11696,
     "train": 11,
     "download": 1669966871,
@@ -3353,13 +3353,16 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 86,
+        "dsp": 46,
+        "audit": 1
       },
       "start_seconds": 83236.19665384293,
       "start_write_bytes": 42530487916,
       "protocol_sha256": "2d6a5d4935df5040261bcbf197073f5311d3120603b7ea32bd5ac353c58300cb",
-      "payload_bytes": 222867,
-      "closed": false,
+      "payload_bytes": 234580,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -3370,15 +3373,89 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:二利得補間の源・畳み込み・人工HTS全生成": [
+          {
+            "id": "1a88e1469d2a4bd79a7d81cf4da76564",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:利得式・静的prefix・畳み込み・因果性・原HTS照合": [
+          {
+            "id": "868b9b84fb7a4563b5bac85e7b72f72d",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:人工機構の範囲・二時間表現・hash・費用・一時回収の終了照合": [
+          {
+            "id": "aaae3bef6522471090bafe184ab81510",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 83473.84198284149
+    },
+    "hts-fir-gain-comparison-v1": {
+      "prefix": "campaigns/nas-hts-fir-gain-comparison-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1800000000,
+        "write_bytes": 2800000000,
+        "setup": 30,
+        "audit": 40,
+        "render": 1000,
+        "dsp": 4000,
+        "ai": 384,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 3
+      },
+      "start_seconds": 83736.45226979256,
+      "start_write_bytes": 42616982782,
+      "protocol_sha256": "aa3e43e149fe584db6f253744c0cc191ec9dbac106ad9987e60f1ed89446384e",
+      "payload_bytes": 4314456,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:原励振固定・最小位相FIR・全比較費を生成前登録": [
+          {
+            "id": "ecc2109b37d14f0f8446f73cc97a6eba",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:新source build・共有bundle固定": [
+          {
+            "id": "d629414e4df64e91b2ae04438c151868",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:全履歴非衝突と入力条件の波形前固定": [
+          {
+            "id": "17d67d9855544a58b54994b4412465c5",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 8905522956,
-  "seconds": 83460.57597780228,
-  "write_bytes": 42577751357,
+  "payload_bytes": 8909975367,
+  "seconds": 84005.7019996643,
+  "write_bytes": 42726978409,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -3478,9 +3555,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "hts-fft-fir-comparison-completed",
+    "id": "FIR-gain-mechanism-completed",
     "active_campaign": null,
-    "next": "FIRの全実MCP応答と音声の工学/二ASR保護を区別し、不通過は全件で保持する。有効な範囲から時間表現または共有生成制御の別要因へ進む。",
+    "next": "未使用16文の三方式96波形を生成前登録し、三回目の不通過でFIR同補間/係数救済を封印",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -8435,6 +8512,42 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-06bf8b3953ff48209419d4062f08f0bf": {
+      "owner": "additional-closeout-06bf8b3953ff48209419d4062f08f0bf",
+      "job": "1a88e1469d2a4bd79a7d81cf4da76564",
+      "campaign": "hts-fir-gain-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-06bf8b3953ff48209419d4062f08f0bf",
+      "purpose": "利得補間fixtureの科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-19f7badde9b74f9db557580972fd6f61": {
+      "owner": "additional-closeout-19f7badde9b74f9db557580972fd6f61",
+      "job": "17d67d9855544a58b54994b4412465c5",
+      "campaign": "hts-fir-gain-comparison-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-19f7badde9b74f9db557580972fd6f61",
+      "purpose": "辞書と入力照合",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -9197,7 +9310,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 16,
+    "scientific_completed": 17,
     "last_review": {
       "seconds": 79452.7428278923,
       "scientific_completed": 12,
