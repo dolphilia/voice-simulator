@@ -1,0 +1,115 @@
+{
+  "question": "三母音の六共有係数が静的実VTL出力を再現し、三CVの通常/隔離/CLIと自己WAV再読取で共有非ニューラル生成に載るか。",
+  "controller_sha256": "c8cdeb836cdbe46eb16d730797cec371e90bb0978429f41de8a9d7f2f81cafad",
+  "shared_model_sha256": "558ea6862bc75633eba6587ffd28071cd87542888e5a15492c20a41d686c4adf",
+  "source_manifest_sha256": "eaf114dcdaefaa3d22bfbc9c0fd14e4b70d57f03f2e87f8fc0b51461a2524c6d",
+  "cases": [
+    {
+      "id": "ka",
+      "kana": "カ",
+      "onset": "k",
+      "vowel": "a"
+    },
+    {
+      "id": "chi",
+      "kana": "チ",
+      "onset": "ch",
+      "vowel": "i",
+      "not_pure_ti": true
+    },
+    {
+      "id": "su",
+      "kana": "ス",
+      "onset": "s",
+      "vowel": "u"
+    }
+  ],
+  "F0_Hz": 140,
+  "speed": 1.0,
+  "gain": 0.5,
+  "seed": 41,
+  "static_training_reproduction": {
+    "F0_Hz": 280,
+    "vowels": [
+      "a",
+      "i",
+      "u"
+    ],
+    "expected_WAV_sha256": {
+      "a": "2e14784255b4df29c1af493f254997238f8cda8300195639ed943ba801814c0b",
+      "i": "3742d74803e0843469369a9e22c54692b1d467674015920fbd0f4cc6dd059526",
+      "u": "64b74051a85fee13ef3578de793879755c1db320f6ce395c722e5d0dd8392c42"
+    },
+    "not_new_quality_evidence": true
+  },
+  "model_factor": "TCX/TCYだけ。子音形状/声門template/規則/時刻はbaselineとlearnedで同一。e/oは既定・未学習。",
+  "timing": {
+    "leading_seconds": 0.05,
+    "consonant_seconds": 0.08,
+    "vowel_seconds": 0.24,
+    "trailing_seconds": 0.05,
+    "mora_seconds": 0.32,
+    "ramp_consonant": 0.02,
+    "ramp_vowel": 0.04,
+    "ramp_affricate": 0.025
+  },
+  "onset_shapes": {
+    "k": "tb-velar-closure",
+    "t": "tt-alveolar-closure",
+    "s": "tt-alveolar-fricative",
+    "sh": "tt-postalveolar-fricative",
+    "ch": "tt-postalveolar-closure→fricative",
+    "ts": "tt-alveolar-closure→fricative",
+    "contexts": "eはa、oはu、aiuは同名形状の文脈。",
+    "glottis": "公開Geometric glottisのvoiceless-plosive/fricativeとmodalを同じ規則で補間。F0固定、pressure dPa。"
+  },
+  "roles": {
+    "CV": "Aで登録した15CVのうち三つの開発診断。次の15CVでは同条件の本六出力を再使用する。未使用品質証拠ではない。",
+    "static": "訓練実波形の同一再現だけ。独立品質証拠ではない。",
+    "P5_opened": false
+  },
+  "gates": {
+    "normal_isolated_CLI_exact": true,
+    "self_WAV_read_after_close": true,
+    "static_exact": true,
+    "all_E0": true,
+    "pitch": "本入口ではE0と同一性だけ。DIO/ACFのCV母音診断は15CV別契約で登録。",
+    "previous_audio_reference_training_and_HTS_and_network_denied": true
+  },
+  "estimates": {
+    "normal_render": 1428,
+    "isolated_render": 1032,
+    "CLI_render": 1032,
+    "all_internal_render": 3492,
+    "reservations": [
+      1500,
+      1100,
+      1100
+    ],
+    "DSP_reservation": 200,
+    "WAV_bytes_at_most": 1200000,
+    "result_JSON_bytes_at_most": 300000,
+    "work_peak_bytes": 16000000,
+    "work_write_bytes": 32000000,
+    "per_mode_job_reservation_bytes": 60000000,
+    "RAM_expected_at_most": 1500000000,
+    "control_index_failure_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 1000000000,
+    "setup": 12,
+    "audit": 12,
+    "render": 6000,
+    "dsp": 200,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "next": "同一性/拒否/全E0が成立したら共有CVコードを固定してAの15CVをnative/既定/学習で診断。三CV六出力を再生成せず再使用する。不通過なら本規則を未資格として保持して別の成立生成経路へ。"
+}
