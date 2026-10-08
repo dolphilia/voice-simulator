@@ -1,0 +1,61 @@
+{
+  "question": "共有五母音のTCX/TCY直接学習に先立ち、凍結JD3のAPI/範囲/内部clock/通常・隔離・CLIと自己WAV再読取・回収を成立させられるか。",
+  "controller_sha256": "9ddb263cdcc6e0cd77ee44a93df6865330479c7c55a31b1f6a961a2b862be258",
+  "stage_A_design_sha256": "f76ba1b1a822c14aa8d2021137533ef794f71ed11506d727b27fac8fde1d5edc",
+  "VTL_manifest_sha256": "bb6e4d4b1d0b091f8f29f2e5d9530b904da5d4c2c8e8ae622bbe153dc0f54286",
+  "native_manifest_sha256": "cdc3c6a25c1dc8a8f3df0718fa096eee8d93fcb77e0ef9539572e3b73db309ca",
+  "scope": "a/iの既定標的とF0=120Hz、320ms、seed41、gain.5。通常2/隔離2/CLI1の5波形のみ。内容/自然さ/五母音全工学の資格ではない。",
+  "conditions": {
+    "vowels": [
+      "a",
+      "i"
+    ],
+    "F0": 120,
+    "duration_s": 0.32,
+    "seed": 41,
+    "gain": 0.5
+  },
+  "gates": {
+    "normal_isolated_CLI_hash_exact": true,
+    "output_reopen_exact": true,
+    "API_fs": 44100,
+    "API_tract_params": 19,
+    "API_step": 110,
+    "API_TCXY_indices": [
+      8,
+      9
+    ],
+    "previous_audio_reference_HTS_and_network_denied": true
+  },
+  "estimates": {
+    "shared_code_models_libraries_bytes": 2052264,
+    "WAV_maximum_bytes": 200000,
+    "raw_and_resample_arrays_peak": 1000000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "maximum_logs_bytes": 2000000,
+    "encoded_result_JSON_maximum_bytes": 150000,
+    "render_reserved": 1000,
+    "expected_internal_render": 660,
+    "DSP_reserved": 10,
+    "memory_target": 8000000000,
+    "all_ledger_index_audit_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 400000000,
+    "setup": 12,
+    "audit": 12,
+    "render": 3000,
+    "dsp": 200,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "next": "全独立入口と内部生成費が成立すれば、各母音の九候補×二F0を初出力前固定しnative参照を使って直接有限学習する。初回不成立を保持し技術再試行は最大二回まで。"
+}
