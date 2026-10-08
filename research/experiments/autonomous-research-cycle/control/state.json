@@ -22,8 +22,8 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 548,
-    "audit": 418,
+    "setup": 550,
+    "audit": 419,
     "render": 83849,
     "dsp": 73790,
     "ai": 13072,
@@ -9596,15 +9596,69 @@
       },
       "technical_retries": 0,
       "end_seconds": 147170.91805171967
+    },
+    "steady-speech-transition-v1": {
+      "prefix": "campaigns/nas-steady-speech-transition-20261009-v1",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 128000000,
+        "write_bytes": 600000000,
+        "setup": 8,
+        "audit": 8,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 2,
+        "audit": 1
+      },
+      "start_seconds": 148382.79009985924,
+      "start_write_bytes": 67377210909,
+      "protocol_sha256": "5ad5035969d70334226a64bd795e12fa689af9217e739463513ee942b3859cf3",
+      "payload_bytes": 6930,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:初回工程終了後の最小管理境界を登録": [
+          {
+            "id": "79f0ae1b6d8c4c918484326c825f75d2",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:初回凍結/既消費/停止/同時予約/終了12h/基盤継承の否定検査": [
+          {
+            "id": "1d3ddcae39d24cb28577318537059da3",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:管理検証/旧源/一時不存在を封印": [
+          {
+            "id": "9ca780bbc2dc4d3389f311fcfe9e4c98",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 148412.98694300652
     }
   },
   "jobs": {},
-  "payload_bytes": 9726410694,
-  "seconds": 147565.19470381737,
-  "write_bytes": 67361546594,
+  "payload_bytes": 9726441354,
+  "seconds": 148708.79885601997,
+  "write_bytes": 67515851322,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791491935.874014
+    "checkpoint": 1791492599.478166
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -9704,9 +9758,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "review12-D-Reazon-ready",
+    "id": "first-stage-frozen-steady-active",
     "active_campaign": null,
-    "next": "部分結果をpush後、全体計画の次の未実施ラベルへ。レビュー時計は保持。",
+    "next": "後続入口SteadySpeechBudgetを使用。六係数法は撤退し、権利/由来を確認できる参照と低費用の直接非ニューラル方式を新要因として事前登録する。新render70%越えの前に配分レビュー。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -49143,6 +49197,37 @@
       "removed_files": 2,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-72fda03998d24c3681d26c759528315e": {
+      "owner": "additional-closeout-72fda03998d24c3681d26c759528315e",
+      "job": "1d3ddcae39d24cb28577318537059da3",
+      "campaign": "steady-speech-transition-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-72fda03998d24c3681d26c759528315e",
+      "purpose": "後続管理ガードの純状態検査",
+      "maximum_bytes": 16000000,
+      "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "guard-tests-stderr.txt",
+          "bytes": 113,
+          "inode": 101019,
+          "device": 16777241
+        },
+        {
+          "relative": "guard-tests-stdout.txt",
+          "bytes": 0,
+          "inode": 101018,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 113,
+      "peak_violation": false,
+      "removed_files": 2,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -49954,7 +50039,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 22345.007807016373,
+      "used_seconds": 23257.33069705963,
       "current": "D",
       "stages": [
         {
@@ -49981,28 +50066,64 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 7344.808713912964,
-          "status": "running"
+          "used_seconds": 8257.131603956223,
+          "status": "completed",
+          "exit_reason": "初回A〜Dの比較手順が終了し、六TCX/TCY係数はCV二組とD語句で不通過。不採択と旧未実施sを保持。再開後の工程上限を巻戻さず、同じ長期総枠の残資源で異なる音声改善要因へ自律継続するため、後続時計を追加する。",
+          "quality_goal_completed": false
         }
-      ]
+      ],
+      "status": "completed_with_scientific_nonpasses"
     },
     "foundation_only": {
       "maximum_seconds": 43200,
-      "used_seconds": 1388.4837923049927,
-      "status": "secondary_or_audio_work",
+      "used_seconds": 2019.2241044044495,
+      "status": "running",
       "reset_on_context_or_campaign_change": false
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 147565.19470381737,
+    "last_accounted_seconds": 148708.79885601997,
     "segment": {
-      "stage": "D",
-      "foundation_only": false,
-      "reason": "三母音の訓練適合は確認したが、k/tの同コホート参照は各F0 0/5、学習候補は各4/5でuのACF支持欠測。CV移転・内容・自然さは未資格。Cの事前render配分24000に対し23851を全失敗込みで消費し、149ではs組1400予約を開始できない。sを未実施のまま残し、係数を変更せず工程Dの新語句で同コホートの工学・二ASRを診断する。C資源をDへ繰越・再初期化してsを実行しない。"
+      "stage": "steady",
+      "foundation_only": true,
+      "reason": "初回A〜Dの比較手順が終了し、六TCX/TCY係数はCV二組とD語句で不通過。不採択と旧未実施sを保持。再開後の工程上限を巻戻さず、同じ長期総枠の残資源で異なる音声改善要因へ自律継続するため、後続時計を追加する。"
     },
     "guard_validation": {
       "path": "campaigns/nas-research-resume-stage-A-20261009-v1/guard-validation.json",
       "sha256": "548a699f9e60de9ce9c5c08872ea0dc552918cbfe4a666fb31249576ad258e9d"
+    },
+    "steady_phase": {
+      "id": "speech-improvement-steady-20261009-v1",
+      "started_cumulative_seconds": 148477.51759386063,
+      "started_counts": {
+        "setup": 550,
+        "audit": 419,
+        "render": 83849,
+        "dsp": 73790,
+        "ai": 13072,
+        "train": 16,
+        "download": 1712746391,
+        "teacher": 117,
+        "inverse": 102
+      },
+      "started_write_bytes": 67467836982,
+      "started_scientific_completed": 73,
+      "started_review_checkpoint": {
+        "seconds": 146793.40758395195,
+        "scientific_completed": 72,
+        "path": "campaigns/nas-long-horizon-review-20261009-v12/decision.json",
+        "sha256": "2119d2553152d12ebf87bc905b8727bfca3ed4cf5a50f6afae51308d57cfe487"
+      },
+      "used_seconds": 231.28126215934753,
+      "maximum_seconds": 499522.4824061394,
+      "first_stage_sha256": "a569c3e8fcb080fd76c032ae63910ed3bc5363ce05f4dc35f082620af9a27377",
+      "guard_validation": {
+        "path": "campaigns/nas-steady-speech-transition-20261009-v1/guard-validation.json",
+        "sha256": "ec9023296c8466fd20eee2f8f9741038298ca10a068d3939af79dfcc9dfc561f"
+      },
+      "boundary_path": "steady-speech-boundary-20261009-v1.json",
+      "boundary_sha256": "f21e12cdf9ede31445ba43968e4301a9233846aa34e0000b33eea0dff876d35c",
+      "retired_mechanism": "Aで登録したaiu六TCX/TCY係数。k/t開発とD語句で不通過。旧集合での救済やC未実施sの移し替えは禁止。新しい要因/資料/機構は旧役割を保持して別登録。"
     }
   }
 }
