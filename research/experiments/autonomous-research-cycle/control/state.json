@@ -23,9 +23,9 @@
   },
   "counts": {
     "setup": 403,
-    "audit": 235,
+    "audit": 243,
     "render": 10920,
-    "dsp": 35738,
+    "dsp": 39706,
     "ai": 10288,
     "train": 11,
     "download": 1669966871,
@@ -1041,13 +1041,14 @@
       "counts": {
         "setup": 2,
         "render": 4,
-        "dsp": 3575
+        "dsp": 7543,
+        "audit": 1
       },
       "start_seconds": 68892.94936847687,
       "start_write_bytes": 33688786350,
       "protocol_sha256": "568bbf16cc600f52a940f9a0576665245ee4ca0fbaa93e04b273b58c0f625b08",
-      "payload_bytes": 18426073,
-      "closed": false,
+      "payload_bytes": 53529629,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -1120,6 +1121,11 @@
             "id": "355d59b22d4443b8979a5fb43ab7e662",
             "status": "failed",
             "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-B', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-hts-overlap-qualification-20261008-v1/analysis.py', 'batch', '--begin', '96', '--end', '112', '--job', '355d59b22d4443b8979a5fb43ab7e662'])"
+          },
+          {
+            "id": "24a64418d1a949ccbc50ab80698833cb",
+            "status": "completed",
+            "error": null
           }
         ],
         "dsp:旧clock差とサンプル位置の原因監査": [
@@ -1135,9 +1141,66 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "dsp:短窓2×2と全分母 112:128": [
+          {
+            "id": "2dee908731bf417798be3a3042071375",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 128:144": [
+          {
+            "id": "4735f7342e124f5e8987139e8ba8a49b",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 144:160": [
+          {
+            "id": "85b7bffa09cc4b609eac288572f56ecd",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 160:176": [
+          {
+            "id": "cef032a0de05401c94e916702829973f",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 176:192": [
+          {
+            "id": "d6cad2fbdc8e4554a662f63ad0ec66b7",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 192:208": [
+          {
+            "id": "5f0ed70a57d64a91b1b55472413b0ab7",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:短窓2×2と全分母 208:224": [
+          {
+            "id": "4719eaf5b15d4a5fa878b1e527529667",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/因子別集計・旧欠測・費用・封印": [
+          {
+            "id": "244db4cac63d41a0a59def8c999d0bea",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 1,
+      "end_seconds": 69775.92109751701
     },
     "japanese-perceptual-resource-audit-v1": {
       "prefix": "campaigns/nas-japanese-perceptual-resource-audit-20261008-v1",
@@ -1156,13 +1219,14 @@
         "audit": 30
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "audit": 7
       },
       "start_seconds": 69273.23351335526,
       "start_write_bytes": 34013131854,
       "protocol_sha256": "40219919734306f442c4ea73a28749190a19b76cff8c82345d8fe81cdc90927c",
-      "payload_bytes": 1855,
-      "closed": false,
+      "payload_bytes": 12771,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -1173,15 +1237,23 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "audit:固定6候補の一次資料・適用条件・不足の照合": [
+          {
+            "id": "7ed7d52cc5a8422ea7ee1b86982c2dd4",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 0,
+      "end_seconds": 69733.20526051521
     }
   },
   "jobs": {},
-  "payload_bytes": 8028579386,
-  "seconds": 69603.8297495842,
-  "write_bytes": 34065616864,
+  "payload_bytes": 8063695516,
+  "seconds": 70047.14115571976,
+  "write_bytes": 34459431381,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -1281,9 +1353,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "hts-overlap-prepared",
-    "active_campaign": "hts-overlap-qualification-v1",
-    "next": "登録commit/push→数値fixture→224短窓2×2比較→集計/封印",
+    "id": "hts-overlap-completed",
+    "active_campaign": null,
+    "next": "HTS共有励振のpulseと周期形状の新生成比較を、二ASR/固定支持/独立性を含め事前登録",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -4096,6 +4168,150 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-5a4f64a11c4e47d4aad4dbeb74a4428e": {
+      "owner": "additional-closeout-5a4f64a11c4e47d4aad4dbeb74a4428e",
+      "job": "24a64418d1a949ccbc50ab80698833cb",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-5a4f64a11c4e47d4aad4dbeb74a4428e",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-32d1de304a7f4c538b0b5929ba39d824": {
+      "owner": "additional-closeout-32d1de304a7f4c538b0b5929ba39d824",
+      "job": "2dee908731bf417798be3a3042071375",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-32d1de304a7f4c538b0b5929ba39d824",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-360d7f7f2bfb4dd6a5910f16174dfefd": {
+      "owner": "additional-closeout-360d7f7f2bfb4dd6a5910f16174dfefd",
+      "job": "4735f7342e124f5e8987139e8ba8a49b",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-360d7f7f2bfb4dd6a5910f16174dfefd",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-ea95d1ce491e4d0e857504ab1a547ad0": {
+      "owner": "additional-closeout-ea95d1ce491e4d0e857504ab1a547ad0",
+      "job": "85b7bffa09cc4b609eac288572f56ecd",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-ea95d1ce491e4d0e857504ab1a547ad0",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-17646c6fd0eb47daa090c460cd16d90c": {
+      "owner": "additional-closeout-17646c6fd0eb47daa090c460cd16d90c",
+      "job": "cef032a0de05401c94e916702829973f",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-17646c6fd0eb47daa090c460cd16d90c",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-0566d9c81edf4727bf5575a2fc001661": {
+      "owner": "additional-closeout-0566d9c81edf4727bf5575a2fc001661",
+      "job": "d6cad2fbdc8e4554a662f63ad0ec66b7",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-0566d9c81edf4727bf5575a2fc001661",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-2ed7b40f2b034753a02935c37d87d834": {
+      "owner": "additional-closeout-2ed7b40f2b034753a02935c37d87d834",
+      "job": "5f0ed70a57d64a91b1b55472413b0ab7",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-2ed7b40f2b034753a02935c37d87d834",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-b3c9c9065e204913b037d13bd08ac5ab": {
+      "owner": "additional-closeout-b3c9c9065e204913b037d13bd08ac5ab",
+      "job": "4719eaf5b15d4a5fa878b1e527529667",
+      "campaign": "hts-overlap-qualification-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-b3c9c9065e204913b037d13bd08ac5ab",
+      "purpose": "短窓測定初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -4858,7 +5074,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 2,
+    "scientific_completed": 4,
     "last_review": {
       "seconds": 66007.95003724098,
       "scientific_completed": 0
