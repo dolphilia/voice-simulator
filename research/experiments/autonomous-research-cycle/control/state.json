@@ -22,15 +22,15 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 519,
-    "audit": 386,
-    "render": 34984,
-    "dsp": 69794,
+    "setup": 520,
+    "audit": 387,
+    "render": 37364,
+    "dsp": 69954,
     "ai": 12976,
-    "train": 12,
+    "train": 13,
     "download": 1712746391,
     "teacher": 117,
-    "inverse": 98
+    "inverse": 99
   },
   "campaigns": {
     "partial-spectrum-v1": {
@@ -7808,13 +7808,18 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 2380,
+        "dsp": 160,
+        "train": 1,
+        "inverse": 1,
+        "audit": 1
       },
       "start_seconds": 129181.02316975594,
       "start_write_bytes": 59180570026,
       "protocol_sha256": "972bdfb57b086e94c37d90f53431fba6503b9a78c01f9c2b160b9c86eb7e2cd4",
-      "payload_bytes": 2071463,
-      "closed": false,
+      "payload_bytes": 2856631,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": "実2378内部renderの単位を事前確認済み。予約2380を使い、技術起動不成立の有限一回再試行まで契約内に確保するため開始前に6000上限を登録。a旧失敗/3000予約は保持し再初期化しない。",
@@ -7825,18 +7830,92 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:全18VTL候補と二native参照の内部生成費": [
+          {
+            "id": "bcecb6d8b2ca4633879ba40f4538ef79",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:全20波形のE0/固定中央F0/包絡の同時事前予約": [
+          {
+            "id": "c237cef42198454ea0995339209095d2",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "train:固定測定から九候補二F0を有限直接fit": [
+          {
+            "id": "1566692662454367b5ec9dfc8af3bda1",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "inverse:共有二舌標的の九候補を直接逆推定": [
+          {
+            "id": "c621a83d91874aa39a6609d5b67d0561",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全九候補/欠測/訓練適合/全費用/回収を封印": [
+          {
+            "id": "a772793204ae4db4a4d476161c16fbbf",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 129653.49252796173
+    },
+    "vtl-native-reference-screen-v1": {
+      "prefix": "campaigns/nas-vtl-native-reference-screen-20261009-v1",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 128000000,
+        "write_bytes": 500000000,
+        "setup": 6,
+        "audit": 6,
+        "render": 4,
+        "dsp": 48,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 130447.05063676834,
+      "start_write_bytes": 59576809658,
+      "protocol_sha256": "3df0b73ea79dc02075057f96a5de58f12d3d00bf2d14938009d00b173e2edbc2",
+      "payload_bytes": 10359,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:未実施参照の二母音二F0と固定ゲートを初出力前に登録": [
+          {
+            "id": "44a0852f78ae4b87b22f8206dfcd54d6",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9701969710,
-  "seconds": 129619.59543395042,
-  "write_bytes": 59361223342,
+  "payload_bytes": 9702775838,
+  "seconds": 130745.36220383644,
+  "write_bytes": 59636673672,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791485630.274744
+    "checkpoint": 1791485916.041514
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -7936,9 +8015,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "vtl-shared-vowel-i-completed",
-    "active_campaign": "vtl-shared-vowel-fit-u-v2",
-    "next": "登録push後に全候補の実VTL生成/測定→直接finite fit→限定訓練適合を封印。",
+    "id": "vtl-shared-vowel-u-completed",
+    "active_campaign": "vtl-native-reference-screen-v1",
+    "next": "登録保存後e/o参照だけを固定診断し、不適格参照の候補探索を省く。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -43323,6 +43402,163 @@
       "removed_files": 2,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-29b2869ab9104b7cad640891070460e6": {
+      "owner": "additional-closeout-29b2869ab9104b7cad640891070460e6",
+      "job": "bcecb6d8b2ca4633879ba40f4538ef79",
+      "campaign": "vtl-shared-vowel-fit-u-v2",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-29b2869ab9104b7cad640891070460e6",
+      "purpose": "当該母音の実候補18/二native参照と包絡距離の学習一時領域",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "grid-0-120.wav",
+          "bytes": 30778,
+          "inode": 99929,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-0-160.wav",
+          "bytes": 30778,
+          "inode": 99930,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-1-120.wav",
+          "bytes": 30778,
+          "inode": 99931,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-1-160.wav",
+          "bytes": 30778,
+          "inode": 99932,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-2-120.wav",
+          "bytes": 30778,
+          "inode": 99933,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-2-160.wav",
+          "bytes": 30778,
+          "inode": 99934,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-3-120.wav",
+          "bytes": 30778,
+          "inode": 99935,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-3-160.wav",
+          "bytes": 30778,
+          "inode": 99936,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-4-120.wav",
+          "bytes": 30778,
+          "inode": 99937,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-4-160.wav",
+          "bytes": 30778,
+          "inode": 99938,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-5-120.wav",
+          "bytes": 30778,
+          "inode": 99939,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-5-160.wav",
+          "bytes": 30778,
+          "inode": 99940,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-6-120.wav",
+          "bytes": 30778,
+          "inode": 99941,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-6-160.wav",
+          "bytes": 30778,
+          "inode": 99942,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-7-120.wav",
+          "bytes": 30778,
+          "inode": 99943,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-7-160.wav",
+          "bytes": 30778,
+          "inode": 99944,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-8-120.wav",
+          "bytes": 30778,
+          "inode": 99945,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-8-160.wav",
+          "bytes": 30778,
+          "inode": 99946,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-stderr.txt",
+          "bytes": 0,
+          "inode": 99925,
+          "device": 16777241
+        },
+        {
+          "relative": "grid-stdout.txt",
+          "bytes": 482,
+          "inode": 99924,
+          "device": 16777241
+        },
+        {
+          "relative": "grid.json",
+          "bytes": 61978,
+          "inode": 99947,
+          "device": 16777241
+        },
+        {
+          "relative": "native-120.wav",
+          "bytes": 69658,
+          "inode": 99927,
+          "device": 16777241
+        },
+        {
+          "relative": "native-160.wav",
+          "bytes": 69658,
+          "inode": 99928,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 755780,
+      "peak_violation": false,
+      "removed_files": 23,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -44100,7 +44336,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 51,
+    "scientific_completed": 52,
     "last_review": {
       "seconds": 126608.60562205315,
       "scientific_completed": 48,
@@ -44134,7 +44370,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 4399.408537149429,
+      "used_seconds": 5525.175307035446,
       "current": "C",
       "stages": [
         {
@@ -44154,7 +44390,7 @@
         {
           "id": "C",
           "maximum_seconds": 36000,
-          "used_seconds": 3010.9247448444366,
+          "used_seconds": 4136.6915147304535,
           "status": "running"
         },
         {
@@ -44173,7 +44409,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 129619.59543395042,
+    "last_accounted_seconds": 130745.36220383644,
     "segment": {
       "stage": "C",
       "foundation_only": false,
