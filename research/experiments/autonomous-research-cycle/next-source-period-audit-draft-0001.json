@@ -1,0 +1,38 @@
+{
+  "status": "draft_not_registered",
+  "depends_on": "gv-ablation-v1終了結果と残予算の確認",
+  "purpose": "85%以降の既存経路監査。HTSの実サンプル励振周期を純粋観測し、既存F0測定の欠測/誤りを点検する。新しい生成方式・係数を追加しない。",
+  "scope": "第19回の既存16文×2条件×HTS4方式=128波形。旧ゲート・判定・P5は変更しない。観測期間に基づく診断は、知覚品質・WORLDの資格ではない。",
+  "truth": "対応一次HTSのget_excitationに1つの純粋観測wrapperを挟む。呼び出し前の周期・位相から実パルス発生を記録。乱数・filter・位相・係数への書き込みなし。同じ入力で全128の旧波形hash一致を必須とする。",
+  "causal_control": "β0/0.2、native/voicing、初回nativeMCPの処理を既存第19回と同じにし、観測の有無だけを変える。",
+  "measurement_plan": "5ms時計で実サンプル周期を参照。60ms全有声かつ周期範囲1半音以内の窓を事前規則でprimaryとし、全無声で境界から20ms以上の区間は陰性。境界/動的窓は理由付きで別表示、分母の適用条件を隠さない。各音声primary>=3、誤差<=1半音、coverage>=0.9、UV誤受理<=0.05を全128で要求。DIO/Harvest/中心ACFは独立票に数えない。旧資格判定には使わない。",
+  "inadequate_support": "1件でも参照支持や陰性分母不足、hash不一致、欠測なら限定資格は不通過。実周期は励振の物理的入力であり、知覚ピッチの真値とは主張しない。",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 750000000,
+    "render": 400,
+    "dsp": 3000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 60,
+    "audit": 60
+  },
+  "estimates": {
+    "render": 132,
+    "dsp": 768,
+    "comparison": 128,
+    "fixture_max": 4,
+    "external_trace_summary_max": 300000000,
+    "assets": 20000000,
+    "temporary_peak": 16000000,
+    "retry_storage": 350000000,
+    "planned_peak_total": 686000000
+  },
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "new_human_response_required": false,
+  "registration_requires_latest_closed_and_seal_check": true
+}

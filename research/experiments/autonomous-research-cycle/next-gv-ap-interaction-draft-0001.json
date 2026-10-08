@@ -1,0 +1,78 @@
+{
+  "status": "draft_not_registered",
+  "campaign": "gv-ap-interaction-v1",
+  "question": "既存のLF0 GV除去を固定したとき、MCP GV有無と既存AP雑音power半減の組合せは、支持欠測と二ASRの異なる悪化を緩和できるか。",
+  "reason": "第20回でLF0のみGV除去は30/32・Whisper33/1062だがReazon23/1062、両GV除去は31/32・Whisper57/1062だがReazon12/1062。前者と後者の違いはMCP GV。45ms/i/の源LF0は9/9有声でもDIO欠測。既存AP半減とMCP GVの相互作用を未見コホートで比較する。",
+  "variants": [
+    "native",
+    "voicing_no_lf0_gv",
+    "voicing_no_lf0_gv_ap_half",
+    "voicing_no_gv",
+    "voicing_no_gv_ap_half"
+  ],
+  "factors": {
+    "fixed": "既存LF0 GVオフ・既存有声補完/中央値校正。native基準は無改変。",
+    "MCP_GV": [
+      "on",
+      "off"
+    ],
+    "AP_noise_power_factor": [
+      1,
+      0.5
+    ],
+    "renderer": "既存WORLD",
+    "beta": 0
+  },
+  "existing_routes_only": true,
+  "reused_AP_source": "campaigns/nas-voicing-ap-20261008-v1/runtime-bundle-v2/voicing_world.py",
+  "reused_control_source": "campaigns/nas-gv-ablation-20261008-v1/runtime-bundle/controls_v2.py",
+  "causal_guards": "APだけを変えた対ではMCP/LF0/LPF・WORLD F0/power・無声AP一致。MCP GV有無ではLF0/LPF・状態/MSD/状態分布/設定/利得保持。共有模型の変更は既存20のフラグだけ。",
+  "fresh_short": 8,
+  "fresh_long": 8,
+  "conditions": {
+    "neutral": {
+      "requested_f0": 220,
+      "speed": 1
+    },
+    "higher": {
+      "requested_f0": 280,
+      "speed": 1.15
+    }
+  },
+  "qualification": "旧ゲートを継承。各32件全E0/支持/指定F0、通常・隔離160組/CLI4、二ASR各33群native以下。欠測不通過。日本語非NN知覚・独立P5なしに品質認定しない。",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1500000000,
+    "render": 1000,
+    "dsp": 3000,
+    "ai": 1000,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 60,
+    "audit": 60
+  },
+  "estimates": {
+    "comparison": 160,
+    "normal_isolated": 320,
+    "CLI": 4,
+    "compatibility": 7,
+    "planned_render": 491,
+    "planned_DSP": 1131,
+    "planned_AI": 320,
+    "external_outputs": 600000000,
+    "metadata": 60000000,
+    "assets": 20000000,
+    "temp_peak": 8000000,
+    "retry_storage": 700000000,
+    "peak_total": 1388000000,
+    "retry_render": 509,
+    "retry_DSP": 1869,
+    "retry_AI": 680
+  },
+  "budget_review": "21/24の85%以降。既存の2制御・同じ係数を組み合わせる比較。新しい生成経路・係数探索は追加しない。次の既存HTS周期監査案はこの比較の後に実行。",
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "no_optimization_after_first_audio": true
+}

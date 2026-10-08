@@ -1,0 +1,66 @@
+{
+  "protocol_sha256": "17c247f01599d75fd17710b455af5494a133b5677e5fa4d68b8937479e3c5bee",
+  "registration_sha256": "6d047edc1a19a0aff31b0b4c4b64ef6336feb7799ba620e1a53d182536ac5c83",
+  "source_hashes": {
+    "asr_worker.py": "0aed642f4c2eb25668870a787d1ee321d5cf619ef73a57597d36ff792564ceee",
+    "build.py": "76268c8d3f4600347e24c9be25f782be74e0056abfcde15a83d5376a54b91b06",
+    "closeout.py": "710a371f9701252857f456ab9179d291040af33749d119a77f115e835c4b20d1",
+    "closeout_v2.py": "5ead249cf4506f988d517774f5fb10e63bf31232f29cde04622e5c29624250a0",
+    "controller.py": "5604c941fca97d9a2d0f3ed47834466fd41ee25def354f12fab30c887f39e1c6",
+    "controls_v2.py": "23b26d8453b77e404a0ae005d69ead50fdaa4f0655476b4078fd0e9579fc150c",
+    "gv_control.py": "9fdef94b962535d3a9e0b4e3edaf80781d751ac32b41c2a12fe2b372c3b88702",
+    "measurement.py": "7473612cca26b3f69b547723aa4d0033803aa9ee483a37abf677b987e3766be1",
+    "paths.py": "76548b0c4d2e0ec7f3fdeb216b2852ed6fbd08adbea0a3096e642697845f8464",
+    "preflight.py": "7dd695c719bf678a71e4e2843549e20293863a27c3727c50011215257c3f6ac5",
+    "prepare.py": "a7c558281590146ed691aff69f5e3d14826486a1550030279c3146502c479902",
+    "prepare_v2.py": "b4b75c9eb90965d8d88ca4b2695bfb11bb5211d572a71065d671d01accacc097",
+    "runtime.py": "1691ca0ae4849e81449dce62c34b3201a6274c2f559db85442ba19f9dcb178b0",
+    "runtime_batch.py": "9e011bbef8853eac50d5b618502bd5cf8f37e82afb3e12859bbe9ce792abd69f",
+    "summarize.py": "9701351518031b7bd129235528c71be1ccbe7c3d508f6280f18b21f6044b5e76",
+    "temporary_storage.py": "22d7d436cacaf1a3d86ebbcc16fa05d029215a9c606d9c1d352e6cbf507d517b",
+    "test_controls.py": "3448d910bf0e7b3be12c971830fcd76725fc182f12845964863281b1a142b949",
+    "closeout_v4.py": "ecf9da3e85f0d329b7026f06a5f8161c1d1b6397b83c4df911f4275d5fbc91e7",
+    "preflight_v2.py": "1b65f3cc83c20417223385109c3070d1a161fd44c3fc44a784739029be221f38",
+    "period_measurement.py": "25b3110581bc960b46da3fb4106370b12e40789963c5d32a25b579c5dfe42c53",
+    "controller_v2.py": "29f3318710637dd889c19cb79f1b4244eb122acbd7f5d4c26d234b7313f0a09f",
+    "closeout_v3.py": "cd2f5fc2b5faa61a21d581574cc4e4707f57139d6a43766106da9a004330418a",
+    "summarize_v2.py": "233963ae808fd383129ecb388489a03db5b2a59b6ad57971db2f64b6d34c3aaa"
+  },
+  "runtime_manifest_sha256": "200bcfd128e1628e04d36ed61a3a8d72bc1087f96ff716176233260420924b19",
+  "engine_contract_sha256": "66f539ec69aae8a01b470fcbe30b1c1be8beb03410ae205ac017a25df8d76f47",
+  "output_gain": 0.25,
+  "native_half_tone": "12*log2(requestedHz/220)",
+  "absolute_calibration": "補完後の有声LF0へ一律log偏移、原有声相対輪郭保持",
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "renderer_rule": "β=0、WORLD/AP=1、既存LF0補完・中央値校正を固定。GVフラグだけを共有模型から除く。初波形後の変更なし。",
+  "AP_noise_power_factor": 1.0,
+  "MCP_postfilter_beta": 0.0,
+  "alpha": 0.55,
+  "GV_disabled_streams": [
+    [],
+    [
+      "MCP"
+    ],
+    [
+      "LF0"
+    ],
+    [
+      "MCP",
+      "LF0"
+    ]
+  ],
+  "GV_flags_proof_sha256": "be6f9d4972fef6483796704682c02b00bd0f1e33c0d8b076a35d2ce3a9ab22e9",
+  "GV_C_sha256": "0afe98ababfaa5539986e23a8b164363a9ad3f8c7d71d86916be3b98fc78a975",
+  "factor_baseline_byte_exact": true,
+  "renderer": [
+    "WORLD"
+  ],
+  "waveform_transfer": "pipe/メモリ。子の一時音声ファイルなし。",
+  "tmp_maximum_bytes": 8000000,
+  "tmp_maximum_write_bytes": 16000000,
+  "fixed_before_first_wave": true,
+  "quality_certified": false,
+  "extends_contract_sha256": "9c9aa3e073f971944b4586fb87f45a79d8f49e34b9f7c96d8c79adfd745440d7",
+  "technical_amendment": "同じ既存period_measurement依存の同梱。比較worker AST・科学条件・ランタイム不変。",
+  "scientific_runtime_unchanged": true
+}
