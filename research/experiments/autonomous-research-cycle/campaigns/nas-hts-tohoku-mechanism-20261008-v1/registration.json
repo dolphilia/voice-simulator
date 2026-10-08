@@ -1,0 +1,85 @@
+{
+  "campaign": "hts-tohoku-mechanism-v1",
+  "question": "公開Tohoku-F01 neutralの共有HMM全体が既存非ニューラル生成の固定設定へ互換であり、制御と一次vocoderの対応を保持するか。",
+  "candidate": "公式icn-lab/htsvoice-tohoku-f01 neutral一つに事前固定。別感情/style/共有係数/補間探索を行わない。",
+  "factor": "全共有HMMを交換。文脈別MCP/LF0/LPF/duration/MSD/GVはモデル固有で、元Meiとの源時計や列一致を主張しない。辞書/labels、F0中央値制御、速度指定、MLPG/vocoder/gainを共通化する。",
+  "controls": "各モデル内でMCP/LPF・duration/MSD/voicingと相対LF0を保持し、指定中央値220/280へ一様logF0補正。alpha.55/stage0/48k/240/原HTS/24k resample/12msfade/gain.25固定。",
+  "compatibility": "同full-context label体系、5state/3stream/MCP35×window3/LF01×window3/奇数LPF≤63。元固定設定との不一致は停止し係数を合わせて救済しない。",
+  "resource": {
+    "repository": "https://github.com/icn-lab/htsvoice-tohoku-f01",
+    "API": "https://api.github.com/repos/icn-lab/htsvoice-tohoku-f01/commits/master",
+    "revision_resolved_once_before_model_download": true,
+    "files": [
+      "COPYRIGHT.txt",
+      "README.md",
+      "tohoku-f01-neutral.htsvoice"
+    ],
+    "license": "Creative Commons Attribution 4.0",
+    "copyright_url": "https://github.com/icn-lab/htsvoice-tohoku-f01/blob/master/COPYRIGHT.txt",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "fixture": {
+    "texts": [
+      "紫の船がゆっくり進む。",
+      "雨が降る。",
+      "切手を買った。",
+      "新しい地図を机に広げた。"
+    ],
+    "conditions": [
+      [
+        1.0,
+        220.0
+      ],
+      [
+        1.15,
+        280.0
+      ]
+    ],
+    "models": [
+      "mei",
+      "tohoku"
+    ],
+    "all_16_required": true,
+    "bare_and_pure_observation_native_wave_byte_exact": true,
+    "model_states_unmodified": true,
+    "MCP_LPF_voicing_preserved": true,
+    "calibrated_LF0_median_abs_error_at_most": 1e-09,
+    "finite_wave": true
+  },
+  "estimates": {
+    "render": 32,
+    "dsp": 80,
+    "dsp_breakdown": "16 MLPGと16条件×4の状態/制御/列/一次波形照合",
+    "conservative_download_reserved_bytes": 4259840,
+    "asset_cap": 4194304,
+    "metadata_cap": 65536,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 16,
+    "audit": 16,
+    "render": 96,
+    "dsp": 240,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 10000000
+  },
+  "worker_sha256": "070994b3639c88ebdad4b16f0acaace40ce0ffb92c6b8023779931e8649c88ad",
+  "controller_sha256": "610eb9b204d8960a1abf951778a4f3ac81730d607d898ef2856402a6441089b3",
+  "source": {
+    "parent_seal_sha256": "d5cbbeb7d26069a83ea2b9944f7c4fa4a16df7352721808dcdb65eafd0b7eaa7",
+    "previous_seal_sha256": "8d6dad6f154957d0e73a655460a3ecf81661939231ef4d0b8902af42d28787b2"
+  },
+  "next": "互換性/限定機構通過なら未使用16文×2条件のMei/Tohoku全モデル比較を登録。支持はnativeの音素indexで固定し、candidate固有の時間軸へ適用。未通過を同voice係数で救済しない。",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "no_waveform_or_model_download_yet": true
+}
