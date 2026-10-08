@@ -22,7 +22,7 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 400,
+    "setup": 401,
     "audit": 235,
     "render": 10916,
     "dsp": 32163,
@@ -1021,12 +1021,50 @@
       },
       "technical_retries": 0,
       "end_seconds": 68394.98311972618
+    },
+    "hts-overlap-qualification-v1": {
+      "prefix": "campaigns/nas-hts-overlap-qualification-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1500000000,
+        "write_bytes": 2200000000,
+        "render": 30,
+        "dsp": 14000,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 40,
+        "audit": 60
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 68892.94936847687,
+      "start_write_bytes": 33688786350,
+      "protocol_sha256": "568bbf16cc600f52a940f9a0576665245ee4ca0fbaa93e04b273b58c0f625b08",
+      "payload_bytes": 572084,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:全224入力・数式と因子・費用を固定": [
+          {
+            "id": "1a59d68481fe41778f6a825bd0aa3dc0",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 8010124251,
-  "seconds": 68637.24957466125,
-  "write_bytes": 33686066896,
+  "payload_bytes": 8010719591,
+  "seconds": 69101.1708574295,
+  "write_bytes": 33725206641,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -1126,12 +1164,12 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "world-original-completed",
-    "active_campaign": null,
-    "next": "原実装が一致すればobserverの観測箇所/演算効果を別因子で検証。不一致なら旧768を未知のまま閉じ、独立に検証できる別版と有効なHTS測定/生成へ進む。",
+    "id": "hts-overlap-prepared",
+    "active_campaign": "hts-overlap-qualification-v1",
+    "next": "登録commit/push→数値fixture→224短窓2×2比較→集計/封印",
+    "git_save_pending": false,
     "quality_goal_completed": false,
-    "protected_confirmation_opened": false,
-    "git_save_pending": false
+    "protected_confirmation_opened": false
   },
   "storage_maintenance": {
     "repository-data-20261008-v1": {
@@ -4494,6 +4532,14 @@
       "protected_confirmation_opened": false,
       "git_save_pending": false,
       "all_campaigns_closed": true
+    },
+    {
+      "id": "world-original-completed",
+      "active_campaign": null,
+      "next": "原実装が一致すればobserverの観測箇所/演算効果を別因子で検証。不一致なら旧768を未知のまま閉じ、独立に検証できる別版と有効なHTS測定/生成へ進む。",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "git_save_pending": false
     }
   ],
   "pending_budget_proposal": {

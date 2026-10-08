@@ -1,0 +1,91 @@
+{
+  "campaign": "hts-overlap-qualification-v1",
+  "status": "registered_before_output",
+  "question": "短窓ACFの端部エネルギー正規化と正領域keyピーク選択は、HTS実パルス平均発生率との対応をどこで改善/悪化させるか",
+  "factors": {
+    "normalization": [
+      "旧r/(N-lag)",
+      "NSDF式9:2r/(重なり両側の二乗和)"
+    ],
+    "peak_picking": [
+      "旧全局所ピーク",
+      "初期正領域を除き各正領域最大の局所ピーク"
+    ]
+  },
+  "constants": {
+    "width_ms": [
+      20,
+      40,
+      60
+    ],
+    "frequency_hz": [
+      70,
+      800
+    ],
+    "RMS_minimum": 1e-05,
+    "confidence_minimum": 0.6,
+    "peak_relative": 0.93,
+    "parabola_clip": [
+      -0.5,
+      0.5
+    ],
+    "no_smoothing_or_truth_conditioning": true
+  },
+  "input": "既存HTS224件。LPF純観測/源時計/WAVhash/全固定支持を引継ぐ。既存128件は3幅の旧ACF完全一致を対照検査。",
+  "ground": "旧関数byte不変。窓内4パルス以上の平均発生率。stable/dynamic/edge/boundary/unvoiced/insufficientを保持。",
+  "gates": {
+    "each_wave_positive_and_negative_minimum": 3,
+    "coverage": 0.9,
+    "median_error_semitones": 1.0,
+    "unvoiced_false_accept": 0.05,
+    "missing_is_failure": true
+  },
+  "qualification": "この既存コホート内の源パルス平均率診断のみ。未知日本語/瞬時F0/知覚pitch/WORLD/旧ゲート/最終品質へ拡張しない。境界は単一率truthを設定しない。",
+  "source": {
+    "paper": "McLeod and Wyvill, ICMC 2005, A smarter way to find pitch",
+    "url": "https://www.researchgate.net/profile/Geoff-Wyvill/publication/230554927_A_smarter_way_to_find_pitch/links/561a12f108aea80367211169/A-smarter-way-to-find-pitch.pdf?origin=publication_detail",
+    "equations": [
+      6,
+      9
+    ],
+    "retrieved": "2026-10-08",
+    "formula_independent_implementation": true,
+    "full_MPM_replication_not_claimed": true,
+    "existing_cutoff_kept_not_tuned": true
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1500000000,
+    "write_bytes": 2200000000,
+    "render": 30,
+    "dsp": 14000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 40,
+    "audit": 60
+  },
+  "estimates": {
+    "DSP_per_wave": 31,
+    "DSP_total": 6944,
+    "fixture_DSP": 100,
+    "maximum_with10_batch_retries": 12004,
+    "render": 4,
+    "batch_size": 16,
+    "batch_timeout": 300,
+    "fixture_timeout": 120,
+    "worst_seconds": 8300,
+    "external_arrays_and_diagnostics_peak": 500000000,
+    "temporary_peak": 16000000,
+    "metadata_Git_closeout_included": true
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "parallel_max": 2,
+  "RAM_gb": 8,
+  "new_AI_teacher_train_inverse_download": 0,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
