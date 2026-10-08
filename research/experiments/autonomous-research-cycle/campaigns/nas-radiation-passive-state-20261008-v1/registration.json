@@ -1,0 +1,89 @@
+{
+  "campaign": "radiation-passive-state-v1",
+  "question": "固定Padé反射を共通正規化エネルギー状態へ実現し、半径が変わる時も受動性と状態/因果/区切りを保持できるか。",
+  "primary": {
+    "previous_seal": "d3f8be58751ee086574eb74a252605597f4b707e5baa4fc026afe5471c9c940b",
+    "coefficients": "8639d5d9f5ae25841967e3c903c7c1dc00fc87edc0b698c7026ba5aad67c3094",
+    "URL": "https://arxiv.org/abs/0811.3625",
+    "previous_causal_approximation_unchanged": true
+  },
+  "derivation": "独自導出。delta=d1^2-2d2-n1^2>0、反射R=-(1+n1*s)/(1+d1*s+d2*s^2)、補完loss T=s(sqrt(delta)+d2*s)/(1+d1*s+d2*s^2)。全実周波数で|R|^2+|T|^2=1。A=[[0,1],[-1/d2,-d1/d2]],B=[0,1/d2],C=[[-1,-n1],[-1,sqrt(delta)-d1]],D=[0,1]。P=[[d1-n1,d2],[d2,d2(d1-sqrt(delta))]]、U^TU=P、A0=UAU^-1,B0=UB,C0=CU^-1。h=c/(2Fs*a),M=(I-hA0)^-1。Ad=M(I+hA0),Bd=sqrt(2h)MB0,Cd=sqrt(2h)C0M,Dd=D+hC0MB0。K=[[Ad,Bd],[Cd,Dd]]がK^TK=I。",
+  "factor": "半径ごとのDF1履歴から、共通Euclidean二状態と反射/loss二portへ変更。現在半径の等長4x3行列を使い、stateを変更/リセットせず継承する。係数のfit/補正/clipなし。",
+  "fixtures": {
+    "fs": [
+      34300,
+      48000
+    ],
+    "matrix_radii_m": {
+      "min": 0.003,
+      "max": 0.03,
+      "points": 129
+    },
+    "fixed_radii_m": [
+      0.007,
+      0.008,
+      0.012,
+      0.016
+    ],
+    "terminations": [
+      "unflanged",
+      "flanged"
+    ],
+    "samples": 8192,
+    "signals": [
+      "impulse",
+      "Gaussian noise"
+    ],
+    "dynamic_radii": [
+      "linear .007→.016",
+      "7Hz sine .0115±.0045",
+      "half .016→.007 step"
+    ],
+    "dynamic_initial_state": [
+      0.7,
+      -0.4
+    ],
+    "dynamic_forced_and_unforced": true,
+    "seed": 720810
+  },
+  "gates": {
+    "matrix_vs_independent_Cholesky_and_inverse": 3e-12,
+    "isometry_K_transpose_K_identity": 3e-12,
+    "fixed_R_and_loss_vs_SciPy_bilinear_lfilter": 3e-13,
+    "dynamic_vs_independent_matrix_state": 3e-13,
+    "cumulative_energy_error": 2e-11,
+    "unforced_state_energy_increase_at_most": 3e-12,
+    "partition_and_future_input_radius_prefix_bytes_exact": true,
+    "invalid_rejected": 12
+  },
+  "scope": "数学的正規化状態の受動性。変化する実人体の壁の仕事/圧力連続/頭部指向性/遠方mic/日本語音声の資格を主張しない。loss portは正規化放射損失の一つの因果的スペクトル因子で、物理micの位相や位置ではない。",
+  "estimates": {
+    "render": 450,
+    "dsp": 1400,
+    "source_and_internal_blocks_included": true,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 900,
+    "dsp": 4000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "controller_sha256": "85cca6b71a17c6d3b2f6f8d9fab8008157eeed0ef4de030dbaaf982e597935c0",
+  "all_old_failed_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "全機構通過時だけ声道stateとこの二状態を結合し、同じ入力/固定形状の独立反射と動的無強制エネルギーを検証する。loss出力/唇flow/源の積分表現は別の因果因子として明記し、工学資格と新語句内容比較を順に行う。"
+}
