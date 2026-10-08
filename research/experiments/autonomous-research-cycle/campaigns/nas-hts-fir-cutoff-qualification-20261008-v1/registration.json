@@ -1,0 +1,58 @@
+{
+  "campaign": "hts-fir-cutoff-qualification-v1",
+  "question": "実MCPでのFIR1024不通過は、C IR係数誤差・8192grid alias・有限IR打切りのどれと対応するか。全21333 frameを除外せず検査する。",
+  "source": {
+    "previous_seal_sha256": "1f35532d1d35c41b7dd4f4563bbd1fa9c26840e2bd5deab3ae11f188c4f172a3",
+    "previous_all_frame_audit_sha256": "58a61d6a94a461e2504416c6ddb8738ea50b8316290eba5aa46702919383fea9",
+    "urls": [
+      "https://sp-nitech.github.io/sptk/latest/main/freqt.html",
+      "https://sp-nitech.github.io/sptk/latest/main/c2mpir.html"
+    ]
+  },
+  "lengths": [
+    1024,
+    2048,
+    4096
+  ],
+  "FFT": 16384,
+  "alpha": 0.55,
+  "MCP": 35,
+  "thresholds": {
+    "complex_relative_error": 0.001,
+    "reference_tail_energy": 1e-06,
+    "C_prefix_relative_error": 1e-10,
+    "grid_refinement_relative_error": 1e-10
+  },
+  "selection_rule": "全32波形・全frame・両数値検査を通る最短登録長を選ぶ。候補なしなら有限FIRの同係数救済を凍結する。選択済みコホートによる機構診断であり独立品質証拠にはしない。",
+  "next_if_pass": "固定した長さとFFT生成IRを別機構fixtureで照合し、その後の新日本語入力比較を別契約で生成前登録。旧1024結果や旧判定を変更しない。",
+  "costs": {
+    "render": 0,
+    "dsp": 128,
+    "ai": 0,
+    "download": 0,
+    "maximum_seconds": 3000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 8,
+    "audit": 12,
+    "render": 0,
+    "dsp": 384,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "controller_sha256": "92207d1433c19bd498fa323a6228ca27b1cdad6a1af30a8c29745fbb62ff249f",
+  "worker_sha256": "4cc11657f41cbb2711618d482223fd728358265a3f72ff889e7dee5f97845464",
+  "existing_input_reused_and_not_independent_confirmation": true,
+  "old_missing_and_ASR_failures_kept": true,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false
+}
