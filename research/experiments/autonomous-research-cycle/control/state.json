@@ -23,9 +23,9 @@
   },
   "counts": {
     "setup": 400,
-    "audit": 234,
-    "render": 10904,
-    "dsp": 32131,
+    "audit": 235,
+    "render": 10916,
+    "dsp": 32163,
     "ai": 10288,
     "train": 11,
     "download": 1669966871,
@@ -969,13 +969,16 @@
         "audit": 60
       },
       "counts": {
-        "setup": 2
+        "setup": 2,
+        "render": 12,
+        "dsp": 32,
+        "audit": 1
       },
       "start_seconds": 68032.52856612206,
       "start_write_bytes": 33557871869,
       "protocol_sha256": "af3bf7992bb4edb372b90b4a0be7ffdc7c6ec88e6524e5965ecb3e34eb4fd1e6",
-      "payload_bytes": 799637,
-      "closed": false,
+      "payload_bytes": 829095,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -993,15 +996,37 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:原実装/installed C/bindingの固定4対照": [
+          {
+            "id": "7504cc5e48404413aa989ed0340cf031",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:固定4の変換hash・raw/float32差分": [
+          {
+            "id": "7cb98484e4e84c34837a7c5127aae4ae",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:原実装差分・旧未知・全費用と封印": [
+          {
+            "id": "4b7ad888e5d54274844c211bbf4a1e34",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 0,
+      "end_seconds": 68394.98311972618
     }
   },
   "jobs": {},
-  "payload_bytes": 8010093340,
-  "seconds": 68338.97647190094,
-  "write_bytes": 33631887858,
+  "payload_bytes": 8010124251,
+  "seconds": 68637.24957466125,
+  "write_bytes": 33686066896,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -1101,9 +1126,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "world-original-prepared",
-    "active_campaign": "world-original-reproduction-v1",
-    "next": "登録commit/push→固定4compat→条件付き全768→集計/封印",
+    "id": "world-original-completed",
+    "active_campaign": null,
+    "next": "原実装が一致すればobserverの観測箇所/演算効果を別因子で検証。不一致なら旧768を未知のまま閉じ、独立に検証できる別版と有効なHTS測定/生成へ進む。",
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
     "git_save_pending": false
@@ -3736,6 +3761,24 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-1d0448d37b474ace8f220143ad400b71": {
+      "owner": "additional-closeout-1d0448d37b474ace8f220143ad400b71",
+      "job": "7504cc5e48404413aa989ed0340cf031",
+      "campaign": "world-original-reproduction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-1d0448d37b474ace8f220143ad400b71",
+      "purpose": "対照実装と数値ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -4490,7 +4533,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 1,
+    "scientific_completed": 2,
     "last_review": {
       "seconds": 66007.95003724098,
       "scientific_completed": 0
