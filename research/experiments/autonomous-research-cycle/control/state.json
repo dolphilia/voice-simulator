@@ -23,7 +23,7 @@
     "campaigns": 24
   },
   "counts": {
-    "setup": 380,
+    "setup": 381,
     "audit": 222,
     "render": 10556,
     "dsp": 26195,
@@ -678,15 +678,38 @@
       "payload_bytes": 3044967,
       "closed": true,
       "end_seconds": 56902.016964912415
+    },
+    "cycle-closeout-v1": {
+      "prefix": "campaigns/nas-cycle-closeout-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 250000000,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 40,
+        "audit": 60
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 57264.13362574577,
+      "protocol_sha256": "148a646d4a4b87f194ce984a652195c728a75a621a0ac860adc9c69a3684f412",
+      "payload_bytes": 35071,
+      "closed": false
     }
   },
   "jobs": {},
-  "payload_bytes": 7778976301,
-  "seconds": 57223.48569869995,
-  "write_bytes": 31092013007,
+  "payload_bytes": 7779012414,
+  "seconds": 57299.43477892876,
+  "write_bytes": 31126469296,
   "session": {
     "id": "c968a05d10e04bfeadc91562e6c7eed8",
-    "checkpoint": 1791423970.8218439
+    "checkpoint": 1791424046.770924
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -718,15 +741,12 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "cross-factor-completed-20261008-0001",
-    "active_campaign": null,
-    "campaign_closed": true,
-    "all23closed": true,
-    "next_registration_entry": "cycle-closeout-bootstrap-0001.py",
-    "next": "commit/push→第24回包括終了監査",
+    "id": "cycle-closeout-prepared-20261008-0001",
+    "active_campaign": "cycle-closeout-v1",
+    "campaign_closed": false,
+    "next": "commit/push → audit.py → closeout.py → 終端台帳・suspend・Git先端照合",
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
-    "all_temporary_removed": true,
     "git_save_pending": true
   },
   "storage_maintenance": {
@@ -3445,6 +3465,18 @@
       "next": "commit/push → audit.py → closeout.py → 第24回包括終了監査",
       "quality_goal_completed": false,
       "protected_confirmation_opened": false,
+      "git_save_pending": false
+    },
+    {
+      "id": "cross-factor-completed-20261008-0001",
+      "active_campaign": null,
+      "campaign_closed": true,
+      "all23closed": true,
+      "next_registration_entry": "cycle-closeout-bootstrap-0001.py",
+      "next": "commit/push→第24回包括終了監査",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "all_temporary_removed": true,
       "git_save_pending": false
     }
   ]
