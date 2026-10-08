@@ -9,22 +9,21 @@
     "bootstrap_accounting": "初期読取・管理実装・予算否定検査について、台帳前の作業を保守的に30分として初期加算する。実測時刻と混同しない。"
   },
   "limits": {
-    "seconds": 172800,
+    "seconds": 691200,
     "bytes": 266776643584,
     "experiment_bytes": 262776643584,
-    "write_bytes": 306776643584,
-    "download": 5000000000,
-    "render": 20000,
-    "teacher": 1000,
-    "ai": 50000,
-    "dsp": 100000,
-    "train": 60,
-    "inverse": 300,
-    "campaigns": 28
+    "write_bytes": 600000000000,
+    "download": 10000000000,
+    "render": 120000,
+    "teacher": 2000,
+    "ai": 200000,
+    "dsp": 400000,
+    "train": 120,
+    "inverse": 600
   },
   "counts": {
-    "setup": 395,
-    "audit": 230,
+    "setup": 396,
+    "audit": 233,
     "render": 10672,
     "dsp": 30327,
     "ai": 10288,
@@ -809,12 +808,71 @@
       "payload_bytes": 32036621,
       "closed": true,
       "end_seconds": 62234.04043889046
+    },
+    "long-horizon-management-v1": {
+      "prefix": "campaigns/nas-long-horizon-management-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 200000000,
+        "write_bytes": 400000000,
+        "render": 0,
+        "teacher": 0,
+        "ai": 0,
+        "dsp": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 30,
+        "audit": 30
+      },
+      "counts": {
+        "setup": 1,
+        "audit": 3
+      },
+      "start_seconds": 66013.00282120705,
+      "start_write_bytes": 32827642243,
+      "protocol_sha256": "f0f1f020ca0d94e95e913b925d8838d03e18350db9cca46e7e53f2a5ad31b312",
+      "payload_bytes": 5802,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:管理契約登録": [
+          {
+            "id": "5544e754442b4ac690aec3fdc8b2f801",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:長期強制の合成台帳検証": [
+          {
+            "id": "d2ac291fed194dba97c282c5b90e0aa1",
+            "status": "failed",
+            "error": "RuntimeError('未許可の一時ファイル種別。削除を保留')"
+          },
+          {
+            "id": "0540256a2bda4327a0dc74c2938c3ac7",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:旧封印・全外部・移動実体hash照合": [
+          {
+            "id": "48dadb88eb6a42aebd13fb02b2dd6e7e",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 1,
+      "end_seconds": 66408.45147943497
     }
   },
   "jobs": {},
-  "payload_bytes": 7957312923,
-  "seconds": 65558.04292225838,
-  "write_bytes": 32825378256,
+  "payload_bytes": 7957557209,
+  "seconds": 66715.48582720757,
+  "write_bytes": 33070266198,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -883,26 +941,44 @@
       "initial_read_preflight_conservative_seconds": 300,
       "approval_path": "campaign-allocation-approval-20261008-0001.json",
       "approval_sha256": "02462b25baa89dd8103eeea526f1e9f6a9cfd84ed7ca378f26f85f22434c0bee"
+    },
+    {
+      "id": "long-horizon-20261008-v1",
+      "status": "applied",
+      "approval_path": "long-horizon-approval-20261008-v1.json",
+      "approval_sha256": "1fa1b77adf82c8772e292cfa7029a2a7a9a9dca8b70e350fcbd14e0aa2111020",
+      "applied_seconds": 66007.95003724098,
+      "applied_counts": {
+        "setup": 395,
+        "audit": 230,
+        "render": 10672,
+        "dsp": 30327,
+        "ai": 10288,
+        "train": 11,
+        "download": 1669966871,
+        "teacher": 117,
+        "inverse": 97
+      },
+      "scientific_completed": 0,
+      "last_review": {
+        "seconds": 66007.95003724098,
+        "scientific_completed": 0
+      },
+      "closing_seconds": 43200,
+      "science_enabled_after_validation": true,
+      "old_contracts_and_consumption_retained": true,
+      "wrapper_path": "long_horizon_budget.py",
+      "wrapper_sha256": "e508decdcbfd0ae247fcde591602b36ed12384fe7d7d6d6c0de994737c44b7ef"
     }
   ],
   "continuation_checkpoint": {
-    "id": "campaign-limit-terminal-20261008-0002",
+    "id": "long-horizon-validated",
     "active_campaign": null,
-    "all_campaigns_closed": true,
-    "stop_reason": "campaigns_limit_reached",
-    "campaigns_used": 28,
-    "campaigns_limit": 28,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
-    "all_temporary_removed": true,
-    "jobs": {},
-    "approval_required_for_additional_campaigns": true,
-    "next": "追加campaign上限の明示承認まで新規科学処理を開始しない。再開時は同じ台帳・媒体・封印・Git先端から確認する。",
+    "next": "HEAD/origin一致後LongHorizonBudget.resume→HTS224 LPF純観測の事前登録",
     "git_save_pending": false,
-    "scientific_result_commit": "fc2013b8bc2c0ef567ac40a3b7f9797da14c2824",
-    "scientific_result_push_verified": true,
-    "terminal_state": "terminal-state-20261008-0002.json",
-    "terminal_commit_sync": "保存後にHEAD/origin先端一致を検証。自己SHAはGit実体を正本とする。"
+    "all_campaigns_closed": true
   },
   "storage_maintenance": {
     "repository-data-20261008-v1": {
@@ -3242,6 +3318,224 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-ea10f44106184f6ea56852552ff10a5f": {
+      "owner": "additional-closeout-ea10f44106184f6ea56852552ff10a5f",
+      "job": "d2ac291fed194dba97c282c5b90e0aa1",
+      "campaign": "long-horizon-management-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-ea10f44106184f6ea56852552ff10a5f",
+      "purpose": "合成台帳・外部保存・失敗回収の意味のある管理検証",
+      "maximum_bytes": 30000000,
+      "maximum_write_bytes": 100000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "fixture-cycle/approval.json",
+          "bytes": 6462,
+          "inode": 69108,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/budget.py",
+          "bytes": 15429,
+          "inode": 69125,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/long_horizon_budget.py",
+          "bytes": 14235,
+          "inode": 69115,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/storage_budget.py",
+          "bytes": 9328,
+          "inode": 69130,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/storage_guard.py",
+          "bytes": 3275,
+          "inode": 69135,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/test_long_horizon_budget.py",
+          "bytes": 9233,
+          "inode": 69120,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/validation.json",
+          "bytes": 663,
+          "inode": 69147,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/campaigns/nas-additional-closeout-20261008-v1/temporary_storage.py",
+          "bytes": 7444,
+          "inode": 69142,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/files.sqlite",
+          "bytes": 24576,
+          "inode": 69105,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/jobs.jsonl",
+          "bytes": 9757,
+          "inode": 69156,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/lock",
+          "bytes": 0,
+          "inode": 69101,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/state.json",
+          "bytes": 14599,
+          "inode": 69225,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/storage-config.json",
+          "bytes": 653,
+          "inode": 69104,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-volume/voice-simulator-data/identity.json",
+          "bytes": 54,
+          "inode": 69099,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-volume/voice-simulator-data/fixture-cycle/campaigns/new/test.wav",
+          "bytes": 13,
+          "inode": 69194,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 115721,
+      "peak_violation": false,
+      "removed_files": 15,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-b1b8e59d34574f729b89e53743542f66": {
+      "owner": "additional-closeout-b1b8e59d34574f729b89e53743542f66",
+      "job": "0540256a2bda4327a0dc74c2938c3ac7",
+      "campaign": "long-horizon-management-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-b1b8e59d34574f729b89e53743542f66",
+      "purpose": "合成台帳・外部保存・失敗回収の意味のある管理検証",
+      "maximum_bytes": 30000000,
+      "maximum_write_bytes": 100000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "fixture-cycle/approval.json",
+          "bytes": 6461,
+          "inode": 69239,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/budget.py",
+          "bytes": 15429,
+          "inode": 69257,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/long_horizon_budget.py",
+          "bytes": 14235,
+          "inode": 69247,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/storage_budget.py",
+          "bytes": 9328,
+          "inode": 69262,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/storage_guard.py",
+          "bytes": 3275,
+          "inode": 69267,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/test_long_horizon_budget.py",
+          "bytes": 9233,
+          "inode": 69252,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/validation.json",
+          "bytes": 663,
+          "inode": 69279,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/campaigns/nas-additional-closeout-20261008-v1/temporary_storage.py",
+          "bytes": 7444,
+          "inode": 69274,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/files.sqlite",
+          "bytes": 24576,
+          "inode": 69236,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/jobs.jsonl",
+          "bytes": 9752,
+          "inode": 69288,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/lock",
+          "bytes": 0,
+          "inode": 69232,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/state.json",
+          "bytes": 14515,
+          "inode": 69359,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-cycle/control/storage-config.json",
+          "bytes": 653,
+          "inode": 69235,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-volume/voice-simulator-data/identity.json",
+          "bytes": 54,
+          "inode": 69230,
+          "device": 16777241
+        },
+        {
+          "relative": "fixture-volume/voice-simulator-data/fixture-cycle/campaigns/new/test.wav",
+          "bytes": 13,
+          "inode": 69326,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 115631,
+      "peak_violation": false,
+      "removed_files": 15,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -3920,16 +4214,36 @@
       "quality_goal_completed": false,
       "protected_confirmation_opened": false,
       "last_push": "b2448d086c771b3528edb6f741e0af7eda9f6ed4"
+    },
+    {
+      "id": "campaign-limit-terminal-20261008-0002",
+      "active_campaign": null,
+      "all_campaigns_closed": true,
+      "stop_reason": "campaigns_limit_reached",
+      "campaigns_used": 28,
+      "campaigns_limit": 28,
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "all_temporary_removed": true,
+      "jobs": {},
+      "approval_required_for_additional_campaigns": true,
+      "next": "追加campaign上限の明示承認まで新規科学処理を開始しない。再開時は同じ台帳・媒体・封印・Git先端から確認する。",
+      "git_save_pending": false,
+      "scientific_result_commit": "fc2013b8bc2c0ef567ac40a3b7f9797da14c2824",
+      "scientific_result_push_verified": true,
+      "terminal_state": "terminal-state-20261008-0002.json",
+      "terminal_commit_sync": "保存後にHEAD/origin先端一致を検証。自己SHAはGit実体を正本とする。"
     }
   ],
   "pending_budget_proposal": {
     "id": "long-horizon-budget-v1-20261008",
-    "status": "not_approved",
+    "status": "approved_applied",
     "path": "docs/plans/autonomous-research-long-horizon-budget-proposal-2026-10-08.md",
     "sha256": "07a8fdf46b9ed08617eaad9ff54925d9c0ed7f858a163a7485ad2850ebe9ca81",
     "management_record": "long-horizon-proposal-management-20261008-0001.json",
     "replaces_unapproved_request": "next-campaign-allocation-request-20261008-0002.md",
-    "scientific_execution_allowed": false
+    "scientific_execution_allowed": false,
+    "approval_path": "long-horizon-approval-20261008-v1.json"
   },
   "pending_continuation_prompt": {
     "version": 2,
@@ -3938,6 +4252,41 @@
     "management_record": "long-horizon-continuation-management-20261008-0001.json",
     "proposal_id": "long-horizon-budget-v1-20261008",
     "proposal_sha256": "07a8fdf46b9ed08617eaad9ff54925d9c0ed7f858a163a7485ad2850ebe9ca81",
-    "budget_approval_granted": false
+    "budget_approval_granted": false,
+    "status": "approved_current_entry"
+  },
+  "long_horizon": {
+    "id": "long-horizon-20261008-v1",
+    "status": "applied",
+    "approval_path": "long-horizon-approval-20261008-v1.json",
+    "approval_sha256": "1fa1b77adf82c8772e292cfa7029a2a7a9a9dca8b70e350fcbd14e0aa2111020",
+    "applied_seconds": 66007.95003724098,
+    "applied_counts": {
+      "setup": 395,
+      "audit": 230,
+      "render": 10672,
+      "dsp": 30327,
+      "ai": 10288,
+      "train": 11,
+      "download": 1669966871,
+      "teacher": 117,
+      "inverse": 97
+    },
+    "scientific_completed": 0,
+    "last_review": {
+      "seconds": 66007.95003724098,
+      "scientific_completed": 0
+    },
+    "closing_seconds": 43200,
+    "science_enabled_after_validation": true,
+    "old_contracts_and_consumption_retained": true,
+    "wrapper_path": "long_horizon_budget.py",
+    "wrapper_sha256": "e508decdcbfd0ae247fcde591602b36ed12384fe7d7d6d6c0de994737c44b7ef",
+    "validation_path": "campaigns/nas-long-horizon-management-20261008-v1/validation.json",
+    "validation_sha256": "b12551d42fbb910380bd570ce1ecdbe0e94054029051b7ad439a458c51b745a4",
+    "preservation_path": "campaigns/nas-long-horizon-management-20261008-v1/preservation-audit.json",
+    "preservation_sha256": "d03faf7452a68c8752438f99d8034627dd37d4563a5f4e2301845d6bee0bff8a",
+    "current_prompt": "docs/plans/autonomous-research-continuation-prompt-2026-10-08-v3.md",
+    "current_prompt_sha256": "68808a810dc985540134be63ee4d09ea95ebde5834b0a4900b0866d6e02f82cd"
   }
 }
