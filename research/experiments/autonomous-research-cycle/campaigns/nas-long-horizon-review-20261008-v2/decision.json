@@ -1,0 +1,73 @@
+{
+  "review_number": 2,
+  "scientific_completed": 12,
+  "previous_review": {
+    "seconds": 72362.53068208694,
+    "scientific_completed": 6,
+    "path": "campaigns/nas-long-horizon-review-20261008-v1/decision.json",
+    "sha256": "65107bc9baf9cb8f795d41bed637ffa84448f099b5111c109a593fb0b43bcbbe"
+  },
+  "causes": [
+    "fractional phaseの機械誤差を減らしても、原MCP下の固定支持・内容保護は保てなかった。",
+    "同じ9tapでもL2とDC和の正規化は別因子で、振幅・エネルギーを同時には保てない。",
+    "源時計・LPF・実励振をbyte固定してalphaだけを変えても、原native保護は全候補不通過だった。",
+    "LF0輪郭の縮小・平坦化はこの新コホートで欠測とASR悪化を増やした。単調源も全体pitch診断全件合格にはならない。",
+    "原HTS励振からの別FIR経路は、人工MCPの解析応答・因果性・独立畳み込みを所定範囲で検証できた。"
+  ],
+  "actual_generation_improvement": false,
+  "generalization_quality_certified": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "measurement_scope": "最小位相FIR資格は登録人工MCPのみ。既存DIO/全体ACFを短窓・動的・瞬時F0・知覚へ一般化しない。",
+  "perceptual_resources": "新2資料PASQA/P.Sup23も現HTS刺激・個別評点・適用範囲・利用条件の一式を確認できず資格なし。旧6資料の再検索やモデル推論だけで資格を作らない。",
+  "frozen_routes": [
+    "前レビューで凍結した全経路を維持",
+    "原フィルタ下のfractional pulse/sinc同形状の係数救済",
+    "同じMCPのalpha係数探索",
+    "原native保護を失ったLF0輪郭縮小/平坦化の同一対象救済",
+    "音声と評点の新しい公開対応がない同じ8資料の適格性再検索"
+  ],
+  "old_support_intervals": 31601,
+  "old_missing": {
+    "total": 249,
+    "HTS": 94,
+    "WORLD": 155
+  },
+  "old_31_methods_and_each_ASR33_groups_kept": true,
+  "two_review_rule": "原因の区別と新しい人工FIRの有効機構範囲には進展がある。音声品質の進展はない。既失敗係数経路を凍結し、別表現の実生成比較へ配分する。",
+  "next_question": "同じ新日本語入力から生成したMCP/LF0/LPF・原HTS励振を保ち、1024点最小位相IRの因果畳み込みは原Pade-MLSAに対して内容/固定支持/工学制御を保てるか。有限IRとIR補間を含む経路全体を比較する。",
+  "next_estimate": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "render": 1000,
+    "dsp": 4000,
+    "ai": 384,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "comparison": "新16文×2条件×2方式=64。候補の内部MLSA一回も計上し比較96render・通常/隔離192render・CLI6render。二ASR128。全件固定支持/各33群/封印/Git。"
+  },
+  "next_gates_unchanged": true,
+  "FIR_fixture_is_not_final_quality": true,
+  "review_does_not_require_user_approval": true,
+  "resource_status": {
+    "due": true,
+    "resources": {
+      "seconds": 0.11494865705673066,
+      "render": 0.10826666666666666,
+      "teacher": 0.0585,
+      "ai": 0.0572,
+      "dsp": 0.115965,
+      "train": 0.09166666666666666,
+      "inverse": 0.16166666666666665,
+      "download": 0.1669966871,
+      "write_bytes": 0.06783735127
+    },
+    "new_routes_avoid": [],
+    "allocation_review": []
+  },
+  "remaining_independent_work": "最小位相FIRの実MCP有限長/時間補間、別の共有制御・調音経路、日本語公開知覚対応が新たに成立する場合の資格研究。"
+}
