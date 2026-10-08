@@ -1,0 +1,55 @@
+{
+  "campaign": "hts-allpass-mechanism-v1",
+  "question": "振幅整形と分離した固定LTIオールパス位相因子を、原HTSの源時計/原励振/全MCPを保持して独立検証できるか。",
+  "factor": "LPF後の全励振xにpole=.95の一次オールパス y=.95*y_prev+x_prev-.95*x。noiseとperiodicの両成分を処理。元源を一回だけ呼ぶ。",
+  "controls": "alpha.55/beta0/volume1/sqrt(period)/LF0/LPF/MCPと時計・乱数算法は原HTS。候補の実処理励振は意図した差分。発話頭で状態0。係数探索なし。",
+  "thresholds": {
+    "response_absolute": 1e-10,
+    "magnitude_absolute": 1e-10,
+    "independent_recurrence_absolute": 1e-10,
+    "tail_included_energy_relative": 1e-10,
+    "native_wave_exact": true,
+    "source_clock_and_original_source_exact": true,
+    "causal_prefix_exact": true,
+    "sine_pitch_error_semitones": 0.5
+  },
+  "interpretation": "振幅1/エネルギー保存は無限LTIの性質。有限音声端/tail truncation、原MLSA非定常出力、自然声やLF glottalの再現とは呼ばない。一定遅延ではない。",
+  "costs": {
+    "render": 60,
+    "dsp": 33,
+    "maximum_seconds": 3000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 10,
+    "audit": 10,
+    "render": 180,
+    "dsp": 99,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "source": {
+    "url": "https://ccrma.stanford.edu/~jos/filters/Allpass_Filters.html",
+    "title": "Julius O. Smith, Introduction to Digital Filters with Audio Applications, Allpass Filters",
+    "scope": "安定因果LTIの振幅/エネルギー性質の一次解説。音声自然さは推論しない。",
+    "original_HTS_parent_seal_sha256": "1d91f34d691889c7cb07552e8ea9e13ccf4f328780402d7d08320bd44fda31ef",
+    "YIN_seal_sha256": "cc883b6b4cafb8f95b9f1b5bace82355afb8052be2c85439b5ba717f4ca52a45"
+  },
+  "c_sha256": "0bbdc300c46095f62ff761d95627cca69a5d29b6207a3cdc0699d0bbd59294d5",
+  "wrapper_sha256": "2f821b8bdc1ef82573488f496c1f41d773c804173f8504728c2b7a2b4ec2c402",
+  "fixture_sha256": "63e012e7fbf9af64e73da53965eda6f415ec348f746dd33ca0152d97b157e718",
+  "controller_sha256": "96b959e1c3ea1797dc92acd2f364a405386e6f3fc7dcab53c743d4bb5582880c",
+  "next": "機構通過時に未使用16文のnative/allpassを出力前登録し二ASR/固定支持/通常隔離で実比較。FIR救済へ戻らない。",
+  "old_FIR_and_glottal_shape_and_fractional_failed_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
