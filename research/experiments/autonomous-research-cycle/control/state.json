@@ -23,9 +23,9 @@
   },
   "counts": {
     "setup": 486,
-    "audit": 349,
-    "render": 16903,
-    "dsp": 53122,
+    "audit": 351,
+    "render": 16983,
+    "dsp": 53378,
     "ai": 12656,
     "train": 11,
     "download": 1694746391,
@@ -5963,13 +5963,16 @@
       },
       "counts": {
         "setup": 2,
-        "download": 3000000
+        "download": 3000000,
+        "render": 80,
+        "dsp": 256,
+        "audit": 1
       },
       "start_seconds": 103491.68262338638,
       "start_write_bytes": 51446145051,
       "protocol_sha256": "3c3b78c41a05c5e97efe2e5c2052fd4fcebcd32f65f5f3c45c3b9ebf0c0533ce",
-      "payload_bytes": 574999,
-      "closed": false,
+      "payload_bytes": 589294,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -5994,15 +5997,76 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:全静的/動的声道のCと独立圧力波/回転表現の生成": [
+          {
+            "id": "00fba44c831348ea8310d2cc32f499df",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:独立圧力波・解析delay・周波数行列・エネルギー・因果性": [
+          {
+            "id": "0ed45d9615754b7d8613436a34dbb682",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:独立声道primitiveの限定範囲・全条件・費用・一時回収を封印": [
+          {
+            "id": "1a9085b75fb0439b886047b948c5ac92",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 0,
+      "end_seconds": 104000.31060695648
+    },
+    "long-horizon-review-v6": {
+      "prefix": "campaigns/nas-long-horizon-review-20261008-v6",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 200000000,
+        "write_bytes": 300000000,
+        "setup": 10,
+        "audit": 10,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "audit": 1
+      },
+      "start_seconds": 104236.38701891899,
+      "start_write_bytes": 51611942569,
+      "protocol_sha256": "3a40a2aef1c6917aca3bfc0748404aaa3716a4651135a45005a1aac2cd5a1c2a",
+      "payload_bytes": 13628,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "audit:六封印・全数値/内容結果・旧契約・所有一時不存在・次の調音配分": [
+          {
+            "id": "60412ffc26b6477e809b4e4cbaba8d2d",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 104238.65826511383
     }
   },
   "jobs": {},
-  "payload_bytes": 9560640523,
-  "seconds": 103961.92500805855,
-  "write_bytes": 51572996964,
+  "payload_bytes": 9560683309,
+  "seconds": 104626.412266016,
+  "write_bytes": 51659086076,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -6102,9 +6166,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "fujisaki-context-comparison-completed",
+    "id": "long-horizon-review-0006-completed",
     "active_campaign": null,
-    "next": "固定Fujisaki文脈韻律の全分母結果を保持。不改善時は同応答係数/指令時刻/median/gainを同コホートで救済せず、独立な調音source-tract機構または異なる生成表現へ進む。",
+    "next": "Arai 2007の一次表に固定した日本語五母音の16個の径から独立声道を制御し、有限帯域の共有LF駆動と母音遷移を再現できるか。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -13118,6 +13182,24 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-660e121ad9dd46b98547a58d0c99b8b5": {
+      "owner": "additional-closeout-660e121ad9dd46b98547a58d0c99b8b5",
+      "job": "00fba44c831348ea8310d2cc32f499df",
+      "campaign": "waveguide-tract-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-660e121ad9dd46b98547a58d0c99b8b5",
+      "purpose": "断面積伝搬fixtureの科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -13880,12 +13962,12 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 35,
+    "scientific_completed": 36,
     "last_review": {
-      "seconds": 97025.00999760628,
-      "scientific_completed": 30,
-      "path": "campaigns/nas-long-horizon-review-20261008-v5/decision.json",
-      "sha256": "df94a09562e5507eee4dacdbcf3fc19bd42697cae799130dacb0a3d5a09e7a3f"
+      "seconds": 104238.7026360035,
+      "scientific_completed": 36,
+      "path": "campaigns/nas-long-horizon-review-20261008-v6/decision.json",
+      "sha256": "5624f473137b4129c44e0fb95c29a85d6219ecd7dd514449767798ae1aaecdbc"
     },
     "closing_seconds": 43200,
     "science_enabled_after_validation": true,

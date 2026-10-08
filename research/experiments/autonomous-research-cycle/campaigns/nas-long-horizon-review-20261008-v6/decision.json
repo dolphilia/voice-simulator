@@ -1,0 +1,199 @@
+{
+  "review_number": 6,
+  "scientific_completed": 36,
+  "previous_review": {
+    "seconds": 97025.00999760628,
+    "scientific_completed": 30,
+    "path": "campaigns/nas-long-horizon-review-20261008-v5/decision.json",
+    "sha256": "df94a09562e5507eee4dacdbcf3fc19bd42697cae799130dacb0a3d5a09e7a3f"
+  },
+  "comparisons": {
+    "nas-hts-lf-comparison-20261008-v1": {
+      "total": 64,
+      "parameter_pairs": 32,
+      "parameter_frames": 20055,
+      "research_gates": {
+        "native": false,
+        "lf": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 31,
+          "missing": 0,
+          "support": 720,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "lf": {
+          "E0": 29,
+          "pitch": 27,
+          "missing": 3,
+          "support": 720,
+          "ASR": {
+            "whisper": 26,
+            "reazon": 16
+          }
+        }
+      }
+    },
+    "nas-fujisaki-context-comparison-20261008-v1": {
+      "total": 64,
+      "parameter_pairs": 32,
+      "parameter_frames": 20599,
+      "research_gates": {
+        "native": true,
+        "fujisaki": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 32,
+          "missing": 0,
+          "support": 696,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "fujisaki": {
+          "E0": 32,
+          "pitch": 28,
+          "missing": 4,
+          "support": 696,
+          "ASR": {
+            "whisper": 18,
+            "reazon": 20
+          }
+        }
+      }
+    }
+  },
+  "LF": {
+    "coupling_mechanism_passed": true,
+    "native_clock_noise_inputs_exact": true,
+    "independent_LPF_mixing_verified": true,
+    "Japanese_comparison_adopted": false,
+    "source_shape_area_zero_not_extended_to_dynamic_cycles": true,
+    "antialiasing_qualified": false
+  },
+  "Fujisaki": {
+    "independent_response_mechanism_passed": true,
+    "fixed_alpha_beta_gamma": [
+      3.0,
+      20.0,
+      0.9
+    ],
+    "fixed_phrase_accent_amplitudes": [
+      0.15,
+      0.25
+    ],
+    "native_LF0_values_used_for_mask_only": true,
+    "encoded_terminal_accent_ambiguity_retained": true,
+    "whole_utterance_median_not_streaming_causal": true,
+    "Japanese_comparison_adopted": false
+  },
+  "new_perceptual_resources": {
+    "total": 4,
+    "eligible": 0,
+    "calibrations": 0,
+    "new_audio_or_model_download_bytes": 0,
+    "new_human_responses": 0,
+    "all_six_public_metadata_fetches_succeeded": true,
+    "public_JNLP_stimulus_page_available": true,
+    "public_stimulus_not_individual_rating_mapping_or_audio_permission": true,
+    "candidate_ids": [
+      "SpeechJudge-Data",
+      "AnimeScore",
+      "Expressive-Japanese-Character-TTS-2505.17320v2",
+      "Humanlike-Japanese-JNLP-33-186"
+    ]
+  },
+  "waveguide": {
+    "mechanical_fixture_passed": true,
+    "static_cases": 8,
+    "dynamic_cases": 6,
+    "uniform_section_counts": [
+      8,
+      16,
+      24
+    ],
+    "frequency_geometries": 4,
+    "maximum_static_output_error": 9.71445146547012e-17,
+    "maximum_dynamic_output_error": 5.898059818321144e-17,
+    "maximum_frequency_complex_error": 8.181447329364607e-15,
+    "independent_pressure_wave_and_matrix_verified": true,
+    "normalized_dynamic_energy_passive": true,
+    "future_drive_and_area_prefix_exact": true,
+    "moving_wall_mechanical_work_modeled": false,
+    "artificial_geometries_not_vowel_truth": true,
+    "Japanese_vowels_or_phonemes_qualified": false
+  },
+  "causes": [
+    "LF結合は時計/入力/乱数noise/独立LPFの保持を確認したが、新64波のpitch・E0・固定支持と二ASRを保持せず不採択。",
+    "固定句/アクセント応答は独立式と全保存frameに整合したが、新64波でpitchと内容を保持せず不採択。native全件通過を候補へ移さない。",
+    "新4知覚資料も日本語・現非ニューラル域・刺激/個別評点対応・条件・未使用確認の全要件を満たさない。JNLP刺激頁は取得成功しており非公開と扱わない。",
+    "独立声道伝搬は静的/動的正断面の計算を確認した。人工形状を母音正解にせず、測定由来の共有形状と有限帯域駆動を別登録する。"
+  ],
+  "actual_generated_speech_quality_improvement_verified": false,
+  "generalization_quality_certified": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "frozen_routes": [
+    "前レビューまでの全凍結を維持",
+    "同LF失敗コホートの係数/phase/LPF/gainを探索しない",
+    "同Fujisaki失敗コホートのalpha/beta/gamma・振幅・指令時刻・中央値/gainを探索しない",
+    "新4知覚資料の同条件探索を新しい対応公開なしに繰り返さない",
+    "独立声道の数値通過を旧Rosenberg/有限差分/LF0縮小/FIR/全極/モデル交換の救済に転用しない"
+  ],
+  "old_support_intervals": 31601,
+  "old_missing": {
+    "total": 249,
+    "HTS": 94,
+    "WORLD": 155
+  },
+  "old_31_methods_and_each_ASR33_groups_kept": true,
+  "two_review_rule": "第5回・第6回も生成音声の最終品質改善資格なし。同HMM/フィルタ/励振救済へ戻らず、正断面で制御する独立な声道機構を次の生成器として進める。公開一次測定の形状と明示指令から有限帯域駆動を生成し、測定出典・操作的pitch・安定性・内容を段階ごとに検証する。",
+  "next_question": "Arai 2007の一次表に固定した日本語五母音の16個の径から独立声道を制御し、有限帯域の共有LF駆動と母音遷移を再現できるか。",
+  "next_estimate": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "render": 160,
+    "dsp": 800,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 3000000,
+    "scope": "一次表の全数値/方向/単位を照合し、静的母音と全20有向遷移の生成を限定検証。自然さや全日本語の資格なし。"
+  },
+  "next_primary_sources": [
+    "https://splab.net/papers/2007/2007_01.pdf",
+    "https://splab.net/apd/g210/"
+  ],
+  "next_data_scope": "Araiの管模型はChiba/Kajiyama由来の粗い形状。論文Table1と研究室頁の径の一部が異なるため、論文を固定し差異を記録する。録音/第三者codeは最終音源に用いず、論文の全文/図表をGitで再配布しない。数値事実を引用して独自生成制御を実装する。",
+  "next_allocation_after_failure": "出力後に同母音コホートを径/終端反射/gainで救済しない。測定形状の精度・放射/損失・閉鎖/鼻腔・子音/調音指令という異なる機構の不足を明示し、独立登録へ進める。",
+  "perceptual_status": "現HTS域の既存12資料は実校正資格なし。次の声道域へ旧評点の資格を自動移転しない。新しい一次の対応資料がある場合だけ限定監査する。",
+  "resource_status": {
+    "due": true,
+    "resources": {
+      "seconds": 0.15080779711370942,
+      "render": 0.141525,
+      "teacher": 0.0585,
+      "ai": 0.06328,
+      "dsp": 0.133445,
+      "train": 0.09166666666666666,
+      "inverse": 0.16166666666666665,
+      "download": 0.1694746391,
+      "write_bytes": 0.08602974294166667
+    },
+    "new_routes_avoid": [],
+    "allocation_review": []
+  },
+  "review_does_not_require_user_approval": true,
+  "all_caps_and_closing_reserve_kept": true
+}
