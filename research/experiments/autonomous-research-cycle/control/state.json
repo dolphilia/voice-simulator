@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 535,
-    "audit": 400,
-    "render": 55883,
-    "dsp": 72140,
+    "setup": 537,
+    "audit": 402,
+    "render": 58454,
+    "dsp": 72340,
     "ai": 12976,
     "train": 16,
     "download": 1712746391,
@@ -8779,13 +8779,16 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 2571,
+        "dsp": 200,
+        "audit": 2
       },
       "start_seconds": 143256.83299207687,
       "start_write_bytes": 63734384964,
       "protocol_sha256": "75958d97ca3c61905ad32e48e897a8eea4d4e62cdf180bf614af6bae930e0372",
-      "payload_bytes": 749,
-      "closed": false,
+      "payload_bytes": 1065592,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -8796,18 +8799,92 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:D normal-short-neutral 未実施生成/全内部費": [
+          {
+            "id": "8ac759f27a6749aea8252b40ccc9fba4",
+            "status": "failed",
+            "error": "RuntimeError('一時領域の事前予約不足')"
+          }
+        ],
+        "dsp:D normal-short-neutral 全E0/固定支持DIO/ACF": [
+          {
+            "id": "b177e73a6a6d4ae2b36ec64d0066833f",
+            "status": "failed",
+            "error": "RuntimeError('一時領域の事前予約不足')"
+          }
+        ],
+        "audit:保存済み全12生成を保持し未実施測定を明示": [
+          {
+            "id": "649736bf171d4fcca0704ca05e6f9c64",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/失敗/費用/所有一時不存在を封印": [
+          {
+            "id": "eda4d4ae0be741e4b1526d2d57d4d212",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 143802.35882878304
+    },
+    "vtl-frozen-phrase-measure-normal-short-neutral-v1": {
+      "prefix": "campaigns/nas-vtl-frozen-phrase-measure-normal-short-neutral-20261009-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1200000000,
+        "setup": 20,
+        "audit": 20,
+        "render": 0,
+        "dsp": 50,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 2
+      },
+      "start_seconds": 143818.39214801788,
+      "start_write_bytes": 64105129627,
+      "protocol_sha256": "cdfa5a627e1b1e2e8582d4156e29ddc4aae7a5b3b6e8b180ac98c934ca9bd8ce",
+      "payload_bytes": 2449,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:固定全体比較の部分実行登録": [
+          {
+            "id": "cc618e1cb32a4ece8c1c7e0aece671ea",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:未実施測定のみと後続一時予約縮小を登録": [
+          {
+            "id": "18e1d0ed2efe42e09f0bdc5e27a56716",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9714767026,
-  "seconds": 143454.05219006538,
-  "write_bytes": 63781087623,
+  "payload_bytes": 9715841837,
+  "seconds": 144015.53842306137,
+  "write_bytes": 64160363743,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791490404.7315001
+    "checkpoint": 1791490606.2177331
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -8908,8 +8985,8 @@
   ],
   "continuation_checkpoint": {
     "id": "review10-completed-C-partial-D-ready",
-    "active_campaign": "vtl-frozen-phrase-normal-short-neutral-v1",
-    "next": "normal-short-neutral登録push後に未実施部分だけを実行。",
+    "active_campaign": "vtl-frozen-phrase-measure-normal-short-neutral-v1",
+    "next": "measure-normal-short-neutral登録push後に未実施部分だけを実行。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -46252,6 +46329,189 @@
       "removed_files": 2,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-619e6d0348654501aaad72168a59012a": {
+      "owner": "additional-closeout-619e6d0348654501aaad72168a59012a",
+      "job": "8ac759f27a6749aea8252b40ccc9fba4",
+      "campaign": "vtl-frozen-phrase-normal-short-neutral-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-619e6d0348654501aaad72168a59012a",
+      "purpose": "D共有生成 normal/native",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "normal-native-stderr.txt",
+          "bytes": 0,
+          "inode": 100424,
+          "device": 16777241
+        },
+        {
+          "relative": "normal-native-stdout.txt",
+          "bytes": 20487,
+          "inode": 100423,
+          "device": 16777241
+        },
+        {
+          "relative": "partial-native.json",
+          "bytes": 20431,
+          "inode": 100427,
+          "device": 16777241
+        },
+        {
+          "relative": "requests.json",
+          "bytes": 852,
+          "inode": 100422,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-native.wav",
+          "bytes": 99418,
+          "inode": 100426,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-native.wav",
+          "bytes": 111898,
+          "inode": 100428,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-native.wav",
+          "bytes": 107098,
+          "inode": 100429,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 360184,
+      "peak_violation": false,
+      "removed_files": 7,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-7ec5582032e740d4a9e4a397f16f5b1b": {
+      "owner": "additional-closeout-7ec5582032e740d4a9e4a397f16f5b1b",
+      "job": "8ac759f27a6749aea8252b40ccc9fba4",
+      "campaign": "vtl-frozen-phrase-normal-short-neutral-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-7ec5582032e740d4a9e4a397f16f5b1b",
+      "purpose": "D共有生成 normal/baseline",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "normal-baseline-stderr.txt",
+          "bytes": 0,
+          "inode": 100445,
+          "device": 16777241
+        },
+        {
+          "relative": "normal-baseline-stdout.txt",
+          "bytes": 7916,
+          "inode": 100444,
+          "device": 16777241
+        },
+        {
+          "relative": "partial-baseline.json",
+          "bytes": 7860,
+          "inode": 100448,
+          "device": 16777241
+        },
+        {
+          "relative": "requests.json",
+          "bytes": 870,
+          "inode": 100443,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100447,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100449,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-baseline.wav",
+          "bytes": 101818,
+          "inode": 100450,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 322100,
+      "peak_violation": false,
+      "removed_files": 7,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-94be4d5aa4e0457787c3e8beeab55d23": {
+      "owner": "additional-closeout-94be4d5aa4e0457787c3e8beeab55d23",
+      "job": "8ac759f27a6749aea8252b40ccc9fba4",
+      "campaign": "vtl-frozen-phrase-normal-short-neutral-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-94be4d5aa4e0457787c3e8beeab55d23",
+      "purpose": "D共有生成 normal/learned",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "normal-learned-stderr.txt",
+          "bytes": 0,
+          "inode": 100457,
+          "device": 16777241
+        },
+        {
+          "relative": "normal-learned-stdout.txt",
+          "bytes": 7897,
+          "inode": 100456,
+          "device": 16777241
+        },
+        {
+          "relative": "partial-learned.json",
+          "bytes": 7841,
+          "inode": 100460,
+          "device": 16777241
+        },
+        {
+          "relative": "requests.json",
+          "bytes": 861,
+          "inode": 100455,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-01-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100459,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-02-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100461,
+          "device": 16777241
+        },
+        {
+          "relative": "vtl-phrase-03-neutral-learned.wav",
+          "bytes": 101818,
+          "inode": 100462,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 322053,
+      "peak_violation": false,
+      "removed_files": 7,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -47029,7 +47289,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 62,
+    "scientific_completed": 63,
     "last_review": {
       "seconds": 140220.32056593895,
       "scientific_completed": 60,
@@ -47063,7 +47323,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 18233.86529326439,
+      "used_seconds": 18795.351526260376,
       "current": "D",
       "stages": [
         {
@@ -47090,7 +47350,7 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 3233.66620016098,
+          "used_seconds": 3795.152433156967,
           "status": "running"
         }
       ]
@@ -47103,7 +47363,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 143454.05219006538,
+    "last_accounted_seconds": 144015.53842306137,
     "segment": {
       "stage": "D",
       "foundation_only": false,
