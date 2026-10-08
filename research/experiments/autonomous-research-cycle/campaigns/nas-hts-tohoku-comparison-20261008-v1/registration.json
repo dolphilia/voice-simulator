@@ -1,0 +1,82 @@
+{
+  "campaign": "hts-tohoku-comparison-v1",
+  "status": "registered_before_output",
+  "question": "別の公開共有HMM全モデルは未知日本語の内容/工学保護を改善し、固定支持の欠測を増やさず独立生成できるか。",
+  "variants": [
+    "native",
+    "tohoku"
+  ],
+  "conditions": {
+    "neutral": {
+      "speed": 1.0,
+      "requested_f0": 220.0
+    },
+    "higher": {
+      "speed": 1.15,
+      "requested_f0": 280.0
+    }
+  },
+  "factor": "Mei normalと公式Tohoku-F01 neutralの全共有HMM対比。MCP/LF0/LPF/duration/MSD/GVはモデル固有。源時計/列がモデル間で一致するとは扱わない。",
+  "fixed_control": "辞書/同labels、速度/指定F0中央値、各モデル内のMCP/LPF/有声mask・相対LF0保持、MLPG/原HTS/alpha.55/beta0/48k/240/24k resample/12msfade/gain.25。",
+  "input": "全履歴に非衝突の新16文×2条件×2モデル64。候補poolは出力前固定、最初の非衝突/valid8短8長を選ぶ。保護資料本文を読まない。",
+  "support": "nativeの音素index支持を一度固定してcandidate固有の状態時間軸へ適用。candidateの有声/測定による再選別なし。欠測は不通過、旧31方式/31,601支持/249欠測/二ASR33群を保持。",
+  "gates": {
+    "engineering": "全件E0、旧DIO/全体ACF±1半音/confidence≥.6/固定音素支持3以上/不変量。",
+    "content": "二ASR各33群がnative以下、悪化相殺なし。",
+    "independence": "全64通常/隔離・CLI4・論理/物理資料/通信の実拒否。bundle共有資産だけ許可。",
+    "physical": "全32対・各モデル全frameの有限/形状/状態長合計/保存hash/指定LF0中央値、各モデル内MCP/LPF保持、固定音素支持一致。HMM全体の時間・音響差は意図的。",
+    "measurement_scope": "旧工学の操作的資格のみ。モデルの有声時刻は別々で同標本対比ではない。源周期の観測を知覚pitch/自然さへ拡張しない。"
+  },
+  "estimates": {
+    "comparison_render": 64,
+    "comparison_dsp": 192,
+    "isolation_render": 128,
+    "isolation_dsp": 128,
+    "CLI_render": 4,
+    "CLI_dsp": 4,
+    "physical_dsp": 96,
+    "two_ASR_ai": 128,
+    "total_without_retry": {
+      "render": 196,
+      "dsp": 420,
+      "ai": 128
+    },
+    "maximum_seconds": 11000,
+    "external_peak": 500000000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "source": {
+    "mechanism_seal_sha256": "07f78927a36708db60f0d78b8dc1cc26d99bf798350b67fbcd2ec8c05b3aeb53",
+    "original_HTS_binary_sha256": "f9b0c5691a65f66ae73c39c7103a053c32889f57a31111d2f19eac63ffd3cd9c",
+    "candidate_model_sha256": "ded6acb4243b93cc50896199d67b00a7c487662bfcdcd3f9f30a4fb0444b0b46",
+    "native_model_sha256": "f3be49a6838904a6c218790b64e07c3e83c1886e995dca284b413caab19184de"
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "setup": 30,
+    "audit": 40,
+    "render": 650,
+    "dsp": 1800,
+    "ai": 384,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "failed_consumption_retained": true,
+  "coefficient_search_after_output": false,
+  "controller_sha256": "d3817253f7d9d427e3caa9fc9c48aa720e6937358034227c59464c8ab9bdfdbf",
+  "closeout_source_sha256": "e2c3d02567aafbbbd521f40f930afd528ec331cd7780250d2a40ecaf1ae294b3",
+  "base_seal_sha256": "5387bd7cdae0a9654087b625ebf7d058fdd4e0ed7a2e900184f5a8f1a8c3504f",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "old_failed_routes_kept": true
+}
