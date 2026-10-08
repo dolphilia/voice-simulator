@@ -1,0 +1,60 @@
+{
+  "status": "registered_before_new_audit_output",
+  "campaign": "cross-factor-failure-audit-v1",
+  "purpose": "85%以降の既存比較の因果別整理。保存済み第15/16/17/19/20/21の全記録・全群・非採択理由を再生成せず点検する。",
+  "question": "F0中央値が指定に一致しても不通過となる事例を、固定支持欠測・測定誤差・ASR内容悪化へ分け、既存各因果要因の対内変化と未解決条件を特定する。",
+  "source_campaigns": [
+    "absolute-f0-v1",
+    "voicing-ap-v1",
+    "vocoder-f0-v1",
+    "mcp-postfilter-v1",
+    "gv-ablation-v1",
+    "gv-ap-interaction-v1"
+  ],
+  "selected_only": false,
+  "scope": "全既存コホート・全方式を保持。コホート間の総率を単純poolして優劣を推定しない。ASR正規化と旧ゲートは不変。",
+  "operations": [
+    "全wave/record/ASR個票/契約の旧封印hashを照合",
+    "既存各ファイルのE0・不変量・DIO/ACF誤差・信頼度・固定支持数・欠測を理由の重複を含め集計",
+    "保存済みfill区間から判別できる源LF0支持とDIO欠測を区別。不明を推定で埋めない。",
+    "二ASRの保存kanaに対する編集距離をstdlibで再計算し、元誤り数と一致を確認。編集区分は記述診断。",
+    "各認識器33群を旧仕様で再計算し、旧集計と一致を確認。欠測は全保持。",
+    "第18/22の測定資格は対象範囲を明記し、旧採否・知覚資格へ拡張しない。",
+    "因果対は同じcampaign/同じ文/同じ条件だけ。複数要因差を独立原因に読み替えない。"
+  ],
+  "qualification": "新しい品質資格の取得を目的としない。事後の記述整理。源voicingと測定・内容の関連を因果断定しない。",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 250000000,
+    "render": 0,
+    "dsp": 0,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 40,
+    "audit": 40
+  },
+  "estimates": {
+    "external_detailed_summary": 30000000,
+    "internal_aggregate": 2000000,
+    "code_manifest": 2000000,
+    "retry_storage": 150000000,
+    "peak_total": 184000000
+  },
+  "no_new_waveform_or_tracker_or_ASR": true,
+  "no_new_synthesis_route_or_coefficient": true,
+  "stdlib_JSON_analysis_only": true,
+  "temporary_files_needed": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "depends_on": "第21/22回の終了・封印・残予算と、限定測定資格の実結果を確認してから登録。",
+  "next": "第24回の包括終了監査で、全サイクル・予算・媒体・一時削除・P5境界・Git保存・未達条件を照合。",
+  "latest_seal_sha256": "1244abf728d3ac70e6c81f5667bde7654035bb825f5d1ebcf3c9c1f494031d88",
+  "latest_scope_sha256": "07605a51ce5e180bf75b2398821ad36faa7d9caa0b4f6fb70787ed6f5416d2ca",
+  "measurement_scope": "中心ACFは第22回HTS128波形の安定有声60ms/無声40ms窓で128/128。全時計点の有声対象は12.4%。知覚ピッチ・WORLD・動的/境界/短音素・旧採否へ拡張しない。",
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "budget_review": "23/24（95.8%）。既存結果の事後診断整理で、新経路・係数・波形・音響測定・AI・学習は追加しない。次は包括終了監査。"
+}
