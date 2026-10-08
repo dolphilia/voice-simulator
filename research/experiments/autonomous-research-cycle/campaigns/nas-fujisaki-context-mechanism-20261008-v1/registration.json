@@ -1,0 +1,110 @@
+{
+  "campaign": "fujisaki-context-mechanism-v1",
+  "question": "句/アクセント指令の二次応答と文章文脈からの時刻規則を、原HTSのMCP/LPF/状態長/MSDを保持する共有韻律因子として実装できるか。",
+  "factor": "原有声LF0の輪郭を、log Fb + Ap Gp(t-T0) + Aa[Ga(t-T1)-Ga(t-T2)]へ置換。元LF0値は輪郭計算に使わず、生成有声maskだけ保持。",
+  "formula": {
+    "Gp": "alpha^2*t*exp(-alpha*t) for t>=0 else 0",
+    "Ga": "min(1-(1+beta*t)*exp(-beta*t),gamma) for t>=0 else 0"
+  },
+  "parameters": {
+    "alpha": 3.0,
+    "beta": 20.0,
+    "gamma": 0.9,
+    "Ap_seconds": 0.15,
+    "Aa": 0.25,
+    "phrase_lead_seconds": 0.2,
+    "frame_seconds": 0.005
+  },
+  "provenance": "alpha/beta/gammaは原論文Fig2の典型値。Ap/Aa/leadとラベル時刻規則は出力前固定の設計値で、Meiや人声のfit/最適化ではない。",
+  "commands_rule": "一breath group先頭-.2秒の句指令。AP accent1は第1、それ以外は第2モーラ開始。encoded accentモーラ末でアクセント指令を終了。",
+  "label_limitation": "Open JTalk F2は無アクセント0を末尾モーラ数へ写す。原ラベルだけでは末尾核と無アクセントを区別できず、両者を同じ終了時刻として扱う。疑問emotionは拒否。音韻正解を主張しない。",
+  "control": "有声frame全体のlog中央値を指定220/280Hzへ同じ意味で合わせる。句/アクセント応答は因果的だが、全発話のmedian校正はstreaming因果ではない。F0は70..800、範囲外はclipしない。gain=.25、原pulse/noise/MLSA。",
+  "fixtures": {
+    "texts": [
+      "桜の種を畑にまいた。",
+      "荷物を棚に置いた。",
+      "川沿いを歩き、橋の下で休んだ。",
+      "港の灯りが消える前に、船の鍵を箱へ戻した。"
+    ],
+    "conditions": [
+      [
+        1.0,
+        220.0
+      ],
+      [
+        1.15,
+        280.0
+      ]
+    ],
+    "LTI_grid": [
+      0.0,
+      3.0,
+      3001
+    ],
+    "primitive_conditions": 4
+  },
+  "thresholds": {
+    "independent_LTI_error": 1e-11,
+    "scalar_superposition_error": 1e-12,
+    "causal_prefix_exact": true,
+    "all_frame_MCP_LPF_mask_duration_state_variance_exact": true,
+    "native_bare_wave_exact": true,
+    "generated_log_median_error": 2e-15
+  },
+  "costs": {
+    "actual_HTS_render_calls": 24,
+    "render_conservatively_charged": 80,
+    "DSP_conservatively_charged": 256,
+    "download_conservatively": 2000000,
+    "maximum_seconds": 6000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 16,
+    "audit": 16,
+    "render": 240,
+    "dsp": 768,
+    "download": 2000000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0
+  },
+  "sources": {
+    "paper": "https://www.jstage.jst.go.jp/article/ast1980/5/4/5_4_233/_pdf",
+    "overview": "https://www.isca-archive.org/speechprosody_2004/fujisaki04_speechprosody.pdf",
+    "label_definition": "https://raw.githubusercontent.com/r9y9/open_jtalk/master/src/jpcommon/jpcommon_label.c",
+    "prior_LF_seal_sha256": "9160659dff2c259e7b8374443c27217089c730d3d2092ee75bd8a7892fa7369d"
+  },
+  "frozen_routes": "LFの同係数/phase/LPF/gain救済、旧17→96の同8残差/同learner、LF0縮小/平坦化は引き続き凍結。この方式はラベルから指令を作る固定二次応答で、教師/残差学習を使わない。",
+  "bundle_dependencies": {
+    "local_renderer.py": "b15ebb3b9e29cfc0ec17353fa7105e23d669ee9e0d63101d451a7533770b4256",
+    "local_hts-v2.dylib": "890bc4c46560680fee771fb434e98324915940a9529f4b3d9acc1a7217b37deb",
+    "source_renderer.py": "eb8a4e779b61e7199abaacef0e8a1bbadf754b3af81b787d7870d1af11c45280",
+    "counter.dylib": "84e94b863be0c544843bc880124f60fd1f9fdee248ce38f71a1ff5160657db8e",
+    "timing_engine.py": "0e1c6bc922d3b55d1ca86f527172c2c3832fa9402526451e08c1a5fc6f07ebf2",
+    "timing.dylib": "1f5ac3b9232f84e1df3953761b8da919769af6eccf546c3eb4d7e15fd8391694",
+    "japanese_frontend.py": "f66160810d07ff85edf54132ca97b78035b1707adf4c57226207b6f8a1bcc4f1",
+    "mei_normal.htsvoice": "f3be49a6838904a6c218790b64e07c3e83c1886e995dca284b413caab19184de",
+    "acoustics.py": "d94d8ee84e8ce567a8931094666873847547105bffa7ba2b0ec77eb3f0394f43",
+    "LICENSE-HTSVOICE": "af8a05b6ce28e513658fdf0480f36dbf49cbe878d2571d97dd017e8052c71391",
+    "controls_v2.py": "23b26d8453b77e404a0ae005d69ead50fdaa4f0655476b4078fd0e9579fc150c",
+    "hts_arrays.py": "cec376788ddeee6848fcb60756c49dae14a741adca54fa7d1b0289b1c2737a49",
+    "hts_arrays.dylib": "097738e48d42e517e08d8241b6de7640a9565fd2546e8713b8c72905afea066b",
+    "HTS-BSD-NOTICE.txt": "01e20942a1e25a9e5c5b3a7a89625d11da17c88a06e70c04bf9d526bca4815aa",
+    "calibration.py": "ac824045e86be98aaff1138dc995ee66013e8ef8d6f047d854eda9be89c18ade"
+  },
+  "module_sha256": "f76e5139704891f8fb4eaa620fb2486e3cbdf8dc08de75d62215602d6b0d5c0c",
+  "runtime_sha256": "78398acc93e81e54e98e6f13d13f7a9997a1146f75b3aead0b4e1bb23b3c0b8c",
+  "worker_sha256": "46888fb0938cb8f416d71255a6c69b0d388f6eb42f10c1c29332bdd9b2d0411d",
+  "controller_sha256": "6a993b8a41b8b22800d397aa5f213388c467fe60564b9e425b5db772a18ce447",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "全機構通過時のみ新16文のnative/Fujisakiを別登録し、固定支持・二ASR・通常/隔離CLIを同じ全分母で比較。不改善時は同応答係数/指令時刻/gainを同コホートで救済しない。"
+}
