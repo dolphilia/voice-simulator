@@ -1,0 +1,180 @@
+{
+  "review_number": 5,
+  "scientific_completed": 30,
+  "previous_review": {
+    "seconds": 89900.82529902458,
+    "scientific_completed": 24,
+    "path": "campaigns/nas-long-horizon-review-20261008-v4/decision.json",
+    "sha256": "68861ca3851589b0bf4b07f4bddc629e8513b09b0d22251ebdead8fbcb93fca9"
+  },
+  "comparisons": {
+    "nas-hts-acoustic-model-comparison-20261008-v1": {
+      "total": 64,
+      "parameter_pairs": 32,
+      "parameters_frames": 21664,
+      "research_gates": {
+        "native": false,
+        "happy_mcp": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 31,
+          "missing": 0,
+          "support": 821,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "happy_mcp": {
+          "E0": 32,
+          "pitch": 24,
+          "missing": 9,
+          "support": 821,
+          "ASR": {
+            "whisper": 5,
+            "reazon": 3
+          }
+        }
+      }
+    },
+    "nas-hts-tohoku-comparison-20261008-v1": {
+      "total": 64,
+      "parameter_pairs": 32,
+      "parameters_frames": 44674,
+      "research_gates": {
+        "native": true,
+        "tohoku": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 32,
+          "missing": 0,
+          "support": 688,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "tohoku": {
+          "E0": 32,
+          "pitch": 15,
+          "missing": 7,
+          "support": 688,
+          "ASR": {
+            "whisper": 15,
+            "reazon": 6
+          }
+        }
+      }
+    }
+  },
+  "projection": {
+    "total_frames": 20276,
+    "failed_frames": 8289,
+    "fully_passed_wave_conditions": 0,
+    "order": 34,
+    "alpha": 0.55,
+    "FFT": 16384,
+    "all_required_pass": false,
+    "maximum_log_magnitude_RMSE_dB": 4.616799408744382,
+    "threshold_relaxation_or_coefficient_rescue": false,
+    "dependent_lattice_Japanese_comparison_run": false
+  },
+  "shared_acoustic_models": {
+    "happy_MCP_factor_only": true,
+    "Tohoku_full_model_factor_including_GV": true,
+    "between_models_clock_identity_claimed": false,
+    "licenses_and_attribution_kept": true,
+    "happy_MCP_adopted": false,
+    "Tohoku_adopted": false,
+    "same_cohort_model_style_or_gain_search": false
+  },
+  "LF": {
+    "fixed_T0_Tp_Te_Ta_Ee": [
+      1.0,
+      0.4,
+      0.6,
+      0.05,
+      1.0
+    ],
+    "coefficients": [
+      0.4,
+      0.6,
+      0.05,
+      19.99327266898377,
+      1.0502723051897425,
+      0.5325047916081669,
+      2.2310779262248825
+    ],
+    "quad_mean": 2.220446049250313e-16,
+    "quad_power": 1.0000000000000004,
+    "C_Python_dense_grid_error": 1.5543122344752192e-15,
+    "qualified": "固定形状・固定phase入力の周期関数だけ。人工20条件の数値と面積/連続性/二乗積分の限定資格。",
+    "HTS_coupling_qualified": false,
+    "antialiasing_qualified": false,
+    "real_Japanese_speech_qualified": false
+  },
+  "causes": [
+    "全極射影は全20,276 frame中8,289不通過、全件通過の発話条件0/32。第4回の失敗時分岐に従い係数救済/日本語lattice比較を実施しなかった。",
+    "happyモデルのMCP状態分布だけの交換は機構を保持したが、固定支持と二ASRを悪化させた。原LF0等を同じにしても音響観測のpitchを保持しない。",
+    "Tohokuの全共有HMMは実装互換でも、固有duration/全音響列/GVの差を含む。E0全件だけでは内容/固定支持を保持せず、新日本語比較で不採択。",
+    "LF固定周期関数は一次式の実装範囲を確認した。原HTS/LPFへの結合、時間変動、aliasing、知覚pitch、日本語の自然さへ資格を移さない。"
+  ],
+  "actual_generated_speech_quality_improvement_verified": false,
+  "generalization_quality_certified": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "frozen_routes": [
+    "前レビューまでの全凍結を維持",
+    "order34/alpha.55全極射影の同MCPコホートを次数/warp/loading/閾値で救済しない",
+    "happy MCPの同コホートを感情style/補間/係数/gainで救済しない",
+    "Tohoku全モデルの同コホートを感情style/係数/gainで救済しない",
+    "LF固定primitiveの通過を既存Rosenberg/有限差分/LF0列縮小の救済と扱わない"
+  ],
+  "old_support_intervals": 31601,
+  "old_missing": {
+    "total": 249,
+    "HTS": 94,
+    "WORLD": 155
+  },
+  "old_31_methods_and_each_ASR33_groups_kept": true,
+  "two_review_rule": "第4回・第5回も最終品質/全件生成保護の改善資格なし。共有HMM選別・同フィルタ救済を止め、一次式に基づくLF sourceを原HTSへ結合する一機構と、通過時の一新日本語比較に限定する。その比較でも不改善なら同LF係数探索へ戻らず、独立な調音source-tract制御または共有文脈/韻律表現の異なる方式へ変更する。",
+  "next_question": "固定LF声門流微分を原HTSの混合励振の有声成分へ結合し、元native、時計、乱数noise、MCP/LF0/LPF、独立LPF混合、入力保持、因果前半を保持できるか。",
+  "next_estimate": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "render": 120,
+    "dsp": 180,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "scope": "結合機構と人工条件だけ。実日本語は別の出力前登録。波形別係数/gainなし。"
+  },
+  "next_allocation_after_failure": "同LF固定形状の係数/phase/LPFをこの失敗コホートで救済しない。独立な調音機構/文脈韻律表現へ進む。旧17→96の同8残差/同learner救済は凍結を維持。",
+  "perceptual_status": "現HTS域の日本語刺激/個別評点/独立確認/利用条件の資格なし。既存の同資料は新しい対応公開がない限り繰り返さない。LF原論文は数式の一次資料で知覚資格ではない。",
+  "resource_status": {
+    "due": true,
+    "resources": {
+      "seconds": 0.14037152103838269,
+      "render": 0.13481666666666667,
+      "teacher": 0.0585,
+      "ai": 0.062,
+      "dsp": 0.12966,
+      "train": 0.09166666666666666,
+      "inverse": 0.16166666666666665,
+      "download": 0.1683746391,
+      "write_bytes": 0.08105409526666667
+    },
+    "new_routes_avoid": [],
+    "allocation_review": []
+  },
+  "review_does_not_require_user_approval": true,
+  "all_caps_and_closing_reserve_kept": true
+}
