@@ -1,0 +1,469 @@
+{
+  "campaign": "waveguide-sequence-runtime-v1",
+  "question": "母音の共有面積/有限帯域源を変えず、声道状態と位相を継承して6秒までの列を連続生成し、区切り不変と通常/隔離/CLIを保持できるか。",
+  "factor": "新Cは外から渡す正規化右/左stateを読み最終stateを返す。旧一母音出力と演算順は同じ。母音指令の先頭を初期形状、次母音の開始後100msを面積smoothstepとする。",
+  "inherited": {
+    "diameters": "cb0d99ede76ca69927a71a0e5450f4aaff8e6075db2207d84cc98bfbb96b71bc",
+    "LF_coefficients": "04067e65e68f1a21e1bdbd68cb429ccb75879878fc5a9af4aa1ba3a8a7fc6302",
+    "source_cutoff_hz": 8000,
+    "source_fs": 34300,
+    "output_fs": 24000,
+    "glottal_reflection": 0.75,
+    "lip_reflection": -0.85,
+    "gain": 0.1,
+    "fade_ms": 12,
+    "original_single_vowel_seal": "d2b0230d69bd54dca932aa87741c92f95bd0ca2fdaa5250dcc2fca2b9f26aad6"
+  },
+  "inputs": [
+    {
+      "id": "single-a",
+      "request": {
+        "segments": [
+          {
+            "vowel": "a",
+            "duration_ms": 600
+          }
+        ],
+        "f0": 220
+      }
+    },
+    {
+      "id": "single-i",
+      "request": {
+        "segments": [
+          {
+            "vowel": "i",
+            "duration_ms": 600
+          }
+        ],
+        "f0": 110
+      }
+    },
+    {
+      "id": "single-u",
+      "request": {
+        "segments": [
+          {
+            "vowel": "u",
+            "duration_ms": 600
+          }
+        ],
+        "f0": 280
+      }
+    },
+    {
+      "id": "all-five",
+      "request": {
+        "segments": [
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          }
+        ],
+        "f0": 220
+      }
+    },
+    {
+      "id": "reverse-five",
+      "request": {
+        "segments": [
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          }
+        ],
+        "f0": 280
+      }
+    },
+    {
+      "id": "long-forward",
+      "request": {
+        "segments": [
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          }
+        ],
+        "f0": 220
+      }
+    },
+    {
+      "id": "long-reverse",
+      "request": {
+        "segments": [
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "o",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "e",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "u",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          }
+        ],
+        "f0": 110
+      }
+    },
+    {
+      "id": "long-alternating",
+      "request": {
+        "segments": [
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "a",
+            "duration_ms": 250
+          },
+          {
+            "vowel": "i",
+            "duration_ms": 250
+          }
+        ],
+        "f0": 280
+      }
+    }
+  ],
+  "request_bounds": {
+    "vowels": [
+      "a",
+      "i",
+      "u",
+      "e",
+      "o"
+    ],
+    "segments": [
+      1,
+      24
+    ],
+    "integer_segment_ms": [
+      125,
+      600
+    ],
+    "total_ms_at_most": 6000,
+    "F0_Hz": [
+      70,
+      400
+    ],
+    "additional_keys_rejected": true
+  },
+  "fixture": {
+    "partitions": [
+      4096,
+      [
+        2048,
+        4096,
+        8192
+      ]
+    ],
+    "independent_wave_error": 1e-10,
+    "partition_raw_audio_and_final_state_bytes_exact": true,
+    "old_three_single_vowels_raw_audio_exact": true,
+    "future_request_prefix_exact": true,
+    "E0": "原evaluate全条件",
+    "pitch": "DIO/ACF±1半音、confidence≥.6。各moraの事前[開始+.105s,終了-.01s]で3frame以上/半数以上、欠測全分母。",
+    "normal_and_isolated_wave_bytes_exact": true,
+    "CLI_conditions": [
+      "single-a",
+      "long-forward",
+      "long-alternating"
+    ],
+    "actual_prohibited_file_reads_and_network_must_be_Permission_denied": true
+  },
+  "engineering_is_not_content_or_perception": true,
+  "Japanese_consonants_or_full_speech_qualified": false,
+  "all_prior_frozen_routes_kept": true,
+  "c_sha256": "6820ac236146c8f6031bcfad27fb4f802eca10aa6f8be02cef94265362c14d9d",
+  "controller_sha256": "8ce132b83e59586636dcee7286dfbc5f5fd6e7b35ff3bc5ce7cb368a20bfa4cd",
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 3000,
+    "dsp": 3000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "estimates": {
+    "render": 1000,
+    "dsp": 1000,
+    "internal_block_and_source_calls_included": true,
+    "maximum_seconds": 6000,
+    "temporary_peak": 32000000,
+    "temporary_write": 64000000,
+    "RAM_gb": 8
+  },
+  "protected_confirmation_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "next": "全機構/隔離通過時だけ新しい有限母音語列で原nativeと二ASR内容比較を出力前登録。工学不通過を同列のgain/径/反射/指令時刻で救済しない。子音/鼻腔/閉鎖/損失/放射は別機構。"
+}
