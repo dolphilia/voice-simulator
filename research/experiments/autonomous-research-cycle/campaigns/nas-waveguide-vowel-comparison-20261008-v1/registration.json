@@ -1,0 +1,63 @@
+{
+  "campaign": "waveguide-vowel-comparison-v1",
+  "question": "一次形状と有限LF源を持つ独立声道は、新しい母音のみの日本語語句で工学と二ASR内容を原native対照に対して保護できるか。",
+  "factor": "源・声道・時間表現を全体として変更。原HTSは共有Mei/中央値校正/pulse-noise/MLSA/gain.25。候補は一次16径/34300Hz/有限LF Fourier8k/定数F0/100ms面積遷移/gain.10。",
+  "conditions": {
+    "neutral": {
+      "speed": 1.0,
+      "requested_f0": 220.0
+    },
+    "higher": {
+      "speed": 1.15,
+      "requested_f0": 280.0
+    }
+  },
+  "variants": [
+    "native",
+    "waveguide"
+  ],
+  "input": "12短+12長poolから履歴とfull-context非衝突・母音のみを先頭順に8短8長固定。短3..6母音/長5..24母音。両端silは候補0時間、内部pau/子音/無声化母音は拒否。意味の自然さや一般長文を保証しない。",
+  "duration": "候補は各母音250/215ms。5ms計測clockへ整数5stateを均等配分。nativeのphone-index支持を一度固定し、候補の自身のdurationへ同じindexで測る。方式間clock同一性を主張しない。",
+  "gates": {
+    "engineering": "全32件E0、DIO/ACF±1半音/confidence.6、固定支持3以上・半数以上・欠測全分母。",
+    "content": "二ASR各33群native以下、悪化相殺なし。",
+    "independence": "64通常と64隔離/CLI4のhash一致。候補隔離は独立bundleだけ許可しHMM/neural/過去入力/音声/配列/通信を実拒否。",
+    "physical": "全32対の保存制御/境界/有限源/固定gain/支持indexとnative保存中央値を独立照合。波形再合成なし。"
+  },
+  "source": {
+    "sequence_seal": "655990230790e4f2c00d122a7587a36bee78b64172b2d396b8fd89cf92bbab33",
+    "sequence_module": "32d0754462818f6022743b268efe610c7bb92f02342fdb837df44f3c213ce399",
+    "sequence_binary": "fff63972a3cd0827bbea01c87a24e4c4575c6d8ba42bf2a06070677079b4aa6e",
+    "native_seal": "52be335ce27ed1a6a5ae997ddc09e0ceffe8c50410e41277c39a378305465308"
+  },
+  "estimates": {
+    "render_before_retries_at_most": 2600,
+    "DSP": 420,
+    "AI": 128,
+    "internal_source_and_all_blocks_counted": true,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_and_Git_included": true
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "setup": 30,
+    "audit": 40,
+    "render": 3000,
+    "dsp": 1800,
+    "ai": 384,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "controller_sha256": "72cb600cb8d4776d7345670a7f0d75675a2cce799b0e77414d1831ac457c294f",
+  "old_contracts_and_seals_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "after_failure": "同コホートの径/gain/終端/時刻/LF係数で救済しない。内容不保護なら放射/損失/閉鎖/鼻腔/別一次形状を別機構として登録する。"
+}
