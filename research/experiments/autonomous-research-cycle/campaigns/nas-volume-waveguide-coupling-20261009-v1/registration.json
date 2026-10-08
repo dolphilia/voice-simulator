@@ -1,0 +1,1032 @@
+{
+  "campaign": "volume-waveguide-coupling-v1",
+  "question": "理想的SI体積速度源・共有声道・flanged放射と口元flow・軸上観測を結合し、源の仕事と放射損失の収支/因果/状態/新波形工学の全分母を保持できるか。",
+  "inherited": {
+    "units_observer_seal": "dd5bbcf89c3ce2634d8c4fbc790d5b4240a86b5f618d5a9bb16fcbae823d1adb",
+    "port_seal": "50112c2e3bf4501346113268b21185658b98aedf7fd8d67485c04c6c8c700343",
+    "tube_seal": "655990230790e4f2c00d122a7587a36bee78b64172b2d396b8fd89cf92bbab33",
+    "diameters": "cb0d99ede76ca69927a71a0e5450f4aaff8e6075db2207d84cc98bfbb96b71bc",
+    "LF_coefficients": "04067e65e68f1a21e1bdbd68cb429ccb75879878fc5a9af4aa1ba3a8a7fc6302",
+    "flow_global_normalization": "773f3b213e13b7c7d7edf459ac89d4ba8528bfd42734757587079136f019f460"
+  },
+  "source": {
+    "type": "prescribed acoustic AC volume perturbation",
+    "global_continuous_RMS_m3_s": 3e-05,
+    "mean": 0.0,
+    "maximum_harmonic_hz": 6000,
+    "phase_start": 0.125,
+    "no_per_wave_or_truncated_RMS_fit": true,
+    "not_total_nonnegative_glottal_flow_or_lung_vortex_model": true
+  },
+  "boundary": {
+    "ideal_volume_source_reflection": 1.0,
+    "rho_kg_m3": 1.2,
+    "c_m_s": 343.0,
+    "source_pressure": "(rho*c*Us/sqrt(Ag)+2*Lold)/sqrt(Ag)",
+    "mouth_flow": "sqrt(Al)*(Rincident-Rreflected)/(rho*c)",
+    "radiation_termination": "flanged",
+    "radiation_loss_for_energy_only_not_audio": true,
+    "microphone": "qualified ideal infinite-baffle uniform-disk axis at 1m, 9tap derivative, 100+4 samples delay"
+  },
+  "output": {
+    "fs": 34300,
+    "output_fs": 24000,
+    "Pa_to_PCM": 1.0,
+    "full_scale_peak_pressure_Pa": 1.0,
+    "fade_ms": 12.0,
+    "conversion_is_predeclared_engineering_not_fitted_recording": true,
+    "offline_resample_240_343_Kaiser5": true
+  },
+  "derivation": "E=(sum(R^2+L^2)+radstate^2)/(rho*c*Fs), units J. Enew-Eold=(Us*source_pressure-loss^2/(rho*c))/Fs. Zero input glottal source is perfectly reflecting, radiation drains energy. Uniform Uout/Us=(1-R(z))*z^-16/(1-R(z)*z^-32), microphone G(z) times this. Canonical variable-area energy is a mathematical model, not actual moving-wall work.",
+  "fixtures": {
+    "requests": [
+      {
+        "id": "static-a-110",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "static-a-220",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "static-a-280",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "static-i-110",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "static-i-220",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "static-i-280",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "static-u-110",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "static-u-220",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "static-u-280",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "static-e-110",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "static-e-220",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "static-e-280",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "static-o-110",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "static-o-220",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "static-o-280",
+        "kind": "static",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "transition-ai",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-au",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ae",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ao",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ia",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-iu",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ie",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-io",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ua",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ui",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ue",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-uo",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ea",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ei",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-eu",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-eo",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "e",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-oa",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-oi",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-ou",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "transition-oe",
+        "kind": "transition",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 200
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 400
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "single-a",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "single-i",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "i",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "single-u",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "u",
+              "duration_ms": 600
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "all-five",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "reverse-five",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            }
+          ],
+          "f0": 280
+        }
+      },
+      {
+        "id": "long-forward",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            }
+          ],
+          "f0": 220
+        }
+      },
+      {
+        "id": "long-reverse",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "o",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "e",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "u",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            }
+          ],
+          "f0": 110
+        }
+      },
+      {
+        "id": "long-alternating",
+        "kind": "sequence",
+        "request": {
+          "segments": [
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "a",
+              "duration_ms": 250
+            },
+            {
+              "vowel": "i",
+              "duration_ms": 250
+            }
+          ],
+          "f0": 280
+        }
+      }
+    ],
+    "uniform_radii_m": [
+      0.007,
+      0.008,
+      0.012,
+      0.016
+    ],
+    "uniform_samples": 262144,
+    "uniform_blocks": 65536,
+    "uniform_impulse_m3_s": 1e-06,
+    "energy_geometries": [
+      "fixed a",
+      "i→a ramp",
+      "7Hz sine i/a",
+      "half-step i/a"
+    ],
+    "energy_samples": 4096,
+    "forced_SD_m3_s": 1e-06,
+    "initial_state_SD_Pa_m": 0.001,
+    "forced_and_unforced": true,
+    "seed": 770910,
+    "sequence_partitions": [
+      4096,
+      [
+        2048,
+        4096,
+        8192
+      ]
+    ]
+  },
+  "gates": {
+    "uniform_volume_transfer_absolute_error": 2e-08,
+    "uniform_microphone_complex_error_relative_to_peak": 1e-08,
+    "mouth_flow_reference_m3_s": 5e-13,
+    "source_pressure_reference_Pa": 5e-08,
+    "microphone_reference_Pa": 1e-08,
+    "energy_reference_J": 1e-14,
+    "per_sample_energy_balance_error_J": 1e-16,
+    "unforced_energy_increase_J_at_most": 1e-16,
+    "partition_raw_audio_flow_tube_and_observer_states_bytes_exact": true,
+    "future_input_area_request_raw_prefix_bytes_exact": true,
+    "invalid_cases": 17,
+    "E0": "旧evaluate全条件、振幅/測定ゲート変更なし",
+    "pitch": "旧DIO/ACF±1半音、confidence≥.6。3固定支持/列は各[+.105,終了-.01]。3frame以上/半数以上。欠測全分母。"
+  },
+  "scope": "SI源/口元/理想軸上の結合。源RMSやPa→PCMを出力後fit/正規化しない。構成の数値一致と6kHz固定観測誤差の限定域を、実人声/頭部/移動壁/総気流/知覚/子音の資格へ移さない。動的形状による帯域外成分を含む可能性があり、全過渡の物理誤差2%とは主張しない。旧語句や8kHz候補は再判定せず、旧全不採択/全凍結を保持。",
+  "estimates": {
+    "render": 2000,
+    "dsp": 3000,
+    "internal_calls_references_and_source_included": true,
+    "temporary_peak": 64000000,
+    "temporary_write": 128000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 600000000,
+    "write_bytes": 1200000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 3000,
+    "dsp": 6000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "controller_sha256": "da6bd2d609d84838dec5fa477478476a9d8bd9618cb7619f7205ba5a96e37972",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "全結果を保持して共有SI生成器の通常/隔離/CLIを別登録する。全43工学が不通過なら、その事実/原因を保持し、source/gain/径/時刻/基準で救済しない。独立のdistributed wall loss/鼻/閉鎖/子音などを選ぶ。内容・知覚・独立P5の未達を保持する。"
+}
