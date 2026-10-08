@@ -22,13 +22,13 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 465,
-    "audit": 320,
-    "render": 15908,
-    "dsp": 51236,
+    "setup": 466,
+    "audit": 321,
+    "render": 15940,
+    "dsp": 51316,
     "ai": 12272,
     "train": 11,
-    "download": 1678486551,
+    "download": 1682746391,
     "teacher": 117,
     "inverse": 97
   },
@@ -4814,13 +4814,17 @@
         "download": 10000000
       },
       "counts": {
-        "setup": 1
+        "setup": 2,
+        "download": 4259840,
+        "render": 32,
+        "dsp": 80,
+        "audit": 1
       },
       "start_seconds": 93471.18389320374,
       "start_write_bytes": 47347642582,
       "protocol_sha256": "626393e68bc2d311e43df661c8abfac55bdb8b42341ae5efc82c760790068ec1",
-      "payload_bytes": 10224,
-      "closed": false,
+      "payload_bytes": 5551842,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -4831,15 +4835,58 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "download:公式Tohokuのrevisionをモデル取得前に一度固定": [
+          {
+            "id": "8afd907414de4d2e8a5cb78d8eab6c58",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "download:固定revisionのneutralモデルと利用条件だけ取得": [
+          {
+            "id": "d814b40fdaa44ace9d83fbe1a68035d2",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:固定Tohoku共有HMMと既存生成入口のbundleを構築": [
+          {
+            "id": "2b4fce63c1c14dc1a38ca3ce59c151a8",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "render:全16モデル条件の素HTS/純粋観測生成": [
+          {
+            "id": "38dfc177b9694f1ebcc38e1526375ed1",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:全16MLPGと全モデル条件の状態/制御/列/一次波形照合": [
+          {
+            "id": "5dbae19e89cd41189312023f988e74f5",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:別共有HMM全モデルの限定資格・費用・一時回収を封印": [
+          {
+            "id": "123125bf16c946c5af5812bf9293de9c",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 0,
+      "end_seconds": 93838.07666039467
     }
   },
   "jobs": {},
-  "payload_bytes": 9289196993,
-  "seconds": 93710.97513127327,
-  "write_bytes": 47387283020,
+  "payload_bytes": 9294739797,
+  "seconds": 94255.96593213081,
+  "write_bytes": 47493558303,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -4939,9 +4986,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "hts-acoustic-model-comparison-completed",
+    "id": "tohoku-mechanism-completed",
     "active_campaign": null,
-    "next": "共有MCP状態分布の内容/工学保護を全件保持する。同コホートの別style/補間/gain探索は封印し、別の文脈または調音制御を事前登録する。",
+    "next": "未使用日本語のMei/Tohoku全モデル比較を出力前登録",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -11001,6 +11048,24 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-6c5f4626cf344d038031ec6244171e53": {
+      "owner": "additional-closeout-6c5f4626cf344d038031ec6244171e53",
+      "job": "38dfc177b9694f1ebcc38e1526375ed1",
+      "campaign": "hts-tohoku-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-6c5f4626cf344d038031ec6244171e53",
+      "purpose": "Tohoku共有HMM互換性の科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -11763,7 +11828,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 27,
+    "scientific_completed": 28,
     "last_review": {
       "seconds": 89900.82529902458,
       "scientific_completed": 24,
