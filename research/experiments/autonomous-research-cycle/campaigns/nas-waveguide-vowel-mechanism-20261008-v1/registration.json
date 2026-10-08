@@ -1,0 +1,228 @@
+{
+  "campaign": "waveguide-vowel-mechanism-v1",
+  "question": "Arai 2007の一次表に固定した日本語五母音の16個の径から独立声道を制御し、有限帯域の共有LF駆動と母音遷移を再現できるか。",
+  "diameters_from_lips_mm": {
+    "i": [
+      24,
+      14,
+      12,
+      10,
+      10,
+      10,
+      16,
+      24,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      12,
+      12
+    ],
+    "e": [
+      24,
+      22,
+      22,
+      20,
+      18,
+      16,
+      16,
+      18,
+      24,
+      28,
+      30,
+      30,
+      30,
+      30,
+      12,
+      12
+    ],
+    "a": [
+      32,
+      28,
+      30,
+      34,
+      38,
+      38,
+      34,
+      30,
+      26,
+      20,
+      14,
+      12,
+      16,
+      26,
+      12,
+      12
+    ],
+    "o": [
+      14,
+      22,
+      26,
+      32,
+      38,
+      38,
+      34,
+      28,
+      22,
+      16,
+      14,
+      16,
+      22,
+      30,
+      12,
+      12
+    ],
+    "u": [
+      16,
+      14,
+      20,
+      22,
+      24,
+      26,
+      22,
+      14,
+      18,
+      26,
+      30,
+      30,
+      30,
+      30,
+      12,
+      12
+    ]
+  },
+  "primary_table": "Arai2007 Table1 p193 / PDF page4; index1 lips,16 glottis; plates10mm",
+  "primary_sources": [
+    [
+      "arai-2007",
+      "https://splab.net/papers/2007/2007_01.pdf",
+      "pdf"
+    ],
+    [
+      "arai-lab",
+      "https://splab.net/apd/g210/",
+      "html"
+    ]
+  ],
+  "shape_scope": "Chiba/Kajiyamaの測定を粗い16径へ近似した管模型。現代MRI/全話者/現生理正解ではない。論文表と著者頁の異版を混合しない。",
+  "factor": "5共有母音の径→π(d/20)^2 cm2→独立二方向正規化波。全20有向遷移は.20-.30秒に面積をcubic smoothstepで補間。",
+  "source": {
+    "fixed_LF_coefficients": [
+      0.4,
+      0.6,
+      0.05,
+      19.99327266898377,
+      1.0502723051897425,
+      0.5325047916081669,
+      2.2310779262248825
+    ],
+    "source_cutoff_hz": 8000,
+    "Fourier_complex_coefficients": "固定LF式の区分積分から解析計算、独立quad照合",
+    "dc_harmonic": 0,
+    "phase_start": 0.125,
+    "F0_static": [
+      110,
+      220,
+      280
+    ],
+    "F0_transition": 220,
+    "source_scale": "旧固定連続RMS1の尺度。有限harmonicごとに再正規化しない。"
+  },
+  "fixed": {
+    "source_fs": 34300,
+    "output_fs": 24000,
+    "sections": 16,
+    "section_length_cm": 1.0,
+    "length_cm": 16.0,
+    "glottal_reflection": 0.75,
+    "lip_reflection": -0.85,
+    "gain": 0.1,
+    "duration": 0.6,
+    "fade_ms": 12,
+    "resample_poly_ratio": [
+      240,
+      343
+    ],
+    "resample_window": [
+      "kaiser",
+      5.0
+    ]
+  },
+  "fixture": {
+    "static": 15,
+    "transitions": 20,
+    "deterministic_repeats": 5,
+    "independent_refs": 35,
+    "charged_render": 160,
+    "charged_DSP": 800,
+    "all_support_intervals": [
+      [
+        0.1,
+        0.25
+      ],
+      [
+        0.25,
+        0.4
+      ],
+      [
+        0.4,
+        0.55
+      ]
+    ],
+    "candidate_selected_support": false
+  },
+  "thresholds": {
+    "independent_wave_error": 1e-10,
+    "independent_Fourier_error": 3e-11,
+    "initial_raw_prefix_exact": true,
+    "final_static_tail_error": 1e-07,
+    "E0": "原evaluateの全条件変更なし",
+    "pitch": "DIO/ACF±1半音,confidence≥.6,事前3区間各3以上/半数以上支持、全件分母。指令列をpitch正解観測と扱わない。"
+  },
+  "gates": "機構数値と工程pitch/E0を分離。工学不通過でも欠測を隠さず封印し、形状/gain/終端反射を同コホートで救済しない。内容/母音知覚/日本語自然さは未資格。",
+  "runtime_references": {
+    "waveguide_seal": "f8bdac1dfa6f57ae3e5cb8a1b3424b6c40ce010e25b000c3781cc3420c08f7a0",
+    "LF_seal": "9efed5df66e544006389b4f1485073569bddbbd77b5d3c5ef92e843f7cd3167d",
+    "review6": "5624f473137b4129c44e0fb95c29a85d6219ecd7dd514449767798ae1aaecdbc",
+    "acoustics": "d94d8ee84e8ce567a8931094666873847547105bffa7ba2b0ec77eb3f0394f43",
+    "measurement_packages": "80c68d5b68ab86431f388f3b775c7f199ab1dac6d6b598cbe0da0d468f65c228"
+  },
+  "scientific_outputs_before_registration": 0,
+  "no_HMM": true,
+  "no_teacher": true,
+  "no_training": true,
+  "no_inverse": true,
+  "no_audio_download": true,
+  "no_utterance_lookup": true,
+  "estimates": {
+    "download_conservative": 2000000,
+    "maximum_seconds": 6000,
+    "temporary_peak": 32000000,
+    "temporary_write": 64000000,
+    "RAM_gb": 8,
+    "render": 160,
+    "DSP": 800
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 480,
+    "dsp": 2400,
+    "download": 3000000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0
+  },
+  "controller_sha256": "e6d74f4487566e843bc99a1ce489b7d346e45d6b80b9fd869a621e4370628359",
+  "all_prior_frozen_routes_kept": true,
+  "protected_confirmation_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "next": "全件の母音/遷移工学結果を封印。出力後の径/終端/gain救済なし。通過なら生成入口の通常/隔離/CLIと有限日本語音素列を別登録。未通過なら形状/放射/損失/子音機構の独立不足を次の問いへ。"
+}
