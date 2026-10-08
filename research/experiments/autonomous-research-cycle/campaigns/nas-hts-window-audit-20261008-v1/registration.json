@@ -1,0 +1,62 @@
+{
+  "campaign": "hts-window-audit-v1",
+  "status": "registered_before_output",
+  "question": "実パルスの窓内平均発生率と、短窓/動的区間の既存DIO/Harvest・短窓ACFはどこまで対応するか。",
+  "input": "第22回の保存128traceと同一HTS波形。選別せず全件保持。新生成/ASRなし。",
+  "widths_ms": [
+    20,
+    40,
+    60
+  ],
+  "clock_ms": 5,
+  "actual_pulse_minimum": 4,
+  "minimum_complete_intervals": 3,
+  "stable_period_spread_semitones": 1,
+  "source_target": "窓内実パルス間隔の平均から求めた発生率。瞬時/知覚F0ではない。",
+  "ACF_change": "旧ソースの最小入力長だけ45→10msへ変更。正のピーク・.93最大値・放物線補間・conf.6・70..800Hzを保持。60ms全値/信頼度の旧値一致必須。",
+  "gate": {
+    "positive_at_least": 3,
+    "negative_at_least": 3,
+    "coverage_at_least": 0.9,
+    "median_missing_as_infinity_semitones_at_most": 1,
+    "source_unvoiced_false_accept_at_most": 0.05
+  },
+  "exclusions": [
+    "edge",
+    "mixed_voicing_boundary",
+    "fewer_than_four_actual_pulses"
+  ],
+  "no_denominator_hiding": true,
+  "source_unvoiced_not_absence_of_filter_ringing": true,
+  "observational_existing_corpus_only": true,
+  "independent_vote": false,
+  "old_gates_qualifications_unchanged": true,
+  "prospective_general_qualification": false,
+  "protected_confirmation_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1000000000,
+    "render": 0,
+    "dsp": 3000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 40,
+    "audit": 40
+  },
+  "estimates": {
+    "outputs": 150000000,
+    "metadata": 10000000,
+    "temporary": 8000000,
+    "retry": 600000000,
+    "peak_total": 768000000
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "ram_gb": 8,
+  "next": "第26回WORLD実励振観測→第27回固定支持欠測の原因分離→第28回統合監査"
+}

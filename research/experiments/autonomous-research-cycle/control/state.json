@@ -20,10 +20,10 @@
     "dsp": 100000,
     "train": 60,
     "inverse": 300,
-    "campaigns": 24
+    "campaigns": 28
   },
   "counts": {
-    "setup": 381,
+    "setup": 382,
     "audit": 224,
     "render": 10556,
     "dsp": 26195,
@@ -703,13 +703,39 @@
       "payload_bytes": 30766367,
       "closed": true,
       "end_seconds": 57730.956318855286
+    },
+    "hts-window-audit-v1": {
+      "prefix": "campaigns/nas-hts-window-audit-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1000000000,
+        "render": 0,
+        "dsp": 3000,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0,
+        "setup": 40,
+        "audit": 40
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 58994.531561136246,
+      "protocol_sha256": "daacde3f2046f783fb9a13c59924c6c185d2cbddbda35891b39f6aeee607464f",
+      "payload_bytes": 112593,
+      "closed": false
     }
   },
   "jobs": {},
-  "payload_bytes": 7809762499,
-  "seconds": 58179.46359682083,
-  "write_bytes": 31225273863,
-  "session": null,
+  "payload_bytes": 7809898109,
+  "seconds": 59165.84372591972,
+  "write_bytes": 31263027909,
+  "session": {
+    "id": "c72c169ea17f4cfa9f1635304517037e",
+    "checkpoint": 1791425671.488231
+  },
   "created_epoch": 1791116140.7660968,
   "closed": false,
   "storage_amendment": "external-storage-20261006-v1",
@@ -737,26 +763,56 @@
         "inverse": 300,
         "campaigns": 24
       }
+    },
+    {
+      "id": "campaign-allocation-20261008-v2",
+      "explicit_user_approval": "追加枠案を承認します。計画の作業を続けてください。",
+      "proposal": "next-campaign-allocation-request-20261008-0001.md",
+      "proposal_sha256": "81ae79c62fbdf1538609fa513be628daf2ebaae9d73b4318be20ef89197edce4",
+      "original_limits": {
+        "seconds": 172800,
+        "bytes": 266776643584,
+        "experiment_bytes": 262776643584,
+        "write_bytes": 306776643584,
+        "download": 5000000000,
+        "render": 20000,
+        "teacher": 1000,
+        "ai": 50000,
+        "dsp": 100000,
+        "train": 60,
+        "inverse": 300,
+        "campaigns": 24
+      },
+      "updated_campaign_limit": 28,
+      "other_limits_unchanged": true,
+      "prior_counts": {
+        "setup": 381,
+        "audit": 224,
+        "render": 10556,
+        "dsp": 26195,
+        "ai": 10288,
+        "train": 11,
+        "download": 1669706871,
+        "teacher": 117,
+        "inverse": 97
+      },
+      "prior_seconds": 58179.46359682083,
+      "prior_write_bytes": 31225273863,
+      "same_cycle": true,
+      "no_reset": true,
+      "initial_read_preflight_conservative_seconds": 300,
+      "approval_path": "campaign-allocation-approval-20261008-0001.json",
+      "approval_sha256": "02462b25baa89dd8103eeea526f1e9f6a9cfd84ed7ca378f26f85f22434c0bee"
     }
   ],
   "continuation_checkpoint": {
-    "id": "campaign-limit-terminal-20261008-0001",
-    "active_campaign": null,
-    "all_campaigns_closed": true,
-    "stop_reason": "campaigns_limit_reached",
-    "campaigns_used": 24,
-    "campaigns_limit": 24,
+    "id": "hts-window-prepared-20261008-0001",
+    "active_campaign": "hts-window-audit-v1",
+    "campaign_closed": false,
+    "next": "commit/push→analysis.py run→analysis.py close→第26回WORLD",
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
-    "all_temporary_removed": true,
-    "jobs": {},
-    "approval_required_for_additional_campaigns": true,
-    "next": "追加campaign上限の明示承認まで新規科学処理を開始しない。再開時は同じ台帳・媒体・封印・Git先端から確認する。",
-    "git_save_pending": false,
-    "scientific_result_commit": "6dccfc7fbe795933e8bb57e115642d430696f509",
-    "scientific_result_push_verified": true,
-    "terminal_state": "terminal-state-20261008-0001.json",
-    "terminal_commit_sync": "保存後にHEAD/origin先端一致を検証。自己SHAはGit実体を正本とする。"
+    "git_save_pending": true
   },
   "storage_maintenance": {
     "repository-data-20261008-v1": {
@@ -3496,6 +3552,36 @@
       "quality_goal_completed": false,
       "protected_confirmation_opened": false,
       "git_save_pending": false
+    },
+    {
+      "id": "campaign-limit-terminal-20261008-0001",
+      "active_campaign": null,
+      "all_campaigns_closed": true,
+      "stop_reason": "campaigns_limit_reached",
+      "campaigns_used": 24,
+      "campaigns_limit": 24,
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "all_temporary_removed": true,
+      "jobs": {},
+      "approval_required_for_additional_campaigns": true,
+      "next": "追加campaign上限の明示承認まで新規科学処理を開始しない。再開時は同じ台帳・媒体・封印・Git先端から確認する。",
+      "git_save_pending": false,
+      "scientific_result_commit": "6dccfc7fbe795933e8bb57e115642d430696f509",
+      "scientific_result_push_verified": true,
+      "terminal_state": "terminal-state-20261008-0001.json",
+      "terminal_commit_sync": "保存後にHEAD/origin先端一致を検証。自己SHAはGit実体を正本とする。"
+    },
+    {
+      "id": "additional-four-campaigns-approved-20261008-0001",
+      "active_campaign": null,
+      "all24prior_closed": true,
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "campaign_limit": 28,
+      "approval_record": "campaign-allocation-approval-20261008-0001.json",
+      "next": "第25回HTS動的・短有声測定を事前登録。",
+      "git_save_pending": true
     }
   ]
 }
