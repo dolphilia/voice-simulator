@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 428,
-    "audit": 271,
-    "render": 12872,
-    "dsp": 46258,
+    "setup": 429,
+    "audit": 272,
+    "render": 12932,
+    "dsp": 46322,
     "ai": 11440,
     "train": 11,
     "download": 1669966871,
@@ -2659,12 +2659,15 @@
         "download": 0
       },
       "counts": {
-        "setup": 3
+        "setup": 4,
+        "render": 60,
+        "dsp": 64,
+        "audit": 1
       },
       "start_seconds": 78381.0105278492,
       "start_write_bytes": 40476431505,
       "protocol_sha256": "6792490071337acfc9989b25a14b4e4136500deb8fa430edda73a1761fcb18f7",
-      "payload_bytes": 307852,
+      "payload_bytes": 366685,
       "closed": false,
       "long_horizon_contract": true,
       "purpose": "science",
@@ -2690,15 +2693,43 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:人工最小位相IR・駆動源・原HTS・FIRの全生成": [
+          {
+            "id": "d9d94b55a26b4fb19fcc89c83a0b1225",
+            "status": "failed",
+            "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-B', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-hts-minphase-mechanism-20261008-v1/fixture.py'])"
+          }
+        ],
+        "dsp:解析応答・独立畳み込み・源時計の限定資格": [
+          {
+            "id": "96093bd8da6f48dd89839391ee2ba32d",
+            "status": "failed",
+            "error": "CalledProcessError(1, ['/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-speech-synthesis/.venv-eval/bin/python', '-B', '/Users/dolphilia/github/voice-simulator/research/experiments/autonomous-research-cycle/campaigns/nas-hts-minphase-mechanism-20261008-v1/fixture.py'])"
+          }
+        ],
+        "audit:fixture失敗のimport依存診断のみ": [
+          {
+            "id": "3ebc0252cf93493c9120027799aa42c9",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:原HTSの欠落した二依存だけを凍結追補": [
+          {
+            "id": "7cf6747cf4524bf29f74adc49ff961a2",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 8742348898,
-  "seconds": 78894.59096169472,
-  "write_bytes": 40594553815,
+  "payload_bytes": 8742418355,
+  "seconds": 79355.6382997036,
+  "write_bytes": 40669082414,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -7224,6 +7255,42 @@
       "purpose": "最小位相build専用cache",
       "maximum_bytes": 16000000,
       "maximum_write_bytes": 32000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-632a52c86a6d4df8af479a813253cb81": {
+      "owner": "additional-closeout-632a52c86a6d4df8af479a813253cb81",
+      "job": "d9d94b55a26b4fb19fcc89c83a0b1225",
+      "campaign": "hts-minphase-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-632a52c86a6d4df8af479a813253cb81",
+      "purpose": "最小位相fixtureの科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-3a0ed6048d954d33b05812d70b2d54b2": {
+      "owner": "additional-closeout-3a0ed6048d954d33b05812d70b2d54b2",
+      "job": "3ebc0252cf93493c9120027799aa42c9",
+      "campaign": "hts-minphase-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-3a0ed6048d954d33b05812d70b2d54b2",
+      "purpose": "依存診断の科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
       "status": "removed",
       "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
       "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
