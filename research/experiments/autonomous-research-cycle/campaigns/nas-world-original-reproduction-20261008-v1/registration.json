@@ -1,0 +1,62 @@
+{
+  "campaign": "world-original-reproduction-v1",
+  "status": "registered_before_output",
+  "question": "observerなしの一次synthesis.cppは旧WAVを再現できるか。インストール済みC直呼び/PyWORLD bindingを対照に観測buildと演算環境の影響を分離する。",
+  "causal_factors": [
+    "旧observerと同じO2/SDKで観測hookを全部外した原実装",
+    "installed SynthesisのC ABI直呼び対binding（固定4例）"
+  ],
+  "limitations": "公開名/呼出ABI/build contextも差の要因に含む。元wheelの実compile flagsはPython CFLAGSから断定しない。旧768件の励振truthをこの再構成で埋めない。",
+  "source_commit": "8d79b88b7dd92e8a132996cf74080b2d6f881b98",
+  "source_sha256": "9888973e28f2194a0eb9807e18e36680f3d912bef3ddf174dc640fedc4e08b4c",
+  "input": "前回の全WORLD768登録入力。固定compat4例をそのまま引継ぐ。4例完全一致の場合だけ全768へ進む。",
+  "split": "全6コホートを各native対照で保持。新入力選別/P5本文読取なし。",
+  "gates": {
+    "compat4_all_byte_exact": true,
+    "installed_C_binding_raw_exact": true,
+    "all768_bare_and_direct_old_byte_exact": true
+  },
+  "missing": "不通過なら全768の旧実励振unknownと欠測155を保持。全件を一部例で資格化しない。",
+  "output": "raw/float32差の件数・最大差・最初64index・kept前後を診断。波形自体は保存しない。",
+  "normalization": "旧convert入力hash・AP factor・resample_poly・12ms fade・固定gain・float32を完全一致。係数/公差の探索なし。",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1200000000,
+    "write_bytes": 1800000000,
+    "render": 3000,
+    "dsp": 12000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 40,
+    "audit": 60
+  },
+  "estimates": {
+    "compat_render": 12,
+    "full_render": 1536,
+    "maximum_render_with10_batch_retries": 2188,
+    "compat_DSP": 32,
+    "full_DSP": 6144,
+    "maximum_DSP_with10_batch_retries": 8736,
+    "temporary_peak": 16000000,
+    "data_and_retry_peak": 300000000,
+    "metadata_and_Git_included": true,
+    "worst_seconds": 7340,
+    "batch_size": 32,
+    "batch_timeout": 120,
+    "compat_timeout": 300
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "ram_gb": 8,
+  "parallel_max": 2,
+  "no_NEW_observer_flags_retry": true,
+  "no_human_response_required": true,
+  "new_AI_teacher_train_inverse_download": 0,
+  "old_gates_ASR_qualification_unchanged": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
