@@ -24,7 +24,7 @@
   },
   "counts": {
     "setup": 381,
-    "audit": 222,
+    "audit": 224,
     "render": 10556,
     "dsp": 26195,
     "ai": 10288,
@@ -695,21 +695,23 @@
         "audit": 60
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "audit": 2
       },
       "start_seconds": 57264.13362574577,
       "protocol_sha256": "148a646d4a4b87f194ce984a652195c728a75a621a0ac860adc9c69a3684f412",
-      "payload_bytes": 35071,
-      "closed": false
+      "payload_bytes": 30766367,
+      "closed": true,
+      "end_seconds": 57730.956318855286
     }
   },
   "jobs": {},
-  "payload_bytes": 7779012414,
-  "seconds": 57299.43477892876,
-  "write_bytes": 31126469296,
+  "payload_bytes": 7809759672,
+  "seconds": 57892.66825389862,
+  "write_bytes": 31195275312,
   "session": {
     "id": "c968a05d10e04bfeadc91562e6c7eed8",
-    "checkpoint": 1791424046.770924
+    "checkpoint": 1791424640.004399
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -741,12 +743,18 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "cycle-closeout-prepared-20261008-0001",
-    "active_campaign": "cycle-closeout-v1",
-    "campaign_closed": false,
-    "next": "commit/push → audit.py → closeout.py → 終端台帳・suspend・Git先端照合",
+    "id": "campaign-limit-stop-20261008-0001",
+    "active_campaign": null,
+    "all_campaigns_closed": true,
+    "stop_reason": "campaigns_limit_reached",
+    "campaigns_used": 24,
+    "campaigns_limit": 24,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
+    "all_temporary_removed": true,
+    "jobs": {},
+    "approval_required_for_additional_campaigns": true,
+    "next": "commit/push終了結果→終端台帳・suspend→終端commit/push→承認待ち",
     "git_save_pending": true
   },
   "storage_maintenance": {
@@ -3477,6 +3485,15 @@
       "quality_goal_completed": false,
       "protected_confirmation_opened": false,
       "all_temporary_removed": true,
+      "git_save_pending": false
+    },
+    {
+      "id": "cycle-closeout-prepared-20261008-0001",
+      "active_campaign": "cycle-closeout-v1",
+      "campaign_closed": false,
+      "next": "commit/push → audit.py → closeout.py → 終端台帳・suspend・Git先端照合",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
       "git_save_pending": false
     }
   ]
