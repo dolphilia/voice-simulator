@@ -22,11 +22,11 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 546,
-    "audit": 411,
+    "setup": 548,
+    "audit": 414,
     "render": 83849,
     "dsp": 73790,
-    "ai": 12976,
+    "ai": 13024,
     "train": 16,
     "download": 1712746391,
     "teacher": 117,
@@ -9391,13 +9391,15 @@
         "download": 0
       },
       "counts": {
-        "setup": 2
+        "setup": 2,
+        "audit": 2,
+        "ai": 48
       },
       "start_seconds": 146353.56841397285,
       "start_write_bytes": 66494529019,
       "protocol_sha256": "9340ca20859c1660b2d10c63a968cb3055fc20da57eedc49e01cde4036c31a7b",
-      "payload_bytes": 6300,
-      "closed": false,
+      "payload_bytes": 104102,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -9415,18 +9417,124 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "audit:固定ASR/辞書/正規化hashと全48保存波形 whisper": [
+          {
+            "id": "4d9b37ed8c1d484b8831fb84e418ee50",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "ai:固定whisper全48波形": [
+          {
+            "id": "da6d93bebf244fde9e4cfda08535ea89",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/失敗/費用/所有一時不存在を封印": [
+          {
+            "id": "310b469cf9714143ab9548ea6bc532af",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 146634.9183728695
+    },
+    "long-horizon-review-v12": {
+      "prefix": "campaigns/nas-long-horizon-review-20261009-v12",
+      "limits": {
+        "seconds": 3600,
+        "bytes": 64000000,
+        "write_bytes": 500000000,
+        "setup": 6,
+        "audit": 8,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "audit": 1
+      },
+      "start_seconds": 146791.58299970627,
+      "start_write_bytes": 66862232330,
+      "protocol_sha256": "646cacdc6ca592ed58ed0a935af32ca9ff6b0978806219d42d6e6c98b97234c0",
+      "payload_bytes": 32973,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "audit:六封印/全工学/隔離/Whisper33系列/残ASRを照合": [
+          {
+            "id": "6523feafccb14a179d4248691cc1fdf5",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 146793.26738381386
+    },
+    "vtl-frozen-phrase-asr-reazon-v1": {
+      "prefix": "campaigns/nas-vtl-frozen-phrase-asr-reazon-20261009-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1200000000,
+        "setup": 20,
+        "audit": 20,
+        "render": 0,
+        "dsp": 0,
+        "ai": 48,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 2
+      },
+      "start_seconds": 146873.05693602562,
+      "start_write_bytes": 66913774804,
+      "protocol_sha256": "a6659937ebddc1ce487f9d098269665b9da0e8d394cfd453776020d6d969420d",
+      "payload_bytes": 6299,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:固定全体比較の部分実行登録": [
+          {
+            "id": "c2a3a1945b2849d08f44ab20fbfeb410",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:未開始ASRの保存先を所有campaignへ限定": [
+          {
+            "id": "08c752db1bb64669940ca4676bcc6b27",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9725977134,
-  "seconds": 146554.55532598495,
-  "write_bytes": 66554616290,
+  "payload_bytes": 9726122932,
+  "seconds": 147068.31720995903,
+  "write_bytes": 66973753227,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791491465.234636
+    "checkpoint": 1791491678.99652
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -9526,9 +9634,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "review11-D-in-progress",
-    "active_campaign": "vtl-frozen-phrase-asr-whisper-v1",
-    "next": "asr-whisper登録push後に未実施部分だけを実行。",
+    "id": "review12-D-Reazon-ready",
+    "active_campaign": "vtl-frozen-phrase-asr-reazon-v1",
+    "next": "asr-reazon登録push後に未実施部分だけを実行。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -48903,6 +49011,37 @@
       "removed_files": 8,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-e2264ae18c4640f695c9d7869b3414e6": {
+      "owner": "additional-closeout-e2264ae18c4640f695c9d7869b3414e6",
+      "job": "da6d93bebf244fde9e4cfda08535ea89",
+      "campaign": "vtl-frozen-phrase-asr-whisper-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-e2264ae18c4640f695c9d7869b3414e6",
+      "purpose": "同コホート48波形の固定whisper評価",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "asr-whisper-stderr.txt",
+          "bytes": 45,
+          "inode": 100953,
+          "device": 16777241
+        },
+        {
+          "relative": "asr-whisper-stdout.txt",
+          "bytes": 46417,
+          "inode": 100952,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 46462,
+      "peak_violation": false,
+      "removed_files": 2,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -49680,12 +49819,12 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 71,
+    "scientific_completed": 72,
     "last_review": {
-      "seconds": 144743.9472410679,
-      "scientific_completed": 66,
-      "path": "campaigns/nas-long-horizon-review-20261009-v11/decision.json",
-      "sha256": "a20fed05ee34394012040f05cdaeeb23496622d586e6ac2236ee0623f62c21e4"
+      "seconds": 146793.40758395195,
+      "scientific_completed": 72,
+      "path": "campaigns/nas-long-horizon-review-20261009-v12/decision.json",
+      "sha256": "2119d2553152d12ebf87bc905b8727bfca3ed4cf5a50f6afae51308d57cfe487"
     },
     "closing_seconds": 43200,
     "science_enabled_after_validation": true,
@@ -49714,7 +49853,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 21334.36842918396,
+      "used_seconds": 21848.130313158035,
       "current": "D",
       "stages": [
         {
@@ -49741,7 +49880,7 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 6334.169336080551,
+          "used_seconds": 6847.9312200546265,
           "status": "running"
         }
       ]
@@ -49754,7 +49893,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 146554.55532598495,
+    "last_accounted_seconds": 147068.31720995903,
     "segment": {
       "stage": "D",
       "foundation_only": false,
