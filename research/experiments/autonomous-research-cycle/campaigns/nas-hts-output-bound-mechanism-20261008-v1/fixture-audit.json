@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "grid_checks": {
+    "scalar_max_abs_error": 1.1102230246251565e-16,
+    "finite_double_and_float32_bounded": true,
+    "monotone_and_odd": true,
+    "identity_region_exact": true,
+    "passed": true
+  },
+  "driving_checks": [
+    {
+      "mode": "zeros",
+      "scalar_max_abs_error": 0.0,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 4800,
+      "changed_samples": 0,
+      "passed": true
+    },
+    {
+      "mode": "step",
+      "scalar_max_abs_error": 0.0,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 600,
+      "changed_samples": 4200,
+      "passed": true
+    },
+    {
+      "mode": "impulse",
+      "scalar_max_abs_error": 0.0,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 4798,
+      "changed_samples": 2,
+      "passed": true
+    },
+    {
+      "mode": "sine_low",
+      "scalar_max_abs_error": 0.0,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 4800,
+      "changed_samples": 0,
+      "passed": true
+    },
+    {
+      "mode": "sine_high",
+      "scalar_max_abs_error": 1.1102230246251565e-16,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 1112,
+      "changed_samples": 3688,
+      "passed": true
+    },
+    {
+      "mode": "noise",
+      "scalar_max_abs_error": 1.1102230246251565e-16,
+      "causal_prefix_exact": true,
+      "input_exact": true,
+      "low_region_samples": 2480,
+      "changed_samples": 2320,
+      "passed": true
+    }
+  ],
+  "HTS_checks": [
+    {
+      "hz": 110.0,
+      "lpf": 0.0,
+      "native_exact": true,
+      "all_parameters_and_source_clock_exact": true,
+      "expected_final_max_abs_error": 0.0,
+      "float32_no_clipping": true,
+      "unchanged_low_samples": 7200,
+      "passed": true
+    },
+    {
+      "hz": 110.0,
+      "lpf": 1.0,
+      "native_exact": true,
+      "all_parameters_and_source_clock_exact": true,
+      "expected_final_max_abs_error": 0.0,
+      "float32_no_clipping": true,
+      "unchanged_low_samples": 7189,
+      "passed": true
+    },
+    {
+      "hz": 280.0,
+      "lpf": 0.0,
+      "native_exact": true,
+      "all_parameters_and_source_clock_exact": true,
+      "expected_final_max_abs_error": 0.0,
+      "float32_no_clipping": true,
+      "unchanged_low_samples": 7200,
+      "passed": true
+    },
+    {
+      "hz": 280.0,
+      "lpf": 1.0,
+      "native_exact": true,
+      "all_parameters_and_source_clock_exact": true,
+      "expected_final_max_abs_error": 0.0,
+      "float32_no_clipping": true,
+      "unchanged_low_samples": 7200,
+      "passed": true
+    }
+  ],
+  "invalid_inputs_rejected": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "render": 39,
+  "dsp": 28,
+  "render_breakdown": {
+    "grid_driver": 1,
+    "grid_filter": 1,
+    "grid_independent": 1,
+    "driving_signals": 6,
+    "driving_filter": 6,
+    "driving_independent": 6,
+    "causal_filter": 6,
+    "original_HTS": 4,
+    "native_HTS": 4,
+    "bounded_HTS": 4
+  },
+  "dsp_breakdown": {
+    "grid": 4,
+    "driving_scalar": 6,
+    "driving_causality": 6,
+    "HTS_native_and_source": 4,
+    "HTS_final_mapping": 4,
+    "invalid_inputs": 4
+  },
+  "scope": "登録人工振幅の上限・恒等域・因果性と人工HTSの機構のみ。日本語内容・ピッチ・DC・自然さは別比較。",
+  "amplitude_bound_is_not_naturalness_truth": true,
+  "quality_certified": false
+}

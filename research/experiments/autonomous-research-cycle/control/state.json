@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 450,
-    "audit": 302,
-    "render": 15329,
-    "dsp": 49268,
+    "setup": 453,
+    "audit": 303,
+    "render": 15368,
+    "dsp": 49296,
     "ai": 12016,
     "train": 11,
     "download": 1669966871,
@@ -4024,13 +4024,16 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "render": 39,
+        "dsp": 28,
+        "audit": 1
       },
       "start_seconds": 87589.19921970367,
       "start_write_bytes": 44881035678,
       "protocol_sha256": "5c9fc62192af57e8f824229bd7b75448b82391eccbcd7e02fa131acd26db97a0",
-      "payload_bytes": 217331,
-      "closed": false,
+      "payload_bytes": 225848,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -4041,15 +4044,89 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "render:固定出力上限の人工振幅・駆動源・原HTS全生成": [
+          {
+            "id": "0413480c5bc24b0b81394167ccf0bf4e",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "dsp:独立式・恒等域・上限・原HTS・因果性・拒否の確認": [
+          {
+            "id": "11e6dbf1cac34cae94a068ee809a575d",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:出力制御の機構範囲・費用・hash・一時回収の終了確認": [
+          {
+            "id": "a3a8fd72195442aa94e162511ad4443d",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 87857.63852262497
+    },
+    "hts-output-bound-comparison-v1": {
+      "prefix": "campaigns/nas-hts-output-bound-comparison-20261008-v1",
+      "limits": {
+        "seconds": 14400,
+        "bytes": 1800000000,
+        "write_bytes": 2800000000,
+        "setup": 30,
+        "audit": 40,
+        "render": 650,
+        "dsp": 1800,
+        "ai": 384,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 3
+      },
+      "start_seconds": 88075.8000729084,
+      "start_write_bytes": 44967184682,
+      "protocol_sha256": "1aca88578e8b065fabce0fa04c9d40359532e4086a945a189818d47d4ec8de99",
+      "payload_bytes": 4277066,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:固定出力制御の新入力・全比較費・対照を生成前登録": [
+          {
+            "id": "e21c7625f9554cbc84286b51e6090a61",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:同一原HTSと固定出力制御の閉じた共有bundle": [
+          {
+            "id": "39e494a8b5ab48d29ad06138492349b5",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "setup:全履歴非衝突と入力条件の波形前固定": [
+          {
+            "id": "d043fa4ae91a4930971e0f869ad55dc1",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9115021848,
-  "seconds": 87824.253749609,
-  "write_bytes": 44929360632,
+  "payload_bytes": 9119353608,
+  "seconds": 88325.687114954,
+  "write_bytes": 45081098672,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -4149,9 +4226,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "hts-allpass-comparison-completed",
+    "id": "output-bound-mechanism-completed",
     "active_campaign": null,
-    "next": "源の位相因子と振幅/内容保護を全件で保持する。不通過を同コホートのpole調整で救済せず、別の共有生成制御または独立測定へ進む。",
+    "next": "新16文native/soft_bound64波形の比較を生成前登録",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -9610,6 +9687,42 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-a764e895d0824207b17c3284a585fc0e": {
+      "owner": "additional-closeout-a764e895d0824207b17c3284a585fc0e",
+      "job": "0413480c5bc24b0b81394167ccf0bf4e",
+      "campaign": "hts-output-bound-mechanism-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-a764e895d0824207b17c3284a585fc0e",
+      "purpose": "出力振幅fixtureの科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "additional-closeout-fa57e76f93d044d4bae27937f7d9d2e6": {
+      "owner": "additional-closeout-fa57e76f93d044d4bae27937f7d9d2e6",
+      "job": "d043fa4ae91a4930971e0f869ad55dc1",
+      "campaign": "hts-output-bound-comparison-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-fa57e76f93d044d4bae27937f7d9d2e6",
+      "purpose": "辞書と入力照合",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -10372,7 +10485,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 21,
+    "scientific_completed": 22,
     "last_review": {
       "seconds": 84737.30534863472,
       "scientific_completed": 18,
