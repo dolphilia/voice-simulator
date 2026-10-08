@@ -1,0 +1,83 @@
+{
+  "campaign": "hts-acoustic-model-mechanism-v1",
+  "question": "共有HMMの文脈別MCP状態平均/分散を一つの別配布モデルへ交換し、元時間・源時計・LF0/LPF・GVを機械的に保持できるか。",
+  "candidate": "公式Mei1.4 happyを一つに事前固定。angry/bashful/sadや同コホート係数探索をしない。",
+  "factor": "同full-contextラベルからhappy共有HMMを評価したMCP state平均/分散105列だけをnativeへコピー。元duration/MSD/LF0/LPF/GV/window/settings/MLPG/vocoderを保持。",
+  "interpretation": "全happy話者モデルを使う対比ではなく、normalの時間/源/GVを持つMCP emission分布交換。モデル学習は行わず非ニューラルHMM/MLPG。既存全極/FIR/warp/gain救済ではない。",
+  "resource": {
+    "repository": "https://github.com/mmdagent-ex/example",
+    "revision_resolution": "https://api.github.com/repos/mmdagent-ex/example/commits/main",
+    "resolve_once_before_model_download": true,
+    "files": [
+      "COPYRIGHT.txt",
+      "README.txt",
+      "mei_normal.htsvoice",
+      "mei_happy.htsvoice"
+    ],
+    "license": "公式voice/meiのCC BY 3.0表記を保存し、提供者/変更因子を帰属表示する。元ファイルは不改変。",
+    "copyright_url": "https://github.com/mmdagent-ex/example/blob/main/voice/mei/COPYRIGHT.txt",
+    "README_url": "https://github.com/mmdagent-ex/example/blob/main/voice/mei/README.txt"
+  },
+  "fixture": {
+    "texts": [
+      "紫の船がゆっくり進む。",
+      "雨が降る。",
+      "切手を買った。",
+      "新しい地図を机に広げた。"
+    ],
+    "conditions": [
+      [
+        1.0,
+        220.0
+      ],
+      [
+        1.15,
+        280.0
+      ]
+    ],
+    "native_identity_byte_exact": true,
+    "donor_state_distributions_exact": true,
+    "other_columns_GV_settings_exact": true,
+    "source_clock_and_excitation_exact": true,
+    "candidate_MCP_changes_required": true,
+    "null_rejected": true
+  },
+  "thresholds": "全8条件で恒等交換のparams/波形byte完全一致、別MCP交換の源時計/励振とLF0/LPF/duration完全一致。GV/他状態分布保持。有限出力。自然さ/内容/pitchの合格とはしない。",
+  "estimates": {
+    "render": 24,
+    "dsp": 72,
+    "conservative_download_reserved_bytes": 8519680,
+    "asset_bytes_cap": 8388608,
+    "metadata_bytes_cap": 131072,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 16,
+    "audit": 16,
+    "render": 72,
+    "dsp": 216,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 20000000
+  },
+  "c_sha256": "7bad2956d12d8f57d82aa5b4f656b52f841027b11ab3fec8f627ede9118c2082",
+  "module_sha256": "f894a9780bc80ac78e290ba2405826a99c948f37edc87e13cdc6956ad8c8947c",
+  "fixture_sha256": "651a27b899c866b47e2585fdbb8764aae758fa9fb077abf049987ae6cacd1eea",
+  "controller_sha256": "afe629df8fbe790e5d61a5afd34e65c6eef39fc4877acabb49deedd377cfaec3",
+  "inherited": {
+    "parent_seal_sha256": "d5cbbeb7d26069a83ea2b9944f7c4fa4a16df7352721808dcdb65eafd0b7eaa7",
+    "prior_seal_sha256": "4c2c5bac97b3858824bdf4ca90c80a42b385ce90ba1b01587d0f17b0ef70b517"
+  },
+  "next": "機構通過なら、未使用16文×2条件のnative/happy_MCPを全件生成前登録してE0/旧工学支持/二ASR/隔離を比較。未通過なら条件救済せず別の文脈/調音制御へ移る。",
+  "no_waveform_generated_yet": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}

@@ -22,10 +22,10 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 457,
-    "audit": 310,
+    "setup": 458,
+    "audit": 311,
     "render": 15688,
-    "dsp": 50388,
+    "dsp": 50548,
     "ai": 12144,
     "train": 11,
     "download": 1669966871,
@@ -4436,13 +4436,15 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 1,
+        "dsp": 160,
+        "audit": 1
       },
       "start_seconds": 90248.34059715271,
       "start_write_bytes": 46105751734,
       "protocol_sha256": "813b049be7b490963249d749ace8b6ed190d44472a66fbaeb4d6fc179c04d673",
-      "payload_bytes": 30605,
-      "closed": false,
+      "payload_bytes": 9461593,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -4453,15 +4455,68 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "dsp:全32nativeの全frame射影・独立解・近似損失・refinement・安定域監査": [
+          {
+            "id": "b3ba69471597404e95a66df41b9d9de4",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母・近似幅・不通過・hash・費用・一時回収の終了照合": [
+          {
+            "id": "1963f0824fa641cfbebb24fcd2644a77",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 90602.67321920395
+    },
+    "hts-acoustic-model-mechanism-v1": {
+      "prefix": "campaigns/nas-hts-acoustic-model-mechanism-20261008-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 300000000,
+        "write_bytes": 800000000,
+        "setup": 16,
+        "audit": 16,
+        "render": 72,
+        "dsp": 216,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 20000000
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 91355.08028197289,
+      "start_write_bytes": 46191188382,
+      "protocol_sha256": "9a487bf5a7b4b2bd0a1011e9d9f398f74c92ecb0e697823ee13dc9976211c87f",
+      "payload_bytes": 15593,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:共有MCP分布交換とモデル取得の全費用を取得/出力前登録": [
+          {
+            "id": "236ecdbb402e46e0857202e55c99f5df",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9192728061,
-  "seconds": 90491.71754932404,
-  "write_bytes": 46147400833,
+  "payload_bytes": 9202199988,
+  "seconds": 91577.00505518913,
+  "write_bytes": 46231866494,
   "session": null,
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -4561,9 +4616,9 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "long-horizon-review-0004-completed",
+    "id": "lattice-projection-completed",
     "active_campaign": null,
-    "next": "新native全20,276 MCP frameのorder34/FFT16384全極射影は、独立密Toeplitz・反射係数安定域・有限grid log振幅誤差・32768点による観測refinementを全件保持できるか。",
+    "next": "同order/warp/loadingの係数救済を封印し、別の共有音響モデル/文脈表現または調音制御へ移る。旧17→96同8残差/同learnerの救済は継承しない。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false
@@ -10328,6 +10383,31 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-2c99e9c5c6464d0eb8524ec54254a1d0": {
+      "owner": "additional-closeout-2c99e9c5c6464d0eb8524ec54254a1d0",
+      "job": "b3ba69471597404e95a66df41b9d9de4",
+      "campaign": "hts-lattice-projection-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-2c99e9c5c6464d0eb8524ec54254a1d0",
+      "purpose": "全実MCP観測の科学ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "progress.json",
+          "bytes": 105,
+          "inode": 78456,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 105,
+      "peak_violation": false,
+      "removed_files": 1,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -11090,7 +11170,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 24,
+    "scientific_completed": 25,
     "last_review": {
       "seconds": 89900.82529902458,
       "scientific_completed": 24,
