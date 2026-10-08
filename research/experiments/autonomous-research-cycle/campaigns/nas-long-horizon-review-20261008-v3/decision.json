@@ -1,0 +1,174 @@
+{
+  "review_number": 3,
+  "scientific_completed": 18,
+  "previous_review": {
+    "seconds": 79452.7428278923,
+    "scientific_completed": 12,
+    "path": "campaigns/nas-long-horizon-review-20261008-v2/decision.json",
+    "sha256": "4a082f0fc9604d36eca5bb6127259aabd774ff7b260d6dc1e51c6882f5721610"
+  },
+  "comparisons": {
+    "nas-hts-minphase-comparison-20261008-v1": {
+      "total": 64,
+      "all_MCP_frames": 21333,
+      "MCP_grid_passed": false,
+      "research_gates": {
+        "native": false,
+        "fir1024": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 31,
+          "missing": 0,
+          "support": 761,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "fir1024": {
+          "E0": 32,
+          "pitch": 26,
+          "missing": 6,
+          "support": 761,
+          "ASR": {
+            "whisper": 9,
+            "reazon": 0
+          }
+        }
+      }
+    },
+    "nas-hts-fft-fir-comparison-20261008-v1": {
+      "total": 64,
+      "all_MCP_frames": 21567,
+      "MCP_grid_passed": true,
+      "research_gates": {
+        "native": false,
+        "fft_fir": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 28,
+          "missing": 0,
+          "support": 781,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "fft_fir": {
+          "E0": 32,
+          "pitch": 25,
+          "missing": 4,
+          "support": 781,
+          "ASR": {
+            "whisper": 5,
+            "reazon": 6
+          }
+        }
+      }
+    },
+    "nas-hts-fir-gain-comparison-20261008-v1": {
+      "total": 96,
+      "all_MCP_frames": 22905,
+      "MCP_grid_passed": true,
+      "research_gates": {
+        "native": true,
+        "fft_fir": false,
+        "fft_loggain": false
+      },
+      "methods": {
+        "native": {
+          "E0": 32,
+          "pitch": 32,
+          "missing": 0,
+          "support": 820,
+          "ASR": {
+            "whisper": 0,
+            "reazon": 0
+          }
+        },
+        "fft_fir": {
+          "E0": 32,
+          "pitch": 28,
+          "missing": 4,
+          "support": 820,
+          "ASR": {
+            "whisper": 16,
+            "reazon": 0
+          }
+        },
+        "fft_loggain": {
+          "E0": 32,
+          "pitch": 28,
+          "missing": 4,
+          "support": 820,
+          "ASR": {
+            "whisper": 9,
+            "reazon": 0
+          }
+        }
+      }
+    }
+  },
+  "causes": [
+    "人工MCPの資格は実日本語の全frame応答を保証しなかった。FIR1024は306frameで有限応答/tailの基準を外れた。",
+    "既コホートで2048点を最小適格長として固定し、新コホートでも全frameの有限gridを通過した。静的応答と音声の保護は別だった。",
+    "原HTSのb0対数利得とIR全体の算術補間は異なる。純利得と形状を分離する別表現は人工式・原HTS・因果性を検証できた。",
+    "全MCP/LF0/LPF/duration/状態/励振/時計と通常・隔離出力の一致は、フィルタ後のピッチ・内容・自然さの一致を保証しない。"
+  ],
+  "actual_generation_improvement": false,
+  "generalization_quality_certified": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false,
+  "measurement_scope": "有限16384gridの静的応答/参考IR tailと人工時間表現のみ。固定DIO/全体ACFを短窓・動的・瞬時F0・知覚へ拡張しない。",
+  "frozen_routes": [
+    "前レビューまでの全凍結を維持",
+    "FIR1024→FFT2048→利得分離の三比較で全件保護不通過。同じFIR補間・係数・利得のコホート別救済を封印"
+  ],
+  "old_support_intervals": 31601,
+  "old_missing": {
+    "total": 249,
+    "HTS": 94,
+    "WORLD": 155
+  },
+  "old_31_methods_and_each_ASR33_groups_kept": true,
+  "two_review_rule": "第2回・第3回でも音声品質目標への資格は得ていない。機構/有限長/時間利得の原因を区別したが、同フィルタ経路の係数探索を続けず、測定資格と別の共有生成制御へ配分を変える。",
+  "next_question": "YIN型の累積平均正規化差分・固定閾値・放物線補間は、既知音響周期の人工信号で20/40/80ms・動的・境界のどの範囲を検証できるか。旧測定/欠測/判定は不変。",
+  "next_estimate": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "render": 2000,
+    "dsp": 8000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "comparison": "新規に式で生成した周期/変動/境界・無周期fixtureを出力前固定。音響周期truthのみ、知覚truth・保存HTS救済ではない。"
+  },
+  "next_gates_unchanged": true,
+  "review_does_not_require_user_approval": true,
+  "resource_status": {
+    "due": true,
+    "resources": {
+      "seconds": 0.12259408687448337,
+      "render": 0.11843333333333333,
+      "teacher": 0.0585,
+      "ai": 0.05944,
+      "dsp": 0.11995,
+      "train": 0.09166666666666666,
+      "inverse": 0.16166666666666665,
+      "download": 0.1669966871,
+      "write_bytes": 0.07289566149333333
+    },
+    "new_routes_avoid": [],
+    "allocation_review": []
+  },
+  "perceptual_status": "現HTS域の日本語刺激/個別評点対応・適用範囲・利用条件を満たす資格は引き続きない。新公開対応がない同じ8資料は繰り返さない。",
+  "remaining_independent_work": "新しい短窓/動的/境界の測定資格、別の共有源制御/調音表現、新公開音声-評点対応が成立する場合の知覚資格研究。"
+}

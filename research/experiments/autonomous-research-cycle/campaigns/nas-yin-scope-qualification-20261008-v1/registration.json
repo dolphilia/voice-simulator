@@ -1,0 +1,149 @@
+{
+  "campaign": "yin-scope-qualification-v1",
+  "status": "registered_before_output",
+  "question": "累積平均正規化差分の限定YIN型測定は新人工音響周期の20/40/80ms、変動、境界、無周期のどの範囲を守れるか。",
+  "estimator": {
+    "fs": 24000,
+    "fmin": 70.0,
+    "fmax": 800.0,
+    "threshold": 0.1,
+    "difference_width": "N-floor(fs/70)。全lagで同一幅。",
+    "selection": "最初の閾値未満谷まで下降し3点放物線補間。閾値未達は保留。",
+    "minimum_observation": "差分幅Wが選択した補間周期以上。満たさなければ保留。",
+    "fallback": false,
+    "full_YIN_step6_local_search_implemented": false
+  },
+  "fixtures": {
+    "windows_ms": [
+      20,
+      40,
+      80
+    ],
+    "phases": [
+      0.0,
+      "pi/3",
+      1.7
+    ],
+    "static_f0": [
+      80,
+      110,
+      160,
+      220,
+      280,
+      350,
+      400
+    ],
+    "static_forms": [
+      "sine",
+      "harmonic1to8",
+      "missing2to8",
+      "DC_offset",
+      "noise20dB"
+    ],
+    "dynamic_center_f0": [
+      80,
+      160,
+      280,
+      400
+    ],
+    "dynamic_slopes_semitones_per_second": [
+      -24,
+      -6,
+      6,
+      24
+    ],
+    "dynamic_forms": [
+      "sine",
+      "missing2to8"
+    ],
+    "boundary_f0": [
+      110,
+      280
+    ],
+    "boundary_forms": [
+      "sine",
+      "missing2to8"
+    ],
+    "boundary_edges": [
+      "onset",
+      "offset"
+    ],
+    "boundary_voiced_fraction": [
+      0.125,
+      0.5,
+      0.875
+    ],
+    "unvoiced_forms": [
+      "silence",
+      "DC",
+      "white_noise",
+      "lowpass_noise"
+    ],
+    "unvoiced_seeds": [
+      105001,
+      105002,
+      105003
+    ],
+    "random_seed": 1050050
+  },
+  "gates": {
+    "independent_difference_relative": 1e-12,
+    "independent_CMND_absolute": 1e-12,
+    "pitch_error_semitones": 0.5,
+    "static": "各窓×各form×各F0の全phaseで推定あり/誤差以内を全件要求。保留も不通過として保持。",
+    "dynamic": "窓中央の解析位相導関数Hzへ全件誤差以内。中央値や推定lag中心truthで救済しない。",
+    "boundary": "窓全体の周期truthがないので推定保留を要求。部分有声のHzをtruthにしない。",
+    "unvoiced": "全件推定保留を要求。",
+    "scope": "部分通過は事前group別の限定資格。全域/瞬時/知覚truthには移さない。"
+  },
+  "costs": {
+    "render": 861,
+    "dsp": 867,
+    "ai": 0,
+    "maximum_seconds": 6000,
+    "external_peak": 30000000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 8,
+    "audit": 12,
+    "render": 2000,
+    "dsp": 8000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "source": {
+    "links": [
+      "https://pubmed.ncbi.nlm.nih.gov/12002874/",
+      "https://librosa.org/doc/0.11.0/generated/librosa.yin.html",
+      "https://raw.githubusercontent.com/aubio/aubio/master/src/pitch/pitchyin.c"
+    ],
+    "paper_DOI": "10.1121/1.1458024",
+    "paper_fulltext_status": "著者PDFと大学hostは取得不能、出版社リンクも取得不能。要旨と公式実装資料の範囲で限定YIN型を独立実装し、原論文全手順再現とは呼ばない。",
+    "source_code_copied": false
+  },
+  "previous_review": {
+    "seconds": 84737.30534863472,
+    "scientific_completed": 18,
+    "path": "campaigns/nas-long-horizon-review-20261008-v3/decision.json",
+    "sha256": "2fc25ab2c5ffa57cc62e8cb5ae2c07001ad817843ea6da38d8f2f5b945e7f754"
+  },
+  "module_sha256": "542d3a81cb8e997c2ac049cf94cd2106793f9eca2ed6584a904e88c73f8e8bab",
+  "worker_sha256": "87fe20ce9ba4ff51d2e14347e3e49ce48cbe06c4b7801c023a81c3844fad4bed",
+  "controller_sha256": "48bab3343dcaf8b0e489a1995be391f095d2bd19aa0e4c77e77830e22db93739",
+  "old_measurement_sources_and_249_missing_and_judgments_unchanged": true,
+  "same_old_corpus_not_used_for_rescue": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "通過した人工範囲と未確認HTS音響を区別して次の共有制御へ進む。不通過域を同じfixtureの閾値変更で救済しない。"
+}
