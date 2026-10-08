@@ -1,0 +1,55 @@
+{
+  "campaign": "hts-minphase-mechanism-v1",
+  "question": "Pade-MLSAとは別のMCP→最小位相因果FIR経路を、解析複素応答・独立畳み込み・原HTS励振で検証できるか。",
+  "finite_IR": 1024,
+  "alpha": 0.55,
+  "cepstral_order": 1023,
+  "MCP": 35,
+  "frame": 240,
+  "sample_rate": 48000,
+  "interpolation": "出力時刻のIRを前frame→currentでj/240補間。過去の励振だけを参照。MLSAのb補間との差も新経路の仕様。",
+  "source": "原HTS pulse/noise/LPFを一回ずつ観測。原MLSAの内部生成もrenderへ別計上。",
+  "citations": [
+    "https://sp-nitech.github.io/sptk/latest/main/freqt.html",
+    "https://sp-nitech.github.io/sptk/latest/main/c2mpir.html"
+  ],
+  "fixture": {
+    "MCP_cases": 8,
+    "alphas": [
+      0.0,
+      0.55
+    ],
+    "FFT": 8192,
+    "complex_relative_error": 1e-08,
+    "prefix_absolute_error": 1e-10,
+    "tail_energy": 1e-14,
+    "convolution_absolute_error": 1e-11,
+    "original_wave_exact": true,
+    "render": 60,
+    "dsp": 64
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 12,
+    "audit": 12,
+    "render": 180,
+    "dsp": 192,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "max_expected_seconds": 3000,
+  "external_temporary_peak": 16000000,
+  "external_temporary_write": 32000000,
+  "controller_sha256": "790fdd7d0ac831608603d55e746cd08233c748ff73a133c6757a20dc9b2ae022",
+  "parent_source_sha256": "2efe2fb5c751efda4cd25f198b20672105fd4fede27aad97199a57850940f6f6",
+  "next_if_pass": "別契約の新日本語入力で原nativeとの全件生成/隔離/CLI/二ASRを比較。実MCPごとのtail/応答誤差を欠測を除外せず記録。",
+  "fixture_is_not_general_pitch_or_perception_truth": true,
+  "old_results_unchanged": true,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false
+}
