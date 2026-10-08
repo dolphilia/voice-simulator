@@ -1,0 +1,76 @@
+{
+  "campaign": "lf-source-mechanism-v1",
+  "question": "LF声門流微分の固定周期関数を、ゼロ面積/有限帰還/連続性/周期powerの定義と独立積分で非ニューラル実装できるか。",
+  "factor": "正規化T0=1、Tp=.4/Te=.6/Ta=.05/Ee=1固定。epsilon*Ta=1-exp(-epsilon*(1-Te))の正根、開相と帰還相の面積和0からalphaを求める。RMSは連続解析二乗積分で固定。",
+  "meaning": "LFは声門流微分モデルで、LF0基本周波数列の縮小/平坦化とは別。Rosenberg/有限差分の同係数救済ではない。生物測定による最適パラメータや日本語自然声と主張しない。",
+  "formulas": "開相E0*exp(alpha*t)*sin(pi*t/Tp)、帰還相-[exp(-epsilon*(t-Te))-exp(-epsilon*(1-Te))]/(epsilon*Ta)。閉相peak=-Ee、周期端0、面積和0。",
+  "controls": "同一固定phaseでC/独立Pythonを比較。各20人工条件+密phase gridの2実装42波形。声道/HTS/録音/教師/保存波形を使わない。入力で係数を選別しない。",
+  "fixture": {
+    "fs": [
+      24000,
+      48000
+    ],
+    "F0": [
+      80.0,
+      110.0,
+      220.0,
+      280.0,
+      400.0
+    ],
+    "phase": [
+      0.125,
+      0.731
+    ],
+    "seconds": 0.5,
+    "dense_phase_points": 4097,
+    "all_20_required": true
+  },
+  "thresholds": {
+    "root_area_continuity_and_endpoints_at_most": 1e-12,
+    "independent_quad_mean_and_power_at_most": 1e-12,
+    "C_Python_absolute_error_at_most": 1e-12,
+    "C_prefix_exact": true,
+    "nonnegative_flow_grid_tolerance": 1e-12,
+    "nonzero_fundamental_coefficient_above": 1e-06,
+    "invalid_phase_rejected": true
+  },
+  "scope": "固定一形状、固定phase入力の周期関数だけ。時間変動の源/声道、HTS混合励振/LPFへの結合、aliasing、自然さ、知覚pitchを資格付けしない。",
+  "estimates": {
+    "render": 42,
+    "dsp": 128,
+    "dsp_breakdown": "全20条件×5のphase/数値/有限/入力保持/前半照合と根/積分/連続/flow/Fourier等28監査",
+    "download_conservatively": 1000000,
+    "maximum_seconds": 6000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 12,
+    "audit": 12,
+    "render": 126,
+    "dsp": 384,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 3000000
+  },
+  "sources": {
+    "paper": "https://www.speech.kth.se/qpsr/1985/1985_26_4_001-013.pdf",
+    "reference": "Fant, Liljencrants & Lin (1985), STL-QPSR 26(4), 1–13。一次式を読んだ独自C/Python実装。Pink TromboneやGPL派生コードを取得/コピーしない。",
+    "previous_seal_sha256": "697c28b355ef9189e1c70aaf307dcd55af87dd63d8bfd6f36d5d543acf83b64b"
+  },
+  "c_sha256": "9d3dbf6d7cc0ab46bf8f585fd564abe7735ea00e2101e7f67e25daed5444d128",
+  "module_sha256": "b7e6cfb0eacc90e73325e91aa6789799d8c61ece04423b05fb72e4f05cfbde7d",
+  "worker_sha256": "bd3d351c4a8d453152acd22106bd22b3af431150a3187796b99ecf472ecf1d30",
+  "controller_sha256": "fb2be346a87055b700f0f1948976acb8e029f0918577aa6d0d39678c878698e1",
+  "next": "科学30件の定期レビュー後、通過した限定LFを原HTS励振へ結合する独立機構を別登録。未通過を同係数/閾値で救済しない。",
+  "old_missing_and_all_frozen_routes_retained": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
