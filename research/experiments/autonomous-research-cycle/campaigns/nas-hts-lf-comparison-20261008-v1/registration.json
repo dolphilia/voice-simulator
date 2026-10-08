@@ -1,0 +1,83 @@
+{
+  "campaign": "hts-lf-comparison-v1",
+  "status": "registered_before_output",
+  "question": "固定LFを有声LPF入力へ結合した候補が、新日本語で原nativeの内容/旧工学/固定支持を保持できるか。",
+  "variants": [
+    "native",
+    "lf"
+  ],
+  "conditions": {
+    "neutral": {
+      "speed": 1.0,
+      "requested_f0": 220.0
+    },
+    "higher": {
+      "speed": 1.15,
+      "requested_f0": 280.0
+    }
+  },
+  "factor": "元sqrt(period) impulseだけを、Tp=.4/Te=.6/Ta=.05/Ee=1の連続周期RMS=1固定LF derivativeへ置換。noise/RNG/LPF ring/元counter/period/全三stream/MLSAは保持。",
+  "phase": "元counter更新後、period補間前のfmod(counter/period,1)。有限/動的な周期面積0・antialiasing・自然声最適性を主張しない。LF0列縮小とは別。",
+  "fixed_control": "同共有Mei/labels/duration/MSD/state/variance/MCP/LF0/LPF・相対LF0と校正中央値・alpha.55/beta0/volume1・24k resample/12msfade/gain.25。波形別gain/係数/phase探索なし。",
+  "input": "全履歴非衝突の新16文(8短8長)×2条件×2方式64。出力前pool固定し最初のvalid非衝突を選ぶ。P5本文を読まない。",
+  "support": "nativeで一度固定した全音素支持を候補へ保持、欠測を分母から除かない。旧31方式/31,601支持/249欠測/二ASR各33群を保持。",
+  "gates": {
+    "engineering": "全件E0、旧DIO/全体ACF±1半音/confidence≥.6/固定支持3以上/不変量。",
+    "content": "二ASR各33群がnative以下、悪化相殺なし。",
+    "independence": "全64通常/隔離・CLI4・論理/物理資料/通信の実拒否。外部bundleは封印した個別実体だけ許可。",
+    "physical": "保存全32対の全frame MCP/LF0/LPF/duration完全一致、源時計/元励振/noise/phase hash完全一致、固定支持一致。処理励振だけ意図した因子。",
+    "measurement_scope": "旧工学操作的条件だけ。LF面積・周期観測・人工結合資格を未知日本語知覚/境界truthへ移さない。"
+  },
+  "estimates": {
+    "comparison_render": 96,
+    "comparison_dsp": 192,
+    "isolation_render": 192,
+    "isolation_dsp": 128,
+    "CLI_render": 6,
+    "CLI_dsp": 4,
+    "physical_dsp": 96,
+    "two_ASR_ai": 128,
+    "internal_MLSA_helpers": 98,
+    "total_without_retry": {
+      "render": 294,
+      "dsp": 420,
+      "ai": 128
+    },
+    "maximum_seconds": 11000,
+    "external_peak": 500000000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "source": {
+    "mechanism_seal_sha256": "a88f2311aaaa7e8507407c7b5f0ca3ebec604b2291ced9b477bbf9258a6e0e3f",
+    "LF_primitive_seal_sha256": "9efed5df66e544006389b4f1485073569bddbbd77b5d3c5ef92e843f7cd3167d",
+    "coupled_binary_sha256": "f46f5e4e228cfd21a9a7c6f2d4ee13ecee9f5b004346c06ab0d8f0baa81d3560"
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "setup": 30,
+    "audit": 40,
+    "render": 650,
+    "dsp": 1800,
+    "ai": 384,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "failed_consumption_retained": true,
+  "coefficient_search_after_output": false,
+  "controller_sha256": "21abc06450b820cb13a2ec925f48edb3fb54c5507b7855c81b9f5aba5a224f4e",
+  "closeout_source_sha256": "d8a88cb0df5a238427e6fc79d865323c241a0e1370661d8cb7faaa58e2433ee0",
+  "base_seal_sha256": "5387bd7cdae0a9654087b625ebf7d058fdd4e0ed7a2e900184f5a8f1a8c3504f",
+  "old_failed_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
