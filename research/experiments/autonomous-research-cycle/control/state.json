@@ -22,7 +22,7 @@
     "inverse": 600
   },
   "counts": {
-    "setup": 530,
+    "setup": 532,
     "audit": 397,
     "render": 52455,
     "dsp": 72044,
@@ -8569,13 +8569,13 @@
         "download": 0
       },
       "counts": {
-        "setup": 1
+        "setup": 2
       },
       "start_seconds": 141870.76583886147,
       "start_write_bytes": 62407765819,
       "protocol_sha256": "843c08622928c98a308337fc0a8e554f34e18c8c568bac2ed270ffc08f8f6fdc",
-      "payload_bytes": 42956,
-      "closed": false,
+      "payload_bytes": 135194,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "management",
       "expansion_reason": null,
@@ -8586,18 +8586,64 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "setup:音声なしの新入力/全文ラベル衝突/全量計算": [
+          {
+            "id": "ac31e99f27194f4c975371be3b9f6606",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 142207.68052101135
+    },
+    "vtl-frozen-phrase-fixture-v1": {
+      "prefix": "campaigns/nas-vtl-frozen-phrase-fixture-20261009-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1200000000,
+        "setup": 20,
+        "audit": 20,
+        "render": 2571,
+        "dsp": 100,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "setup": 1
+      },
+      "start_seconds": 142230.47536683083,
+      "start_write_bytes": 62591528359,
+      "protocol_sha256": "166f4859cefa33f5faceee437b2e73ad128eb12e7ea84f6b5fd5ea543d6162af",
+      "payload_bytes": 736,
+      "closed": false,
+      "long_horizon_contract": true,
+      "purpose": "science",
+      "expansion_reason": null,
+      "attempts": {
+        "setup:固定全体比較の部分実行登録": [
+          {
+            "id": "96075301cdee4d91a30fbb6d80975dff",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
       "technical_retries": 0
     }
   },
   "jobs": {},
-  "payload_bytes": 9713654690,
-  "seconds": 142190.0406858921,
-  "write_bytes": 62479135901,
+  "payload_bytes": 9713747664,
+  "seconds": 142429.60666704178,
+  "write_bytes": 62638082776,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791490040.719996
+    "checkpoint": 1791490100.2859771
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -8698,8 +8744,8 @@
   ],
   "continuation_checkpoint": {
     "id": "review10-completed-C-partial-D-ready",
-    "active_campaign": "vtl-frozen-phrase-suite-registration-v1",
-    "next": "D登録をpush後、音声なしで新入力/全33群/全内部費を固定。",
+    "active_campaign": "vtl-frozen-phrase-fixture-v1",
+    "next": "fixture登録push後に未実施部分だけを実行。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -45496,6 +45542,43 @@
       "removed_files": 17,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-98068967f9eb4bdf8cff35e20980dc33": {
+      "owner": "additional-closeout-98068967f9eb4bdf8cff35e20980dc33",
+      "job": "ac31e99f27194f4c975371be3b9f6606",
+      "campaign": "vtl-frozen-phrase-suite-registration-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-98068967f9eb4bdf8cff35e20980dc33",
+      "purpose": "非保護履歴の入力前処理のみ",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "input-prepare-stderr.txt",
+          "bytes": 0,
+          "inode": 100319,
+          "device": 16777241
+        },
+        {
+          "relative": "input-prepare-stdout.txt",
+          "bytes": 33107,
+          "inode": 100318,
+          "device": 16777241
+        },
+        {
+          "relative": "inputs.json",
+          "bytes": 10552,
+          "inode": 100317,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 43659,
+      "peak_violation": false,
+      "removed_files": 3,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -46307,7 +46390,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 16969.85378909111,
+      "used_seconds": 17209.419770240784,
       "current": "D",
       "stages": [
         {
@@ -46334,7 +46417,7 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 1969.6546959877014,
+          "used_seconds": 2209.220677137375,
           "status": "running"
         }
       ]
@@ -46347,7 +46430,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 142190.0406858921,
+    "last_accounted_seconds": 142429.60666704178,
     "segment": {
       "stage": "D",
       "foundation_only": false,
