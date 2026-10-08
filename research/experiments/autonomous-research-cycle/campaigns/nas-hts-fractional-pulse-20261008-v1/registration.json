@@ -1,0 +1,87 @@
+{
+  "campaign": "hts-fractional-pulse-v1",
+  "status": "registered_before_output",
+  "question": "元pulseを対照に、周期内位置の整数丸めと共通遅延/線形/窓付きsincを分離して、位置誤差・固定支持・内容保護への因果効果を検証する",
+  "variants": [
+    "native",
+    "latency",
+    "linear",
+    "sinc"
+  ],
+  "conditions": {
+    "neutral": {
+      "speed": 1.0,
+      "requested_f0": 220.0
+    },
+    "higher": {
+      "speed": 1.15,
+      "requested_f0": 280.0
+    }
+  },
+  "factor_rules": {
+    "native": "元HTS励振、完全一致対照",
+    "latency": "周期pulseだけ4sample遅延、noiseと全時計不変",
+    "linear": "同遅延下でcell端数を2tap線形補間",
+    "sinc": "同遅延下で9tap raised-cosine窓sinc補間"
+  },
+  "phase_definition": "有声開始の原点0。それ以外はclip(counter+1-period,0,1)。native丸めと各補間の共通機械clock。瞬時F0/知覚truthと呼ばない。",
+  "energy": "各周期kernel二乗和period。出力gain.25、noise、MCP、LPF、全clock不変。出力後の音量調整なし。",
+  "fixed_control": "全方式calibrated LF0、原有声相対輪郭・未補完MSD・duration・全3stream byte不変。",
+  "input": "新16文×2条件×4方式=128。全履歴の文章/ラベル非衝突を波形前確認。P5未開封。",
+  "source": {
+    "url": "https://ccrma.stanford.edu/~jos/pasp/Windowed_Sinc_Interpolation.html",
+    "title": "Julius O. Smith, Physical Audio Signal Processing: Windowed Sinc Interpolation",
+    "retrieved": "2026-10-08",
+    "scope": "補間原理の一次解説。9tapの独自実装、最適設計や聴取品質の再現は主張しない。"
+  },
+  "support": "nativeから一度固定し全候補へ引継ぎ。欠測を除外しない。eligible/除外理由も保存。旧支持/249欠測と旧判定不変。",
+  "gates": {
+    "engineering": "E0、DIO/全体ACF両中央値±1半音、ACF confidence≥.6、固定支持3以上で全件確認。短窓/動的/知覚へ資格を拡張しない。",
+    "content": "二固定ASR各33群が原native以下。別コホートの悪化を相殺しない。",
+    "independence": "全128通常/隔離、CLI4、禁止資料/通信の実拒否。"
+  },
+  "estimates": {
+    "comparison_render": 128,
+    "comparison_dsp": 384,
+    "isolation_render": 256,
+    "isolation_dsp": 256,
+    "CLI_render": 4,
+    "CLI_dsp": 4,
+    "fixture_render": 24,
+    "fixture_dsp": 900,
+    "two_ASR_ai": 256,
+    "total_without_retry": {
+      "render": 412,
+      "dsp": 1544,
+      "ai": 256
+    },
+    "maximum_seconds": 11000,
+    "external_peak": 500000000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1800000000,
+    "write_bytes": 2800000000,
+    "setup": 30,
+    "audit": 40,
+    "render": 1400,
+    "dsp": 6000,
+    "ai": 768,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "failed_consumption_retained": true,
+  "controller_sha256": "a18a4bebd3b32a40a3f816e93386e0141ac50effd21db39a66cd8cf93861f26f",
+  "base_seal_sha256": "5387bd7cdae0a9654087b625ebf7d058fdd4e0ed7a2e900184f5a8f1a8c3504f",
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
