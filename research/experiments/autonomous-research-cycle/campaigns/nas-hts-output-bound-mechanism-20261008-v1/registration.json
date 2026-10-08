@@ -1,0 +1,53 @@
+{
+  "campaign": "hts-output-bound-mechanism-v1",
+  "question": "原生成を変えず、固定無記憶の出力制御は恒等域と上限を独立検証できるか。過大ピークの観測を新因子の動機として保持する。",
+  "factor": "最終共通gain.25後のabs(x)<=.5は恒等、外側sign(x)*(.5+.48*tanh((abs(x)-.5)/.48))。ceiling.98/knee.5固定。",
+  "controls": "MCP/LF0/LPF/duration、原励振/時計、alpha.55/beta0/volume1、resample24k/12msfade/gain.25は原HTS。オールパスは使用しない。波形別係数・gain推定なし。",
+  "thresholds": {
+    "scalar_absolute_error": 1e-14,
+    "native_exact": true,
+    "input_and_source_clock_exact": true,
+    "identity_region_exact": true,
+    "monotone_and_odd": true,
+    "double_peak_at_most": 0.98,
+    "float32_peak_below": 0.99,
+    "causal_prefix_exact": true,
+    "invalid_input_reject": true
+  },
+  "interpretation": "上限は任意有限振幅に対する設計性質。非線形で高調波/aliasやDC/内容が変わり得る。知覚品質・pitch・有限エネルギー保存を保証しない。",
+  "costs": {
+    "render": 39,
+    "dsp": 28,
+    "maximum_seconds": 3000,
+    "temporary_peak": 8000000,
+    "temporary_write": 16000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 3600,
+    "bytes": 200000000,
+    "write_bytes": 600000000,
+    "setup": 8,
+    "audit": 10,
+    "render": 117,
+    "dsp": 84,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "sources": {
+    "previous_comparison_seal_sha256": "87f58ac3425e83d3a39f0d1284383ca126580e3b6d5cfd3493b1926ce892c6da",
+    "native_mechanism_seal_sha256": "3aa4df0b54494c5b856aaa8b19fd8ca2cd664d4dd4d7a5e857a9cdd5407f267d",
+    "mathematical_rule": "自作の固定解析式。新しい人の評点、教師、保存音声のgain探索は使わない。"
+  },
+  "module_sha256": "94cf7865a46c052be7af246559e03f798207f70d08bfb27dc546157bf20a7346",
+  "fixture_sha256": "182b7e355b998acbf20929649ba87e25f6b754ed7dc6e87818878312229f02f3",
+  "controller_sha256": "205d9488cc027b34a0f8f33b3acfe0954ea8a0ea17008470e67c710bb2f177e3",
+  "next": "機構通過時に新16文native/soft_boundの64波形を生成前固定し、全件E0/旧pitch/支持/二ASR/通常隔離を比較。knee/ceilingの出力後探索なし。",
+  "old_allpass_FIR_glottal_fractional_results_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false
+}
