@@ -1,0 +1,53 @@
+{
+  "campaign": "hts-lpf-observation-v1",
+  "status": "registered_before_output",
+  "question": "確認済み224実パルスがLPF/MLSA/最終24k波形へ周期寄与としてどれだけ残るか。旧固定支持欠測94区間との関係を観測する。",
+  "causal_factor": "LPFのパルス寄与と独立shadowフィルタ状態。主生成の乱数/係数/状態/出力は書き換えない。",
+  "controls": "旧224WAVの全bytehashと旧period/counter/pulseの全配列完全一致。fixtureのLPF0/1を旧配列入口と比較。",
+  "input_split": "既存2コホート全HTS224件。新規選別なし。探索済み事後診断。P5未開封。",
+  "fixed_support": "旧全支持を保持し、欠測94を分母から除かない。短窓20/40/60msの全5ms時計と境界/edge/不足を保持。",
+  "gates": {
+    "old_wave_bytehash_all_exact": true,
+    "old_source_clock_all_exact": true,
+    "fixture_zero_unit_LPF_pass": true,
+    "energy_identity_relative_tolerance": 1e-12
+  },
+  "normalization": "固定48k primary/24k resample_poly/12ms fade/0.25利得/float32。周期寄与にも同じ線形後処理。正規化係数の探索なし。",
+  "missing": "未観測/失敗は全分母に保持。旧DIO/ASR/資格を変更しない。",
+  "energy": "周期寄与と(出力−周期寄与)の残差、cross項を区別。エネルギー単純加算/知覚pitchの資格へ広げない。",
+  "source_license": "既存の対応HTS BSD noticeを同梱。新規依存/取得0。",
+  "limits": {
+    "seconds": 14400,
+    "bytes": 1500000000,
+    "write_bytes": 1800000000,
+    "render": 1000,
+    "dsp": 6000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0,
+    "setup": 40,
+    "audit": 60
+  },
+  "estimates": {
+    "actual_render": 232,
+    "conservative_render": 1000,
+    "actual_DSP": 1804,
+    "conservative_DSP": 6000,
+    "data_outputs": 200000000,
+    "retry_outputs": 900000000,
+    "temporary_peak": 16000000,
+    "total_peak": 1116000000,
+    "includes_cleanup_aggregate_seal_Git": true
+  },
+  "technical_retry_per_job": 2,
+  "technical_retry_campaign": 10,
+  "ram_gb": 8,
+  "parallel_max": 2,
+  "independent_generation_requalification": false,
+  "new_ASR": 0,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "protected_confirmation_opened": false
+}
