@@ -1,0 +1,180 @@
+{
+  "question": "単独aiuの訓練適合が、新しいk/t/s系の短3/長4モーラ語の内容・工学へ移転するか。既知CV不通過を保持する。",
+  "scope": {
+    "short": 4,
+    "long": 4,
+    "conditions": {
+      "neutral": {
+        "F0_Hz": 140.0,
+        "speed": 1.0
+      },
+      "higher": {
+        "F0_Hz": 180.0,
+        "speed": 1.15
+      }
+    },
+    "methods": [
+      "native",
+      "baseline",
+      "learned"
+    ],
+    "expected_normal": 48,
+    "expected_isolated": 48,
+    "CLI": 3,
+    "groups_per_ASR": 33,
+    "challenge_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "uncovered_challenge_groups": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "not_full_Japanese_or_long_sentence": true
+  },
+  "candidate_frozen": {
+    "model_path": "vtl-shared-aiu-model-20261009.json",
+    "model_sha256": "558ea6862bc75633eba6587ffd28071cd87542888e5a15492c20a41d686c4adf",
+    "CV_runtime_bundle_manifest_sha256": "27a12d337b3e6ca471121b1720552496b3eeb80ea17c4421fa2622b520cae292",
+    "shared_parameters_learned": 6,
+    "e_o_trained": false,
+    "old_lower_short_failures_and_CV_gates_not_rescued": true
+  },
+  "role": "出力前一度の未使用選別。参照/開発/P5へ再ラベルしない。",
+  "pool_selection": "各長さの固定順から、文字正規化/全文ラベル非衝突・対象かな/音素・短3/長4モーラを満たす最初4件。音声結果で選ばずuも除外しない。",
+  "gates": {
+    "E0": "旧acoustics全E0",
+    "pitch": "旧measurement.pyのDIO/stonemask・独立全体ACF±1半音/conf.6。nativeで固定した有声phone-indexを全方式自身の時計へ適用し、最低3音素・各3frame/半数以上、全欠測を保持。",
+    "content": "旧grouped関数の二ASR各33系列。0分母のgroup4..7は不通過として保持。対象部分の非悪化を全33群通過へ拡張しない。learned対baselineの同コホート差も別表に保持。",
+    "invariance": "通常/隔離48件同一hash、最初の短neutral一件×三方式の単独CLIを隔離実行、過去論理/外部実体/参照/原HTS/通信の実拒否",
+    "no_post_output_adjustment": true
+  },
+  "source_gains": {
+    "native": 0.25,
+    "VTL": 0.5
+  },
+  "timing": "VTL前後各50ms、一モーラ320ms/speed、CV子音80ms/speed。native旧HTS自身のstate時計。音源/声道/gain/時計同一を方式間で主張しない。",
+  "resources": {
+    "stage_D_render_allocation": 36000,
+    "first_sample_fixture_reused": true,
+    "retained_waveforms_bytes_at_most": 20000000,
+    "work_peak_bytes": 32000000,
+    "work_write_bytes": 64000000,
+    "job_reserve_bytes": 100000000,
+    "RAM_observed_limit_bytes": 8000000000,
+    "process_group_RSS_sampling_seconds": 0.05,
+    "continuous_exact_peak": false,
+    "total_reserved_render_computed_before_output": true,
+    "AI": 96,
+    "new_fit": 0,
+    "new_inverse": 0,
+    "control_index_Git_failure_included": true
+  },
+  "staging": "管理登録/前処理は科学回数を増やさない。小入口1campaign、通常4/隔離4のバッチ、二ASR2campaignへ分割。科学6終了レビューを途中で先に実行。全体分母/時計/配分は分割で初期化しない。",
+  "P5_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "controller_sha256": "3e17f5127c9841a3810745e465cf53b0da03c395bc1beedcb4641eb7c2ee43e1",
+  "history": {
+    "research/experiments/local-f0-projection-revision/results/nas-local-f0-projection-20261003-v1/protocol.json": "3fc4185d792074fdebc73d46abe376fa4626cd4938865a9e6c90032dc67467c7",
+    "research/experiments/waveform-local-f0-reachability/results/nas-waveform-f0-20261003-v1/protocol.json": "68f857669b0ee1eecc140e40af15674118b9ab0e839ee7ed9536f81e85d5ae4f",
+    "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/relative-protocol.json": "9131f11c542189b316b3767ac455e969c33784e73838dd7ebff8b146ce29ef1b",
+    "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/protocol.json": "c200977d0cc5934f989d7e628de7c71630f97d938387e5e7bdc667e2209479c1",
+    "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/bounded-protocol.json": "7824abce7b6f877a0dcd69bb31d85bed09c298e528b1b0b9774fc9a7ce623154",
+    "research/experiments/neural-control-extension/results/nas-extension-20261002-v1/acoustic-revision/render-protocol.json": "91c13d8853b22f4852bc0b1afeeab6eccf9357a15cd39183cea10d1f41cf63a4",
+    "research/experiments/acoustic-revision-content-evaluation/results/nas-content-20261002-v1/protocol.json": "ae8a9583f160e445192d55630e78804cf0beccbd2316e701a1146c0190b58a59",
+    "research/experiments/local-f0-transfer/results/nas-local-f0-20261003-v1/protocol.json": "aaf0ce8eedef0fa6892d3859529618f398379fba9b698efcffe98ce0a63617c3",
+    "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/hts-transfer/protocol.json": "4900435604a6715f9648f9e0676f4e21ce1feff7150b7159cf52c4593a0f9029",
+    "research/experiments/neural-control-distillation/results/nas-pilot-20261002-v1/natural-comparison/protocol.json": "3e5edc94ba65b4fae80ee9c40588ab5d079f546cdf82250824925733c7ab3f63",
+    "research/experiments/waveform-target-shared-control/results/nas-wave-target-shared-20261003-v1/protocol.json": "6ec191307dfce83036b53e1ff0290b39d7d187ead6e3517e5aa9438731b39e1f",
+    "research/experiments/acoustic-control-factorial/results/nas-factorial-20261003-v1/protocol.json": "a395a5b9eae2098c8abeaf5dae7cbab5fdcad1689f0f07526c5e7968a6432f13",
+    "research/experiments/guarded-waveform-reachability/results/nas-guarded-f0-20261003-v1/protocol.json": "6a0d7175c104f71c2af98de81113b2cd535951e2e6c8db5892adc869164df22f",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-source-identity-20261004-v1/protocol.json": "4ea5ae5f96b3c686d5683f17644b477de26201057a9c405b6229a137778ff139",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-world-control-20261004-v1/protocol.json": "73854ba1eb7278c5deb0b8f5259cfa203d79ba474f338758912034ffd3ebcbc7",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-japanese-teacher-20261004-v1/protocol.json": "695781df7d444b04af93d56c636f6ce61b5bda10c32e3315b541624eef77dfd6",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-boundary-policy-20261005-v1/protocol.json": "1cea91d63fdeeed352e10bcd9b8ef2296566d7391932a1a342015a332e89f37b",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-spectral-control-20261005-v2/protocol.json": "553338200b17ab5e1e8afb7e0e0688abfb7c63a7ca34b095886b2461d6a1a5da",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-spectral-coverage-20261005-v1/protocol.json": "a7c21b9cc07128e0295bc0105f1ba99887082a3055e13cf4851237a0e4bf173e",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-timing-control-20261005-v1/protocol.json": "004d484635aba1a696aed8fc1c003a7b35a209024cb7b2f8691b870d896c1f4d",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-timing-event-preservation-20261005-v1/protocol.json": "f6dd432f922865ac05fdae622e2a6e209c3f41a0c81a715cbf530730aa202fb4",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-prosody-only-20261004-v2/protocol.json": "b7f53b8d48615ecc930f8d78599fc2f00dcfbfc7c45657b25157a0b3a589f57d",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v2/protocol.json": "9218ffb6e52e0208ca4acfb74f79fd0d94debaf78e644b69d00f5cdcf9d47ca1",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-partial-spectrum-20261004-v1/protocol.json": "1d1383ed89c2aaa57800ff0b46cd999b1e00a26a6aa1dc8be90287a3384578f0",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-post-mlpg-timing-20261005-v1/protocol.json": "48cd4ad3cb6d7e0a6067b116118c497b9dcb4321d47c396717fc311ad8b9935b",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-absolute-f0-20261008-v1/protocol.json": "9c0206fb4f6615d103497ee618f3cb721f110b8bb5396c3f10ca03950d853c5a",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-voicing-ap-20261008-v1/protocol.json": "0208da9bf15556ba6dd23bb394cc48660233ac274c5a31bd8c3bc367c3ddec41",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-window-audit-20261008-v1/protocol.json": "c9c18730b1ca295b58274f8360a493696a4c7bf11a005f25fcc73eb0f4b993d4",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-fir-gain-comparison-20261008-v1/protocol.json": "9251361e287fe3cd97bd0f9a636dd4b0836ed5e08835be1f149b955647754090",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-glottal-shape-20261008-v1/protocol.json": "d2bf33931daff91f83911d127acacde80ab8cf7cb13cfd1bbdba0430f1e1b539",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-acoustic-model-comparison-20261008-v1/protocol.json": "73e95680dfb14aae33952b9d73139d2b14421bc0fc40e937f7d5077b014b0e17",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-world-original-reproduction-20261008-v1/protocol.json": "3f1be513afc7ac09a7e46d307b64ab8219a05bef5773c9cddb725230601b0771",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-overlap-qualification-20261008-v1/protocol.json": "745f8a9552c8384980f197abd76a593136b94800850683abdb24a4fa164eaea8",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-gv-ablation-20261008-v1/protocol.json": "17c247f01599d75fd17710b455af5494a133b5677e5fa4d68b8937479e3c5bee",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-support-excitation-audit-20261008-v1/protocol.json": "1a28a98bbbc79e99cde1fb56d2382e38919f516dacbc2b5f46fc2218fe59826d",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-output-bound-comparison-20261008-v1/protocol.json": "6a7d55712377ef2238c6b302a70f26739138fbf9285ace6dc939353b5fbf3bef",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-minphase-comparison-20261008-v1/protocol.json": "e82feb5586ed47d99330e1dc4076401b964e7ca1f6fb1c684aedd2506ac2db69",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-allpass-comparison-20261008-v1/protocol.json": "2fc80e34aa518ac130def5eb81695e72955515ef1a980d3e0a1d07f67a4c4c04",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-gv-ap-interaction-20261008-v1/protocol.json": "165bd07c08e7d03aa6cf3d65cf4509615bf5daeb6a07120f29ee56b5dd5cc9cf",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-fft-fir-comparison-20261008-v1/protocol.json": "d1cdd60df05172b58f12b8e7529655f0aded58ff4bbbd4c152d699d2ca739297",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-lf-comparison-20261008-v1/protocol.json": "583bd2aa9456ed30e8687f457cf194e5c49afc8fc19d8fe6248b1f34eb8078e7",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-mcp-postfilter-20261008-v1/protocol.json": "7d65b5417224088a1d56126b66c5cbc78eab88312b15089018e07c4f7044a2da",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-waveguide-vowel-comparison-20261008-v1/protocol.json": "6cf9c615c0494a9360d6fd9e089136096aab52fb3c510a9d40e407bca6a4803a",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-lpf-observation-20261008-v1/protocol.json": "40cc0a4a69f5ad135b29d203d09198914316ad7d5c887a1f46409b7b8e2892a6",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-pitch-measurement-20261008-v1/protocol.json": "aeb25aa0d40f0a0dd5831053ca6fc23a07a0a4c133ff6cd83325c58aae53630a",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-glottal-difference-20261008-v1/protocol.json": "c1c42f4f433b8042f01ba83c82e2185fb5eb8729d4eac211a48a7bc0bb929d5d",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-world-excitation-audit-20261008-v1/protocol.json": "c1c18dca21ecf638acae5ac7f1cb74f1dc8ee2f682df309d8b1b7c8bf0ede632",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-fujisaki-context-comparison-20261008-v1/protocol.json": "e2740451f2c9421d65c8b93f3e4e19adebe1ad3823890da7c125baecc31a9b22",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-tohoku-comparison-20261008-v1/protocol.json": "a78742dc0d4050fdd97cb223532ea1bcc7f7d39c1f709fd76796270c20716065",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-sinc-normalization-20261008-v1/protocol.json": "cd129be1754d4294cd3a09e18279800dc9cd78168aebf3ee2238571c83547291",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-fractional-pulse-20261008-v1/protocol.json": "1f791cb7e44ccc0c17a439b4bba015dd0da8d185cb4912f520330aeaf8b636ad",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-vocoder-f0-20261008-v1/protocol.json": "45dc6d3058a98a5a27d6dca2575b07580936467665ef3a017a39108472fc0191",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-filter-warp-20261008-v1/protocol.json": "8cebea5402a3e93e4bf1a54996b20b6111bf4de7cc97d7bb283b17c4846fab3b",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-hts-lf0-contour-20261008-v1/protocol.json": "a636c7ac6e71bda1b168d2c79c51024d2745c07aad8a43b325677fd0f30ce1a6",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-source-period-audit-20261008-v1/protocol.json": "ea5737b2ae7f1ecbc8d0dcfa09f543dd240db82e25876ec4855681879a4e3014",
+    "research/experiments/autonomous-research-cycle/campaigns/nas-radiated-waveguide-comparison-20261009-v1/protocol.json": "47afe5d5a5a249f9b307d40ba672ab3d48352550c2ea44a4ffd259e12bf2613c"
+  },
+  "pool": {
+    "short": [
+      "答え",
+      "臭い",
+      "奇跡",
+      "確か",
+      "かかと",
+      "高さ",
+      "硬さ",
+      "逆さ",
+      "袈裟",
+      "世界"
+    ],
+    "long": [
+      "挨拶",
+      "大切",
+      "色彩",
+      "催促",
+      "掛け方",
+      "立て方",
+      "貸し方",
+      "戦い",
+      "たくさん",
+      "朝方"
+    ]
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 200000000,
+    "write_bytes": 1200000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 0,
+    "dsp": 0,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  }
+}
