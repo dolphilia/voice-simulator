@@ -1,0 +1,106 @@
+{
+  "campaign": "waveguide-tract-mechanism-v1",
+  "question": "正の断面積から独立した二方向伝搬を実装し、静的圧力波の連続条件/解析応答/動的正規化エネルギー/因果性を検証できるか。",
+  "factor": "波インピーダンスR=rho*c/A、k=(A_left-A_right)/(A_left+A_right)。正規化波の透過sqrt(1-k^2)と反射±k、各sectionの一標本遅延。",
+  "boundary": {
+    "glottal_reflection": 0.75,
+    "lip_reflection": -0.85,
+    "observed_lip_pressure_factor": "1+lip_reflection",
+    "fs": 48000.0,
+    "sound_speed": 343.0,
+    "main_sections": 24,
+    "main_length_cm": 17.15
+  },
+  "controls": "固定設計の終端反射、駆動はunit impulse/固定seed noise。波形別利得/係数探索/HTS/HMM/録音/教師/lookupなし。",
+  "fixture": {
+    "static_geometries": [
+      "uniform1",
+      "2-1.8*Gaussian(center.25,width.09)",
+      "2-1.8*Gaussian(center.75,width.09)",
+      "前半.1/後半4"
+    ],
+    "static_drivers": [
+      "impulse",
+      "noise"
+    ],
+    "samples": 8192,
+    "dynamic": [
+      "ramp",
+      "sine(period2048)",
+      "step(at2048)"
+    ],
+    "causal_cut": 4096,
+    "uniform_sections": [
+      8,
+      16,
+      24
+    ],
+    "frequency_bins": 512,
+    "area_range_cm2": [
+      0.05,
+      12.0
+    ]
+  },
+  "thresholds": {
+    "independent_output_and_energy_error": 1e-10,
+    "uniform_analytic_error": 1e-12,
+    "complex_pressure_matrix_response_error": 1e-09,
+    "unforced_energy_increase_at_most": 1e-10,
+    "future_input_and_geometry_prefix_exact": true,
+    "input_bytes_exact": true
+  },
+  "scope": "正の固定/動的断面積の正規化波primitiveだけ。正規化状態は形状変更時にもpassiveだが、移動壁の機械仕事を含む物理圧力エネルギーとは同一視しない。閉鎖/鼻腔/粘性/熱/放射/生理声門/音素制御/日本語自然さは未資格。",
+  "costs": {
+    "charged_render": 80,
+    "charged_DSP": 256,
+    "download_conservative": 3000000,
+    "maximum_seconds": 6000,
+    "temporary_peak": 16000000,
+    "temporary_write": 32000000,
+    "RAM_gb": 8
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 300000000,
+    "write_bytes": 800000000,
+    "setup": 16,
+    "audit": 16,
+    "render": 240,
+    "dsp": 768,
+    "download": 3000000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0
+  },
+  "sources": {
+    "primary_book": "Julius O. Smith III, Physical Audio Signal Processing, 著者書籍の公開Web版",
+    "public_pages": [
+      [
+        "normalized-scattering",
+        "https://www.dsprelated.com/freebooks/pasp/Normalized_Scattering_Junctions.html"
+      ],
+      [
+        "pressure-scattering",
+        "https://www.dsprelated.com/freebooks/pasp/Plane_Wave_Scattering.html"
+      ],
+      [
+        "ideal-acoustic-tube",
+        "https://www.dsprelated.com/freebooks/pasp/Digital_Waveguide_Models.html"
+      ]
+    ],
+    "formula_implementation_independently_authored": true,
+    "third_party_source_code_downloaded": false,
+    "previous_comparison_seal_sha256": "52be335ce27ed1a6a5ae997ddc09e0ceffe8c50410e41277c39a378305465308"
+  },
+  "c_sha256": "fd6ef8dcf98c5fb22d1e0ef2ee28278f3d28ac1d6086b6592ccd8957713a354a",
+  "module_sha256": "503d64dc4b0443ffcd1f337dae5871e0368b9212f4b87e2d8f3d71e5a807cce4",
+  "worker_sha256": "141149a2b74e6d746487c159f245b4a59056fdaf86493461559efbea38e534fa",
+  "controller_sha256": "28926395c280b65339519f8e755638cb599e0b40369b363e73972fa5c2ad0c7f",
+  "prior_Fujisaki_same_cohort_coefficients_command_times_median_gain_frozen": true,
+  "all_inherited_frozen_routes_kept": true,
+  "perceptual_qualification": false,
+  "protected_confirmation_opened": false,
+  "quality_goal_completed": false,
+  "next": "科学36件の第6回レビュー。通過時は一次測定に基づく共有声道形状/音素指令を別登録し、人工断面を母音正解と扱わず生成制御へ進む。"
+}
