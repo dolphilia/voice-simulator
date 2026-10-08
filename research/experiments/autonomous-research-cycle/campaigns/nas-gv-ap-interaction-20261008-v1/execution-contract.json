@@ -1,0 +1,56 @@
+{
+  "protocol_sha256": "165bd07c08e7d03aa6cf3d65cf4509615bf5daeb6a07120f29ee56b5dd5cc9cf",
+  "registration_sha256": "91d2ab6b4ed9ebfe5cc8365b2e429703b07fae48c32e908ccee5ded9df730fa2",
+  "source_hashes": {
+    "asr_worker.py": "71a81f151b1c143f3447ee30837bb8c80a5adbaf2a1a6f0028f82e8b5eb26463",
+    "closeout.py": "41e3c6d034c5e7febb50b2db9c865e521446217f22dacc9020e648b824afe85e",
+    "controller.py": "1b06c5f47170fe1af09953c7db7692b279bbbad914b83551600ea18d78895a94",
+    "controls_v2.py": "23b26d8453b77e404a0ae005d69ead50fdaa4f0655476b4078fd0e9579fc150c",
+    "gv_control.py": "9fdef94b962535d3a9e0b4e3edaf80781d751ac32b41c2a12fe2b372c3b88702",
+    "measurement.py": "7473612cca26b3f69b547723aa4d0033803aa9ee483a37abf677b987e3766be1",
+    "paths.py": "3d194be207eed4223b77c42ed73a04bd90a1aea42ee1c7c40626e7d03e93667f",
+    "period_measurement.py": "25b3110581bc960b46da3fb4106370b12e40789963c5d32a25b579c5dfe42c53",
+    "preflight.py": "68856b6a6352566a5fa976dc22f2d1ac4283f3a2a23f5c3c026ad4d51176e39d",
+    "prepare.py": "a509a6d01f34bd564331da8ddfe6ad3f420021ef5bfb502c62864b1daf55f564",
+    "runtime.py": "b685865e1e4f45c7f49a471cf0eb420ad3c69240ff4ae235374b317c85084220",
+    "runtime_batch.py": "9e011bbef8853eac50d5b618502bd5cf8f37e82afb3e12859bbe9ce792abd69f",
+    "summarize.py": "610ada9fecfc332ba3b28be1ef13bce3fe116c1993cd543e4f3da82ba0b0c448",
+    "temporary_storage.py": "200112d705dc1fbce9d402988b9b545bad6c14084798455d2d87b073c8f64e3e",
+    "test_controls.py": "3448d910bf0e7b3be12c971830fcd76725fc182f12845964863281b1a142b949",
+    "voicing_world.py": "10e03ffa23d606be810f1db8050b4a42ab5a7f08bb23fbeaf2aae7479b5c5e21"
+  },
+  "runtime_manifest_sha256": "a81326574c7cf9ec8ef3c5981bc1876d31978a683a9a22d79856bcb8f539a362",
+  "engine_contract_sha256": "66f539ec69aae8a01b470fcbe30b1c1be8beb03410ae205ac017a25df8d76f47",
+  "output_gain": 0.25,
+  "native_half_tone": "12*log2(requestedHz/220)",
+  "absolute_calibration": "補完後の有声LF0へ一律log偏移、原有声相対輪郭保持",
+  "fill_rule": "lowercase母音と有声共鳴音の音素区間でnative LF0の有声frameが3以上なら、その音素内のsentinelだけを同一音素の有声LF0からlog線形補間、端は最近値で補完。uppercase脱声母音・無声阻害音・休止は保持。保存支持/波形/発話IDを条件に使わない。補完後に同じ絶対中央値校正。",
+  "renderer_rule": "native基準無改変。他はLF0 GVオフと既存LF0補完/中央値校正を固定、MCP GV有無×既存AP係数1/0.5、β0・WORLD・gain.25。出力後調整なし。",
+  "AP_noise_power_factor": [
+    1.0,
+    0.5
+  ],
+  "MCP_postfilter_beta": 0.0,
+  "alpha": 0.55,
+  "GV_disabled_streams": [
+    [],
+    [
+      "LF0"
+    ],
+    [
+      "MCP",
+      "LF0"
+    ]
+  ],
+  "GV_flags_proof_sha256": "c359729369904fb227b4fc214bfe69cff978e02634f0821bb1f5a0593ad61f7b",
+  "GV_C_sha256": "0afe98ababfaa5539986e23a8b164363a9ad3f8c7d71d86916be3b98fc78a975",
+  "factor_baseline_byte_exact": true,
+  "renderer": [
+    "WORLD"
+  ],
+  "waveform_transfer": "pipe/メモリ。子の一時音声ファイルなし。",
+  "tmp_maximum_bytes": 8000000,
+  "tmp_maximum_write_bytes": 16000000,
+  "fixed_before_first_wave": true,
+  "quality_certified": false
+}
