@@ -1,0 +1,77 @@
+{
+  "question": "native参照のF0と母音の生成長を変えた新訓練条件で、五母音の固定波形診断を満たす共通条件があるか。旧120/160Hz・speed1.0の学習コホートを救済しない。",
+  "controller_sha256": "7d27ca000a30d8c766c6d6f116dd2bf6b0bc7ef1e9ea6f596079dd75f3152b8b",
+  "native_source_manifest_sha256": "21550720800f0a4362b803a6f97b36ad89e65b829057440a04dff4a4b3dbf0b6",
+  "conditions": [
+    {
+      "id": "higher-normal",
+      "speed": 1.0,
+      "F0_Hz": [
+        220,
+        280
+      ]
+    },
+    {
+      "id": "lower-longer",
+      "speed": 0.5,
+      "F0_Hz": [
+        120,
+        160
+      ]
+    },
+    {
+      "id": "higher-longer",
+      "speed": 0.5,
+      "F0_Hz": [
+        220,
+        280
+      ]
+    }
+  ],
+  "condition_selection_priority": [
+    "higher-normal",
+    "lower-longer",
+    "higher-longer"
+  ],
+  "selection": "一条件で五母音二F0の全10参照が同じE0/F0支持を通過したものだけを候補とし、事前優先順で最初の一条件を次契約の訓練候補にする。次契約では実VTL適格性も新条件で検証する。全不通過なら新条件も採択せず別経路。",
+  "roles": {
+    "train_qualification": "再使用nativeモデル/母音入力による新条件の診断。教師内部時計は真の音素境界ではない。",
+    "old_lower_short": "i/uの固定120/160・speed1を保持し再生成/再判定しない。e/o同条件は予約不足で未実施、未知のまま。a旧grid未生成。",
+    "development_and_unused_selection": "未使用。旧結果と異なるコホートの率はpoolしない。",
+    "P5_opened": false
+  },
+  "gates": "中央生成state60%・旧測定器のE0、DIO/stonemaskとACF±1半音/confidence.6、DIO3frame以上/有声半数以上。一母音診断のみ。",
+  "gain": 0.25,
+  "estimates": {
+    "native_render": 30,
+    "DSP_macro": 300,
+    "fit": 0,
+    "inverse": 0,
+    "retained_WAV_bytes_at_most": 6000000,
+    "JSON_bytes_at_most": 1000000,
+    "work_peak_bytes": 64000000,
+    "work_write_bytes": 128000000,
+    "render_job_reservation_bytes": 96000000,
+    "DSP_job_reservation_bytes": 2000000,
+    "logs_at_most": 2000000,
+    "RAM_at_most": 1000000000,
+    "control_index_failed_job_Git_included": true
+  },
+  "technical_stopping": "同じ失敗ラベルで追加一回を上限64render/640DSPの開始前枠内に確保。成功ラベル再使用/科学不通過の技術再試行はしない。",
+  "limits": {
+    "seconds": 3600,
+    "bytes": 256000000,
+    "write_bytes": 800000000,
+    "setup": 6,
+    "audit": 6,
+    "render": 64,
+    "dsp": 640,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "quality_goal_completed": false,
+  "original_condition_failure_not_rescued": true
+}
