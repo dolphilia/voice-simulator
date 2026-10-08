@@ -1,0 +1,138 @@
+{
+  "campaign": "viscothermal-reference-v2",
+  "question": "一次の粘性/熱/壁の周波数式をCGSとSIで独立再現し、正の散逸と円管二portの受動性、共有母音の周波数参照を因果実現に先立って固定できるか。",
+  "primary": {
+    "previous_seal": "7164fa6ca5c340c16b45e0d084e404e361924424bf811fde93f50dd230b8ee47",
+    "PDF": "f77622f43f06c969171fa71a5070a90da7ff926c38437ed9981a63e5d1f469a0",
+    "equation_page_image": "6effe485cc80b735ed649da6712e78d295db96a87f596622dea34f485040474b",
+    "propagation_page_image": "bcec9802fdc93f6578ccaafdd0de7b459d71a6ee526c710068c1531970f54a33",
+    "DOI": "10.1250/ast.29.130",
+    "PDF_page2_printed131_visually_checked": true,
+    "PDF_page3_printed132_visually_checked": true,
+    "equations": [
+      "L=rho/A",
+      "C=A/(rho*c^2)",
+      "R=(S/A^2)*sqrt(omega*rho*mu/2)",
+      "G=.4*S/(rho*c^2)*sqrt(omega*lambda/(2*cp*rho))",
+      "Ywall=S/(1400+1.6*j*omega) in CGS (Suzuki eq1)",
+      "Zc=sqrt((R+jwL)/(G+jwC+Ywall))",
+      "gamma=sqrt((R+jwL)*(G+jwC+Ywall))"
+    ]
+  },
+  "constants": {
+    "primary_CGS": {
+      "rho_g_cm3": 0.00114,
+      "viscosity_dyn_s_cm2": 0.000186,
+      "thermal_cal_cm_s_deg": 5.5e-05,
+      "cp_cal_g_deg": 0.24,
+      "c_cm_s": 35800.0,
+      "wall_R_dyn_s_cm3": 1400.0,
+      "wall_M_dyn_s2_cm3": 1.6
+    },
+    "primary_SI": {
+      "rho_kg_m3": 1.14,
+      "viscosity_Pa_s": 1.86e-05,
+      "thermal_W_m_K": 0.023012,
+      "cp_J_kg_K": 1004.16,
+      "c_m_s": 358.0,
+      "wall_R_Pa_s_m": 14000.0,
+      "wall_M_kg_m2": 16.0
+    },
+    "main_SI": {
+      "rho_kg_m3": 1.2,
+      "viscosity_Pa_s": 1.86e-05,
+      "thermal_W_m_K": 0.023012,
+      "cp_J_kg_K": 1004.16,
+      "c_m_s": 343.0,
+      "wall_R_Pa_s_m": 14000.0,
+      "wall_M_kg_m2": 16.0
+    }
+  },
+  "unit_conversions": {
+    "cm2_to_m2": 0.0001,
+    "rho_g_cm3_to_kg_m3": 1000.0,
+    "dyn_s_cm2_to_Pa_s": 0.1,
+    "cal_cm_s_deg_to_W_m_K": 418.4,
+    "cal_g_deg_to_J_kg_K": 4184.0,
+    "cm_s_to_m_s": 0.01,
+    "wall_specific_impedance_CGS_to_SI": 10.0,
+    "gamma_CGS_to_SI": 100.0,
+    "tube_characteristic_impedance_CGS_to_SI": 100000.0
+  },
+  "choices": "原論文のCGS定数をそのままSIへ変換して同一性を検証。主参照は旧SI源のrho1.2/c343を固定し、残りは一次値。wallは連続なSuzuki式1を事前選択。原論文が用いた周波数325Hzで分かれる式2や掲載MRI/fit係数/語句を再現したとは主張しない。円形S=2sqrt(pi*A)、長さ1cm。",
+  "fixtures": {
+    "areas_cm2": {
+      "first": 0.75,
+      "last": 12.0,
+      "points": 65
+    },
+    "frequency_Hz": {
+      "first": 70,
+      "last": 4000,
+      "step": 1,
+      "points": 3931
+    },
+    "modes": [
+      "lossless",
+      "air",
+      "air-wall-Suzuki"
+    ],
+    "grid_points": 766545,
+    "shared_vowels": [
+      "a",
+      "i",
+      "u",
+      "e",
+      "o"
+    ],
+    "diameters": "cb0d99ede76ca69927a71a0e5450f4aaff8e6075db2207d84cc98bfbb96b71bc",
+    "flanged_radiation": "8639d5d9f5ae25841967e3c903c7c1dc00fc87edc0b698c7026ba5aad67c3094",
+    "vowel_reference": "continuous frequency-domain full lossy chain; ideal Us to mouth U; same geometry and source boundary, no WAV or fit"
+  },
+  "gates": {
+    "causal_wall_midpoint_energy_error": 3e-12,
+    "causal_wall_filter_error": 3e-14,
+    "causal_wall_warped_complex_error": 3e-12,
+    "causal_wall_original_analog_error": 0.025,
+    "causal_wall_all_65_zero_prefix_and_chunk_exact": true,
+    "CGS_SI_gamma_and_impedance_relative_error": 3e-13,
+    "positive_R_G_real_wall_and_gamma": true,
+    "finite_reference_arrays": true,
+    "two_port_power_excess": 3e-12,
+    "chain_determinant_error": 3e-12,
+    "lossless_analytic_phase_and_no_reflection": 3e-12
+  },
+  "scope": "周波数ごとの線形散逸/単位/連鎖参照。R,Gのsqrt(omega)を勝手にsqrt(s)と置換せず、因果時間実現は別資格。複素特性インピーダンスで接合が周波数依存となることを保持。伝搬の減衰だけを旧瞬時junctionへ足すモデルは全一次モデルと同一ではない。70..4kHz/.75..12cm²のplane-wave参照で、人の壁物性/流れ/共振の正解/声門渦/総流量/日本語品質は未資格。6kHz旧源や観測を救済しない。",
+  "estimates": {
+    "maximum_array_RAM_bytes": 2000000000,
+    "causal_wall_fixture": "65円管×4800pressure samples、48kHz、seed17、Suzuki式1の一portだけ。反射接合/空気粘熱/声道未接続。",
+    "process_observation_source_sha256": "cef288ec71359a81293817c16fe00cbd63ed54fe5ccc45afc14591f948780577",
+    "render": 0,
+    "DSP": 1600,
+    "AI": 0,
+    "train": 0,
+    "inverse": 0,
+    "temporary_peak": 64000000,
+    "temporary_write": 128000000,
+    "closeout_Git_included": true
+  },
+  "limits": {
+    "seconds": 7200,
+    "bytes": 500000000,
+    "write_bytes": 1000000000,
+    "setup": 20,
+    "audit": 20,
+    "render": 0,
+    "dsp": 4000,
+    "ai": 0,
+    "teacher": 0,
+    "train": 0,
+    "inverse": 0,
+    "download": 0
+  },
+  "controller_sha256": "0d6b393b8cce0c33cb36baed5ee8ca2e70898c8413307814496a232f05c8de44",
+  "protected_confirmation_opened": false,
+  "perceptual_qualification": false,
+  "quality_goal_completed": false,
+  "next": "科学48件終了の第8回レビューを先に実施する。因果wall一portを全粘熱損失や声道時間生成の資格へ移さない。工程Bの残時間内に全複素接合を含む音声比較への見通しを判断し、見通し不足なら分布損失を副線へ移して既定VTLの共有母音標的を直接学習する。"
+}

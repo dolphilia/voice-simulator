@@ -1,0 +1,188 @@
+{
+  "improvement_target": "JD3既定五母音標的と日本語native生成音のスペクトル包絡の差。共有舌中央標的TCX/TCYの直接学習だけを可変とし、少数k/t/s-CVへ移転する。",
+  "hypothesis": "話者/源の不一致を保持した限定参照適合。舌中央標的の有限学習が実VTL波形の包絡距離を下げ、未使用CVと語句で悪化を起こすか確認する。人の自然さ・日本語全音素・教師内部時計の真値は主張しない。",
+  "stage_B": {
+    "maximum_seconds": 21600,
+    "question": "一次損失式のCGS/SI周波数参照と最小因果wall診断。全複素接合と空気損失を含む因果時間生成へ見通しがなければ副線にしてVTL学習へ移る。",
+    "primary_PDF": "f77622f43f06c969171fa71a5070a90da7ff926c38437ed9981a63e5d1f469a0",
+    "printed_pages_visually_verified": [
+      131,
+      132
+    ],
+    "reference_draft": "ec2f51b2676dc48e2485ac256a5054f6c7b47b07e98ec110c23e1ab35f072980",
+    "old_draft_unregistered_unexecuted_retained": true,
+    "frequency_domain_result_not_causal_qualification": true,
+    "units_grid_as_draft": true,
+    "causal_wall_only_diagnostic_is_not_full_viscothermal": true,
+    "next_review_at_science": 48
+  },
+  "generator": {
+    "candidate": "VocalTractLab/JD3 shared physical engine",
+    "VTL_manifest_sha256": "bb6e4d4b1d0b091f8f29f2e5d9530b904da5d4c2c8e8ae622bbe153dc0f54286",
+    "VTL_source_sha256": "2988ae128e614d0401de58e5741ba2b055c3d04e75dcfe15e811d22ad5f8567e",
+    "license": "GPL-3.0-or-later",
+    "native_reference": "Mei/HTS pulse-noise/MLSA calibrated LF0 native",
+    "native_manifest_sha256": "cdc3c6a25c1dc8a8f3df0718fa096eee8d93fcb77e0ef9539572e3b73db309ca",
+    "native_gain": 0.25,
+    "VTL_fixed_gain": 0.5,
+    "recordings_neural_utterance_tables_or_saved_trajectories_in_final_path": false,
+    "unmodified_vtl_and_native_same_cohort_controls": true
+  },
+  "roles": {
+    "train": {
+      "vowels": [
+        "a",
+        "i",
+        "u",
+        "e",
+        "o"
+      ],
+      "texts": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ"
+      ],
+      "F0_Hz": [
+        120,
+        160
+      ],
+      "speaker": "existing native synthetic reference",
+      "role": "再使用の共有モデルから新訓練生成。本文は新独立資料とは称さない。",
+      "target_window": "native生成母音の内部state区間の中央60%。真の音素境界ではなく生成器内の切出。VTLは固定320msの中央60%。"
+    },
+    "development": {
+      "CV": [
+        "ka",
+        "ki",
+        "ku",
+        "ke",
+        "ko",
+        "ta",
+        "ti",
+        "tu",
+        "te",
+        "to",
+        "sa",
+        "si",
+        "su",
+        "se",
+        "so"
+      ],
+      "kana": [
+        "カ",
+        "キ",
+        "ク",
+        "ケ",
+        "コ",
+        "タ",
+        "チ",
+        "ツ",
+        "テ",
+        "ト",
+        "サ",
+        "シ",
+        "ス",
+        "セ",
+        "ソ"
+      ],
+      "F0_Hz": 140,
+      "role": "モデル凍結前の診断。チ/ツ/シの実前段写像を確認しk/t/s純CVと同一とは称さない。訓練以外の舌係数調整はしない。"
+    },
+    "unused_selection": {
+      "rows": 8,
+      "short": 4,
+      "long": 4,
+      "conditions": [
+        {
+          "id": "neutral",
+          "speed": 1.0,
+          "F0_Hz": 140
+        },
+        {
+          "id": "higher",
+          "speed": 1.15,
+          "F0_Hz": 180
+        }
+      ],
+      "scope": "母音と少数CVの短語句。候補を凍結後、保護本文を開かず過去非保護履歴で衝突を確認して本文/33群系列を別登録。初出力後に変更しない。",
+      "methods": [
+        "native",
+        "VTL-unchanged",
+        "VTL-learned"
+      ],
+      "maximum_VTL_duration_seconds": 1.6,
+      "independent_P5": false,
+      "reason_for_reduction": "VTL全内部状態更新を含む通常/隔離比較の生成費とD6時間に収めるため標準8+8を4+4へ事前縮小。"
+    },
+    "protected_confirmation_opened": false
+  },
+  "training": {
+    "method": "direct non-neural per-vowel finite grid",
+    "factor": "共有TCX/TCY標的のみ",
+    "parameters": 10,
+    "coordinate_deltas_cm": [
+      -0.4,
+      0.0,
+      0.4
+    ],
+    "grid_candidates_per_vowel": 9,
+    "total_candidates": 45,
+    "seed": 41,
+    "F0_conditions_jointly_optimized": true,
+    "max_fit_runs": 5,
+    "max_inverse_runs": 5,
+    "max_updates_per_fit": 18,
+    "max_seconds_per_fit": 1800,
+    "actual_candidate_seconds": 0.32,
+    "baseline_zero_in_grid": true,
+    "no_post_output_range_change": true,
+    "invalid_geometry_or_engineering": "距離を無限大にし全分母へ保持。全候補不通過なら当該母音は既定標的を保持して未資格。",
+    "objective": "500..4000Hzの固定20 log-spaced帯域の平滑包絡shape log-power MSE、参照と候補の帯域平均を引いてgainをfitしない。訓練F0二条件を等重み平均、TCX/TCYの二乗に0.01の固定正則化。",
+    "regularization": 0.01,
+    "gain_fitted": false,
+    "independent_central_waveform_F0_check": true,
+    "E0_or_F0_failure_excluded_from_adoption_not_from_denominator": true,
+    "pitch_gate": "新対象でDIO/ACF±1半音/confidence.6を事前固定、無声/支持数欠測を保持。単独母音は発話ASRの対象にしない。"
+  },
+  "estimates": {
+    "stage_C": {
+      "seconds": 36000,
+      "render_at_most": 24000,
+      "teacher": 0,
+      "train": 5,
+      "inverse": 5,
+      "dsp_at_most": 3000,
+      "AI_at_most": 120,
+      "fit_campaigns": 5,
+      "reason": "各母音の9候補×二F0を独立な登録fitに分ける。同じTCX/TCY係数を条件横断で共有し後で単一10係数へ統合。",
+      "each_campaign_seconds_at_most": 14400,
+      "each_campaign_render_at_most": 6000,
+      "each_expansion_reason_required_before_start": true
+    },
+    "stage_D": {
+      "seconds": 21600,
+      "render_at_most": 54000,
+      "AI_at_most": 288,
+      "dsp_at_most": 1000,
+      "normal_isolated_CLI_all_counted": true,
+      "no_24h_single_campaign": true
+    },
+    "maximum_retained_bytes_each": 2000000000,
+    "work_peak_each_at_most": 128000000,
+    "process_group_memory_target": 8000000000,
+    "loss_reference_RAM_expected_at_most": 2000000000,
+    "includes_archive_extract_cache_arrays_code_control_index_failure_audit_Git": true
+  },
+  "outcome": {
+    "content": "同コホートnative/既定VTL/学習VTLを二ASR各33群で比較。非対象群/0分母を欠測/適用外として保持し、日本語全条件の採択資格にはしない。",
+    "engineering": "E0/F0/全支持/欠測、通常/隔離/CLIと実拒否を新出力前登録。",
+    "perceptual": "日本語知覚資格なし。未資格代理を昇格せずP5未開封。",
+    "comparison_gate": "既定VTLに対する実波形改善とnative以下の内容保護を個別に検査。悪化相殺・旧コホートpoolなし。",
+    "prior_failed_vtl_and_waveguide_cohorts_frozen": true
+  },
+  "resource_prediction": "本登録は配分案。各科学入口で内部API更新数・WAV/NPZ/ログ/JSON等の符号化最大量を再計算し、少量の通常/隔離/CLI/再読取/回収で確認してから本処理予約。",
+  "next": "A管理終了と保存→B新参照別版を登録→科学48件終了後にレビュー8→最小因果損失の見通し判断→成立VTLでCの五母音直接学習。",
+  "quality_goal_completed": false
+}
