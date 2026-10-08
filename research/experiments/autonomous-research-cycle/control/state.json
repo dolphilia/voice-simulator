@@ -23,10 +23,10 @@
   },
   "counts": {
     "setup": 548,
-    "audit": 414,
+    "audit": 418,
     "render": 83849,
     "dsp": 73790,
-    "ai": 13024,
+    "ai": 13072,
     "train": 16,
     "download": 1712746391,
     "teacher": 117,
@@ -9499,13 +9499,15 @@
         "download": 0
       },
       "counts": {
-        "setup": 2
+        "setup": 2,
+        "audit": 2,
+        "ai": 48
       },
       "start_seconds": 146873.05693602562,
       "start_write_bytes": 66913774804,
       "protocol_sha256": "a6659937ebddc1ce487f9d098269665b9da0e8d394cfd453776020d6d969420d",
-      "payload_bytes": 6299,
-      "closed": false,
+      "payload_bytes": 103700,
+      "closed": true,
       "long_horizon_contract": true,
       "purpose": "science",
       "expansion_reason": null,
@@ -9523,18 +9525,86 @@
             "status": "completed",
             "error": null
           }
+        ],
+        "audit:固定ASR/辞書/正規化hashと全48保存波形 reazon": [
+          {
+            "id": "ba6d0dbc1f7d4b4b96e8902da60639df",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "ai:固定reazon全48波形": [
+          {
+            "id": "5326ab9569284888978f1361e396e97d",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/失敗/費用/所有一時不存在を封印": [
+          {
+            "id": "6b94ad58f7dc457caa1bf9618735a9b0",
+            "status": "completed",
+            "error": null
+          }
         ]
       },
-      "technical_retries": 0
+      "technical_retries": 0,
+      "end_seconds": 147115.64727306366
+    },
+    "vtl-frozen-phrase-whole-summary-v1": {
+      "prefix": "campaigns/nas-vtl-frozen-phrase-whole-summary-20261009-v1",
+      "limits": {
+        "seconds": 7200,
+        "bytes": 200000000,
+        "write_bytes": 1200000000,
+        "setup": 20,
+        "audit": 20,
+        "render": 0,
+        "dsp": 0,
+        "ai": 0,
+        "teacher": 0,
+        "train": 0,
+        "inverse": 0,
+        "download": 0
+      },
+      "counts": {
+        "audit": 2
+      },
+      "start_seconds": 147168.7495188713,
+      "start_write_bytes": 67276737385,
+      "protocol_sha256": "037944ca2ea1e4b59a9f192f07c39092ea4bf894d7e715092d1afc46ea0f10a7",
+      "payload_bytes": 190361,
+      "closed": true,
+      "long_horizon_contract": true,
+      "purpose": "management",
+      "expansion_reason": null,
+      "attempts": {
+        "audit:同コホート全48/33系列/対照差/工学/費用の集計": [
+          {
+            "id": "a6cbdae3638744e993c813384ed994a7",
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "audit:全分母/失敗/費用/所有一時不存在を封印": [
+          {
+            "id": "f93b2d7f15e6423db2925d27e426312d",
+            "status": "completed",
+            "error": null
+          }
+        ]
+      },
+      "technical_retries": 0,
+      "end_seconds": 147170.91805171967
     }
   },
   "jobs": {},
-  "payload_bytes": 9726122932,
-  "seconds": 147068.31720995903,
-  "write_bytes": 66973753227,
+  "payload_bytes": 9726410694,
+  "seconds": 147565.19470381737,
+  "write_bytes": 67361546594,
   "session": {
     "id": "4968c01c200f499d9e6eadd699d485e4",
-    "checkpoint": 1791491678.99652
+    "checkpoint": 1791491935.874014
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -9635,8 +9705,8 @@
   ],
   "continuation_checkpoint": {
     "id": "review12-D-Reazon-ready",
-    "active_campaign": "vtl-frozen-phrase-asr-reazon-v1",
-    "next": "asr-reazon登録push後に未実施部分だけを実行。",
+    "active_campaign": null,
+    "next": "部分結果をpush後、全体計画の次の未実施ラベルへ。レビュー時計は保持。",
     "git_save_pending": false,
     "quality_goal_completed": false,
     "protected_confirmation_opened": false,
@@ -49042,6 +49112,37 @@
       "removed_files": 2,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "additional-closeout-2a8787c247904924a3473651c6c6b6de": {
+      "owner": "additional-closeout-2a8787c247904924a3473651c6c6b6de",
+      "job": "5326ab9569284888978f1361e396e97d",
+      "campaign": "vtl-frozen-phrase-asr-reazon-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/additional-closeout-2a8787c247904924a3473651c6c6b6de",
+      "purpose": "同コホート48波形の固定reazon評価",
+      "maximum_bytes": 32000000,
+      "maximum_write_bytes": 64000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [
+        {
+          "relative": "asr-reazon-stderr.txt",
+          "bytes": 42,
+          "inode": 101008,
+          "device": 16777241
+        },
+        {
+          "relative": "asr-reazon-stdout.txt",
+          "bytes": 46128,
+          "inode": 101007,
+          "device": 16777241
+        }
+      ],
+      "observed_bytes": 46170,
+      "peak_violation": false,
+      "removed_files": 2,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -49819,7 +49920,7 @@
       "teacher": 117,
       "inverse": 97
     },
-    "scientific_completed": 72,
+    "scientific_completed": 73,
     "last_review": {
       "seconds": 146793.40758395195,
       "scientific_completed": 72,
@@ -49853,7 +49954,7 @@
     "prompt_sha256": "2c0bcc62a2eb5cbee97c01f96b1ed56623a2679617a81cc05bc8afa39cdb3305",
     "first_stage": {
       "maximum_seconds": 86400,
-      "used_seconds": 21848.130313158035,
+      "used_seconds": 22345.007807016373,
       "current": "D",
       "stages": [
         {
@@ -49880,7 +49981,7 @@
         {
           "id": "D",
           "maximum_seconds": 21600,
-          "used_seconds": 6847.9312200546265,
+          "used_seconds": 7344.808713912964,
           "status": "running"
         }
       ]
@@ -49893,7 +49994,7 @@
     },
     "execution_enforcement": "ResearchPlanBudgetで実稼働/手動管理費/段階予約/同時予約/基盤12時間を強制。9否定検査通過。旧全ガード保持。",
     "quality_goal_completed": false,
-    "last_accounted_seconds": 147068.31720995903,
+    "last_accounted_seconds": 147565.19470381737,
     "segment": {
       "stage": "D",
       "foundation_only": false,
