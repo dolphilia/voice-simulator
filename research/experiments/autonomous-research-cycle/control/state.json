@@ -24,10 +24,10 @@
   },
   "counts": {
     "setup": 373,
-    "audit": 212,
-    "render": 9940,
-    "dsp": 24299,
-    "ai": 9968,
+    "audit": 217,
+    "render": 10424,
+    "dsp": 25423,
+    "ai": 10288,
     "train": 11,
     "download": 1669706871,
     "teacher": 117,
@@ -616,23 +616,25 @@
       },
       "counts": {
         "setup": 5,
-        "audit": 3,
-        "render": 7,
-        "dsp": 7
+        "audit": 8,
+        "render": 491,
+        "dsp": 1131,
+        "ai": 320
       },
       "start_seconds": 53285.87586379051,
       "protocol_sha256": "91d2ab6b4ed9ebfe5cc8365b2e429703b07fae48c32e908ccee5ded9df730fa2",
-      "payload_bytes": 9645942,
-      "closed": false
+      "payload_bytes": 318748358,
+      "closed": true,
+      "end_seconds": 54995.33350586891
     }
   },
   "jobs": {},
-  "payload_bytes": 7302371843,
-  "seconds": 53529.55998969078,
-  "write_bytes": 29416079224,
+  "payload_bytes": 7611518799,
+  "seconds": 55082.94067001343,
+  "write_bytes": 30544893620,
   "session": {
     "id": "c968a05d10e04bfeadc91562e6c7eed8",
-    "checkpoint": 1791420276.8961349
+    "checkpoint": 1791421830.2768152
   },
   "created_epoch": 1791116140.7660968,
   "closed": false,
@@ -664,41 +666,131 @@
     }
   ],
   "continuation_checkpoint": {
-    "id": "gv-ap-interaction-prepared-20261008-0001",
-    "active_campaign": "gv-ap-interaction-v1",
-    "campaign_closed": false,
-    "next": "controller_v2 comparison → isolate → asr whisper/reazon → summarize_v2 → closeout_v2",
+    "id": "gv-ap-interaction-completed-20261008-0001",
+    "active_campaign": null,
+    "campaign_closed": true,
     "quality_goal_completed": false,
+    "qualifications": {
+      "native": false,
+      "voicing_no_lf0_gv": false,
+      "voicing_no_lf0_gv_ap_half": false,
+      "voicing_no_gv": false,
+      "voicing_no_gv_ap_half": false
+    },
+    "seal_sha256": "846c057cb71c5a7f8ed4d0c126166f1952b40d7f8630455d2edea97f26f18765",
+    "external_hash_verified": 22685,
+    "all_temporary_work_removed": true,
     "protected_confirmation_opened": false,
+    "next_campaign": "source-period-audit-v1",
+    "next_entry": "source-period-audit-bootstrap-0001.py",
+    "next": "第22回の既存HTS励振周期観測監査を登録 → prepare/fixture4 → commit/push → 観測128 → 集計/封印。",
     "git_save_pending": true,
-    "execution_contract_sha256": "4146b52d9d97a6f068acdb0d13d9c39c0175aa6a85145c89532fa8585eff2cbe",
-    "all_dependency_imports_pass": true,
-    "static_actual_render": 0,
-    "compatibility_actual_render": 7,
-    "technical_retries": 1,
-    "all_temporary_removed": true,
-    "expected_comparison": 160,
-    "expected_normal_isolated_pairs": 160,
-    "expected_ASR": 320,
     "budget": {
-      "files": 61825,
-      "bytes": 7302370740,
-      "seconds": 53492.78933262825,
+      "files": 63003,
+      "bytes": 7611515094,
+      "seconds": 55030.93008685112,
       "counts": {
         "setup": 373,
-        "audit": 212,
-        "render": 9940,
-        "dsp": 24299,
-        "ai": 9968,
+        "audit": 217,
+        "render": 10424,
+        "dsp": 25423,
+        "ai": 10288,
         "train": 11,
         "download": 1669706871,
         "teacher": 117,
         "inverse": 97
       },
-      "write_bytes": 29380526139
+      "write_bytes": 30514670805
     },
-    "free_internal": 71475175424,
-    "free_external": 223602356224
+    "AP_interaction": {
+      "missing_support": {
+        "values": {
+          "native": 0,
+          "voicing_no_lf0_gv": 5,
+          "voicing_no_lf0_gv_ap_half": 4,
+          "voicing_no_gv": 2,
+          "voicing_no_gv_ap_half": 2
+        },
+        "complete": true,
+        "lower_is_better": true,
+        "AP_half_delta_at_each_MCP_GV": {
+          "MCP_GV_on": -1,
+          "MCP_GV_off": 0
+        },
+        "interaction_off_minus_on": 1,
+        "descriptive_only": true
+      },
+      "DIO_error": {
+        "values": {
+          "native": 8.187479486125653,
+          "voicing_no_lf0_gv": 0.07477000190115564,
+          "voicing_no_lf0_gv_ap_half": 0.07471893354800714,
+          "voicing_no_gv": 0.05887038358030944,
+          "voicing_no_gv_ap_half": 0.056544832379109566
+        },
+        "complete": true,
+        "lower_is_better": true,
+        "AP_half_delta_at_each_MCP_GV": {
+          "MCP_GV_on": -5.106835314849789e-05,
+          "MCP_GV_off": -0.0023255512011998714
+        },
+        "interaction_off_minus_on": -0.0022744828480513735,
+        "descriptive_only": true
+      },
+      "ACF_error": {
+        "values": {
+          "native": 8.018092447083545,
+          "voicing_no_lf0_gv": 0.16531239404575213,
+          "voicing_no_lf0_gv_ap_half": 0.1638342350085307,
+          "voicing_no_gv": 0.15697594451766314,
+          "voicing_no_gv_ap_half": 0.1569137321600699
+        },
+        "complete": true,
+        "lower_is_better": true,
+        "AP_half_delta_at_each_MCP_GV": {
+          "MCP_GV_on": -0.001478159037221427,
+          "MCP_GV_off": -6.221235759323873e-05
+        },
+        "interaction_off_minus_on": 0.0014159466796281883,
+        "descriptive_only": true
+      },
+      "whisper_errors": {
+        "values": {
+          "native": 62,
+          "voicing_no_lf0_gv": 62,
+          "voicing_no_lf0_gv_ap_half": 56,
+          "voicing_no_gv": 75,
+          "voicing_no_gv_ap_half": 78
+        },
+        "complete": true,
+        "lower_is_better": true,
+        "AP_half_delta_at_each_MCP_GV": {
+          "MCP_GV_on": -6,
+          "MCP_GV_off": 3
+        },
+        "interaction_off_minus_on": 9,
+        "descriptive_only": true
+      },
+      "reazon_errors": {
+        "values": {
+          "native": 11,
+          "voicing_no_lf0_gv": 20,
+          "voicing_no_lf0_gv_ap_half": 19,
+          "voicing_no_gv": 32,
+          "voicing_no_gv_ap_half": 33
+        },
+        "complete": true,
+        "lower_is_better": true,
+        "AP_half_delta_at_each_MCP_GV": {
+          "MCP_GV_on": -1,
+          "MCP_GV_off": 1
+        },
+        "interaction_off_minus_on": 2,
+        "descriptive_only": true
+      }
+    },
+    "free_internal": 71395368960,
+    "free_external": 223291432960
   },
   "storage_maintenance": {
     "repository-data-20261008-v1": {
@@ -2624,6 +2716,186 @@
       "removed_files": 0,
       "remaining_bytes": 0,
       "absence_verified": true
+    },
+    "gv-ap-interaction-ecddbf717d3a4f2bb4d55b3d8929c735": {
+      "owner": "gv-ap-interaction-ecddbf717d3a4f2bb4d55b3d8929c735",
+      "job": "ea921b4787604d58828b1024988f0bc1",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-ecddbf717d3a4f2bb4d55b3d8929c735",
+      "purpose": "comparison ライブラリ初期化・必要時一時処理",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-f27bb2e5f6444a63beffa99e925b8b53": {
+      "owner": "gv-ap-interaction-f27bb2e5f6444a63beffa99e925b8b53",
+      "job": "65f4fbb3cd344e0f92bf3ed17fe42076",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-f27bb2e5f6444a63beffa99e925b8b53",
+      "purpose": "normal ランタイム初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-37f2d899cc9942c0b8665570cb762ceb": {
+      "owner": "gv-ap-interaction-37f2d899cc9942c0b8665570cb762ceb",
+      "job": "60c97b3eef7a49939f843553f9f99c41",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-37f2d899cc9942c0b8665570cb762ceb",
+      "purpose": "isolated ランタイム初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-44536498b0884b1c8cea852d84b31d4e": {
+      "owner": "gv-ap-interaction-44536498b0884b1c8cea852d84b31d4e",
+      "job": "dad778bef43b4b7885ffd3736a0c474c",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-44536498b0884b1c8cea852d84b31d4e",
+      "purpose": "単独CLI ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-2431adf953294c24a0732537f9db4f72": {
+      "owner": "gv-ap-interaction-2431adf953294c24a0732537f9db4f72",
+      "job": "a0a1a486c2b1461b83b8c31be55a1286",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-2431adf953294c24a0732537f9db4f72",
+      "purpose": "単独CLI ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-9d71327672ae43fba72f3125e2bf0509": {
+      "owner": "gv-ap-interaction-9d71327672ae43fba72f3125e2bf0509",
+      "job": "01b1d0d4a18e4384bb9396e77d39fd98",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-9d71327672ae43fba72f3125e2bf0509",
+      "purpose": "単独CLI ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-675ff1536c5b4fb093ca0f2f33507853": {
+      "owner": "gv-ap-interaction-675ff1536c5b4fb093ca0f2f33507853",
+      "job": "b7ee87bca2194e97876cf68decb7eda5",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-675ff1536c5b4fb093ca0f2f33507853",
+      "purpose": "単独CLI ライブラリ初期化",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-87a13ed3f13e4f9583461253738bb51d": {
+      "owner": "gv-ap-interaction-87a13ed3f13e4f9583461253738bb51d",
+      "job": "291360ad456e4e37a25d09bea55fec8d",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-87a13ed3f13e4f9583461253738bb51d",
+      "purpose": "拒否probe",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-91e5b1fac15142289fef1687d645196a": {
+      "owner": "gv-ap-interaction-91e5b1fac15142289fef1687d645196a",
+      "job": "dde0c3fc811544319b97a72c0ace8ab0",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-91e5b1fac15142289fef1687d645196a",
+      "purpose": "whisper 認識器初期化・評価",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
+    },
+    "gv-ap-interaction-7ff0181e23e244108da8077dcf934f6b": {
+      "owner": "gv-ap-interaction-7ff0181e23e244108da8077dcf934f6b",
+      "job": "bd6397c3f7a54783ba52c3c951574e9e",
+      "campaign": "gv-ap-interaction-v1",
+      "path": "/Volumes/CCCOMA_X64FRE_JA-JP_DV9/voice-simulator-data/work/arc-20261004-v1/gv-ap-interaction-7ff0181e23e244108da8077dcf934f6b",
+      "purpose": "reazon 認識器初期化・評価",
+      "maximum_bytes": 8000000,
+      "maximum_write_bytes": 16000000,
+      "status": "removed",
+      "creation_scope": "排他的な所有ディレクトリ以下の通常ファイル",
+      "delete_when": "子の終了・wait、全ハンドルclose後。成功・失敗とも不要時に削除。",
+      "files": [],
+      "observed_bytes": 0,
+      "peak_violation": false,
+      "removed_files": 0,
+      "remaining_bytes": 0,
+      "absence_verified": true
     }
   },
   "continuation_checkpoint_history": [
@@ -2928,6 +3200,45 @@
       "next": "既存MCP GV/AP半減の相互作用を新入力・固定ゲートで登録 → 既存HTS周期監査。",
       "git_save_pending": false,
       "completion_commit": "3299219e6f4f80fe7e599473884b8cdc670a40f0",
+      "push_origin_verified": true
+    },
+    {
+      "id": "gv-ap-interaction-prepared-20261008-0001",
+      "active_campaign": "gv-ap-interaction-v1",
+      "campaign_closed": false,
+      "next": "controller_v2 comparison → isolate → asr whisper/reazon → summarize_v2 → closeout_v2",
+      "quality_goal_completed": false,
+      "protected_confirmation_opened": false,
+      "git_save_pending": false,
+      "execution_contract_sha256": "4146b52d9d97a6f068acdb0d13d9c39c0175aa6a85145c89532fa8585eff2cbe",
+      "all_dependency_imports_pass": true,
+      "static_actual_render": 0,
+      "compatibility_actual_render": 7,
+      "technical_retries": 1,
+      "all_temporary_removed": true,
+      "expected_comparison": 160,
+      "expected_normal_isolated_pairs": 160,
+      "expected_ASR": 320,
+      "budget": {
+        "files": 61825,
+        "bytes": 7302370740,
+        "seconds": 53492.78933262825,
+        "counts": {
+          "setup": 373,
+          "audit": 212,
+          "render": 9940,
+          "dsp": 24299,
+          "ai": 9968,
+          "train": 11,
+          "download": 1669706871,
+          "teacher": 117,
+          "inverse": 97
+        },
+        "write_bytes": 29380526139
+      },
+      "free_internal": 71475175424,
+      "free_external": 223602356224,
+      "preparation_commit": "d655becd6a284e0ac1c2c389a698cb8e4d8a2dd5",
       "push_origin_verified": true
     }
   ]
