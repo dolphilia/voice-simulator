@@ -1,0 +1,126 @@
+{
+  "checks": {
+    "archived/candidate/matches_archived_csv": true,
+    "archived/upstream/matches_archived_csv": true,
+    "archived/candidate/inflow_replayed_bitwise": true,
+    "archived/upstream/inflow_replayed_bitwise": true,
+    "no-tracking/candidate/matches_archived_csv": true,
+    "no-tracking/upstream/matches_archived_csv": true,
+    "no-tracking/candidate/inflow_replayed_bitwise": true,
+    "no-tracking/upstream/inflow_replayed_bitwise": true,
+    "no_tracking_quiet": true,
+    "first_terminal_inflow_difference": true
+  },
+  "hypotheses": {
+    "tip_pressure_alone_replays_upstream": false
+  },
+  "sample_rate_hz": 192000,
+  "event_sample": 256,
+  "beak_cells": 6,
+  "cell_length_cm": 0.21666666666666667,
+  "terminal_branch_areas_cm2": [
+    0.13025000000000003,
+    0.15041666666666667
+  ],
+  "first_difference": {
+    "offset": 9,
+    "inputs": {
+      "candidate": {
+        "left_pressure": 0.008362139511401565,
+        "tip_pressure": 0.0019395891871337163,
+        "previous_inflow": 1.3091337850450753e-05,
+        "arithmetic": "candidate"
+      },
+      "upstream": {
+        "left_pressure": 0.008362139511401565,
+        "tip_pressure": 0.0019395891871337168,
+        "previous_inflow": 1.3091337850450753e-05,
+        "arithmetic": "upstream"
+      }
+    },
+    "replayed": {
+      "candidate": {
+        "inertance": 0.001769229215072229,
+        "resistance": 0.3185670750891709,
+        "normalized_inertance": 339.692009293868,
+        "pressure_difference": 0.006422550324267848,
+        "normalized_momentum": 0.004447022858764483,
+        "drive": 0.010869573183032331,
+        "linear_coefficient": 340.0105763689572,
+        "quadratic_coefficient": 0.0006039426652252155,
+        "denominator": 680.0211527765284,
+        "inflow": 3.1968338451390316e-05
+      },
+      "upstream": {
+        "inertance": 0.001769229215072229,
+        "resistance": 0.31856707508917087,
+        "normalized_inertance": 339.692009293868,
+        "pressure_difference": 0.006422550324267848,
+        "normalized_momentum": 0.004447022858764482,
+        "drive": 0.01086957318303233,
+        "linear_coefficient": 340.0105763689572,
+        "quadratic_coefficient": 0.0006039426652252154,
+        "denominator": 680.0211527765284,
+        "inflow": 3.196833845139031e-05
+      }
+    },
+    "observed": {
+      "candidate": 3.1968338451390316e-05,
+      "upstream": 3.196833845139031e-05
+    }
+  },
+  "substitutions": [
+    {
+      "inputs_from_upstream": [
+        "tip_pressure"
+      ],
+      "inflow": 3.1968338451390316e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaecp-15",
+      "matches_upstream": false
+    },
+    {
+      "inputs_from_upstream": [
+        "arithmetic"
+      ],
+      "inflow": 3.196833845139031e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+      "matches_upstream": true
+    },
+    {
+      "inputs_from_upstream": [
+        "tip_pressure",
+        "arithmetic"
+      ],
+      "inflow": 3.196833845139031e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+      "matches_upstream": true
+    }
+  ],
+  "term_substitutions": [
+    {
+      "inputs_from_upstream": [
+        "normalized_momentum"
+      ],
+      "inflow": 3.196833845139031e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+      "matches_upstream": true
+    },
+    {
+      "inputs_from_upstream": [
+        "quadratic_coefficient"
+      ],
+      "inflow": 3.1968338451390316e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaecp-15",
+      "matches_upstream": false
+    },
+    {
+      "inputs_from_upstream": [
+        "normalized_momentum",
+        "quadratic_coefficient"
+      ],
+      "inflow": 3.196833845139031e-05,
+      "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+      "matches_upstream": true
+    }
+  ]
+}

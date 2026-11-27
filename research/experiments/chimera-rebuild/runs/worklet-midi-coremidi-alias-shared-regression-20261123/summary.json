@@ -1,0 +1,253 @@
+{
+  "checks": {
+    "both_browser_entries": true,
+    "candidate/two_native_sources": true,
+    "candidate/two_web_midi_inputs": true,
+    "candidate/two_trusted_presses": true,
+    "candidate/ordered_removal": true,
+    "candidate/held_until_last_owner": true,
+    "candidate/subscription_counts": true,
+    "candidate/no_page_or_capture_errors": true,
+    "candidate/midi_targets_at_worklet": true,
+    "candidate/finite_and_continuous_worklet": true,
+    "candidate/independent_worklet_controls": true,
+    "candidate/worklet_sustained_voice": true,
+    "candidate/worklet_silent_before_and_after": true,
+    "candidate/worklet_pcm_matches_cli": true,
+    "candidate/worklet_pcm_sustained_in_each_window": true,
+    "upstream/two_native_sources": true,
+    "upstream/two_web_midi_inputs": true,
+    "upstream/two_trusted_presses": true,
+    "upstream/ordered_removal": true,
+    "upstream/held_until_last_owner": true,
+    "upstream/subscription_counts": true,
+    "upstream/no_page_or_capture_errors": true,
+    "upstream/play_target_pitch_and_gate": true,
+    "upstream/play_finite_and_quiet_before_on": true,
+    "upstream/play_independent_drift_before_on": true,
+    "upstream/play_sustained_voice": true,
+    "upstream/play_release": true,
+    "upstream/play_held_between_removals": true,
+    "upstream/play_one_attack_one_release": true,
+    "candidate/release_matches_single_unplug": true,
+    "upstream/release_time_constant": true
+  },
+  "browser": "157.0.8103.79",
+  "release_action": "remove-two-sources",
+  "expected_pitch_hz": 220.0,
+  "result": {
+    "candidate": {
+      "applied_notes": [
+        {
+          "frame": 16128,
+          "note": 57
+        },
+        {
+          "frame": 90880,
+          "note": null
+        }
+      ],
+      "output_frames": 172544,
+      "sample_rate_hz": 48000,
+      "observations": 1348,
+      "sustained_gate_min": 0.9999998988505455,
+      "sustained_f0_max_error_hz": 0.18555232830041746,
+      "initial_pcm_peak": 1.3842327462043613e-07,
+      "voiced_pcm_peak": 0.27833789587020874,
+      "tail_pcm_peak": 9.174436197859981e-16,
+      "control_max_errors": {
+        "gate": 2.220446049250313e-16,
+        "f0_hz": 3.126388037344441e-12
+      },
+      "cli_pcm": {
+        "first_bit_difference_frame": null,
+        "first_bit_difference_values": null,
+        "maximum_absolute_error": 0.0,
+        "first_frame_over_tolerance": null
+      },
+      "sustained_pcm_windows": {
+        "frames_per_window": 2400,
+        "count": 23,
+        "minimum_rms": 0.11627472956949714
+      },
+      "shared_note": {
+        "input_order": [
+          "-25754440",
+          "-456537988"
+        ],
+        "received_input_order": [
+          "-25754440",
+          "-456537988"
+        ],
+        "removals": [
+          {
+            "name": "CHIMERA CoreMIDI Probe 11797 candidate A",
+            "id": "-25754440",
+            "type": "input",
+            "state": "disconnected",
+            "connection": "pending",
+            "trusted": true,
+            "eventMs": 2507.5999999940395,
+            "handlerMs": 2507.5999999940395,
+            "inInputMap": false
+          },
+          {
+            "name": "CHIMERA CoreMIDI Probe 11797 candidate B",
+            "id": "-456537988",
+            "type": "input",
+            "state": "disconnected",
+            "connection": "pending",
+            "trusted": true,
+            "eventMs": 3149.199999988079,
+            "handlerMs": 3149.199999988079,
+            "inInputMap": false
+          }
+        ],
+        "held_before_last_removal_ms": 356.2999999821186,
+        "notes": [
+          "なし",
+          "57",
+          "57",
+          "57",
+          "57",
+          "57",
+          "なし",
+          "なし"
+        ]
+      },
+      "release_comparison": {
+        "elapsed_frames": [
+          128,
+          768,
+          3456,
+          9600
+        ],
+        "unplug": [
+          0.9626212583103545,
+          0.7956694616416932,
+          0.3575173349791698,
+          0.057432619267617564
+        ],
+        "single_unplug": [
+          0.9626212583103545,
+          0.7956694616416932,
+          0.3575173349791698,
+          0.057432619267617564
+        ],
+        "maximum_error": 0.0
+      }
+    },
+    "upstream": {
+      "sample_rate_hz": 48000,
+      "internal_sample_rate_hz": 96000,
+      "gate_messages": [
+        {
+          "level": 0,
+          "clock": null,
+          "observedMs": 449.09999999403954
+        },
+        {
+          "level": 1,
+          "clock": 0.7969999999999955,
+          "observedMs": 1248.2999999821186
+        },
+        {
+          "level": 0,
+          "clock": 2.342900000005969,
+          "observedMs": 2794.199999988079
+        }
+      ],
+      "steady_rows": 12,
+      "tail_rows": 9,
+      "steady_gate_min": 0.9999999520608498,
+      "tail_gate_max": 5.815603201571001e-05,
+      "steady_f0_hz": [
+        218.76417984841967,
+        219.43233778111426
+      ],
+      "steady_f0_without_drift_hz": [
+        219.82251061069658,
+        219.9905505216455
+      ],
+      "pre_note_f0_without_drift_max_error_hz": 2.842170943040401e-14,
+      "steady_peak_rms": 0.2623739227862501,
+      "raw_f0_passes_original_tolerance": false,
+      "shared_note": {
+        "input_order": [
+          "-1607996051",
+          "418152479"
+        ],
+        "received_input_order": [
+          "-1607996051",
+          "418152479"
+        ],
+        "removals": [
+          {
+            "name": "CHIMERA CoreMIDI Probe 11797 upstream A",
+            "id": "-1607996051",
+            "type": "input",
+            "state": "disconnected",
+            "connection": "pending",
+            "trusted": true,
+            "eventMs": 2158.9000000059605,
+            "handlerMs": 2158.9000000059605,
+            "inInputMap": false
+          },
+          {
+            "name": "CHIMERA CoreMIDI Probe 11797 upstream B",
+            "id": "418152479",
+            "type": "input",
+            "state": "disconnected",
+            "connection": "pending",
+            "trusted": true,
+            "eventMs": 2794,
+            "handlerMs": 2794,
+            "inInputMap": false
+          }
+        ],
+        "held_before_last_removal_ms": 353,
+        "notes": [
+          null,
+          57,
+          57,
+          57,
+          57,
+          57,
+          null,
+          null
+        ],
+        "between_removals": {
+          "observation_count": 16,
+          "minimum_gate": 0.999999999999999,
+          "minimum_rms": 0.250259358703298,
+          "gate_messages": [
+            {
+              "level": 1,
+              "clock": 0.7969999999999955,
+              "observedMs": 1248.2999999821186
+            },
+            {
+              "level": 0,
+              "clock": 2.342900000005969,
+              "observedMs": 2794.199999988079
+            }
+          ]
+        }
+      },
+      "release_comparison": {
+        "elapsed_seconds": [
+          0.08,
+          0.3
+        ],
+        "unplug": {
+          "points": 14,
+          "tau_seconds": 0.06999999999999239
+        },
+        "single_unplug": {
+          "points": 13,
+          "tau_seconds": 0.07000000000000403
+        }
+      }
+    }
+  }
+}

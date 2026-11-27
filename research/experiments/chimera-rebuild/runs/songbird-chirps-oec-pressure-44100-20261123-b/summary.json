@@ -1,0 +1,162 @@
+{
+  "checks": {
+    "registered_internal_rate": true,
+    "matched_time/candidate/archived_columns_unchanged": true,
+    "matched_time/candidate/geometry_and_initial_state": true,
+    "matched_time/candidate/pressure_matches_bitwise": true,
+    "matched_time/candidate/injection_matches_bitwise": true,
+    "matched_time/candidate/compliance_matches_bitwise": true,
+    "matched_time/upstream/archived_columns_unchanged": true,
+    "matched_time/upstream/geometry_and_initial_state": true,
+    "matched_time/upstream/pressure_matches_bitwise": true,
+    "native_block/candidate/archived_columns_unchanged": true,
+    "native_block/candidate/geometry_and_initial_state": true,
+    "native_block/candidate/pressure_matches_bitwise": true,
+    "native_block/candidate/injection_matches_bitwise": true,
+    "native_block/candidate/compliance_matches_bitwise": true,
+    "native_block/upstream/archived_columns_unchanged": true,
+    "native_block/upstream/geometry_and_initial_state": true,
+    "native_block/upstream/pressure_matches_bitwise": true,
+    "no_tracking/candidate/archived_columns_unchanged": true,
+    "no_tracking/candidate/geometry_and_initial_state": true,
+    "no_tracking/candidate/pressure_matches_bitwise": true,
+    "no_tracking/candidate/injection_matches_bitwise": true,
+    "no_tracking/candidate/compliance_matches_bitwise": true,
+    "no_tracking/upstream/archived_columns_unchanged": true,
+    "no_tracking/upstream/geometry_and_initial_state": true,
+    "no_tracking/upstream/pressure_matches_bitwise": true,
+    "matched_time_first_pressure_difference": true,
+    "no_tracking_quiet": true
+  },
+  "hypotheses": {
+    "raw_conversion_alone_explains_matched_time_first_pressure_difference": true
+  },
+  "sample_rate_hz": 176400,
+  "conditions": {
+    "matched_time": {
+      "event_sample": 235,
+      "first_differences": {
+        "raw": {
+          "offset": 1,
+          "candidate": 15.763393840778738,
+          "upstream": 15.76339384077874,
+          "candidate_hex": "0x1.f86db8eb8399bp+3",
+          "upstream_hex": "0x1.f86db8eb8399cp+3"
+        },
+        "first_pole": {
+          "offset": 1,
+          "candidate": 0.06723330234995924,
+          "upstream": 0.06723330234995925,
+          "candidate_hex": "0x1.13633a2cb8f45p-4",
+          "upstream_hex": "0x1.13633a2cb8f46p-4"
+        },
+        "injection": {
+          "offset": 1,
+          "candidate": 0.0002152234212227553,
+          "upstream": 0.00021522342122275536,
+          "candidate_hex": "0x1.c35b31c688688p-13",
+          "upstream_hex": "0x1.c35b31c68868ap-13"
+        },
+        "balance": {
+          "offset": 1,
+          "candidate": 0.00021211117378038043,
+          "upstream": 0.00021211117378038048,
+          "candidate_hex": "0x1.bcd451be7ce13p-13",
+          "upstream_hex": "0x1.bcd451be7ce15p-13"
+        },
+        "observed_pressure": {
+          "offset": 1,
+          "candidate": 0.0056975455322387045,
+          "upstream": 0.005697545532238706,
+          "candidate_hex": "0x1.7564f3ba7acaap-8",
+          "upstream_hex": "0x1.7564f3ba7acacp-8"
+        },
+        "neck": {
+          "offset": 2,
+          "candidate": -2.866022195087509e-06,
+          "upstream": -2.86602219508751e-06,
+          "candidate_hex": "-0x1.80abc5d4ea746p-19",
+          "upstream_hex": "-0x1.80abc5d4ea748p-19"
+        },
+        "beak": {
+          "offset": 2,
+          "candidate": 9.161833089002481e-06,
+          "upstream": 9.161833089002485e-06,
+          "candidate_hex": "0x1.336b8c06b5313p-17",
+          "upstream_hex": "0x1.336b8c06b5315p-17"
+        }
+      },
+      "pressure_substitutions": [
+        {
+          "swapped_inputs": [
+            "injection"
+          ],
+          "balance": 0.00021211117378038048,
+          "pressure": 0.005697545532238706,
+          "pressure_hex": "0x1.7564f3ba7acacp-8",
+          "matches_upstream": true
+        },
+        {
+          "swapped_inputs": [
+            "neck_first"
+          ],
+          "balance": 0.00021211117378038043,
+          "pressure": 0.0056975455322387045,
+          "pressure_hex": "0x1.7564f3ba7acaap-8",
+          "matches_upstream": false
+        },
+        {
+          "swapped_inputs": [
+            "injection",
+            "neck_first"
+          ],
+          "balance": 0.00021211117378038048,
+          "pressure": 0.005697545532238706,
+          "pressure_hex": "0x1.7564f3ba7acacp-8",
+          "matches_upstream": true
+        }
+      ],
+      "raw_conversion_only_replay": {
+        "raw_multiplied": 15.76339384077874,
+        "filtered_injection": 0.00021522342122275536,
+        "pressure": 0.005697545532238706,
+        "pressure_hex": "0x1.7564f3ba7acacp-8",
+        "matches_upstream": true
+      }
+    },
+    "native_block": {
+      "event_sample": 256,
+      "first_differences": {
+        "balance": {
+          "offset": 4,
+          "candidate": 0.0009286621374605172,
+          "upstream": 0.0009286621374605171,
+          "candidate_hex": "0x1.e6e2ec134e230p-11",
+          "upstream_hex": "0x1.e6e2ec134e22fp-11"
+        },
+        "neck": {
+          "offset": 5,
+          "candidate": -2.8961119501992224e-05,
+          "upstream": -2.8961119501992228e-05,
+          "candidate_hex": "-0x1.e5e30fa556793p-16",
+          "upstream_hex": "-0x1.e5e30fa556794p-16"
+        },
+        "beak": {
+          "offset": 7,
+          "candidate": 0.0001645654691836078,
+          "upstream": 0.00016456546918360783,
+          "candidate_hex": "0x1.591e69dcbab1ap-13",
+          "upstream_hex": "0x1.591e69dcbab1bp-13"
+        }
+      },
+      "pressure_substitutions": [],
+      "raw_conversion_only_replay": null
+    },
+    "no_tracking": {
+      "event_sample": 235,
+      "first_differences": {},
+      "pressure_substitutions": [],
+      "raw_conversion_only_replay": null
+    }
+  }
+}

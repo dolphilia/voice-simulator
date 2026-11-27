@@ -1,0 +1,394 @@
+{
+  "checks": {
+    "prior_patch_chain_matches": true,
+    "matched_time/candidate/previous_columns_reproduced": true,
+    "matched_time/candidate/fixed_tracheal_section_and_zero_noise": true,
+    "matched_time/candidate/starts_from_rest": true,
+    "matched_time/candidate/outflow_matches_trachea_end_inflow": true,
+    "matched_time/candidate/local_pressure_matches_prior_penultimate_column": true,
+    "matched_time/candidate/pressure_bit_replayed": true,
+    "matched_time/candidate/wall_flow_bit_replayed": true,
+    "matched_time/candidate/wall_displacement_bit_replayed": true,
+    "matched_time/candidate/inlet_flow_bit_replayed": true,
+    "matched_time/upstream/previous_columns_reproduced": true,
+    "matched_time/upstream/fixed_tracheal_section_and_zero_noise": true,
+    "matched_time/upstream/starts_from_rest": true,
+    "matched_time/upstream/outflow_matches_trachea_end_inflow": true,
+    "matched_time/upstream/local_pressure_matches_prior_penultimate_column": true,
+    "matched_time/upstream/pressure_bit_replayed": true,
+    "matched_time/upstream/wall_flow_bit_replayed": true,
+    "matched_time/upstream/wall_displacement_bit_replayed": true,
+    "matched_time/upstream/inlet_flow_bit_replayed": true,
+    "matched_time/first_pressure_difference_reproduced": true,
+    "native_block/candidate/previous_columns_reproduced": true,
+    "native_block/candidate/fixed_tracheal_section_and_zero_noise": true,
+    "native_block/candidate/starts_from_rest": true,
+    "native_block/candidate/outflow_matches_trachea_end_inflow": true,
+    "native_block/candidate/local_pressure_matches_prior_penultimate_column": true,
+    "native_block/candidate/pressure_bit_replayed": true,
+    "native_block/candidate/wall_flow_bit_replayed": true,
+    "native_block/candidate/wall_displacement_bit_replayed": true,
+    "native_block/candidate/inlet_flow_bit_replayed": true,
+    "native_block/upstream/previous_columns_reproduced": true,
+    "native_block/upstream/fixed_tracheal_section_and_zero_noise": true,
+    "native_block/upstream/starts_from_rest": true,
+    "native_block/upstream/outflow_matches_trachea_end_inflow": true,
+    "native_block/upstream/local_pressure_matches_prior_penultimate_column": true,
+    "native_block/upstream/pressure_bit_replayed": true,
+    "native_block/upstream/wall_flow_bit_replayed": true,
+    "native_block/upstream/wall_displacement_bit_replayed": true,
+    "native_block/upstream/inlet_flow_bit_replayed": true,
+    "native_block/first_pressure_difference_reproduced": true,
+    "no_tracking/candidate/previous_columns_reproduced": true,
+    "no_tracking/candidate/fixed_tracheal_section_and_zero_noise": true,
+    "no_tracking/candidate/starts_from_rest": true,
+    "no_tracking/candidate/outflow_matches_trachea_end_inflow": true,
+    "no_tracking/candidate/local_pressure_matches_prior_penultimate_column": true,
+    "no_tracking/candidate/pressure_bit_replayed": true,
+    "no_tracking/candidate/wall_flow_bit_replayed": true,
+    "no_tracking/candidate/wall_displacement_bit_replayed": true,
+    "no_tracking/candidate/inlet_flow_bit_replayed": true,
+    "no_tracking/upstream/previous_columns_reproduced": true,
+    "no_tracking/upstream/fixed_tracheal_section_and_zero_noise": true,
+    "no_tracking/upstream/starts_from_rest": true,
+    "no_tracking/upstream/outflow_matches_trachea_end_inflow": true,
+    "no_tracking/upstream/local_pressure_matches_prior_penultimate_column": true,
+    "no_tracking/upstream/pressure_bit_replayed": true,
+    "no_tracking/upstream/wall_flow_bit_replayed": true,
+    "no_tracking/upstream/wall_displacement_bit_replayed": true,
+    "no_tracking/upstream/inlet_flow_bit_replayed": true,
+    "no_tracking/first_pressure_difference_reproduced": true,
+    "no_tracking/acoustics_all_zero": true
+  },
+  "hypotheses": {
+    "inflow_alone_restores_first_pressure": true
+  },
+  "sample_rate_hz": 176400,
+  "window": 16,
+  "trachea_cell_index": 14,
+  "candidate_binary_sha256": "e03b266bdd84099de0ec181d5e0f62a65c76b9559c3009b246271b30765236c0",
+  "conditions": {
+    "matched_time": {
+      "first_differences": {
+        "pressure_dyn_cm2": 12,
+        "upstream_pressure_dyn_cm2": 9,
+        "inflow_cm3_s": 9,
+        "outflow_cm3_s": 13,
+        "wall_flow_cm3_s": 3,
+        "wall_displacement_cm": null,
+        "area_cm2": null,
+        "length_cm": null,
+        "inlet_noise_pressure_dyn_cm2": null
+      },
+      "parameters": {
+        "candidate": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759255,
+          "scaled_mass": 105840.0
+        },
+        "upstream": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759252,
+          "scaled_mass": 105840.0
+        }
+      },
+      "first_pressure_residual": {
+        "offset": 12,
+        "candidate_inputs": {
+          "previous_pressure": 0.18903372975986282,
+          "inflow": -0.0002088324236734515,
+          "neck_outflow": -0.00028714179301311945,
+          "wall_outflow": 9.105227438572603e-07
+        },
+        "upstream_inputs": {
+          "previous_pressure": 0.18903372975986282,
+          "inflow": -0.00020883242367345151,
+          "neck_outflow": -0.00028714179301311945,
+          "wall_outflow": 9.105227438572602e-07
+        },
+        "substitutions": [
+          {
+            "swapped_inputs": [
+              "inflow"
+            ],
+            "pressure": 0.24955134643971477,
+            "matches_upstream": true
+          },
+          {
+            "swapped_inputs": [
+              "wall_outflow"
+            ],
+            "pressure": 0.2495513464397148,
+            "matches_upstream": false
+          },
+          {
+            "swapped_inputs": [
+              "inflow",
+              "wall_outflow"
+            ],
+            "pressure": 0.24955134643971477,
+            "matches_upstream": true
+          }
+        ]
+      },
+      "first_inlet_flow_residual": {
+        "first_difference": {
+          "offset": 9,
+          "inputs": {
+            "candidate": {
+              "left_pressure": 0.03955958557187238,
+              "tip_pressure": 0.06646514885926581,
+              "previous_inflow": -4.612893126118484e-05,
+              "arithmetic": "candidate"
+            },
+            "upstream": {
+              "left_pressure": 0.03955958557187238,
+              "tip_pressure": 0.06646514885926581,
+              "previous_inflow": -4.612893126118484e-05,
+              "arithmetic": "upstream"
+            }
+          },
+          "replayed": {
+            "candidate": {
+              "inertance": 0.0057,
+              "resistance": 1.8042700229331843,
+              "normalized_inertance": 1005.48,
+              "pressure_difference": -0.026905563287393436,
+              "normalized_momentum": -0.04638171780449613,
+              "drive": -0.07328728109188956,
+              "linear_coefficient": 1007.2842700229332,
+              "quadratic_coefficient": 0.0,
+              "denominator": 2014.5685400458665,
+              "inflow": -7.275729729227381e-05
+            },
+            "upstream": {
+              "inertance": 0.0057,
+              "resistance": 1.8042700229331838,
+              "normalized_inertance": 1005.48,
+              "pressure_difference": -0.026905563287393436,
+              "normalized_momentum": -0.04638171780449614,
+              "drive": -0.07328728109188958,
+              "linear_coefficient": 1007.2842700229332,
+              "quadratic_coefficient": 0.0,
+              "denominator": 2014.5685400458665,
+              "inflow": -7.275729729227383e-05
+            }
+          },
+          "observed": {
+            "candidate": -7.275729729227381e-05,
+            "upstream": -7.275729729227383e-05
+          }
+        },
+        "substitutions": [
+          {
+            "inputs_from_upstream": [
+              "arithmetic"
+            ],
+            "inflow": -7.275729729227383e-05,
+            "inflow_hex": "-0x1.312a8d9837e01p-14",
+            "matches_upstream": true
+          }
+        ],
+        "term_substitutions": [
+          {
+            "inputs_from_upstream": [
+              "normalized_momentum"
+            ],
+            "inflow": -7.275729729227383e-05,
+            "inflow_hex": "-0x1.312a8d9837e01p-14",
+            "matches_upstream": true
+          }
+        ]
+      }
+    },
+    "native_block": {
+      "first_differences": {
+        "pressure_dyn_cm2": 13,
+        "upstream_pressure_dyn_cm2": 10,
+        "inflow_cm3_s": 12,
+        "outflow_cm3_s": 14,
+        "wall_flow_cm3_s": 3,
+        "wall_displacement_cm": null,
+        "area_cm2": null,
+        "length_cm": null,
+        "inlet_noise_pressure_dyn_cm2": null
+      },
+      "parameters": {
+        "candidate": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759255,
+          "scaled_mass": 105840.0
+        },
+        "upstream": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759252,
+          "scaled_mass": 105840.0
+        }
+      },
+      "first_pressure_residual": {
+        "offset": 13,
+        "candidate_inputs": {
+          "previous_pressure": 0.2290516001497822,
+          "inflow": -0.0002535991315183158,
+          "neck_outflow": -0.0003388742435471207,
+          "wall_outflow": 1.1922160936362747e-06
+        },
+        "upstream_inputs": {
+          "previous_pressure": 0.2290516001497822,
+          "inflow": -0.00025359913151831574,
+          "neck_outflow": -0.0003388742435471207,
+          "wall_outflow": 1.1922160936362745e-06
+        },
+        "substitutions": [
+          {
+            "swapped_inputs": [
+              "inflow"
+            ],
+            "pressure": 0.2947954282472392,
+            "matches_upstream": true
+          },
+          {
+            "swapped_inputs": [
+              "wall_outflow"
+            ],
+            "pressure": 0.29479542824723914,
+            "matches_upstream": false
+          },
+          {
+            "swapped_inputs": [
+              "inflow",
+              "wall_outflow"
+            ],
+            "pressure": 0.2947954282472392,
+            "matches_upstream": true
+          }
+        ]
+      },
+      "first_inlet_flow_residual": {
+        "first_difference": {
+          "offset": 12,
+          "inputs": {
+            "candidate": {
+              "left_pressure": 0.12169041738594469,
+              "tip_pressure": 0.17350715786849935,
+              "previous_inflow": -0.00014048942815230413,
+              "arithmetic": "candidate"
+            },
+            "upstream": {
+              "left_pressure": 0.12169041738594466,
+              "tip_pressure": 0.17350715786849935,
+              "previous_inflow": -0.00014048942815230413,
+              "arithmetic": "upstream"
+            }
+          },
+          "replayed": {
+            "candidate": {
+              "inertance": 0.0057,
+              "resistance": 1.8042700229331843,
+              "normalized_inertance": 1005.48,
+              "pressure_difference": -0.05181674048255466,
+              "normalized_momentum": -0.14125931021857877,
+              "drive": -0.19307605070113343,
+              "linear_coefficient": 1007.2842700229332,
+              "quadratic_coefficient": 0.0,
+              "denominator": 2014.5685400458665,
+              "inflow": -0.00019167980325627204
+            },
+            "upstream": {
+              "inertance": 0.0057,
+              "resistance": 1.8042700229331838,
+              "normalized_inertance": 1005.48,
+              "pressure_difference": -0.05181674048255469,
+              "normalized_momentum": -0.14125931021857877,
+              "drive": -0.19307605070113346,
+              "linear_coefficient": 1007.2842700229332,
+              "quadratic_coefficient": 0.0,
+              "denominator": 2014.5685400458665,
+              "inflow": -0.00019167980325627206
+            }
+          },
+          "observed": {
+            "candidate": -0.00019167980325627204,
+            "upstream": -0.00019167980325627206
+          }
+        },
+        "substitutions": [
+          {
+            "inputs_from_upstream": [
+              "left_pressure"
+            ],
+            "inflow": -0.00019167980325627206,
+            "inflow_hex": "-0x1.91fb4f8faecb3p-13",
+            "matches_upstream": true
+          },
+          {
+            "inputs_from_upstream": [
+              "arithmetic"
+            ],
+            "inflow": -0.00019167980325627204,
+            "inflow_hex": "-0x1.91fb4f8faecb2p-13",
+            "matches_upstream": false
+          },
+          {
+            "inputs_from_upstream": [
+              "left_pressure",
+              "arithmetic"
+            ],
+            "inflow": -0.00019167980325627206,
+            "inflow_hex": "-0x1.91fb4f8faecb3p-13",
+            "matches_upstream": true
+          }
+        ],
+        "term_substitutions": [
+          {
+            "inputs_from_upstream": [
+              "pressure_difference"
+            ],
+            "inflow": -0.00019167980325627206,
+            "inflow_hex": "-0x1.91fb4f8faecb3p-13",
+            "matches_upstream": true
+          }
+        ]
+      }
+    },
+    "no_tracking": {
+      "first_differences": {
+        "pressure_dyn_cm2": null,
+        "upstream_pressure_dyn_cm2": null,
+        "inflow_cm3_s": null,
+        "outflow_cm3_s": null,
+        "wall_flow_cm3_s": null,
+        "wall_displacement_cm": null,
+        "area_cm2": null,
+        "length_cm": null,
+        "inlet_noise_pressure_dyn_cm2": null
+      },
+      "parameters": {
+        "candidate": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759255,
+          "scaled_mass": 105840.0
+        },
+        "upstream": {
+          "area": 0.045,
+          "length": 0.225,
+          "compliance": 7.250268528464018e-09,
+          "surface": 0.16919740853759252,
+          "scaled_mass": 105840.0
+        }
+      },
+      "first_pressure_residual": null,
+      "first_inlet_flow_residual": null
+    }
+  }
+}

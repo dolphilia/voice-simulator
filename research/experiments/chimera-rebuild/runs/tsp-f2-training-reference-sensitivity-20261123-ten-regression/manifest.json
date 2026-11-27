@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "run_id": "tsp-f2-training-reference-sensitivity-20261123-ten-regression",
+  "case_id": "tsp-f2-training-reference-sensitivity",
+  "case_revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/tsp-f2-training-reference-sensitivity.json",
+      "bytes": 1734,
+      "sha256": "32c9c61753188cdb063b372c1acd00353c11dded013a89739edec0b12bd50390"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_tsp_f2_training_reference_probe.rs",
+      "bytes": 4164,
+      "sha256": "e5b176b47da10ad83a340d3e85493c627d56e51d51a6543b9d3840ea5ba6ecd5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tsp_f2_training_reference_sensitivity.py",
+      "bytes": 10613,
+      "sha256": "9272ccaa396aabd283dbbb2328008ed17b4c232d35b912d01bb0f1b0ccb88bd4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tsp_again_f2_term_effect.py",
+      "bytes": 14946,
+      "sha256": "543113f7ed2b63338075a30460155d5853077aecac70728aae3d299635edd3f2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-again-f2-term-effect-20261123-repeat/artifacts/native.json",
+      "bytes": 257639,
+      "sha256": "592b1f2ec2bfcd54410996cd0488211798409a76e173cecc93e6ed39035899b7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-again-f2-term-effect-20261123-repeat/summary.json",
+      "bytes": 4472,
+      "sha256": "0310a0b15bec009b2e1e83f485108f6a589eaac026f8fc4538858e3736c12bff"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-again-f2-term-effect-20261123-repeat/manifest.json",
+      "bytes": 8297,
+      "sha256": "a6d479f704f89ea2f9e5d66b84b05a5712694fe6c4b5f1f0cb60a8a2709ca771"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/compare/tsp.rs",
+      "bytes": 73567,
+      "sha256": "bb103cafde6219f9b005811fac2b907f7f56906c4efcabaa15099a297cfef44d"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/main.rs",
+      "bytes": 5526,
+      "sha256": "6c739d1036ae8114b2e378d547c2f0964a6fa95255040c3fd291e78db6d906ce"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/compare.rs",
+      "bytes": 52565,
+      "sha256": "8e7ca134304bb0c54ebe12e3af2c121cc0b01e246309de7d3c18a5402fddd452"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/Cargo.lock",
+      "bytes": 5433,
+      "sha256": "5529e6a7d6fca2d363404f466cd0f16c463a41e260992cd5ec2374d14b275678"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "archive",
+        "HEAD"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "tar",
+        "-xf",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-f2-training-reference-sensitivity-20261123-ten-regression/tmp/tsp-f2-reference-a4nj3hgb/upstream.tar",
+        "-C",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-f2-training-reference-sensitivity-20261123-ten-regression/tmp/tsp-f2-reference-a4nj3hgb/upstream"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--release",
+        "--target-dir",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-f2-training-reference-sensitivity-20261123-ten-regression/tmp/tsp-f2-reference-a4nj3hgb/target",
+        "-p",
+        "chimera-cli",
+        "--",
+        "research-f2-training-reference",
+        "$ARTIFACTS/inputs.json"
+      ],
+      "cwd": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-f2-training-reference-sensitivity-20261123-ten-regression/tmp/tsp-f2-reference-a4nj3hgb/upstream",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "chimera-cli",
+        "compare::tsp::tests"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-f2-training-reference-sensitivity-20261123-ten-regression/artifacts",
+    "estimated_peak_bytes": 1073741824
+  },
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1590,
+      "sha256": "6f7c0399766b244c196831955b04627cd96e27236338af2652cd2ff324bc93fd"
+    },
+    {
+      "path": "artifacts/inputs.json",
+      "bytes": 3415,
+      "sha256": "3c704cb11b2bb398ae05509a2d80497e02727682c2cf1c5e38d71e7d1062d7ea"
+    },
+    {
+      "path": "artifacts/native.json",
+      "bytes": 39314,
+      "sha256": "73dd7c06afd4e486d251fe4f0863fd40217f84419882116a865f38626cccc23a"
+    },
+    {
+      "path": "artifacts/probe.patch",
+      "bytes": 772,
+      "sha256": "62173faabdda642d8c194a7b624b9aa9f8a926dd1176f2a0d9c61cc041118ec5"
+    },
+    {
+      "path": "artifacts/upstream-tsp-tests.log",
+      "bytes": 718,
+      "sha256": "a37e8b1b5116a7aff9f20d591958ffa5a8bc602d2108e4dc51959093b4099f73"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 82248,
+      "sha256": "86ba4f1bf80a2f5c0612910f9471fe045ffff366a78e7b7e077620ef8d8135b1"
+    }
+  ]
+}

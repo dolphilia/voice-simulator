@@ -1,0 +1,274 @@
+{
+  "checks": {
+    "matched_time/candidate/flow_bit_replayed": true,
+    "matched_time/candidate/closed_flow_zero": true,
+    "matched_time/candidate/trachea_dimensions_match": true,
+    "matched_time/upstream/flow_bit_replayed": true,
+    "matched_time/upstream/closed_flow_zero": true,
+    "matched_time/upstream/trachea_dimensions_match": true,
+    "matched_time/port_area_bit_identical": true,
+    "matched_time/matches_previous_flow_offset": true,
+    "native_block/candidate/flow_bit_replayed": true,
+    "native_block/candidate/closed_flow_zero": true,
+    "native_block/candidate/trachea_dimensions_match": true,
+    "native_block/upstream/flow_bit_replayed": true,
+    "native_block/upstream/closed_flow_zero": true,
+    "native_block/upstream/trachea_dimensions_match": true,
+    "native_block/port_area_bit_identical": true,
+    "native_block/matches_previous_flow_offset": true,
+    "no_tracking/candidate/flow_bit_replayed": true,
+    "no_tracking/candidate/closed_flow_zero": true,
+    "no_tracking/candidate/trachea_dimensions_match": true,
+    "no_tracking/candidate/no_excitation": true,
+    "no_tracking/upstream/flow_bit_replayed": true,
+    "no_tracking/upstream/closed_flow_zero": true,
+    "no_tracking/upstream/trachea_dimensions_match": true,
+    "no_tracking/upstream/no_excitation": true,
+    "no_tracking/port_area_bit_identical": true,
+    "no_tracking/matches_previous_flow_offset": true
+  },
+  "hypotheses": {
+    "matched_time/previous_inputs_bit_identical": true,
+    "matched_time/time_order_only_restores_flow": true,
+    "native_block/previous_inputs_bit_identical": true,
+    "native_block/time_order_only_restores_flow": false
+  },
+  "sample_rate_hz": 176400,
+  "window": 32,
+  "conditions": {
+    "matched_time": {
+      "first_differences": {
+        "left_port_area_cm2": null,
+        "left_flow_cm3_s": 19,
+        "left_bronchus_pressure_dyn_cm2": 19,
+        "trachea_pressure_dyn_cm2": 22
+      },
+      "closed_points": 3,
+      "first_flow_residual": {
+        "offset": 19,
+        "candidate": {
+          "closed": false,
+          "previous_state": {
+            "bronchus_pressure": 5.979903504008535e-05,
+            "trachea_pressure": 0.0007489474325969001,
+            "previous_flow": -3.894341638232969e-08,
+            "port_area_cm2": 0.010321326150411692,
+            "prior_port_area_cm2": 0.009725947422158415,
+            "previous_inertance": 0.019826978513396133,
+            "current_inertance": 0.019286073840798282
+          },
+          "terms": {
+            "pressure_difference": -0.0006891483975568147,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.00013248797253899628,
+            "normalized_inertance": 3402.063425516817,
+            "resistance": 5.840156973867852,
+            "forward_loss": 5.852941784754318,
+            "reverse_loss": 3.9283791085512094
+          },
+          "result": {
+            "drive": -0.000821636370095811,
+            "linear": 3407.903582490685,
+            "loss": 3.9283791085512094,
+            "denominator": 6815.807166875613,
+            "flow": -2.410973051259171e-07
+          },
+          "observed": -2.410973051259171e-07
+        },
+        "upstream": {
+          "closed": false,
+          "previous_state": {
+            "bronchus_pressure": 5.979903504008535e-05,
+            "trachea_pressure": 0.0007489474325969001,
+            "previous_flow": -3.894341638232969e-08,
+            "port_area_cm2": 0.010321326150411692,
+            "prior_port_area_cm2": 0.009725947422158415,
+            "previous_inertance": 0.019826978513396137,
+            "current_inertance": 0.019286073840798286
+          },
+          "terms": {
+            "pressure_difference": -0.0006891483975568147,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.0001324879725389963,
+            "normalized_inertance": 3402.0634255168175,
+            "resistance": 5.8401569738678525,
+            "forward_loss": 5.852941784754318,
+            "reverse_loss": 3.9283791085512094
+          },
+          "result": {
+            "drive": -0.000821636370095811,
+            "linear": 3407.9035824906855,
+            "loss": 3.9283791085512094,
+            "denominator": 6815.807166875615,
+            "flow": -2.4109730512591703e-07
+          },
+          "observed": -2.4109730512591703e-07
+        },
+        "different_terms": [
+          "normalized_momentum",
+          "normalized_inertance",
+          "resistance"
+        ],
+        "term_swaps": {
+          "normalized_momentum": {
+            "flow": -2.410973051259171e-07,
+            "matches_upstream": false
+          },
+          "normalized_inertance": {
+            "flow": -2.4109730512591703e-07,
+            "matches_upstream": true
+          },
+          "resistance": {
+            "flow": -2.410973051259171e-07,
+            "matches_upstream": false
+          },
+          "normalized_momentum+normalized_inertance": {
+            "flow": -2.4109730512591703e-07,
+            "matches_upstream": true
+          },
+          "normalized_momentum+resistance": {
+            "flow": -2.410973051259171e-07,
+            "matches_upstream": false
+          },
+          "normalized_inertance+resistance": {
+            "flow": -2.4109730512591703e-07,
+            "matches_upstream": true
+          },
+          "normalized_momentum+normalized_inertance+resistance": {
+            "flow": -2.4109730512591703e-07,
+            "matches_upstream": true
+          }
+        },
+        "pressure_swaps": {
+          "bronchus_pressure": {
+            "flow": -2.410973051259171e-07,
+            "matches_upstream": false
+          },
+          "trachea_pressure": {
+            "flow": -2.410973051259171e-07,
+            "matches_upstream": false
+          }
+        },
+        "time_order_only": {
+          "result": {
+            "drive": -0.0008216363700958109,
+            "linear": 3407.903582490685,
+            "loss": 3.9283791085512094,
+            "denominator": 6815.807166875613,
+            "flow": -2.4109730512591703e-07
+          },
+          "matches_upstream": true
+        }
+      }
+    },
+    "native_block": {
+      "first_differences": {
+        "left_port_area_cm2": null,
+        "left_flow_cm3_s": 18,
+        "left_bronchus_pressure_dyn_cm2": 18,
+        "trachea_pressure_dyn_cm2": 27
+      },
+      "closed_points": 0,
+      "first_flow_residual": {
+        "offset": 18,
+        "candidate": {
+          "closed": false,
+          "previous_state": {
+            "bronchus_pressure": 3.980155033066497e-06,
+            "trachea_pressure": 0.00011834475686837257,
+            "previous_flow": -2.6813676012237453e-09,
+            "port_area_cm2": 0.008102940236848577,
+            "prior_port_area_cm2": 0.008601838891657264,
+            "previous_inertance": 0.021052384112128966,
+            "current_inertance": 0.021705173718949925
+          },
+          "terms": {
+            "pressure_difference": -0.00011436460183530607,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -9.957635473148015e-06,
+            "normalized_inertance": 3828.7926440227666,
+            "resistance": 8.395833540034706,
+            "forward_loss": 10.177138852515927,
+            "reverse_loss": 7.4126109408435
+          },
+          "result": {
+            "drive": -0.0001243222373084541,
+            "linear": 3837.1884775628014,
+            "loss": 7.4126109408435,
+            "denominator": 7674.37695560593,
+            "flow": -3.239930434160912e-08
+          },
+          "observed": -3.239930434160912e-08
+        },
+        "upstream": {
+          "closed": false,
+          "previous_state": {
+            "bronchus_pressure": 3.980155033066497e-06,
+            "trachea_pressure": 0.00011834475686837257,
+            "previous_flow": -2.6813676012237453e-09,
+            "port_area_cm2": 0.008102940236848577,
+            "prior_port_area_cm2": 0.008601838891657264,
+            "previous_inertance": 0.021052384112128966,
+            "current_inertance": 0.02170517371894993
+          },
+          "terms": {
+            "pressure_difference": -0.00011436460183530607,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -9.957635473148015e-06,
+            "normalized_inertance": 3828.7926440227675,
+            "resistance": 8.395833540034706,
+            "forward_loss": 10.177138852515927,
+            "reverse_loss": 7.4126109408435
+          },
+          "result": {
+            "drive": -0.0001243222373084541,
+            "linear": 3837.1884775628023,
+            "loss": 7.4126109408435,
+            "denominator": 7674.3769556059315,
+            "flow": -3.239930434160911e-08
+          },
+          "observed": -3.239930434160911e-08
+        },
+        "different_terms": [
+          "normalized_inertance"
+        ],
+        "term_swaps": {
+          "normalized_inertance": {
+            "flow": -3.239930434160911e-08,
+            "matches_upstream": true
+          }
+        },
+        "pressure_swaps": {
+          "bronchus_pressure": {
+            "flow": -3.239930434160912e-08,
+            "matches_upstream": false
+          },
+          "trachea_pressure": {
+            "flow": -3.239930434160912e-08,
+            "matches_upstream": false
+          }
+        },
+        "time_order_only": {
+          "result": {
+            "drive": -0.0001243222373084541,
+            "linear": 3837.1884775628014,
+            "loss": 7.4126109408435,
+            "denominator": 7674.37695560593,
+            "flow": -3.239930434160912e-08
+          },
+          "matches_upstream": false
+        }
+      }
+    },
+    "no_tracking": {
+      "first_differences": {
+        "left_port_area_cm2": null,
+        "left_flow_cm3_s": null,
+        "left_bronchus_pressure_dyn_cm2": null,
+        "trachea_pressure_dyn_cm2": null
+      },
+      "closed_points": 3,
+      "first_flow_residual": null
+    }
+  }
+}

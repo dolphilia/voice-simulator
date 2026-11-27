@@ -1,0 +1,333 @@
+{
+  "checks": {
+    "registered_reference_run": true,
+    "matched_time/candidate/beak_areas_match_reference": true,
+    "matched_time/candidate/inflow_replayed_bitwise": true,
+    "matched_time/upstream/beak_areas_match_reference": true,
+    "matched_time/upstream/inflow_replayed_bitwise": true,
+    "native_block/candidate/beak_areas_match_reference": true,
+    "native_block/candidate/inflow_replayed_bitwise": true,
+    "native_block/upstream/beak_areas_match_reference": true,
+    "native_block/upstream/inflow_replayed_bitwise": true,
+    "no_tracking/candidate/beak_areas_match_reference": true,
+    "no_tracking/candidate/inflow_replayed_bitwise": true,
+    "no_tracking/upstream/beak_areas_match_reference": true,
+    "no_tracking/upstream/inflow_replayed_bitwise": true,
+    "no_tracking_quiet": true
+  },
+  "hypotheses": {
+    "matched_time/first_difference_in_6_to_12_samples": true,
+    "matched_time/normalized_momentum_alone_matches_upstream": false,
+    "native_block/first_difference_in_6_to_12_samples": true,
+    "native_block/normalized_momentum_alone_matches_upstream": true
+  },
+  "internal_sample_rate_hz": 176400,
+  "reference": {
+    "internal_sample_rate_hz": 192000,
+    "first_difference_offset": 9,
+    "first_difference_us": 46.875,
+    "term_substitutions": [
+      {
+        "inputs_from_upstream": [
+          "normalized_momentum"
+        ],
+        "inflow": 3.196833845139031e-05,
+        "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+        "matches_upstream": true
+      },
+      {
+        "inputs_from_upstream": [
+          "quadratic_coefficient"
+        ],
+        "inflow": 3.1968338451390316e-05,
+        "inflow_hex": "0x1.0c2b7bec8aaecp-15",
+        "matches_upstream": false
+      },
+      {
+        "inputs_from_upstream": [
+          "normalized_momentum",
+          "quadratic_coefficient"
+        ],
+        "inflow": 3.196833845139031e-05,
+        "inflow_hex": "0x1.0c2b7bec8aaebp-15",
+        "matches_upstream": true
+      }
+    ]
+  },
+  "geometry": {
+    "reference": {
+      "beak_cells": 6,
+      "bronchus_cells_per_side": 4,
+      "courant": 0.9114583333333333,
+      "oec_length_cm": 0.7368062997280773,
+      "trachea_cell_length_cm": 0.2,
+      "trachea_cells": 18
+    },
+    "current": {
+      "beak_cells": 6,
+      "bronchus_cells_per_side": 3,
+      "courant": 0.9157509157509158,
+      "oec_length_cm": 0.7368062997280773,
+      "trachea_cell_length_cm": 0.225,
+      "trachea_cells": 16
+    }
+  },
+  "conditions": {
+    "matched_time": {
+      "control_block_internal_samples": 235,
+      "control_interval_us": 1332.1995464852607,
+      "first_difference_us": 45.35147392290249,
+      "first_difference": {
+        "offset": 8,
+        "inputs": {
+          "candidate": {
+            "left_pressure": 0.007193209087734416,
+            "tip_pressure": 0.0014899927483707112,
+            "previous_inflow": 9.639834109136999e-06,
+            "arithmetic": "candidate"
+          },
+          "upstream": {
+            "left_pressure": 0.0071932090877344194,
+            "tip_pressure": 0.0014899927483707112,
+            "previous_inflow": 9.639834109136999e-06,
+            "arithmetic": "upstream"
+          }
+        },
+        "replayed": {
+          "candidate": {
+            "inertance": 0.001769229215072229,
+            "resistance": 0.3185670750891709,
+            "normalized_inertance": 312.0920335387412,
+            "pressure_difference": 0.005703216339363704,
+            "normalized_momentum": 0.0030085154300966855,
+            "drive": 0.00871173176946039,
+            "linear_coefficient": 312.41060061383035,
+            "quadratic_coefficient": 0.0006039426652252155,
+            "denominator": 624.8212012613433,
+            "inflow": 2.7885519095298892e-05
+          },
+          "upstream": {
+            "inertance": 0.001769229215072229,
+            "resistance": 0.31856707508917087,
+            "normalized_inertance": 312.0920335387412,
+            "pressure_difference": 0.005703216339363708,
+            "normalized_momentum": 0.0030085154300966855,
+            "drive": 0.008711731769460393,
+            "linear_coefficient": 312.41060061383035,
+            "quadratic_coefficient": 0.0006039426652252154,
+            "denominator": 624.8212012613433,
+            "inflow": 2.7885519095298902e-05
+          }
+        },
+        "observed": {
+          "candidate": 2.7885519095298892e-05,
+          "upstream": 2.7885519095298902e-05
+        }
+      },
+      "substitutions": [
+        {
+          "inputs_from_upstream": [
+            "left_pressure"
+          ],
+          "inflow": 2.7885519095298902e-05,
+          "inflow_hex": "0x1.d3d7647de9ef9p-16",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "arithmetic"
+          ],
+          "inflow": 2.7885519095298892e-05,
+          "inflow_hex": "0x1.d3d7647de9ef6p-16",
+          "matches_upstream": false
+        },
+        {
+          "inputs_from_upstream": [
+            "left_pressure",
+            "arithmetic"
+          ],
+          "inflow": 2.7885519095298902e-05,
+          "inflow_hex": "0x1.d3d7647de9ef9p-16",
+          "matches_upstream": true
+        }
+      ],
+      "term_substitutions": [
+        {
+          "inputs_from_upstream": [
+            "pressure_difference"
+          ],
+          "inflow": 2.7885519095298902e-05,
+          "inflow_hex": "0x1.d3d7647de9ef9p-16",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "quadratic_coefficient"
+          ],
+          "inflow": 2.7885519095298892e-05,
+          "inflow_hex": "0x1.d3d7647de9ef6p-16",
+          "matches_upstream": false
+        },
+        {
+          "inputs_from_upstream": [
+            "pressure_difference",
+            "quadratic_coefficient"
+          ],
+          "inflow": 2.7885519095298902e-05,
+          "inflow_hex": "0x1.d3d7647de9ef9p-16",
+          "matches_upstream": true
+        }
+      ]
+    },
+    "native_block": {
+      "control_block_internal_samples": 256,
+      "control_interval_us": 1451.2471655328798,
+      "first_difference_us": 39.682539682539684,
+      "first_difference": {
+        "offset": 7,
+        "inputs": {
+          "candidate": {
+            "left_pressure": 0.0025159524273164666,
+            "tip_pressure": 0.00024675589266049894,
+            "previous_inflow": 1.5870139139248454e-06,
+            "arithmetic": "candidate"
+          },
+          "upstream": {
+            "left_pressure": 0.002515952427316467,
+            "tip_pressure": 0.00024675589266049894,
+            "previous_inflow": 1.5870139139248454e-06,
+            "arithmetic": "upstream"
+          }
+        },
+        "replayed": {
+          "candidate": {
+            "inertance": 0.001769229215072229,
+            "resistance": 0.3185670750891709,
+            "normalized_inertance": 312.0920335387412,
+            "pressure_difference": 0.0022691965346559677,
+            "normalized_momentum": 0.0004952943996510817,
+            "drive": 0.0027644909343070494,
+            "linear_coefficient": 312.41060061383035,
+            "quadratic_coefficient": 0.0006039426652252155,
+            "denominator": 624.8212012383492,
+            "inflow": 8.848902466267258e-06
+          },
+          "upstream": {
+            "inertance": 0.001769229215072229,
+            "resistance": 0.31856707508917087,
+            "normalized_inertance": 312.0920335387412,
+            "pressure_difference": 0.002269196534655968,
+            "normalized_momentum": 0.0004952943996510818,
+            "drive": 0.00276449093430705,
+            "linear_coefficient": 312.41060061383035,
+            "quadratic_coefficient": 0.0006039426652252154,
+            "denominator": 624.8212012383492,
+            "inflow": 8.84890246626726e-06
+          }
+        },
+        "observed": {
+          "candidate": 8.848902466267258e-06,
+          "upstream": 8.84890246626726e-06
+        }
+      },
+      "substitutions": [
+        {
+          "inputs_from_upstream": [
+            "left_pressure"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "arithmetic"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "left_pressure",
+            "arithmetic"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        }
+      ],
+      "term_substitutions": [
+        {
+          "inputs_from_upstream": [
+            "pressure_difference"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "normalized_momentum"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "quadratic_coefficient"
+          ],
+          "inflow": 8.848902466267258e-06,
+          "inflow_hex": "0x1.28eb7e4f3702cp-17",
+          "matches_upstream": false
+        },
+        {
+          "inputs_from_upstream": [
+            "pressure_difference",
+            "normalized_momentum"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "pressure_difference",
+            "quadratic_coefficient"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "normalized_momentum",
+            "quadratic_coefficient"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        },
+        {
+          "inputs_from_upstream": [
+            "pressure_difference",
+            "normalized_momentum",
+            "quadratic_coefficient"
+          ],
+          "inflow": 8.84890246626726e-06,
+          "inflow_hex": "0x1.28eb7e4f3702dp-17",
+          "matches_upstream": true
+        }
+      ]
+    },
+    "no_tracking": {
+      "control_block_internal_samples": 235,
+      "control_interval_us": 1332.1995464852607,
+      "first_difference_us": null,
+      "first_difference": null,
+      "substitutions": [],
+      "term_substitutions": []
+    }
+  }
+}

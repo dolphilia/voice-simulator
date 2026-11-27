@@ -1,0 +1,271 @@
+{
+  "checks": {
+    "preceding_patches_match_baseline": true,
+    "matched_time/candidate/earlier_columns_match": true,
+    "matched_time/candidate/neck_flow_bit_replayed": true,
+    "matched_time/candidate/fixed_open_neck_without_noise": true,
+    "matched_time/upstream/earlier_columns_match": true,
+    "matched_time/upstream/neck_flow_bit_replayed": true,
+    "matched_time/upstream/fixed_open_neck_without_noise": true,
+    "matched_time/geometry_bit_equal": true,
+    "matched_time/earlier_first_flow_difference_reproduced": true,
+    "native_block/candidate/earlier_columns_match": true,
+    "native_block/candidate/neck_flow_bit_replayed": true,
+    "native_block/candidate/fixed_open_neck_without_noise": true,
+    "native_block/upstream/earlier_columns_match": true,
+    "native_block/upstream/neck_flow_bit_replayed": true,
+    "native_block/upstream/fixed_open_neck_without_noise": true,
+    "native_block/geometry_bit_equal": true,
+    "native_block/earlier_first_flow_difference_reproduced": true,
+    "no_tracking/candidate/earlier_columns_match": true,
+    "no_tracking/candidate/neck_flow_bit_replayed": true,
+    "no_tracking/candidate/fixed_open_neck_without_noise": true,
+    "no_tracking/candidate/flow_and_pressures_zero": true,
+    "no_tracking/upstream/earlier_columns_match": true,
+    "no_tracking/upstream/neck_flow_bit_replayed": true,
+    "no_tracking/upstream/fixed_open_neck_without_noise": true,
+    "no_tracking/upstream/flow_and_pressures_zero": true,
+    "no_tracking/geometry_bit_equal": true,
+    "no_tracking/earlier_first_flow_difference_reproduced": true
+  },
+  "hypotheses": {
+    "previous_cavity_pressure_and_neck_flow_equal": true,
+    "time_order_on_its_own_restores_matched_time_flow": true
+  },
+  "sample_rate_hz": 176400,
+  "window": 16,
+  "candidate_binary_sha256": "ef7415d647834bfb9de33570292384950b480c4e4285ff6d261181712b26f5dd",
+  "conditions": {
+    "matched_time": {
+      "first_difference": {
+        "oec_neck_inflow_cm3_s": 4,
+        "trachea_end_pressure_dyn_cm2": 4,
+        "oec_pressure_dyn_cm2": null,
+        "trachea_end_area_cm2": null,
+        "oec_area_cm2": null
+      },
+      "first_flow_diagnosis": {
+        "offset": 4,
+        "candidate": {
+          "previous_state": {
+            "trachea_pressure": 0.00662935881434604,
+            "cavity_pressure": 0.027848831643469275,
+            "previous_flow": -7.917889495417615e-06,
+            "previous_inertance": 0.013134692990460491,
+            "current_inertance": 0.013134870846083288
+          },
+          "terms": {
+            "pressure_difference": -0.021219472829123235,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.018345432006289523,
+            "normalized_inertance": 2316.991217249092,
+            "resistance": 3.6829507619883373,
+            "forward_loss": 0.6414467998616636,
+            "reverse_loss": 0.24629629629629632
+          },
+          "result": {
+            "drive": -0.03956490483541276,
+            "linear": 2320.6741680110804,
+            "loss": 0.24629629629629632,
+            "denominator": 4641.348344420315,
+            "flow": -1.7048884030855586e-05
+          },
+          "observed": -1.7048884030855586e-05
+        },
+        "upstream": {
+          "previous_state": {
+            "trachea_pressure": 0.00662935881434604,
+            "cavity_pressure": 0.027848831643469275,
+            "previous_flow": -7.917889495417615e-06,
+            "previous_inertance": 0.013134692990460491,
+            "current_inertance": 0.013134870846083288
+          },
+          "terms": {
+            "pressure_difference": -0.021219472829123235,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.01834543200628952,
+            "normalized_inertance": 2316.991217249092,
+            "resistance": 3.6829507619883373,
+            "forward_loss": 0.6414467998616636,
+            "reverse_loss": 0.24629629629629635
+          },
+          "result": {
+            "drive": -0.03956490483541275,
+            "linear": 2320.6741680110804,
+            "loss": 0.24629629629629635,
+            "denominator": 4641.348344420315,
+            "flow": -1.7048884030855582e-05
+          },
+          "observed": -1.7048884030855582e-05
+        },
+        "different_terms": [
+          "normalized_momentum",
+          "reverse_loss"
+        ],
+        "term_swaps": {
+          "normalized_momentum": {
+            "flow": -1.7048884030855582e-05,
+            "matches_upstream": true
+          },
+          "reverse_loss": {
+            "flow": -1.7048884030855586e-05,
+            "matches_upstream": false
+          },
+          "normalized_momentum+reverse_loss": {
+            "flow": -1.7048884030855582e-05,
+            "matches_upstream": true
+          }
+        },
+        "pressure_swaps": {
+          "trachea_pressure": {
+            "flow": -1.7048884030855586e-05,
+            "matches_upstream": false
+          },
+          "cavity_pressure": {
+            "flow": -1.7048884030855586e-05,
+            "matches_upstream": false
+          }
+        },
+        "time_order_only": {
+          "result": {
+            "drive": -0.03956490483541275,
+            "linear": 2320.6741680110804,
+            "loss": 0.24629629629629632,
+            "denominator": 4641.348344420315,
+            "flow": -1.7048884030855582e-05
+          },
+          "matches_upstream": true
+        }
+      }
+    },
+    "native_block": {
+      "first_difference": {
+        "oec_neck_inflow_cm3_s": 5,
+        "trachea_end_pressure_dyn_cm2": 5,
+        "oec_pressure_dyn_cm2": null,
+        "trachea_end_area_cm2": null,
+        "oec_area_cm2": null
+      },
+      "first_flow_diagnosis": {
+        "offset": 5,
+        "candidate": {
+          "previous_state": {
+            "trachea_pressure": 0.01325836944783294,
+            "cavity_pressure": 0.04420844681310457,
+            "previous_flow": -1.5649566320933195e-05,
+            "previous_inertance": 0.013134797887736277,
+            "current_inertance": 0.013134961194261704
+          },
+          "terms": {
+            "pressure_difference": -0.03095007736527163,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.03625970631175052,
+            "normalized_inertance": 2317.0071546677646,
+            "resistance": 3.6829507619883373,
+            "forward_loss": 0.6414406267314705,
+            "reverse_loss": 0.24629629629629632
+          },
+          "result": {
+            "drive": -0.06720978367702214,
+            "linear": 2320.6901054297527,
+            "loss": 0.24629629629629632,
+            "denominator": 4641.380225125538,
+            "flow": -2.8961119501992224e-05
+          },
+          "observed": -2.8961119501992224e-05
+        },
+        "upstream": {
+          "previous_state": {
+            "trachea_pressure": 0.01325836944783294,
+            "cavity_pressure": 0.04420844681310457,
+            "previous_flow": -1.5649566320933195e-05,
+            "previous_inertance": 0.013134797887736277,
+            "current_inertance": 0.013134961194261704
+          },
+          "terms": {
+            "pressure_difference": -0.03095007736527163,
+            "noise_pressure": 0.0,
+            "normalized_momentum": -0.036259706311750524,
+            "normalized_inertance": 2317.0071546677646,
+            "resistance": 3.6829507619883373,
+            "forward_loss": 0.6414406267314706,
+            "reverse_loss": 0.24629629629629635
+          },
+          "result": {
+            "drive": -0.06720978367702216,
+            "linear": 2320.6901054297527,
+            "loss": 0.24629629629629635,
+            "denominator": 4641.380225125538,
+            "flow": -2.8961119501992228e-05
+          },
+          "observed": -2.8961119501992228e-05
+        },
+        "different_terms": [
+          "normalized_momentum",
+          "forward_loss",
+          "reverse_loss"
+        ],
+        "term_swaps": {
+          "normalized_momentum": {
+            "flow": -2.8961119501992228e-05,
+            "matches_upstream": true
+          },
+          "forward_loss": {
+            "flow": -2.8961119501992224e-05,
+            "matches_upstream": false
+          },
+          "reverse_loss": {
+            "flow": -2.8961119501992224e-05,
+            "matches_upstream": false
+          },
+          "normalized_momentum+forward_loss": {
+            "flow": -2.8961119501992228e-05,
+            "matches_upstream": true
+          },
+          "normalized_momentum+reverse_loss": {
+            "flow": -2.8961119501992228e-05,
+            "matches_upstream": true
+          },
+          "forward_loss+reverse_loss": {
+            "flow": -2.8961119501992224e-05,
+            "matches_upstream": false
+          },
+          "normalized_momentum+forward_loss+reverse_loss": {
+            "flow": -2.8961119501992228e-05,
+            "matches_upstream": true
+          }
+        },
+        "pressure_swaps": {
+          "trachea_pressure": {
+            "flow": -2.8961119501992224e-05,
+            "matches_upstream": false
+          },
+          "cavity_pressure": {
+            "flow": -2.8961119501992224e-05,
+            "matches_upstream": false
+          }
+        },
+        "time_order_only": {
+          "result": {
+            "drive": -0.06720978367702216,
+            "linear": 2320.6901054297527,
+            "loss": 0.24629629629629632,
+            "denominator": 4641.380225125538,
+            "flow": -2.8961119501992228e-05
+          },
+          "matches_upstream": true
+        }
+      }
+    },
+    "no_tracking": {
+      "first_difference": {
+        "oec_neck_inflow_cm3_s": null,
+        "trachea_end_pressure_dyn_cm2": null,
+        "oec_pressure_dyn_cm2": null,
+        "trachea_end_area_cm2": null,
+        "oec_area_cm2": null
+      },
+      "first_flow_diagnosis": null
+    }
+  }
+}

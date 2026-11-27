@@ -1,0 +1,954 @@
+{
+  "checks": {
+    "standard_trace_reproduced": true,
+    "standard_wave_reproduced": true,
+    "experiment_binary_reproduced": true,
+    "experiment_binary_differs": true,
+    "standard/layout": true,
+    "standard/pcm_wave_and_trace": true,
+    "standard/block_split_wave": true,
+    "standard/block_split_trace": true,
+    "experiment/layout": true,
+    "experiment/pcm_wave_and_trace": true,
+    "experiment/block_split_wave": true,
+    "experiment/block_split_trace": true,
+    "controls_unchanged": true,
+    "standard/timing": true,
+    "standard/silent_before_control_update": true,
+    "standard/finite_bounded_signal": true,
+    "standard/independent/decimated": true,
+    "standard/independent/dc_removed": true,
+    "standard/independent/pcm_f32": true,
+    "experiment/timing": true,
+    "experiment/silent_before_control_update": true,
+    "experiment/finite_bounded_signal": true,
+    "experiment/independent/decimated": true,
+    "experiment/independent/dc_removed": true,
+    "experiment/independent/pcm_f32": true,
+    "upstream/timing": true,
+    "upstream/silent_before_control_update": true,
+    "upstream/finite_bounded_signal": true,
+    "upstream/independent/decimated": true,
+    "upstream/independent/dc_removed": true,
+    "upstream/independent/pcm_f32": true,
+    "upstream_control/frame": true,
+    "upstream_control/internal_sample": true,
+    "upstream_control/call_id": true,
+    "upstream_control/control_clock_seconds": true,
+    "upstream_control/active_call": true,
+    "upstream_control/target_pitch_hz": true,
+    "upstream_control/target_interval_semitones": true,
+    "upstream_control/target_voices": true,
+    "upstream_control/target_drive": true,
+    "upstream_control/target_tension": true,
+    "upstream_control/target_pressure_kpa": true,
+    "upstream_control/target_purity": true,
+    "upstream_control/target_oec_cm3": true,
+    "upstream_control/target_gape": true,
+    "upstream_control/pitch_hz": true,
+    "upstream_control/interval_semitones": true,
+    "upstream_control/voices": true,
+    "upstream_control/drive": true,
+    "upstream_control/tension": true,
+    "upstream_control/pressure_kpa": true,
+    "upstream_control/purity": true,
+    "upstream_control/oec_cm3": true,
+    "upstream_control/gape": true,
+    "upstream_control/gate": true,
+    "upstream_control/sac_pressure_dyn_cm2": true,
+    "upstream_control/left_opening": true,
+    "upstream_control/right_opening": true,
+    "standard_vs_upstream/within_registered_tolerances": true,
+    "experiment_vs_upstream/within_registered_tolerances": true,
+    "experiment_vs_standard/within_registered_tolerances": true,
+    "archived_first_radiation_difference_reproduced": true,
+    "experiment_effect_starts_at_radiation": true
+  },
+  "hypotheses": {
+    "first_radiation_difference_delayed": true,
+    "pcm_bit_exact": true
+  },
+  "binaries": {
+    "standard": "18bf5b94858ca90dc2b94475eea4d4fb247a1a5e49a6e3b490089baa409fa7c0",
+    "experiment": "3f527130f233893333b2bf6ba5d5b11332506af2ae1c74e07ede7d8dad113c2b"
+  },
+  "frames": 48510,
+  "alternate_block_trace": {
+    "standard": {
+      "sha256": "c9ac743b27bffb9358e5bd8f3103a7b8e188289ab3b6666e2ad68507d808d56e",
+      "bytes": 18518665
+    },
+    "experiment": {
+      "sha256": "6bb68c4023ae01823c3f4c4031dab09fbe43bf7306742c7bfccaf52dcd605002",
+      "bytes": 18518785
+    }
+  },
+  "internal_samples": 194040,
+  "checkpoints": {
+    "standard": {
+      "call_transitions": [
+        [
+          211,
+          3
+        ],
+        [
+          32384,
+          0
+        ]
+      ],
+      "first_breath_frame": 320,
+      "peak_pcm": 0.6018341779708862
+    },
+    "experiment": {
+      "call_transitions": [
+        [
+          211,
+          3
+        ],
+        [
+          32384,
+          0
+        ]
+      ],
+      "first_breath_frame": 320,
+      "peak_pcm": 0.6018341779708862
+    },
+    "upstream": {
+      "call_transitions": [
+        [
+          211,
+          3
+        ],
+        [
+          32384,
+          0
+        ]
+      ],
+      "first_breath_frame": 320,
+      "peak_pcm": 0.6018341779708862
+    }
+  },
+  "comparisons": {
+    "standard_vs_upstream": {
+      "radiation_internal": {
+        "tolerance": 0.13175842664715604,
+        "total": {
+          "first_bit_difference": 1033,
+          "first_values": [
+            18.03864941902725,
+            18.038649419027262
+          ],
+          "bit_difference_count": 173147,
+          "first_over_tolerance": null,
+          "max_abs_error": 1.1292286217212677e-08,
+          "rms_error": 1.1343971926859328e-09,
+          "compared_samples": 194040
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 1024
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 1033,
+            "first_values": [
+              18.03864941902725,
+              18.038649419027262
+            ],
+            "bit_difference_count": 206,
+            "first_over_tolerance": null,
+            "max_abs_error": 7.830749382264912e-10,
+            "rms_error": 1.741055168646199e-10,
+            "compared_samples": 256
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 1280,
+            "first_values": [
+              6731.395673480329,
+              6731.395673480016
+            ],
+            "bit_difference_count": 115697,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.1292286217212677e-08,
+            "rms_error": 1.3747140553000698e-09,
+            "compared_samples": 128256
+          },
+          "after_call": {
+            "first_bit_difference": 129536,
+            "first_values": [
+              -227.50403737380617,
+              -227.50403737382575
+            ],
+            "bit_difference_count": 57244,
+            "first_over_tolerance": null,
+            "max_abs_error": 6.2673279899172485e-09,
+            "rms_error": 3.366584639629598e-10,
+            "compared_samples": 64504
+          }
+        }
+      },
+      "decimated": {
+        "tolerance": 0.001253728515047424,
+        "total": {
+          "first_bit_difference": 258,
+          "first_values": [
+            0.0012476363389489955,
+            0.0012476363389489957
+          ],
+          "bit_difference_count": 47432,
+          "first_over_tolerance": null,
+          "max_abs_error": 5.005858838558197e-09,
+          "rms_error": 5.369808345808065e-10,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 258,
+            "first_values": [
+              0.0012476363389489955,
+              0.0012476363389489957
+            ],
+            "bit_difference_count": 62,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.5415935195051134e-10,
+            "rms_error": 4.07905539070388e-11,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              10503.98653830138,
+              10503.986538301433
+            ],
+            "bit_difference_count": 31427,
+            "first_over_tolerance": null,
+            "max_abs_error": 5.005858838558197e-09,
+            "rms_error": 6.542432334403354e-10,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -4093.341621565835,
+              -4093.341621565852
+            ],
+            "bit_difference_count": 15943,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.868329491117038e-09,
+            "rms_error": 1.2775218859933888e-10,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "dc_removed": {
+        "tolerance": 1e-09,
+        "total": {
+          "first_bit_difference": 258,
+          "first_values": [
+            5.988644859607839e-10,
+            5.98864485960784e-10
+          ],
+          "bit_difference_count": 47527,
+          "first_over_tolerance": null,
+          "max_abs_error": 2.7755575615628914e-15,
+          "rms_error": 2.921506573844476e-16,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 258,
+            "first_values": [
+              5.988644859607839e-10,
+              5.98864485960784e-10
+            ],
+            "bit_difference_count": 62,
+            "first_over_tolerance": null,
+            "max_abs_error": 7.32920668600201e-17,
+            "rms_error": 1.9570835638315224e-17,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              0.004902484544248202,
+              0.004902484544248228
+            ],
+            "bit_difference_count": 31349,
+            "first_over_tolerance": null,
+            "max_abs_error": 2.7755575615628914e-15,
+            "rms_error": 3.5669968707134345e-16,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -0.0019560049193908372,
+              -0.00195600491939084
+            ],
+            "bit_difference_count": 16116,
+            "first_over_tolerance": null,
+            "max_abs_error": 8.96418356211015e-16,
+            "rms_error": 6.137706841318966e-17,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "pcm_f32": {
+        "tolerance": 1e-06,
+        "total": {
+          "first_bit_difference": null,
+          "first_values": null,
+          "bit_difference_count": 0,
+          "first_over_tolerance": null,
+          "max_abs_error": 0.0,
+          "rms_error": 0.0,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 16126
+          }
+        }
+      }
+    },
+    "experiment_vs_upstream": {
+      "radiation_internal": {
+        "tolerance": 0.13175842664715604,
+        "total": {
+          "first_bit_difference": 1089,
+          "first_values": [
+            2896.179667120098,
+            2896.179667120108
+          ],
+          "bit_difference_count": 167774,
+          "first_over_tolerance": null,
+          "max_abs_error": 1.1292286217212677e-08,
+          "rms_error": 1.0706697810004622e-09,
+          "compared_samples": 194040
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 1024
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 1089,
+            "first_values": [
+              2896.179667120098,
+              2896.179667120108
+            ],
+            "bit_difference_count": 153,
+            "first_over_tolerance": null,
+            "max_abs_error": 9.399627742823213e-10,
+            "rms_error": 1.9678412706362963e-10,
+            "compared_samples": 256
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 1280,
+            "first_values": [
+              6731.395673480329,
+              6731.395673480016
+            ],
+            "bit_difference_count": 112725,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.1292286217212677e-08,
+            "rms_error": 1.2947138465104902e-09,
+            "compared_samples": 128256
+          },
+          "after_call": {
+            "first_bit_difference": 129536,
+            "first_values": [
+              -227.50403737383064,
+              -227.50403737382575
+            ],
+            "bit_difference_count": 54896,
+            "first_over_tolerance": null,
+            "max_abs_error": 5.6402313930448145e-09,
+            "rms_error": 3.394194526181715e-10,
+            "compared_samples": 64504
+          }
+        }
+      },
+      "decimated": {
+        "tolerance": 0.001253728515047424,
+        "total": {
+          "first_bit_difference": 275,
+          "first_values": [
+            983.6993635963663,
+            983.6993635963664
+          ],
+          "bit_difference_count": 47042,
+          "first_over_tolerance": null,
+          "max_abs_error": 3.725290298461914e-09,
+          "rms_error": 4.1330403178044994e-10,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 275,
+            "first_values": [
+              983.6993635963663,
+              983.6993635963664
+            ],
+            "bit_difference_count": 43,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.7189449863508344e-10,
+            "rms_error": 4.946636860449016e-11,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              10503.98653830142,
+              10503.986538301433
+            ],
+            "bit_difference_count": 31147,
+            "first_over_tolerance": null,
+            "max_abs_error": 3.725290298461914e-09,
+            "rms_error": 5.02677008057296e-10,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -4093.3416215658244,
+              -4093.341621565852
+            ],
+            "bit_difference_count": 15852,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.7639649740885943e-09,
+            "rms_error": 1.0689576286285749e-10,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "dc_removed": {
+        "tolerance": 1e-09,
+        "total": {
+          "first_bit_difference": 275,
+          "first_values": [
+            0.0004708075476446205,
+            0.0004708075476446206
+          ],
+          "bit_difference_count": 47215,
+          "first_over_tolerance": null,
+          "max_abs_error": 1.7763568394002505e-15,
+          "rms_error": 2.452606059473545e-16,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 275,
+            "first_values": [
+              0.0004708075476446205,
+              0.0004708075476446206
+            ],
+            "bit_difference_count": 42,
+            "first_over_tolerance": null,
+            "max_abs_error": 8.326672684688674e-17,
+            "rms_error": 2.375472427708584e-17,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              0.0049024845442482215,
+              0.004902484544248228
+            ],
+            "bit_difference_count": 31138,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.7763568394002505e-15,
+            "rms_error": 2.994633534037784e-16,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -0.001956004919390827,
+              -0.00195600491939084
+            ],
+            "bit_difference_count": 16035,
+            "first_over_tolerance": null,
+            "max_abs_error": 8.4350929019372245e-16,
+            "rms_error": 5.1354888041876284e-17,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "pcm_f32": {
+        "tolerance": 1e-06,
+        "total": {
+          "first_bit_difference": null,
+          "first_values": null,
+          "bit_difference_count": 0,
+          "first_over_tolerance": null,
+          "max_abs_error": 0.0,
+          "rms_error": 0.0,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 16126
+          }
+        }
+      }
+    },
+    "experiment_vs_standard": {
+      "radiation_internal": {
+        "tolerance": 0.13175842664715587,
+        "total": {
+          "first_bit_difference": 1033,
+          "first_values": [
+            18.038649419027262,
+            18.03864941902725
+          ],
+          "bit_difference_count": 173197,
+          "first_over_tolerance": null,
+          "max_abs_error": 1.1874362826347351e-08,
+          "rms_error": 1.119392432389348e-09,
+          "compared_samples": 194040
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 1024
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 1033,
+            "first_values": [
+              18.038649419027262,
+              18.03864941902725
+            ],
+            "bit_difference_count": 210,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.0968506103381515e-09,
+            "rms_error": 2.317597541541181e-10,
+            "compared_samples": 256
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 1282,
+            "first_values": [
+              8706.419830169156,
+              8706.419830169
+            ],
+            "bit_difference_count": 115822,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.1874362826347351e-08,
+            "rms_error": 1.3579137295442115e-09,
+            "compared_samples": 128256
+          },
+          "after_call": {
+            "first_bit_difference": 129536,
+            "first_values": [
+              -227.50403737383064,
+              -227.50403737380617
+            ],
+            "bit_difference_count": 57165,
+            "first_over_tolerance": null,
+            "max_abs_error": 6.266986929404084e-09,
+            "rms_error": 3.206234185596635e-10,
+            "compared_samples": 64504
+          }
+        }
+      },
+      "decimated": {
+        "tolerance": 0.0012537285150474235,
+        "total": {
+          "first_bit_difference": 258,
+          "first_values": [
+            0.0012476363389489957,
+            0.0012476363389489955
+          ],
+          "bit_difference_count": 47464,
+          "first_over_tolerance": null,
+          "max_abs_error": 4.773028194904327e-09,
+          "rms_error": 5.379915402809648e-10,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 258,
+            "first_values": [
+              0.0012476363389489957,
+              0.0012476363389489955
+            ],
+            "bit_difference_count": 60,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.4915713109076023e-10,
+            "rms_error": 2.772109301061315e-11,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              10503.98653830142,
+              10503.98653830138
+            ],
+            "bit_difference_count": 31476,
+            "first_over_tolerance": null,
+            "max_abs_error": 4.773028194904327e-09,
+            "rms_error": 6.570602049557675e-10,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -4093.3416215658244,
+              -4093.341621565835
+            ],
+            "bit_difference_count": 15928,
+            "first_over_tolerance": null,
+            "max_abs_error": 1.685169337406478e-09,
+            "rms_error": 1.1066962671179253e-10,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "dc_removed": {
+        "tolerance": 1e-09,
+        "total": {
+          "first_bit_difference": 258,
+          "first_values": [
+            5.98864485960784e-10,
+            5.988644859607839e-10
+          ],
+          "bit_difference_count": 47517,
+          "first_over_tolerance": null,
+          "max_abs_error": 2.220446049250313e-15,
+          "rms_error": 3.0244328846420313e-16,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": 258,
+            "first_values": [
+              5.98864485960784e-10,
+              5.988644859607839e-10
+            ],
+            "bit_difference_count": 61,
+            "first_over_tolerance": null,
+            "max_abs_error": 7.112366251504909e-17,
+            "rms_error": 1.330718741792217e-17,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": 320,
+            "first_values": [
+              0.0049024845442482215,
+              0.004902484544248202
+            ],
+            "bit_difference_count": 31352,
+            "first_over_tolerance": null,
+            "max_abs_error": 2.220446049250313e-15,
+            "rms_error": 3.7009022599489754e-16,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": 32384,
+            "first_values": [
+              -0.001956004919390827,
+              -0.0019560049193908372
+            ],
+            "bit_difference_count": 16104,
+            "first_over_tolerance": null,
+            "max_abs_error": 8.058874748084754e-16,
+            "rms_error": 5.3170543912258683e-17,
+            "compared_samples": 16126
+          }
+        }
+      },
+      "pcm_f32": {
+        "tolerance": 1e-06,
+        "total": {
+          "first_bit_difference": null,
+          "first_values": null,
+          "bit_difference_count": 0,
+          "first_over_tolerance": null,
+          "max_abs_error": 0.0,
+          "rms_error": 0.0,
+          "compared_samples": 48510
+        },
+        "windows": {
+          "before_control_change": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 256
+          },
+          "tracking_without_breath": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 64
+          },
+          "first_breath_to_end_of_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 32064
+          },
+          "after_call": {
+            "first_bit_difference": null,
+            "first_values": null,
+            "bit_difference_count": 0,
+            "first_over_tolerance": null,
+            "max_abs_error": 0.0,
+            "rms_error": 0.0,
+            "compared_samples": 16126
+          }
+        }
+      }
+    }
+  },
+  "independent_recalculation": {
+    "standard": {
+      "decimated": {
+        "first_bit_difference": 257,
+        "first_values": [
+          1.1668068896963397e-06,
+          1.1668068896963419e-06
+        ],
+        "bit_difference_count": 47385,
+        "first_over_tolerance": null,
+        "max_abs_error": 5.3551048040390015e-09,
+        "rms_error": 5.888655230786508e-10,
+        "compared_samples": 48510
+      },
+      "dc_removed": {
+        "first_bit_difference": 257,
+        "first_values": [
+          5.60067307054243e-13,
+          5.60067307054244e-13
+        ],
+        "bit_difference_count": 47595,
+        "first_over_tolerance": null,
+        "max_abs_error": 2.7755575615628914e-15,
+        "rms_error": 3.2313013806696613e-16,
+        "compared_samples": 48510
+      },
+      "pcm_f32": {
+        "first_bit_difference": null,
+        "first_values": null,
+        "bit_difference_count": 0,
+        "first_over_tolerance": null,
+        "max_abs_error": 0.0,
+        "rms_error": 0.0,
+        "compared_samples": 48510
+      }
+    },
+    "experiment": {
+      "decimated": {
+        "first_bit_difference": 257,
+        "first_values": [
+          1.1668068896963397e-06,
+          1.1668068896963419e-06
+        ],
+        "bit_difference_count": 47317,
+        "first_over_tolerance": null,
+        "max_abs_error": 4.889443516731262e-09,
+        "rms_error": 5.884075250562434e-10,
+        "compared_samples": 48510
+      },
+      "dc_removed": {
+        "first_bit_difference": 257,
+        "first_values": [
+          5.60067307054243e-13,
+          5.60067307054244e-13
+        ],
+        "bit_difference_count": 47448,
+        "first_over_tolerance": null,
+        "max_abs_error": 2.55351295663786e-15,
+        "rms_error": 3.059143216618505e-16,
+        "compared_samples": 48510
+      },
+      "pcm_f32": {
+        "first_bit_difference": null,
+        "first_values": null,
+        "bit_difference_count": 0,
+        "first_over_tolerance": null,
+        "max_abs_error": 0.0,
+        "rms_error": 0.0,
+        "compared_samples": 48510
+      }
+    },
+    "upstream": {
+      "decimated": {
+        "first_bit_difference": 257,
+        "first_values": [
+          1.1668068896963397e-06,
+          1.1668068896963419e-06
+        ],
+        "bit_difference_count": 47362,
+        "first_over_tolerance": null,
+        "max_abs_error": 4.889443516731262e-09,
+        "rms_error": 5.890111752479359e-10,
+        "compared_samples": 48510
+      },
+      "dc_removed": {
+        "first_bit_difference": 257,
+        "first_values": [
+          5.60067307054243e-13,
+          5.60067307054244e-13
+        ],
+        "bit_difference_count": 47290,
+        "first_over_tolerance": null,
+        "max_abs_error": 2.6645352591003757e-15,
+        "rms_error": 3.1530994209208856e-16,
+        "compared_samples": 48510
+      },
+      "pcm_f32": {
+        "first_bit_difference": null,
+        "first_values": null,
+        "bit_difference_count": 0,
+        "first_over_tolerance": null,
+        "max_abs_error": 0.0,
+        "rms_error": 0.0,
+        "compared_samples": 48510
+      }
+    }
+  }
+}

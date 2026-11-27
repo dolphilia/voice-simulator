@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "run_id": "tsp-matched-speech-mfa-20261123-repeat",
+  "case_id": "tsp-matched-speech-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "aligner": {
+    "version": "3.4.3",
+    "environment_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa",
+    "model_version": "english_us_arpa v3.0.0",
+    "model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+    "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+    "configuration": "tools/tsp/mfa.yaml",
+    "seed_hex": "2545f491",
+    "noise_db": -47,
+    "noise_window_frames": 960,
+    "jobs": 1
+  },
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/tsp-matched-speech-mfa.json",
+      "bytes": 1982,
+      "sha256": "b9f7f3505c1c431a5b129ae1f96db1abcee343936823adfd28e2ba756a32c2a4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/source/research/experiments/chimera-rebuild/cases/tsp-phone-boundaries-held-out.json",
+      "bytes": 3006,
+      "sha256": "74d61522e630e1480ad7b7ad2b98269f66abf6a894482e8a1e8b937a383e0ae2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tsp_matched_speech_mfa.py",
+      "bytes": 13754,
+      "sha256": "342fc36ed8ed475d90bce4638bd9c54bf32e94f65165f0c7752e0b42d7dd5b91"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_tsp_mfa_probe.rs",
+      "bytes": 896,
+      "sha256": "c88b74a5c481fc6f394a2325f77351f4240bd9ec4e12f5794b8e27d4ac0288a8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-held-out-matched-speech-20261123-repeat/artifacts/matched-pcm.npz",
+      "bytes": 10892344,
+      "sha256": "b3a5060f37f4f567a57f3a3a06a20ca1f5844a7189fe10eb7df72767ad445e14"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-matched-speech-formants-20261123-repeat/artifacts/f2-candidates.json",
+      "bytes": 361127,
+      "sha256": "60b569d969c8f6cfdd6e204a400929949198ccd32bff4254f38af4ea4be4a924"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/synth.dict",
+      "bytes": 224,
+      "sha256": "29d0421da15ae2d3b681f53dee78f4eee42ce6b7e4f7bd72ac83b901423e7e17"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_01-upstream/FK61_01-upstream.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_01-upstream/FK61_01-upstream.wav",
+      "bytes": 232308,
+      "sha256": "02a66b0cd352c6e6907bbcff51fcbcad404e8f2c8d025a97eb859a0550002b75",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/FK61_01-upstream/FK61_01-upstream.json",
+      "bytes": 4927,
+      "sha256": "f7d3f0dd9f7f68ed01cb6c3c9819e220316be7e2611ffaa30ff9fb168691382f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_01-candidate/FK61_01-candidate.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_01-candidate/FK61_01-candidate.wav",
+      "bytes": 232308,
+      "sha256": "4a5c1462f9600a1c0daa29b5f7412b70896f6ee35e724c41b2d88d4dc89a81d7",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/FK61_01-candidate/FK61_01-candidate.json",
+      "bytes": 4925,
+      "sha256": "7ed025a6fa9588cd52f0377db4ae1ac02d4db71e54fbc375db315b95ddb324b6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_01-upstream/MK61_01-upstream.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_01-upstream/MK61_01-upstream.wav",
+      "bytes": 232308,
+      "sha256": "b3b9a17ae6f852678aa65669072eaeea6c2bb0a94849fb1b1b8e1acf72c61561",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/MK61_01-upstream/MK61_01-upstream.json",
+      "bytes": 4957,
+      "sha256": "8a376fa4c35522051cf5e37ad511c76657c9a085eccfcfb3cf1a3a74020c4937"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_01-candidate/MK61_01-candidate.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_01-candidate/MK61_01-candidate.wav",
+      "bytes": 232308,
+      "sha256": "f38b2ce43b6ab5c3581b2e24868458bd1387f344bb8522722d37801d55549dc6",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/MK61_01-candidate/MK61_01-candidate.json",
+      "bytes": 4961,
+      "sha256": "d18bb131fd66fa84599c971979876ad69e910775edd0ef93e2604ea4cf1a9e50"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_02-upstream/FK61_02-upstream.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_02-upstream/FK61_02-upstream.wav",
+      "bytes": 289498,
+      "sha256": "cd3e6afe54ac6544222c5edd772e64bae8e912b31909c333ba8add3e45a0fa25",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/FK61_02-upstream/FK61_02-upstream.json",
+      "bytes": 5768,
+      "sha256": "87d0fad9dfe771e88eefea7d754b4ad22d7c91999e59619402e74bb5cd794abf"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_02-candidate/FK61_02-candidate.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/FK61_02-candidate/FK61_02-candidate.wav",
+      "bytes": 289498,
+      "sha256": "320794c253fd0b660f539ce640cb11a1305f8be91402b286932ffcb64638f643",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/FK61_02-candidate/FK61_02-candidate.json",
+      "bytes": 5766,
+      "sha256": "00165833e8dc9bec37338c6e9e691956c1668ac6d5089daa5c6303ed5e0a0cd0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_02-upstream/MK61_02-upstream.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_02-upstream/MK61_02-upstream.wav",
+      "bytes": 289498,
+      "sha256": "4d8e012f301bb273041a6c6c63358101ec8bd71785adff5ca64bd2435e15f458",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/MK61_02-upstream/MK61_02-upstream.json",
+      "bytes": 5804,
+      "sha256": "f35b1256b1cdb4df0019eaa8cf6529807905783f600cd2ff4c9d695ddabb37a3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_02-candidate/MK61_02-candidate.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/corpus/synth/MK61_02-candidate/MK61_02-candidate.wav",
+      "bytes": 289498,
+      "sha256": "88fcecdfb5f9500fea917769c53b963802bf9a91a26712f5e74096b0f8048ba4",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/artifacts/aligned-1-synth/MK61_02-candidate/MK61_02-candidate.json",
+      "bytes": 5806,
+      "sha256": "28b045eca0d57d7278c458fdafb4714fb877ae9900e562095fe335d2b6e0f4ca"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-held-out-20261121-a/manifest.json",
+      "bytes": 28120,
+      "sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-held-out-matched-speech-20261123-repeat/manifest.json",
+      "bytes": 99370,
+      "sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-matched-speech-formants-20261123-repeat/manifest.json",
+      "bytes": 13265,
+      "sha256": "63f63526f13c3e793b64c296953f82695c55f65462a4fe970593c921d0769562"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tsp_phone_boundaries.py",
+      "bytes": 21034,
+      "sha256": "f9769e2a6b2f43d43199671f58596d83e0502529e77d02cd35f059658c25f8a1"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/compare/tsp.rs",
+      "bytes": 73567,
+      "sha256": "bb103cafde6219f9b005811fac2b907f7f56906c4efcabaa15099a297cfef44d"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/main.rs",
+      "bytes": 5526,
+      "sha256": "6c739d1036ae8114b2e378d547c2f0964a6fa95255040c3fd291e78db6d906ce"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/tools/tsp/mfa.yaml",
+      "bytes": 577,
+      "sha256": "12bab28c702b45de18a0c60641f47b93b15ebf44c01b94c4707b61d747202bba"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/compare.rs",
+      "bytes": 52565,
+      "sha256": "8e7ca134304bb0c54ebe12e3af2c121cc0b01e246309de7d3c18a5402fddd452"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/wav.rs",
+      "bytes": 1719,
+      "sha256": "3463e5f7051ac775c46e4dfe73a23b8ededa3d5c6d828063d93e26424ff923e9"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/math.rs",
+      "bytes": 7501,
+      "sha256": "f177e5170cc14a3f191886aba03441eee961cbf154975d64d8585346edee5ed5"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/Cargo.lock",
+      "bytes": 5433,
+      "sha256": "5529e6a7d6fca2d363404f466cd0f16c463a41e260992cd5ec2374d14b275678"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/micromamba-osx-arm64",
+        "--no-rc",
+        "--root-prefix",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/root",
+        "list",
+        "--explicit",
+        "--prefix",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "archive",
+        "c6147d0198890475dbe8a65a0bb8f56240c539b7"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "tar",
+        "-xf",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/upstream.tar",
+        "-C",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/upstream"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/target",
+        "-p",
+        "chimera-cli",
+        "compare::tsp::tests"
+      ],
+      "cwd": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/upstream",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/target",
+        "-p",
+        "chimera-cli",
+        "--",
+        "research-mfa-input",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/files.json"
+      ],
+      "cwd": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/upstream",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/mfa",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/mfa/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "version"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/mfa",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/tmp/matched-mfa-exjg96zh/mfa/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "align",
+        "--clean",
+        "-c",
+        "$UPSTREAM/tools/tsp/mfa.yaml",
+        "-j",
+        "1",
+        "--output_format",
+        "json",
+        "$ARTIFACTS/corpus",
+        "$ARTIFACTS/synth.dict",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.zip",
+        "$ARTIFACTS/aligned"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-matched-speech-mfa-20261123-repeat/artifacts",
+    "estimated_peak_bytes": 2147483648
+  },
+  "outputs": [
+    {
+      "path": "artifacts/aligned/FK61_01-candidate/FK61_01-candidate.json",
+      "bytes": 4927,
+      "sha256": "f7d3f0dd9f7f68ed01cb6c3c9819e220316be7e2611ffaa30ff9fb168691382f"
+    },
+    {
+      "path": "artifacts/aligned/FK61_01-upstream/FK61_01-upstream.json",
+      "bytes": 4927,
+      "sha256": "f7d3f0dd9f7f68ed01cb6c3c9819e220316be7e2611ffaa30ff9fb168691382f"
+    },
+    {
+      "path": "artifacts/aligned/FK61_02-candidate/FK61_02-candidate.json",
+      "bytes": 5768,
+      "sha256": "87d0fad9dfe771e88eefea7d754b4ad22d7c91999e59619402e74bb5cd794abf"
+    },
+    {
+      "path": "artifacts/aligned/FK61_02-upstream/FK61_02-upstream.json",
+      "bytes": 5768,
+      "sha256": "87d0fad9dfe771e88eefea7d754b4ad22d7c91999e59619402e74bb5cd794abf"
+    },
+    {
+      "path": "artifacts/aligned/MK61_01-candidate/MK61_01-candidate.json",
+      "bytes": 4957,
+      "sha256": "8a376fa4c35522051cf5e37ad511c76657c9a085eccfcfb3cf1a3a74020c4937"
+    },
+    {
+      "path": "artifacts/aligned/MK61_01-upstream/MK61_01-upstream.json",
+      "bytes": 4957,
+      "sha256": "8a376fa4c35522051cf5e37ad511c76657c9a085eccfcfb3cf1a3a74020c4937"
+    },
+    {
+      "path": "artifacts/aligned/MK61_02-candidate/MK61_02-candidate.json",
+      "bytes": 5804,
+      "sha256": "f35b1256b1cdb4df0019eaa8cf6529807905783f600cd2ff4c9d695ddabb37a3"
+    },
+    {
+      "path": "artifacts/aligned/MK61_02-upstream/MK61_02-upstream.json",
+      "bytes": 5804,
+      "sha256": "f35b1256b1cdb4df0019eaa8cf6529807905783f600cd2ff4c9d695ddabb37a3"
+    },
+    {
+      "path": "artifacts/aligned/alignment_analysis.csv",
+      "bytes": 1243,
+      "sha256": "eb8a598375cb26df98822a92b0bae6063355a84cfd7b8ac0ba14e9be9c0f2634"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 5747,
+      "sha256": "723036d19d5e08c8fdf5e895a908fdcbef54d4b531743135d9e8cee936daf60e"
+    },
+    {
+      "path": "artifacts/conda-explicit.txt",
+      "bytes": 19263,
+      "sha256": "ca92d609cdc85b7ad1032eb9676453dfa7c4574a7c955c784d466f8d96dfc67c"
+    },
+    {
+      "path": "artifacts/corpus/FK61_01-candidate/FK61_01-candidate.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "artifacts/corpus/FK61_01-candidate/FK61_01-candidate.wav",
+      "bytes": 232308,
+      "sha256": "02a66b0cd352c6e6907bbcff51fcbcad404e8f2c8d025a97eb859a0550002b75",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/FK61_01-upstream/FK61_01-upstream.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "artifacts/corpus/FK61_01-upstream/FK61_01-upstream.wav",
+      "bytes": 232308,
+      "sha256": "02a66b0cd352c6e6907bbcff51fcbcad404e8f2c8d025a97eb859a0550002b75",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/FK61_02-candidate/FK61_02-candidate.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "artifacts/corpus/FK61_02-candidate/FK61_02-candidate.wav",
+      "bytes": 289498,
+      "sha256": "cd3e6afe54ac6544222c5edd772e64bae8e912b31909c333ba8add3e45a0fa25",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/FK61_02-upstream/FK61_02-upstream.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "artifacts/corpus/FK61_02-upstream/FK61_02-upstream.wav",
+      "bytes": 289498,
+      "sha256": "cd3e6afe54ac6544222c5edd772e64bae8e912b31909c333ba8add3e45a0fa25",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/MK61_01-candidate/MK61_01-candidate.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "artifacts/corpus/MK61_01-candidate/MK61_01-candidate.wav",
+      "bytes": 232308,
+      "sha256": "b3b9a17ae6f852678aa65669072eaeea6c2bb0a94849fb1b1b8e1acf72c61561",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/MK61_01-upstream/MK61_01-upstream.lab",
+      "bytes": 37,
+      "sha256": "6039e21586861ec0ffa7854008e0614f15639fa0bc73f7c07f0e20f3c1ed9d31"
+    },
+    {
+      "path": "artifacts/corpus/MK61_01-upstream/MK61_01-upstream.wav",
+      "bytes": 232308,
+      "sha256": "b3b9a17ae6f852678aa65669072eaeea6c2bb0a94849fb1b1b8e1acf72c61561",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/MK61_02-candidate/MK61_02-candidate.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "artifacts/corpus/MK61_02-candidate/MK61_02-candidate.wav",
+      "bytes": 289498,
+      "sha256": "4d8e012f301bb273041a6c6c63358101ec8bd71785adff5ca64bd2435e15f458",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/MK61_02-upstream/MK61_02-upstream.lab",
+      "bytes": 44,
+      "sha256": "3a28b72a8da3fb02a8660d5b683451896df4dbf0d8fa5430f4d41ecb9e08117e"
+    },
+    {
+      "path": "artifacts/corpus/MK61_02-upstream/MK61_02-upstream.wav",
+      "bytes": 289498,
+      "sha256": "4d8e012f301bb273041a6c6c63358101ec8bd71785adff5ca64bd2435e15f458",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/mfa-version.txt",
+      "bytes": 6,
+      "sha256": "0ca6c7591d8ed155ad3e925e2279149da5c782c0b57266a016fdd862dcc647da"
+    },
+    {
+      "path": "artifacts/synth.dict",
+      "bytes": 224,
+      "sha256": "29d0421da15ae2d3b681f53dee78f4eee42ce6b7e4f7bd72ac83b901423e7e17"
+    },
+    {
+      "path": "artifacts/upstream-tsp-tests.log",
+      "bytes": 718,
+      "sha256": "f40347842f01ae7d2519748892338b49123b27bd17eb56a362b6432177411438"
+    },
+    {
+      "path": "artifacts/window-comparisons.json",
+      "bytes": 44709,
+      "sha256": "c50252fb0f1299f209908b34e5677429d83030499ed5b7f66a82f260f30d98d4"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 17841,
+      "sha256": "8d5b9015b4b790e212978361511bbb2e9feb65204af0f1dfa719fea5589805ca"
+    }
+  ]
+}

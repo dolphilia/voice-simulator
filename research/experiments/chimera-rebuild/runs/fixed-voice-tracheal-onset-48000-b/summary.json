@@ -1,0 +1,171 @@
+{
+  "checks": {
+    "prior_probes_and_render_reproduced": true,
+    "candidate_clock": true,
+    "upstream_clock": true,
+    "silence_before_gate": true,
+    "independent_pressure_equations": true,
+    "independent_branch_equations": true,
+    "known_distal_pressure_events": true,
+    "first_pressure_and_flow_reconstructed": true
+  },
+  "build_sha256": {
+    "candidate": "6dd79d535244fdb52a5ed02c76ada6fd7bdf28db1503ab2a6cb00435ea8db13c",
+    "upstream": "59b62d046ec08f9c806003844c3c07ab1916b7c3d45830171f2723e1217222b7"
+  },
+  "first_lung_boundary_pressure_difference": 8220,
+  "first_pressure_difference_by_cell": [
+    8199,
+    8196,
+    8197,
+    8199,
+    8200,
+    8201,
+    8202,
+    8204,
+    8209,
+    8210,
+    8212,
+    8213,
+    8216
+  ],
+  "first_inflow_difference_by_cell": [
+    8202,
+    8196,
+    8197,
+    8199,
+    8200,
+    8201,
+    8202,
+    8203,
+    8205,
+    8210,
+    8211,
+    8213,
+    8215
+  ],
+  "earliest_pressure_events": [
+    {
+      "cell": 1,
+      "sample": 8196,
+      "candidate": {
+        "cell": 1.0,
+        "internal_sample": 8196.0,
+        "old_pressure": 0.627186306281424,
+        "new_pressure": 1.4091174026978328,
+        "trachea_inflow": 0.14451558366174816,
+        "trachea_outflow": 0.020394007763225152,
+        "wall_outflow": 7.731372224397389e-05,
+        "volume_source": 0.0,
+        "net_flow": 0.12404426217627904,
+        "volume": 2.307692307692308,
+        "compliance": 1.6524828554903745e-06,
+        "glottal_outflow": 0.020394007763225152
+      },
+      "upstream": {
+        "cell": 1.0,
+        "internal_sample": 8196.0,
+        "old_pressure": 0.627186306281424,
+        "new_pressure": 1.409117402697833,
+        "trachea_inflow": 0.1445155836617482,
+        "trachea_outflow": 0.020394007763225152,
+        "wall_outflow": 7.731372224397389e-05,
+        "volume_source": 0.0,
+        "net_flow": 0.12404426217627906,
+        "volume": 2.307692307692308,
+        "compliance": 1.6524828554903745e-06,
+        "glottal_outflow": 0.020394007763225152
+      },
+      "differing_terms": [
+        "trachea_inflow"
+      ],
+      "replacement_results": [
+        {
+          "terms": [
+            "trachea_inflow"
+          ],
+          "net_flow": 0.12404426217627906,
+          "pressure_increment": 0.781931096416409,
+          "new_pressure": 1.409117402697833,
+          "matches_upstream": true
+        }
+      ],
+      "minimum_upstream_substitutions": [
+        [
+          "trachea_inflow"
+        ]
+      ]
+    }
+  ],
+  "earliest_flow_events": [
+    {
+      "cell": 1,
+      "sample": 8196,
+      "candidate": {
+        "cell": 1.0,
+        "internal_sample": 8196.0,
+        "area_cm2": 2.5,
+        "left_pressure": 3.536099617342771,
+        "right_pressure": 0.627186306281424,
+        "noise_pressure": 0.0,
+        "previous_flow": 0.07259206065414107,
+        "previous_inertance": 0.0004209230769230769,
+        "inertance": 0.0004209230769230769,
+        "resistance": 0.017875807404009028,
+        "forward_loss": 0.0,
+        "reverse_loss": 0.0,
+        "previous_momentum": 3.055567353072769e-05,
+        "carried_momentum": 3.055567353072769e-05,
+        "history_pressure": 2.933344658949858,
+        "drive_pressure": 5.842257970011205,
+        "inertance_per_step": 40.40861538461539,
+        "linear": 40.4264911920194,
+        "loss": 0.0,
+        "discriminant": 0.0,
+        "root": 0.0,
+        "numerator": 5.842257970011205,
+        "denominator": 40.4264911920194,
+        "flow": 0.14451558366174816
+      },
+      "upstream": {
+        "cell": 1.0,
+        "internal_sample": 8196.0,
+        "area_cm2": 2.5,
+        "left_pressure": 3.536099617342771,
+        "right_pressure": 0.627186306281424,
+        "noise_pressure": 0.0,
+        "previous_flow": 0.07259206065414107,
+        "previous_inertance": 0.0004209230769230769,
+        "inertance": 0.0004209230769230769,
+        "resistance": 0.01787580740400903,
+        "forward_loss": 0.0,
+        "reverse_loss": 0.0,
+        "previous_momentum": 3.055567353072769e-05,
+        "carried_momentum": 3.055567353072769e-05,
+        "history_pressure": 2.9333446589498586,
+        "drive_pressure": 5.842257970011206,
+        "inertance_per_step": 40.40861538461539,
+        "linear": 40.4264911920194,
+        "loss": 0.0,
+        "discriminant": 0.0,
+        "root": 0.0,
+        "numerator": 5.842257970011206,
+        "denominator": 40.4264911920194,
+        "flow": 0.1445155836617482
+      },
+      "different_inputs": [
+        "history_pressure",
+        "resistance"
+      ],
+      "minimum_upstream_substitutions": [
+        [
+          "history_pressure"
+        ]
+      ],
+      "flow_with_upstream_left_pressure": 0.14451558366174816,
+      "flow_with_upstream_history": 0.1445155836617482,
+      "flow_with_upstream_step_inertance": 0.14451558366174816,
+      "internal_rate_hz": 96000
+    }
+  ]
+}

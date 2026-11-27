@@ -1,0 +1,1559 @@
+{
+  "checks": {
+    "only_registered_sources_changed": true,
+    "experimental_binary_differs": true,
+    "volume_patch_matches_reference": true,
+    "matched_time/control_matches_prior_volume_run": true,
+    "matched_time/geometry_and_volume_injection_preserved": true,
+    "matched_time/radiation_derivative_replayed": true,
+    "matched_time/cavity_pressure_replayed": true,
+    "matched_time/interior_branches_replayed_bitwise": true,
+    "matched_time/terminal_pressure_and_radiation_replayed": true,
+    "native_block/control_matches_prior_volume_run": true,
+    "native_block/geometry_and_volume_injection_preserved": true,
+    "native_block/radiation_derivative_replayed": true,
+    "native_block/cavity_pressure_replayed": true,
+    "native_block/interior_branches_replayed_bitwise": true,
+    "native_block/terminal_pressure_and_radiation_replayed": true,
+    "no_tracking/control_matches_prior_volume_run": true,
+    "no_tracking/geometry_and_volume_injection_preserved": true,
+    "no_tracking/radiation_derivative_replayed": true,
+    "no_tracking/cavity_pressure_replayed": true,
+    "no_tracking/interior_branches_replayed_bitwise": true,
+    "no_tracking/terminal_pressure_and_radiation_replayed": true,
+    "reference_onset_differences_reproduced": true
+  },
+  "hypotheses": {
+    "first_inner_branch_difference_removed": true,
+    "first_terminal_inflow_difference_delayed": false,
+    "first_radiated_flow_difference_delayed": false,
+    "no_tracking_output_unchanged": true
+  },
+  "sample_rate_hz": 176400,
+  "changed_beak_cells": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "build": {
+    "changed_paths": [
+      "crates/vocal-core/src/airway/network.rs",
+      "crates/vocal-core/src/airway/songbird.rs"
+    ],
+    "baseline_volume_patch_sha256": "f39635e00caac0b4fbce2008dc3dc4ab551dcad5363ba3aa1841999b3a78104b",
+    "momentum_patch_sha256": "b54e3ca130b6b9a3748f72337969adb35260275ff34b80a2c25da94f99cf2142",
+    "control_binary_sha256": "4a38b0240171a55380d9ace84dd5d8b6f1f2a70c83a1eef7a015c7d103987bd2",
+    "experimental_binary_sha256": "ddd9d404ce1d24e6983e62c6397c35572a2f34940415b951f6968d87f91edf9d"
+  },
+  "conditions": {
+    "matched_time": {
+      "event_sample": 235,
+      "control_minus_upstream": {
+        "oec_pressure_dyn_cm2": {
+          "offset": 14,
+          "volume_control": 0.8132192574564305,
+          "upstream": 0.8132192574564304
+        },
+        "oec_neck_inflow_cm3_s": {
+          "offset": 4,
+          "volume_control": -1.7048884030855586e-05,
+          "upstream": -1.7048884030855582e-05
+        },
+        "oec_beak_outflow_cm3_s": {
+          "offset": 4,
+          "volume_control": 4.283562619880012e-05,
+          "upstream": 4.283562619880011e-05
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 3,
+          "volume_control": 0.015629508011959736,
+          "upstream": 0.01562950801195974
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 4,
+          "volume_control": 4.283562619880012e-05,
+          "upstream": 4.283562619880011e-05
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 3,
+          "volume_control": 0.005183640755724694,
+          "upstream": 0.0051836407557246935
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 3,
+          "volume_control": 9.756879668447694e-06,
+          "upstream": 9.756879668447693e-06
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 6,
+          "volume_control": 0.01993870870339589,
+          "upstream": 0.019938708703395883
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 6,
+          "volume_control": 4.939103923620522e-05,
+          "upstream": 4.939103923620521e-05
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 7,
+          "volume_control": 0.017066103595419956,
+          "upstream": 0.01706610359541995
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 7,
+          "volume_control": 5.1105982479461786e-05,
+          "upstream": 5.110598247946177e-05
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 8,
+          "volume_control": 0.014095602628998907,
+          "upstream": 0.014095602628998902
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 8,
+          "volume_control": 5.249073565055385e-05,
+          "upstream": 5.249073565055383e-05
+        },
+        "beak_5_pressure_dyn_cm2": {
+          "offset": 9,
+          "volume_control": 0.008060026464651062,
+          "upstream": 0.00806002646465106
+        },
+        "beak_5_inflow_cm3_s": {
+          "offset": 9,
+          "volume_control": 5.979331939468301e-05,
+          "upstream": 5.9793319394683e-05
+        },
+        "radiation_flow_cm3_s": {
+          "offset": 11,
+          "volume_control": 0.00015957399498305478,
+          "upstream": 0.00015957399498305484
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 9,
+          "volume_control": 4.674879443365096,
+          "upstream": 4.674879443365097
+        }
+      },
+      "momentum_minus_upstream": {
+        "oec_pressure_dyn_cm2": {
+          "offset": 15,
+          "momentum": 0.9603933345812888,
+          "upstream": 0.960393334581289
+        },
+        "oec_neck_inflow_cm3_s": {
+          "offset": 4,
+          "momentum": -1.7048884030855586e-05,
+          "upstream": -1.7048884030855582e-05
+        },
+        "oec_beak_outflow_cm3_s": {
+          "offset": 4,
+          "momentum": 4.283562619880012e-05,
+          "upstream": 4.283562619880011e-05
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 4,
+          "momentum": 0.02979310627414998,
+          "upstream": 0.029793106274149966
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 4,
+          "momentum": 4.283562619880012e-05,
+          "upstream": 4.283562619880011e-05
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 5,
+          "momentum": 0.023870382292270943,
+          "upstream": 0.023870382292270932
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 5,
+          "momentum": 4.675396848510845e-05,
+          "upstream": 4.675396848510843e-05
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 6,
+          "momentum": 0.019938708703395897,
+          "upstream": 0.019938708703395883
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 6,
+          "momentum": 4.9391039236205236e-05,
+          "upstream": 4.939103923620521e-05
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 7,
+          "momentum": 0.017066103595419962,
+          "upstream": 0.01706610359541995
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 7,
+          "momentum": 5.1105982479461806e-05,
+          "upstream": 5.110598247946177e-05
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 8,
+          "momentum": 0.014095602628998914,
+          "upstream": 0.014095602628998902
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 8,
+          "momentum": 5.249073565055387e-05,
+          "upstream": 5.249073565055383e-05
+        },
+        "beak_5_pressure_dyn_cm2": {
+          "offset": 9,
+          "momentum": 0.008060026464651066,
+          "upstream": 0.00806002646465106
+        },
+        "beak_5_inflow_cm3_s": {
+          "offset": 9,
+          "momentum": 5.979331939468304e-05,
+          "upstream": 5.9793319394683e-05
+        },
+        "radiation_flow_cm3_s": {
+          "offset": 10,
+          "momentum": 8.929341848342679e-05,
+          "upstream": 8.929341848342676e-05
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 9,
+          "momentum": 4.674879443365096,
+          "upstream": 4.674879443365097
+        }
+      },
+      "momentum_minus_control": {
+        "oec_pressure_dyn_cm2": {
+          "offset": 14,
+          "momentum": 0.8132192574564304,
+          "volume_control": 0.8132192574564305
+        },
+        "oec_beak_outflow_cm3_s": {
+          "offset": 12,
+          "momentum": 0.0008008116225527493,
+          "volume_control": 0.0008008116225527495
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 3,
+          "momentum": 0.01562950801195974,
+          "volume_control": 0.015629508011959736
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 12,
+          "momentum": 0.0008008116225527493,
+          "volume_control": 0.0008008116225527495
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 3,
+          "momentum": 0.0051836407557246935,
+          "volume_control": 0.005183640755724694
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 3,
+          "momentum": 9.756879668447693e-06,
+          "volume_control": 9.756879668447694e-06
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 6,
+          "momentum": 0.019938708703395897,
+          "volume_control": 0.01993870870339589
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 6,
+          "momentum": 4.9391039236205236e-05,
+          "volume_control": 4.939103923620522e-05
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 7,
+          "momentum": 0.017066103595419962,
+          "volume_control": 0.017066103595419956
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 7,
+          "momentum": 5.1105982479461806e-05,
+          "volume_control": 5.1105982479461786e-05
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 8,
+          "momentum": 0.014095602628998914,
+          "volume_control": 0.014095602628998907
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 8,
+          "momentum": 5.249073565055387e-05,
+          "volume_control": 5.249073565055385e-05
+        },
+        "beak_5_pressure_dyn_cm2": {
+          "offset": 9,
+          "momentum": 0.008060026464651066,
+          "volume_control": 0.008060026464651062
+        },
+        "beak_5_inflow_cm3_s": {
+          "offset": 9,
+          "momentum": 5.979331939468304e-05,
+          "volume_control": 5.979331939468301e-05
+        },
+        "radiation_flow_cm3_s": {
+          "offset": 10,
+          "momentum": 8.929341848342679e-05,
+          "volume_control": 8.929341848342676e-05
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 10,
+          "momentum": 8.066159286021763,
+          "volume_control": 8.06615928602176
+        }
+      },
+      "interior_branches": [
+        {
+          "entering_cell": 1,
+          "first_difference": {
+            "offset": 5,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.02979310627414998,
+                "tip_pressure": 0.012343547772309407,
+                "previous_inflow": 2.3615374872827926e-05,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.029793106274149966,
+                "tip_pressure": 0.012343547772309407,
+                "previous_inflow": 2.3615374872827926e-05,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.004261365621517424,
+                "resistance": 1.2012747755647795,
+                "normalized_inertance": 751.7048956356736,
+                "pressure_difference": 0.017449558501840573,
+                "normalized_momentum": 0.017751792904176424,
+                "drive": 0.035201351406017,
+                "linear_coefficient": 752.9061704112383,
+                "quadratic_coefficient": 0.019381314651369767,
+                "denominator": 1505.8123426347834,
+                "inflow": 4.675396848510845e-05
+              },
+              "upstream": {
+                "inertance": 0.004261365621517424,
+                "resistance": 1.2012747755647795,
+                "normalized_inertance": 751.7048956356736,
+                "pressure_difference": 0.01744955850184056,
+                "normalized_momentum": 0.017751792904176424,
+                "drive": 0.03520135140601698,
+                "linear_coefficient": 752.9061704112383,
+                "quadratic_coefficient": 0.019381314651369767,
+                "denominator": 1505.8123426347834,
+                "inflow": 4.675396848510843e-05
+              }
+            },
+            "observed": {
+              "candidate": 4.675396848510845e-05,
+              "upstream": 4.675396848510843e-05
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 4.675396848510843e-05,
+              "inflow_hex": "0x1.883361ff3d029p-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 4.675396848510845e-05,
+              "inflow_hex": "0x1.883361ff3d02cp-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 4.675396848510843e-05,
+              "inflow_hex": "0x1.883361ff3d029p-15",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 4.675396848510843e-05,
+              "inflow_hex": "0x1.883361ff3d029p-15",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 2,
+          "first_difference": {
+            "offset": 6,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.023870382292270943,
+                "tip_pressure": 0.0101664634616218,
+                "previous_inflow": 2.4749848062002926e-05,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.023870382292270932,
+                "tip_pressure": 0.0101664634616218,
+                "previous_inflow": 2.4749848062002926e-05,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.00314410329490003,
+                "resistance": 0.7577441810883256,
+                "normalized_inertance": 554.6198212203652,
+                "pressure_difference": 0.013703918830649142,
+                "normalized_momentum": 0.013726756307379266,
+                "drive": 0.02743067513802841,
+                "linear_coefficient": 555.3775654014536,
+                "quadratic_coefficient": 0.005893513387220677,
+                "denominator": 1110.7551313850806,
+                "inflow": 4.9391039236205236e-05
+              },
+              "upstream": {
+                "inertance": 0.00314410329490003,
+                "resistance": 0.7577441810883256,
+                "normalized_inertance": 554.6198212203652,
+                "pressure_difference": 0.013703918830649132,
+                "normalized_momentum": 0.013726756307379266,
+                "drive": 0.027430675138028396,
+                "linear_coefficient": 555.3775654014536,
+                "quadratic_coefficient": 0.005893513387220677,
+                "denominator": 1110.7551313850806,
+                "inflow": 4.939103923620521e-05
+              }
+            },
+            "observed": {
+              "candidate": 4.9391039236205236e-05,
+              "upstream": 4.939103923620521e-05
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 4.939103923620521e-05,
+              "inflow_hex": "0x1.9e5272f95cec3p-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 4.9391039236205236e-05,
+              "inflow_hex": "0x1.9e5272f95cec7p-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 4.939103923620521e-05,
+              "inflow_hex": "0x1.9e5272f95cec3p-15",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 4.939103923620521e-05,
+              "inflow_hex": "0x1.9e5272f95cec3p-15",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 3,
+          "first_difference": {
+            "offset": 7,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.019938708703395897,
+                "tip_pressure": 0.008570833986903505,
+                "previous_inflow": 2.5342743796492038e-05,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.019938708703395883,
+                "tip_pressure": 0.008570833986903505,
+                "previous_inflow": 2.5342743796492038e-05,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.002495371341535711,
+                "resistance": 0.5346148232163229,
+                "normalized_inertance": 440.1835046468994,
+                "pressure_difference": 0.011367874716492391,
+                "normalized_momentum": 0.011155457781708334,
+                "drive": 0.022523332498200724,
+                "linear_coefficient": 440.7181194701157,
+                "quadratic_coefficient": 0.0023660262310007626,
+                "denominator": 881.4362391820675,
+                "inflow": 5.1105982479461806e-05
+              },
+              "upstream": {
+                "inertance": 0.002495371341535711,
+                "resistance": 0.5346148232163227,
+                "normalized_inertance": 440.1835046468994,
+                "pressure_difference": 0.011367874716492378,
+                "normalized_momentum": 0.011155457781708334,
+                "drive": 0.02252333249820071,
+                "linear_coefficient": 440.7181194701157,
+                "quadratic_coefficient": 0.002366026231000762,
+                "denominator": 881.4362391820675,
+                "inflow": 5.110598247946177e-05
+              }
+            },
+            "observed": {
+              "candidate": 5.1105982479461806e-05,
+              "upstream": 5.110598247946177e-05
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 5.110598247946177e-05,
+              "inflow_hex": "0x1.acb542fe1741dp-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 5.1105982479461806e-05,
+              "inflow_hex": "0x1.acb542fe17422p-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 5.110598247946177e-05,
+              "inflow_hex": "0x1.acb542fe1741dp-15",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 5.110598247946177e-05,
+              "inflow_hex": "0x1.acb542fe1741dp-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "quadratic_coefficient"
+              ],
+              "inflow": 5.1105982479461806e-05,
+              "inflow_hex": "0x1.acb542fe17422p-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "pressure_difference",
+                "quadratic_coefficient"
+              ],
+              "inflow": 5.110598247946177e-05,
+              "inflow_hex": "0x1.acb542fe1741dp-15",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 4,
+          "first_difference": {
+            "offset": 8,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.017066103595419962,
+                "tip_pressure": 0.0071932090877344194,
+                "previous_inflow": 2.5511374586996353e-05,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.01706610359541995,
+                "tip_pressure": 0.0071932090877344194,
+                "previous_inflow": 2.5511374586996353e-05,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.0020700539491253786,
+                "resistance": 0.40346202428066846,
+                "normalized_inertance": 365.15751662571677,
+                "pressure_difference": 0.009872894507685543,
+                "normalized_momentum": 0.00931567018989601,
+                "drive": 0.019188564697581553,
+                "linear_coefficient": 365.5609786499974,
+                "quadratic_coefficient": 0.0011275725337515797,
+                "denominator": 731.121957418369,
+                "inflow": 5.249073565055387e-05
+              },
+              "upstream": {
+                "inertance": 0.0020700539491253786,
+                "resistance": 0.40346202428066846,
+                "normalized_inertance": 365.15751662571677,
+                "pressure_difference": 0.00987289450768553,
+                "normalized_momentum": 0.00931567018989601,
+                "drive": 0.01918856469758154,
+                "linear_coefficient": 365.5609786499974,
+                "quadratic_coefficient": 0.0011275725337515797,
+                "denominator": 731.121957418369,
+                "inflow": 5.249073565055383e-05
+              }
+            },
+            "observed": {
+              "candidate": 5.249073565055387e-05,
+              "upstream": 5.249073565055383e-05
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 5.249073565055383e-05,
+              "inflow_hex": "0x1.b852ff1961e64p-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 5.249073565055387e-05,
+              "inflow_hex": "0x1.b852ff1961e6ap-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 5.249073565055383e-05,
+              "inflow_hex": "0x1.b852ff1961e64p-15",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 5.249073565055383e-05,
+              "inflow_hex": "0x1.b852ff1961e64p-15",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 5,
+          "first_difference": {
+            "offset": 9,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.014095602628998914,
+                "tip_pressure": 0.004118384162787388,
+                "previous_inflow": 2.7885519095298902e-05,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.014095602628998902,
+                "tip_pressure": 0.004118384162787388,
+                "previous_inflow": 2.7885519095298902e-05,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.001769229215072229,
+                "resistance": 0.3185670750891709,
+                "normalized_inertance": 312.0920335387412,
+                "pressure_difference": 0.009977218466211527,
+                "normalized_momentum": 0.008702848360735234,
+                "drive": 0.018680066826946763,
+                "linear_coefficient": 312.41060061383035,
+                "quadratic_coefficient": 0.0006039426652252155,
+                "denominator": 624.8212012998843,
+                "inflow": 5.979331939468304e-05
+              },
+              "upstream": {
+                "inertance": 0.001769229215072229,
+                "resistance": 0.31856707508917087,
+                "normalized_inertance": 312.0920335387412,
+                "pressure_difference": 0.009977218466211513,
+                "normalized_momentum": 0.008702848360735234,
+                "drive": 0.01868006682694675,
+                "linear_coefficient": 312.41060061383035,
+                "quadratic_coefficient": 0.0006039426652252154,
+                "denominator": 624.8212012998843,
+                "inflow": 5.9793319394683e-05
+              }
+            },
+            "observed": {
+              "candidate": 5.979331939468304e-05,
+              "upstream": 5.9793319394683e-05
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 5.9793319394683e-05,
+              "inflow_hex": "0x1.f5952cf8091d8p-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 5.979331939468304e-05,
+              "inflow_hex": "0x1.f5952cf8091dep-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 5.9793319394683e-05,
+              "inflow_hex": "0x1.f5952cf8091d8p-15",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 5.9793319394683e-05,
+              "inflow_hex": "0x1.f5952cf8091d8p-15",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "quadratic_coefficient"
+              ],
+              "inflow": 5.979331939468304e-05,
+              "inflow_hex": "0x1.f5952cf8091dep-15",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "pressure_difference",
+                "quadratic_coefficient"
+              ],
+              "inflow": 5.9793319394683e-05,
+              "inflow_hex": "0x1.f5952cf8091d8p-15",
+              "matches_upstream": true
+            }
+          ]
+        }
+      ],
+      "branch_replay_mismatches": [],
+      "terminal_load_comparison": {
+        "own_state_replayed": true,
+        "first_differences_after_only_upstream_feed": {
+          "tip_pressure": null,
+          "radiated_flow": null
+        },
+        "first_differences_after_only_upstream_load": {
+          "tip_pressure": 9,
+          "radiated_flow": 10
+        }
+      },
+      "first_residual_pressure_replay": {
+        "offset": 15,
+        "multiply": {
+          "offset": 15,
+          "volume": 0.3932775678948648,
+          "volume_drop": 8.936164308831485e-05,
+          "raw": 15.76339384077874,
+          "raw_divided": 15.763393840778738,
+          "raw_multiplied": 15.76339384077874,
+          "coefficient": 0.002134855806446345,
+          "first_pole_before": 0.4973143779380998,
+          "second_pole_before": 0.008451202194559393,
+          "first_pole": 0.5299052563210165,
+          "injection": 0.009564431409806246,
+          "neck": -0.0007195671345577413,
+          "beak": 0.0015336731457113782,
+          "neck_first": false,
+          "compliance": 2.8161658997126014e-07,
+          "previous_pressure": 0.8132192574564304,
+          "balance": 0.0073111911295371266,
+          "pressure": 0.9603933345812888,
+          "observed_pressure": 0.9603933345812888
+        },
+        "upstream": {
+          "offset": 15,
+          "volume": 0.3932775678948648,
+          "volume_drop": 8.936164308831485e-05,
+          "raw": 15.76339384077874,
+          "raw_divided": 15.763393840778738,
+          "raw_multiplied": 15.76339384077874,
+          "coefficient": 0.002134855806446345,
+          "first_pole_before": 0.4973143779380998,
+          "second_pole_before": 0.008451202194559393,
+          "first_pole": 0.5299052563210165,
+          "injection": 0.009564431409806246,
+          "neck": -0.0007195671345577415,
+          "beak": 0.0015336731457113782,
+          "neck_first": true,
+          "compliance": 2.8161658997126014e-07,
+          "previous_pressure": 0.8132192574564304,
+          "balance": 0.007311191129537127,
+          "pressure": 0.960393334581289,
+          "observed_pressure": 0.960393334581289
+        },
+        "substitutions": [
+          {
+            "swapped_inputs": [
+              "neck"
+            ],
+            "balance": 0.0073111911295371266,
+            "pressure": 0.9603933345812888,
+            "pressure_hex": "0x1.ebb8acd6a5631p-1",
+            "matches_upstream": false
+          },
+          {
+            "swapped_inputs": [
+              "neck_first"
+            ],
+            "balance": 0.007311191129537127,
+            "pressure": 0.960393334581289,
+            "pressure_hex": "0x1.ebb8acd6a5632p-1",
+            "matches_upstream": true
+          },
+          {
+            "swapped_inputs": [
+              "neck",
+              "neck_first"
+            ],
+            "balance": 0.007311191129537127,
+            "pressure": 0.960393334581289,
+            "pressure_hex": "0x1.ebb8acd6a5632p-1",
+            "matches_upstream": true
+          }
+        ]
+      },
+      "derivative_replayed_with_upstream_scale": {
+        "first_difference_offset": 10,
+        "bitwise_matches": 12
+      },
+      "control_and_momentum_csv_equal": false,
+      "first_beak_inlet_replay": {
+        "both_flows_replayed": true,
+        "offset": 4,
+        "inertance": 0.003275627148604296,
+        "normalization_by_division": 577.8206290137978,
+        "normalization_by_reciprocal": 577.8206290137979,
+        "division_flow": 4.283562619880012e-05,
+        "reciprocal_flow": 4.283562619880011e-05
+      }
+    },
+    "native_block": {
+      "event_sample": 256,
+      "control_minus_upstream": {
+        "oec_neck_inflow_cm3_s": {
+          "offset": 5,
+          "volume_control": -2.8961119501992224e-05,
+          "upstream": -2.8961119501992228e-05
+        },
+        "oec_beak_outflow_cm3_s": {
+          "offset": 7,
+          "volume_control": 0.0001645654691836078,
+          "upstream": 0.00016456546918360783
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 6,
+          "volume_control": 0.07141263341980919,
+          "upstream": 0.07141263341980918
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 7,
+          "volume_control": 0.0001645654691836078,
+          "upstream": 0.00016456546918360783
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 4,
+          "volume_control": 0.011330585559057806,
+          "upstream": 0.011330585559057804
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 6,
+          "volume_control": 7.500868131186201e-05,
+          "upstream": 7.500868131186203e-05
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 4,
+          "volume_control": 0.003777465394736898,
+          "upstream": 0.003777465394736899
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 4,
+          "volume_control": 9.131291636070663e-06,
+          "upstream": 9.131291636070664e-06
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 5,
+          "volume_control": 0.0030630908646823943,
+          "upstream": 0.003063090864682395
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 5,
+          "volume_control": 9.049350076772801e-06,
+          "upstream": 9.049350076772805e-06
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 6,
+          "volume_control": 0.0025159524273164666,
+          "upstream": 0.002515952427316467
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 6,
+          "volume_control": 8.788325805071676e-06,
+          "upstream": 8.788325805071677e-06
+        },
+        "beak_5_pressure_dyn_cm2": {
+          "offset": 7,
+          "volume_control": 0.0013677413597786305,
+          "upstream": 0.001367741359778631
+        },
+        "beak_5_inflow_cm3_s": {
+          "offset": 7,
+          "volume_control": 8.848902466267258e-06,
+          "upstream": 8.84890246626726e-06
+        },
+        "radiation_flow_cm3_s": {
+          "offset": 7,
+          "volume_control": 4.234178959964282e-06,
+          "upstream": 4.234178959964283e-06
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 7,
+          "volume_control": 0.6461491082535578,
+          "upstream": 0.646149108253558
+        }
+      },
+      "momentum_minus_upstream": {
+        "oec_neck_inflow_cm3_s": {
+          "offset": 5,
+          "momentum": -2.8961119501992224e-05,
+          "upstream": -2.8961119501992228e-05
+        },
+        "oec_beak_outflow_cm3_s": {
+          "offset": 7,
+          "momentum": 0.0001645654691836078,
+          "upstream": 0.00016456546918360783
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 7,
+          "momentum": 0.104259476237026,
+          "upstream": 0.10425947623702601
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 7,
+          "momentum": 0.0001645654691836078,
+          "upstream": 0.00016456546918360783
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 12,
+          "momentum": 0.27075994371365475,
+          "upstream": 0.27075994371365464
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 12,
+          "momentum": 0.0006267179432648954,
+          "upstream": 0.0006267179432648953
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 13,
+          "momentum": 0.2279606108270805,
+          "upstream": 0.2279606108270804
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 13,
+          "momentum": 0.0006776068438868699,
+          "upstream": 0.0006776068438868696
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 14,
+          "momentum": 0.18319387317201583,
+          "upstream": 0.18319387317201574
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 14,
+          "momentum": 0.0007432945263038455,
+          "upstream": 0.0007432945263038453
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 15,
+          "momentum": 0.12979454671044405,
+          "upstream": 0.129794546710444
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 15,
+          "momentum": 0.0008452717612931945,
+          "upstream": 0.0008452717612931944
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 11,
+          "momentum": 11.379695386806768,
+          "upstream": 11.37969538680677
+        }
+      },
+      "momentum_minus_control": {
+        "oec_beak_outflow_cm3_s": {
+          "offset": 9,
+          "momentum": 0.0003267440781502875,
+          "volume_control": 0.00032674407815028747
+        },
+        "beak_0_pressure_dyn_cm2": {
+          "offset": 6,
+          "momentum": 0.07141263341980918,
+          "volume_control": 0.07141263341980919
+        },
+        "beak_0_inflow_cm3_s": {
+          "offset": 9,
+          "momentum": 0.0003267440781502875,
+          "volume_control": 0.00032674407815028747
+        },
+        "beak_1_pressure_dyn_cm2": {
+          "offset": 4,
+          "momentum": 0.011330585559057804,
+          "volume_control": 0.011330585559057806
+        },
+        "beak_1_inflow_cm3_s": {
+          "offset": 6,
+          "momentum": 7.500868131186203e-05,
+          "volume_control": 7.500868131186201e-05
+        },
+        "beak_2_pressure_dyn_cm2": {
+          "offset": 4,
+          "momentum": 0.003777465394736899,
+          "volume_control": 0.003777465394736898
+        },
+        "beak_2_inflow_cm3_s": {
+          "offset": 4,
+          "momentum": 9.131291636070664e-06,
+          "volume_control": 9.131291636070663e-06
+        },
+        "beak_3_pressure_dyn_cm2": {
+          "offset": 5,
+          "momentum": 0.003063090864682395,
+          "volume_control": 0.0030630908646823943
+        },
+        "beak_3_inflow_cm3_s": {
+          "offset": 5,
+          "momentum": 9.049350076772805e-06,
+          "volume_control": 9.049350076772801e-06
+        },
+        "beak_4_pressure_dyn_cm2": {
+          "offset": 6,
+          "momentum": 0.002515952427316467,
+          "volume_control": 0.0025159524273164666
+        },
+        "beak_4_inflow_cm3_s": {
+          "offset": 6,
+          "momentum": 8.788325805071677e-06,
+          "volume_control": 8.788325805071676e-06
+        },
+        "beak_5_pressure_dyn_cm2": {
+          "offset": 7,
+          "momentum": 0.001367741359778631,
+          "volume_control": 0.0013677413597786305
+        },
+        "beak_5_inflow_cm3_s": {
+          "offset": 7,
+          "momentum": 8.84890246626726e-06,
+          "volume_control": 8.848902466267258e-06
+        },
+        "radiation_flow_cm3_s": {
+          "offset": 7,
+          "momentum": 4.234178959964283e-06,
+          "volume_control": 4.234178959964282e-06
+        },
+        "radiation_derivative_cm3_s2": {
+          "offset": 7,
+          "momentum": 0.646149108253558,
+          "volume_control": 0.6461491082535578
+        }
+      },
+      "interior_branches": [
+        {
+          "entering_cell": 1,
+          "first_difference": {
+            "offset": 12,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.32439048985057467,
+                "tip_pressure": 0.2128322274077732,
+                "previous_inflow": 0.00047931249863231975,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.3243904898505746,
+                "tip_pressure": 0.2128322274077732,
+                "previous_inflow": 0.00047931249863231975,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.004261365621517424,
+                "resistance": 1.2012747755647795,
+                "normalized_inertance": 751.7048956356736,
+                "pressure_difference": 0.11155826244280148,
+                "normalized_momentum": 0.36030155176128187,
+                "drive": 0.47185981420408335,
+                "linear_coefficient": 752.9061704112383,
+                "quadratic_coefficient": 0.019381314651369767,
+                "denominator": 1505.812365115712,
+                "inflow": 0.0006267179432648954
+              },
+              "upstream": {
+                "inertance": 0.004261365621517424,
+                "resistance": 1.2012747755647795,
+                "normalized_inertance": 751.7048956356736,
+                "pressure_difference": 0.11155826244280143,
+                "normalized_momentum": 0.36030155176128187,
+                "drive": 0.4718598142040833,
+                "linear_coefficient": 752.9061704112383,
+                "quadratic_coefficient": 0.019381314651369767,
+                "denominator": 1505.812365115712,
+                "inflow": 0.0006267179432648953
+              }
+            },
+            "observed": {
+              "candidate": 0.0006267179432648954,
+              "upstream": 0.0006267179432648953
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 0.0006267179432648953,
+              "inflow_hex": "0x1.4894a88fa517dp-11",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 0.0006267179432648954,
+              "inflow_hex": "0x1.4894a88fa517ep-11",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 0.0006267179432648953,
+              "inflow_hex": "0x1.4894a88fa517dp-11",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 0.0006267179432648953,
+              "inflow_hex": "0x1.4894a88fa517dp-11",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 2,
+          "first_difference": {
+            "offset": 13,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.27075994371365475,
+                "tip_pressure": 0.1806921022461745,
+                "previous_inflow": 0.0005161369816641415,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.27075994371365464,
+                "tip_pressure": 0.1806921022461745,
+                "previous_inflow": 0.0005161369816641415,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.00314410329490003,
+                "resistance": 0.7577441810883256,
+                "normalized_inertance": 554.6198212203652,
+                "pressure_difference": 0.09006784146748026,
+                "normalized_momentum": 0.2862598004957851,
+                "drive": 0.37632764196326535,
+                "linear_coefficient": 555.3775654014536,
+                "quadratic_coefficient": 0.005893513387220677,
+                "denominator": 1110.755138789877,
+                "inflow": 0.0006776068438868699
+              },
+              "upstream": {
+                "inertance": 0.00314410329490003,
+                "resistance": 0.7577441810883256,
+                "normalized_inertance": 554.6198212203652,
+                "pressure_difference": 0.09006784146748015,
+                "normalized_momentum": 0.2862598004957851,
+                "drive": 0.37632764196326524,
+                "linear_coefficient": 555.3775654014536,
+                "quadratic_coefficient": 0.005893513387220677,
+                "denominator": 1110.755138789877,
+                "inflow": 0.0006776068438868696
+              }
+            },
+            "observed": {
+              "candidate": 0.0006776068438868699,
+              "upstream": 0.0006776068438868696
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 0.0006776068438868696,
+              "inflow_hex": "0x1.6342d9df504d5p-11",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 0.0006776068438868699,
+              "inflow_hex": "0x1.6342d9df504d7p-11",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 0.0006776068438868696,
+              "inflow_hex": "0x1.6342d9df504d5p-11",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 0.0006776068438868696,
+              "inflow_hex": "0x1.6342d9df504d5p-11",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 3,
+          "first_difference": {
+            "offset": 14,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.2279606108270805,
+                "tip_pressure": 0.14744557568936076,
+                "previous_inflow": 0.0005612848491738227,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.2279606108270804,
+                "tip_pressure": 0.14744557568936076,
+                "previous_inflow": 0.0005612848491738227,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.002495371341535711,
+                "resistance": 0.5346148232163229,
+                "normalized_inertance": 440.1835046468994,
+                "pressure_difference": 0.08051503513771974,
+                "normalized_momentum": 0.24706833201453965,
+                "drive": 0.3275833671522594,
+                "linear_coefficient": 440.7181194701157,
+                "quadratic_coefficient": 0.0023660262310007626,
+                "denominator": 881.4362424575402,
+                "inflow": 0.0007432945263038455
+              },
+              "upstream": {
+                "inertance": 0.002495371341535711,
+                "resistance": 0.5346148232163227,
+                "normalized_inertance": 440.1835046468994,
+                "pressure_difference": 0.08051503513771965,
+                "normalized_momentum": 0.24706833201453965,
+                "drive": 0.32758336715225933,
+                "linear_coefficient": 440.7181194701157,
+                "quadratic_coefficient": 0.002366026231000762,
+                "denominator": 881.4362424575402,
+                "inflow": 0.0007432945263038453
+              }
+            },
+            "observed": {
+              "candidate": 0.0007432945263038455,
+              "upstream": 0.0007432945263038453
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 0.0007432945263038453,
+              "inflow_hex": "0x1.85b34d7444437p-11",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 0.0007432945263038455,
+              "inflow_hex": "0x1.85b34d7444439p-11",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 0.0007432945263038453,
+              "inflow_hex": "0x1.85b34d7444437p-11",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 0.0007432945263038453,
+              "inflow_hex": "0x1.85b34d7444437p-11",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "quadratic_coefficient"
+              ],
+              "inflow": 0.0007432945263038455,
+              "inflow_hex": "0x1.85b34d7444439p-11",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "pressure_difference",
+                "quadratic_coefficient"
+              ],
+              "inflow": 0.0007432945263038453,
+              "inflow_hex": "0x1.85b34d7444437p-11",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 4,
+          "first_difference": {
+            "offset": 15,
+            "inputs": {
+              "candidate": {
+                "left_pressure": 0.18319387317201583,
+                "tip_pressure": 0.10628662510500107,
+                "previous_inflow": 0.0006355918047828568,
+                "arithmetic": "candidate"
+              },
+              "upstream": {
+                "left_pressure": 0.18319387317201574,
+                "tip_pressure": 0.10628662510500107,
+                "previous_inflow": 0.0006355918047828568,
+                "arithmetic": "upstream"
+              }
+            },
+            "replayed": {
+              "candidate": {
+                "inertance": 0.0020700539491253786,
+                "resistance": 0.40346202428066846,
+                "normalized_inertance": 365.15751662571677,
+                "pressure_difference": 0.07690724806701475,
+                "normalized_momentum": 0.23209112502216536,
+                "drive": 0.3089983730891801,
+                "linear_coefficient": 365.5609786499974,
+                "quadratic_coefficient": 0.0011275725337515797,
+                "denominator": 731.1219592062052,
+                "inflow": 0.0008452717612931945
+              },
+              "upstream": {
+                "inertance": 0.0020700539491253786,
+                "resistance": 0.40346202428066846,
+                "normalized_inertance": 365.15751662571677,
+                "pressure_difference": 0.07690724806701467,
+                "normalized_momentum": 0.23209112502216536,
+                "drive": 0.30899837308918005,
+                "linear_coefficient": 365.5609786499974,
+                "quadratic_coefficient": 0.0011275725337515797,
+                "denominator": 731.1219592062052,
+                "inflow": 0.0008452717612931944
+              }
+            },
+            "observed": {
+              "candidate": 0.0008452717612931945,
+              "upstream": 0.0008452717612931944
+            }
+          },
+          "substitutions": [
+            {
+              "inputs_from_upstream": [
+                "left_pressure"
+              ],
+              "inflow": 0.0008452717612931944,
+              "inflow_hex": "0x1.bb2a7491616aap-11",
+              "matches_upstream": true
+            },
+            {
+              "inputs_from_upstream": [
+                "arithmetic"
+              ],
+              "inflow": 0.0008452717612931945,
+              "inflow_hex": "0x1.bb2a7491616abp-11",
+              "matches_upstream": false
+            },
+            {
+              "inputs_from_upstream": [
+                "left_pressure",
+                "arithmetic"
+              ],
+              "inflow": 0.0008452717612931944,
+              "inflow_hex": "0x1.bb2a7491616aap-11",
+              "matches_upstream": true
+            }
+          ],
+          "term_substitutions": [
+            {
+              "inputs_from_upstream": [
+                "pressure_difference"
+              ],
+              "inflow": 0.0008452717612931944,
+              "inflow_hex": "0x1.bb2a7491616aap-11",
+              "matches_upstream": true
+            }
+          ]
+        },
+        {
+          "entering_cell": 5,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        }
+      ],
+      "branch_replay_mismatches": [],
+      "terminal_load_comparison": {
+        "own_state_replayed": true,
+        "first_differences_after_only_upstream_feed": {
+          "tip_pressure": null,
+          "radiated_flow": null
+        },
+        "first_differences_after_only_upstream_load": {
+          "tip_pressure": null,
+          "radiated_flow": null
+        }
+      },
+      "first_residual_pressure_replay": null,
+      "derivative_replayed_with_upstream_scale": {
+        "first_difference_offset": null,
+        "bitwise_matches": 16
+      },
+      "control_and_momentum_csv_equal": false
+    },
+    "no_tracking": {
+      "event_sample": 235,
+      "control_minus_upstream": {},
+      "momentum_minus_upstream": {},
+      "momentum_minus_control": {},
+      "interior_branches": [
+        {
+          "entering_cell": 1,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        },
+        {
+          "entering_cell": 2,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        },
+        {
+          "entering_cell": 3,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        },
+        {
+          "entering_cell": 4,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        },
+        {
+          "entering_cell": 5,
+          "first_difference": null,
+          "substitutions": [],
+          "term_substitutions": []
+        }
+      ],
+      "branch_replay_mismatches": [],
+      "terminal_load_comparison": {
+        "own_state_replayed": true,
+        "first_differences_after_only_upstream_feed": {
+          "tip_pressure": null,
+          "radiated_flow": null
+        },
+        "first_differences_after_only_upstream_load": {
+          "tip_pressure": null,
+          "radiated_flow": null
+        }
+      },
+      "first_residual_pressure_replay": null,
+      "derivative_replayed_with_upstream_scale": {
+        "first_difference_offset": null,
+        "bitwise_matches": 16
+      },
+      "control_and_momentum_csv_equal": true
+    }
+  }
+}
