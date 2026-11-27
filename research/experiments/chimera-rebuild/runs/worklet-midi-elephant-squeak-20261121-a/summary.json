@@ -1,0 +1,1540 @@
+{
+  "checks": {
+    "normal_midi_through_both_browser_uis": true,
+    "fixed_browser_selects_and_triggers_call": true,
+    "fixed_browser_call_outlasts_release_and_ends": true,
+    "valve_targets_follow_same_curve_on_both_keys": true,
+    "held_notes_leave_glottal_pitch_at_performer_value": true,
+    "release_acoustics": true,
+    "returns_to_performer_after_restart": true,
+    "retrigger_reopens_mode_and_lowers_area_floor": true,
+    "reed_state_carries_across_retrigger": true,
+    "independent_opening_and_area_floor": true,
+    "fixed_call_definition": true,
+    "voice_shape_and_midi_quantum": true,
+    "continuous_audio_clock_and_finite_states": true,
+    "replay_samples_and_observations_match": true,
+    "fixed_upstream_pcm_and_state": true,
+    "independent_controls_and_output": true,
+    "independent_reed_and_upstream_valve": true,
+    "swapping_midi_notes_preserves_every_sample": true
+  },
+  "sample_rate_hz": 48000,
+  "frames": 64800,
+  "chromium": "156.0.8078.4",
+  "events": [
+    {
+      "frame": 7680,
+      "midi_call": {
+        "id": "squeak",
+        "note": 60,
+        "pressed": true
+      }
+    },
+    {
+      "frame": 12032,
+      "midi_call": {
+        "id": "squeak",
+        "note": 60,
+        "pressed": false
+      }
+    },
+    {
+      "frame": 19200,
+      "midi_call": {
+        "id": "squeak",
+        "note": 67,
+        "pressed": true
+      }
+    },
+    {
+      "frame": 24064,
+      "midi_call": {
+        "id": "squeak",
+        "note": 67,
+        "pressed": false
+      }
+    }
+  ],
+  "midi_targets_hz": {
+    "67": 24.499714748859326,
+    "60": 16.351597831287414
+  },
+  "browser": {
+    "calls": [
+      {
+        "id": "squeak",
+        "pitch": 16.351597831287414,
+        "clock": 0.14400000000000013
+      },
+      {
+        "id": "squeak",
+        "pitch": 24.49971474885933,
+        "clock": 0.38400000000000145
+      }
+    ],
+    "release_windows": [
+      {
+        "samples": 5,
+        "calls": [
+          "squeak"
+        ],
+        "lowest_gate": 0.8137369892609743
+      },
+      {
+        "samples": 5,
+        "calls": [
+          "squeak"
+        ],
+        "lowest_gate": 0.8049186545663375
+      }
+    ]
+  },
+  "relative_event_errors_seconds": [
+    0.0,
+    0.0006666666666666765,
+    0.0,
+    0.0013333333333332975
+  ],
+  "observations": {
+    "curve_observations": [
+      {
+        "start_frame": 7680,
+        "output_frame": 7680,
+        "requested_seconds": 0.0,
+        "target_lip_pitch_hz": 820.0,
+        "lip_pitch_hz": 487.1770835163056,
+        "gate_goal": 0.0,
+        "gate": 0.0,
+        "mode": 0.04347126089697073,
+        "reed_drive_dyn_cm2": 0.0,
+        "reed_opening_cm2": 2.9280835232499995e-05,
+        "trunk_valve_area_cm2": 4.304379325963632,
+        "trunk_valve_flow_cm3_s": 0.0,
+        "nasal_cm3_s": 0.0,
+        "expected_lip_pitch_hz": 820.0
+      },
+      {
+        "start_frame": 7680,
+        "output_frame": 9600,
+        "requested_seconds": 0.04,
+        "target_lip_pitch_hz": 825.3333333333333,
+        "lip_pitch_hz": 767.0973710072026,
+        "gate_goal": 0.9999999999999939,
+        "gate": 0.7264767278545656,
+        "mode": 0.7110713359527934,
+        "reed_drive_dyn_cm2": 302.9960063524596,
+        "reed_opening_cm2": 0.008356466042746072,
+        "trunk_valve_area_cm2": 1.30017898821243,
+        "trunk_valve_flow_cm3_s": 922.4958352090382,
+        "nasal_cm3_s": 561.799806716281,
+        "expected_lip_pitch_hz": 825.3333333333334
+      },
+      {
+        "start_frame": 7680,
+        "output_frame": 17280,
+        "requested_seconds": 0.2,
+        "target_lip_pitch_hz": 846.6666666666669,
+        "lip_pitch_hz": 844.0638407530323,
+        "gate_goal": 0.652173913043476,
+        "gate": 0.7664138782996041,
+        "mode": 0.6573845583275805,
+        "reed_drive_dyn_cm2": 358.2122505617573,
+        "reed_opening_cm2": 0.0084289475573852,
+        "trunk_valve_area_cm2": 1.5417694875258878,
+        "trunk_valve_flow_cm3_s": 1743.5708714115167,
+        "nasal_cm3_s": 1771.9661968233595,
+        "expected_lip_pitch_hz": 846.6666666666666
+      },
+      {
+        "start_frame": 7680,
+        "output_frame": 29312,
+        "requested_seconds": 0.45,
+        "status": "次のコールで置き換え"
+      },
+      {
+        "start_frame": 19200,
+        "output_frame": 19200,
+        "requested_seconds": 0.0,
+        "target_lip_pitch_hz": 820.0,
+        "lip_pitch_hz": 847.319770814803,
+        "gate_goal": 0.0,
+        "gate": 0.6742130419837754,
+        "mode": 0.5992021846835257,
+        "reed_drive_dyn_cm2": 147.84334138469103,
+        "reed_opening_cm2": 0.007693553893955416,
+        "trunk_valve_area_cm2": 1.8035901689241343,
+        "trunk_valve_flow_cm3_s": 1535.6742119654473,
+        "nasal_cm3_s": 1607.2826041608657,
+        "expected_lip_pitch_hz": 820.0
+      },
+      {
+        "start_frame": 19200,
+        "output_frame": 21120,
+        "requested_seconds": 0.04,
+        "target_lip_pitch_hz": 825.3333333333334,
+        "lip_pitch_hz": 826.7605570040758,
+        "gate_goal": 0.9999999999999987,
+        "gate": 0.7822683259143427,
+        "mode": 0.8575604170253377,
+        "reed_drive_dyn_cm2": 2296.5991813006567,
+        "reed_opening_cm2": 0.015502768121553347,
+        "trunk_valve_area_cm2": 0.6409781233859804,
+        "trunk_valve_flow_cm3_s": 1307.1432134474162,
+        "nasal_cm3_s": 1234.35362343294,
+        "expected_lip_pitch_hz": 825.3333333333334
+      },
+      {
+        "start_frame": 19200,
+        "output_frame": 28800,
+        "requested_seconds": 0.2,
+        "target_lip_pitch_hz": 846.6666666666665,
+        "lip_pitch_hz": 844.085049484837,
+        "gate_goal": 0.652173913043481,
+        "gate": 0.7670125356673785,
+        "mode": 0.6580918002856435,
+        "reed_drive_dyn_cm2": 361.2696989889134,
+        "reed_opening_cm2": 0.008439782100135422,
+        "trunk_valve_area_cm2": 1.538586898714604,
+        "trunk_valve_flow_cm3_s": 1744.4933483051884,
+        "nasal_cm3_s": 1773.6928170558615,
+        "expected_lip_pitch_hz": 846.6666666666666
+      },
+      {
+        "start_frame": 19200,
+        "output_frame": 40832,
+        "requested_seconds": 0.45,
+        "target_lip_pitch_hz": 880.0,
+        "lip_pitch_hz": 877.500340429982,
+        "gate_goal": 0.10724637681161164,
+        "gate": 0.23602026169734852,
+        "mode": 0.15734307208612594,
+        "reed_drive_dyn_cm2": 1.0312401757065661,
+        "reed_opening_cm2": 0.0071990841106860486,
+        "trunk_valve_area_cm2": 3.791956175612433,
+        "trunk_valve_flow_cm3_s": 503.9054538356522,
+        "nasal_cm3_s": 537.4661466010705,
+        "expected_lip_pitch_hz": 880.0
+      }
+    ],
+    "release_windows": [
+      {
+        "frames": [
+          12992,
+          16832
+        ],
+        "call_ids": [
+          3
+        ],
+        "minimum_gate": 0.786732349567291,
+        "pcm_rms": 0.009152100019799252,
+        "reed_opening_range_cm2": 0.006259801637671578,
+        "valve_area_range_cm2": 0.6020868063255402,
+        "nasal_ac_rms_cm3_s": 17.410979319264925,
+        "nasal_flow_rms_cm3_s": 1851.132814001144,
+        "oral_flow_rms_cm3_s": 299.1473611671857
+      },
+      {
+        "frames": [
+          25024,
+          28864
+        ],
+        "call_ids": [
+          3
+        ],
+        "minimum_gate": 0.7670125356673785,
+        "pcm_rms": 0.00959784343164387,
+        "reed_opening_range_cm2": 0.005996425316654685,
+        "valve_area_range_cm2": 0.6744075515665602,
+        "nasal_ac_rms_cm3_s": 26.000110660908074,
+        "nasal_flow_rms_cm3_s": 1836.7995649294712,
+        "oral_flow_rms_cm3_s": 293.0401855399004
+      }
+    ],
+    "natural_end_frame": 45632,
+    "valve_area_windows": [
+      {
+        "frames": [
+          7680,
+          9600
+        ],
+        "reed_active_frames": 1920,
+        "free_opening_frames": 0,
+        "area_floor_frames": 1920,
+        "tied_frames": 0,
+        "maximum_free_minus_floor_cm2": -1.3335831005005165,
+        "minimum_effective_area_cm2": 1.342907203702075,
+        "nasal_flow_rms_cm3_s": 206.8747963369839
+      },
+      {
+        "frames": [
+          19200,
+          21120
+        ],
+        "reed_active_frames": 1920,
+        "free_opening_frames": 0,
+        "area_floor_frames": 1920,
+        "tied_frames": 0,
+        "maximum_free_minus_floor_cm2": -0.6376321587894906,
+        "minimum_effective_area_cm2": 0.6537477065764516,
+        "nasal_flow_rms_cm3_s": 1441.606262598892
+      }
+    ],
+    "retrigger": {
+      "frame": 19200,
+      "before": {
+        "gate_goal": 0.568115942028982,
+        "gate": 0.689363266393743,
+        "mode": 0.5809871685692198,
+        "target_mode": 0.5226666666666634,
+        "lip_pitch_hz": 849.2363674386177,
+        "target_lip_pitch_hz": 851.8222222222224,
+        "glottis_area_cm2": 1.8190446891389447,
+        "glottis_phase": 0.5480638722327977,
+        "reed_drive_dyn_cm2": 144.67796031307356,
+        "reed_height_cm": 0.0032061431328012442,
+        "reed_speed_cm_s": -0.02572618679817705,
+        "reed_opening_cm2": 0.007694743518722986,
+        "trunk_valve_area_cm2": 1.8855577414385107,
+        "trunk_valve_flow_cm3_s": 1572.7847644866565,
+        "oral_cm3_s": 233.0412282784634,
+        "nasal_cm3_s": 1607.3393610888727,
+        "area_floor_cm2": 1.8855577414385107
+      },
+      "after": {
+        "gate_goal": 0.0,
+        "gate": 0.6742130419837754,
+        "mode": 0.5992021846835257,
+        "target_mode": 1.0,
+        "lip_pitch_hz": 847.319770814803,
+        "target_lip_pitch_hz": 820.0,
+        "glottis_area_cm2": 1.819224230889519,
+        "glottis_phase": 0.548352576220293,
+        "reed_drive_dyn_cm2": 147.84334138469103,
+        "reed_height_cm": 0.003205647455814757,
+        "reed_speed_cm_s": -0.02379249535138555,
+        "reed_opening_cm2": 0.007693553893955416,
+        "trunk_valve_area_cm2": 1.8035901689241343,
+        "trunk_valve_flow_cm3_s": 1535.6742119654473,
+        "oral_cm3_s": 233.06000216570192,
+        "nasal_cm3_s": 1607.2826041608657,
+        "area_floor_cm2": 1.8035901689241343
+      },
+      "one_sample_reset": {
+        "height_cm": 3.947240340787339e-05,
+        "speed_cm_s": 1.8946753635779225,
+        "opening_cm2": 9.473376817889613e-05,
+        "effective_area_cm2": 1.8035901689241343
+      },
+      "effective_area_difference_from_reset_cm2": 0.0
+    },
+    "independent_effective_area_maximum_error_cm2": 0.0
+  },
+  "worklet_observations": 1013,
+  "worklet_deltas": {
+    "gate": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "pressure_cm_h2o": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lung_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lung_flow_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trachea_end_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "pharynx_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_drive_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_flow_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_phase": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_f0_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "oral_tip_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "velum_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "velum_flow_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "nasal_base_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_inlet_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_tip_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_valve_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_valve_flow_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "wall_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "oral_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "nasal_cm3_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "radiation_cm3_s2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "decimated": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "dc_removed": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "call_id": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "control_clock_seconds": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "gate_goal": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pressure_cm_h2o": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "mode": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lip_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_mode": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_lip_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_abduction_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_amplitude_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottal_noise_gain": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_drive_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_opening_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_height_cm": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_speed_cm_s": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    }
+  },
+  "upstream_deltas": {
+    "gate": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "pressure_cm_h2o": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lung_pressure_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lung_flow_cm3_s": {
+      "first_difference_values": [
+        13.074872118393928,
+        13.07487211839393
+      ],
+      "maximum_absolute_error": 1.5688783605583012e-11,
+      "maximum_compared_error": 1.5688783605583012e-11,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7749,
+      "first_over_tolerance_output_frame": null
+    },
+    "trachea_end_pressure_dyn_cm2": {
+      "first_difference_values": [
+        1.983728062509206e-16,
+        1.9837280625092168e-16
+      ],
+      "maximum_absolute_error": 7.275957614183426e-11,
+      "maximum_compared_error": 7.275957614183426e-11,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7778,
+      "first_over_tolerance_output_frame": null
+    },
+    "pharynx_pressure_dyn_cm2": {
+      "first_difference_values": [
+        2.474183790981783e-18,
+        2.4741837909817964e-18
+      ],
+      "maximum_absolute_error": 1.0368239600211382e-10,
+      "maximum_compared_error": 1.0368239600211382e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7779,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_drive_dyn_cm2": {
+      "first_difference_values": [
+        1.983728062509206e-16,
+        1.9837280625092168e-16
+      ],
+      "maximum_absolute_error": 1.0913936421275139e-10,
+      "maximum_compared_error": 1.0913936421275139e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7779,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_flow_cm3_s": {
+      "first_difference_values": [
+        1.1205502883526518e-18,
+        1.120550288352658e-18
+      ],
+      "maximum_absolute_error": 1.1368683772161603e-11,
+      "maximum_compared_error": 1.1368683772161603e-11,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7779,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_phase": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-10,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_f0_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-08,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "oral_tip_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "velum_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "velum_flow_cm3_s": {
+      "first_difference_values": [
+        7.654816430988904e-27,
+        7.654816430988953e-27
+      ],
+      "maximum_absolute_error": 1.7053025658242404e-11,
+      "maximum_compared_error": 1.7053025658242404e-11,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7813,
+      "first_over_tolerance_output_frame": null
+    },
+    "nasal_base_pressure_dyn_cm2": {
+      "first_difference_values": [
+        9.690325851692636e-30,
+        9.690325851692696e-30
+      ],
+      "maximum_absolute_error": 1.2187229003757238e-10,
+      "maximum_compared_error": 1.2187229003757238e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7826,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_inlet_pressure_dyn_cm2": {
+      "first_difference_values": [
+        1.5002446513937606e-30,
+        1.5002446513937701e-30
+      ],
+      "maximum_absolute_error": 1.6007106751203537e-10,
+      "maximum_compared_error": 1.6007106751203537e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7827,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_tip_pressure_dyn_cm2": {
+      "first_difference_values": [
+        5.566444875371119e-62,
+        5.5655134489746145e-62
+      ],
+      "maximum_absolute_error": 1.244875313943794e-10,
+      "maximum_compared_error": 1.244875313943794e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7975,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_valve_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk_valve_flow_cm3_s": {
+      "first_difference_values": [
+        3.914352422853124e-31,
+        3.9143524228531485e-31
+      ],
+      "maximum_absolute_error": 9.322320693172514e-12,
+      "maximum_compared_error": 9.322320693172514e-12,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7827,
+      "first_over_tolerance_output_frame": null
+    },
+    "wall_cm3_s": {
+      "first_difference_values": [
+        3.3092927808253136e-22,
+        3.3092927808253315e-22
+      ],
+      "maximum_absolute_error": 1.6484591469634324e-12,
+      "maximum_compared_error": 1.6484591469634324e-12,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7780,
+      "first_over_tolerance_output_frame": null
+    },
+    "oral_cm3_s": {
+      "first_difference_values": [
+        2.2340904247780056e-35,
+        2.2340904247780203e-35
+      ],
+      "maximum_absolute_error": 1.7053025658242404e-12,
+      "maximum_compared_error": 1.7053025658242404e-12,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7841,
+      "first_over_tolerance_output_frame": null
+    },
+    "nasal_cm3_s": {
+      "first_difference_values": [
+        1.1732812303909374e-63,
+        1.1730849066811053e-63
+      ],
+      "maximum_absolute_error": 1.0459189070388675e-11,
+      "maximum_compared_error": 1.0459189070388675e-11,
+      "passed": true,
+      "tolerance": 2e-07,
+      "first_difference_output_frame": 7975,
+      "first_over_tolerance_output_frame": null
+    },
+    "radiation_cm3_s2": {
+      "first_difference_values": [
+        1.5884605347961506e-17,
+        1.5884605347961592e-17
+      ],
+      "maximum_absolute_error": 2.6193447411060333e-07,
+      "maximum_compared_error": 2.6193447411060333e-07,
+      "passed": true,
+      "tolerance": 0.03,
+      "first_difference_output_frame": 7780,
+      "first_over_tolerance_output_frame": null
+    },
+    "call_id": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "control_clock_seconds": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pressure_cm_h2o": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "mode": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "lip_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-08,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_mode": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_lip_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_abduction_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_amplitude_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottal_noise_gain": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_drive_dyn_cm2": {
+      "first_difference_values": [
+        1.2062900407885253e-30,
+        1.2062900407885329e-30
+      ],
+      "maximum_absolute_error": 1.405169314239174e-10,
+      "maximum_compared_error": 1.405169314239174e-10,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7827,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_opening_cm2": {
+      "first_difference_values": [
+        0.0070901659835994404,
+        0.00709016598359944
+      ],
+      "maximum_absolute_error": 1.7694179454963432e-16,
+      "maximum_compared_error": 1.7694179454963432e-16,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": 8145,
+      "first_over_tolerance_output_frame": null
+    }
+  },
+  "upstream_pcm": {
+    "first_bit_difference_frame": 9095,
+    "first_bit_difference_values": [
+      1.776679346221499e-05,
+      1.7766791643225588e-05
+    ],
+    "maximum_absolute_error": 9.313225746154785e-10,
+    "first_frame_over_tolerance": null
+  },
+  "upstream_pcm_different_bits": 24,
+  "upstream_shadow_area_error_cm2": 0.0,
+  "independent_deltas": {
+    "call_id": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "control_clock_seconds": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "gate_goal": {
+      "first_difference_values": [
+        0.3666666666666644,
+        0.3666666666666645
+      ],
+      "maximum_absolute_error": 1.1102230246251565e-16,
+      "maximum_compared_error": 1.1102230246251565e-16,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": 8384,
+      "first_over_tolerance_output_frame": null
+    },
+    "gate": {
+      "first_difference_values": [
+        0.06198470138316807,
+        0.06198470138316806
+      ],
+      "maximum_absolute_error": 4.440892098500626e-16,
+      "maximum_compared_error": 4.440892098500626e-16,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": 8064,
+      "first_over_tolerance_output_frame": null
+    },
+    "pitch_hz": {
+      "first_difference_values": [
+        14.0,
+        13.999999999999996
+      ],
+      "maximum_absolute_error": 3.552713678800501e-15,
+      "maximum_compared_error": 3.552713678800501e-15,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": 0,
+      "first_over_tolerance_output_frame": null
+    },
+    "pressure_cm_h2o": {
+      "first_difference_values": [
+        16.7230575775982,
+        16.723057577598205
+      ],
+      "maximum_absolute_error": 1.4210854715202004e-14,
+      "maximum_compared_error": 1.4210854715202004e-14,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": 7808,
+      "first_over_tolerance_output_frame": null
+    },
+    "trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "mode": {
+      "first_difference_values": [
+        0.2324303686250941,
+        0.23243036862509414
+      ],
+      "maximum_absolute_error": 3.3306690738754696e-16,
+      "maximum_compared_error": 3.3306690738754696e-16,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": 8000,
+      "first_over_tolerance_output_frame": null
+    },
+    "lip_pitch_hz": {
+      "first_difference_values": [
+        470.0,
+        470.00000000000006
+      ],
+      "maximum_absolute_error": 3.126388037344441e-12,
+      "maximum_compared_error": 3.126388037344441e-12,
+      "passed": true,
+      "tolerance": 1e-09,
+      "first_difference_output_frame": 0,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pitch_hz": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_pressure_cm_h2o": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_trunk": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_chaos": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_mode": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "target_lip_pitch_hz": {
+      "first_difference_values": [
+        831.5555555555554,
+        831.5555555555555
+      ],
+      "maximum_absolute_error": 1.1368683772161603e-13,
+      "maximum_compared_error": 1.1368683772161603e-13,
+      "passed": true,
+      "tolerance": 1e-09,
+      "first_difference_output_frame": 11840,
+      "first_over_tolerance_output_frame": null
+    },
+    "lung_pressure_dyn_cm2": {
+      "first_difference_values": [
+        166.41519078560168,
+        166.41519078560174
+      ],
+      "maximum_absolute_error": 1.2732925824820995e-11,
+      "maximum_compared_error": 1.2732925824820995e-11,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": 7808,
+      "first_over_tolerance_output_frame": null
+    },
+    "oral_tip_area_cm2": {
+      "first_difference_values": [
+        0.05,
+        0.05000000000000071
+      ],
+      "maximum_absolute_error": 7.077671781985373e-16,
+      "maximum_compared_error": 7.077671781985373e-16,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": 0,
+      "first_over_tolerance_output_frame": null
+    },
+    "velum_area_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "radiation_cm3_s2": {
+      "first_difference_values": [
+        2.0704498275523606e-14,
+        2.0704498275523603e-14
+      ],
+      "maximum_absolute_error": 2.9103830456733704e-11,
+      "maximum_compared_error": 2.9103830456733704e-11,
+      "passed": true,
+      "tolerance": 0.03,
+      "first_difference_output_frame": 7782,
+      "first_over_tolerance_output_frame": null
+    },
+    "decimated": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 0.03,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "dc_removed": {
+      "first_difference_values": [
+        1.4583675876525433e-21,
+        1.4583675876525435e-21
+      ],
+      "maximum_absolute_error": 2.498001805406602e-16,
+      "maximum_compared_error": 2.498001805406602e-16,
+      "passed": true,
+      "tolerance": 1e-08,
+      "first_difference_output_frame": 7781,
+      "first_over_tolerance_output_frame": null
+    },
+    "pcm_f32": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-06,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "glottis_drive_dyn_cm2": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-05,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    }
+  },
+  "independent_reed_deltas": {
+    "reed_drive": {
+      "first_difference_sample": null,
+      "first_difference_values": null,
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true
+    },
+    "effective_port": {
+      "first_difference_sample": null,
+      "first_difference_values": null,
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true
+    },
+    "glottis_abduction": {
+      "first_difference_sample": null,
+      "first_difference_values": null,
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true
+    },
+    "glottis_amplitude": {
+      "first_difference_sample": null,
+      "first_difference_values": null,
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true
+    },
+    "glottal_noise_gain": {
+      "first_difference_sample": null,
+      "first_difference_values": null,
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true
+    },
+    "height_cm": {
+      "first_difference_sample": 7681,
+      "first_difference_values": [
+        3.642694268749407e-05,
+        3.642694268749406e-05
+      ],
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 1.5612511283791264e-17,
+      "maximum_compared_error": 1.5612511283791264e-17,
+      "passed": true
+    },
+    "speed_cm_s": {
+      "first_difference_sample": 7681,
+      "first_difference_values": [
+        1.1628765443497153,
+        1.162876544349715
+      ],
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 8.945622020917199e-14,
+      "maximum_compared_error": 8.945622020917199e-14,
+      "passed": true
+    },
+    "opening_cm2": {
+      "first_difference_sample": 7681,
+      "first_difference_values": [
+        8.742466244998577e-05,
+        8.742466244998573e-05
+      ],
+      "first_over_tolerance_sample": null,
+      "maximum_absolute_error": 3.8163916471489756e-17,
+      "maximum_compared_error": 3.8163916471489756e-17,
+      "passed": true
+    }
+  },
+  "upstream_valve_deltas": {
+    "effective_port": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 2e-09,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    },
+    "reed_telemetry": {
+      "first_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "maximum_compared_error": 0.0,
+      "passed": true,
+      "tolerance": 1e-12,
+      "first_difference_output_frame": null,
+      "first_over_tolerance_output_frame": null
+    }
+  },
+  "counterfactual_hashes": {
+    "cli.wav": [
+      "bf110355c1d96fa625a1c9aedbc91ad36b1c73c7b93d07c25193df9dc6f139ac",
+      "bf110355c1d96fa625a1c9aedbc91ad36b1c73c7b93d07c25193df9dc6f139ac"
+    ],
+    "cli.csv": [
+      "e89b5c0f759aefdf83c5d72c2f20b65e874fa7782f746161b1d47e0838821c93",
+      "e89b5c0f759aefdf83c5d72c2f20b65e874fa7782f746161b1d47e0838821c93"
+    ],
+    "upstream.csv": [
+      "85c16e8b05f2cbdcd7767a16320678036116bdc6724d992d3d10667cc5c761fb",
+      "85c16e8b05f2cbdcd7767a16320678036116bdc6724d992d3d10667cc5c761fb"
+    ]
+  }
+}

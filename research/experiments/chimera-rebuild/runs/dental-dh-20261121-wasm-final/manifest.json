@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "run_id": "dental-dh-20261121-wasm-final",
+  "case_id": "dental-dh-wasm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "bun": "1.4.4",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/dental-dh-wasm.json",
+      "bytes": 635,
+      "sha256": "ac6b78f6ac2ba2c5845dfec3e52ed73eeb2161c61aa55eeb1193908dd9e1b20c"
+    },
+    {
+      "path": "cases/dental-dh.json",
+      "bytes": 15133,
+      "sha256": "35e5fbe809d932ef34817f6e3a11f22e99d5305c2da6be86df097425c6d441c7"
+    },
+    {
+      "path": "tools/compare_dental_wasm.ts",
+      "bytes": 3737,
+      "sha256": "764f2176125bc2e3bb12cde90dfd96026a102cb6675ac176e92c5b566dab0f0d"
+    },
+    {
+      "path": "crates/vocal-wasm/host/fixed-voice.ts",
+      "bytes": 18859,
+      "sha256": "b1828e9069565ea582fc2840530f058169e725769f11cdc3e0d8d3ebc5a492aa"
+    },
+    {
+      "path": "crates/vocal-wasm/host/planning.ts",
+      "bytes": 5719,
+      "sha256": "3ebfa2c9c9f2b74a32afa4d7968e1e2d291a7c541944eaf60494fa089c8e0e23"
+    },
+    {
+      "path": "data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/manifest.json",
+      "bytes": 68778,
+      "sha256": "32b44d9e062715d4eb5b01e426e8cb6c4a6f17b80100cfcd437b58c89419376a"
+    },
+    {
+      "path": "target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+      "bytes": 1469189,
+      "sha256": "599606dea282d5b80e83c0753cbdf17ca5b2062e38ceda0f8695526d4b050f2c"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/initial-male/pcm-128.wav",
+      "bytes": 214666,
+      "sha256": "0d81a6acdf0c07c848c5b030c11dea6ca4c6c025a7032690bf5c6a739c6d1aa5",
+      "sample_rate_hz": 48000,
+      "frames": 53652,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/initial-male/case.json",
+      "bytes": 852,
+      "sha256": "885ab13085532ecc466ea9b07a465fe2b8e24f73573bd25e04a0308bd72ffa58"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/between-vowels/pcm-128.wav",
+      "bytes": 206142,
+      "sha256": "76970f0c77888ae17f595ce0c08da6fa526fa8b9955d9cb52f4ea53247023e87",
+      "sample_rate_hz": 48000,
+      "frames": 51521,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/between-vowels/case.json",
+      "bytes": 852,
+      "sha256": "daff81c0200f9e712bbe4441c77e9c4ff5d9e99514263cbd446b47554270e475"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/FA01_01/pcm-128.wav",
+      "bytes": 516154,
+      "sha256": "acbdbb516bff7292a4f6af1331e59d12255561b0f378242ffabb911ca8063b34",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/dental-dh-20261121-a/artifacts/FA01_01/case.json",
+      "bytes": 908,
+      "sha256": "91d78a6ac0a9cce8eecba402905f062f59c09667672b9226d6bc98332dbc0cd8"
+    },
+    {
+      "path": "tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "npx",
+        "--offline",
+        "--yes",
+        "--package=bun@1.4.4",
+        "bun",
+        "$WORKSPACE/tools/compare_dental_wasm.ts",
+        "$WORKSPACE/target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+        "$WORKSPACE/runs/dental-dh-20261121-a/artifacts",
+        "$WORKSPACE/cases/dental-dh-wasm.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/wasm-comparison.json",
+      "bytes": 340,
+      "sha256": "d8b95242e47563f28531b415bb2a78232a3195a600e1548ef2d2fdc4ddcc931c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 564,
+      "sha256": "c4049953bf618054f2c7dc817802459419654cdea91161b156a954ba8fb72193"
+    }
+  ]
+}

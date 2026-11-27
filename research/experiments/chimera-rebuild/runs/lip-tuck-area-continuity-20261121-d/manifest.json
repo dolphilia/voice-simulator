@@ -1,0 +1,7546 @@
+{
+  "schema_version": 1,
+  "run_id": "lip-tuck-area-continuity-20261121-d",
+  "case_id": "lip-tuck-area-continuity",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/lip-tuck-area-continuity.json",
+      "bytes": 2124,
+      "sha256": "8b49c906f0a3fb4126431df2d7b2537aadf3a39a1fc2ad38a7b410efaba4c555"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_lip_tuck_continuity.py",
+      "bytes": 20159,
+      "sha256": "719cf3245d0f3867157c3e5bed2e21c80db6e48558028e6086d85c1d827df19b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/lip_tuck_sweep.rs",
+      "bytes": 4424,
+      "sha256": "0845fd0aa5c05dafb2b746112a1c45809fd10434777da684d5e4b356a2917719"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_sagittal_probe.rs",
+      "bytes": 12320,
+      "sha256": "5c01d1d7dcbd87b3750fdd3afa92e4a98e1ffd664bbba8bb2b226768860175be"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_area.py",
+      "bytes": 9114,
+      "sha256": "a1d4068e6a73efe0512daca4d54b6b8b67fc7cf6d4c50c893c5817bb65a060bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_grid.py",
+      "bytes": 9421,
+      "sha256": "cc6fc53be474cf63fcdf23f7d13a29c4cc5b04d5fd4c894161fab59b516fff63"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_resample.py",
+      "bytes": 10622,
+      "sha256": "1ccecef0eff49afa3c0ec6c3f5e2f0551f5c8430cfe77e1da3b0a5fe5df8bed4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_uniform_tube.py",
+      "bytes": 21346,
+      "sha256": "6fcc7b21b769f54197b0a380a4dc9e6492545ef0bb6dfabafe486de0bf7f957e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.toml",
+      "bytes": 156,
+      "sha256": "ac7cb09f7c04feac27f22b385771ddd88bb039f7046f15c214d0187c2f4b1b29"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.lock",
+      "bytes": 7302,
+      "sha256": "46d497c879e8f1201f748a14bbc975496364eb6ce3fb36b6409c44c5a8888726"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/Cargo.toml",
+      "bytes": 312,
+      "sha256": "61d15e418c1da0287d8d9fab51bf82d45533894a717174603e76c5cc2493f7ee"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/Cargo.toml",
+      "bytes": 212,
+      "sha256": "c90a25193f234d2fd9253e67f2116bf135731db0309808a292f97449d8e86329"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/Cargo.toml",
+      "bytes": 356,
+      "sha256": "56d9e6aac3cc84b5849413a374244cd13cb04347b1427c877089765deab05001"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/alligator_case.rs",
+      "bytes": 9140,
+      "sha256": "20ea4b398a3209f2f5aed798dff7e9a2fe85b2923255ef5c7f36d252483ec174"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6654,
+      "sha256": "34d99fa70762d797dc11a8fe9503d7e090111b08223627875031d8f320300f54"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 7116,
+      "sha256": "3536c844367fb8bfa0101ab3dd761d7fd5d7c94b8dae52496caf697c7fee5416"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 11152,
+      "sha256": "f9e3b5e1e7286bc3d4c97e1450d711b9ac3f9169490e7fc940c0ff9cf9636fad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/elephant_case.rs",
+      "bytes": 9012,
+      "sha256": "7623f5049dcca7608e63e0d85edbbfdadfe48268ccd9646d69ed703e506f9110"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/english_case.rs",
+      "bytes": 4199,
+      "sha256": "57e860dc82e317c35a750385a1c422c15b1e1dcfb788f646c6dfea1707be1df4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 6372,
+      "sha256": "76e955e372bffd6166c5cbbf4585776124acf9ce2e111f21943c3a9ff7f7da03"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 18414,
+      "sha256": "30591fd013eacc070a39de066053c76fcac4859b94722d8bcbf0b4731b31cd5b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/ipa_case.rs",
+      "bytes": 3451,
+      "sha256": "8345379856ae4591e78bbbbbe78441fa75e832397f578839245858fecb3a946d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/lip_reed_case.rs",
+      "bytes": 2367,
+      "sha256": "340f5501975de67adf9fc6b471ed6c023ed848b556be9be84e09365a90890fda"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/live_song_case.rs",
+      "bytes": 6601,
+      "sha256": "708521cc08a6d58a3c338bc99b08473ba1e85bed8974da1ad999a97ba01535bd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/main.rs",
+      "bytes": 17188,
+      "sha256": "e99abe21a27306389847a386110a6a5525989a0e0c0bc3ebd976bab15c946fe9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4501,
+      "sha256": "db3c477f9e63e0dc2201372ad2050154ed4ae490abae1719c944a0748f1386e6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case.rs",
+      "bytes": 24011,
+      "sha256": "ede737736a7c8c78915bd71e8a47d8e96fedb7fb710e6fef45e74decf551739e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/saved_compare/input.rs",
+      "bytes": 13681,
+      "sha256": "6a22f33b7174ec34b65a6c2f33c8cdeeaeac69da8f52d0d9a55a4e7f48383336"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/saved_compare.rs",
+      "bytes": 12456,
+      "sha256": "07e4dad2faa0e335b719bfcb76b09210b3172ebff5e62b1b343b37908f661243"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_airway_case.rs",
+      "bytes": 3316,
+      "sha256": "7a1819af0f69addf1051ae9ade70a43bdc2cef931e4aef698125d3b43fedf20a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_breath_case.rs",
+      "bytes": 3974,
+      "sha256": "5725fca007d49df2d3ce1e63a0d50133c8360f99f92682fb33cd17cdb266d4ca"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_voice_case.rs",
+      "bytes": 8842,
+      "sha256": "4bd9b911faa339ce72bd5d2bc1f552047e614aebdb7859ca31fd32b402f6fef5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/song_case.rs",
+      "bytes": 4087,
+      "sha256": "7c50445715ea65ec287f9b46cac12ed2928357ca61f0b5d2a76a4fa4a12722bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/songbird_case.rs",
+      "bytes": 4150,
+      "sha256": "1c05b3a24c313b08c38f27239ddfbf7f73ffd6134c48743d3b5cad48573b6e9c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/songbird_voice_case.rs",
+      "bytes": 8459,
+      "sha256": "724e661c00585d31daac5935cce122f693d03e88d7fd2d4069709be26ad0e039"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/syrinx_case.rs",
+      "bytes": 3022,
+      "sha256": "c520e02add11903433af894f886901668c1b0de75b759a8774709a240196be08"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/observed_score.rs",
+      "bytes": 3500,
+      "sha256": "c0af9f0be6b5ce539e3045fd97dd623ca8bf770d49c1d7c30c1f75949658bd1f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice/beat_pattern.rs",
+      "bytes": 10039,
+      "sha256": "7075a7cdd0c3f5ac04a9cd8290015a72f75cda2a46f338afeee34249f533cf08"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice/telemetry.rs",
+      "bytes": 8044,
+      "sha256": "8aa733a5211eaa2fb17fbf290c17b0ed67ed2b84e5df5c428d5fe1efae67ac12"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice.rs",
+      "bytes": 45255,
+      "sha256": "813da3a237017a6a4753bde5860e253c8706cad55b025919fcb5d788fa7ea771"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case.rs",
+      "bytes": 4164,
+      "sha256": "a2814b781ec9a2e2e637b1bce72cc64e6f12aa095ac3eb4c148e9232ec304c90"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/alligator/call.rs",
+      "bytes": 3711,
+      "sha256": "e736f93e1a6bb4d5bb670064a1918d4c4d978c80bb3a759a98d755e92f838b0e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/alligator.rs",
+      "bytes": 12671,
+      "sha256": "9554edd093046a1d60699f8c301dde5d5d149a40f4715603d79e7c639d1b2e10"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/elephant/call.rs",
+      "bytes": 4949,
+      "sha256": "83dd6e1f362779a6b1d21be3fcf686a6602d7196b24b75b5be90600d624fea51"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/elephant.rs",
+      "bytes": 13846,
+      "sha256": "cae90e560a34df6fe9ea7805d6530e1e0fe8cb31e527a9cde2a6f330097b2558"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human/frication.rs",
+      "bytes": 5271,
+      "sha256": "a0dc18749fe328e3554e2bf0e2702ede81847e10ee3070b0767dee2dcad555df"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human.rs",
+      "bytes": 15076,
+      "sha256": "708493a4076d93c86c938aba700f9937d57a814a6af3173f256806e65b56f105"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/mammal.rs",
+      "bytes": 16961,
+      "sha256": "36048d0e5fcc9efa24d6669226b3d7abe84ffdb9a945fe21696cd66dc5c6a920"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 6155,
+      "sha256": "0e64d959ce7ec00f31841de9178c98da6228eeb3ebe1361b71cfdc7c1f2b701a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 7735,
+      "sha256": "98d2a55a22e79724bce93d6169f7a12dec2b6e0d3f8830d075984561f3125947"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network.rs",
+      "bytes": 27862,
+      "sha256": "f9d5b62c7ba02d14fafc81e046d930ca63778112043ac404c778c0974bb4cb3a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/seal.rs",
+      "bytes": 3314,
+      "sha256": "f4c422b2e69a5a4c2f7500985e73623eaf858ff3a20526616fbf48c331ef4cd9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/songbird.rs",
+      "bytes": 11090,
+      "sha256": "dd8359e872242c79e95f0f4e1441d6b84161640777bc1f64e1e8978bc2ce9662"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control/allocation_tests.rs",
+      "bytes": 5238,
+      "sha256": "cdbe06412a984a818d58378aa320cc9392c383e9cf82edaac245c9adcd85fca4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 7927,
+      "sha256": "4f53026f807d0f1c754e7d8c993155d280f6ba0a31e88534040b4cb0b5888af6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway.rs",
+      "bytes": 12752,
+      "sha256": "6ffee9f8176a33eecba7bc13e5495a5ad3ea4ae4a43f9fec4ca88c2f5f67cb49"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 4936,
+      "sha256": "36ce0134e920fa201cd2f6da3a2bfbe2da52e93027ed01d39657a47ef7235884"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/body.rs",
+      "bytes": 4901,
+      "sha256": "b335a35147fc14150f3aed87dfb395c3be0d9e03c215a0cfc4ef7ca0530f8b17"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7410,
+      "sha256": "3f397be2c8c5667f8bc039b74e6e66d386c78c29cf25930bf78f3c3de54d47e9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 10500,
+      "sha256": "63987e9ef8320874e6989b247b2af44a7faa15f1cd9a882794d1ce07f68080c0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 5088,
+      "sha256": "208f772323689cc698f56c92a5888fc3a485d8a22048c8be83c7b6f53ff0bc79"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy.rs",
+      "bytes": 19670,
+      "sha256": "3911229e3042bb35690ce9d66b076d93b41039cccfb868410fe11b346c95b827"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/articulators.rs",
+      "bytes": 11435,
+      "sha256": "4fc1f43b4de18f55b251af97f429d78f94b12f86e816ba4c82d1da304ecd790d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/breath.rs",
+      "bytes": 4835,
+      "sha256": "812c17105fe754126a8cb1edeb0b453886de37fad4ee2f2469309ac56209f2a0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/creature_midi.rs",
+      "bytes": 736,
+      "sha256": "6b715c1c42b6c853a9b766f5bc196f1108629ad8936bd2ffbc7e35498092099a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/glottis.rs",
+      "bytes": 12162,
+      "sha256": "dc2afbb82ebd4c01948fd46ce1ff921b228734bff79db4dfb9537151942ce4d0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/lib.rs",
+      "bytes": 388,
+      "sha256": "b51265f762b7a5aa8adb350c0dbf9e93ac0471902e43aa8db411861028945e63"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/lip_reed.rs",
+      "bytes": 2930,
+      "sha256": "28b2f07c672db2f2ab55eb13c6072deda74480b551285abcdf3118915d600d8c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/output.rs",
+      "bytes": 9439,
+      "sha256": "b4086fe58a37649c51656c5309bb9bfc72b7cf933ca4d6ada53dda4d8e7b17e5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox/player.rs",
+      "bytes": 10117,
+      "sha256": "a7c52c66bf40fe776ca461d31c922ce7c9574c55639bce65e45e39e580606a6e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox.rs",
+      "bytes": 17409,
+      "sha256": "fd11e870baa9b4f01cddb260baf1b6e35934b8d66c821eba1520caeb686eff04"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/catalog.rs",
+      "bytes": 3791,
+      "sha256": "d783ec20e83da0d2c7057d67aedc9884bbed914e1139b0bccae61885a9bc615c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/spelling.rs",
+      "bytes": 4147,
+      "sha256": "c0f2d0bc6dfc9bc218c92c5502f20fec9a6137e80357018100759d4cc5f08e69"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english.rs",
+      "bytes": 12700,
+      "sha256": "1f038c4508fb80dccac459dd27bd946adc32ae0eb8bd1c0f3446110deec1067f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/gestures.rs",
+      "bytes": 2129,
+      "sha256": "085cadb444da27a21db1879026125b7ec59d3620a57b78bc0864af8b6faa87e8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/normalization.rs",
+      "bytes": 4279,
+      "sha256": "4b5a0ed2d6ba2a2c675c56332c8daeb843cbe41d50720660d8423bf4efb621b4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa.rs",
+      "bytes": 10536,
+      "sha256": "a38e7ae2cf442463613d7600cf85e70d4f1e7795e45a131895f3f6b9d073c9f6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa_plan.rs",
+      "bytes": 2427,
+      "sha256": "5931bba0cfcc4f4e25c52bbe9063d883423799854c2077a2c990db5f55ebf113"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/korean.rs",
+      "bytes": 9831,
+      "sha256": "4cd316a6732982c2a301bfaab6b4ff9e0dfc3248d30e9804dd625d60e7373846"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/live_song.rs",
+      "bytes": 11726,
+      "sha256": "9611d156393567d44147a131e5792ba3dea0fe15c445f9ed3891dcf759361dc4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/mandarin.rs",
+      "bytes": 21579,
+      "sha256": "5a6e2ae0031800e9492e0511db32cb77fb7bc2af2f5d0516c582b1139c2969f8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/russian.rs",
+      "bytes": 13470,
+      "sha256": "95103b529eb68d0b1b791df6c130c1b169c17ea505fb7b474939d9053f854f7d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/song.rs",
+      "bytes": 19648,
+      "sha256": "8086598e5af7267669fd85fd2b0c28a9ee8199b27564393fe4d5393a5cde36cc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/speech.rs",
+      "bytes": 36361,
+      "sha256": "cfa35779bddf8b88901702db33a55bce145810759ebf4209133c9a6ae9b81521"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/syllables.rs",
+      "bytes": 9457,
+      "sha256": "7d6c9f4bdcf53e7574ae843531ebb9da1d005c8decbeb89ec7cef97ea524f7f7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing/durations.rs",
+      "bytes": 5395,
+      "sha256": "41853fd785eacefdbd1df39c08a9d08da4555f1c96d61ac323194a0d37dc21aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.rs",
+      "bytes": 3979,
+      "sha256": "2c5b0e7e14d1ea78ab9f595545ab0c89b1d8d2e912b5520505d9a32656665ade"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowels.rs",
+      "bytes": 3840,
+      "sha256": "8aa9a3fe71634983e8c15fe051a261051476c053601cda32c9a7afb1d25d1dad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics.rs",
+      "bytes": 1827,
+      "sha256": "13b28f998a03b2f6270c6890392e70973df01f2c4caf8d44efb38e2a9b0afdc3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/score.rs",
+      "bytes": 6652,
+      "sha256": "3697b9c1009b538684cf03e6a482b3d45d5997e6951088d90c845665645616fd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_breath.rs",
+      "bytes": 4916,
+      "sha256": "bdc9b9b98e8bd438692574c88f778959e65f6611b681923fcef4604cb4be455b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_voice/call.rs",
+      "bytes": 5821,
+      "sha256": "023525879acad7c2ee0438a24e76c68081ce9deaf38e8c224914fe3554215d41"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_voice.rs",
+      "bytes": 10011,
+      "sha256": "d147ec9fc8842d364b5bbfd1049c82fda9963c8ea659ba8779eed268f8b6156c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/songbird_voice/call.rs",
+      "bytes": 7326,
+      "sha256": "191b6c1ef60dfceef3982dfd74e1806acbf46ec6d2258b6daa9c45bb81b702bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/songbird_voice.rs",
+      "bytes": 9355,
+      "sha256": "eb045336a32aa7e263bfc51468f6621d091da8652aa9411e0543da006ae1c43c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/syrinx.rs",
+      "bytes": 7375,
+      "sha256": "4eb24d060ec5daa0622c1677d85950f1753cd8c2ebfaa11a7bb78e0fd6801efb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/voice.rs",
+      "bytes": 18068,
+      "sha256": "c1c36d9b258e6b8a895007e59a55e7108589de2b5bdcd98856ec1c02aeaa7b6d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/alligator.rs",
+      "bytes": 9145,
+      "sha256": "4ff304fa09b6c6ab4ab9d87db16191db120e7e615b7d87a042cde32ea4bd367a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/duet_head.rs",
+      "bytes": 2989,
+      "sha256": "0acd3b4c79ee2d59155182472530bdf76b740d1715b21ca20712906658eae436"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/elephant.rs",
+      "bytes": 8563,
+      "sha256": "b1fab4fd4e006be550b74aa9bcc126223a4e6bd891701a3bf8f60f20b1d02b34"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/lib.rs",
+      "bytes": 73667,
+      "sha256": "a4df4640ce39a638c61afaf7ec51607d4006f0fd77c36adf40a344db3f14ce28"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/planning.rs",
+      "bytes": 11585,
+      "sha256": "926e756909cd0ba0505ba66bed9d56edb89ed9baac046880f16e038f087f9eec"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/seal.rs",
+      "bytes": 8726,
+      "sha256": "38cb2dd9fc42b2da48876b69ed10163f90b5c0e8c27444240e2c545be8e2df34"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/songbird.rs",
+      "bytes": 8328,
+      "sha256": "1b842d02c990c869da8ba577fbf9e350405ae9d9dd4b1f8aa07d9b336b500a4a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/consonant-targets.generated.json",
+      "bytes": 2092,
+      "sha256": "f8c86f2d7ef4992f8531d67c07e57f4382a38cc738cf7fa247b3aabd40465bc0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/lts.generated.json",
+      "bytes": 2184,
+      "sha256": "9a2f07d25d87ef5e4cc2ae36025b1dea14305db2d9109cfce8a8da7797f3e154"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/catalog.generated.json",
+      "bytes": 5202,
+      "sha256": "69b3de13295a1c21cc859eda67e25d696176d8303049ae5b198e6cbc47977f6a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/nfc.generated.json",
+      "bytes": 11335,
+      "sha256": "ce9003b078b588e9142a9d5b5896787d8efaa7432818c2612ccc7478d39e1b98"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.generated.json",
+      "bytes": 6749,
+      "sha256": "0a0850aaddf3feb2b57687564c5f44742bb390c43ef50dae1b58a77f35953a3e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowel-targets.generated.json",
+      "bytes": 30671,
+      "sha256": "2dee540ced5171444c314243643a654281e94f37a1a2c5c9bcf5176776eef24f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/syrinx-table.generated.json",
+      "bytes": 3560,
+      "sha256": "ea1d6c66f5b0f608db27672aed9ec920fa6aec7de92d7392c42ce40718a44841"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/Cargo.toml",
+      "bytes": 325,
+      "sha256": "b68d1f91b734cce5c6bab775ed1c0e51751f570a6675e5505b8297ef2f34f601"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/Cargo.lock",
+      "bytes": 5433,
+      "sha256": "5529e6a7d6fca2d363404f466cd0f16c463a41e260992cd5ec2374d14b275678"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/Cargo.toml",
+      "bytes": 385,
+      "sha256": "7a0a768a5104a8d07562856ffe75dcf88fb4ca83690080497bd1ac366aaa5d44"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/anatomy/human.rs",
+      "bytes": 62589,
+      "sha256": "9df76b032b617c4be389d7cc58c70d546ce83a8c75bac2ccc1e70edfbe00e564"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/anatomy/geom.rs",
+      "bytes": 7552,
+      "sha256": "916cab35cd2345534b23b4e9aea7ba080a15e286fd6c3adaa7e636fb175c9c23"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/voice/human_airway.rs",
+      "bytes": 21616,
+      "sha256": "f92adb2f09015542e991dfb4f6684bf0c900dd5e1f75d166dcf1d790fceba044"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/tests/geometry_continuity.rs",
+      "bytes": 13115,
+      "sha256": "00037fd8a082f0ddef05ad4c02c6cb07d114fe3ca091b573f0a559ffefd75daa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "geometry_continuity"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "geometry_continuity",
+        "no_area_jumps_as_a_protruded_lower_lip_tucks",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 101
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_sagittal_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_sagittal_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--cfg",
+        "fixed_upstream",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/lip_tuck_sweep.rs",
+        "-o",
+        "$ARTIFACTS/lip_tuck_sweep.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-core",
+        "--message-format=json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=off",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "vocal_core=$WORKSPACE/target/release/libvocal_core.rlib",
+        "-L",
+        "dependency=$WORKSPACE/target/release/deps",
+        "$WORKSPACE/tools/lip_tuck_sweep.rs",
+        "-o",
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-7zkv0f1f/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-01/low/posture.json",
+        "$ARTIFACTS/event-01/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-01/low/posture.json",
+        "$ARTIFACTS/event-01/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-01/low/posture.json",
+        "$ARTIFACTS/event-01/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-01/high/posture.json",
+        "$ARTIFACTS/event-01/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-01/high/posture.json",
+        "$ARTIFACTS/event-01/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-01/high/posture.json",
+        "$ARTIFACTS/event-01/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-02/low/posture.json",
+        "$ARTIFACTS/event-02/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-02/low/posture.json",
+        "$ARTIFACTS/event-02/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-02/low/posture.json",
+        "$ARTIFACTS/event-02/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-02/high/posture.json",
+        "$ARTIFACTS/event-02/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-02/high/posture.json",
+        "$ARTIFACTS/event-02/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-02/high/posture.json",
+        "$ARTIFACTS/event-02/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-03/low/posture.json",
+        "$ARTIFACTS/event-03/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-03/low/posture.json",
+        "$ARTIFACTS/event-03/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-03/low/posture.json",
+        "$ARTIFACTS/event-03/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-03/high/posture.json",
+        "$ARTIFACTS/event-03/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-03/high/posture.json",
+        "$ARTIFACTS/event-03/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-03/high/posture.json",
+        "$ARTIFACTS/event-03/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-04/low/posture.json",
+        "$ARTIFACTS/event-04/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-04/low/posture.json",
+        "$ARTIFACTS/event-04/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-04/low/posture.json",
+        "$ARTIFACTS/event-04/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-04/high/posture.json",
+        "$ARTIFACTS/event-04/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-04/high/posture.json",
+        "$ARTIFACTS/event-04/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-04/high/posture.json",
+        "$ARTIFACTS/event-04/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-05/low/posture.json",
+        "$ARTIFACTS/event-05/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-05/low/posture.json",
+        "$ARTIFACTS/event-05/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-05/low/posture.json",
+        "$ARTIFACTS/event-05/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-05/high/posture.json",
+        "$ARTIFACTS/event-05/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-05/high/posture.json",
+        "$ARTIFACTS/event-05/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-05/high/posture.json",
+        "$ARTIFACTS/event-05/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-06/low/posture.json",
+        "$ARTIFACTS/event-06/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-06/low/posture.json",
+        "$ARTIFACTS/event-06/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-06/low/posture.json",
+        "$ARTIFACTS/event-06/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-06/high/posture.json",
+        "$ARTIFACTS/event-06/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-06/high/posture.json",
+        "$ARTIFACTS/event-06/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-06/high/posture.json",
+        "$ARTIFACTS/event-06/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-07/low/posture.json",
+        "$ARTIFACTS/event-07/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-07/low/posture.json",
+        "$ARTIFACTS/event-07/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-07/low/posture.json",
+        "$ARTIFACTS/event-07/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-07/high/posture.json",
+        "$ARTIFACTS/event-07/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-07/high/posture.json",
+        "$ARTIFACTS/event-07/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-07/high/posture.json",
+        "$ARTIFACTS/event-07/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-08/low/posture.json",
+        "$ARTIFACTS/event-08/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-08/low/posture.json",
+        "$ARTIFACTS/event-08/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-08/low/posture.json",
+        "$ARTIFACTS/event-08/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-08/high/posture.json",
+        "$ARTIFACTS/event-08/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-08/high/posture.json",
+        "$ARTIFACTS/event-08/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-08/high/posture.json",
+        "$ARTIFACTS/event-08/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-09/low/posture.json",
+        "$ARTIFACTS/event-09/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-09/low/posture.json",
+        "$ARTIFACTS/event-09/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-09/low/posture.json",
+        "$ARTIFACTS/event-09/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-09/high/posture.json",
+        "$ARTIFACTS/event-09/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-09/high/posture.json",
+        "$ARTIFACTS/event-09/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-09/high/posture.json",
+        "$ARTIFACTS/event-09/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-10/low/posture.json",
+        "$ARTIFACTS/event-10/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-10/low/posture.json",
+        "$ARTIFACTS/event-10/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-10/low/posture.json",
+        "$ARTIFACTS/event-10/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-10/high/posture.json",
+        "$ARTIFACTS/event-10/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-10/high/posture.json",
+        "$ARTIFACTS/event-10/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-10/high/posture.json",
+        "$ARTIFACTS/event-10/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-11/low/posture.json",
+        "$ARTIFACTS/event-11/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-11/low/posture.json",
+        "$ARTIFACTS/event-11/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-11/low/posture.json",
+        "$ARTIFACTS/event-11/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-11/high/posture.json",
+        "$ARTIFACTS/event-11/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-11/high/posture.json",
+        "$ARTIFACTS/event-11/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-11/high/posture.json",
+        "$ARTIFACTS/event-11/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-12/low/posture.json",
+        "$ARTIFACTS/event-12/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-12/low/posture.json",
+        "$ARTIFACTS/event-12/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-12/low/posture.json",
+        "$ARTIFACTS/event-12/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-12/high/posture.json",
+        "$ARTIFACTS/event-12/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-12/high/posture.json",
+        "$ARTIFACTS/event-12/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-12/high/posture.json",
+        "$ARTIFACTS/event-12/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794328689576",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-13/low/posture.json",
+        "$ARTIFACTS/event-13/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-13/low/posture.json",
+        "$ARTIFACTS/event-13/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-13/low/posture.json",
+        "$ARTIFACTS/event-13/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "0.5",
+        "0.8611794352531434",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-13/high/posture.json",
+        "$ARTIFACTS/event-13/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-13/high/posture.json",
+        "$ARTIFACTS/event-13/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-13/high/posture.json",
+        "$ARTIFACTS/event-13/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.851946201324463",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-14/low/posture.json",
+        "$ARTIFACTS/event-14/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-14/low/posture.json",
+        "$ARTIFACTS/event-14/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-14/low/posture.json",
+        "$ARTIFACTS/event-14/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.2",
+        "1.0",
+        "0.8519462037086487",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-14/high/posture.json",
+        "$ARTIFACTS/event-14/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-14/high/posture.json",
+        "$ARTIFACTS/event-14/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-14/high/posture.json",
+        "$ARTIFACTS/event-14/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996875762941",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-15/low/posture.json",
+        "$ARTIFACTS/event-15/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-15/low/posture.json",
+        "$ARTIFACTS/event-15/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-15/low/posture.json",
+        "$ARTIFACTS/event-15/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.8675996899604799",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-15/high/posture.json",
+        "$ARTIFACTS/event-15/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-15/high/posture.json",
+        "$ARTIFACTS/event-15/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-15/high/posture.json",
+        "$ARTIFACTS/event-15/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859884262085",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-16/low/posture.json",
+        "$ARTIFACTS/event-16/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-16/low/posture.json",
+        "$ARTIFACTS/event-16/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-16/low/posture.json",
+        "$ARTIFACTS/event-16/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "0.5",
+        "0.9346859908103944",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-16/high/posture.json",
+        "$ARTIFACTS/event-16/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-16/high/posture.json",
+        "$ARTIFACTS/event-16/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-16/high/posture.json",
+        "$ARTIFACTS/event-16/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887545585634",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-17/low/posture.json",
+        "$ARTIFACTS/event-17/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-17/low/posture.json",
+        "$ARTIFACTS/event-17/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-17/low/posture.json",
+        "$ARTIFACTS/event-17/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.8616887569427492",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-17/high/posture.json",
+        "$ARTIFACTS/event-17/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-17/high/posture.json",
+        "$ARTIFACTS/event-17/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-17/high/posture.json",
+        "$ARTIFACTS/event-17/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700839042666",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-18/low/posture.json",
+        "$ARTIFACTS/event-18/low/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-18/low/posture.json",
+        "$ARTIFACTS/event-18/low/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-18/low/posture.json",
+        "$ARTIFACTS/event-18/low/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "20",
+        "24",
+        "0.3",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05",
+        "0.6",
+        "1.0",
+        "0.9317700862884524",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/event-18/high/posture.json",
+        "$ARTIFACTS/event-18/high/candidate-geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/event-18/high/posture.json",
+        "$ARTIFACTS/event-18/high/candidate-area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/event-18/high/posture.json",
+        "$ARTIFACTS/event-18/high/candidate-resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "fail",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/lip-tuck-area-continuity-20261121-d/artifacts",
+    "estimated_peak_bytes": 40000000
+  },
+  "outputs": [
+    {
+      "path": "artifacts/candidate-sweep.csv.gz",
+      "bytes": 2866751,
+      "sha256": "7ad8b882e43dc69fbe7113fe5d704ed16810e50c41893821afa94ee1d2397e86"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 2057,
+      "sha256": "779b87c69bf90ad0e4a5cb79fb545f0ae23fe5c90b1a9cf87d452b171122b22d"
+    },
+    {
+      "path": "artifacts/crossing-details.json",
+      "bytes": 409701,
+      "sha256": "d8e27966fa82dee01e29184ee5fdd960cd86a1e072f7164f752f002be656173d"
+    },
+    {
+      "path": "artifacts/event-01/high/candidate-area.csv",
+      "bytes": 9161,
+      "sha256": "3f5fc71b5edad3bd593bf0c3babb3e0a0ecd318334b723ee824c300e50b02a4e"
+    },
+    {
+      "path": "artifacts/event-01/high/candidate-geometry.csv",
+      "bytes": 12754,
+      "sha256": "7dcf216731e8d0d31c9e95036156d29eb64051641237510c6745ffc842a7fdbd"
+    },
+    {
+      "path": "artifacts/event-01/high/candidate-independent-cells.csv",
+      "bytes": 5136,
+      "sha256": "4f53d61f295a0b23d625578c13f4ca8194b58f16a4a9847a19af88f18eb8e763"
+    },
+    {
+      "path": "artifacts/event-01/high/candidate-resample.csv",
+      "bytes": 3605,
+      "sha256": "7640a92f0814c3ea79ea54116b4790ab1987b5da8a3dd409da3ff9c0378636c5"
+    },
+    {
+      "path": "artifacts/event-01/high/posture.json",
+      "bytes": 994,
+      "sha256": "040cc7ba8a7010996623aa19a357ce5e68ae52652b064dca663a6dfb450ce365"
+    },
+    {
+      "path": "artifacts/event-01/high/upstream-area.csv",
+      "bytes": 9156,
+      "sha256": "111e9db78ad2944a33264116f27dd14d64ca421cc854812b504b006217417fab"
+    },
+    {
+      "path": "artifacts/event-01/high/upstream-geometry.csv",
+      "bytes": 12844,
+      "sha256": "ac1884a12d37a00cfb0eaa82a106a989d055c7eb764e7304a48699d2588d6e60"
+    },
+    {
+      "path": "artifacts/event-01/high/upstream-independent-cells.csv",
+      "bytes": 5146,
+      "sha256": "e004639d3c0d1b367c68d1984ab01f75bb163923df396cb22c82af8434f6806d"
+    },
+    {
+      "path": "artifacts/event-01/high/upstream-resample.csv",
+      "bytes": 3613,
+      "sha256": "0eddba3496714baa99a84a8df1c8bb8bbd7f4fe12a97e8bdedbd6a6142b1ce74"
+    },
+    {
+      "path": "artifacts/event-01/low/candidate-area.csv",
+      "bytes": 9159,
+      "sha256": "1691fa7c8b01a89d5840fc0de6bb1409627daab604fc33aee793700f2bb3e5ac"
+    },
+    {
+      "path": "artifacts/event-01/low/candidate-geometry.csv",
+      "bytes": 12755,
+      "sha256": "b1668e122b6af350e556d2b8341b7914bbd6062f48699c793df9634bdedd9d28"
+    },
+    {
+      "path": "artifacts/event-01/low/candidate-independent-cells.csv",
+      "bytes": 5097,
+      "sha256": "a63e802f967bde33b7c175e5747adfbe17bb5a1a18a4e4bf83c23e9b05eb6e1a"
+    },
+    {
+      "path": "artifacts/event-01/low/candidate-resample.csv",
+      "bytes": 3615,
+      "sha256": "fca4ff29f0880ec91a5ecf12f69afa6e83a7787fa0f0b86a48ccc317ce48c958"
+    },
+    {
+      "path": "artifacts/event-01/low/posture.json",
+      "bytes": 994,
+      "sha256": "189de6107df6ef195424acea424eeaf827d1f7a9f728182c0c5b19de7e2f3403"
+    },
+    {
+      "path": "artifacts/event-01/low/upstream-area.csv",
+      "bytes": 9155,
+      "sha256": "133aac40810db23ec593598fea878498c5f576293648a8b139d4a76cccaa61ea"
+    },
+    {
+      "path": "artifacts/event-01/low/upstream-geometry.csv",
+      "bytes": 12836,
+      "sha256": "dd1bf5192f6e12467565f8221228846a7893a5a5db2a53869c7004915f3f6de3"
+    },
+    {
+      "path": "artifacts/event-01/low/upstream-independent-cells.csv",
+      "bytes": 5100,
+      "sha256": "7da10ec35af7c358f9801fbc41c57fe73643b67182e0fc2c9d8a5dcc878a17fc"
+    },
+    {
+      "path": "artifacts/event-01/low/upstream-resample.csv",
+      "bytes": 3626,
+      "sha256": "c12b7c5b05d888ec290efadf24586883ca8e3e71a28c593643a877cbd3976271"
+    },
+    {
+      "path": "artifacts/event-02/high/candidate-area.csv",
+      "bytes": 9158,
+      "sha256": "e8ac1d76875f3186d39365f9973392c219d973a46b402c21445f7c027c9919b5"
+    },
+    {
+      "path": "artifacts/event-02/high/candidate-geometry.csv",
+      "bytes": 12750,
+      "sha256": "f2abbe2890ddb98739269614d49549d0f10ee09b41855851fca13bc1e989931a"
+    },
+    {
+      "path": "artifacts/event-02/high/candidate-independent-cells.csv",
+      "bytes": 5121,
+      "sha256": "ca2a920ac8c43b66c53f8adccd12f36f25e847bf33cb4f3c6b0747859145e695"
+    },
+    {
+      "path": "artifacts/event-02/high/candidate-resample.csv",
+      "bytes": 3604,
+      "sha256": "10c01e58f8f88bd095464cbd71adb0a5ddd5976fddb743c85e872f775f8cc0d9"
+    },
+    {
+      "path": "artifacts/event-02/high/posture.json",
+      "bytes": 994,
+      "sha256": "1b8a15306d77491e5e380dae0d8aa0fabdc507ce270006cc79f0d15f293b3c65"
+    },
+    {
+      "path": "artifacts/event-02/high/upstream-area.csv",
+      "bytes": 9154,
+      "sha256": "ae146f0f1b7e82bfba4f3eb5a5add9882ce2c3f24c60ff59a933547f828ba807"
+    },
+    {
+      "path": "artifacts/event-02/high/upstream-geometry.csv",
+      "bytes": 12837,
+      "sha256": "c50ab495c657d58e3ea1390f6715d946634cd0e5e9ba970c3d762172a65b46ea"
+    },
+    {
+      "path": "artifacts/event-02/high/upstream-independent-cells.csv",
+      "bytes": 5128,
+      "sha256": "0b733bfd670f9ec026b526c8f22ca1a8643260677bec2dc7d02d28b92ba296cf"
+    },
+    {
+      "path": "artifacts/event-02/high/upstream-resample.csv",
+      "bytes": 3617,
+      "sha256": "279860a2c30f81f327e06d4657e0593781b4484add87259f9514f0c2e578644f"
+    },
+    {
+      "path": "artifacts/event-02/low/candidate-area.csv",
+      "bytes": 9160,
+      "sha256": "ce810810a8c9d5941c605cce02302ba0e76b9b0d2997ec33c1d4f10b18096410"
+    },
+    {
+      "path": "artifacts/event-02/low/candidate-geometry.csv",
+      "bytes": 12756,
+      "sha256": "75c4ca8a10d28928e0da17af26e897e77df71bf7546cedc9450a967f94a8443b"
+    },
+    {
+      "path": "artifacts/event-02/low/candidate-independent-cells.csv",
+      "bytes": 5099,
+      "sha256": "130ae951c2b6eceb14ca97d2d4106dedd8535cc34946a49216495c146fb65368"
+    },
+    {
+      "path": "artifacts/event-02/low/candidate-resample.csv",
+      "bytes": 3610,
+      "sha256": "a065197c2fff7f27a83898dfee07e018b71d98ab472341090844ef4a29d524bb"
+    },
+    {
+      "path": "artifacts/event-02/low/posture.json",
+      "bytes": 993,
+      "sha256": "a220ee82e8255341e6c83dfbc7b65c3361d7b888953e592611aa5dde23eb81b2"
+    },
+    {
+      "path": "artifacts/event-02/low/upstream-area.csv",
+      "bytes": 9158,
+      "sha256": "bb7d15f11d74efe844605a710510402aad21532eb09b4c1b01722a35195c1a9e"
+    },
+    {
+      "path": "artifacts/event-02/low/upstream-geometry.csv",
+      "bytes": 12842,
+      "sha256": "869578e94213a67ea252c4684899b646c643b8d821839305ac90a8570e372fb2"
+    },
+    {
+      "path": "artifacts/event-02/low/upstream-independent-cells.csv",
+      "bytes": 5101,
+      "sha256": "1d2eea80f4f263be3d4f5c92071b371a426304f536bdd93eee0638eb057f6efb"
+    },
+    {
+      "path": "artifacts/event-02/low/upstream-resample.csv",
+      "bytes": 3612,
+      "sha256": "644879a1abec2424a0730ed25c4b40eddcc755fd57b44615034f6f9017f0ea79"
+    },
+    {
+      "path": "artifacts/event-03/high/candidate-area.csv",
+      "bytes": 9163,
+      "sha256": "2ead1cb263a3af7330d7389d5b02180810cfbb38304eb00abfaac39ef2a55971"
+    },
+    {
+      "path": "artifacts/event-03/high/candidate-geometry.csv",
+      "bytes": 12751,
+      "sha256": "449e72c80353a02d8ae830071ebb6c75807cc57643d1256d53b85ce06c94b818"
+    },
+    {
+      "path": "artifacts/event-03/high/candidate-independent-cells.csv",
+      "bytes": 5093,
+      "sha256": "24cc0ac634a4047264d8f040b6d3c9ba6a63b8b22250f11d07ae627fe720877e"
+    },
+    {
+      "path": "artifacts/event-03/high/candidate-resample.csv",
+      "bytes": 3611,
+      "sha256": "057be255238e4cde7b7be4d75025110e85284a51cf3470f65d312e45fc3342b2"
+    },
+    {
+      "path": "artifacts/event-03/high/posture.json",
+      "bytes": 994,
+      "sha256": "110bdb1bc2f3233c1b0d2610f846b3a595a5bd310f89df2f02517ed298ea60fd"
+    },
+    {
+      "path": "artifacts/event-03/high/upstream-area.csv",
+      "bytes": 9152,
+      "sha256": "a10767993e3cae1658fae63591167266111d25d21b570ab18a97c8b60a4834e6"
+    },
+    {
+      "path": "artifacts/event-03/high/upstream-geometry.csv",
+      "bytes": 12848,
+      "sha256": "7a9fd7025e8dc23a8345c49a26bdec73ae6a88777471c56d74b59ca80e6603fb"
+    },
+    {
+      "path": "artifacts/event-03/high/upstream-independent-cells.csv",
+      "bytes": 5109,
+      "sha256": "a69e52db53d2c29b17f0cd77a5e39f1e8094c46cfc990e0ed0ae0579450251b2"
+    },
+    {
+      "path": "artifacts/event-03/high/upstream-resample.csv",
+      "bytes": 3611,
+      "sha256": "2dd2d5cb90d0d898c57e2007cf8c1b329e3d3f6a014c45b075d02c208bac9982"
+    },
+    {
+      "path": "artifacts/event-03/low/candidate-area.csv",
+      "bytes": 9157,
+      "sha256": "43e68112897c8c208981d0a12d6bb82dd72bdfb64c07809ead9e93c6bd0b6016"
+    },
+    {
+      "path": "artifacts/event-03/low/candidate-geometry.csv",
+      "bytes": 12755,
+      "sha256": "7481e981fe5fc084fa48a3f420b8c64025e90ba5b42eb16b220aa505bad1c52e"
+    },
+    {
+      "path": "artifacts/event-03/low/candidate-independent-cells.csv",
+      "bytes": 5102,
+      "sha256": "a10dba0b4dfecd94df4cd86bd6b61f306c7231e685255b1f02a16634337a23f3"
+    },
+    {
+      "path": "artifacts/event-03/low/candidate-resample.csv",
+      "bytes": 3609,
+      "sha256": "619d876cf193cc3790da55fdb949e50afef2c07e926a6b4b8a90b37c5caf9ba2"
+    },
+    {
+      "path": "artifacts/event-03/low/posture.json",
+      "bytes": 994,
+      "sha256": "47df3a9aba31875af01747b6719a22ca4fc44d4348b41332bdab3c8c2d17e01d"
+    },
+    {
+      "path": "artifacts/event-03/low/upstream-area.csv",
+      "bytes": 9150,
+      "sha256": "f1cbb3014efdbc0b5fa0391a46096ea4c16ab13275362422c54fa962da648893"
+    },
+    {
+      "path": "artifacts/event-03/low/upstream-geometry.csv",
+      "bytes": 12847,
+      "sha256": "caa762ce9eb34aa6888292482ae509d7e7149ae6db12d95a47fb3a6f70d892d4"
+    },
+    {
+      "path": "artifacts/event-03/low/upstream-independent-cells.csv",
+      "bytes": 5105,
+      "sha256": "e29d94fd37789039ce37a3352e15b8514559cf1f22eabe12eb6c2638e2bf7c1f"
+    },
+    {
+      "path": "artifacts/event-03/low/upstream-resample.csv",
+      "bytes": 3614,
+      "sha256": "ed6589c67218c3219f1cbfc41244b4920e9ccf232ffb124930a8e99e7a86ec4c"
+    },
+    {
+      "path": "artifacts/event-04/high/candidate-area.csv",
+      "bytes": 9159,
+      "sha256": "77c31d7a179a22bee2ea388a4bfc36f8e431810ff53e274df9805a2b6a62e83f"
+    },
+    {
+      "path": "artifacts/event-04/high/candidate-geometry.csv",
+      "bytes": 12751,
+      "sha256": "16118d81d72f37ad09bc0120c74bf127dfa50a4a89112fc076e121efebc3c39e"
+    },
+    {
+      "path": "artifacts/event-04/high/candidate-independent-cells.csv",
+      "bytes": 5080,
+      "sha256": "afadce68cb27416797c1980d1eb6bd1ab0e243647fd352f47cb1bbef39be418b"
+    },
+    {
+      "path": "artifacts/event-04/high/candidate-resample.csv",
+      "bytes": 3607,
+      "sha256": "55e00332941afbdda86d4dc1fe0513623cc768619928ce0b805da99de7126a7a"
+    },
+    {
+      "path": "artifacts/event-04/high/posture.json",
+      "bytes": 994,
+      "sha256": "99ade72be91c169aeade8d4f4ef5feffbdd9a312ed2530eeeba59c01363f64be"
+    },
+    {
+      "path": "artifacts/event-04/high/upstream-area.csv",
+      "bytes": 9154,
+      "sha256": "f851969ec1329e1021f9bf3b4b44f3fe419e671a0bcdef88a3da2aa788f03b82"
+    },
+    {
+      "path": "artifacts/event-04/high/upstream-geometry.csv",
+      "bytes": 12832,
+      "sha256": "737723efc16f168a533367ee063cd98ab5a18c27af9e1d0e359f6018848c06d4"
+    },
+    {
+      "path": "artifacts/event-04/high/upstream-independent-cells.csv",
+      "bytes": 5086,
+      "sha256": "a548b96654774f621d84bb175a10e7e9aed7a12c403aeb3d4b0853b360b240e7"
+    },
+    {
+      "path": "artifacts/event-04/high/upstream-resample.csv",
+      "bytes": 3604,
+      "sha256": "2b4b865550e033bae6885d928c792230b966c8c62192fe0f5e4f88935c9a3334"
+    },
+    {
+      "path": "artifacts/event-04/low/candidate-area.csv",
+      "bytes": 9157,
+      "sha256": "d249f0fabad6b3107488b75d222b39bf58861c8497eac5adef198e86bab2d3ed"
+    },
+    {
+      "path": "artifacts/event-04/low/candidate-geometry.csv",
+      "bytes": 12741,
+      "sha256": "1439574f5a0220b7e665decdc8d301931da987dd52b8bc00850e26404c62a81e"
+    },
+    {
+      "path": "artifacts/event-04/low/candidate-independent-cells.csv",
+      "bytes": 5079,
+      "sha256": "18689c3e00f1fd65736dc4d652a4d7de84cb1a7045d7d24903974954fd1bac45"
+    },
+    {
+      "path": "artifacts/event-04/low/candidate-resample.csv",
+      "bytes": 3622,
+      "sha256": "8acaf87edc8e3172eb6010a094282d292fa9a3f9ea0139332cb3f7db4c1afd64"
+    },
+    {
+      "path": "artifacts/event-04/low/posture.json",
+      "bytes": 994,
+      "sha256": "0dd8f586875588a542ec27884b1d25ab31b170d08dbc405455985959e858f135"
+    },
+    {
+      "path": "artifacts/event-04/low/upstream-area.csv",
+      "bytes": 9149,
+      "sha256": "05f3b14276b8b6af3e166d310ed25bc3cafb0a4d83afc7e4fb31b392c0c37e46"
+    },
+    {
+      "path": "artifacts/event-04/low/upstream-geometry.csv",
+      "bytes": 12838,
+      "sha256": "708e8bc8157fd4e960ed663ff93d348a5fcdf8fe9dbb21e3052e878f9346de22"
+    },
+    {
+      "path": "artifacts/event-04/low/upstream-independent-cells.csv",
+      "bytes": 5089,
+      "sha256": "4d5d7083ec56630322d9013f82c4ad276090046cc6655ff47de18a6beac48602"
+    },
+    {
+      "path": "artifacts/event-04/low/upstream-resample.csv",
+      "bytes": 3607,
+      "sha256": "5eb5ba3063ff61df154042f8d17d5b0ee9b639fe7e86846f773139a5ef4c0a27"
+    },
+    {
+      "path": "artifacts/event-05/high/candidate-area.csv",
+      "bytes": 9155,
+      "sha256": "a09f48740e9778c66e07e2072eac32cfaaf4d66bd06ea8f3f39856b5711df4fb"
+    },
+    {
+      "path": "artifacts/event-05/high/candidate-geometry.csv",
+      "bytes": 12747,
+      "sha256": "a3f016b4472da55e504d58bbfb1b00e3c23de3671d111a4a37e127a8c524d478"
+    },
+    {
+      "path": "artifacts/event-05/high/candidate-independent-cells.csv",
+      "bytes": 5069,
+      "sha256": "ca141c98e641e573b38d37bbad3fdaf1fed7f9df655cf78c5d3d49e8b5b0e7f0"
+    },
+    {
+      "path": "artifacts/event-05/high/candidate-resample.csv",
+      "bytes": 3601,
+      "sha256": "185153177dae457d170d27098a36efc65299701515441b9908ba5c2260d8b1ce"
+    },
+    {
+      "path": "artifacts/event-05/high/posture.json",
+      "bytes": 994,
+      "sha256": "1cd73428152da2aeb5976a82dc8db70e4d1913d5e0259e9bf2bed972ffc2272a"
+    },
+    {
+      "path": "artifacts/event-05/high/upstream-area.csv",
+      "bytes": 9148,
+      "sha256": "dfaedf5993932d1badc5966b9dc8990bce75cbe92813242da46daf9e6660f62b"
+    },
+    {
+      "path": "artifacts/event-05/high/upstream-geometry.csv",
+      "bytes": 12836,
+      "sha256": "78b8bc398fc245f0c9471920e187c0b19544eeb69910c2f076923990113bcc7d"
+    },
+    {
+      "path": "artifacts/event-05/high/upstream-independent-cells.csv",
+      "bytes": 5085,
+      "sha256": "841a6d18a499eda34d643a82fe74ae2c2e6544a3fbac3b9e32d8683d871437b0"
+    },
+    {
+      "path": "artifacts/event-05/high/upstream-resample.csv",
+      "bytes": 3604,
+      "sha256": "31f0316a01ba7d023e88ba4e24feb9c8d9e83867948178e3d3ca632ced1503b3"
+    },
+    {
+      "path": "artifacts/event-05/low/candidate-area.csv",
+      "bytes": 9162,
+      "sha256": "07ef849f0ce6b170996bc60f852849f13dafb83d33b14e8444aecd313f3c396d"
+    },
+    {
+      "path": "artifacts/event-05/low/candidate-geometry.csv",
+      "bytes": 12761,
+      "sha256": "455341f7ccb90ba56d09cd49e60cb4b5750ae9b4e9a55f2e703d99c5e75883fa"
+    },
+    {
+      "path": "artifacts/event-05/low/candidate-independent-cells.csv",
+      "bytes": 5072,
+      "sha256": "b2890c76d1a275658d60620f900e209446affa84a1fc801205f4c91ec5b4f402"
+    },
+    {
+      "path": "artifacts/event-05/low/candidate-resample.csv",
+      "bytes": 3613,
+      "sha256": "25fad42e30d18c4beb822f11c44b33ace93c26697599400337dd0c12da871c07"
+    },
+    {
+      "path": "artifacts/event-05/low/posture.json",
+      "bytes": 994,
+      "sha256": "50dde174834df8e56b0d6aa277a96ba111ee8612fe5dcc27d2b583d09e4c53f2"
+    },
+    {
+      "path": "artifacts/event-05/low/upstream-area.csv",
+      "bytes": 9159,
+      "sha256": "e0541f78c9683bc9d833c275538c4a295ae2e11654095a24242dc511691201be"
+    },
+    {
+      "path": "artifacts/event-05/low/upstream-geometry.csv",
+      "bytes": 12830,
+      "sha256": "2a3805931b50a6f81cce942ecacc232cbea1960cf9ed7296126ebecbe93202d3"
+    },
+    {
+      "path": "artifacts/event-05/low/upstream-independent-cells.csv",
+      "bytes": 5081,
+      "sha256": "f7eaa485c8703d6c8d5285f581a0363ff7f1a4868eddbf9340ed428420151467"
+    },
+    {
+      "path": "artifacts/event-05/low/upstream-resample.csv",
+      "bytes": 3607,
+      "sha256": "53b6765f6a2dcc4bc01bca9b4f5fe11669f7a202a731d186d13be7b0f7b5732c"
+    },
+    {
+      "path": "artifacts/event-06/high/candidate-area.csv",
+      "bytes": 9157,
+      "sha256": "d811c1e131d94981db3d0fcfbef86ef3a16f214cf7303ad180ab1607846beb5f"
+    },
+    {
+      "path": "artifacts/event-06/high/candidate-geometry.csv",
+      "bytes": 12754,
+      "sha256": "b03953b8a7dbe74980fdd19cf3a2e8e04e21b05cdbd0e2907fc3163eba7ea771"
+    },
+    {
+      "path": "artifacts/event-06/high/candidate-independent-cells.csv",
+      "bytes": 5063,
+      "sha256": "04b043c1b256809dd33bbf66902237fc60149b4a4659c222b24244c9c9cdb381"
+    },
+    {
+      "path": "artifacts/event-06/high/candidate-resample.csv",
+      "bytes": 3601,
+      "sha256": "2651f57c1258f38c789e8161c9d936c02ccfa291112168d6e43ef32ec40e08d7"
+    },
+    {
+      "path": "artifacts/event-06/high/posture.json",
+      "bytes": 994,
+      "sha256": "c940611d8452234728f6305d086ee2869036e2014f5ac3eca8e546bc097644a4"
+    },
+    {
+      "path": "artifacts/event-06/high/upstream-area.csv",
+      "bytes": 9153,
+      "sha256": "a08b083c0d447e5fa75dfbf79069b0808d2eed3837d37ccbaac00672807094a5"
+    },
+    {
+      "path": "artifacts/event-06/high/upstream-geometry.csv",
+      "bytes": 12844,
+      "sha256": "7aab10119c5ccbce4479f81ab3bb1c87f70414d61a0cb5acfc48612fcc617267"
+    },
+    {
+      "path": "artifacts/event-06/high/upstream-independent-cells.csv",
+      "bytes": 5077,
+      "sha256": "d4be9d4cd0c4e93e9aa0fce752eea408517d71170ce565c9bc080fbe715fff12"
+    },
+    {
+      "path": "artifacts/event-06/high/upstream-resample.csv",
+      "bytes": 3602,
+      "sha256": "a63d64126b648331c5d4cc250446f91790fe9618665093aeedcfdf61cd8e25d4"
+    },
+    {
+      "path": "artifacts/event-06/low/candidate-area.csv",
+      "bytes": 9156,
+      "sha256": "b46fbf2bffd88f7a3b06226af819af390a9cbc3451200278f7d6cca961996c24"
+    },
+    {
+      "path": "artifacts/event-06/low/candidate-geometry.csv",
+      "bytes": 12749,
+      "sha256": "abd334d39547bb161c2be643537d57245dadaf09211d535b826aa883465fb2b0"
+    },
+    {
+      "path": "artifacts/event-06/low/candidate-independent-cells.csv",
+      "bytes": 5107,
+      "sha256": "53a4bb1b1111d3a425792c791db59062234ede4db6deabff26379327bd3e27fe"
+    },
+    {
+      "path": "artifacts/event-06/low/candidate-resample.csv",
+      "bytes": 3602,
+      "sha256": "cc7d5bfc9b20cb290a5d212c58f1452b2a08d4419a20ea08fe317ce7301ad729"
+    },
+    {
+      "path": "artifacts/event-06/low/posture.json",
+      "bytes": 994,
+      "sha256": "24f89a96f68aaa5a36acc5ffe31341e42895a770077c69afa570267e2070ca31"
+    },
+    {
+      "path": "artifacts/event-06/low/upstream-area.csv",
+      "bytes": 9155,
+      "sha256": "8744ba50c02d4696c1e80b2cdac100667267a789077906a808455e5cd8fd38ad"
+    },
+    {
+      "path": "artifacts/event-06/low/upstream-geometry.csv",
+      "bytes": 12842,
+      "sha256": "cd4de7c119e5d2ebd9ed0d67199531370f1411b6ab4a599d37718643e7f3735d"
+    },
+    {
+      "path": "artifacts/event-06/low/upstream-independent-cells.csv",
+      "bytes": 5110,
+      "sha256": "5d3fa69ff8cea771694c2a6fba4dd219426c9b81161e92710764bea30e5b4e37"
+    },
+    {
+      "path": "artifacts/event-06/low/upstream-resample.csv",
+      "bytes": 3621,
+      "sha256": "3099f1dd2c2ad1e5cb7560fe429d46ef411b71ed80ce58c7474b0f8c6efe607e"
+    },
+    {
+      "path": "artifacts/event-07/high/candidate-area.csv",
+      "bytes": 9094,
+      "sha256": "70e0aa463d0b628ca6de1323dcd9c686918a671a1eb0d9c2f5d7f087b079f90a"
+    },
+    {
+      "path": "artifacts/event-07/high/candidate-geometry.csv",
+      "bytes": 12980,
+      "sha256": "a71d1f093b9c73fea6c72133b018d8fbf12ab450a661263a1c7dbd569ed5ca41"
+    },
+    {
+      "path": "artifacts/event-07/high/candidate-independent-cells.csv",
+      "bytes": 5187,
+      "sha256": "fcfd8a41dbdd44d87038b3ada34ae84292fd831b842da15178346e2603be323a"
+    },
+    {
+      "path": "artifacts/event-07/high/candidate-resample.csv",
+      "bytes": 3653,
+      "sha256": "d512257c038b86609dc39d9724932d65fe5b7376db5127229c6571927e226180"
+    },
+    {
+      "path": "artifacts/event-07/high/posture.json",
+      "bytes": 996,
+      "sha256": "c8adb4f6e036bf91720c1ef02b70938ac3b5999d717ea0459bcea5fe4e75c4fd"
+    },
+    {
+      "path": "artifacts/event-07/high/upstream-area.csv",
+      "bytes": 9100,
+      "sha256": "79d6e02d2467762d5483e138321be34be2b0ee952b68a8030990ce4cd9dc46e9"
+    },
+    {
+      "path": "artifacts/event-07/high/upstream-geometry.csv",
+      "bytes": 13153,
+      "sha256": "a80b715324dd881cb23a808a54e1d8edd505fe545f4f16ea5f1c21b97a6ea131"
+    },
+    {
+      "path": "artifacts/event-07/high/upstream-independent-cells.csv",
+      "bytes": 5202,
+      "sha256": "972f09ae5e8191afcf8f78b55aa173b1df2759cfed346e72d565ec8684102852"
+    },
+    {
+      "path": "artifacts/event-07/high/upstream-resample.csv",
+      "bytes": 3661,
+      "sha256": "8b325f6879a759e64adf597a57dd5a9e9689a9825443cefd1e8783ab7bb5c1df"
+    },
+    {
+      "path": "artifacts/event-07/low/candidate-area.csv",
+      "bytes": 9095,
+      "sha256": "c3c6798f294ecbf47a08a5d7a08ed3118bac44bfeb0a10aa8067b216d344bf41"
+    },
+    {
+      "path": "artifacts/event-07/low/candidate-geometry.csv",
+      "bytes": 12969,
+      "sha256": "4089c73843c8c8bfddf33a28b6f8516bb88dd47fa62e6962468d1c4ff38fa176"
+    },
+    {
+      "path": "artifacts/event-07/low/candidate-independent-cells.csv",
+      "bytes": 5164,
+      "sha256": "0b9322af58dba7c6aa03959c53809a686406e50f2d07059bd19c405227073a5d"
+    },
+    {
+      "path": "artifacts/event-07/low/candidate-resample.csv",
+      "bytes": 3663,
+      "sha256": "63ddfb5292cd9e0755cf1a65483091f4c7f489d044983f283aa79ba85bc91559"
+    },
+    {
+      "path": "artifacts/event-07/low/posture.json",
+      "bytes": 996,
+      "sha256": "b31aeea93e7e873b513e2afb0af9c7e700c91f39d22580807c09e893e8fab5b1"
+    },
+    {
+      "path": "artifacts/event-07/low/upstream-area.csv",
+      "bytes": 9094,
+      "sha256": "822ba6fc31fd6dae2c4d48b2a24c530d157582d3fbb5a3bfce42c70d1e3f42ab"
+    },
+    {
+      "path": "artifacts/event-07/low/upstream-geometry.csv",
+      "bytes": 13155,
+      "sha256": "e40df7b3b3f9f120737586e20fd03227c5c11010837777603be7d7700ee01237"
+    },
+    {
+      "path": "artifacts/event-07/low/upstream-independent-cells.csv",
+      "bytes": 5161,
+      "sha256": "53c8d5317969fdb1d0214963340e30c9274f28e6898a8e647dfd3857aace2756"
+    },
+    {
+      "path": "artifacts/event-07/low/upstream-resample.csv",
+      "bytes": 3666,
+      "sha256": "c9a49902df72b7455afba3cf507c0a7992159ba27e473f86677a08e71d805f58"
+    },
+    {
+      "path": "artifacts/event-08/high/candidate-area.csv",
+      "bytes": 9097,
+      "sha256": "5104d8277a005735064408f5e52be6f107ab59da590211bb97367c85a4b79a55"
+    },
+    {
+      "path": "artifacts/event-08/high/candidate-geometry.csv",
+      "bytes": 12971,
+      "sha256": "db29461232609b4362f672237682e945ce1c2909573eaa0f915310ca4ee6913c"
+    },
+    {
+      "path": "artifacts/event-08/high/candidate-independent-cells.csv",
+      "bytes": 5173,
+      "sha256": "d4295fafcf9b6408496ecfce9d4cf008151db7dc03471181d24a452d32237e21"
+    },
+    {
+      "path": "artifacts/event-08/high/candidate-resample.csv",
+      "bytes": 3658,
+      "sha256": "81b23c2d2a92b5b04aac1f837c39a45c083810bf6e18c7d8611bd005e5be2bc8"
+    },
+    {
+      "path": "artifacts/event-08/high/posture.json",
+      "bytes": 996,
+      "sha256": "203b3e70a9294247dd7fcf86220dff4667553b5decc9650ddede6c8fb132c4a4"
+    },
+    {
+      "path": "artifacts/event-08/high/upstream-area.csv",
+      "bytes": 9101,
+      "sha256": "2324e51513c21fd8c5e3cda7e720a589c38836cdc7a39b2f75cb8bb5ce71f45d"
+    },
+    {
+      "path": "artifacts/event-08/high/upstream-geometry.csv",
+      "bytes": 13151,
+      "sha256": "99c61337a32d73b017d26100b404849215e08879c27456db1b0f815d1ddbf6b2"
+    },
+    {
+      "path": "artifacts/event-08/high/upstream-independent-cells.csv",
+      "bytes": 5188,
+      "sha256": "d10e8d580361e4b6a5afd92a0c4d22ca6e2449279f82e1d7d4ddf33da608d129"
+    },
+    {
+      "path": "artifacts/event-08/high/upstream-resample.csv",
+      "bytes": 3667,
+      "sha256": "98d827ca2bda3b3ff23014aa4ddb56ac5c2b9d923b44e2c82142de09d0e4090e"
+    },
+    {
+      "path": "artifacts/event-08/low/candidate-area.csv",
+      "bytes": 9100,
+      "sha256": "088ae0c143f354ae2820990355b7f7a501f74d5a5e5b246b91551b6c29b2407a"
+    },
+    {
+      "path": "artifacts/event-08/low/candidate-geometry.csv",
+      "bytes": 12966,
+      "sha256": "433ab1b6729a8bea39bb4a1d19050dbae039c267b55c1fb035f8b1f31f0a752a"
+    },
+    {
+      "path": "artifacts/event-08/low/candidate-independent-cells.csv",
+      "bytes": 5153,
+      "sha256": "cac81f9c1f5ae702d5293b20549ccc1a512a7cfbaa4734493f2aff20d7c3f67a"
+    },
+    {
+      "path": "artifacts/event-08/low/candidate-resample.csv",
+      "bytes": 3666,
+      "sha256": "9a459075de8e3d7e760712f2fdb84ccca7df25f4c0f4b3934711273439e24b54"
+    },
+    {
+      "path": "artifacts/event-08/low/posture.json",
+      "bytes": 995,
+      "sha256": "6f08b51a03fa9c700625aca0c4ea93cccb0e87c641e16f7c2f522d9e6a58a082"
+    },
+    {
+      "path": "artifacts/event-08/low/upstream-area.csv",
+      "bytes": 9103,
+      "sha256": "7e63a4a647de231fe7a4e9efe3e93aa327a187227bda46f04afe4b7e3d263c9e"
+    },
+    {
+      "path": "artifacts/event-08/low/upstream-geometry.csv",
+      "bytes": 13148,
+      "sha256": "cbace407c86464819c26f263e4826f21726831a4e25c997f419367584be86133"
+    },
+    {
+      "path": "artifacts/event-08/low/upstream-independent-cells.csv",
+      "bytes": 5175,
+      "sha256": "18521f181b25478978ec88eb668e03a7e43b21442a006b7da85e61dfd490f971"
+    },
+    {
+      "path": "artifacts/event-08/low/upstream-resample.csv",
+      "bytes": 3659,
+      "sha256": "45d7b66f23f4e20426a74d775b1eb61a6c18c504840bcf67b535c5d5cd7efff8"
+    },
+    {
+      "path": "artifacts/event-09/high/candidate-area.csv",
+      "bytes": 9099,
+      "sha256": "f5030fa2b5831eb941f0ff119901bc7585b694ea686d8f26e9445439ba58ae9b"
+    },
+    {
+      "path": "artifacts/event-09/high/candidate-geometry.csv",
+      "bytes": 12976,
+      "sha256": "93815647c0987feabdc5ebab6297bef7d52be1a0fd0ec2f9b1e38382aef9ffe1"
+    },
+    {
+      "path": "artifacts/event-09/high/candidate-independent-cells.csv",
+      "bytes": 5163,
+      "sha256": "00de6714533ed994b4537c2eeace5168b7a0cdaa41b7ccfb631d693f7e7f46ea"
+    },
+    {
+      "path": "artifacts/event-09/high/candidate-resample.csv",
+      "bytes": 3672,
+      "sha256": "857f7d58920fd392dd0190e998fa5795def406a29f1fac2d8cae1b40f4fff63f"
+    },
+    {
+      "path": "artifacts/event-09/high/posture.json",
+      "bytes": 996,
+      "sha256": "10741138e0b4647f989071b58e750a016f2187ce3a184df15e110c241b767b41"
+    },
+    {
+      "path": "artifacts/event-09/high/upstream-area.csv",
+      "bytes": 9101,
+      "sha256": "83208df0d77874d4d5b35d047c0cffb9e32e0b6ea5bb4d44d7f88a2a02532e3a"
+    },
+    {
+      "path": "artifacts/event-09/high/upstream-geometry.csv",
+      "bytes": 13158,
+      "sha256": "746425630182a69a7bbe22d10620236b95b4cedf4bb921e0eab1bfe532aa35f8"
+    },
+    {
+      "path": "artifacts/event-09/high/upstream-independent-cells.csv",
+      "bytes": 5178,
+      "sha256": "3fcd66bb24b17779db04d9d30d6671f4a72929bdd8c7127047690652ae8fe931"
+    },
+    {
+      "path": "artifacts/event-09/high/upstream-resample.csv",
+      "bytes": 3668,
+      "sha256": "28b7c947e77f5496bbc3c46d33be597f64f26ed56fff8d399c01a564592f66be"
+    },
+    {
+      "path": "artifacts/event-09/low/candidate-area.csv",
+      "bytes": 9097,
+      "sha256": "4b90e45a0a1630becdfdb338258aa0d38300b46086b28d06ec79641f94966c2d"
+    },
+    {
+      "path": "artifacts/event-09/low/candidate-geometry.csv",
+      "bytes": 12975,
+      "sha256": "a19d4dbd4622b81e4f3e47cf826fa39aa05ebae93de2f9f781792cc401630e2e"
+    },
+    {
+      "path": "artifacts/event-09/low/candidate-independent-cells.csv",
+      "bytes": 5150,
+      "sha256": "55cb87216059efb5b9165c713ee82a0aad8f7623be95b9f4290ac5d8b84f62a3"
+    },
+    {
+      "path": "artifacts/event-09/low/candidate-resample.csv",
+      "bytes": 3658,
+      "sha256": "264f908d7756d10b3c122b4c43eced4e00071955888a1dc16dc798a2a7883543"
+    },
+    {
+      "path": "artifacts/event-09/low/posture.json",
+      "bytes": 996,
+      "sha256": "bcd124def44b87f68573db3c435583bee92dc5a97de1993ee19849561b15a95d"
+    },
+    {
+      "path": "artifacts/event-09/low/upstream-area.csv",
+      "bytes": 9099,
+      "sha256": "c853b52758d6f8f4b891f1643272356b46f42f3c0d1616133b17366db9c065ee"
+    },
+    {
+      "path": "artifacts/event-09/low/upstream-geometry.csv",
+      "bytes": 13156,
+      "sha256": "61600580b5beabd1767c2ff853af6fe7c319f2f39babc992d7ea492b7e0232fe"
+    },
+    {
+      "path": "artifacts/event-09/low/upstream-independent-cells.csv",
+      "bytes": 5184,
+      "sha256": "52704c3e0aff2577201c7a24704c3e966435edb7d0833a5de5a2bb2064cbb7f0"
+    },
+    {
+      "path": "artifacts/event-09/low/upstream-resample.csv",
+      "bytes": 3665,
+      "sha256": "3f609f2837bdf5c78715829f49e28c9d8b90212a3f08962a11e540ce9525cbf6"
+    },
+    {
+      "path": "artifacts/event-10/high/candidate-area.csv",
+      "bytes": 9094,
+      "sha256": "aa94abc59498f2d103159c2a36f746a5d92daa91bac9c2a10bf1435d65083537"
+    },
+    {
+      "path": "artifacts/event-10/high/candidate-geometry.csv",
+      "bytes": 12974,
+      "sha256": "571caad2dd8daebdf28841ca57cfe4d5e90187676d614fc9873e01cb241a19cc"
+    },
+    {
+      "path": "artifacts/event-10/high/candidate-independent-cells.csv",
+      "bytes": 5139,
+      "sha256": "53efee1b204a7e9616a453f26b0cb46f8538940dde40aefc2c758a518565c92f"
+    },
+    {
+      "path": "artifacts/event-10/high/candidate-resample.csv",
+      "bytes": 3662,
+      "sha256": "2d676aa0cc01c8d4a67cdddf1e7e2ba7f2662d3d63ce3d085be6be2d229cd280"
+    },
+    {
+      "path": "artifacts/event-10/high/posture.json",
+      "bytes": 996,
+      "sha256": "c549076d6cadeb4ad4e0cccf8f2aa8161e396a79075c814408a817c9d059398e"
+    },
+    {
+      "path": "artifacts/event-10/high/upstream-area.csv",
+      "bytes": 9092,
+      "sha256": "c43dd9c619a1277e033414efb02d9ccef882e7d7c82c0004634372507a905154"
+    },
+    {
+      "path": "artifacts/event-10/high/upstream-geometry.csv",
+      "bytes": 13161,
+      "sha256": "32c65f16a26236246b1a3978a1cc4b6dda171222222e430c5d71d9b3fd135f0f"
+    },
+    {
+      "path": "artifacts/event-10/high/upstream-independent-cells.csv",
+      "bytes": 5153,
+      "sha256": "031c340e88ed2a8de731b20a3a2cf8079cf01ef7f31c50d1dd4a0d39f5e52313"
+    },
+    {
+      "path": "artifacts/event-10/high/upstream-resample.csv",
+      "bytes": 3660,
+      "sha256": "5817123307162d0608624dde0f5e4d091b328ea0ebb567ee5cdb046116da1748"
+    },
+    {
+      "path": "artifacts/event-10/low/candidate-area.csv",
+      "bytes": 9087,
+      "sha256": "a0c8a1c42c7a7fe9140bf0ce762554a1ee39101bb4782e52c7d86da891b1a21b"
+    },
+    {
+      "path": "artifacts/event-10/low/candidate-geometry.csv",
+      "bytes": 12972,
+      "sha256": "595e3c0f43ff113b340d81bf2b3baf839e94b74f7d3ff3d410522574f61a5d48"
+    },
+    {
+      "path": "artifacts/event-10/low/candidate-independent-cells.csv",
+      "bytes": 5152,
+      "sha256": "ef3ac1dce8555471d88f597b716d86b8138c596c3a9aa8415a9536fe9fdb13e5"
+    },
+    {
+      "path": "artifacts/event-10/low/candidate-resample.csv",
+      "bytes": 3668,
+      "sha256": "bd13f58d447e4dfcb1dd805e95080d8cee32c15e3f1046c7beb719e2a4f2ff59"
+    },
+    {
+      "path": "artifacts/event-10/low/posture.json",
+      "bytes": 996,
+      "sha256": "b939833b38e442ce3f6d858dff37125e9637602a4da1a599bdd3694099936751"
+    },
+    {
+      "path": "artifacts/event-10/low/upstream-area.csv",
+      "bytes": 9091,
+      "sha256": "bdddfb61fdac98e6927231d0fbea234c40cdc710285dc6c3251d2338450fbca9"
+    },
+    {
+      "path": "artifacts/event-10/low/upstream-geometry.csv",
+      "bytes": 13159,
+      "sha256": "37a0f8df6dd8dce41a475614d7cd218c1e862722c556d80a088ce67b6f5b1780"
+    },
+    {
+      "path": "artifacts/event-10/low/upstream-independent-cells.csv",
+      "bytes": 5162,
+      "sha256": "f84aa6ed3eed9079fd27427c29be2deba94b29ad068ff893ab34ed2be762730f"
+    },
+    {
+      "path": "artifacts/event-10/low/upstream-resample.csv",
+      "bytes": 3665,
+      "sha256": "ec4161ee49b2d1a50b24814ac059dae4f38015dc45ed08589f530ba98b451f47"
+    },
+    {
+      "path": "artifacts/event-11/high/candidate-area.csv",
+      "bytes": 9099,
+      "sha256": "8d440005ce8f9e51ab11e39aaafcd1758c4f27360c09d10203532e193e362a40"
+    },
+    {
+      "path": "artifacts/event-11/high/candidate-geometry.csv",
+      "bytes": 12977,
+      "sha256": "79209bfbe2f2106bb0f824f1934f8a2d3a66a5f271b783eccf211d302474abd3"
+    },
+    {
+      "path": "artifacts/event-11/high/candidate-independent-cells.csv",
+      "bytes": 5145,
+      "sha256": "fe0867adea0e5bf5083f70991e12016a92ed49e32475a0dfbf89a5a5bc19b663"
+    },
+    {
+      "path": "artifacts/event-11/high/candidate-resample.csv",
+      "bytes": 3659,
+      "sha256": "d5f1535997204379cfd3c6a98370e571c7e96e8e7332e3d1e2db8332f3924e5b"
+    },
+    {
+      "path": "artifacts/event-11/high/posture.json",
+      "bytes": 996,
+      "sha256": "3fc351598b7f7253716c530953af1cbe00e43a9c3c4f6548d0f5d879cd66f065"
+    },
+    {
+      "path": "artifacts/event-11/high/upstream-area.csv",
+      "bytes": 9102,
+      "sha256": "d3ab621d110ac8286ef1b0eb588f7fe266d4de58a755b40c62f593a522598e03"
+    },
+    {
+      "path": "artifacts/event-11/high/upstream-geometry.csv",
+      "bytes": 13158,
+      "sha256": "da3edb38d5d280257a7ce7e78a4e6ced1af2346349a70dbe18fa125fa89e0093"
+    },
+    {
+      "path": "artifacts/event-11/high/upstream-independent-cells.csv",
+      "bytes": 5148,
+      "sha256": "f1a8cafe2607c52518c8d5301196002531edc27b23f1d185611bf980b4e287b6"
+    },
+    {
+      "path": "artifacts/event-11/high/upstream-resample.csv",
+      "bytes": 3662,
+      "sha256": "654a230d8660fceae39973f8452c9241d7bc73370b466d0b0249a704b382b22a"
+    },
+    {
+      "path": "artifacts/event-11/low/candidate-area.csv",
+      "bytes": 9095,
+      "sha256": "e0700e42488ef514eccfe4ad745c345da80cdafbff0c3f4cf2610518cf896459"
+    },
+    {
+      "path": "artifacts/event-11/low/candidate-geometry.csv",
+      "bytes": 12978,
+      "sha256": "08ad9e5d17db474351fe9c19f26c895c755da6f23e329d06eadacaed73b54395"
+    },
+    {
+      "path": "artifacts/event-11/low/candidate-independent-cells.csv",
+      "bytes": 5135,
+      "sha256": "ee94e08157523ae06bb1203383d5a9d170bc2eb7f77c399f76129353e53cfcc0"
+    },
+    {
+      "path": "artifacts/event-11/low/candidate-resample.csv",
+      "bytes": 3655,
+      "sha256": "ba3dc9cbb78ee66d0999c041f2dafc45db0b3c2d1708800d8fcba45d22066c24"
+    },
+    {
+      "path": "artifacts/event-11/low/posture.json",
+      "bytes": 996,
+      "sha256": "d5d9881255b0b46a00f34a7de51b04c29ed82800810dae7d6eaf56319eeb8a95"
+    },
+    {
+      "path": "artifacts/event-11/low/upstream-area.csv",
+      "bytes": 9098,
+      "sha256": "69c8ee18d9e318bb6f252820e3d31afa3b35f0e7b57cbaaafec83d7fd03afe42"
+    },
+    {
+      "path": "artifacts/event-11/low/upstream-geometry.csv",
+      "bytes": 13155,
+      "sha256": "a8ade6028dca6a37f9ccb8a7b29a725adbfc79381c70f994d281a854abdafbcd"
+    },
+    {
+      "path": "artifacts/event-11/low/upstream-independent-cells.csv",
+      "bytes": 5153,
+      "sha256": "0d86744d53cb97b2dd6136abf5c12a3db22a5f98ec0d0883b55d043b78b35fa4"
+    },
+    {
+      "path": "artifacts/event-11/low/upstream-resample.csv",
+      "bytes": 3657,
+      "sha256": "7bc37270e596fe61c0ff569bc2a10bb94e4d18f81ec1a55319c20b33f6d88772"
+    },
+    {
+      "path": "artifacts/event-12/high/candidate-area.csv",
+      "bytes": 9098,
+      "sha256": "a75fd87e3a202ed5700a62e4dd3abe130ce5682fab8118bdbffb7309d7e6f49c"
+    },
+    {
+      "path": "artifacts/event-12/high/candidate-geometry.csv",
+      "bytes": 12978,
+      "sha256": "58522149698bea941a563c1f3e7903b5d2d957aa05af3417c3669da669a99cbd"
+    },
+    {
+      "path": "artifacts/event-12/high/candidate-independent-cells.csv",
+      "bytes": 5156,
+      "sha256": "abd836adcfe57d250125ae22a34adf35391664b3bbd3bc96561a1d27e9b2022c"
+    },
+    {
+      "path": "artifacts/event-12/high/candidate-resample.csv",
+      "bytes": 3675,
+      "sha256": "e6a80d6a45b68813cde92a4db5c8a1bb6c9a6b5bea9d660b30dfc4f284b3212b"
+    },
+    {
+      "path": "artifacts/event-12/high/posture.json",
+      "bytes": 996,
+      "sha256": "3f91012b9a0204845e635425e09ea5e6a276850908637b90b6a2310bfeb0df8a"
+    },
+    {
+      "path": "artifacts/event-12/high/upstream-area.csv",
+      "bytes": 9095,
+      "sha256": "deb5c639d22e9c45325bb4e9248c4d09afedf389ecb86fb2a9ef43a0de6eaaba"
+    },
+    {
+      "path": "artifacts/event-12/high/upstream-geometry.csv",
+      "bytes": 13154,
+      "sha256": "fc1f2b1a8e39231f4bb5bfbffd6fea08c3886d3fdd0d16e9b209490a1928cb92"
+    },
+    {
+      "path": "artifacts/event-12/high/upstream-independent-cells.csv",
+      "bytes": 5157,
+      "sha256": "a394a274a8436a9506427894334882dd77524804adbb42d7ffdb79a05262398c"
+    },
+    {
+      "path": "artifacts/event-12/high/upstream-resample.csv",
+      "bytes": 3675,
+      "sha256": "007ae18aae596179274c6fbbe47a8f48625c68f68c9408761139f1e0fce17f7f"
+    },
+    {
+      "path": "artifacts/event-12/low/candidate-area.csv",
+      "bytes": 9089,
+      "sha256": "e014a5f7436e56e6f10009d360bde775a3545a0e2168e814483425a0fecb3f8c"
+    },
+    {
+      "path": "artifacts/event-12/low/candidate-geometry.csv",
+      "bytes": 12983,
+      "sha256": "be8bacbb45622d4642a651ef9d23ef28b4c1c12d92bd70e01183639640e17015"
+    },
+    {
+      "path": "artifacts/event-12/low/candidate-independent-cells.csv",
+      "bytes": 5139,
+      "sha256": "5dc7eab7fffeab4e7d59432fa46a2b1f378f7724e79157666e87b7fd922b230b"
+    },
+    {
+      "path": "artifacts/event-12/low/candidate-resample.csv",
+      "bytes": 3653,
+      "sha256": "c9ef4142123a58aee72813eba88c4af7e0abfcae4e6354092e9bfd26286a6b7f"
+    },
+    {
+      "path": "artifacts/event-12/low/posture.json",
+      "bytes": 996,
+      "sha256": "2a239b68da65c8acf0c06d2d0caeb16e42beea1e7669bdee8f38cc3ae964d204"
+    },
+    {
+      "path": "artifacts/event-12/low/upstream-area.csv",
+      "bytes": 9094,
+      "sha256": "a1bf42f46b5f6ed0f345c69a460fe8bc1b85091348ac88c22ebfd65c602b808f"
+    },
+    {
+      "path": "artifacts/event-12/low/upstream-geometry.csv",
+      "bytes": 13153,
+      "sha256": "1fbfcac13cc0e1ea90c75057896c1f3412c6042d74edde95e706a63616f55480"
+    },
+    {
+      "path": "artifacts/event-12/low/upstream-independent-cells.csv",
+      "bytes": 5157,
+      "sha256": "d1c4b0efcafa3242f3c9dacb2e0d4859095c6f04d11048d9ca14ea962117af59"
+    },
+    {
+      "path": "artifacts/event-12/low/upstream-resample.csv",
+      "bytes": 3656,
+      "sha256": "93f732f3419ab11199d6011c3e7d5462e8a999b6e6eb438681b3f583059b210d"
+    },
+    {
+      "path": "artifacts/event-13/high/candidate-area.csv",
+      "bytes": 9169,
+      "sha256": "2ffb7a52ab4d9dd74df4e88e49eaa402b7e53f9a795786281f927e6c7609ea3d"
+    },
+    {
+      "path": "artifacts/event-13/high/candidate-geometry.csv",
+      "bytes": 13316,
+      "sha256": "801f8bd768f42190cbd423e90788cadba32a6314887167abdaaf6fab0433cc16"
+    },
+    {
+      "path": "artifacts/event-13/high/candidate-independent-cells.csv",
+      "bytes": 5209,
+      "sha256": "9eb48d4fa17dea0e7d54bb549a971ef2d0172e7a31518bd6d53f4ad2e152fd7f"
+    },
+    {
+      "path": "artifacts/event-13/high/candidate-resample.csv",
+      "bytes": 3647,
+      "sha256": "d58fcbe67ac461cf70eb5461d38db858cc608f690dbe3e195c9ea9d1ad7beb60"
+    },
+    {
+      "path": "artifacts/event-13/high/posture.json",
+      "bytes": 995,
+      "sha256": "68b8861690b1d89d2263ba0efdca9baa53077379bc2b833813b1bec4629e70d4"
+    },
+    {
+      "path": "artifacts/event-13/high/upstream-area.csv",
+      "bytes": 9174,
+      "sha256": "20332aabd4f88912f4c0d7bbb4f2ed14757f8a472c75e3afaf0a10bb40e1e9cd"
+    },
+    {
+      "path": "artifacts/event-13/high/upstream-geometry.csv",
+      "bytes": 13390,
+      "sha256": "53941308262fc5062c9f0ea46a32601f73864aa8de40516277368dbf4c335cad"
+    },
+    {
+      "path": "artifacts/event-13/high/upstream-independent-cells.csv",
+      "bytes": 5223,
+      "sha256": "10125aae96b1f93e88d3e67c107e1bd773b3ceb7429e059faee33b98b77ac629"
+    },
+    {
+      "path": "artifacts/event-13/high/upstream-resample.csv",
+      "bytes": 3649,
+      "sha256": "aba3a5ce59b56e83975c6e1dc61a4be578ce0a76a93e829153d9b979facac765"
+    },
+    {
+      "path": "artifacts/event-13/low/candidate-area.csv",
+      "bytes": 9172,
+      "sha256": "5c9741611c2abc3203d685643001b872b4c5ea9d7398fad3d9f5c641f39b5267"
+    },
+    {
+      "path": "artifacts/event-13/low/candidate-geometry.csv",
+      "bytes": 13321,
+      "sha256": "90262807f1ff95abf4fa92aacc343d1a73cfe3c5356d9679fe1ff3ce4fe5a809"
+    },
+    {
+      "path": "artifacts/event-13/low/candidate-independent-cells.csv",
+      "bytes": 5190,
+      "sha256": "7ab227b625208910693bcd52b8299ef8ae83f0c9c0227d7e4fa355dd02ec608b"
+    },
+    {
+      "path": "artifacts/event-13/low/candidate-resample.csv",
+      "bytes": 3654,
+      "sha256": "4437d5ee78242df280abe3d4788de6c4f4f7bfc26626b7e87c121f37459df650"
+    },
+    {
+      "path": "artifacts/event-13/low/posture.json",
+      "bytes": 995,
+      "sha256": "1a58663988859112146d77e38de7ec73045a48d09940350926b5f6de8f019331"
+    },
+    {
+      "path": "artifacts/event-13/low/upstream-area.csv",
+      "bytes": 9183,
+      "sha256": "b5132303465ddd4a4f2478082f501d725d9727902002cff7cead175c765ca485"
+    },
+    {
+      "path": "artifacts/event-13/low/upstream-geometry.csv",
+      "bytes": 13386,
+      "sha256": "a944e53ca5fc6397cd4f68f83eed76e17f0f55cba667840a7597b124d61d4e07"
+    },
+    {
+      "path": "artifacts/event-13/low/upstream-independent-cells.csv",
+      "bytes": 5195,
+      "sha256": "37e9967378fdd7294d80d391152ba0ffd0dc326f8e4267d77788111cd67eeced"
+    },
+    {
+      "path": "artifacts/event-13/low/upstream-resample.csv",
+      "bytes": 3664,
+      "sha256": "cda9627f7f12000b335d19e21b636f31149a3acdc679990d96ce90925ba80c11"
+    },
+    {
+      "path": "artifacts/event-14/high/candidate-area.csv",
+      "bytes": 9168,
+      "sha256": "5f4fbbc6d43545340b0099d2264a8451902200cfaf6b325e6d7d90c7ccc8d80b"
+    },
+    {
+      "path": "artifacts/event-14/high/candidate-geometry.csv",
+      "bytes": 13311,
+      "sha256": "6815aed8f173d78402b2e7f12a11a6e8a186b5c97197f8784a717a99a69b8705"
+    },
+    {
+      "path": "artifacts/event-14/high/candidate-independent-cells.csv",
+      "bytes": 5233,
+      "sha256": "8288317424f9e77c0228996a25381a93b81300e24fec68f5a56a2ca641c607b1"
+    },
+    {
+      "path": "artifacts/event-14/high/candidate-resample.csv",
+      "bytes": 3647,
+      "sha256": "7595e7e7d46eb324723a00039ae8f3a44811e83cc33bed74eaa0c837009ce796"
+    },
+    {
+      "path": "artifacts/event-14/high/posture.json",
+      "bytes": 995,
+      "sha256": "b6ade6845d599837c642e16aa863bd6aabdaf245ff94f9e5b7aee2d858cab740"
+    },
+    {
+      "path": "artifacts/event-14/high/upstream-area.csv",
+      "bytes": 9175,
+      "sha256": "f865ebc666e2e34e11a90b08a6091d62db4e5f55505428838b9afc2443f4b4c4"
+    },
+    {
+      "path": "artifacts/event-14/high/upstream-geometry.csv",
+      "bytes": 13384,
+      "sha256": "ed3d67d9e5f83cafe615e1b74a0a8ae54ff4c43be7ba20d7b70d2fbac3b22423"
+    },
+    {
+      "path": "artifacts/event-14/high/upstream-independent-cells.csv",
+      "bytes": 5223,
+      "sha256": "548fb93b470ba077491a74225e8e37e4b66d78f0db5011a684b7b8de82f9ff48"
+    },
+    {
+      "path": "artifacts/event-14/high/upstream-resample.csv",
+      "bytes": 3647,
+      "sha256": "9afc59548428368b23ba16c2901491ba80d36b754f445e012d379fb329a3eca5"
+    },
+    {
+      "path": "artifacts/event-14/low/candidate-area.csv",
+      "bytes": 9169,
+      "sha256": "8f81298084dcecceebc537be644837009fd0511ff2edaee7b991f8be96725cb0"
+    },
+    {
+      "path": "artifacts/event-14/low/candidate-geometry.csv",
+      "bytes": 13317,
+      "sha256": "169172c2aa805e5a32a88891787f10ba20a20b463062220883bbff95b4c7b8d8"
+    },
+    {
+      "path": "artifacts/event-14/low/candidate-independent-cells.csv",
+      "bytes": 5184,
+      "sha256": "ce83743cf93f1b698bba82fd946aa9eeb1ffc5f1812df4cb928f4813cebd35f8"
+    },
+    {
+      "path": "artifacts/event-14/low/candidate-resample.csv",
+      "bytes": 3644,
+      "sha256": "3aeee0541bf3e56f62ae40fb6bdc31c2cf6c8a7e94909790d9d88c2d4ba78696"
+    },
+    {
+      "path": "artifacts/event-14/low/posture.json",
+      "bytes": 994,
+      "sha256": "b26a6f4c3cfec0a9f51a99cb6a678ea74993652a72cefcdb90e6256dcf2c55d5"
+    },
+    {
+      "path": "artifacts/event-14/low/upstream-area.csv",
+      "bytes": 9178,
+      "sha256": "940bcca4e8758d510b788d52dfe0c9b2b6d077950422163968d81fe4d72d8ac9"
+    },
+    {
+      "path": "artifacts/event-14/low/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "fe3c57893876360866e8bb2d6df206bc0b4e995abab6bfe21ea1919893307860"
+    },
+    {
+      "path": "artifacts/event-14/low/upstream-independent-cells.csv",
+      "bytes": 5189,
+      "sha256": "e55ef5a457d334e8edc192f9e4f37331ef2dc578cdd40d8253abd7eb5bb2e2c8"
+    },
+    {
+      "path": "artifacts/event-14/low/upstream-resample.csv",
+      "bytes": 3645,
+      "sha256": "2aa07e20fb533ee70b7379b11b4f452cced32565414f6ece31352f08d00278c2"
+    },
+    {
+      "path": "artifacts/event-15/high/candidate-area.csv",
+      "bytes": 9176,
+      "sha256": "61d9813787ba43964207aa23d97ecdef97dcc8f383930f1703b0afac4f7962ec"
+    },
+    {
+      "path": "artifacts/event-15/high/candidate-geometry.csv",
+      "bytes": 13306,
+      "sha256": "60c92276b9bfbec7f1fd3c0e6bdaacfd65aaff970bfd6e8863e54c42821dd7ff"
+    },
+    {
+      "path": "artifacts/event-15/high/candidate-independent-cells.csv",
+      "bytes": 5183,
+      "sha256": "a960601ea1566352b08d0fa93d7cafc72b18b9c4f6ae2ce12680d2faaebde22a"
+    },
+    {
+      "path": "artifacts/event-15/high/candidate-resample.csv",
+      "bytes": 3654,
+      "sha256": "2d5113f801946c1d12850773171ab83f5309f7ce23e129248ccc6c3bb475db6e"
+    },
+    {
+      "path": "artifacts/event-15/high/posture.json",
+      "bytes": 995,
+      "sha256": "11ab5a3b59f0e2ebb995970c2d1539a653fe96f1e140b875ba43f5f65c73d566"
+    },
+    {
+      "path": "artifacts/event-15/high/upstream-area.csv",
+      "bytes": 9188,
+      "sha256": "0a47b5d244779379ddb5b770293cb6280d3c145d81efefc83ff9c4a67a01438c"
+    },
+    {
+      "path": "artifacts/event-15/high/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "150534b08174040b083edec1a22c54719f55a0a0e20f81d8cab55b5eda55fd67"
+    },
+    {
+      "path": "artifacts/event-15/high/upstream-independent-cells.csv",
+      "bytes": 5188,
+      "sha256": "2b351ef9be9a7c809dd3eccc1defdb3d3134534e9a527ba5a3e765ee2f9c1bce"
+    },
+    {
+      "path": "artifacts/event-15/high/upstream-resample.csv",
+      "bytes": 3654,
+      "sha256": "fc23dcf09eb4218702ba90358693412fbb308896e6f93f2d40ce244ed93bd9fe"
+    },
+    {
+      "path": "artifacts/event-15/low/candidate-area.csv",
+      "bytes": 9169,
+      "sha256": "f6901f0d7c630274b08ba620353c8f39dd4bb31ad3c456f794b58db4b09043ae"
+    },
+    {
+      "path": "artifacts/event-15/low/candidate-geometry.csv",
+      "bytes": 13312,
+      "sha256": "2abe93324c1e326b2e5c17d11abf861df2dda5d4a2b35e2736a1a79c11bb346c"
+    },
+    {
+      "path": "artifacts/event-15/low/candidate-independent-cells.csv",
+      "bytes": 5184,
+      "sha256": "cecf5b4e2dfc7a6d04bbaf95c8874f63bb64342406a59d0c568eaa239fdc8779"
+    },
+    {
+      "path": "artifacts/event-15/low/candidate-resample.csv",
+      "bytes": 3651,
+      "sha256": "b3e230d128c1ad600536591f3740a028df680941299c6906d60c3dca2e377b3a"
+    },
+    {
+      "path": "artifacts/event-15/low/posture.json",
+      "bytes": 995,
+      "sha256": "9a5ed292a1282e64f98b593221a89d04e67da8d0b09b2085ce436715b8d2e1cf"
+    },
+    {
+      "path": "artifacts/event-15/low/upstream-area.csv",
+      "bytes": 9177,
+      "sha256": "e3bcbe0f9e3d31b71a21e1108850ce86b62f087f75684cf8c437ffba82bc6560"
+    },
+    {
+      "path": "artifacts/event-15/low/upstream-geometry.csv",
+      "bytes": 13388,
+      "sha256": "8b8214bfb6fa8e4b7dec27636f6e0946214d7b9562df85e393168794372fa702"
+    },
+    {
+      "path": "artifacts/event-15/low/upstream-independent-cells.csv",
+      "bytes": 5193,
+      "sha256": "5bc370e873bb66606c9181d88c87faf277d5d90369091b9449e636892d7acef9"
+    },
+    {
+      "path": "artifacts/event-15/low/upstream-resample.csv",
+      "bytes": 3661,
+      "sha256": "e1677021e5b94b00c00d07291ad9b39cc269a3e2a4349439d0a3707517ffdefa"
+    },
+    {
+      "path": "artifacts/event-16/high/candidate-area.csv",
+      "bytes": 9174,
+      "sha256": "3edc4545d92352e2d07cf8712c04191f64972d8f7ba88c2cca5afdaf311b310c"
+    },
+    {
+      "path": "artifacts/event-16/high/candidate-geometry.csv",
+      "bytes": 13313,
+      "sha256": "cd5a40ab8cd237339dff9a2c6012dbe52977ec6b396101e350833f476ffe5897"
+    },
+    {
+      "path": "artifacts/event-16/high/candidate-independent-cells.csv",
+      "bytes": 5171,
+      "sha256": "24ff9e290e917113e47319ccad4d8f3d1901d59fceaa2ad8ddc96b05f084ab7a"
+    },
+    {
+      "path": "artifacts/event-16/high/candidate-resample.csv",
+      "bytes": 3654,
+      "sha256": "7c7d93ea45c2ea4d46cae8e21a4b6dc5e49f3b9515cd42feb7061534796e293d"
+    },
+    {
+      "path": "artifacts/event-16/high/posture.json",
+      "bytes": 995,
+      "sha256": "89c88049a9d79d130dcada4d0db7f1796ea150bc29f53ffd29645a14b5326088"
+    },
+    {
+      "path": "artifacts/event-16/high/upstream-area.csv",
+      "bytes": 9180,
+      "sha256": "fc342be2c1f9195aa45d5ad1be9e6d0a856873f119c625f7919445ee39a32dd7"
+    },
+    {
+      "path": "artifacts/event-16/high/upstream-geometry.csv",
+      "bytes": 13382,
+      "sha256": "15c4236fbdfdb4cff1bd038b90fa51871d18f228c5cd8cddf4911fff7a8cb1b1"
+    },
+    {
+      "path": "artifacts/event-16/high/upstream-independent-cells.csv",
+      "bytes": 5177,
+      "sha256": "4afcab9632791f0b6433778bc2237487b83478969a9e7a79c7715771d97d12a3"
+    },
+    {
+      "path": "artifacts/event-16/high/upstream-resample.csv",
+      "bytes": 3653,
+      "sha256": "95b36a33a47b512aeb0f2a53b1e7ff45603e69cfbf63835f97fdb7a549b6719e"
+    },
+    {
+      "path": "artifacts/event-16/low/candidate-area.csv",
+      "bytes": 9163,
+      "sha256": "344dbc728522746666f5626f250b8be6c13fb258cee08494cdcdaf239c172f51"
+    },
+    {
+      "path": "artifacts/event-16/low/candidate-geometry.csv",
+      "bytes": 13318,
+      "sha256": "2154f6b5ba14fa7a00f88bf1d9723fb0dcded6188ac3dcba193a6d4b37916f63"
+    },
+    {
+      "path": "artifacts/event-16/low/candidate-independent-cells.csv",
+      "bytes": 5161,
+      "sha256": "4492047094d4e0072263cf0056680a89807a85b884963bc4ffaeadb08b2e93d9"
+    },
+    {
+      "path": "artifacts/event-16/low/candidate-resample.csv",
+      "bytes": 3647,
+      "sha256": "9760705b20275a95f028181b97b516c85d939612fa5a6fce7079184b775aca48"
+    },
+    {
+      "path": "artifacts/event-16/low/posture.json",
+      "bytes": 995,
+      "sha256": "65e246b1d87e3dbbd3d073e6cb17ecf7b26f0c1a57e471145c3a56f4e30481b4"
+    },
+    {
+      "path": "artifacts/event-16/low/upstream-area.csv",
+      "bytes": 9173,
+      "sha256": "196c54f8de5b4deef570ec344ef19b57f804944eb3294caa9b61af71772bf5e8"
+    },
+    {
+      "path": "artifacts/event-16/low/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "a9d8a2e16c5eb62f6faf16565d6f250ddb9f48b963708865ae29243ee9709e65"
+    },
+    {
+      "path": "artifacts/event-16/low/upstream-independent-cells.csv",
+      "bytes": 5175,
+      "sha256": "c9445d1fe1f98bf1b5b75a693fca588e4a8cd15a3a42e8206e4d895e7f6be1e6"
+    },
+    {
+      "path": "artifacts/event-16/low/upstream-resample.csv",
+      "bytes": 3653,
+      "sha256": "f2b50ef753169cb5eb0918a53823a386d09c1ccfbd16553716e7c16224e5e72f"
+    },
+    {
+      "path": "artifacts/event-17/high/candidate-area.csv",
+      "bytes": 9180,
+      "sha256": "94898001c18a132075598b2a020817c79020ded14a3afa12a78691db0a5debcb"
+    },
+    {
+      "path": "artifacts/event-17/high/candidate-geometry.csv",
+      "bytes": 13311,
+      "sha256": "b539d2f479640ec6de394698daeec11d4f5ca2bb6ce517bb171eb1d2bd75f21b"
+    },
+    {
+      "path": "artifacts/event-17/high/candidate-independent-cells.csv",
+      "bytes": 5173,
+      "sha256": "fac6c55acd56f8b76641966ef18e24b94b9fd39cb214aea021760b08e1f85bbb"
+    },
+    {
+      "path": "artifacts/event-17/high/candidate-resample.csv",
+      "bytes": 3645,
+      "sha256": "b9ea568278cafb2e8660baf7cb92c2f30ce94e98a5759f313b3b8c283979d0a3"
+    },
+    {
+      "path": "artifacts/event-17/high/posture.json",
+      "bytes": 995,
+      "sha256": "68d8c28bd5e3fc822bbc29c76ba878124d6a5f9fd3a2ccdad7bc22f10879658f"
+    },
+    {
+      "path": "artifacts/event-17/high/upstream-area.csv",
+      "bytes": 9182,
+      "sha256": "1dd522845c51d35fef0a2ba2321b62518a762bc526354b7539fc3efa1e992d31"
+    },
+    {
+      "path": "artifacts/event-17/high/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "055049e2d289d9f2d6f31558c51871edca9a6b159c6a2dda23d98ec93b4cf3db"
+    },
+    {
+      "path": "artifacts/event-17/high/upstream-independent-cells.csv",
+      "bytes": 5171,
+      "sha256": "076b4aafe16cd70c8920ddec6fa829de94b28887de9712b0e19f0836f909c886"
+    },
+    {
+      "path": "artifacts/event-17/high/upstream-resample.csv",
+      "bytes": 3651,
+      "sha256": "2e0b5811c64873a47aa28222df07b832394669fa6eb77883fa236f042bf2b648"
+    },
+    {
+      "path": "artifacts/event-17/low/candidate-area.csv",
+      "bytes": 9172,
+      "sha256": "88e349bad7c16f964391fd1ac9545fa56cd738bd876e8c1db6859205cead291e"
+    },
+    {
+      "path": "artifacts/event-17/low/candidate-geometry.csv",
+      "bytes": 13312,
+      "sha256": "873f0f8bd873a6973791d39368f457e63d26b3e860dca7bca6d6fd751e62c992"
+    },
+    {
+      "path": "artifacts/event-17/low/candidate-independent-cells.csv",
+      "bytes": 5161,
+      "sha256": "3f243bd0d4055cf55d2605a23b70ab3c4ac8e6f2aec8ca48c374f7863fa4b2b5"
+    },
+    {
+      "path": "artifacts/event-17/low/candidate-resample.csv",
+      "bytes": 3652,
+      "sha256": "4de92c78d93d57868c790bcc662842c6ceae000366ef7c124c07f1ba467c1532"
+    },
+    {
+      "path": "artifacts/event-17/low/posture.json",
+      "bytes": 995,
+      "sha256": "dfbcbb481e1f4494efa6208f50aebd5c6c31b1bf65419fae2c140cb007a464e5"
+    },
+    {
+      "path": "artifacts/event-17/low/upstream-area.csv",
+      "bytes": 9179,
+      "sha256": "7b7577fbcb76c83804e37f69d7065054e03d9fa316a522af01c828a004a1a3d0"
+    },
+    {
+      "path": "artifacts/event-17/low/upstream-geometry.csv",
+      "bytes": 13389,
+      "sha256": "3c28ee1fc7fd91cb12a0a37d84eb37ce5cc560d5f11c5ee7a977dbbf55fd41f5"
+    },
+    {
+      "path": "artifacts/event-17/low/upstream-independent-cells.csv",
+      "bytes": 5179,
+      "sha256": "9a56d95a9345e7d9e276c15a465ee827a0409301297b2d3244e7d348cbaf876a"
+    },
+    {
+      "path": "artifacts/event-17/low/upstream-resample.csv",
+      "bytes": 3638,
+      "sha256": "3e9ce7ec4185870a4030b6c1596f8fb5c90150d97afeef4062b7c4ac1629b245"
+    },
+    {
+      "path": "artifacts/event-18/high/candidate-area.csv",
+      "bytes": 9166,
+      "sha256": "b0519a5298681815012c5a2b22e598f6bd493c6c16d9c7e49fddc1c0600a8e80"
+    },
+    {
+      "path": "artifacts/event-18/high/candidate-geometry.csv",
+      "bytes": 13314,
+      "sha256": "cec31878162efbf0012ee443c07df7ab6a8a58d9e3f601bcaa948b036359cd11"
+    },
+    {
+      "path": "artifacts/event-18/high/candidate-independent-cells.csv",
+      "bytes": 5169,
+      "sha256": "3e6861f217e0825c7a72a48c4ff57022ef941d79c3339820ee2517170e7be7b4"
+    },
+    {
+      "path": "artifacts/event-18/high/candidate-resample.csv",
+      "bytes": 3641,
+      "sha256": "498d303b76ec10b44aa1441c1e4009ff2e31f2b8e527a93e7fbe9bb6ae398301"
+    },
+    {
+      "path": "artifacts/event-18/high/posture.json",
+      "bytes": 995,
+      "sha256": "85e37399040d70e90189a1935c9f4019f4330d7d55950f2f6f108510743843ac"
+    },
+    {
+      "path": "artifacts/event-18/high/upstream-area.csv",
+      "bytes": 9176,
+      "sha256": "2e330b33e810ca5beb2bc57f45c518b3a7c7cf738835ca861ed3cccc27b3e5b5"
+    },
+    {
+      "path": "artifacts/event-18/high/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "0387be65fa447b76af584f7b4d3f45ffb1b01cfddfce4fed72887ea47dde44bc"
+    },
+    {
+      "path": "artifacts/event-18/high/upstream-independent-cells.csv",
+      "bytes": 5175,
+      "sha256": "f9674a95748ae8d4269318d416126219993cae391517e2604434a0328cd92596"
+    },
+    {
+      "path": "artifacts/event-18/high/upstream-resample.csv",
+      "bytes": 3654,
+      "sha256": "1cc407b54e06193738367a101e39c445d676d182454dfd87dc7a5d895fc1e54c"
+    },
+    {
+      "path": "artifacts/event-18/low/candidate-area.csv",
+      "bytes": 9170,
+      "sha256": "f058cd9413ccadd68d25caaab291650867fe364d1c83f987cdbe20b0d0dec446"
+    },
+    {
+      "path": "artifacts/event-18/low/candidate-geometry.csv",
+      "bytes": 13314,
+      "sha256": "ae2cd4588cd10892ba4bec4b43c41084c9b6c005bbb9240589a94d0a98706b78"
+    },
+    {
+      "path": "artifacts/event-18/low/candidate-independent-cells.csv",
+      "bytes": 5156,
+      "sha256": "31ba067dff903efac226bd17c52a804e85d338b97bbb68bba983b21117448e89"
+    },
+    {
+      "path": "artifacts/event-18/low/candidate-resample.csv",
+      "bytes": 3647,
+      "sha256": "e53f6ee0a416ee7f0034d503873bfb2c01f4b962b91a239d086af7511235ecca"
+    },
+    {
+      "path": "artifacts/event-18/low/posture.json",
+      "bytes": 995,
+      "sha256": "35e21540d0ccf8c5eed5399ce020ae2b46ab17a079c0b6c69ba443f1e01c5ed3"
+    },
+    {
+      "path": "artifacts/event-18/low/upstream-area.csv",
+      "bytes": 9177,
+      "sha256": "ad8b92451c82d824947096cf42331876b701942993d6ff976118739a15540395"
+    },
+    {
+      "path": "artifacts/event-18/low/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "eac938d65edfd85b47db20ffe5b8987bd320dd5911f2c49d15946f92de694e1e"
+    },
+    {
+      "path": "artifacts/event-18/low/upstream-independent-cells.csv",
+      "bytes": 5166,
+      "sha256": "3ef5e603a83873dc90975da6a4f059eaad48c612e48cb6e3edfe87b1a648126e"
+    },
+    {
+      "path": "artifacts/event-18/low/upstream-resample.csv",
+      "bytes": 3646,
+      "sha256": "514a299f2d06fc3bfe97dbf96673c630df70286815ac4d3dc6de7c64871db10c"
+    },
+    {
+      "path": "artifacts/lip_tuck_sweep-vocal-core.exe",
+      "bytes": 581488,
+      "sha256": "dda04b91bcaf3bcd5a2b7f8d9bf7f9a5801e8f09b2ca7ddbee29e1da3b5d457d"
+    },
+    {
+      "path": "artifacts/lip_tuck_sweep.exe",
+      "bytes": 515360,
+      "sha256": "d06ba2db3af3f1927079263e39215222c59887c11702d6a18dd79a77f1e094be"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "6b8aff6da1a47c582fe521e6f84c6150ba3b5bfe2f5b6a2826ae3911164644a7"
+    },
+    {
+      "path": "artifacts/upstream-continuity-tests.log",
+      "bytes": 607,
+      "sha256": "abe9338fbdbdcef7be61016dde100b01087377aa052557037e587cc926756a40"
+    },
+    {
+      "path": "artifacts/upstream-ignored-test.log",
+      "bytes": 248,
+      "sha256": "3e5abe1bb713b17d01301e19a4291e55a977df4226b792b3ba6d7049731f60e2"
+    },
+    {
+      "path": "artifacts/upstream-sweep.csv.gz",
+      "bytes": 2866944,
+      "sha256": "b5fda01fb1df936b2a0fb2f97af46aa6d269f649e7116e26581b1b632e97e4d0"
+    },
+    {
+      "path": "artifacts/upstream_sagittal_probe.exe",
+      "bytes": 567528,
+      "sha256": "a733a6d3c6a7b9c93e3c289e4f294bb1e548cb45d11689e02db7ae356d41be3f"
+    },
+    {
+      "path": "artifacts/vocal-core-build.jsonl",
+      "bytes": 26675,
+      "sha256": "2230429e003e3f3a437dcc0fa79ebc50b88d14f440f1c5df3ca7a31688de03ef"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 24941,
+      "sha256": "468a20bc2a38d8c12d671a217f8d7728e72b97b8e551722999d3e990fe62e6ab"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "run_id": "tsp-phone-boundaries-20261121-noise-rust",
+  "case_id": "tsp-phone-boundaries-calibration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "comparison": "固定上流のノイズ生成をRustで実行して全PCM16を比較",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/tsp-phone-boundaries-calibration.json",
+      "bytes": 2263,
+      "sha256": "db138504db10c287682afce8101f76584313c43186da19a149e7d4555b22d463"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera-cli/src/compare/tsp.rs",
+      "bytes": 73567,
+      "sha256": "bb103cafde6219f9b005811fac2b907f7f56906c4efcabaa15099a297cfef44d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-20261121-a/manifest.json",
+      "bytes": 18929,
+      "sha256": "0ac5b65178b953670dfc6dd71fc99bf5a5ee24c0d8cb1711fd3ddc2b81a252fc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/manifest.json",
+      "bytes": 88830,
+      "sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-20261121-a/artifacts/corpus/synth/FA01_02-upstream/FA01_02-upstream.wav",
+      "bytes": 267692,
+      "sha256": "b2d0399a76b3eef7ebd35433823561eab3778e7f7b4b38f64eb0ba6173ed6cb4",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "0f103e4249a5bae89784f517b55b76783f98b5a33cadec7ac75ccbe48285df2f",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-20261121-a/artifacts/corpus/synth/FA01_02-candidate/FA01_02-candidate.wav",
+      "bytes": 267692,
+      "sha256": "3fec4ef7588514b5a3973912baeecb783066c38701726176c6ca71bcff0d0df8",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "d05c0f850f2c125dff138715c7dc5f4620f28deccd3e32a53dcb4eae7f80306b",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-20261121-a/artifacts/corpus/synth/MA01_02-upstream/MA01_02-upstream.wav",
+      "bytes": 267692,
+      "sha256": "afdd6758cdb4c8f2751cd8bd9886bc3e81f68aab65537406122ee13e50a9dd1f",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "febe252e6e1e3e67f54ba98ca2c09436edd0088d6907570ce8739f4e6fee00d4",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-phone-boundaries-20261121-a/artifacts/corpus/synth/MA01_02-candidate/MA01_02-candidate.wav",
+      "bytes": 267692,
+      "sha256": "d94f9f5dcecc724f33a89b67883798704970d217b09cb5c08b849ed042b23729",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "abe6405c9022e33a1c147c089dd1491ee7ee2391c5c83ba45033de38b87e832c",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-O",
+        "$ARTIFACTS/upstream-noise.rs",
+        "-o",
+        "$ARTIFACTS/upstream-noise.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream-noise.exe",
+        "$ARTIFACTS/FA01_02-upstream.f32",
+        "$ARTIFACTS/FA01_02-upstream.i16"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream-noise.exe",
+        "$ARTIFACTS/FA01_02-candidate.f32",
+        "$ARTIFACTS/FA01_02-candidate.i16"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream-noise.exe",
+        "$ARTIFACTS/MA01_02-upstream.f32",
+        "$ARTIFACTS/MA01_02-upstream.i16"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream-noise.exe",
+        "$ARTIFACTS/MA01_02-candidate.f32",
+        "$ARTIFACTS/MA01_02-candidate.i16"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-20261121-noise-rust/artifacts",
+    "estimated_peak_bytes": 67108864
+  },
+  "outputs": [
+    {
+      "path": "artifacts/FA01_02-candidate.f32",
+      "bytes": 535296,
+      "sha256": "55371d10d5363b1e95114d03604162a2dc92a75605e76bade98bce59e0a6c53a"
+    },
+    {
+      "path": "artifacts/FA01_02-candidate.i16",
+      "bytes": 267648,
+      "sha256": "eececf2f65db8711cd2922521cf46af2082618ffc8c165111b6582457eb2b043"
+    },
+    {
+      "path": "artifacts/FA01_02-upstream.f32",
+      "bytes": 535296,
+      "sha256": "6d30cbede7ef977378ba05a25cb163271365e2b98dd7e7b0071ae77775b65f26"
+    },
+    {
+      "path": "artifacts/FA01_02-upstream.i16",
+      "bytes": 267648,
+      "sha256": "bfe6ad8f646a67b49a6af89fd0774351ddbee4276230aad735b5e414af59fc6d"
+    },
+    {
+      "path": "artifacts/MA01_02-candidate.f32",
+      "bytes": 535296,
+      "sha256": "bf7a80445559938219cb014a9421d053a402326028b81dc9fa25c0e33c1a81ab"
+    },
+    {
+      "path": "artifacts/MA01_02-candidate.i16",
+      "bytes": 267648,
+      "sha256": "9988f727ad9aeaf38eb734bcb415c6996f214f3bc725b97256fcac1a31e9b6cd"
+    },
+    {
+      "path": "artifacts/MA01_02-upstream.f32",
+      "bytes": 535296,
+      "sha256": "9ac601194386b58758f5b92f792134a7db9d042d32c5bfc92541248cf71e2be6"
+    },
+    {
+      "path": "artifacts/MA01_02-upstream.i16",
+      "bytes": 267648,
+      "sha256": "b4a57ccfe6b78362e62f4e0e3e16751224906068241992176958583dc38aa724"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/upstream-noise.exe",
+      "bytes": 462528,
+      "sha256": "e0b4662440b5a9432e04fee7dcfa821872eb2c18eb1a605d53b223ff63bfb784"
+    },
+    {
+      "path": "artifacts/upstream-noise.rs",
+      "bytes": 1832,
+      "sha256": "1c04b7cc0fd6189385da38ee78ddf1fe35b436ff3e9996fd731e8c5d78b7248c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 507,
+      "sha256": "b65ebf845785c228a48d643d5349e12ca39797d3c551f4fed6678b4710d19a13"
+    }
+  ]
+}

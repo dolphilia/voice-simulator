@@ -1,0 +1,2144 @@
+{
+  "checks": {
+    "all_pairs_captured": true,
+    "start_clocks_separated": true
+  },
+  "prediction_matched": false,
+  "pair_counts": {
+    "output_start": 3
+  },
+  "pairs": [
+    {
+      "short_wait": "coreaudio-headphone-drift-44100-attach-timing-short-1",
+      "long_wait": "coreaudio-headphone-drift-44100-attach-timing-long-1",
+      "capture_valid": true,
+      "start_clocks_separated": true,
+      "start_gap_change_ms": 210.9113749999999,
+      "classification": "output_start",
+      "band_drop_output_change_ms": 0.000833333333275732,
+      "band_drop_tap_change_ms": -210.86166950113375,
+      "band_drop_frame_change": 0
+    },
+    {
+      "short_wait": "coreaudio-headphone-drift-44100-attach-timing-short-2",
+      "long_wait": "coreaudio-headphone-drift-44100-attach-timing-long-2",
+      "capture_valid": true,
+      "start_clocks_separated": true,
+      "start_gap_change_ms": 297.87570833333325,
+      "classification": "output_start",
+      "band_drop_output_change_ms": -8.333333335031057e-05,
+      "band_drop_tap_change_ms": -297.8458112244898,
+      "band_drop_frame_change": 0
+    },
+    {
+      "short_wait": "coreaudio-headphone-drift-44100-attach-timing-short-3",
+      "long_wait": "coreaudio-headphone-drift-44100-attach-timing-long-3",
+      "capture_valid": true,
+      "start_clocks_separated": true,
+      "start_gap_change_ms": 262.7430833333333,
+      "classification": "output_start",
+      "band_drop_output_change_ms": 0.000541666666549645,
+      "band_drop_tap_change_ms": -262.69839257369625,
+      "band_drop_frame_change": 0
+    }
+  ],
+  "trials": {
+    "coreaudio-headphone-drift-44100-attach-timing-short-1": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 61108,
+          "fraction": 0.06496289216032647,
+          "correlation": 0.9999743513795842,
+          "distinct_peak_margin": 0.5423854422218897,
+          "relative_residual": 0.00022519167464354133,
+          "gain": 1.0000010198938956
+        },
+        "tail_last": {
+          "offset": 64180,
+          "fraction": 0.08360296048193785,
+          "correlation": 0.9999536358378831,
+          "distinct_peak_margin": 0.9999536358378831,
+          "relative_residual": 0.00024482303871568547,
+          "gain": 1.0000007299699654
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -61772
+      },
+      "tap_launch_after_release_seconds": 1.1034241250017658,
+      "first_tap_host_ticks": 2747901033271,
+      "first_output_host_ticks": 2747866593105,
+      "first_tap_ms_from_prior_event": 820.7665830552578,
+      "observed_source_frames": [
+        63816,
+        118816
+      ],
+      "observation_seconds": 1.2471655328798186,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": true,
+        "initial_band_matches_prior": false,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.011444563819821164,
+        "maximum_band_ratio": 0.4998490833048786,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 63816,
+          "tap": {
+            "containing": {
+              "block_index": 3,
+              "source_frame": 63308,
+              "frames": 512,
+              "sample_time": 1536,
+              "host_ticks": 2747901869189
+            },
+            "following": {
+              "block_index": 4,
+              "source_frame": 63820,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2747902147829
+            },
+            "frames_after_block_start": 508,
+            "event_host_ns_from_block": 114495922735482.7
+          },
+          "direct": {
+            "containing": {
+              "block_index": 124,
+              "source_frame": 63488,
+              "frames": 512,
+              "sample_time": 63488,
+              "host_ticks": 2747901143416
+            },
+            "following": {
+              "block_index": 125,
+              "source_frame": 64000,
+              "frames": 512,
+              "sample_time": 64000,
+              "host_ticks": 2747901422049
+            },
+            "frames_after_block_start": 328,
+            "event_host_ns_from_block": 114495888413308.38
+          }
+        },
+        "band_drop": {
+          "source_frame": 64016,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 63820,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2747902147829
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 64332,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2747902426468
+            },
+            "frames_after_block_start": 196,
+            "event_host_ns_from_block": 114495927270652.77
+          },
+          "direct": {
+            "containing": {
+              "block_index": 125,
+              "source_frame": 64000,
+              "frames": 512,
+              "sample_time": 64000,
+              "host_ticks": 2747901422049
+            },
+            "following": {
+              "block_index": 126,
+              "source_frame": 64512,
+              "frames": 512,
+              "sample_time": 64512,
+              "host_ticks": 2747901700683
+            },
+            "frames_after_block_start": 16,
+            "event_host_ns_from_block": 114495892948186.8
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 64216,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 63820,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2747902147829
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 64332,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2747902426468
+            },
+            "frames_after_block_start": 396,
+            "event_host_ns_from_block": 114495931805800.17
+          },
+          "direct": {
+            "containing": {
+              "block_index": 125,
+              "source_frame": 64000,
+              "frames": 512,
+              "sample_time": 64000,
+              "host_ticks": 2747901422049
+            },
+            "following": {
+              "block_index": 126,
+              "source_frame": 64512,
+              "frames": 512,
+              "sample_time": 64512,
+              "host_ticks": 2747901700683
+            },
+            "frames_after_block_start": 216,
+            "event_host_ns_from_block": 114495897483334.19
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 31,
+          "fitted_windows": 25,
+          "source_window_centers": [
+            65016,
+            69816
+          ],
+          "pilot_slope_ppm": 21.860062565396433,
+          "pilot_fit_rms_frames": 3.534492799303922e-07,
+          "host_difference_ppm": 21.739834872488064,
+          "error_ppm": 0.12022769290836877,
+          "median_band_amplitude_ratio": 0.015537944348245012,
+          "clocks": {
+            "direct": {
+              "block_starts": 10,
+              "ns_per_frame": 22675.242167771456,
+              "relative_to_nominal_ppm": -21.82040127873819,
+              "host_fit_rms_ns": 11.422406945949534
+            },
+            "tap": {
+              "block_starts": 9,
+              "ns_per_frame": 22675.73513454861,
+              "relative_to_nominal_ppm": -0.08056640632414513,
+              "host_fit_rms_ns": 11.893733870682526
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 73,
+          "fitted_windows": 67,
+          "source_window_centers": [
+            71416,
+            84616
+          ],
+          "pilot_slope_ppm": -20.130694123624416,
+          "pilot_fit_rms_frames": 9.35074479626943e-07,
+          "host_difference_ppm": -20.10501802926301,
+          "error_ppm": -0.025676094361404722,
+          "median_band_amplitude_ratio": 0.49977233509556007,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.192853009263,
+              "relative_to_nominal_ppm": 20.104817708421763,
+              "host_fit_rms_ns": 10.393492741104371
+            },
+            "tap": {
+              "block_starts": 26,
+              "ns_per_frame": 22675.736956908826,
+              "relative_to_nominal_ppm": -0.0002003207599798884,
+              "host_fit_rms_ns": 11.961995729870049
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.80912593969293,
+          "pilot_fit_rms_frames": 1.4660261762328833e-06,
+          "host_difference_ppm": 27.797156700371488,
+          "error_ppm": 0.01196923932144145,
+          "median_band_amplitude_ratio": 0.015571048596020294,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.106482872598,
+              "relative_to_nominal_ppm": -27.804105318440797,
+              "host_fit_rms_ns": 12.21031859862771
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.73680388621,
+              "relative_to_nominal_ppm": -0.006948618014313013,
+              "host_fit_rms_ns": 11.75788515197638
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 69,
+          "fitted_windows": 63,
+          "source_window_centers": [
+            100816,
+            113216
+          ],
+          "pilot_slope_ppm": -16.71214777244736,
+          "pilot_fit_rms_frames": 4.976911589581666e-07,
+          "host_difference_ppm": -16.72688176092015,
+          "error_ppm": 0.014733988472791282,
+          "median_band_amplitude_ratio": 0.4997962198423397,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22676.116599058496,
+              "relative_to_nominal_ppm": 16.74201847978729,
+              "host_fit_rms_ns": 12.016281690986672
+            },
+            "tap": {
+              "block_starts": 24,
+              "ns_per_frame": 22675.7373046875,
+              "relative_to_nominal_ppm": 0.01513671876729461,
+              "host_fit_rms_ns": 12.008066991148802
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 21,
+          "fitted_windows": 15,
+          "source_window_centers": [
+            115216,
+            118016
+          ],
+          "pilot_slope_ppm": 6.342338493866414,
+          "pilot_fit_rms_frames": 1.8030541668872768e-07,
+          "host_difference_ppm": 6.459960937339566,
+          "error_ppm": -0.11762244347315143,
+          "median_band_amplitude_ratio": 0.01542499317981962,
+          "clocks": {
+            "direct": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.594075520847,
+              "relative_to_nominal_ppm": -6.30126953060639,
+              "host_fit_rms_ns": 10.206207261596575
+            },
+            "tap": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.740559895843,
+              "relative_to_nominal_ppm": 0.15869140668200998,
+              "host_fit_rms_ns": 10.206207261975251
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 46.34919104308389,
+        "band_drop": 50.884361111111104,
+        "pilot_drift": 55.41950850340135
+      },
+      "first_band_ratio": 0.011444563819821164,
+      "first_positive_pilot_source_frame": 64416,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1435.0069166666667,
+        "wide_source_frame": 70816,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.361890873016,
+        "band_drop_ms_from_first_tap": 540.680273526077
+      }
+    },
+    "coreaudio-headphone-drift-44100-attach-timing-long-1": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 51809,
+          "fraction": -0.050447671956776796,
+          "correlation": 0.999984524576124,
+          "distinct_peak_margin": 0.5425314259067124,
+          "relative_residual": 0.00021374540769271427,
+          "gain": 1.0000007164749203
+        },
+        "tail_last": {
+          "offset": 54881,
+          "fraction": -0.032400133706418865,
+          "correlation": 0.9999930164622058,
+          "distinct_peak_margin": 0.9999930164622058,
+          "relative_residual": 0.0002197768561355684,
+          "gain": 1.0000009806185526
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -71071
+      },
+      "tap_launch_after_release_seconds": 1.3804360829963116,
+      "first_tap_host_ticks": 2748144581181,
+      "first_output_host_ticks": 2748105079142,
+      "first_tap_ms_from_prior_event": 1031.6779580563307,
+      "observed_source_frames": [
+        73216,
+        118816
+      ],
+      "observation_seconds": 1.034013605442177,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": false,
+        "initial_band_matches_prior": true,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.015411167081306885,
+        "maximum_band_ratio": 0.5014994320358641,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 73217,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 73119,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748145695739
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 73631,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748145974378
+            },
+            "frames_after_block_start": 98,
+            "event_host_ns_from_block": 114506072878013.89
+          },
+          "direct": {
+            "containing": {
+              "block_index": 143,
+              "source_frame": 73216,
+              "frames": 512,
+              "sample_time": 73216,
+              "host_ticks": 2748144924575
+            },
+            "following": {
+              "block_index": 144,
+              "source_frame": 73728,
+              "frames": 512,
+              "sample_time": 73728,
+              "host_ticks": 2748145203220
+            },
+            "frames_after_block_start": 1,
+            "event_host_ns_from_block": 114506038546634.06
+          }
+        },
+        "band_drop": {
+          "source_frame": 85616,
+          "tap": {
+            "containing": {
+              "block_index": 28,
+              "source_frame": 85407,
+              "frames": 512,
+              "sample_time": 14336,
+              "host_ticks": 2748152383086
+            },
+            "following": {
+              "block_index": 29,
+              "source_frame": 85919,
+              "frames": 512,
+              "sample_time": 14848,
+              "host_ticks": 2748152661725
+            },
+            "frames_after_block_start": 209,
+            "event_host_ns_from_block": 114506354034479.03
+          },
+          "direct": {
+            "containing": {
+              "block_index": 167,
+              "source_frame": 85504,
+              "frames": 512,
+              "sample_time": 85504,
+              "host_ticks": 2748151610895
+            },
+            "following": {
+              "block_index": 168,
+              "source_frame": 86016,
+              "frames": 512,
+              "sample_time": 86016,
+              "host_ticks": 2748151889527
+            },
+            "frames_after_block_start": 112,
+            "event_host_ns_from_block": 114506319660307.53
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 73616,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 73119,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748145695739
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 73631,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748145974378
+            },
+            "frames_after_block_start": 497,
+            "event_host_ns_from_block": 114506081925632.94
+          },
+          "direct": {
+            "containing": {
+              "block_index": 143,
+              "source_frame": 73216,
+              "frames": 512,
+              "sample_time": 73216,
+              "host_ticks": 2748144924575
+            },
+            "following": {
+              "block_index": 144,
+              "source_frame": 73728,
+              "frames": 512,
+              "sample_time": 73728,
+              "host_ticks": 2748145203220
+            },
+            "frames_after_block_start": 400,
+            "event_host_ns_from_block": 114506047594253.11
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 59,
+          "fitted_windows": 53,
+          "source_window_centers": [
+            74216,
+            84616
+          ],
+          "pilot_slope_ppm": -20.10979119433827,
+          "pilot_fit_rms_frames": 5.795360286322847e-07,
+          "host_difference_ppm": -20.16585208651195,
+          "error_ppm": 0.05606089217367938,
+          "median_band_amplitude_ratio": 0.4997860113044164,
+          "clocks": {
+            "direct": {
+              "block_starts": 21,
+              "ns_per_frame": 22676.193858225113,
+              "relative_to_nominal_ppm": 20.149147727632766,
+              "host_fit_rms_ns": 10.587270217073002
+            },
+            "tap": {
+              "block_starts": 20,
+              "ns_per_frame": 22675.736582667596,
+              "relative_to_nominal_ppm": -0.01670435900713585,
+              "host_fit_rms_ns": 12.010029574177592
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.693138368232553,
+          "pilot_fit_rms_frames": 9.428638712890762e-07,
+          "host_difference_ppm": 27.700533353641006,
+          "error_ppm": -0.007394985408453181,
+          "median_band_amplitude_ratio": 0.015535229944009953,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.10904947916,
+              "relative_to_nominal_ppm": -27.690917968947737,
+              "host_fit_rms_ns": 11.666666667817337
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.73717948718,
+              "relative_to_nominal_ppm": 0.009615384710670583,
+              "host_fit_rms_ns": 12.124708122841678
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 72,
+          "fitted_windows": 66,
+          "source_window_centers": [
+            100816,
+            113816
+          ],
+          "pilot_slope_ppm": -17.149127440269346,
+          "pilot_fit_rms_frames": 5.673589982726571e-07,
+          "host_difference_ppm": -17.148650340643144,
+          "error_ppm": -0.0004770996262024596,
+          "median_band_amplitude_ratio": 0.4997908595884686,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.12566217058,
+              "relative_to_nominal_ppm": 17.141701722511726,
+              "host_fit_rms_ns": 11.984874923524385
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.73680388621,
+              "relative_to_nominal_ppm": -0.006948618014313013,
+              "host_fit_rms_ns": 11.75788515197638
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 19,
+          "fitted_windows": 13,
+          "source_window_centers": [
+            115616,
+            118016
+          ],
+          "pilot_slope_ppm": 6.141060271451734,
+          "pilot_fit_rms_frames": 1.9144604802775025e-07,
+          "host_difference_ppm": 5.742187499625652,
+          "error_ppm": 0.39887277182608205,
+          "median_band_amplitude_ratio": 0.015413199469986214,
+          "clocks": {
+            "direct": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.59407552084,
+              "relative_to_nominal_ppm": -6.301269530939457,
+              "host_fit_rms_ns": 10.206207261474033
+            },
+            "tap": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.724283854164,
+              "relative_to_nominal_ppm": -0.5590820313372546,
+              "host_fit_rms_ns": 11.410886614075167
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 48.66213888888888,
+        "band_drop": 329.81860402494334,
+        "pilot_drift": 57.709757936507934
+      },
+      "first_band_ratio": 0.5014994320358641,
+      "first_positive_pilot_source_frame": 85816,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1645.9182916666666,
+        "wide_source_frame": 73416,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.3627242063492,
+        "band_drop_ms_from_first_tap": 329.8186040249433
+      }
+    },
+    "coreaudio-headphone-drift-44100-attach-timing-long-2": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 51336,
+          "fraction": -0.03619530355609203,
+          "correlation": 0.9999920224604248,
+          "distinct_peak_margin": 0.5425241808002439,
+          "relative_residual": 0.00021015437704251564,
+          "gain": 1.000000670966438
+        },
+        "tail_last": {
+          "offset": 54408,
+          "fraction": -0.018045375498864678,
+          "correlation": 0.9999978172977214,
+          "distinct_peak_margin": 0.9999978172977214,
+          "relative_residual": 0.00021792951348903897,
+          "gain": 1.000000961384693
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -71544
+      },
+      "tap_launch_after_release_seconds": 1.3834537920047296,
+      "first_tap_host_ticks": 2748387412811,
+      "first_output_host_ticks": 2748347653504,
+      "first_tap_ms_from_prior_event": 1042.397416383028,
+      "observed_source_frames": [
+        73616,
+        118816
+      ],
+      "observation_seconds": 1.0249433106575965,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": false,
+        "initial_band_matches_prior": false,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.015412868149175177,
+        "maximum_band_ratio": 0.4998367016351684,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 73616,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 73592,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748388527369
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 74104,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748388806008
+            },
+            "frames_after_block_start": 24,
+            "event_host_ns_from_block": 114516189184592.69
+          },
+          "direct": {
+            "containing": {
+              "block_index": 143,
+              "source_frame": 73216,
+              "frames": 512,
+              "sample_time": 73216,
+              "host_ticks": 2748387498927
+            },
+            "following": {
+              "block_index": 144,
+              "source_frame": 73728,
+              "frames": 512,
+              "sample_time": 73728,
+              "host_ticks": 2748387777572
+            },
+            "frames_after_block_start": 400,
+            "event_host_ns_from_block": 114516154858919.78
+          }
+        },
+        "band_drop": {
+          "source_frame": 85616,
+          "tap": {
+            "containing": {
+              "block_index": 27,
+              "source_frame": 85368,
+              "frames": 512,
+              "sample_time": 13824,
+              "host_ticks": 2748394936076
+            },
+            "following": {
+              "block_index": 28,
+              "source_frame": 85880,
+              "frames": 512,
+              "sample_time": 14336,
+              "host_ticks": 2748395214716
+            },
+            "frames_after_block_start": 248,
+            "event_host_ns_from_block": 114516461293416.1
+          },
+          "direct": {
+            "containing": {
+              "block_index": 167,
+              "source_frame": 85504,
+              "frames": 512,
+              "sample_time": 85504,
+              "host_ticks": 2748394185246
+            },
+            "following": {
+              "block_index": 168,
+              "source_frame": 86016,
+              "frames": 512,
+              "sample_time": 86016,
+              "host_ticks": 2748394463877
+            },
+            "frames_after_block_start": 112,
+            "event_host_ns_from_block": 114516426924932.55
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 74216,
+          "tap": {
+            "containing": {
+              "block_index": 5,
+              "source_frame": 74104,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748388806008
+            },
+            "following": {
+              "block_index": 6,
+              "source_frame": 74616,
+              "frames": 512,
+              "sample_time": 3072,
+              "host_ticks": 2748389084648
+            },
+            "frames_after_block_start": 112,
+            "event_host_ns_from_block": 114516202790015.88
+          },
+          "direct": {
+            "containing": {
+              "block_index": 144,
+              "source_frame": 73728,
+              "frames": 512,
+              "sample_time": 73728,
+              "host_ticks": 2748387777572
+            },
+            "following": {
+              "block_index": 145,
+              "source_frame": 74240,
+              "frames": 512,
+              "sample_time": 74240,
+              "host_ticks": 2748388056217
+            },
+            "frames_after_block_start": 488,
+            "event_host_ns_from_block": 114516168464592.97
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 57,
+          "fitted_windows": 51,
+          "source_window_centers": [
+            74616,
+            84616
+          ],
+          "pilot_slope_ppm": -20.13343776602379,
+          "pilot_fit_rms_frames": 5.709285188545652e-07,
+          "host_difference_ppm": -20.140830592228305,
+          "error_ppm": 0.007392826204515757,
+          "median_band_amplitude_ratio": 0.49979015952861433,
+          "clocks": {
+            "direct": {
+              "block_starts": 20,
+              "ns_per_frame": 22676.19274015115,
+              "relative_to_nominal_ppm": 20.099840665643853,
+              "host_fit_rms_ns": 11.914547984217295
+            },
+            "tap": {
+              "block_starts": 20,
+              "ns_per_frame": 22675.736031974455,
+              "relative_to_nominal_ppm": -0.0409899264530722,
+              "host_fit_rms_ns": 11.936439684035829
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.744468893382862,
+          "pilot_fit_rms_frames": 1.0101635165155048e-06,
+          "host_difference_ppm": 27.75574669474445,
+          "error_ppm": -0.011277801361586626,
+          "median_band_amplitude_ratio": 0.015538847907624127,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.107672275637,
+              "relative_to_nominal_ppm": -27.751652644347757,
+              "host_fit_rms_ns": 11.982893787088035
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.737054286856,
+              "relative_to_nominal_ppm": 0.00409405043200195,
+              "host_fit_rms_ns": 11.866421777729407
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 72,
+          "fitted_windows": 66,
+          "source_window_centers": [
+            100816,
+            113816
+          ],
+          "pilot_slope_ppm": -16.934002849171808,
+          "pilot_fit_rms_frames": 5.539564151831215e-07,
+          "host_difference_ppm": -16.942827273597143,
+          "error_ppm": 0.008824424425334598,
+          "median_band_amplitude_ratio": 0.49979322848636254,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.12118278134,
+              "relative_to_nominal_ppm": 16.944160657006435,
+              "host_fit_rms_ns": 12.356266917886652
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.7369916867,
+              "relative_to_nominal_ppm": 0.0013333834036899361,
+              "host_fit_rms_ns": 12.192806481435024
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 19,
+          "fitted_windows": 13,
+          "source_window_centers": [
+            115616,
+            118016
+          ],
+          "pilot_slope_ppm": 6.1760667785571846,
+          "pilot_fit_rms_frames": 1.5668065237816634e-07,
+          "host_difference_ppm": 6.101074218161739,
+          "error_ppm": 0.07499256039544555,
+          "median_band_amplitude_ratio": 0.015414641686100496,
+          "clocks": {
+            "direct": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.594075520847,
+              "relative_to_nominal_ppm": -6.30126953060639,
+              "host_fit_rms_ns": 10.206207261596575
+            },
+            "tap": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.732421875,
+              "relative_to_nominal_ppm": -0.20019531243864463,
+              "host_fit_rms_ns": 9.316949906860389
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 46.98413435374149,
+        "band_drop": 319.0929577664399,
+        "pilot_drift": 60.58955753968254
+      },
+      "first_band_ratio": 0.3638872139126822,
+      "first_positive_pilot_source_frame": 85816,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1656.6377916666665,
+        "wide_source_frame": 74016,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.362265873016,
+        "band_drop_ms_from_first_tap": 319.0929577664399
+      }
+    },
+    "coreaudio-headphone-drift-44100-attach-timing-short-2": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 64471,
+          "fraction": 0.10132977803594947,
+          "correlation": 0.9999376368614109,
+          "distinct_peak_margin": 0.5423103756390035,
+          "relative_residual": 0.00023119783149611438,
+          "gain": 1.0000009391548308
+        },
+        "tail_last": {
+          "offset": 67543,
+          "fraction": 0.11875537816235834,
+          "correlation": 0.9999064812941016,
+          "distinct_peak_margin": 0.9999064812941016,
+          "relative_residual": 0.0002504607548622384,
+          "gain": 1.0000006690369954
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -58409
+      },
+      "tap_launch_after_release_seconds": 1.1100510420073988,
+      "first_tap_host_ticks": 2748622027553,
+      "first_output_host_ticks": 2748589417263,
+      "first_tap_ms_from_prior_event": 744.521749690175,
+      "observed_source_frames": [
+        60816,
+        118816
+      ],
+      "observation_seconds": 1.3151927437641724,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": true,
+        "initial_band_matches_prior": false,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.014416391952036282,
+        "maximum_band_ratio": 0.4998521836310099,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 60816,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 60457,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748623142111
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 60969,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748623420750
+            },
+            "frames_after_block_start": 359,
+            "event_host_ns_from_block": 114525972395214.56
+          },
+          "direct": {
+            "containing": {
+              "block_index": 118,
+              "source_frame": 60416,
+              "frames": 512,
+              "sample_time": 60416,
+              "host_ticks": 2748622295791
+            },
+            "following": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748622574424
+            },
+            "frames_after_block_start": 400,
+            "event_host_ns_from_block": 114525938061586.44
+          }
+        },
+        "band_drop": {
+          "source_frame": 61016,
+          "tap": {
+            "containing": {
+              "block_index": 5,
+              "source_frame": 60969,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748623420750
+            },
+            "following": {
+              "block_index": 6,
+              "source_frame": 61481,
+              "frames": 512,
+              "sample_time": 3072,
+              "host_ticks": 2748623699390
+            },
+            "frames_after_block_start": 47,
+            "event_host_ns_from_block": 114525976930342.97
+          },
+          "direct": {
+            "containing": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748622574424
+            },
+            "following": {
+              "block_index": 120,
+              "source_frame": 61440,
+              "frames": 512,
+              "sample_time": 61440,
+              "host_ticks": 2748622853058
+            },
+            "frames_after_block_start": 88,
+            "event_host_ns_from_block": 114525942596464.86
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 61416,
+          "tap": {
+            "containing": {
+              "block_index": 5,
+              "source_frame": 60969,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748623420750
+            },
+            "following": {
+              "block_index": 6,
+              "source_frame": 61481,
+              "frames": 512,
+              "sample_time": 3072,
+              "host_ticks": 2748623699390
+            },
+            "frames_after_block_start": 447,
+            "event_host_ns_from_block": 114525986000637.75
+          },
+          "direct": {
+            "containing": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748622574424
+            },
+            "following": {
+              "block_index": 120,
+              "source_frame": 61440,
+              "frames": 512,
+              "sample_time": 61440,
+              "host_ticks": 2748622853058
+            },
+            "frames_after_block_start": 488,
+            "event_host_ns_from_block": 114525951666759.64
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 47,
+          "fitted_windows": 41,
+          "source_window_centers": [
+            61816,
+            69816
+          ],
+          "pilot_slope_ppm": 21.4105792551897,
+          "pilot_fit_rms_frames": 4.359633278662575e-07,
+          "host_difference_ppm": 21.564869600061137,
+          "error_ppm": -0.15429034487143767,
+          "median_band_amplitude_ratio": 0.01553974001068902,
+          "clocks": {
+            "direct": {
+              "block_starts": 16,
+              "ns_per_frame": 22675.248448988983,
+              "relative_to_nominal_ppm": -21.543399585821632,
+              "host_fit_rms_ns": 11.6324779169871
+            },
+            "tap": {
+              "block_starts": 16,
+              "ns_per_frame": 22675.737448299642,
+              "relative_to_nominal_ppm": 0.02147001421093364,
+              "host_fit_rms_ns": 11.659880730452603
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 73,
+          "fitted_windows": 67,
+          "source_window_centers": [
+            71416,
+            84616
+          ],
+          "pilot_slope_ppm": -20.2289521486318,
+          "pilot_fit_rms_frames": 8.68312586032376e-07,
+          "host_difference_ppm": -20.222806490518998,
+          "error_ppm": -0.0061456581128034315,
+          "median_band_amplitude_ratio": 0.4997724789544916,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.195440482552,
+              "relative_to_nominal_ppm": 20.218925280479638,
+              "host_fit_rms_ns": 12.711430529762042
+            },
+            "tap": {
+              "block_starts": 26,
+              "ns_per_frame": 22675.73687344195,
+              "relative_to_nominal_ppm": -0.0038812099090179686,
+              "host_fit_rms_ns": 11.800599378344945
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.760374584007725,
+          "pilot_fit_rms_frames": 1.7338340513297675e-06,
+          "host_difference_ppm": 27.78611403243958,
+          "error_ppm": -0.025739448431856715,
+          "median_band_amplitude_ratio": 0.015586695791663972,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.107171474356,
+              "relative_to_nominal_ppm": -27.77373798090732,
+              "host_fit_rms_ns": 11.982893788205821
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.737242087336,
+              "relative_to_nominal_ppm": 0.012376051516937991,
+              "host_fit_rms_ns": 11.782846434664405
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 72,
+          "fitted_windows": 66,
+          "source_window_centers": [
+            100816,
+            113816
+          ],
+          "pilot_slope_ppm": -17.304786244492085,
+          "pilot_fit_rms_frames": 5.228862538963327e-07,
+          "host_difference_ppm": -17.32349258840659,
+          "error_ppm": 0.018706343914505652,
+          "median_band_amplitude_ratio": 0.4997996144032371,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.129334713318,
+              "relative_to_nominal_ppm": 17.303660857281855,
+              "host_fit_rms_ns": 12.183235289250142
+            },
+            "tap": {
+              "block_starts": 26,
+              "ns_per_frame": 22675.73651175213,
+              "relative_to_nominal_ppm": -0.019831731035147016,
+              "host_fit_rms_ns": 11.574019285258183
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 18,
+          "fitted_windows": 12,
+          "source_window_centers": [
+            115816,
+            118016
+          ],
+          "pilot_slope_ppm": 5.929137463675331,
+          "pilot_fit_rms_frames": 1.3399516075974618e-07,
+          "host_difference_ppm": 5.742187500106957,
+          "error_ppm": 0.1869499635683738,
+          "median_band_amplitude_ratio": 0.015424904184045386,
+          "clocks": {
+            "direct": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.59407552083,
+              "relative_to_nominal_ppm": -6.3012695313835465,
+              "host_fit_rms_ns": 11.410886614727131
+            },
+            "tap": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.724283854164,
+              "relative_to_nominal_ppm": -0.5590820313372546,
+              "host_fit_rms_ns": 11.410886615196599
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 54.580506235827656,
+        "band_drop": 59.11563463718821,
+        "pilot_drift": 68.1859294217687
+      },
+      "first_band_ratio": 0.014416391952036282,
+      "first_positive_pilot_source_frame": 61416,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1358.7620833333333,
+        "wide_source_frame": 70816,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.3623492063493,
+        "band_drop_ms_from_first_tap": 616.9387689909297
+      }
+    },
+    "coreaudio-headphone-drift-44100-attach-timing-short-3": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 64633,
+          "fraction": 0.11579699792031115,
+          "correlation": 0.9999185636305556,
+          "distinct_peak_margin": 0.5422779869247798,
+          "relative_residual": 0.00024043024005121355,
+          "gain": 1.0000010124262306
+        },
+        "tail_last": {
+          "offset": 67705,
+          "fraction": 0.13342005424690603,
+          "correlation": 0.9998819656355987,
+          "distinct_peak_margin": 0.9998819656355987,
+          "relative_residual": 0.0002598131222450763,
+          "gain": 1.000000690680102
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -58247
+      },
+      "tap_launch_after_release_seconds": 1.1036639160010964,
+      "first_tap_host_ticks": 2748857042510,
+      "first_output_host_ticks": 2748824520565,
+      "first_tap_ms_from_prior_event": 740.8406663686037,
+      "observed_source_frames": [
+        60416,
+        118816
+      ],
+      "observation_seconds": 1.3242630385487528,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": true,
+        "initial_band_matches_prior": false,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.015424726044138701,
+        "maximum_band_ratio": 0.499859261921325,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 60416,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 60295,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748858157068
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 60807,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748858435707
+            },
+            "frames_after_block_start": 121,
+            "event_host_ns_from_block": 114535759288264.17
+          },
+          "direct": {
+            "containing": {
+              "block_index": 118,
+              "source_frame": 60416,
+              "frames": 512,
+              "sample_time": 60416,
+              "host_ticks": 2748857399089
+            },
+            "following": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748857677722
+            },
+            "frames_after_block_start": 0,
+            "event_host_ns_from_block": 114535724962041.66
+          }
+        },
+        "band_drop": {
+          "source_frame": 60616,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 60295,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2748858157068
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 60807,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748858435707
+            },
+            "frames_after_block_start": 321,
+            "event_host_ns_from_block": 114535763823411.56
+          },
+          "direct": {
+            "containing": {
+              "block_index": 118,
+              "source_frame": 60416,
+              "frames": 512,
+              "sample_time": 60416,
+              "host_ticks": 2748857399089
+            },
+            "following": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748857677722
+            },
+            "frames_after_block_start": 200,
+            "event_host_ns_from_block": 114535729497189.05
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 60816,
+          "tap": {
+            "containing": {
+              "block_index": 5,
+              "source_frame": 60807,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2748858435707
+            },
+            "following": {
+              "block_index": 6,
+              "source_frame": 61319,
+              "frames": 512,
+              "sample_time": 3072,
+              "host_ticks": 2748858714347
+            },
+            "frames_after_block_start": 9,
+            "event_host_ns_from_block": 114535768358539.95
+          },
+          "direct": {
+            "containing": {
+              "block_index": 118,
+              "source_frame": 60416,
+              "frames": 512,
+              "sample_time": 60416,
+              "host_ticks": 2748857399089
+            },
+            "following": {
+              "block_index": 119,
+              "source_frame": 60928,
+              "frames": 512,
+              "sample_time": 60928,
+              "host_ticks": 2748857677722
+            },
+            "frames_after_block_start": 400,
+            "event_host_ns_from_block": 114535734032336.44
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 49,
+          "fitted_windows": 43,
+          "source_window_centers": [
+            61416,
+            69816
+          ],
+          "pilot_slope_ppm": 21.450069409024945,
+          "pilot_fit_rms_frames": 4.950503711740373e-07,
+          "host_difference_ppm": 21.55431410912279,
+          "error_ppm": -0.10424470009784415,
+          "median_band_amplitude_ratio": 0.015540626781797259,
+          "clocks": {
+            "direct": {
+              "block_starts": 17,
+              "ns_per_frame": 22675.24868834252,
+              "relative_to_nominal_ppm": -21.532844094895864,
+              "host_fit_rms_ns": 11.62602081052688
+            },
+            "tap": {
+              "block_starts": 16,
+              "ns_per_frame": 22675.737448299642,
+              "relative_to_nominal_ppm": 0.02147001421093364,
+              "host_fit_rms_ns": 11.659880730452603
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 73,
+          "fitted_windows": 67,
+          "source_window_centers": [
+            71416,
+            84616
+          ],
+          "pilot_slope_ppm": -20.082862359413152,
+          "pilot_fit_rms_frames": 8.343962554968744e-07,
+          "host_difference_ppm": -20.09765625005348,
+          "error_ppm": 0.014793890640326879,
+          "median_band_amplitude_ratio": 0.4997751191100307,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.19260260862,
+              "relative_to_nominal_ppm": 20.09377504008647,
+              "host_fit_rms_ns": 10.895340838380616
+            },
+            "tap": {
+              "block_starts": 26,
+              "ns_per_frame": 22675.73687344195,
+              "relative_to_nominal_ppm": -0.0038812099090179686,
+              "host_fit_rms_ns": 11.800599378344945
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.517909829111293,
+          "pilot_fit_rms_frames": 1.742809713084817e-06,
+          "host_difference_ppm": 27.53489332936806,
+          "error_ppm": -0.016983500256767314,
+          "median_band_amplitude_ratio": 0.015586413314428522,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.112868088938,
+              "relative_to_nominal_ppm": -27.522517277778213,
+              "host_fit_rms_ns": 11.837124708928998
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.737242087336,
+              "relative_to_nominal_ppm": 0.012376051516937991,
+              "host_fit_rms_ns": 11.782846434664405
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 72,
+          "fitted_windows": 66,
+          "source_window_centers": [
+            100816,
+            113816
+          ],
+          "pilot_slope_ppm": -17.047268208512765,
+          "pilot_fit_rms_frames": 5.172870301839264e-07,
+          "host_difference_ppm": -17.077179737874033,
+          "error_ppm": 0.029911529361267952,
+          "median_band_amplitude_ratio": 0.49980337025770705,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.12385372151,
+              "relative_to_nominal_ppm": 17.061949118657438,
+              "host_fit_rms_ns": 11.6075015876116
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.73661608573,
+              "relative_to_nominal_ppm": -0.015230619210271357,
+              "host_fit_rms_ns": 11.746521579083058
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 18,
+          "fitted_windows": 12,
+          "source_window_centers": [
+            115816,
+            118016
+          ],
+          "pilot_slope_ppm": 5.995997621120803,
+          "pilot_fit_rms_frames": 1.4906855636515273e-07,
+          "host_difference_ppm": 6.101074218803479,
+          "error_ppm": -0.10507659768267619,
+          "median_band_amplitude_ratio": 0.015426333831141881,
+          "clocks": {
+            "direct": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.585937499996,
+              "relative_to_nominal_ppm": -6.660156250171134,
+              "host_fit_rms_ns": 9.316949906166164
+            },
+            "tap": {
+              "block_starts": 4,
+              "ns_per_frame": 22675.724283854164,
+              "relative_to_nominal_ppm": -0.5590820313372546,
+              "host_fit_rms_ns": 11.410886615196599
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 49.183680839002264,
+        "band_drop": 53.71882823129251,
+        "pilot_drift": 58.253956632653065
+      },
+      "first_band_ratio": 0.017643888921480777,
+      "first_positive_pilot_source_frame": 60816,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1355.0810416666666,
+        "wide_source_frame": 70816,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.3624325396827,
+        "band_drop_ms_from_first_tap": 620.6122383786849
+      }
+    },
+    "coreaudio-headphone-drift-44100-attach-timing-long-3": {
+      "checks": {
+        "capture_completed": true,
+        "tap_pid_matches": true,
+        "device_rate_and_width": true,
+        "default_output_restored": true,
+        "raw_pcm_matches_fixture": true,
+        "output_ok": true,
+        "tap_ok": true,
+        "tap_markers": true,
+        "direct_clock": true,
+        "tap_clock": true,
+        "expected_attachment_order": true,
+        "usable_pilot_observed": true,
+        "late_observation_duration": true,
+        "direct_tone_fits": true
+      },
+      "manifest_status": "pass",
+      "attachment": "late",
+      "active_output_device": {
+        "bufferFrames": 512,
+        "id": 98,
+        "name": "外部ヘッドフォン",
+        "sampleRate": 44100,
+        "uid": "BuiltInHeadphoneOutputDevice"
+      },
+      "anchor": {
+        "tail_first": {
+          "offset": 53048,
+          "fraction": -0.08690366007380773,
+          "correlation": 0.9999541239525457,
+          "distinct_peak_margin": 0.5424527241946664,
+          "relative_residual": 0.00021861838017720858,
+          "gain": 1.0000005794827067
+        },
+        "tail_last": {
+          "offset": 56120,
+          "fraction": -0.0700466973819169,
+          "correlation": 0.9999674494445603,
+          "distinct_peak_margin": 0.9999674494445603,
+          "relative_residual": 0.00022106876612638926,
+          "gain": 1.0000008061358072
+        },
+        "tail_integer_advance": 0,
+        "origin_in_pcm": -69832
+      },
+      "tap_launch_after_release_seconds": 1.3804609580110991,
+      "first_tap_host_ticks": 2749099632020,
+      "first_output_host_ticks": 2749060804241,
+      "first_tap_ms_from_prior_event": 1003.5837497115135,
+      "observed_source_frames": [
+        72016,
+        118816
+      ],
+      "observation_seconds": 1.0612244897959184,
+      "predictions": {
+        "band_drop_seen": true,
+        "pilot_drift_seen": true,
+        "change_within_tap_block": false,
+        "initial_band_matches_prior": false,
+        "positive_pilot_seen": true,
+        "minimum_band_ratio": 0.015406490593462125,
+        "maximum_band_ratio": 0.49984632492701553,
+        "wide_band_in_all_windows": false
+      },
+      "events": {
+        "waveform_departure": {
+          "source_frame": 72016,
+          "tap": {
+            "containing": {
+              "block_index": 4,
+              "source_frame": 71880,
+              "frames": 512,
+              "sample_time": 2048,
+              "host_ticks": 2749100746578
+            },
+            "following": {
+              "block_index": 5,
+              "source_frame": 72392,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2749101025217
+            },
+            "frames_after_block_start": 136,
+            "event_host_ns_from_block": 114545867524650.23
+          },
+          "direct": {
+            "containing": {
+              "block_index": 140,
+              "source_frame": 71680,
+              "frames": 512,
+              "sample_time": 71680,
+              "host_ticks": 2749099813743
+            },
+            "following": {
+              "block_index": 141,
+              "source_frame": 72192,
+              "frames": 512,
+              "sample_time": 72192,
+              "host_ticks": 2749100092388
+            },
+            "frames_after_block_start": 336,
+            "event_host_ns_from_block": 114545833191672.62
+          }
+        },
+        "band_drop": {
+          "source_frame": 85616,
+          "tap": {
+            "containing": {
+              "block_index": 30,
+              "source_frame": 85192,
+              "frames": 512,
+              "sample_time": 15360,
+              "host_ticks": 2749107991204
+            },
+            "following": {
+              "block_index": 31,
+              "source_frame": 85704,
+              "frames": 512,
+              "sample_time": 15872,
+              "host_ticks": 2749108269843
+            },
+            "frames_after_block_start": 424,
+            "event_host_ns_from_block": 114546175914679.14
+          },
+          "direct": {
+            "containing": {
+              "block_index": 167,
+              "source_frame": 85504,
+              "frames": 512,
+              "sample_time": 85504,
+              "host_ticks": 2749107336000
+            },
+            "following": {
+              "block_index": 168,
+              "source_frame": 86016,
+              "frames": 512,
+              "sample_time": 86016,
+              "host_ticks": 2749107614632
+            },
+            "frames_after_block_start": 112,
+            "event_host_ns_from_block": 114546141539682.55
+          }
+        },
+        "pilot_drift": {
+          "source_frame": 72416,
+          "tap": {
+            "containing": {
+              "block_index": 5,
+              "source_frame": 72392,
+              "frames": 512,
+              "sample_time": 2560,
+              "host_ticks": 2749101025217
+            },
+            "following": {
+              "block_index": 6,
+              "source_frame": 72904,
+              "frames": 512,
+              "sample_time": 3072,
+              "host_ticks": 2749101303857
+            },
+            "frames_after_block_start": 24,
+            "event_host_ns_from_block": 114545876594926.02
+          },
+          "direct": {
+            "containing": {
+              "block_index": 141,
+              "source_frame": 72192,
+              "frames": 512,
+              "sample_time": 72192,
+              "host_ticks": 2749100092388
+            },
+            "following": {
+              "block_index": 142,
+              "source_frame": 72704,
+              "frames": 512,
+              "sample_time": 72704,
+              "host_ticks": 2749100371033
+            },
+            "frames_after_block_start": 224,
+            "event_host_ns_from_block": 114545842262198.4
+          }
+        }
+      },
+      "native_cubeb_comparisons": {
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified": {
+          "waveform_departure": 27088,
+          "band_drop": 27216,
+          "pilot_drift": 27216
+        },
+        "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified": {
+          "waveform_departure": 27344,
+          "band_drop": 27416,
+          "pilot_drift": 27416
+        }
+      },
+      "direct_audio_unit": "DefaultOutput",
+      "clock_plateaus": [
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 65,
+          "fitted_windows": 59,
+          "source_window_centers": [
+            73016,
+            84616
+          ],
+          "pilot_slope_ppm": -20.50452529879946,
+          "pilot_fit_rms_frames": 7.15174430106275e-07,
+          "host_difference_ppm": -20.484508167828245,
+          "error_ppm": -0.02001713097121538,
+          "median_band_amplitude_ratio": 0.49978854722470084,
+          "clocks": {
+            "direct": {
+              "block_starts": 23,
+              "ns_per_frame": 22676.201178308227,
+              "relative_to_nominal_ppm": 20.471963392942882,
+              "host_fit_rms_ns": 11.392242162327062
+            },
+            "tap": {
+              "block_starts": 22,
+              "ns_per_frame": 22675.73667698923,
+              "relative_to_nominal_ppm": -0.01254477499657014,
+              "host_fit_rms_ns": 11.963435309743765
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 71,
+          "fitted_windows": 65,
+          "source_window_centers": [
+            86216,
+            99016
+          ],
+          "pilot_slope_ppm": 27.369603770462067,
+          "pilot_fit_rms_frames": 7.477529239837495e-07,
+          "host_difference_ppm": 27.385203826368162,
+          "error_ppm": -0.015600055906094923,
+          "median_band_amplitude_ratio": 0.015521345949807494,
+          "clocks": {
+            "direct": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.116561498387,
+              "relative_to_nominal_ppm": -27.359637921109403,
+              "host_fit_rms_ns": 11.794175009667292
+            },
+            "tap": {
+              "block_starts": 26,
+              "ns_per_frame": 22675.73754117699,
+              "relative_to_nominal_ppm": 0.02556590539271042,
+              "host_fit_rms_ns": 11.984874923828048
+            }
+          }
+        },
+        {
+          "band": "wide",
+          "categorization_slope_sign": -1,
+          "total_windows": 72,
+          "fitted_windows": 66,
+          "source_window_centers": [
+            100816,
+            113816
+          ],
+          "pilot_slope_ppm": -17.31108083409927,
+          "pilot_fit_rms_frames": 6.170959783534954e-07,
+          "host_difference_ppm": -17.315210586896136,
+          "error_ppm": 0.004129752796867336,
+          "median_band_amplitude_ratio": 0.49978937352866315,
+          "clocks": {
+            "direct": {
+              "block_starts": 26,
+              "ns_per_frame": 22676.12925124644,
+              "relative_to_nominal_ppm": 17.299979967910772,
+              "host_fit_rms_ns": 12.244913488807127
+            },
+            "tap": {
+              "block_starts": 25,
+              "ns_per_frame": 22675.73661608574,
+              "relative_to_nominal_ppm": -0.01523061887720445,
+              "host_fit_rms_ns": 11.746521581028457
+            }
+          }
+        },
+        {
+          "band": "reduced",
+          "categorization_slope_sign": 1,
+          "total_windows": 19,
+          "fitted_windows": 13,
+          "source_window_centers": [
+            115616,
+            118016
+          ],
+          "pilot_slope_ppm": 5.735673311153221,
+          "pilot_fit_rms_frames": 1.5270076796940183e-07,
+          "host_difference_ppm": 6.101074218643044,
+          "error_ppm": -0.365400907489823,
+          "median_band_amplitude_ratio": 0.015408367203865044,
+          "clocks": {
+            "direct": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.60221354168,
+              "relative_to_nominal_ppm": -5.942382811929825,
+              "host_fit_rms_ns": 11.785113019690659
+            },
+            "tap": {
+              "block_starts": 5,
+              "ns_per_frame": 22675.740559895843,
+              "relative_to_nominal_ppm": 0.15869140668200998,
+              "host_fit_rms_ns": 10.206207261975251
+            }
+          }
+        }
+      ],
+      "event_ms_from_first_tap_timestamp": {
+        "waveform_departure": 49.52381689342403,
+        "band_drop": 357.9138458049886,
+        "pilot_drift": 58.59409268707483
+      },
+      "first_band_ratio": 0.2803540080527746,
+      "first_positive_pilot_source_frame": 85816,
+      "attachment_timing": {
+        "first_tap_after_output_ms": 1617.8241249999999,
+        "wide_source_frame": 72416,
+        "band_drop_source_frame": 85616,
+        "band_drop_ms_from_first_output": 1941.3629742063492,
+        "band_drop_ms_from_first_tap": 357.9138458049886
+      }
+    }
+  }
+}

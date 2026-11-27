@@ -1,0 +1,101 @@
+{
+  "checks": {
+    "both_browser_entries": true,
+    "candidate/native_source_lifecycle": true,
+    "candidate/native_ump_and_host_times": true,
+    "candidate/standard_web_midi_and_hot_add": true,
+    "candidate/trusted_midi_bytes": true,
+    "candidate/app_held_sequence": true,
+    "candidate/app_listener_cleanup": true,
+    "candidate/no_page_or_capture_errors": true,
+    "candidate/midi_targets_at_worklet": true,
+    "candidate/finite_and_continuous_worklet": true,
+    "candidate/independent_worklet_controls": true,
+    "candidate/worklet_sustained_voice": true,
+    "candidate/worklet_silent_before_and_after": true,
+    "candidate/worklet_pcm_matches_cli": true,
+    "upstream/native_source_lifecycle": true,
+    "upstream/native_ump_and_host_times": true,
+    "upstream/standard_web_midi_and_hot_add": true,
+    "upstream/trusted_midi_bytes": true,
+    "upstream/app_held_sequence": true,
+    "upstream/app_listener_cleanup": true,
+    "upstream/no_page_or_capture_errors": true,
+    "upstream/play_target_pitch_and_gate": true,
+    "upstream/play_finite_and_quiet_before_on": true,
+    "upstream/play_independent_drift_before_on": true,
+    "upstream/play_sustained_voice": true,
+    "upstream/play_release": true
+  },
+  "browser": "157.0.8103.79",
+  "release_action": "note-off",
+  "expected_pitch_hz": 220.0,
+  "result": {
+    "candidate": {
+      "applied_notes": [
+        {
+          "frame": 15616,
+          "note": 57
+        },
+        {
+          "frame": 47360,
+          "note": null
+        }
+      ],
+      "output_frames": 128256,
+      "sample_rate_hz": 48000,
+      "observations": 1002,
+      "sustained_gate_min": 0.9999998988505455,
+      "sustained_f0_max_error_hz": 0.18555232830041746,
+      "initial_pcm_peak": 1.3842327462043613e-07,
+      "voiced_pcm_peak": 0.2789786159992218,
+      "tail_pcm_peak": 1.153046151702137e-15,
+      "control_max_errors": {
+        "gate": 2.220446049250313e-16,
+        "f0_hz": 3.126388037344441e-12
+      },
+      "cli_pcm": {
+        "first_bit_difference_frame": null,
+        "first_bit_difference_values": null,
+        "maximum_absolute_error": 0.0,
+        "first_frame_over_tolerance": null
+      }
+    },
+    "upstream": {
+      "sample_rate_hz": 48000,
+      "internal_sample_rate_hz": 96000,
+      "gate_messages": [
+        {
+          "level": 0,
+          "clock": null,
+          "observedMs": 397.69999998807907
+        },
+        {
+          "level": 1,
+          "clock": 0.4960999999940424,
+          "observedMs": 901.0999999940395
+        },
+        {
+          "level": 0,
+          "clock": 1.153800000011919,
+          "observedMs": 1558.5
+        }
+      ],
+      "steady_rows": 12,
+      "tail_rows": 10,
+      "steady_gate_min": 0.9999999406610549,
+      "tail_gate_max": 8.512169909203089e-05,
+      "steady_f0_hz": [
+        219.33870395781994,
+        220.24411243381257
+      ],
+      "steady_f0_without_drift_hz": [
+        219.82251061069658,
+        219.9905505216455
+      ],
+      "pre_note_f0_without_drift_max_error_hz": 2.842170943040401e-14,
+      "steady_peak_rms": 0.26484219057572445,
+      "raw_f0_passes_original_tolerance": false
+    }
+  }
+}

@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "run_id": "tsp-active-duration-original-20261121-independent-final",
+  "case_id": "tsp-active-duration-original",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-original-20261121-repeat",
+  "scipy_version": "1.17.1",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/tsp-active-duration-original.json",
+      "bytes": 5266,
+      "sha256": "d69e091987dcc0b4da02f890153166fe63ce2fe83fc668acc4ad4069c9929bf3"
+    },
+    {
+      "path": "cases/tsp-active-duration-pilot.json",
+      "bytes": 3015,
+      "sha256": "e9e685ab124b64483b5b832871f5b144ee6f71d3632543e34014d612160cf704"
+    },
+    {
+      "path": "tools/verify_tsp_active_duration.py",
+      "bytes": 8404,
+      "sha256": "9732bebcdd8edfe2c6a2a53d2e215abaabe3a65aa78062e8aae7d374186bdadb"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/manifest.json",
+      "bytes": 88830,
+      "sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/summary.json",
+      "bytes": 45533,
+      "sha256": "de6a1f85145cedbf455dfbce38a2264801755926ab26ceac5d2bc8680c8ea0f5"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/manifest.json",
+      "bytes": 75311,
+      "sha256": "4dd5344f682cf31a0d1d5fec2d78d5072cad76fc17bf4c81af255af10d473af5"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/summary.json",
+      "bytes": 35680,
+      "sha256": "a0d1ed9fd86b0b7d82f01fe6da49dc7524788d0dcfa0d7b0194deac0e7d37538"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA02_07/candidate.wav",
+      "bytes": 464158,
+      "sha256": "7288c9d2a403c24fb3c73d78fe3984ce7532dd5d47fd092730fa2be45251081d",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA02_07/upstream.wav",
+      "bytes": 464144,
+      "sha256": "6dcb6fa7e3a2ac371f2e38889e824718c1d48f1e1caa632fe240b2a425226185",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA02_07/candidate.wav",
+      "bytes": 464158,
+      "sha256": "d4d962831d5adf53fe8f2bdc487e80a6ad7189739213c61962c801bc727dc480",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA02_07/upstream.wav",
+      "bytes": 464144,
+      "sha256": "cca3ba8181f3cefd6acb0dd0e7415fa1f438f8d609a0f93912c81a3622fd75c7",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_01/candidate.wav",
+      "bytes": 516154,
+      "sha256": "acbdbb516bff7292a4f6af1331e59d12255561b0f378242ffabb911ca8063b34",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_01/upstream.wav",
+      "bytes": 516140,
+      "sha256": "2aade706df8c744488a94a9c3047b84c881d9328373aaac281f0ff162c2c79da",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_01/candidate.wav",
+      "bytes": 516154,
+      "sha256": "f1dbc674756f1338e3fb970aefa4de44f675c13660932d9d3e261baec9b48d1e",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_01/upstream.wav",
+      "bytes": 516140,
+      "sha256": "8f419d18f16cf327d9f7acba27b23caebe374de4d74d71321e108622b0d49a45",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "d05c0f850f2c125dff138715c7dc5f4620f28deccd3e32a53dcb4eae7f80306b",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "0f103e4249a5bae89784f517b55b76783f98b5a33cadec7ac75ccbe48285df2f",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "abe6405c9022e33a1c147c089dd1491ee7ee2391c5c83ba45033de38b87e832c",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "febe252e6e1e3e67f54ba98ca2c09436edd0088d6907570ce8739f4e6fee00d4",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK64_08/candidate.wav",
+      "bytes": 430166,
+      "sha256": "90a93195bd92ce57a20b4f84b7800eed3efd6d3c3f5275e5ff4e43a103a04e90",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK64_08/upstream.wav",
+      "bytes": 430152,
+      "sha256": "1002d4c1e6b78e3241452770347a9ca6011792e54634cdaa930021a4a1bf21ca",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK64_09/candidate.wav",
+      "bytes": 459854,
+      "sha256": "3ef441a6c3a45d60c7450e535c11a9afc69b3fe35b38e0dc27376f5d050c9495",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK64_09/upstream.wav",
+      "bytes": 459840,
+      "sha256": "4b8538aa7645d4c2632d60a286e2b335da81ace0972eaf83d2982539016f42d8",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK64_08/candidate.wav",
+      "bytes": 430166,
+      "sha256": "e62c702d46ab225393a60b1b46426665d48bea22cd6366eb30965cf574e6b11e",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK64_08/upstream.wav",
+      "bytes": 430152,
+      "sha256": "9022f97d0de8d1d5317eb6eafff2bd853c8ad6e946bdd70dff565426f0dcacd4",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK64_09/candidate.wav",
+      "bytes": 459854,
+      "sha256": "f5d0c7f0a0ce4d5493df0d19a3f22d3b2440316349694ae2388a185ead9d1a40",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK64_09/upstream.wav",
+      "bytes": 459840,
+      "sha256": "44f47e32a6acc17c567a51dbb18a273d5c5ad21c7dd73d51874ee54ea6cc19a9",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK62_02/candidate.wav",
+      "bytes": 506866,
+      "sha256": "357dccafe4d6fa50a3e45dff88f791053b673dbcb383d39a6cd8eb785dd828de",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK62_02/upstream.wav",
+      "bytes": 506852,
+      "sha256": "c1ee35e45eeff55a47453521161a9ff6bc63fb13e99b46bd36adec64263d12ca",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK62_02/candidate.wav",
+      "bytes": 506866,
+      "sha256": "4ce34447a3413d2da522b27666f8028ce1f268dbad9264c55fd2392027339183",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK62_02/upstream.wav",
+      "bytes": 506852,
+      "sha256": "b2242561349399d570553e7a246a0da5b9ffb4dbb0d8c8c8b21373536a7d11bc",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK62_04/candidate.wav",
+      "bytes": 535082,
+      "sha256": "c575a432a7adb17a8b72ea7dbba500226b3f325434e75ae363900cfebaf0d9b8",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK62_04/upstream.wav",
+      "bytes": 535068,
+      "sha256": "e39defbd744b3b701cf033ac68e9b2b592fd9e0323ce533a81e4f3ca43c76890",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK62_04/candidate.wav",
+      "bytes": 535082,
+      "sha256": "7560b00bd9199c3a14e204eadb63310aa506b62a8cebc93d9a2de732fc5c63e3",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK62_04/upstream.wav",
+      "bytes": 535068,
+      "sha256": "6abc72a83524b5ff8308ce46191bb1ad7ce1a97d4ee6b2ad364d19ad85c629c3",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK61_01/candidate.wav",
+      "bytes": 464586,
+      "sha256": "9ca9636eea9db873a1e5df8b8340676a28b6addddf9ba9b54044d7e30b8db484",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK61_01/upstream.wav",
+      "bytes": 464572,
+      "sha256": "95b7bc49836f013a327abfbafc4009e2feeedbb0d2e92ae0a15d23092bec26e2",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK61_01/candidate.wav",
+      "bytes": 464586,
+      "sha256": "ff12c84d3c3f3488faa950e2d795072fe08632e6eb75c0d4555680976594c0ed",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK61_01/upstream.wav",
+      "bytes": 464572,
+      "sha256": "5d8d4ccad3b3d58719e7432a276026015e4d1751c19035721607db0af13c35c9",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK61_02/candidate.wav",
+      "bytes": 578966,
+      "sha256": "9334813e8b77a55af4c9476b3abff48a5edcc7ea3069d4c7b1aa320bd0ff615f",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/FK61_02/upstream.wav",
+      "bytes": 578952,
+      "sha256": "32d84ccba99f7e823b445142918671e7647cd182daa25cefd502d7bc81754c4b",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK61_02/candidate.wav",
+      "bytes": 578966,
+      "sha256": "0ee3386e4182dea3830df5507363fc234e47c2e9e5dfd832aa15c8586ae6de99",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-original-20261121-repeat/artifacts/MK61_02/upstream.wav",
+      "bytes": 578952,
+      "sha256": "c1dbd42f6d982777e7324a925fc3c9e869e97f06edb35af08decace69ea75925",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FA02_07/candidate.wav",
+      "bytes": 464158,
+      "sha256": "7288c9d2a403c24fb3c73d78fe3984ce7532dd5d47fd092730fa2be45251081d",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FA02_07/upstream.wav",
+      "bytes": 464144,
+      "sha256": "6dcb6fa7e3a2ac371f2e38889e824718c1d48f1e1caa632fe240b2a425226185",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MA02_07/candidate.wav",
+      "bytes": 464158,
+      "sha256": "d4d962831d5adf53fe8f2bdc487e80a6ad7189739213c61962c801bc727dc480",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MA02_07/upstream.wav",
+      "bytes": 464144,
+      "sha256": "cca3ba8181f3cefd6acb0dd0e7415fa1f438f8d609a0f93912c81a3622fd75c7",
+      "sample_rate_hz": 48000,
+      "frames": 116025,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FA01_01/candidate.wav",
+      "bytes": 516154,
+      "sha256": "acbdbb516bff7292a4f6af1331e59d12255561b0f378242ffabb911ca8063b34",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FA01_01/upstream.wav",
+      "bytes": 516140,
+      "sha256": "2aade706df8c744488a94a9c3047b84c881d9328373aaac281f0ff162c2c79da",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MA01_01/candidate.wav",
+      "bytes": 516154,
+      "sha256": "f1dbc674756f1338e3fb970aefa4de44f675c13660932d9d3e261baec9b48d1e",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MA01_01/upstream.wav",
+      "bytes": 516140,
+      "sha256": "8f419d18f16cf327d9f7acba27b23caebe374de4d74d71321e108622b0d49a45",
+      "sample_rate_hz": 48000,
+      "frames": 129024,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK64_08/candidate.wav",
+      "bytes": 430166,
+      "sha256": "90a93195bd92ce57a20b4f84b7800eed3efd6d3c3f5275e5ff4e43a103a04e90",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK64_08/upstream.wav",
+      "bytes": 430152,
+      "sha256": "1002d4c1e6b78e3241452770347a9ca6011792e54634cdaa930021a4a1bf21ca",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK64_09/candidate.wav",
+      "bytes": 459854,
+      "sha256": "3ef441a6c3a45d60c7450e535c11a9afc69b3fe35b38e0dc27376f5d050c9495",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK64_09/upstream.wav",
+      "bytes": 459840,
+      "sha256": "4b8538aa7645d4c2632d60a286e2b335da81ace0972eaf83d2982539016f42d8",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK64_08/candidate.wav",
+      "bytes": 430166,
+      "sha256": "e62c702d46ab225393a60b1b46426665d48bea22cd6366eb30965cf574e6b11e",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK64_08/upstream.wav",
+      "bytes": 430152,
+      "sha256": "9022f97d0de8d1d5317eb6eafff2bd853c8ad6e946bdd70dff565426f0dcacd4",
+      "sample_rate_hz": 48000,
+      "frames": 107527,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK64_09/candidate.wav",
+      "bytes": 459854,
+      "sha256": "f5d0c7f0a0ce4d5493df0d19a3f22d3b2440316349694ae2388a185ead9d1a40",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK64_09/upstream.wav",
+      "bytes": 459840,
+      "sha256": "44f47e32a6acc17c567a51dbb18a273d5c5ad21c7dd73d51874ee54ea6cc19a9",
+      "sample_rate_hz": 48000,
+      "frames": 114949,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK62_02/candidate.wav",
+      "bytes": 506866,
+      "sha256": "357dccafe4d6fa50a3e45dff88f791053b673dbcb383d39a6cd8eb785dd828de",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK62_02/upstream.wav",
+      "bytes": 506852,
+      "sha256": "c1ee35e45eeff55a47453521161a9ff6bc63fb13e99b46bd36adec64263d12ca",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK62_02/candidate.wav",
+      "bytes": 506866,
+      "sha256": "4ce34447a3413d2da522b27666f8028ce1f268dbad9264c55fd2392027339183",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK62_02/upstream.wav",
+      "bytes": 506852,
+      "sha256": "b2242561349399d570553e7a246a0da5b9ffb4dbb0d8c8c8b21373536a7d11bc",
+      "sample_rate_hz": 48000,
+      "frames": 126702,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK62_04/candidate.wav",
+      "bytes": 535082,
+      "sha256": "c575a432a7adb17a8b72ea7dbba500226b3f325434e75ae363900cfebaf0d9b8",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK62_04/upstream.wav",
+      "bytes": 535068,
+      "sha256": "e39defbd744b3b701cf033ac68e9b2b592fd9e0323ce533a81e4f3ca43c76890",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK62_04/candidate.wav",
+      "bytes": 535082,
+      "sha256": "7560b00bd9199c3a14e204eadb63310aa506b62a8cebc93d9a2de732fc5c63e3",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK62_04/upstream.wav",
+      "bytes": 535068,
+      "sha256": "6abc72a83524b5ff8308ce46191bb1ad7ce1a97d4ee6b2ad364d19ad85c629c3",
+      "sample_rate_hz": 48000,
+      "frames": 133756,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK61_01/candidate.wav",
+      "bytes": 464586,
+      "sha256": "9ca9636eea9db873a1e5df8b8340676a28b6addddf9ba9b54044d7e30b8db484",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/FK61_01/upstream.wav",
+      "bytes": 464572,
+      "sha256": "95b7bc49836f013a327abfbafc4009e2feeedbb0d2e92ae0a15d23092bec26e2",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK61_01/candidate.wav",
+      "bytes": 464586,
+      "sha256": "ff12c84d3c3f3488faa950e2d795072fe08632e6eb75c0d4555680976594c0ed",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/tsp-active-duration-after-rhotic-20261121-repeat/artifacts/MK61_01/upstream.wav",
+      "bytes": 464572,
+      "sha256": "5d8d4ccad3b3d58719e7432a276026015e4d1751c19035721607db0af13c35c9",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/verify_tsp_active_duration.py",
+        "$WORKSPACE/cases/tsp-active-duration-original.json",
+        "$WORKSPACE/runs/tsp-active-duration-original-20261121-repeat",
+        "--require-original-registration"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/independent.json",
+      "bytes": 24615,
+      "sha256": "099330a4ebc912b66a28f644e9855a6721a6df37ba1308cbf91ff9413e758076"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 24615,
+      "sha256": "099330a4ebc912b66a28f644e9855a6721a6df37ba1308cbf91ff9413e758076"
+    }
+  ]
+}

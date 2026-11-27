@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "run_id": "safari-recording-pause-clock-split-20261121-a",
+  "case_id": "safari-recording-pause-clock-split",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "analysis_directory": "/Users/dolphilia/github/voice-simulator/research/experiments/chimera-rebuild",
+  "analysis_command": [
+    "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+    "tools/measure_safari_recording_pause_clock_split.py",
+    "safari-recording-pause-clock-split-20261121-a"
+  ],
+  "safaridriver": "Included with Safari 18.6 (20621.3.11.11.3)",
+  "node": "v24.19.0",
+  "ffmpeg": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+  "ffprobe": "ffprobe version 7.1 Copyright (c) 2007-2024 the FFmpeg developers",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/safari-recording-pause-clock-split.json",
+      "bytes": 3820,
+      "sha256": "b3212cd9fd477e7ed698b2720b0d14a4df36d758f11e024123618e1e188308c4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-live-song-fast-safari-recording-pause.json",
+      "bytes": 3565,
+      "sha256": "febca8af5de020ac353acd09d9e04017489ed072c98fe5c5e2a2df18aa25f284"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/worklet-live-song-fast-safari-recording-pause-20261121-repeat-b/manifest.json",
+      "bytes": 74708,
+      "sha256": "dcf6e46eab5f687174be362a1acb926940125985d5e811c9a927413c96d86cdf"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/worklet-live-song-fast-safari-recording-pause-20261121-repeat-b/summary.json",
+      "bytes": 33035,
+      "sha256": "7218ecbf1ea906c34edaa9bffe8adec93f5222f73485b9d2dc1106caa4c0cc42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_safari_recording_pause_clock_split.py",
+      "bytes": 14130,
+      "sha256": "06a5bd92c79e5ef7cfaa91641984e3686f30127cdae56a23839929eb48d1d06f"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tools/capture-safari-recording-clock-split.mjs",
+      "bytes": 9220,
+      "sha256": "411b8dba7605e897f04fd4de973edb6c6c0879d2ddf37a0a63f6bfbaf0c73e10"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tools/safari-webdriver.mjs",
+      "bytes": 1742,
+      "sha256": "20cd45e1972a1087f849061b9cdeb3407ff6153bf2010c9b130f890aaba0e076"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_worklet_song_recording.py",
+      "bytes": 24836,
+      "sha256": "7f85fd2207a5ace608068166f8e0168235343b05e1ee57dc3f8bb2d0e0d94731"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_wasm_fixed.py",
+      "bytes": 10753,
+      "sha256": "928076b54ad285a1c9fae71272d757146cb9c99fa81c6dd46dd5ffc2d7e6102e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "$REPOSITORY/web/prototypes/chimera-research/tools/capture-safari-recording-clock-split.mjs",
+        "$WORKSPACE/cases/safari-recording-pause-clock-split.json",
+        "$ARTIFACTS"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/1-continuous/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/1-context/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/1-recorder/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/2-context/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/2-continuous/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/3-recorder/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/3-continuous/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/3-context/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 1
+    }
+  ],
+  "status": "fail",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/safari-recording-pause-clock-split-20261121-a/artifacts",
+    "estimated_peak_bytes": 35000000
+  },
+  "outputs": [
+    {
+      "path": "artifacts/1-context/browser.json",
+      "bytes": 15765,
+      "sha256": "e5aa1efbfd866b6e9825e68ad9b2d0f86fea23e2dc4b6eae477b94f9ad2db319"
+    },
+    {
+      "path": "artifacts/1-context/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/1-context/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/1-context/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/1-continuous/browser.json",
+      "bytes": 13830,
+      "sha256": "5987aea51e58a6c5be0c6e0a2d7f2a295a8768537e028801904059b0bd56ee19"
+    },
+    {
+      "path": "artifacts/1-continuous/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/1-continuous/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/1-continuous/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/1-recorder/browser.json",
+      "bytes": 13955,
+      "sha256": "7a165faf56c47089bad78bb91428fb3410e08b7b98e52a105558c5ac8d4a443e"
+    },
+    {
+      "path": "artifacts/1-recorder/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/1-recorder/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/1-recorder/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/2-context/browser.json",
+      "bytes": 15689,
+      "sha256": "8a478ec5b42d34a54647d9e35e20ceb437b2eab9b1fc9b6680e2071afaeb838d"
+    },
+    {
+      "path": "artifacts/2-context/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/2-context/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/2-context/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/2-continuous/browser.json",
+      "bytes": 13923,
+      "sha256": "542fd69fe525d31357bbb8682decc13bfeb7d4ffa96fcd5f7aad4ecc2ce0f5e2"
+    },
+    {
+      "path": "artifacts/2-continuous/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/2-continuous/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/2-continuous/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/2-recorder/browser.json",
+      "bytes": 151,
+      "sha256": "2dfbe1f005b37c1b16c8a626ae1e20fa89dd4f0d9d8c7bb3666640de0f87f4fc"
+    },
+    {
+      "path": "artifacts/3-context/browser.json",
+      "bytes": 15840,
+      "sha256": "a9d9ab38def5aa06af7046b77061e02f1d89298b3b73fd863e62aacc7f19f53a"
+    },
+    {
+      "path": "artifacts/3-context/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/3-context/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/3-context/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/3-continuous/browser.json",
+      "bytes": 14020,
+      "sha256": "ea7c9b97a81d6329dba10ce09f393cf52d2752d61d5d4d01d79289dd1f8fb5bd"
+    },
+    {
+      "path": "artifacts/3-continuous/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/3-continuous/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/3-continuous/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/3-recorder/browser.json",
+      "bytes": 13942,
+      "sha256": "a337352c692c4670c8b3305453f79bbea941cbab068d687396d5b07dbf347ab6"
+    },
+    {
+      "path": "artifacts/3-recorder/ffprobe.json",
+      "bytes": 5,
+      "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+    },
+    {
+      "path": "artifacts/3-recorder/recording.mp4",
+      "bytes": 9,
+      "sha256": "ebc4ae2de92be4ee27b9384172f920edeadc9595a22f7a781c61c79c80e2789a"
+    },
+    {
+      "path": "artifacts/3-recorder/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1931,
+      "sha256": "c56f520e433bff171226baf454acbfc0aaec99ca8ee40ecd2cf1a46a4caca5b0"
+    },
+    {
+      "path": "artifacts/safari.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 8937,
+      "sha256": "17e5c125aabd0f1877a14dfc1994e8126ee699b990839bfb5a708a98daca9f96"
+    }
+  ]
+}

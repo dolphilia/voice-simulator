@@ -1,0 +1,636 @@
+{
+  "checks": {
+    "legacy_body": true,
+    "baseline_default_unchanged": true,
+    "96k/same_inlet_excitation": true,
+    "96k/causal_support": true,
+    "96k/upstream_samples": true,
+    "96k/exact_discrete_formulas": true,
+    "96k/independent_radiation_derivative": true,
+    "96k/tail_decay": true,
+    "96k/main_arrival": true,
+    "96k/resonance_match": true,
+    "96k/complex_amplitude_match": false,
+    "96k/complex_phase_match": true,
+    "96k/preserved_source_volume": true,
+    "96k/raw_tail_frequency_near_cutoff": true,
+    "192k/same_inlet_excitation": true,
+    "192k/causal_support": true,
+    "192k/upstream_samples": true,
+    "192k/exact_discrete_formulas": true,
+    "192k/independent_radiation_derivative": true,
+    "192k/tail_decay": true,
+    "192k/main_arrival": true,
+    "192k/resonance_match": true,
+    "192k/complex_amplitude_match": true,
+    "192k/complex_phase_match": true,
+    "192k/preserved_source_volume": true,
+    "192k/raw_tail_frequency_near_cutoff": true,
+    "96k-viscous/same_inlet_excitation": true,
+    "96k-viscous/causal_support": true,
+    "96k-viscous/upstream_samples": true,
+    "96k-viscous/exact_discrete_formulas": true,
+    "96k-viscous/independent_radiation_derivative": true,
+    "96k-viscous/tail_decay": true,
+    "96k-viscous/preserved_source_volume": true,
+    "refinement_reduces_high_band_error": true
+  },
+  "cases": {
+    "96k": {
+      "methods": {
+        "fdtd": {
+          "first_nonzero_sample": 39,
+          "main_arrival_samples": 49.26803943889678,
+          "resonance_hz": [
+            483.18773157867247,
+            1450.6489138318302,
+            2420.7597935337753,
+            3393.783307819896
+          ],
+          "peak_heights_db": [
+            48.918864981899546,
+            30.052999687316063,
+            21.58246450638891,
+            16.283311039963003
+          ],
+          "tail_over_peak": 3.749519448384871e-10
+        },
+        "upstream": {
+          "first_nonzero_sample": 39,
+          "main_arrival_samples": 49.26803943889678,
+          "resonance_hz": [
+            483.18773157867247,
+            1450.6489138318304,
+            2420.759793533775,
+            3393.7833078198987
+          ],
+          "peak_heights_db": [
+            48.91886498190065,
+            30.052999687316206,
+            21.582464506388952,
+            16.28331103996302
+          ],
+          "tail_over_peak": 3.749519448317623e-10
+        },
+        "waveguide": {
+          "first_nonzero_sample": 48,
+          "main_arrival_samples": 49.67245198610618,
+          "resonance_hz": [
+            477.45493322337006,
+            1434.2066100748993,
+            2395.5891652758555,
+            3362.5984858186316
+          ],
+          "peak_heights_db": [
+            49.140605682168506,
+            30.35381675745078,
+            22.031180022314892,
+            16.92534983688397
+          ],
+          "tail_over_peak": 8.032365325717039e-10
+        }
+      },
+      "first_sample_differences": {
+        "inlet_flow_cm3_s": null,
+        "inlet_pressure_dyn_cm2": 0,
+        "outlet_pressure_dyn_cm2": 39,
+        "radiation_flow_cm3_s": 39,
+        "radiation_flow_derivative_cm3_s2": 39
+      },
+      "main_arrival_difference_seconds": -4.212630700097956e-06,
+      "resonance_relative_error": [
+        0.012006993658227438,
+        0.011464389887362314,
+        0.010507072173630227,
+        0.009274024874745823
+      ],
+      "slowest_waveguide_pole": {
+        "magnitude": 0.9999307003316505,
+        "frequency_hz": 477.45497069541625,
+        "time_constant_seconds": 0.15030816127718377
+      },
+      "upstream_relative_peak_error": {
+        "inlet_flow_cm3_s": 0.0,
+        "inlet_pressure_dyn_cm2": 9.97257547665502e-15,
+        "outlet_pressure_dyn_cm2": 1.929052819769183e-15,
+        "radiation_flow_cm3_s": 8.95392265762695e-15,
+        "radiation_flow_derivative_cm3_s2": 1.8192516645517722e-15
+      },
+      "complex": {
+        "fdtd_nodal_complex_error": 2.155103239972954e-09,
+        "waveguide_closed_form_complex_error": 2.057124990427978e-09,
+        "fdtd_derivative_complex_error": 2.144593421062397e-09,
+        "waveguide_derivative_complex_error": 3.869259874052562e-09,
+        "relative_complex_distance_high_band": 0.16077849146834325,
+        "rows": [
+          {
+            "frequency_hz": 250,
+            "fdtd": [
+              1.4540413064725577,
+              -0.0014369800559661894
+            ],
+            "waveguide": [
+              1.4688578640169998,
+              -0.0014662921447113348
+            ],
+            "fdtd_minus_waveguide_db": -0.08806065785771369,
+            "fdtd_minus_waveguide_degrees": 0.0005722085006781145
+          },
+          {
+            "frequency_hz": 750,
+            "fdtd": [
+              -1.307254782783033,
+              -0.010407998938431959
+            ],
+            "waveguide": [
+              -1.2728020930386719,
+              -0.009860365862432672
+            ],
+            "fdtd_minus_waveguide_db": 0.23200182210095704,
+            "fdtd_minus_waveguide_degrees": 0.012303333795558874
+          },
+          {
+            "frequency_hz": 1250,
+            "fdtd": [
+              -1.633637599061063,
+              0.044822405718480014
+            ],
+            "waveguide": [
+              -1.7299086354143163,
+              0.05013851790153633
+            ],
+            "fdtd_minus_waveguide_db": -0.49772747912289017,
+            "fdtd_minus_waveguide_degrees": 0.08851768539967624
+          },
+          {
+            "frequency_hz": 1750,
+            "fdtd": [
+              1.1908033021035493,
+              0.04604298028192678
+            ],
+            "waveguide": [
+              1.1275244260733361,
+              0.04116249217584936
+            ],
+            "fdtd_minus_waveguide_db": 0.47498512155871,
+            "fdtd_minus_waveguide_degrees": 0.12349936546870056
+          },
+          {
+            "frequency_hz": 2250,
+            "fdtd": [
+              1.8319192282691494,
+              -0.1793473568333022
+            ],
+            "waveguide": [
+              2.0504979863836086,
+              -0.22308501742535666
+            ],
+            "fdtd_minus_waveguide_db": -0.9887363087572785,
+            "fdtd_minus_waveguide_degrees": 0.6175886179681667
+          },
+          {
+            "frequency_hz": 2750,
+            "fdtd": [
+              -1.0979613413366431,
+              -0.09335009262045925
+            ],
+            "waveguide": [
+              -1.0186971201968746,
+              -0.07989420448041788
+            ],
+            "fdtd_minus_waveguide_db": 0.6554886841362734,
+            "fdtd_minus_waveguide_degrees": 0.37526987726772826
+          },
+          {
+            "frequency_hz": 3250,
+            "fdtd": [
+              -1.996308468697183,
+              0.4447687385563978
+            ],
+            "waveguide": [
+              -2.3486248115451636,
+              0.6125828391609972
+            ],
+            "fdtd_minus_waveguide_db": -1.4871606852802033,
+            "fdtd_minus_waveguide_degrees": 2.058436664516016
+          },
+          {
+            "frequency_hz": 3750,
+            "fdtd": [
+              1.0224528285185703,
+              0.1438094756140193
+            ],
+            "waveguide": [
+              0.9356202575493406,
+              0.11939040619128838
+            ],
+            "fdtd_minus_waveguide_db": 0.7858028039634745,
+            "fdtd_minus_waveguide_degrees": 0.7342517518516347
+          }
+        ]
+      },
+      "raw_tail_peak_hz": 30070.0,
+      "fdtd_cutoff_hz": 30102.76812697562,
+      "fir_source_delay_samples": 48,
+      "fir_gain_at_fdtd_cutoff": 5.742349199786332e-08
+    },
+    "192k": {
+      "methods": {
+        "fdtd": {
+          "first_nonzero_sample": 79,
+          "main_arrival_samples": 98.90469220929549,
+          "resonance_hz": [
+            480.30723350718307,
+            1442.4699864395825,
+            2408.5179255437556,
+            3379.2337328683434
+          ],
+          "peak_heights_db": [
+            49.031031312964146,
+            30.215124520243585,
+            21.838046344157682,
+            16.66299503309596
+          ],
+          "tail_over_peak": 5.520428951780027e-10
+        },
+        "upstream": {
+          "first_nonzero_sample": 79,
+          "main_arrival_samples": 98.90469220929552,
+          "resonance_hz": [
+            480.30723350718307,
+            1442.4699864395823,
+            2408.5179255437556,
+            3379.2337328683425
+          ],
+          "peak_heights_db": [
+            49.03103131296645,
+            30.215124520243855,
+            21.838046344157785,
+            16.662995033096028
+          ],
+          "tail_over_peak": 5.520428933191983e-10
+        },
+        "waveguide": {
+          "first_nonzero_sample": 96,
+          "main_arrival_samples": 99.33634549674102,
+          "resonance_hz": [
+            477.4564866460024,
+            1434.2393379991793,
+            2395.72246341989,
+            3362.9116674605903
+          ],
+          "peak_heights_db": [
+            49.11534925341655,
+            30.362636307407456,
+            22.054289142681526,
+            16.96745419642436
+          ],
+          "tail_over_peak": 8.01442500908752e-10
+        }
+      },
+      "first_sample_differences": {
+        "inlet_flow_cm3_s": null,
+        "inlet_pressure_dyn_cm2": 0,
+        "outlet_pressure_dyn_cm2": 79,
+        "radiation_flow_cm3_s": 79,
+        "radiation_flow_derivative_cm3_s2": 79
+      },
+      "main_arrival_difference_seconds": -2.2481942054454567e-06,
+      "resonance_relative_error": [
+        0.005970694588749437,
+        0.00573868546367251,
+        0.005340961784696896,
+        0.004853551630774167
+      ],
+      "slowest_waveguide_pole": {
+        "magnitude": 0.9999653532940419,
+        "frequency_hz": 477.4562758133969,
+        "time_constant_seconds": 0.1503243371336548
+      },
+      "upstream_relative_peak_error": {
+        "inlet_flow_cm3_s": 0.0,
+        "inlet_pressure_dyn_cm2": 2.0125044831275344e-14,
+        "outlet_pressure_dyn_cm2": 3.97954154963629e-15,
+        "radiation_flow_cm3_s": 1.8681151492411013e-14,
+        "radiation_flow_derivative_cm3_s2": 3.675799077865102e-15
+      },
+      "complex": {
+        "fdtd_nodal_complex_error": 3.1085204157688874e-09,
+        "waveguide_closed_form_complex_error": 2.023389312896913e-09,
+        "fdtd_derivative_complex_error": 3.1474123508623175e-09,
+        "waveguide_derivative_complex_error": 3.9673555982962686e-09,
+        "relative_complex_distance_high_band": 0.09277109756738683,
+        "rows": [
+          {
+            "frequency_hz": 250,
+            "fdtd": [
+              1.4614086633838341,
+              -0.0014514354784347543
+            ],
+            "waveguide": [
+              1.4688569157269016,
+              -0.0014662411847553185
+            ],
+            "fdtd_minus_waveguide_db": -0.04415633964885244,
+            "fdtd_minus_waveguide_degrees": 0.00028897502288557637
+          },
+          {
+            "frequency_hz": 750,
+            "fdtd": [
+              -1.2898661927019883,
+              -0.01012510800047044
+            ],
+            "waveguide": [
+              -1.2728210663967903,
+              -0.009857707214593425
+            ],
+            "fdtd_minus_waveguide_db": 0.11555321628785399,
+            "fdtd_minus_waveguide_degrees": 0.006013658663242375
+          },
+          {
+            "frequency_hz": 1250,
+            "fdtd": [
+              -1.679832128790329,
+              0.047266387564301016
+            ],
+            "waveguide": [
+              -1.729754298241537,
+              0.05008823944421365
+            ],
+            "fdtd_minus_waveguide_db": -0.2545736839206641,
+            "fdtd_minus_waveguide_degrees": 0.046903405679031326
+          },
+          {
+            "frequency_hz": 1750,
+            "fdtd": [
+              1.1589558242040616,
+              0.04345259721837816
+            ],
+            "waveguide": [
+              1.1277034591837773,
+              0.041110017118379694
+            ],
+            "fdtd_minus_waveguide_db": 0.23777237301079207,
+            "fdtd_minus_waveguide_degrees": 0.05940615967315881
+          },
+          {
+            "frequency_hz": 2250,
+            "fdtd": [
+              1.930968843798174,
+              -0.1975230024655149
+            ],
+            "waveguide": [
+              2.049483105121429,
+              -0.2222746913526461
+            ],
+            "fdtd_minus_waveguide_db": -0.522959226726689,
+            "fdtd_minus_waveguide_degrees": 0.34916993452698875
+          },
+          {
+            "frequency_hz": 2750,
+            "fdtd": [
+              -1.0588270369177497,
+              -0.08613122206741698
+            ],
+            "waveguide": [
+              -1.019221418980558,
+              -0.07967354977723247
+            ],
+            "fdtd_minus_waveguide_db": 0.3333151825353676,
+            "fdtd_minus_waveguide_degrees": 0.18075790769601957
+          },
+          {
+            "frequency_hz": 3250,
+            "fdtd": [
+              -2.146188173711336,
+              0.505788909136889
+            ],
+            "waveguide": [
+              -2.3465617741409726,
+              0.6078715798815341
+            ],
+            "fdtd_minus_waveguide_db": -0.8226130121561164,
+            "fdtd_minus_waveguide_degrees": 1.2622573958828986
+          },
+          {
+            "frequency_hz": 3750,
+            "fdtd": [
+              0.981089009675477,
+              0.13078105482890334
+            ],
+            "waveguide": [
+              0.9366435789519463,
+              0.11884671394657699
+            ],
+            "fdtd_minus_waveguide_db": 0.40981044271395645,
+            "fdtd_minus_waveguide_degrees": 0.36150102682224966
+          }
+        ]
+      },
+      "raw_tail_peak_hz": 60190.0,
+      "fdtd_cutoff_hz": 60205.53625395124,
+      "fir_source_delay_samples": 96,
+      "fir_gain_at_fdtd_cutoff": 2.3811824008527724e-08
+    },
+    "96k-viscous": {
+      "methods": {
+        "fdtd": {
+          "first_nonzero_sample": 39,
+          "main_arrival_samples": 49.27383268872249,
+          "resonance_hz": [
+            483.11553308191515,
+            1450.4569352332392,
+            2420.4509867250554,
+            3393.365399473443
+          ],
+          "peak_heights_db": [
+            37.92016369921585,
+            27.81471202308055,
+            20.65073142018391,
+            15.751709960010785
+          ],
+          "tail_over_peak": 2.4587530616820113e-32
+        },
+        "upstream": {
+          "first_nonzero_sample": 39,
+          "main_arrival_samples": 49.27383268872249,
+          "resonance_hz": [
+            483.1155330819152,
+            1450.4569352332396,
+            2420.4509867250545,
+            3393.3653994734436
+          ],
+          "peak_heights_db": [
+            37.920163699216175,
+            27.814712023080652,
+            20.65073142018395,
+            15.751709960010803
+          ],
+          "tail_over_peak": 2.4587530616889534e-32
+        },
+        "waveguide": {
+          "first_nonzero_sample": 48,
+          "main_arrival_samples": 49.67245198610618,
+          "resonance_hz": [
+            477.45493322337006,
+            1434.2066100748993,
+            2395.5891652758555,
+            3362.5984858186316
+          ],
+          "peak_heights_db": [
+            49.140605682168506,
+            30.35381675745078,
+            22.031180022314892,
+            16.92534983688397
+          ],
+          "tail_over_peak": 8.032365325717039e-10
+        }
+      },
+      "first_sample_differences": {
+        "inlet_flow_cm3_s": null,
+        "inlet_pressure_dyn_cm2": 0,
+        "outlet_pressure_dyn_cm2": 39,
+        "radiation_flow_cm3_s": 39,
+        "radiation_flow_derivative_cm3_s2": 39
+      },
+      "main_arrival_difference_seconds": -4.152284347746763e-06,
+      "resonance_relative_error": [
+        0.011855778346093304,
+        0.011330532884304079,
+        0.010378165759627134,
+        0.009149743504782926
+      ],
+      "slowest_waveguide_pole": {
+        "magnitude": 0.9999307003316505,
+        "frequency_hz": 477.45497069541625,
+        "time_constant_seconds": 0.15030816127718377
+      },
+      "upstream_relative_peak_error": {
+        "inlet_flow_cm3_s": 0.0,
+        "inlet_pressure_dyn_cm2": 3.585619988403476e-15,
+        "outlet_pressure_dyn_cm2": 1.3784057294253947e-15,
+        "radiation_flow_cm3_s": 3.200074122149881e-15,
+        "radiation_flow_derivative_cm3_s2": 1.3423133553953466e-15
+      },
+      "complex": {
+        "fdtd_nodal_complex_error": 1.1381623316204478e-13,
+        "waveguide_closed_form_complex_error": 2.057124990427978e-09,
+        "fdtd_derivative_complex_error": 7.606005143296958e-14,
+        "waveguide_derivative_complex_error": 3.869259874052562e-09,
+        "relative_complex_distance_high_band": 0.1616615912467581,
+        "rows": [
+          {
+            "frequency_hz": 250,
+            "fdtd": [
+              1.4540150541031616,
+              -0.01545689867626336
+            ],
+            "waveguide": [
+              1.4688578640169998,
+              -0.0014662921447113348
+            ],
+            "fdtd_minus_waveguide_db": -0.08773096535660807,
+            "fdtd_minus_waveguide_degrees": -0.5518638333443889
+          },
+          {
+            "frequency_hz": 750,
+            "fdtd": [
+              -1.3065544682885268,
+              -0.020440021008709654
+            ],
+            "waveguide": [
+              -1.2728020930386719,
+              -0.009860365862432672
+            ],
+            "fdtd_minus_waveguide_db": 0.22813490644842768,
+            "fdtd_minus_waveguide_degrees": 0.45241438097608944
+          },
+          {
+            "frequency_hz": 1250,
+            "fdtd": [
+              -1.6327566525724126,
+              0.06452173385756778
+            ],
+            "waveguide": [
+              -1.7299086354143163,
+              0.05013851790153633
+            ],
+            "fdtd_minus_waveguide_db": -0.4989041388901077,
+            "fdtd_minus_waveguide_degrees": -0.6028250898274098
+          },
+          {
+            "frequency_hz": 1750,
+            "fdtd": [
+              1.1891924780717835,
+              0.0532467284617593
+            ],
+            "waveguide": [
+              1.1275244260733361,
+              0.04116249217584936
+            ],
+            "fdtd_minus_waveguide_db": 0.46543787869579256,
+            "fdtd_minus_waveguide_degrees": 0.472970361226458
+          },
+          {
+            "frequency_hz": 2250,
+            "fdtd": [
+              1.8266625540448183,
+              -0.2062859585102208
+            ],
+            "waveguide": [
+              2.0504979863836086,
+              -0.22308501742535666
+            ],
+            "fdtd_minus_waveguide_db": -1.0000870175335808,
+            "fdtd_minus_waveguide_degrees": -0.23404079265366562
+          },
+          {
+            "frequency_hz": 2750,
+            "fdtd": [
+              -1.0954815162847404,
+              -0.09840961390552055
+            ],
+            "waveguide": [
+              -1.0186971201968746,
+              -0.07989420448041788
+            ],
+            "fdtd_minus_waveguide_db": 0.6394744269600922,
+            "fdtd_minus_waveguide_degrees": 0.6488283090139466
+          },
+          {
+            "frequency_hz": 3250,
+            "fdtd": [
+              -1.9801686494278443,
+              0.47765336889275517
+            ],
+            "waveguide": [
+              -2.3486248115451636,
+              0.6125828391609972
+            ],
+            "fdtd_minus_waveguide_db": -1.5224433391235934,
+            "fdtd_minus_waveguide_degrees": 1.0568174316919994
+          },
+          {
+            "frequency_hz": 3750,
+            "fdtd": [
+              1.0192872108245696,
+              0.14711084691325998
+            ],
+            "waveguide": [
+              0.9356202575493406,
+              0.11939040619128838
+            ],
+            "fdtd_minus_waveguide_db": 0.7633273994638439,
+            "fdtd_minus_waveguide_degrees": 0.9406642621348809
+          }
+        ]
+      },
+      "raw_tail_peak_hz": 30060.0,
+      "fdtd_cutoff_hz": 30102.76812697562,
+      "fir_source_delay_samples": 48,
+      "fir_gain_at_fdtd_cutoff": 5.742349199786332e-08
+    }
+  },
+  "refinement_high_band_fraction_reduced": 0.42298813280224645,
+  "prior_run": "uniform-waveguide-matched-20261121-long"
+}

@@ -1,0 +1,672 @@
+{
+  "checks": {
+    "continuous/output_segments": true,
+    "continuous/recovery_write_sizes": true,
+    "continuous/source_pcm": true,
+    "continuous/zero_pcm": true,
+    "continuous/ramp_shape": true,
+    "continuous/status_and_positions": true,
+    "empty_fifo/output_segments": true,
+    "empty_fifo/recovery_write_sizes": true,
+    "empty_fifo/source_pcm": true,
+    "empty_fifo/zero_pcm": true,
+    "empty_fifo/ramp_shape": true,
+    "empty_fifo/status_and_positions": true,
+    "short_pause/output_segments": true,
+    "short_pause/recovery_write_sizes": true,
+    "short_pause/source_pcm": true,
+    "short_pause/zero_pcm": true,
+    "short_pause/ramp_shape": true,
+    "short_pause/status_and_positions": true,
+    "long_pause/output_segments": true,
+    "long_pause/recovery_write_sizes": true,
+    "long_pause/source_pcm": true,
+    "long_pause/zero_pcm": true,
+    "long_pause/ramp_shape": true,
+    "long_pause/status_and_positions": true,
+    "long_pause_smaller_write/output_segments": true,
+    "long_pause_smaller_write/recovery_write_sizes": true,
+    "long_pause_smaller_write/source_pcm": true,
+    "long_pause_smaller_write/zero_pcm": true,
+    "long_pause_smaller_write/ramp_shape": true,
+    "long_pause_smaller_write/status_and_positions": true,
+    "worklet-safari-song-process-output-20261122-b/two_quiet_intervals": true,
+    "worklet-safari-song-process-output-20261122-b/net_phase_shift": true,
+    "worklet-safari-song-process-output-20261122-b/quiet_widths": true,
+    "worklet-safari-song-process-output-20261122-b/middle_signal_phase": true,
+    "worklet-safari-song-process-output-20261122-repeat/two_quiet_intervals": true,
+    "worklet-safari-song-process-output-20261122-repeat/net_phase_shift": true,
+    "worklet-safari-song-process-output-20261122-repeat/quiet_widths": true,
+    "worklet-safari-song-process-output-20261122-repeat/middle_signal_phase": true
+  },
+  "models": {
+    "continuous": {
+      "segments": [
+        [
+          "signal",
+          14336
+        ]
+      ],
+      "recovery_write_frames": [],
+      "maximum_ramp_error": 0.0,
+      "phase_delay_frames": 0
+    },
+    "empty_fifo": {
+      "segments": [
+        [
+          "signal",
+          128
+        ],
+        [
+          "fifo_zero",
+          128
+        ],
+        [
+          "signal",
+          14080
+        ]
+      ],
+      "recovery_write_frames": [],
+      "maximum_ramp_error": 0.0,
+      "phase_delay_frames": 128
+    },
+    "short_pause": {
+      "segments": [
+        [
+          "signal",
+          256
+        ],
+        [
+          "ring_ramp",
+          128
+        ],
+        [
+          "ring_zero",
+          512
+        ],
+        [
+          "signal",
+          128
+        ],
+        [
+          "fifo_zero",
+          640
+        ],
+        [
+          "signal",
+          12672
+        ]
+      ],
+      "recovery_write_frames": [
+        768
+      ],
+      "maximum_ramp_error": 0.0,
+      "phase_delay_frames": 1280
+    },
+    "long_pause": {
+      "segments": [
+        [
+          "signal",
+          256
+        ],
+        [
+          "ring_ramp",
+          128
+        ],
+        [
+          "ring_zero",
+          6272
+        ],
+        [
+          "signal",
+          128
+        ],
+        [
+          "fifo_zero",
+          3968
+        ],
+        [
+          "signal",
+          3584
+        ]
+      ],
+      "recovery_write_frames": [
+        4096,
+        2432
+      ],
+      "maximum_ramp_error": 0.0,
+      "phase_delay_frames": 10368
+    },
+    "long_pause_smaller_write": {
+      "segments": [
+        [
+          "signal",
+          256
+        ],
+        [
+          "ring_ramp",
+          128
+        ],
+        [
+          "ring_zero",
+          6272
+        ],
+        [
+          "signal",
+          128
+        ],
+        [
+          "fifo_zero",
+          1920
+        ],
+        [
+          "signal",
+          5632
+        ]
+      ],
+      "recovery_write_frames": [
+        2048,
+        2048,
+        2048,
+        384
+      ],
+      "maximum_ramp_error": 0.0,
+      "phase_delay_frames": 8320
+    }
+  },
+  "captures": {
+    "worklet-safari-song-process-output-20261122-b": {
+      "silence_frames": [
+        6305,
+        3873
+      ],
+      "expected_gap_frames": [
+        6400,
+        3968
+      ],
+      "gap_shortfall_frames": [
+        95,
+        95
+      ],
+      "quiet_onset_separation_frames": 6528,
+      "phase_error_frames": 0.0830371513220598,
+      "middle_tap_range": [
+        38881,
+        38961
+      ],
+      "middle_waveform_relative_error": 0.0003523232543301636,
+      "first_underrun_estimate": 32457,
+      "edge_alignments": [
+        {
+          "shift": -16,
+          "previous_signal": -0.003906245123159465,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147197085172,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -15,
+          "previous_signal": -0.0039062451233815524,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714719792475,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -14,
+          "previous_signal": -0.0039062451236036404,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714719876433,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -13,
+          "previous_signal": -0.003906245123825728,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147199603908,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -12,
+          "previous_signal": -0.0039062451240478155,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147200443489,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -11,
+          "previous_signal": -0.0039062451242699034,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147201283067,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -10,
+          "previous_signal": -0.003906245124491991,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147202122647,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -9,
+          "previous_signal": -0.003906245124714079,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147202962227,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -8,
+          "previous_signal": -0.0039062451249361665,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147203801805,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -7,
+          "previous_signal": -0.0039062451251582544,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147204641385,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -6,
+          "previous_signal": -0.003906245125380342,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147205480963,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -5,
+          "previous_signal": -0.0039062451256024295,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714720632054,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -4,
+          "previous_signal": -0.0039062451258245175,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147207160123,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -3,
+          "previous_signal": -0.003906245126046605,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.00147671472079997,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -2,
+          "previous_signal": -0.003906245126268693,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147208839281,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -1,
+          "previous_signal": -0.0039062451264907806,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714720967886,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 0,
+          "previous_signal": -0.003906245126712868,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147210518437,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 1,
+          "previous_signal": -0.003906245126934956,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147211358017,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 2,
+          "previous_signal": -0.0039062451271570436,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147212197595,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 3,
+          "previous_signal": -0.0039062451273791316,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147213037176,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 4,
+          "previous_signal": -0.003906245127601219,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147213876756,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 5,
+          "previous_signal": -0.0039062451278233067,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147214716334,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 6,
+          "previous_signal": -0.0039062451280453946,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147215555916,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 7,
+          "previous_signal": -0.003906245128267482,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147216395492,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 8,
+          "previous_signal": -0.00390624512848957,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147217235072,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 9,
+          "previous_signal": -0.0039062451287116577,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714721807465,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 10,
+          "previous_signal": -0.0039062451289337452,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714721891423,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 11,
+          "previous_signal": -0.003906245129155833,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476714721975381,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 12,
+          "previous_signal": -0.0039062451293779207,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147220593388,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 13,
+          "previous_signal": -0.0039062451296000087,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147221432966,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 14,
+          "previous_signal": -0.0039062451298220962,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147222272546,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 15,
+          "previous_signal": -0.003906245130044184,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767147223112126,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 16,
+          "previous_signal": -0.0039039590685291574,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001475850500895771,
+          "zero_residual_rms": 0.0
+        }
+      ],
+      "maximum_quiet_to_boundary_ratio": 0.0,
+      "edge_prefers_zero": true
+    },
+    "worklet-safari-song-process-output-20261122-repeat": {
+      "silence_frames": [
+        6305,
+        3873
+      ],
+      "expected_gap_frames": [
+        6400,
+        3968
+      ],
+      "gap_shortfall_frames": [
+        95,
+        95
+      ],
+      "quiet_onset_separation_frames": 6528,
+      "phase_error_frames": 0.08537923212861642,
+      "middle_tap_range": [
+        39114,
+        39194
+      ],
+      "middle_waveform_relative_error": 0.0003711970680916979,
+      "first_underrun_estimate": 32690,
+      "edge_alignments": [
+        {
+          "shift": -16,
+          "previous_signal": -0.0039039790036226553,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014758580371473575,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -15,
+          "previous_signal": -0.0037893773264160327,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001432534083248268,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -14,
+          "previous_signal": -0.003518176419351348,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0013300094441552664,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -13,
+          "previous_signal": -0.0031132648702474645,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0011769369087947473,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -12,
+          "previous_signal": -0.0025975312669377026,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0009819692660985703,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -11,
+          "previous_signal": -0.001993864197247052,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0007537593049954459,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -10,
+          "previous_signal": -0.0013251522490214157,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0005009598144219905,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -6,
+          "previous_signal": 0.0015423725723728114,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0005830776638654482,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -5,
+          "previous_signal": 0.0021929800955688113,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0008290329677352541,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -4,
+          "previous_signal": 0.0027713009701838777,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0010476610674403806,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -3,
+          "previous_signal": 0.0032544466083385673,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0012303091740315322,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -2,
+          "previous_signal": 0.003619528422161656,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0013683244985625191,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": -1,
+          "previous_signal": 0.003843657823773639,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001453054252084023,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 0,
+          "previous_signal": 0.003906253855718774,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.00147671802096035,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 1,
+          "previous_signal": 0.003906253855925427,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180210384732,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 2,
+          "previous_signal": 0.00390625385613208,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476718021116596,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 3,
+          "previous_signal": 0.003906253856338734,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180211947193,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 4,
+          "previous_signal": 0.003906253856545387,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180212728421,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 5,
+          "previous_signal": 0.003906253856752039,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180213509652,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 6,
+          "previous_signal": 0.0039062538569586925,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476718021429088,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 7,
+          "previous_signal": 0.003906253857165346,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001476718021507211,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 8,
+          "previous_signal": 0.003906253857371999,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180215853343,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 9,
+          "previous_signal": 0.003906253857578652,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180216634574,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 10,
+          "previous_signal": 0.003906253857785306,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180217415805,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 11,
+          "previous_signal": 0.003906253857991959,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180218197037,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 12,
+          "previous_signal": 0.003906253858198612,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180218978266,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 13,
+          "previous_signal": 0.003906253858405265,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180219759496,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 14,
+          "previous_signal": 0.003906253858611919,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180220540729,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 15,
+          "previous_signal": 0.003906253858818571,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.0014767180221321955,
+          "zero_residual_rms": 0.0
+        },
+        {
+          "shift": 16,
+          "previous_signal": 0.003903973907339716,
+          "observed_to_previous_rms": 0.0,
+          "ramp_residual_rms": 0.001475856110551408,
+          "zero_residual_rms": 0.0
+        }
+      ],
+      "maximum_quiet_to_boundary_ratio": 0.0,
+      "edge_prefers_zero": true
+    }
+  }
+}

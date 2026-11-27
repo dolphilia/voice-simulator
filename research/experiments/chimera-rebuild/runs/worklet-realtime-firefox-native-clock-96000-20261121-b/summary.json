@@ -1,0 +1,430 @@
+{
+  "checks": {
+    "same_built_wasm": true,
+    "firefox-1/same_wasm": true,
+    "firefox-1/same_pcm": true,
+    "firefox-1/same_observations": true,
+    "firefox-1/same_context_frames": true,
+    "firefox-1/profile_saved": true,
+    "firefox-1/native_intervals_aligned": true,
+    "firefox-2/same_wasm": true,
+    "firefox-2/same_pcm": true,
+    "firefox-2/same_observations": true,
+    "firefox-2/same_context_frames": true,
+    "firefox-2/profile_saved": true,
+    "firefox-2/native_intervals_aligned": true
+  },
+  "trials": [
+    {
+      "trial": "firefox-1",
+      "version": "157.0",
+      "clock": "Date.now",
+      "expected_native_markers": 1424,
+      "native_threads": [
+        {
+          "name": "AudioIPC Server RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Server Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC DeviceCollection RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              361
+            ],
+            [
+              "AudioCallbackDriver::DataCallback",
+              360
+            ],
+            [
+              "GraphRunner::OneIteration",
+              360
+            ],
+            [
+              "AudioCallbackDriver real-time budget",
+              180
+            ],
+            [
+              "NewThread",
+              1
+            ],
+            [
+              "EventQueueInternal::PutEvent",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "GraphRunner",
+          "count": 1424,
+          "markers": [
+            [
+              "DestinationNodeEngine::ProcessBlock",
+              2854
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlock",
+              2848
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlocksOnPorts",
+              2848
+            ],
+            [
+              "AudioWorkletNodeEngine::CallProcess",
+              2848
+            ],
+            [
+              "Awake",
+              384
+            ],
+            [
+              "GraphRunner::Run",
+              378
+            ],
+            [
+              "MTG::OneIterationImpl",
+              378
+            ],
+            [
+              "MTG::RunMessagesInQueue",
+              378
+            ]
+          ]
+        }
+      ],
+      "matched_threads": 1,
+      "native_voicing": {
+        "blocks": 750,
+        "median_ms": 0.18137500000011642,
+        "p95_ms": 0.3017085500000235,
+        "p99_ms": 0.3502146600000651,
+        "maximum_ms": 0.38400000000001455,
+        "over_budget_blocks": 0
+      },
+      "date_voicing": {
+        "blocks": 750,
+        "median_ms": 0.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 2.0,
+        "over_budget_blocks": 5
+      },
+      "date_over_but_native_within_budget": 6,
+      "native_over_budget": 0,
+      "over_budget_quanta": [
+        {
+          "quantum": 180,
+          "output_frame": 23040,
+          "date_ms": 2.0,
+          "native_ms": 0.2011250000000473,
+          "voiced": true
+        },
+        {
+          "quantum": 184,
+          "output_frame": 23552,
+          "date_ms": 2.0,
+          "native_ms": 0.20000000000004547,
+          "voiced": true
+        },
+        {
+          "quantum": 568,
+          "output_frame": 72704,
+          "date_ms": 2.0,
+          "native_ms": 0.23795800000016243,
+          "voiced": true
+        },
+        {
+          "quantum": 635,
+          "output_frame": 81280,
+          "date_ms": 2.0,
+          "native_ms": 0.26816699999994853,
+          "voiced": true
+        },
+        {
+          "quantum": 760,
+          "output_frame": 97280,
+          "date_ms": 2.0,
+          "native_ms": 0.3028340000000753,
+          "voiced": true
+        },
+        {
+          "quantum": 826,
+          "output_frame": 105728,
+          "date_ms": 2.0,
+          "native_ms": 0.34958300000016607,
+          "voiced": false
+        }
+      ],
+      "author_call_voicing": {
+        "blocks": 750,
+        "median_ms": 0.18070849999992333,
+        "p95_ms": 0.301031399999988,
+        "p99_ms": 0.3490855000000647,
+        "maximum_ms": 0.38333399999999074,
+        "over_budget_blocks": 0
+      },
+      "author_call_over_budget": 0
+    },
+    {
+      "trial": "firefox-2",
+      "version": "157.0",
+      "clock": "Date.now",
+      "expected_native_markers": 1424,
+      "native_threads": [
+        {
+          "name": "AudioIPC Server RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Server Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC DeviceCollection RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              361
+            ],
+            [
+              "AudioCallbackDriver::DataCallback",
+              360
+            ],
+            [
+              "GraphRunner::OneIteration",
+              360
+            ],
+            [
+              "AudioCallbackDriver real-time budget",
+              180
+            ],
+            [
+              "NewThread",
+              1
+            ],
+            [
+              "EventQueueInternal::PutEvent",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "GraphRunner",
+          "count": 1424,
+          "markers": [
+            [
+              "DestinationNodeEngine::ProcessBlock",
+              2862
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlock",
+              2848
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlocksOnPorts",
+              2848
+            ],
+            [
+              "AudioWorkletNodeEngine::CallProcess",
+              2848
+            ],
+            [
+              "Awake",
+              384
+            ],
+            [
+              "GraphRunner::Run",
+              378
+            ],
+            [
+              "MTG::OneIterationImpl",
+              378
+            ],
+            [
+              "MTG::RunMessagesInQueue",
+              378
+            ]
+          ]
+        }
+      ],
+      "matched_threads": 1,
+      "native_voicing": {
+        "blocks": 750,
+        "median_ms": 0.17018749999999727,
+        "p95_ms": 0.19835609999998952,
+        "p99_ms": 0.21574099000000613,
+        "maximum_ms": 0.38649999999995543,
+        "over_budget_blocks": 0
+      },
+      "date_voicing": {
+        "blocks": 750,
+        "median_ms": 0.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 2.0,
+        "over_budget_blocks": 1
+      },
+      "date_over_but_native_within_budget": 11,
+      "native_over_budget": 0,
+      "over_budget_quanta": [
+        {
+          "quantum": 1,
+          "output_frame": 128,
+          "date_ms": 2.0,
+          "native_ms": 0.6257499999999254,
+          "voiced": false
+        },
+        {
+          "quantum": 57,
+          "output_frame": 7296,
+          "date_ms": 2.0,
+          "native_ms": 0.1997920000000022,
+          "voiced": false
+        },
+        {
+          "quantum": 792,
+          "output_frame": 101376,
+          "date_ms": 2.0,
+          "native_ms": 0.1766250000000582,
+          "voiced": true
+        },
+        {
+          "quantum": 1046,
+          "output_frame": 133888,
+          "date_ms": 2.0,
+          "native_ms": 0.20933400000012625,
+          "voiced": false
+        },
+        {
+          "quantum": 1126,
+          "output_frame": 144128,
+          "date_ms": 2.0,
+          "native_ms": 0.23329199999989214,
+          "voiced": false
+        },
+        {
+          "quantum": 1203,
+          "output_frame": 153984,
+          "date_ms": 2.0,
+          "native_ms": 0.32720800000015515,
+          "voiced": false
+        },
+        {
+          "quantum": 1295,
+          "output_frame": 165760,
+          "date_ms": 2.0,
+          "native_ms": 0.3132500000001528,
+          "voiced": false
+        },
+        {
+          "quantum": 1322,
+          "output_frame": 169216,
+          "date_ms": 2.0,
+          "native_ms": 0.39283400000022084,
+          "voiced": false
+        },
+        {
+          "quantum": 1328,
+          "output_frame": 169984,
+          "date_ms": 2.0,
+          "native_ms": 0.41762500000004366,
+          "voiced": false
+        },
+        {
+          "quantum": 1378,
+          "output_frame": 176384,
+          "date_ms": 2.0,
+          "native_ms": 0.5290829999999005,
+          "voiced": false
+        },
+        {
+          "quantum": 1385,
+          "output_frame": 177280,
+          "date_ms": 2.0,
+          "native_ms": 0.5312080000003334,
+          "voiced": false
+        }
+      ],
+      "author_call_voicing": {
+        "blocks": 750,
+        "median_ms": 0.16970800000001418,
+        "p95_ms": 0.19655030000002396,
+        "p99_ms": 0.2123935799999469,
+        "maximum_ms": 0.3858750000000555,
+        "over_budget_blocks": 0
+      },
+      "author_call_over_budget": 0
+    }
+  ]
+}

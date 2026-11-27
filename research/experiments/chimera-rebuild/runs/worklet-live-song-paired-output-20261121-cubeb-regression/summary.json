@@ -1,0 +1,1110 @@
+{
+  "checks": {
+    "same_wasm_as_reference": true,
+    "1-control/input_and_assets": true,
+    "1-control/audio_and_observations": true,
+    "1-control/upstream_pcm": true,
+    "1-control/schedule_and_beats": true,
+    "1-control/asset_body_read_deferred": true,
+    "1-control/marker_pcm_bit_identical": true,
+    "1-control/marker_frame_continuity": true,
+    "1-control/marker_rate_matches_voice": true,
+    "1-control/both_processors_on_one_graph_runner": true,
+    "1-control/native_intervals_aligned": true,
+    "1-control/reference_frames_match_native_calls": true,
+    "1-control/no_song_phase_markers": true,
+    "1-control/constructor_before_first_process": true,
+    "1-control/control_has_no_preparation_markers": true,
+    "1-control/constructor_bracketed_by_reference_callbacks": true,
+    "1-control/reference_and_song_context_frames_aligned": true,
+    "1-draw192/input_and_assets": true,
+    "1-draw192/audio_and_observations": true,
+    "1-draw192/upstream_pcm": true,
+    "1-draw192/schedule_and_beats": true,
+    "1-draw192/asset_body_read_deferred": true,
+    "1-draw192/marker_pcm_bit_identical": true,
+    "1-draw192/marker_frame_continuity": true,
+    "1-draw192/marker_rate_matches_voice": true,
+    "1-draw192/both_processors_on_one_graph_runner": true,
+    "1-draw192/native_intervals_aligned": true,
+    "1-draw192/reference_frames_match_native_calls": true,
+    "1-draw192/no_song_phase_markers": true,
+    "1-draw192/constructor_before_first_process": true,
+    "1-draw192/preparation_inside_constructor": true,
+    "1-draw192/preparation_matches_requested_frames": true,
+    "1-draw192/constructor_bracketed_by_reference_callbacks": true,
+    "1-draw192/reference_and_song_context_frames_aligned": true,
+    "2-draw192/input_and_assets": true,
+    "2-draw192/audio_and_observations": true,
+    "2-draw192/upstream_pcm": true,
+    "2-draw192/schedule_and_beats": true,
+    "2-draw192/asset_body_read_deferred": true,
+    "2-draw192/marker_pcm_bit_identical": true,
+    "2-draw192/marker_frame_continuity": true,
+    "2-draw192/marker_rate_matches_voice": true,
+    "2-draw192/both_processors_on_one_graph_runner": true,
+    "2-draw192/native_intervals_aligned": true,
+    "2-draw192/reference_frames_match_native_calls": true,
+    "2-draw192/no_song_phase_markers": true,
+    "2-draw192/constructor_before_first_process": true,
+    "2-draw192/preparation_inside_constructor": true,
+    "2-draw192/preparation_matches_requested_frames": true,
+    "2-draw192/constructor_bracketed_by_reference_callbacks": true,
+    "2-draw192/reference_and_song_context_frames_aligned": true,
+    "2-draw192/cubeb_output_window": true,
+    "2-control/input_and_assets": true,
+    "2-control/audio_and_observations": true,
+    "2-control/upstream_pcm": true,
+    "2-control/schedule_and_beats": true,
+    "2-control/asset_body_read_deferred": true,
+    "2-control/marker_pcm_bit_identical": true,
+    "2-control/marker_frame_continuity": true,
+    "2-control/marker_rate_matches_voice": true,
+    "2-control/both_processors_on_one_graph_runner": true,
+    "2-control/native_intervals_aligned": true,
+    "2-control/reference_frames_match_native_calls": true,
+    "2-control/no_song_phase_markers": true,
+    "2-control/constructor_before_first_process": true,
+    "2-control/control_has_no_preparation_markers": true,
+    "2-control/constructor_bracketed_by_reference_callbacks": true,
+    "2-control/reference_and_song_context_frames_aligned": true,
+    "2-control/cubeb_output_window": true,
+    "control/cubeb_constructor_overhead": true,
+    "draw192/cubeb_constructor_overhead": true
+  },
+  "trials": [
+    {
+      "trial": "1-control",
+      "condition": "control",
+      "cubeb_capture": false,
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 5376,
+        "marker_last_frame": 70911,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/79890",
+        "preparation": {
+          "marker_times_ms": [],
+          "constructor_ms": 1.2481669999999667
+        },
+        "song": {
+          "first_two_outer_ms": [
+            3.508000000000038,
+            2.6034169999998085
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [
+            0
+          ],
+          "steady_p99_ms": 1.7138170000002901
+        },
+        "reference": {
+          "constructor_gap_ms": 6.547708000000057,
+          "constructor_between_frames": [
+            29824,
+            29952
+          ],
+          "constructor_start_offset_ms": 5.28670800000009,
+          "constructor_end_to_next_ms": 0.012833000000000538,
+          "nearby_gaps": [
+            {
+              "frame": 28800,
+              "gap_ms": 5.32058300000017
+            },
+            {
+              "frame": 28928,
+              "gap_ms": 0.03787499999998545
+            },
+            {
+              "frame": 29056,
+              "gap_ms": 5.291666999999961
+            },
+            {
+              "frame": 29184,
+              "gap_ms": 0.04329099999995378
+            },
+            {
+              "frame": 29312,
+              "gap_ms": 5.280874999999924
+            },
+            {
+              "frame": 29440,
+              "gap_ms": 0.042125000000169166
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 5.291166999999859
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 0.040500000000065484
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 6.547708000000057
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 0.0724169999998594
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 4.045000000000073
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 0.09408299999995506
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 5.160542000000078
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 0.03166699999997036
+            },
+            {
+              "frame": 30592,
+              "gap_ms": 5.3541660000000775
+            },
+            {
+              "frame": 30720,
+              "gap_ms": 0.07199999999988904
+            },
+            {
+              "frame": 30848,
+              "gap_ms": 5.252917000000025
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.6426044999999476,
+            "p95_ms": 5.316625500000043,
+            "p99_ms": 5.3489276999999,
+            "maximum_ms": 5.3507079999999405,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    },
+    {
+      "trial": "1-draw192",
+      "condition": "draw192",
+      "cubeb_capture": false,
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 5120,
+        "marker_last_frame": 70655,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/79902",
+        "preparation": {
+          "marker_times_ms": [
+            [
+              "prepare-start",
+              1831.641
+            ],
+            [
+              "zero-start",
+              1832.318333
+            ],
+            [
+              "zero-end",
+              1832.39925
+            ],
+            [
+              "render-start",
+              1832.405042
+            ],
+            [
+              "render-end",
+              1837.109375
+            ],
+            [
+              "prepare-end",
+              1837.143417
+            ]
+          ],
+          "constructor_ms": 6.403291000000081,
+          "preparation_ms": 5.502416999999923,
+          "discarded_initialization_ms": 0.6773329999998623,
+          "zero_calls_ms": 0.08091699999999946,
+          "discarded_render_ms": 4.704332999999906,
+          "discarded_release_ms": 0.03404199999999946,
+          "completed_preparation_markers": [
+            [
+              "192:64:1000",
+              1837.12125
+            ]
+          ]
+        },
+        "song": {
+          "first_two_outer_ms": [
+            1.7770410000000538,
+            1.3477089999998952
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [],
+          "steady_p99_ms": 1.7241496000000553
+        },
+        "reference": {
+          "constructor_gap_ms": 11.703708000000006,
+          "constructor_between_frames": [
+            29568,
+            29696
+          ],
+          "constructor_start_offset_ms": 5.288124999999809,
+          "constructor_end_to_next_ms": 0.012292000000115877,
+          "nearby_gaps": [
+            {
+              "frame": 28544,
+              "gap_ms": 5.311750000000075
+            },
+            {
+              "frame": 28672,
+              "gap_ms": 0.030416999999943073
+            },
+            {
+              "frame": 28800,
+              "gap_ms": 5.29908300000011
+            },
+            {
+              "frame": 28928,
+              "gap_ms": 0.03933400000005349
+            },
+            {
+              "frame": 29056,
+              "gap_ms": 5.291291000000001
+            },
+            {
+              "frame": 29184,
+              "gap_ms": 0.03699999999980719
+            },
+            {
+              "frame": 29312,
+              "gap_ms": 5.302000000000135
+            },
+            {
+              "frame": 29440,
+              "gap_ms": 0.035959000000048036
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 11.703708000000006
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 0.036916999999903055
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 4.219540999999936
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 0.0472500000000764
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 5.295333999999912
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 0.061208000000078755
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 5.258542000000034
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 0.05999999999994543
+            },
+            {
+              "frame": 30592,
+              "gap_ms": 5.2849579999999605
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.6447079999999232,
+            "p95_ms": 5.327343499999984,
+            "p99_ms": 5.333134800000016,
+            "maximum_ms": 5.342041999999992,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    },
+    {
+      "trial": "2-draw192",
+      "condition": "draw192",
+      "cubeb_capture": true,
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 5120,
+        "marker_last_frame": 70655,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/79914",
+        "preparation": {
+          "marker_times_ms": [
+            [
+              "prepare-start",
+              1931.980542
+            ],
+            [
+              "zero-start",
+              1932.68475
+            ],
+            [
+              "zero-end",
+              1932.767917
+            ],
+            [
+              "render-start",
+              1932.786167
+            ],
+            [
+              "render-end",
+              1937.486542
+            ],
+            [
+              "prepare-end",
+              1937.526042
+            ]
+          ],
+          "constructor_ms": 6.528583000000026,
+          "preparation_ms": 5.545499999999947,
+          "discarded_initialization_ms": 0.7042079999998805,
+          "zero_calls_ms": 0.0831670000000031,
+          "discarded_render_ms": 4.700375000000122,
+          "discarded_release_ms": 0.03949999999986176,
+          "completed_preparation_markers": [
+            [
+              "192:64:1000",
+              1937.501292
+            ]
+          ]
+        },
+        "song": {
+          "first_two_outer_ms": [
+            1.7640000000001237,
+            1.3757080000000315
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [],
+          "steady_p99_ms": 1.7305340000001708
+        },
+        "reference": {
+          "constructor_gap_ms": 11.842624999999998,
+          "constructor_between_frames": [
+            29568,
+            29696
+          ],
+          "constructor_start_offset_ms": 5.298874999999953,
+          "constructor_end_to_next_ms": 0.01516700000001947,
+          "nearby_gaps": [
+            {
+              "frame": 28544,
+              "gap_ms": 5.2365420000000995
+            },
+            {
+              "frame": 28672,
+              "gap_ms": 0.02416599999992286
+            },
+            {
+              "frame": 28800,
+              "gap_ms": 5.308833999999933
+            },
+            {
+              "frame": 28928,
+              "gap_ms": 0.02733299999999872
+            },
+            {
+              "frame": 29056,
+              "gap_ms": 5.317833000000064
+            },
+            {
+              "frame": 29184,
+              "gap_ms": 0.03008399999998801
+            },
+            {
+              "frame": 29312,
+              "gap_ms": 5.288666000000148
+            },
+            {
+              "frame": 29440,
+              "gap_ms": 0.030291999999917607
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 11.842624999999998
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 0.048833000000058746
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 4.125
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 0.07145900000000438
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 5.239499999999907
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 0.04737500000010186
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 5.264625000000024
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 0.030249999999796273
+            },
+            {
+              "frame": 30592,
+              "gap_ms": 5.293458000000101
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.6396664999999757,
+            "p95_ms": 5.339478749999898,
+            "p99_ms": 5.35854229999984,
+            "maximum_ms": 5.379124999999931,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true,
+      "coreaudio": {
+        "valid": true,
+        "matched_streams": [
+          "cubeb/cubeb-output-79907-1"
+        ],
+        "streams": {
+          "cubeb/cubeb-output-79907-0": {
+            "valid": false,
+            "reason": "marker_gain_not_recovered"
+          },
+          "cubeb/cubeb-output-79907-1": {
+            "valid": true,
+            "pcm": {
+              "valid": true,
+              "tap_window": [
+                27904,
+                32256
+              ],
+              "expected_frames": 4352,
+              "captured_frames": 4352,
+              "marker_gain": 1.0,
+              "missing_marker_frames": 0,
+              "repeated_marker_frames": 0,
+              "undecoded_frames": 0,
+              "silent_frames": 0,
+              "transitions": []
+            },
+            "stream_blocks": 256,
+            "intervals": [
+              {
+                "block_index": 109,
+                "stage": "data",
+                "pcm_start_frame": 27904,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.308,
+                "callback_ms": 0.15212499999999998
+              },
+              {
+                "block_index": 110,
+                "stage": "data",
+                "pcm_start_frame": 28160,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.341375,
+                "callback_ms": 0.07041666666666667
+              },
+              {
+                "block_index": 111,
+                "stage": "data",
+                "pcm_start_frame": 28416,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.347083333333333,
+                "callback_ms": 0.110375
+              },
+              {
+                "block_index": 112,
+                "stage": "data",
+                "pcm_start_frame": 28672,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.313,
+                "callback_ms": 0.15954166666666666
+              },
+              {
+                "block_index": 113,
+                "stage": "data",
+                "pcm_start_frame": 28928,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.335208333333333,
+                "callback_ms": 0.08625
+              },
+              {
+                "block_index": 114,
+                "stage": "data",
+                "pcm_start_frame": 29184,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.341333333333333,
+                "callback_ms": 0.09183333333333334
+              },
+              {
+                "block_index": 115,
+                "stage": "data",
+                "pcm_start_frame": 29440,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.324458333333333,
+                "callback_ms": 0.09433333333333332
+              },
+              {
+                "block_index": 116,
+                "stage": "data",
+                "pcm_start_frame": 29696,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.329166666666667,
+                "callback_ms": 0.15875
+              },
+              {
+                "block_index": 117,
+                "stage": "data",
+                "pcm_start_frame": 29952,
+                "sample_time_gap_frames": 256.0,
+                "scheduled_interval_ms": 10.666666666666666,
+                "entry_interval_ms": 10.702583333333333,
+                "callback_ms": 6.679541666666666
+              },
+              {
+                "block_index": 118,
+                "stage": "data",
+                "pcm_start_frame": 30208,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.30675,
+                "callback_ms": 0.15654166666666666
+              },
+              {
+                "block_index": 119,
+                "stage": "data",
+                "pcm_start_frame": 30464,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.329791666666667,
+                "callback_ms": 0.14024999999999999
+              },
+              {
+                "block_index": 120,
+                "stage": "data",
+                "pcm_start_frame": 30720,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.326625,
+                "callback_ms": 0.11033333333333332
+              },
+              {
+                "block_index": 121,
+                "stage": "data",
+                "pcm_start_frame": 30976,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.34525,
+                "callback_ms": 0.09133333333333334
+              },
+              {
+                "block_index": 122,
+                "stage": "data",
+                "pcm_start_frame": 31232,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.3457083333333335,
+                "callback_ms": 0.19379166666666667
+              },
+              {
+                "block_index": 123,
+                "stage": "data",
+                "pcm_start_frame": 31488,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.320583333333333,
+                "callback_ms": 0.12175
+              },
+              {
+                "block_index": 124,
+                "stage": "data",
+                "pcm_start_frame": 31744,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.334083333333333,
+                "callback_ms": 0.102875
+              }
+            ],
+            "center_marker_positions": [
+              29952
+            ],
+            "center_intervals": [
+              {
+                "block_index": 117,
+                "stage": "data",
+                "pcm_start_frame": 29952,
+                "sample_time_gap_frames": 256.0,
+                "scheduled_interval_ms": 10.666666666666666,
+                "entry_interval_ms": 10.702583333333333,
+                "callback_ms": 6.679541666666666
+              }
+            ]
+          }
+        },
+        "graph_marker_window": [
+          22528,
+          26880
+        ],
+        "center_graph_marker_frame": 24576,
+        "client_next_callback_delay_ms": 5.382166666666687,
+        "host_tick_ms": 4.1666666666666665e-05,
+        "predictions": {
+          "expected_clock_gap_frames": 256,
+          "observed_clock_gap_frames": 256.0,
+          "clock_gap_as_predicted": true,
+          "marker_continuous_as_predicted": true
+        }
+      }
+    },
+    {
+      "trial": "2-control",
+      "condition": "control",
+      "cubeb_capture": true,
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 4992,
+        "marker_last_frame": 70527,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/79931",
+        "preparation": {
+          "marker_times_ms": [],
+          "constructor_ms": 1.1677089999998316
+        },
+        "song": {
+          "first_two_outer_ms": [
+            3.6243339999998625,
+            2.6166249999998854
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [
+            0
+          ],
+          "steady_p99_ms": 1.7423163999999818
+        },
+        "reference": {
+          "constructor_gap_ms": 6.485458000000108,
+          "constructor_between_frames": [
+            29440,
+            29568
+          ],
+          "constructor_start_offset_ms": 5.3072910000000775,
+          "constructor_end_to_next_ms": 0.010458000000198808,
+          "nearby_gaps": [
+            {
+              "frame": 28416,
+              "gap_ms": 5.296000000000049
+            },
+            {
+              "frame": 28544,
+              "gap_ms": 0.05862500000012005
+            },
+            {
+              "frame": 28672,
+              "gap_ms": 5.251749999999902
+            },
+            {
+              "frame": 28800,
+              "gap_ms": 0.0496250000001055
+            },
+            {
+              "frame": 28928,
+              "gap_ms": 5.2773339999998825
+            },
+            {
+              "frame": 29056,
+              "gap_ms": 0.034374999999954525
+            },
+            {
+              "frame": 29184,
+              "gap_ms": 5.295041000000083
+            },
+            {
+              "frame": 29312,
+              "gap_ms": 0.035708999999997104
+            },
+            {
+              "frame": 29440,
+              "gap_ms": 6.485458000000108
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 0.056457999999793174
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 4.071875000000091
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 0.03812500000003638
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 5.331834000000072
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 0.056457999999793174
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 5.281625000000076
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 0.0807079999999587
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 5.218166999999994
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.6555205000000797,
+            "p95_ms": 5.3156355000000985,
+            "p99_ms": 5.329674700000146,
+            "maximum_ms": 5.333791999999903,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true,
+      "coreaudio": {
+        "valid": true,
+        "matched_streams": [
+          "cubeb/cubeb-output-79919-1"
+        ],
+        "streams": {
+          "cubeb/cubeb-output-79919-0": {
+            "valid": false,
+            "reason": "marker_gain_not_recovered"
+          },
+          "cubeb/cubeb-output-79919-1": {
+            "valid": true,
+            "pcm": {
+              "valid": true,
+              "tap_window": [
+                27904,
+                32256
+              ],
+              "expected_frames": 4352,
+              "captured_frames": 4352,
+              "marker_gain": 1.0,
+              "missing_marker_frames": 0,
+              "repeated_marker_frames": 0,
+              "undecoded_frames": 0,
+              "silent_frames": 0,
+              "transitions": []
+            },
+            "stream_blocks": 256,
+            "intervals": [
+              {
+                "block_index": 109,
+                "stage": "data",
+                "pcm_start_frame": 27904,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.340125,
+                "callback_ms": 0.12979166666666667
+              },
+              {
+                "block_index": 110,
+                "stage": "data",
+                "pcm_start_frame": 28160,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.3585,
+                "callback_ms": 0.145875
+              },
+              {
+                "block_index": 111,
+                "stage": "data",
+                "pcm_start_frame": 28416,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.307916666666666,
+                "callback_ms": 0.19849999999999998
+              },
+              {
+                "block_index": 112,
+                "stage": "data",
+                "pcm_start_frame": 28672,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.329375,
+                "callback_ms": 0.14945833333333333
+              },
+              {
+                "block_index": 113,
+                "stage": "data",
+                "pcm_start_frame": 28928,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.333666666666667,
+                "callback_ms": 0.160625
+              },
+              {
+                "block_index": 114,
+                "stage": "data",
+                "pcm_start_frame": 29184,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.332458333333333,
+                "callback_ms": 0.13154166666666667
+              },
+              {
+                "block_index": 115,
+                "stage": "data",
+                "pcm_start_frame": 29440,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.32725,
+                "callback_ms": 0.1105
+              },
+              {
+                "block_index": 116,
+                "stage": "data",
+                "pcm_start_frame": 29696,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.341958333333333,
+                "callback_ms": 0.18137499999999998
+              },
+              {
+                "block_index": 117,
+                "stage": "data",
+                "pcm_start_frame": 29952,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.31975,
+                "callback_ms": 1.318875
+              },
+              {
+                "block_index": 118,
+                "stage": "data",
+                "pcm_start_frame": 30208,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.346333333333333,
+                "callback_ms": 0.102625
+              },
+              {
+                "block_index": 119,
+                "stage": "data",
+                "pcm_start_frame": 30464,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.337791666666666,
+                "callback_ms": 0.14583333333333331
+              },
+              {
+                "block_index": 120,
+                "stage": "data",
+                "pcm_start_frame": 30720,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.3174166666666665,
+                "callback_ms": 0.18170833333333333
+              },
+              {
+                "block_index": 121,
+                "stage": "data",
+                "pcm_start_frame": 30976,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.347625,
+                "callback_ms": 0.11699999999999999
+              },
+              {
+                "block_index": 122,
+                "stage": "data",
+                "pcm_start_frame": 31232,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333375,
+                "entry_interval_ms": 5.325541666666666,
+                "callback_ms": 0.2650416666666667
+              },
+              {
+                "block_index": 123,
+                "stage": "data",
+                "pcm_start_frame": 31488,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.319916666666667,
+                "callback_ms": 0.12579166666666666
+              },
+              {
+                "block_index": 124,
+                "stage": "data",
+                "pcm_start_frame": 31744,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.3515,
+                "callback_ms": 0.09166666666666666
+              }
+            ],
+            "center_marker_positions": [
+              29952
+            ],
+            "center_intervals": [
+              {
+                "block_index": 117,
+                "stage": "data",
+                "pcm_start_frame": 29952,
+                "sample_time_gap_frames": 0.0,
+                "scheduled_interval_ms": 5.333333333333333,
+                "entry_interval_ms": 5.31975,
+                "callback_ms": 1.318875
+              }
+            ]
+          }
+        },
+        "graph_marker_window": [
+          22528,
+          26880
+        ],
+        "center_graph_marker_frame": 24576,
+        "client_next_callback_delay_ms": -0.023750333333357965,
+        "host_tick_ms": 4.1666666666666665e-05,
+        "predictions": {
+          "expected_clock_gap_frames": 0,
+          "observed_clock_gap_frames": 0.0,
+          "clock_gap_as_predicted": true,
+          "marker_continuous_as_predicted": true
+        }
+      }
+    }
+  ],
+  "reference_hashes": {
+    "pcm": "8d626473d3234fe8044026a4bf34086dfac2cd7b598179438bd06182ab1a66f1",
+    "observations": "14d4a1e3c6d92f977e1b927206225a14c0f74de30107989675673918655e4c1b",
+    "score": "0d46bf5f8b2df6d2da9a3522b6a222b7e57a5daf28b42f14a04071b5b179e086"
+  },
+  "shared_context": {
+    "aligned_trials": 4,
+    "paired_differences": [
+      {
+        "constructor_gap_increase_ms": 5.155999999999949,
+        "constructor_increase_ms": 5.155124000000114
+      },
+      {
+        "constructor_gap_increase_ms": 5.35716699999989,
+        "constructor_increase_ms": 5.360874000000194
+      }
+    ],
+    "groups": {
+      "control": {
+        "first_two_within_budget": 0,
+        "all_quanta_within_budget": 0,
+        "median_constructor_gap_ms": 6.516583000000082,
+        "median_constructor_ms": 1.2079379999998991,
+        "median_first_song_quantum_ms": 3.5661669999999503
+      },
+      "draw192": {
+        "first_two_within_budget": 2,
+        "all_quanta_within_budget": 2,
+        "median_constructor_gap_ms": 11.773166500000002,
+        "median_constructor_ms": 6.465937000000054,
+        "median_first_song_quantum_ms": 1.7705205000000888
+      }
+    },
+    "median_paired_constructor_gap_increase_ms": 5.25658349999992,
+    "predictions": {
+      "reference_gap_increase": true,
+      "draw_first_two_within_budget": false
+    }
+  },
+  "cubeb_capture_overhead": {
+    "control": {
+      "increase_ms": -0.08045800000013514,
+      "within_limit": true
+    },
+    "draw192": {
+      "increase_ms": 0.1252919999999449,
+      "within_limit": true
+    }
+  }
+}

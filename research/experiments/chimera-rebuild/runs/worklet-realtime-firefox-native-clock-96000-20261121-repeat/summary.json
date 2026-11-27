@@ -1,0 +1,355 @@
+{
+  "checks": {
+    "same_built_wasm": true,
+    "firefox-1/same_wasm": true,
+    "firefox-1/same_pcm": true,
+    "firefox-1/same_observations": true,
+    "firefox-1/same_context_frames": true,
+    "firefox-1/profile_saved": true,
+    "firefox-1/native_intervals_aligned": true,
+    "firefox-2/same_wasm": true,
+    "firefox-2/same_pcm": true,
+    "firefox-2/same_observations": true,
+    "firefox-2/same_context_frames": true,
+    "firefox-2/profile_saved": true,
+    "firefox-2/native_intervals_aligned": true
+  },
+  "trials": [
+    {
+      "trial": "firefox-1",
+      "version": "157.0",
+      "clock": "Date.now",
+      "expected_native_markers": 1424,
+      "native_threads": [
+        {
+          "name": "AudioIPC Server RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Server Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC DeviceCollection RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              361
+            ],
+            [
+              "AudioCallbackDriver::DataCallback",
+              360
+            ],
+            [
+              "GraphRunner::OneIteration",
+              360
+            ],
+            [
+              "AudioCallbackDriver real-time budget",
+              180
+            ],
+            [
+              "NewThread",
+              1
+            ],
+            [
+              "EventQueueInternal::PutEvent",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "GraphRunner",
+          "count": 1424,
+          "markers": [
+            [
+              "DestinationNodeEngine::ProcessBlock",
+              2864
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlock",
+              2848
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlocksOnPorts",
+              2848
+            ],
+            [
+              "AudioWorkletNodeEngine::CallProcess",
+              2848
+            ],
+            [
+              "Awake",
+              396
+            ],
+            [
+              "MTG::RunMessagesInQueue",
+              392
+            ],
+            [
+              "MTG::MessagePort events",
+              392
+            ],
+            [
+              "MTG::UpdateGraph",
+              392
+            ]
+          ]
+        }
+      ],
+      "matched_threads": 1,
+      "native_all": {
+        "blocks": 1416,
+        "median_ms": 0.16466649999995298,
+        "p95_ms": 0.2063645000000065,
+        "p99_ms": 0.23515805000004658,
+        "maximum_ms": 0.7917499999999791,
+        "over_budget_blocks": 0
+      },
+      "native_voicing": {
+        "blocks": 750,
+        "median_ms": 0.1742500000000291,
+        "p95_ms": 0.20670229999997214,
+        "p99_ms": 0.23086858000002164,
+        "maximum_ms": 0.3785409999999274,
+        "over_budget_blocks": 0
+      },
+      "date_voicing": {
+        "blocks": 750,
+        "median_ms": 0.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 1.0,
+        "over_budget_blocks": 0
+      },
+      "callback_alignment": {
+        "date_gaps_at_least_6_ms": 176,
+        "native_gaps_at_least_6_ms": 176,
+        "all_gap_positions_equal": true,
+        "relative_start_maximum_error_ms": 1.0505409999999529,
+        "gap_mean_absolute_error_ms": 0.30281997597172594,
+        "gap_error_when_native_shifted_one_quantum_ms": [
+          2.5238436669024122,
+          2.5315603062234815
+        ]
+      },
+      "date_over_but_native_within_budget": 0,
+      "native_over_budget": 0,
+      "over_budget_quanta": [],
+      "author_call_voicing": {
+        "blocks": 750,
+        "median_ms": 0.17356250000000273,
+        "p95_ms": 0.19983720000001312,
+        "p99_ms": 0.22222291000001856,
+        "maximum_ms": 0.377666999999974,
+        "over_budget_blocks": 0
+      },
+      "author_call_over_budget": 0
+    },
+    {
+      "trial": "firefox-2",
+      "version": "157.0",
+      "clock": "Date.now",
+      "expected_native_markers": 1424,
+      "native_threads": [
+        {
+          "name": "AudioIPC Server Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC DeviceCollection RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Server RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client RPC",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "AudioIPC Client Callback",
+          "count": 0,
+          "markers": [
+            [
+              "Awake",
+              361
+            ],
+            [
+              "AudioCallbackDriver::DataCallback",
+              360
+            ],
+            [
+              "GraphRunner::OneIteration",
+              360
+            ],
+            [
+              "AudioCallbackDriver real-time budget",
+              180
+            ],
+            [
+              "NewThread",
+              1
+            ],
+            [
+              "EventQueueInternal::PutEvent",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "GraphRunner",
+          "count": 1424,
+          "markers": [
+            [
+              "DestinationNodeEngine::ProcessBlock",
+              2854
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlock",
+              2848
+            ],
+            [
+              "WorkletNodeEngine::ProcessBlocksOnPorts",
+              2848
+            ],
+            [
+              "AudioWorkletNodeEngine::CallProcess",
+              2848
+            ],
+            [
+              "Awake",
+              384
+            ],
+            [
+              "MTG::RunMessagesInQueue",
+              380
+            ],
+            [
+              "MTG::MessagePort events",
+              380
+            ],
+            [
+              "MTG::UpdateGraph",
+              380
+            ]
+          ]
+        }
+      ],
+      "matched_threads": 1,
+      "native_all": {
+        "blocks": 1416,
+        "median_ms": 0.1570000000001528,
+        "p95_ms": 0.20106250000003456,
+        "p99_ms": 0.23234829999996118,
+        "maximum_ms": 0.7792499999999336,
+        "over_budget_blocks": 0
+      },
+      "native_voicing": {
+        "blocks": 750,
+        "median_ms": 0.17402099999992515,
+        "p95_ms": 0.20191059999991692,
+        "p99_ms": 0.22850083999999582,
+        "maximum_ms": 0.3787920000000895,
+        "over_budget_blocks": 0
+      },
+      "date_voicing": {
+        "blocks": 750,
+        "median_ms": 0.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 1.0,
+        "over_budget_blocks": 0
+      },
+      "callback_alignment": {
+        "date_gaps_at_least_6_ms": 176,
+        "native_gaps_at_least_6_ms": 176,
+        "all_gap_positions_equal": true,
+        "relative_start_maximum_error_ms": 1.7859169999999267,
+        "gap_mean_absolute_error_ms": 0.30191639929328856,
+        "gap_error_when_native_shifted_one_quantum_ms": [
+          2.5466807383309704,
+          2.5295166605374804
+        ]
+      },
+      "date_over_but_native_within_budget": 1,
+      "native_over_budget": 0,
+      "over_budget_quanta": [
+        {
+          "quantum": 2,
+          "output_frame": 256,
+          "date_ms": 2.0,
+          "native_ms": 0.6622499999999718,
+          "voiced": false
+        }
+      ],
+      "author_call_voicing": {
+        "blocks": 750,
+        "median_ms": 0.1734159999999747,
+        "p95_ms": 0.1982582999999181,
+        "p99_ms": 0.22120125000004234,
+        "maximum_ms": 0.3782089999999698,
+        "over_budget_blocks": 0
+      },
+      "author_call_over_budget": 0
+    }
+  ]
+}

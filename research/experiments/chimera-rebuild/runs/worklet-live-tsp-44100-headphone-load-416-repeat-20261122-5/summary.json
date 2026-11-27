@@ -1,0 +1,410 @@
+{
+  "checks": {
+    "marker_rate_and_frames": true,
+    "marker_pcm": true,
+    "marker_spans_onset": true,
+    "canonical_speech_pcm_and_states": true,
+    "registered_preparation": true,
+    "original_output_restored": true,
+    "unique_cubeb_marker": true,
+    "both_load_and_speech_requests_located": true,
+    "registered_same_request": true,
+    "tap_pcm_and_sample_clock": true,
+    "tap_length_matches_scheduled_gaps": true,
+    "registered_tap_width": true,
+    "load_request_matches_audio_client_and_write": false
+  },
+  "final_draw_frames": 416,
+  "preparation": [
+    {
+      "contextFrame": 8960,
+      "preparedFrames": 64
+    },
+    {
+      "contextFrame": 9216,
+      "preparedFrames": 128
+    },
+    {
+      "contextFrame": 9472,
+      "preparedFrames": 192
+    },
+    {
+      "contextFrame": 11008,
+      "preparedFrames": 608
+    }
+  ],
+  "speech_start_context_frame": 11136,
+  "marker_start_context_frame": 3840,
+  "graph_window": {
+    "first": 4224,
+    "last_exclusive": 11392,
+    "maximum_anchor_displacement_frames": 1024
+  },
+  "trimmed_leading_anchor_frames": 0,
+  "trace_tables": [
+    "audio-hal-client-io-cycle",
+    "audio-hal-io-cycle-client",
+    "audio-hal-io-cycle-hardware"
+  ],
+  "output_route": {
+    "before": {
+      "defaultOutput": 86,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    },
+    "selected": {
+      "defaultOutput": 98,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    },
+    "after": {
+      "defaultOutput": 86,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    }
+  },
+  "cubeb_streams": [
+    {
+      "stream": "cubeb-output-93518-0",
+      "formats": {
+        "stream_rate_hz": "44100",
+        "buffer_rate_hz": "44100"
+      },
+      "frames": 65536,
+      "valid": false,
+      "peak": 0.0,
+      "block_frame_counts": {
+        "256": 256
+      },
+      "marker": {
+        "valid": false,
+        "reason": "smooth_anchor_not_unique",
+        "anchors": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "stream": "cubeb-output-93518-1",
+      "formats": {
+        "stream_rate_hz": "44100",
+        "buffer_rate_hz": "44100"
+      },
+      "frames": 65536,
+      "valid": true,
+      "peak": 0.38336965441703796,
+      "block_frame_counts": {
+        "256": 256
+      },
+      "marker": {
+        "valid": true,
+        "tap_window": [
+          8576,
+          15744
+        ],
+        "expected_frames": 7168,
+        "captured_frames": 7168,
+        "anchors": [
+          {
+            "offset": 8576,
+            "fraction": -4.718447854656915e-16,
+            "correlation": 1.0,
+            "distinct_peak_margin": 0.5723782149990249,
+            "relative_residual": 0.0,
+            "gain": 1.0
+          },
+          {
+            "offset": 14720,
+            "fraction": -4.749162107742233e-07,
+            "correlation": 1.0,
+            "distinct_peak_margin": 0.5989703251149664,
+            "relative_residual": 6.530372347317403e-08,
+            "gain": 0.9999999993787064
+          }
+        ],
+        "net_marker_advance_frames": -4.749162103023785e-07,
+        "continuous": true,
+        "full_window_relative_residual": 1.663621721958412e-08,
+        "quiet_frames": 219,
+        "silent_frames": 84,
+        "phase": {
+          "windows": [
+            {
+              "start": 0,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.4813810251762678,
+              "marker_position_frames": 4224.0,
+              "gain": 1.0,
+              "relative_residual": 0.0
+            },
+            {
+              "start": 1024,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.5639750477454586,
+              "marker_position_frames": 5247.999999569675,
+              "gain": 0.9999999999999988,
+              "relative_residual": 5.34472960812195e-08
+            },
+            {
+              "start": 2048,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.46590420321433357,
+              "marker_position_frames": 6272.0,
+              "gain": 1.0,
+              "relative_residual": 0.0
+            },
+            {
+              "start": 3072,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.5476471160713847,
+              "marker_position_frames": 7296.0,
+              "gain": 1.0,
+              "relative_residual": 0.0
+            },
+            {
+              "start": 4096,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.4439800100213862,
+              "marker_position_frames": 8320.0,
+              "gain": 1.0,
+              "relative_residual": 0.0
+            },
+            {
+              "start": 5120,
+              "accepted": true,
+              "correlation": 0.9999999999999997,
+              "distinct_peak_margin": 0.5530889219212867,
+              "marker_position_frames": 9344.000000501304,
+              "gain": 1.0000000006767262,
+              "relative_residual": 5.402003894754199e-08
+            },
+            {
+              "start": 6144,
+              "accepted": true,
+              "correlation": 0.9999999999999992,
+              "distinct_peak_margin": 0.53575181413654,
+              "marker_position_frames": 10367.999999525084,
+              "gain": 0.9999999993787064,
+              "relative_residual": 6.530372347317403e-08
+            }
+          ],
+          "longest_consecutive_frames": 7168,
+          "phase_jumps": [],
+          "known_marker_continuous": false
+        }
+      }
+    }
+  ],
+  "tap": {
+    "valid": true,
+    "pcm": {
+      "valid": true,
+      "tap_window": [
+        84864,
+        92032
+      ],
+      "expected_frames": 7168,
+      "captured_frames": 7168,
+      "anchors": [
+        {
+          "offset": 84864,
+          "fraction": 1.040699114107646e-07,
+          "correlation": 0.999999999412382,
+          "distinct_peak_margin": 0.48104080546309724,
+          "relative_residual": 3.4259177695076025e-05,
+          "gain": 1.0000000320010256
+        },
+        {
+          "offset": 91008,
+          "fraction": -4.607495005526374e-07,
+          "correlation": 0.9999999994323768,
+          "distinct_peak_margin": 0.535686040475668,
+          "relative_residual": 3.20591205959129e-05,
+          "gain": 0.9999999865063764
+        }
+      ],
+      "net_marker_advance_frames": -5.64819411963402e-07,
+      "continuous": true,
+      "full_window_relative_residual": 3.226574596614095e-05,
+      "quiet_frames": 219,
+      "silent_frames": 0,
+      "phase": {
+        "windows": [
+          {
+            "start": 0,
+            "accepted": true,
+            "correlation": 0.9999999994123825,
+            "distinct_peak_margin": 0.48138103869825044,
+            "marker_position_frames": 4224.00000010407,
+            "gain": 1.0000000320010256,
+            "relative_residual": 3.4259177695076025e-05
+          },
+          {
+            "start": 1024,
+            "accepted": true,
+            "correlation": 0.9999999992894623,
+            "distinct_peak_margin": 0.5639750798490877,
+            "marker_position_frames": 5247.999999627697,
+            "gain": 0.9999999984788452,
+            "relative_residual": 3.6562730983662963e-05
+          },
+          {
+            "start": 2048,
+            "accepted": true,
+            "correlation": 0.9999999995076287,
+            "distinct_peak_margin": 0.46590421093711365,
+            "marker_position_frames": 6272.000000023179,
+            "gain": 0.9999999841936656,
+            "relative_residual": 3.133274897746623e-05
+          },
+          {
+            "start": 3072,
+            "accepted": true,
+            "correlation": 0.9999999995919957,
+            "distinct_peak_margin": 0.5476470790076968,
+            "marker_position_frames": 7296.000000179191,
+            "gain": 1.0000000371395552,
+            "relative_residual": 2.8523216228080466e-05
+          },
+          {
+            "start": 4096,
+            "accepted": true,
+            "correlation": 0.9999999995004556,
+            "distinct_peak_margin": 0.44398001095425443,
+            "marker_position_frames": 8320.000000076641,
+            "gain": 0.9999999936051454,
+            "relative_residual": 3.142085049279399e-05
+          },
+          {
+            "start": 5120,
+            "accepted": true,
+            "correlation": 0.9999999994957355,
+            "distinct_peak_margin": 0.5530889032678793,
+            "marker_position_frames": 9344.0000003957,
+            "gain": 0.9999999928906353,
+            "relative_residual": 3.151823763173171e-05
+          },
+          {
+            "start": 6144,
+            "accepted": true,
+            "correlation": 0.9999999994323799,
+            "distinct_peak_margin": 0.5357518246918724,
+            "marker_position_frames": 10367.99999953925,
+            "gain": 0.9999999865063764,
+            "relative_residual": 3.20591205959129e-05
+          }
+        ],
+        "longest_consecutive_frames": 7168,
+        "phase_jumps": [],
+        "known_marker_continuous": false
+      }
+    },
+    "tap_sample_clock_jumps": [],
+    "tap_minus_cubeb_host_time_at_window_ends_ms": [
+      28.53632199310499,
+      28.53632199514361
+    ],
+    "host_time_offset_change_ms": 2.0386181631693034e-09
+  },
+  "requests": {
+    "last_draw": {
+      "cubeb_index": 45,
+      "cubeb_pcm_frame": 11520,
+      "sample_time": 11520.0,
+      "request_frames": 256,
+      "callback_ns": 6294750.0,
+      "budget_ns": 5804988.662131519,
+      "gap_frames": 0,
+      "context_frame": 11008,
+      "request_frame_offset": 0,
+      "missing": "音声サーバーとヘッドフォンWriteを一意に照合できません",
+      "candidate_count": 0,
+      "within_budget": null
+    },
+    "speech_render_start": {
+      "cubeb_index": 45,
+      "cubeb_pcm_frame": 11520,
+      "sample_time": 11520.0,
+      "request_frames": 256,
+      "callback_ns": 6294750.0,
+      "budget_ns": 5804988.662131519,
+      "gap_frames": 0,
+      "context_frame": 11136,
+      "request_frame_offset": 128,
+      "missing": "音声サーバーとヘッドフォンWriteを一意に照合できません",
+      "candidate_count": 0,
+      "within_budget": null
+    }
+  },
+  "gaps": [],
+  "load_and_speech_same_request": true
+}

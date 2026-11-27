@@ -1,0 +1,365 @@
+{
+  "checks": {
+    "same_wasm_as_reference": true,
+    "1-control/input_and_assets": true,
+    "1-control/audio_and_observations": true,
+    "1-control/upstream_pcm": true,
+    "1-control/schedule_and_beats": true,
+    "1-control/asset_body_read_deferred": true,
+    "1-control/marker_pcm_bit_identical": true,
+    "1-control/marker_frame_continuity": true,
+    "1-control/marker_rate_matches_voice": true,
+    "1-control/both_processors_on_one_graph_runner": true,
+    "1-control/native_intervals_aligned": true,
+    "1-control/reference_frames_match_native_calls": true,
+    "1-control/no_song_phase_markers": true,
+    "1-control/constructor_before_first_process": true,
+    "1-control/control_has_no_preparation_markers": true,
+    "1-control/constructor_bracketed_by_reference_callbacks": true,
+    "1-control/reference_and_song_context_frames_aligned": true,
+    "1-draw192/input_and_assets": true,
+    "1-draw192/audio_and_observations": true,
+    "1-draw192/upstream_pcm": true,
+    "1-draw192/schedule_and_beats": true,
+    "1-draw192/asset_body_read_deferred": true,
+    "1-draw192/marker_pcm_bit_identical": true,
+    "1-draw192/marker_frame_continuity": true,
+    "1-draw192/marker_rate_matches_voice": true,
+    "1-draw192/both_processors_on_one_graph_runner": true,
+    "1-draw192/native_intervals_aligned": true,
+    "1-draw192/reference_frames_match_native_calls": true,
+    "1-draw192/no_song_phase_markers": true,
+    "1-draw192/constructor_before_first_process": true,
+    "1-draw192/preparation_inside_constructor": true,
+    "1-draw192/preparation_matches_requested_frames": true,
+    "1-draw192/constructor_bracketed_by_reference_callbacks": true,
+    "1-draw192/reference_and_song_context_frames_aligned": true
+  },
+  "trials": [
+    {
+      "trial": "1-control",
+      "condition": "control",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 196608,
+        "marker_start_frame": 5248,
+        "marker_last_frame": 201855,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/59762",
+        "preparation": {
+          "marker_times_ms": [],
+          "constructor_ms": 1.6704579999995985
+        },
+        "song": {
+          "first_two_outer_ms": [
+            3.7232500000000073,
+            2.7842920000002778
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [
+            0,
+            128
+          ],
+          "steady_p99_ms": 1.738258599999972
+        },
+        "reference": {
+          "constructor_gap_ms": 6.97925000000032,
+          "constructor_between_frames": [
+            134144,
+            134272
+          ],
+          "constructor_start_offset_ms": 5.293542000000343,
+          "constructor_end_to_next_ms": 0.01525000000037835,
+          "nearby_gaps": [
+            {
+              "frame": 133120,
+              "gap_ms": 5.308333000000857
+            },
+            {
+              "frame": 133248,
+              "gap_ms": 0.03724999999940337
+            },
+            {
+              "frame": 133376,
+              "gap_ms": 5.31091699999979
+            },
+            {
+              "frame": 133504,
+              "gap_ms": 0.05779100000017934
+            },
+            {
+              "frame": 133632,
+              "gap_ms": 5.278542000000016
+            },
+            {
+              "frame": 133760,
+              "gap_ms": 0.04787500000020373
+            },
+            {
+              "frame": 133888,
+              "gap_ms": 5.264124999999694
+            },
+            {
+              "frame": 134016,
+              "gap_ms": 0.046833000000333413
+            },
+            {
+              "frame": 134144,
+              "gap_ms": 6.97925000000032
+            },
+            {
+              "frame": 134272,
+              "gap_ms": 0.6441669999994701
+            },
+            {
+              "frame": 134400,
+              "gap_ms": 2.9894169999997757
+            },
+            {
+              "frame": 134528,
+              "gap_ms": 0.05104100000062317
+            },
+            {
+              "frame": 134656,
+              "gap_ms": 5.274958999999399
+            },
+            {
+              "frame": 134784,
+              "gap_ms": 0.05266600000049948
+            },
+            {
+              "frame": 134912,
+              "gap_ms": 5.297209000000294
+            },
+            {
+              "frame": 135040,
+              "gap_ms": 0.08304099999986647
+            },
+            {
+              "frame": 135168,
+              "gap_ms": 5.248458999999457
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.650561999999354,
+            "p95_ms": 5.325145999999904,
+            "p99_ms": 5.343855600000188,
+            "maximum_ms": 5.349833000000217,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    },
+    {
+      "trial": "1-draw192",
+      "condition": "draw192",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 196608,
+        "marker_start_frame": 4992,
+        "marker_last_frame": 201599,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/59914",
+        "preparation": {
+          "marker_times_ms": [
+            [
+              "prepare-start",
+              4245.849333
+            ],
+            [
+              "zero-start",
+              4246.942292
+            ],
+            [
+              "zero-end",
+              4247.063458
+            ],
+            [
+              "render-start",
+              4247.081333
+            ],
+            [
+              "render-end",
+              4251.882583
+            ],
+            [
+              "prepare-end",
+              4251.953583
+            ]
+          ],
+          "constructor_ms": 7.2354999999997744,
+          "preparation_ms": 6.10425000000032,
+          "discarded_initialization_ms": 1.0929589999996097,
+          "zero_calls_ms": 0.12116599999990285,
+          "discarded_render_ms": 4.801249999999527,
+          "discarded_release_ms": 0.07100000000082218,
+          "completed_preparation_markers": [
+            [
+              "192:64:1000",
+              4251.913917
+            ]
+          ]
+        },
+        "song": {
+          "first_two_outer_ms": [
+            1.819499999999607,
+            1.3627919999998994
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [],
+          "steady_p99_ms": 1.7402997999997754
+        },
+        "reference": {
+          "constructor_gap_ms": 12.512708000000202,
+          "constructor_between_frames": [
+            137984,
+            138112
+          ],
+          "constructor_start_offset_ms": 5.26299999999992,
+          "constructor_end_to_next_ms": 0.014208000000508036,
+          "nearby_gaps": [
+            {
+              "frame": 136960,
+              "gap_ms": 5.280166999999892
+            },
+            {
+              "frame": 137088,
+              "gap_ms": 0.06095800000002782
+            },
+            {
+              "frame": 137216,
+              "gap_ms": 5.247707999999875
+            },
+            {
+              "frame": 137344,
+              "gap_ms": 0.07250000000021828
+            },
+            {
+              "frame": 137472,
+              "gap_ms": 5.267334000000119
+            },
+            {
+              "frame": 137600,
+              "gap_ms": 0.059874999999919964
+            },
+            {
+              "frame": 137728,
+              "gap_ms": 5.280499999999847
+            },
+            {
+              "frame": 137856,
+              "gap_ms": 0.074083000000428
+            },
+            {
+              "frame": 137984,
+              "gap_ms": 12.512708000000202
+            },
+            {
+              "frame": 138112,
+              "gap_ms": 0.32795899999928224
+            },
+            {
+              "frame": 138240,
+              "gap_ms": 3.0979580000002898
+            },
+            {
+              "frame": 138368,
+              "gap_ms": 0.08858299999974406
+            },
+            {
+              "frame": 138496,
+              "gap_ms": 5.248625000000175
+            },
+            {
+              "frame": 138624,
+              "gap_ms": 0.09712500000023283
+            },
+            {
+              "frame": 138752,
+              "gap_ms": 5.205291999999645
+            },
+            {
+              "frame": 138880,
+              "gap_ms": 0.08933299999989686
+            },
+            {
+              "frame": 139008,
+              "gap_ms": 5.281417000000147
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.5202085000000807,
+            "p95_ms": 5.30984350000017,
+            "p99_ms": 5.344555949999994,
+            "maximum_ms": 5.6052920000001905,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    }
+  ],
+  "reference_hashes": {
+    "pcm": "8d626473d3234fe8044026a4bf34086dfac2cd7b598179438bd06182ab1a66f1",
+    "observations": "14d4a1e3c6d92f977e1b927206225a14c0f74de30107989675673918655e4c1b",
+    "score": "0d46bf5f8b2df6d2da9a3522b6a222b7e57a5daf28b42f14a04071b5b179e086"
+  },
+  "shared_context": {
+    "aligned_trials": 2,
+    "paired_differences": [
+      {
+        "constructor_gap_increase_ms": 5.533457999999882,
+        "constructor_increase_ms": 5.565042000000176
+      }
+    ],
+    "groups": {
+      "control": {
+        "first_two_within_budget": 0,
+        "all_quanta_within_budget": 0,
+        "median_constructor_gap_ms": 6.97925000000032,
+        "median_constructor_ms": 1.6704579999995985,
+        "median_first_song_quantum_ms": 3.7232500000000073
+      },
+      "draw192": {
+        "first_two_within_budget": 1,
+        "all_quanta_within_budget": 1,
+        "median_constructor_gap_ms": 12.512708000000202,
+        "median_constructor_ms": 7.2354999999997744,
+        "median_first_song_quantum_ms": 1.819499999999607
+      }
+    },
+    "median_paired_constructor_gap_increase_ms": 5.533457999999882,
+    "predictions": {
+      "reference_gap_increase": true,
+      "draw_first_two_within_budget": false
+    }
+  },
+  "audioipc_acquisition": {
+    "endpoint_timing_evaluated": false
+  }
+}

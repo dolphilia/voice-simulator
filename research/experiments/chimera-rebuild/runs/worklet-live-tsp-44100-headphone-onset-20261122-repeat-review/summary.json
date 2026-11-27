@@ -1,0 +1,961 @@
+{
+  "checks": {
+    "marker_rate_and_frames": true,
+    "marker_pcm": true,
+    "marker_spans_onset": true,
+    "canonical_speech_pcm_and_states": true,
+    "original_output_restored": true,
+    "unique_cubeb_marker": true,
+    "tap_marker_and_sample_clock": true,
+    "cubeb_speech_onset": true,
+    "tap_speech_onset": true,
+    "interior_markers_match_sample_clock": true,
+    "registered_widths": true,
+    "technical_and_measurable_onsets_map_to_writes": false
+  },
+  "output_route": {
+    "before": {
+      "defaultOutput": 86,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    },
+    "selected": {
+      "defaultOutput": 98,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    },
+    "after": {
+      "defaultOutput": 86,
+      "devices": [
+        {
+          "bufferFrames": 512,
+          "id": 48,
+          "name": "EV2785",
+          "sampleRate": 48000,
+          "uid": "15C31429-0000-0000-2D1C-0103803C2278"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 86,
+          "name": "MacBook Proのスピーカー",
+          "sampleRate": 48000,
+          "uid": "BuiltInSpeakerDevice"
+        },
+        {
+          "bufferFrames": 512,
+          "id": 98,
+          "name": "外部ヘッドフォン",
+          "sampleRate": 44100,
+          "uid": "BuiltInHeadphoneOutputDevice"
+        }
+      ]
+    }
+  },
+  "trace_tables": [
+    "audio-hal-client-io-cycle",
+    "audio-hal-io-cycle-client",
+    "audio-hal-io-cycle-hardware"
+  ],
+  "speech_start_context_frame": 11264,
+  "first_nonzero_speech_frame": 2247,
+  "first_nonzero_context_frame": 13511,
+  "marker_start_context_frame": 4096,
+  "graph_window": [
+    7623,
+    15559
+  ],
+  "trimmed_leading_anchor_frames": 256,
+  "cubeb_streams": [
+    {
+      "stream": "cubeb-output-73676-0",
+      "formats": {
+        "stream_rate_hz": "44100",
+        "buffer_rate_hz": "44100"
+      },
+      "frames": 65536,
+      "valid": false,
+      "peak": 0.0,
+      "block_frame_counts": {
+        "256": 256
+      },
+      "marker": {
+        "valid": false,
+        "reason": "smooth_anchor_not_unique",
+        "anchors": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "stream": "cubeb-output-73676-1",
+      "formats": {
+        "stream_rate_hz": "44100",
+        "buffer_rate_hz": "44100"
+      },
+      "frames": 65536,
+      "valid": true,
+      "peak": 0.38141652941703796,
+      "block_frame_counts": {
+        "256": 256
+      },
+      "marker": {
+        "valid": true,
+        "tap_window": [
+          12231,
+          20167
+        ],
+        "expected_frames": 7936,
+        "captured_frames": 7936,
+        "anchors": [
+          {
+            "offset": 12231,
+            "fraction": -4.996003610813204e-16,
+            "correlation": 1.0,
+            "distinct_peak_margin": 0.5565961680750413,
+            "relative_residual": 0.0,
+            "gain": 1.0
+          },
+          {
+            "offset": 19143,
+            "fraction": -2.272745491804784e-09,
+            "correlation": 1.0,
+            "distinct_peak_margin": 0.5287331509634565,
+            "relative_residual": 3.620618630341907e-08,
+            "gain": 1.000000000992603
+          }
+        ],
+        "net_marker_advance_frames": -2.272744992204423e-09,
+        "continuous": true,
+        "full_window_relative_residual": 3.161446033530945e-08,
+        "quiet_frames": 232,
+        "silent_frames": 53,
+        "phase": {
+          "windows": [
+            {
+              "start": 0,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.5144932100432162,
+              "marker_position_frames": 7623.0,
+              "gain": 1.0,
+              "relative_residual": 0.0
+            },
+            {
+              "start": 1024,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.5431576965948104,
+              "marker_position_frames": 8647.000000000013,
+              "gain": 0.999999999919911,
+              "relative_residual": 7.245968360063763e-09
+            },
+            {
+              "start": 2048,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.4539028442944555,
+              "marker_position_frames": 9670.999999991198,
+              "gain": 0.999999999768452,
+              "relative_residual": 2.3674532310897698e-08
+            },
+            {
+              "start": 3072,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.503873690065731,
+              "marker_position_frames": 10695.00000001324,
+              "gain": 0.9999999995512492,
+              "relative_residual": 3.718113642145497e-08
+            },
+            {
+              "start": 4096,
+              "accepted": true,
+              "correlation": 0.9999999999999999,
+              "distinct_peak_margin": 0.541079777248657,
+              "marker_position_frames": 11719.000000716467,
+              "gain": 0.9999999989344864,
+              "relative_residual": 9.584314757109173e-08
+            },
+            {
+              "start": 5120,
+              "accepted": true,
+              "correlation": 0.9999999999999988,
+              "distinct_peak_margin": 0.48481935738600535,
+              "marker_position_frames": 12742.99999999907,
+              "gain": 1.0000000006055172,
+              "relative_residual": 4.3347153787923226e-08
+            },
+            {
+              "start": 6144,
+              "accepted": true,
+              "correlation": 1.0,
+              "distinct_peak_margin": 0.41417914378151977,
+              "marker_position_frames": 13767.000000001302,
+              "gain": 0.9999999994511772,
+              "relative_residual": 3.335623695149183e-08
+            }
+          ],
+          "longest_consecutive_frames": 7168,
+          "phase_jumps": [],
+          "known_marker_continuous": false
+        }
+      }
+    }
+  ],
+  "tap": {
+    "valid": true,
+    "pcm": {
+      "valid": true,
+      "tap_window": [
+        89091,
+        97027
+      ],
+      "expected_frames": 7936,
+      "captured_frames": 7936,
+      "anchors": [
+        {
+          "offset": 89091,
+          "fraction": 1.8190452283350922e-08,
+          "correlation": 0.9999999995701263,
+          "distinct_peak_margin": 0.5149446068053525,
+          "relative_residual": 2.9251856172551663e-05,
+          "gain": 0.9999999651991507
+        },
+        {
+          "offset": 96003,
+          "fraction": 4.0790769723075826e-07,
+          "correlation": 0.9999999995579675,
+          "distinct_peak_margin": 0.4690383513945928,
+          "relative_residual": 2.956730624166417e-05,
+          "gain": 0.9999999998035005
+        }
+      ],
+      "net_marker_advance_frames": 3.8971724494740734e-07,
+      "continuous": true,
+      "full_window_relative_residual": 3.069492002984578e-05,
+      "quiet_frames": 232,
+      "silent_frames": 0,
+      "phase": {
+        "windows": [
+          {
+            "start": 0,
+            "accepted": true,
+            "correlation": 0.9999999995701345,
+            "distinct_peak_margin": 0.5144931874880943,
+            "marker_position_frames": 7623.000000018191,
+            "gain": 0.9999999651991507,
+            "relative_residual": 2.9251856172551663e-05
+          },
+          {
+            "start": 1024,
+            "accepted": true,
+            "correlation": 0.9999999994537403,
+            "distinct_peak_margin": 0.5431576979865527,
+            "marker_position_frames": 8647.00000007236,
+            "gain": 1.0000000221012033,
+            "relative_residual": 3.285284663739162e-05
+          },
+          {
+            "start": 2048,
+            "accepted": true,
+            "correlation": 0.9999999996275066,
+            "distinct_peak_margin": 0.45390287476989366,
+            "marker_position_frames": 9671.000000079623,
+            "gain": 1.000000023124931,
+            "relative_residual": 2.6705326058041257e-05
+          },
+          {
+            "start": 3072,
+            "accepted": true,
+            "correlation": 0.9999999994013856,
+            "distinct_peak_margin": 0.5038736862088351,
+            "marker_position_frames": 10695.00000003114,
+            "gain": 0.9999999844205952,
+            "relative_residual": 3.377235387597005e-05
+          },
+          {
+            "start": 4096,
+            "accepted": true,
+            "correlation": 0.9999999994534242,
+            "distinct_peak_margin": 0.5410797759091315,
+            "marker_position_frames": 11719.000000099986,
+            "gain": 1.0000000012715085,
+            "relative_residual": 3.2672911092280764e-05
+          },
+          {
+            "start": 5120,
+            "accepted": true,
+            "correlation": 0.999999999540876,
+            "distinct_peak_margin": 0.48481938088422005,
+            "marker_position_frames": 12742.999999215031,
+            "gain": 0.9999999991227883,
+            "relative_residual": 2.9854844037250247e-05
+          },
+          {
+            "start": 6144,
+            "accepted": true,
+            "correlation": 0.9999999994903034,
+            "distinct_peak_margin": 0.4141791323044368,
+            "marker_position_frames": 13767.000000026846,
+            "gain": 0.999999977773589,
+            "relative_residual": 3.1827312690136654e-05
+          }
+        ],
+        "longest_consecutive_frames": 7168,
+        "phase_jumps": [],
+        "known_marker_continuous": false
+      }
+    },
+    "tap_sample_clock_jumps": [],
+    "tap_minus_cubeb_host_time_at_window_ends_ms": [
+      28.521805555143075,
+      28.5218358750526
+    ],
+    "host_time_offset_change_ms": 3.0319909523512933e-05
+  },
+  "cubeb_speech": {
+    "relative_residual": 1.6236615280219584e-08,
+    "gain": 1.0000000001168856,
+    "measured_onset_frame": 2923,
+    "reference_onset_frame": 2923,
+    "measured_onset_in_pcm_window": 2468
+  },
+  "tap_speech": {
+    "relative_residual": 0.0714196245212634,
+    "gain": 0.9939913069329466,
+    "measured_onset_frame": 2923,
+    "reference_onset_frame": 2923,
+    "measured_onset_in_pcm_window": 2468
+  },
+  "first_cubeb_to_tap_speech_difference_over_1e_6": 3238,
+  "verification_anchors": [
+    {
+      "marker_frame": 9671,
+      "position_error_frames": -8.843198884278536e-08,
+      "matches": [
+        {
+          "offset": 14279,
+          "fraction": -8.801920498013871e-09,
+          "correlation": 1.0,
+          "distinct_peak_margin": 0.4539028439915591,
+          "relative_residual": 2.3674532310897698e-08,
+          "gain": 0.999999999768452
+        },
+        {
+          "offset": 91139,
+          "fraction": 7.962199180533425e-08,
+          "correlation": 0.999999999627509,
+          "distinct_peak_margin": 0.45390285339171266,
+          "relative_residual": 2.6705326058041257e-05,
+          "gain": 1.000000023124931
+        }
+      ]
+    },
+    {
+      "marker_frame": 11719,
+      "position_error_frames": 6.164773367345333e-07,
+      "matches": [
+        {
+          "offset": 16327,
+          "fraction": 7.164668313869864e-07,
+          "correlation": 0.9999999999999999,
+          "distinct_peak_margin": 0.6142085450161042,
+          "relative_residual": 9.584314757109173e-08,
+          "gain": 0.9999999989344864
+        },
+        {
+          "offset": 93187,
+          "fraction": 9.998682306529698e-08,
+          "correlation": 0.9999999994534156,
+          "distinct_peak_margin": 0.5410603851727246,
+          "relative_residual": 3.2672911092280764e-05,
+          "gain": 1.0000000012715085
+        }
+      ]
+    },
+    {
+      "marker_frame": 13767,
+      "position_error_frames": -2.5553163141012192e-08,
+      "matches": [
+        {
+          "offset": 18375,
+          "fraction": 1.302143698422853e-09,
+          "correlation": 1.0,
+          "distinct_peak_margin": 0.5540785124446912,
+          "relative_residual": 3.335623695149183e-08,
+          "gain": 0.9999999994511772
+        },
+        {
+          "offset": 95235,
+          "fraction": 2.6846809886293954e-08,
+          "correlation": 0.9999999994902842,
+          "distinct_peak_margin": 0.413693303060681,
+          "relative_residual": 3.1827312690136654e-05,
+          "gain": 0.999999977773589
+        }
+      ]
+    }
+  ],
+  "joint_writes": [
+    {
+      "cubeb_index": 56,
+      "cubeb_pcm_frame": 14336,
+      "frames": 256,
+      "buffer_sample_time": 14628.0,
+      "cubeb_host_ticks": 2576645153236,
+      "server_host_ticks": 2576645153236,
+      "server_sample_time": 108092,
+      "write_start_ns": 355625000,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 91196,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.4309502063708628e-05,
+      "pcm_gain": 1.0000000216224092,
+      "tap_sample_clock_pcm_frame": 91196,
+      "tap_sample_clock_marker_residual": 2.4309502063708628e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 57,
+      "cubeb_pcm_frame": 14592,
+      "frames": 256,
+      "buffer_sample_time": 14884.0,
+      "cubeb_host_ticks": 2576645292556,
+      "server_host_ticks": 2576645292556,
+      "server_sample_time": 108348,
+      "write_start_ns": 361331916,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 91452,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.426088107763881e-05,
+      "pcm_gain": 1.0000000090541572,
+      "tap_sample_clock_pcm_frame": 91452,
+      "tap_sample_clock_marker_residual": 3.426088107763881e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 58,
+      "cubeb_pcm_frame": 14848,
+      "frames": 256,
+      "buffer_sample_time": 15140.0,
+      "cubeb_host_ticks": 2576645431876,
+      "server_host_ticks": 2576645431876,
+      "server_sample_time": 108604,
+      "write_start_ns": 367143875,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 91708,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.3437312356922313e-05,
+      "pcm_gain": 1.00000003083398,
+      "tap_sample_clock_pcm_frame": 91708,
+      "tap_sample_clock_marker_residual": 2.3437312356922313e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 59,
+      "cubeb_pcm_frame": 15104,
+      "frames": 256,
+      "buffer_sample_time": 15396.0,
+      "cubeb_host_ticks": 2576645571195,
+      "server_host_ticks": 2576645571195,
+      "server_sample_time": 108860,
+      "write_start_ns": 372933125,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 91964,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.6722274835099878e-05,
+      "pcm_gain": 0.9999998627933405,
+      "tap_sample_clock_pcm_frame": 91964,
+      "tap_sample_clock_marker_residual": 2.6722274835099878e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 60,
+      "cubeb_pcm_frame": 15360,
+      "frames": 256,
+      "buffer_sample_time": 15652.0,
+      "cubeb_host_ticks": 2576645710515,
+      "server_host_ticks": 2576645710515,
+      "server_sample_time": 109116,
+      "write_start_ns": 378768541,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 92220,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.865648606199894e-05,
+      "pcm_gain": 1.0000000752078142,
+      "tap_sample_clock_pcm_frame": 92220,
+      "tap_sample_clock_marker_residual": 3.865648606199894e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 61,
+      "cubeb_pcm_frame": 15616,
+      "frames": 256,
+      "buffer_sample_time": 15908.0,
+      "cubeb_host_ticks": 2576645849835,
+      "server_host_ticks": 2576645849835,
+      "server_sample_time": 109372,
+      "write_start_ns": 384616625,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 92476,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.9707038782446264e-05,
+      "pcm_gain": 1.0000000046268245,
+      "tap_sample_clock_pcm_frame": 92476,
+      "tap_sample_clock_marker_residual": 2.9707038782446264e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 62,
+      "cubeb_pcm_frame": 15872,
+      "frames": 256,
+      "buffer_sample_time": 16164.0,
+      "cubeb_host_ticks": 2576645989155,
+      "server_host_ticks": 2576645989155,
+      "server_sample_time": 109628,
+      "write_start_ns": 390386750,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 92732,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.8505022142019756e-05,
+      "pcm_gain": 0.9999998884438889,
+      "tap_sample_clock_pcm_frame": 92732,
+      "tap_sample_clock_marker_residual": 3.8505022142019756e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 63,
+      "cubeb_pcm_frame": 16128,
+      "frames": 256,
+      "buffer_sample_time": 16420.0,
+      "cubeb_host_ticks": 2576646128474,
+      "server_host_ticks": 2576646128474,
+      "server_sample_time": 109884,
+      "write_start_ns": 398660125,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 92988,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 167.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.5361056200117243e-05,
+      "pcm_gain": 1.0000000357055254,
+      "tap_sample_clock_pcm_frame": 92988,
+      "tap_sample_clock_marker_residual": 2.5361056200117243e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 64,
+      "cubeb_pcm_frame": 16384,
+      "frames": 256,
+      "buffer_sample_time": 16676.0,
+      "cubeb_host_ticks": 2576646267794,
+      "server_host_ticks": 2576646267794,
+      "server_sample_time": 110140,
+      "write_start_ns": 401981208,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 93244,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.529188851452456e-05,
+      "pcm_gain": 1.0000001271842307,
+      "tap_sample_clock_pcm_frame": 93244,
+      "tap_sample_clock_marker_residual": 3.529188851452456e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 65,
+      "cubeb_pcm_frame": 16640,
+      "frames": 256,
+      "buffer_sample_time": 16932.0,
+      "cubeb_host_ticks": 2576646407114,
+      "server_host_ticks": 2576646407114,
+      "server_sample_time": 110396,
+      "write_start_ns": 407866583,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 93500,
+      "tap_position_error_frames": 0.0008310358098242432,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.442817558597865e-05,
+      "pcm_gain": 0.9999999270904365,
+      "tap_sample_clock_pcm_frame": 93500,
+      "tap_sample_clock_marker_residual": 3.442817558597865e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 66,
+      "cubeb_pcm_frame": 16896,
+      "frames": 256,
+      "buffer_sample_time": 17188.0,
+      "cubeb_host_ticks": 2576646546434,
+      "server_host_ticks": 2576646546434,
+      "server_sample_time": 110652,
+      "write_start_ns": 413619625,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 93756,
+      "tap_position_error_frames": 0.0013310358044691384,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.5284644226832535e-05,
+      "pcm_gain": 0.9999999954530467,
+      "tap_sample_clock_pcm_frame": 93756,
+      "tap_sample_clock_marker_residual": 3.5284644226832535e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 67,
+      "cubeb_pcm_frame": 17152,
+      "frames": 256,
+      "buffer_sample_time": 17444.0,
+      "cubeb_host_ticks": 2576646685753,
+      "server_host_ticks": 2576646685753,
+      "server_sample_time": 110908,
+      "write_start_ns": 419334416,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 94012,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 1.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.0034295253846837e-05,
+      "pcm_gain": 0.9999999464305802,
+      "tap_sample_clock_pcm_frame": 94012,
+      "tap_sample_clock_marker_residual": 3.0034295253846837e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 68,
+      "cubeb_pcm_frame": 17408,
+      "frames": 256,
+      "buffer_sample_time": 17700.0,
+      "cubeb_host_ticks": 2576646825073,
+      "server_host_ticks": 2576646825073,
+      "server_sample_time": 111164,
+      "write_start_ns": 425073291,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 94268,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 1.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.1886644503480505e-05,
+      "pcm_gain": 0.9999999544819634,
+      "tap_sample_clock_pcm_frame": 94268,
+      "tap_sample_clock_marker_residual": 3.1886644503480505e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 69,
+      "cubeb_pcm_frame": 17664,
+      "frames": 256,
+      "buffer_sample_time": 17956.0,
+      "cubeb_host_ticks": 2576646964393,
+      "server_host_ticks": 2576646964393,
+      "server_sample_time": 111420,
+      "write_start_ns": 431057000,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 94524,
+      "tap_position_error_frames": 0.0008310358098242432,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.0633880300780244e-05,
+      "pcm_gain": 0.9999999672554573,
+      "tap_sample_clock_pcm_frame": 94524,
+      "tap_sample_clock_marker_residual": 3.0633880300780244e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 70,
+      "cubeb_pcm_frame": 17920,
+      "frames": 256,
+      "buffer_sample_time": 18212.0,
+      "cubeb_host_ticks": 2576647103712,
+      "server_host_ticks": 2576647103712,
+      "server_sample_time": 111676,
+      "write_start_ns": 436736708,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 94780,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.289338505476783e-05,
+      "pcm_gain": 1.0000000845426695,
+      "tap_sample_clock_pcm_frame": 94780,
+      "tap_sample_clock_marker_residual": 3.289338505476783e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 71,
+      "cubeb_pcm_frame": 18176,
+      "frames": 256,
+      "buffer_sample_time": 18468.0,
+      "cubeb_host_ticks": 2576647243032,
+      "server_host_ticks": 2576647243032,
+      "server_sample_time": 111932,
+      "write_start_ns": 442621125,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 95036,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.540747746538327e-05,
+      "pcm_gain": 0.9999999355279392,
+      "tap_sample_clock_pcm_frame": 95036,
+      "tap_sample_clock_marker_residual": 2.540747746538327e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 72,
+      "cubeb_pcm_frame": 18432,
+      "frames": 256,
+      "buffer_sample_time": 18724.0,
+      "cubeb_host_ticks": 2576647382352,
+      "server_host_ticks": 2576647382352,
+      "server_sample_time": 112188,
+      "write_start_ns": 448314125,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 95292,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 125.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.5128870691470214e-05,
+      "pcm_gain": 0.9999999762290326,
+      "tap_sample_clock_pcm_frame": 95292,
+      "tap_sample_clock_marker_residual": 2.5128870691470214e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 73,
+      "cubeb_pcm_frame": 18688,
+      "frames": 256,
+      "buffer_sample_time": 18980.0,
+      "cubeb_host_ticks": 2576647521672,
+      "server_host_ticks": 2576647521672,
+      "server_sample_time": 112444,
+      "write_start_ns": 454113333,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 95548,
+      "tap_position_error_frames": 0.0008310358098242432,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.128578269361272e-05,
+      "pcm_gain": 1.0000000262304167,
+      "tap_sample_clock_pcm_frame": 95548,
+      "tap_sample_clock_marker_residual": 3.128578269361272e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 74,
+      "cubeb_pcm_frame": 18944,
+      "frames": 256,
+      "buffer_sample_time": 19236.0,
+      "cubeb_host_ticks": 2576647660991,
+      "server_host_ticks": 2576647660991,
+      "server_sample_time": 112700,
+      "write_start_ns": 459963583,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 95804,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 42.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.423387175363361e-05,
+      "pcm_gain": 0.9999999920382314,
+      "tap_sample_clock_pcm_frame": 95804,
+      "tap_sample_clock_marker_residual": 3.423387175363361e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 75,
+      "cubeb_pcm_frame": 19200,
+      "frames": 256,
+      "buffer_sample_time": 19492.0,
+      "cubeb_host_ticks": 2576647800311,
+      "server_host_ticks": 2576647800311,
+      "server_sample_time": 112956,
+      "write_start_ns": 465734541,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 96060,
+      "tap_position_error_frames": -0.0010064641828648746,
+      "clock_origin_delta_ns": 1.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 3.572219380180387e-05,
+      "pcm_gain": 0.9999999040762578,
+      "tap_sample_clock_pcm_frame": 96060,
+      "tap_sample_clock_marker_residual": 3.572219380180387e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 76,
+      "cubeb_pcm_frame": 19456,
+      "frames": 256,
+      "buffer_sample_time": 19748.0,
+      "cubeb_host_ticks": 2576647939631,
+      "server_host_ticks": 2576647939631,
+      "server_sample_time": 113212,
+      "write_start_ns": 471684958,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 96316,
+      "tap_position_error_frames": -0.0005064641882199794,
+      "clock_origin_delta_ns": 125.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.6968852902491827e-05,
+      "pcm_gain": 1.0000000848956738,
+      "tap_sample_clock_pcm_frame": 96316,
+      "tap_sample_clock_marker_residual": 2.6968852902491827e-05,
+      "is_headphone": true
+    },
+    {
+      "cubeb_index": 77,
+      "cubeb_pcm_frame": 19712,
+      "frames": 256,
+      "buffer_sample_time": 20004.0,
+      "cubeb_host_ticks": 2576648078951,
+      "server_host_ticks": 2576648078951,
+      "server_sample_time": 113468,
+      "write_start_ns": 477304958,
+      "engine_id": "115",
+      "stream_index": 0,
+      "tap_pcm_frame": 96572,
+      "tap_position_error_frames": 0.0008310358098242432,
+      "clock_origin_delta_ns": 0.0,
+      "matching_audio_client": 1,
+      "relative_pcm_residual": 2.548713828312259e-05,
+      "pcm_gain": 0.9999999805852601,
+      "tap_sample_clock_pcm_frame": 96572,
+      "tap_sample_clock_marker_residual": 2.548713828312259e-05,
+      "is_headphone": true
+    }
+  ],
+  "device_request_frame_counts": {
+    "256": 31
+  },
+  "tap_block_frame_counts": {
+    "512": 515
+  },
+  "onset_device_writes": {
+    "technical": [],
+    "measurable_cubeb": [
+      {
+        "cubeb_index": 57,
+        "cubeb_pcm_frame": 14592,
+        "frames": 256,
+        "buffer_sample_time": 14884.0,
+        "cubeb_host_ticks": 2576645292556,
+        "server_host_ticks": 2576645292556,
+        "server_sample_time": 108348,
+        "write_start_ns": 361331916,
+        "engine_id": "115",
+        "stream_index": 0,
+        "tap_pcm_frame": 91452,
+        "tap_position_error_frames": -0.0010064641828648746,
+        "clock_origin_delta_ns": 42.0,
+        "matching_audio_client": 1,
+        "relative_pcm_residual": 3.426088107763881e-05,
+        "pcm_gain": 1.0000000090541572,
+        "tap_sample_clock_pcm_frame": 91452,
+        "tap_sample_clock_marker_residual": 3.426088107763881e-05,
+        "is_headphone": true
+      }
+    ],
+    "measurable_tap": [
+      {
+        "cubeb_index": 57,
+        "cubeb_pcm_frame": 14592,
+        "frames": 256,
+        "buffer_sample_time": 14884.0,
+        "cubeb_host_ticks": 2576645292556,
+        "server_host_ticks": 2576645292556,
+        "server_sample_time": 108348,
+        "write_start_ns": 361331916,
+        "engine_id": "115",
+        "stream_index": 0,
+        "tap_pcm_frame": 91452,
+        "tap_position_error_frames": -0.0010064641828648746,
+        "clock_origin_delta_ns": 42.0,
+        "matching_audio_client": 1,
+        "relative_pcm_residual": 3.426088107763881e-05,
+        "pcm_gain": 1.0000000090541572,
+        "tap_sample_clock_pcm_frame": 91452,
+        "tap_sample_clock_marker_residual": 3.426088107763881e-05,
+        "is_headphone": true
+      }
+    ]
+  }
+}

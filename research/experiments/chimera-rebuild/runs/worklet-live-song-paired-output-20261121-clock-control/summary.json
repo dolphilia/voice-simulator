@@ -1,0 +1,228 @@
+{
+  "checks": {
+    "continuous": true,
+    "deleted_256": true,
+    "repeated_256": true,
+    "zeroed_256": true,
+    "clock_jump": true,
+    "wrong_pid": true,
+    "wrong_timebase": true,
+    "backwards_clock": true
+  },
+  "fixtures": {
+    "continuous": {
+      "valid": true,
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": []
+      },
+      "tap_sample_clock_jumps": [],
+      "tap_minus_cubeb_host_time_at_window_ends_ms": [
+        2.0000833333333334,
+        -3.332875
+      ],
+      "host_time_offset_change_ms": -5.332958333333334
+    },
+    "deleted_256": {
+      "valid": true,
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5120
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4096,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 256,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": [
+          {
+            "first_following_frame": 3328,
+            "marker_displacement": 256,
+            "undecoded_frames": 0,
+            "source_frames_around_transition": [
+              24831,
+              25088
+            ]
+          }
+        ]
+      },
+      "tap_sample_clock_jumps": [],
+      "tap_minus_cubeb_host_time_at_window_ends_ms": [
+        2.0000833333333334,
+        -8.666208333333334
+      ],
+      "host_time_offset_change_ms": -10.666291666666666
+    },
+    "repeated_256": {
+      "valid": true,
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5632
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4608,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 256,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": [
+          {
+            "first_following_frame": 3328,
+            "marker_displacement": -256,
+            "undecoded_frames": 0,
+            "source_frames_around_transition": [
+              24831,
+              24576
+            ]
+          }
+        ]
+      },
+      "tap_sample_clock_jumps": [],
+      "tap_minus_cubeb_host_time_at_window_ends_ms": [
+        2.0000833333333334,
+        2.0004583333333334
+      ],
+      "host_time_offset_change_ms": 0.0003750000000000142
+    },
+    "zeroed_256": {
+      "valid": true,
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 256,
+        "silent_frames": 256,
+        "transitions": [
+          {
+            "first_following_frame": 3584,
+            "marker_displacement": 0,
+            "undecoded_frames": 256,
+            "source_frames_around_transition": [
+              24831,
+              25088
+            ]
+          }
+        ]
+      },
+      "tap_sample_clock_jumps": [],
+      "tap_minus_cubeb_host_time_at_window_ends_ms": [
+        2.0000833333333334,
+        -3.332875
+      ],
+      "host_time_offset_change_ms": -5.332958333333334
+    },
+    "clock_jump": {
+      "valid": true,
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": []
+      },
+      "tap_sample_clock_jumps": [
+        {
+          "tap_pcm_frame": 3328,
+          "sample_time_gap_frames": 256
+        }
+      ],
+      "tap_minus_cubeb_host_time_at_window_ends_ms": [
+        2.0000833333333334,
+        2.0004583333333334
+      ],
+      "host_time_offset_change_ms": 0.0003750000000000142
+    },
+    "wrong_pid": {
+      "valid": false,
+      "reason": "different_audio_process",
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": []
+      }
+    },
+    "wrong_timebase": {
+      "valid": false,
+      "reason": "host_timebases_disagree",
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": []
+      }
+    },
+    "backwards_clock": {
+      "valid": false,
+      "reason": "backwards_tap_clock",
+      "pcm": {
+        "valid": true,
+        "tap_window": [
+          1024,
+          5376
+        ],
+        "expected_frames": 4352,
+        "captured_frames": 4352,
+        "marker_gain": 1.0,
+        "missing_marker_frames": 0,
+        "repeated_marker_frames": 0,
+        "undecoded_frames": 0,
+        "silent_frames": 0,
+        "transitions": []
+      }
+    }
+  },
+  "observed_source": "worklet-live-song-cubeb-output-20261121-native-a",
+  "tap_source": "synthetic"
+}

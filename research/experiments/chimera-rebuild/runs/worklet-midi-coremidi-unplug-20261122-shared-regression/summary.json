@@ -1,0 +1,205 @@
+{
+  "checks": {
+    "both_browser_entries": true,
+    "candidate/native_source_lifecycle": true,
+    "candidate/native_ump_and_host_times": true,
+    "candidate/standard_web_midi_and_hot_add": true,
+    "candidate/trusted_midi_bytes": true,
+    "candidate/app_held_sequence": true,
+    "candidate/app_listener_cleanup": true,
+    "candidate/no_page_or_capture_errors": true,
+    "candidate/midi_targets_at_worklet": true,
+    "candidate/finite_and_continuous_worklet": true,
+    "candidate/independent_worklet_controls": true,
+    "candidate/worklet_sustained_voice": true,
+    "candidate/worklet_silent_before_and_after": true,
+    "candidate/worklet_pcm_matches_cli": true,
+    "candidate/trusted_removal_before_ui_release": true,
+    "candidate/removed_port_subscriptions": true,
+    "candidate/native_removal_notification": true,
+    "upstream/native_source_lifecycle": true,
+    "upstream/native_ump_and_host_times": true,
+    "upstream/standard_web_midi_and_hot_add": true,
+    "upstream/trusted_midi_bytes": true,
+    "upstream/app_held_sequence": true,
+    "upstream/app_listener_cleanup": true,
+    "upstream/no_page_or_capture_errors": true,
+    "upstream/play_target_pitch_and_gate": true,
+    "upstream/play_finite_and_quiet_before_on": true,
+    "upstream/play_independent_drift_before_on": true,
+    "upstream/play_sustained_voice": true,
+    "upstream/play_release": true,
+    "upstream/trusted_removal_before_ui_release": true,
+    "upstream/removed_port_subscriptions": true,
+    "upstream/removal_before_gate_target": true,
+    "upstream/native_removal_notification": true,
+    "candidate/release_matches_note_off": true,
+    "upstream/release_time_constant": true
+  },
+  "browser": "157.0.8103.79",
+  "release_action": "remove-source",
+  "expected_pitch_hz": 220.0,
+  "result": {
+    "candidate": {
+      "applied_notes": [
+        {
+          "frame": 16128,
+          "note": 57
+        },
+        {
+          "frame": 59904,
+          "note": null
+        }
+      ],
+      "output_frames": 140800,
+      "sample_rate_hz": 48000,
+      "observations": 1100,
+      "sustained_gate_min": 0.9999998988505455,
+      "sustained_f0_max_error_hz": 0.18555232830041746,
+      "initial_pcm_peak": 1.3842327462043613e-07,
+      "voiced_pcm_peak": 0.27833789587020874,
+      "tail_pcm_peak": 1.153046151702137e-15,
+      "control_max_errors": {
+        "gate": 2.220446049250313e-16,
+        "f0_hz": 3.126388037344441e-12
+      },
+      "cli_pcm": {
+        "first_bit_difference_frame": null,
+        "first_bit_difference_values": null,
+        "maximum_absolute_error": 0.0,
+        "first_frame_over_tolerance": null
+      },
+      "unplug": {
+        "event": {
+          "name": "CHIMERA CoreMIDI Probe 12322 candidate",
+          "id": "-1795945016",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "trusted": true,
+          "eventMs": 2284.3999999910593,
+          "handlerMs": 2284.5,
+          "inInputMap": false
+        },
+        "removed_input": {
+          "name": "CHIMERA CoreMIDI Probe 12322 candidate",
+          "id": "-1795945016",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "propertyHandlerSet": false
+        },
+        "observed_ui_release_ms": 2295.8999999910593,
+        "observed_upper_gate_ms": null,
+        "timing": {
+          "dispose_call_ms": 0.154125,
+          "remove_to_native_notification_ms": 252.248541,
+          "remove_to_browser_event_estimate_ms": 252.28262500000005,
+          "browser_minus_native_estimate_ms": 0.03408400000006395,
+          "browser_and_native_agree_within_registered_tolerance": true
+        }
+      },
+      "release_comparison": {
+        "elapsed_frames": [
+          128,
+          768,
+          3456,
+          9600
+        ],
+        "unplug": [
+          0.9626212583103545,
+          0.7956694616416932,
+          0.3575173349791698,
+          0.057432619267617564
+        ],
+        "note_off": [
+          0.9626212583103546,
+          0.795669461641693,
+          0.35751733497916965,
+          0.05743261926761756
+        ],
+        "maximum_error": 1.6653345369377348e-16
+      }
+    },
+    "upstream": {
+      "sample_rate_hz": 48000,
+      "internal_sample_rate_hz": 96000,
+      "gate_messages": [
+        {
+          "level": 0,
+          "clock": null,
+          "observedMs": 399.5
+        },
+        {
+          "level": 1,
+          "clock": 0.5092999999970229,
+          "observedMs": 925.0999999940395
+        },
+        {
+          "level": 0,
+          "clock": 1.419400000005973,
+          "observedMs": 1835.4000000059605
+        }
+      ],
+      "steady_rows": 12,
+      "tail_rows": 10,
+      "steady_gate_min": 0.9999999520608498,
+      "tail_gate_max": 6.276013517947307e-05,
+      "steady_f0_hz": [
+        219.33631079397313,
+        219.9857334111859
+      ],
+      "steady_f0_without_drift_hz": [
+        219.83760100194377,
+        219.99135421017397
+      ],
+      "pre_note_f0_without_drift_max_error_hz": 2.842170943040401e-14,
+      "steady_peak_rms": 0.26574039864432214,
+      "raw_f0_passes_original_tolerance": false,
+      "unplug": {
+        "event": {
+          "name": "CHIMERA CoreMIDI Probe 12322 upstream",
+          "id": "-384226223",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "trusted": true,
+          "eventMs": 1835.2000000029802,
+          "handlerMs": 1835.2000000029802,
+          "inInputMap": false
+        },
+        "removed_input": {
+          "name": "CHIMERA CoreMIDI Probe 12322 upstream",
+          "id": "-384226223",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "propertyHandlerSet": true
+        },
+        "observed_ui_release_ms": 1857.5999999940395,
+        "observed_upper_gate_ms": 1835.4000000059605,
+        "timing": {
+          "dispose_call_ms": 0.358208,
+          "remove_to_native_notification_ms": 250.600958,
+          "remove_to_browser_event_estimate_ms": 251.78450000894065,
+          "browser_minus_native_estimate_ms": 1.1835420089406625,
+          "browser_and_native_agree_within_registered_tolerance": true
+        }
+      },
+      "release_comparison": {
+        "elapsed_seconds": [
+          0.08,
+          0.3
+        ],
+        "unplug": {
+          "points": 13,
+          "tau_seconds": 0.07000000000000405
+        },
+        "note_off": {
+          "points": 14,
+          "tau_seconds": 0.07000000000000406
+        }
+      }
+    }
+  }
+}

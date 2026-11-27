@@ -1,0 +1,362 @@
+{
+  "checks": {
+    "same_wasm_as_reference": true,
+    "1-control/input_and_assets": true,
+    "1-control/audio_and_observations": true,
+    "1-control/upstream_pcm": true,
+    "1-control/schedule_and_beats": true,
+    "1-control/asset_body_read_deferred": true,
+    "1-control/marker_pcm_bit_identical": true,
+    "1-control/marker_frame_continuity": true,
+    "1-control/marker_rate_matches_voice": true,
+    "1-control/both_processors_on_one_graph_runner": true,
+    "1-control/native_intervals_aligned": true,
+    "1-control/reference_frames_match_native_calls": true,
+    "1-control/no_song_phase_markers": true,
+    "1-control/constructor_before_first_process": true,
+    "1-control/control_has_no_preparation_markers": true,
+    "1-control/constructor_bracketed_by_reference_callbacks": true,
+    "1-control/reference_and_song_context_frames_aligned": true,
+    "1-draw192/input_and_assets": true,
+    "1-draw192/audio_and_observations": true,
+    "1-draw192/upstream_pcm": true,
+    "1-draw192/schedule_and_beats": true,
+    "1-draw192/asset_body_read_deferred": true,
+    "1-draw192/marker_pcm_bit_identical": true,
+    "1-draw192/marker_frame_continuity": true,
+    "1-draw192/marker_rate_matches_voice": true,
+    "1-draw192/both_processors_on_one_graph_runner": true,
+    "1-draw192/native_intervals_aligned": true,
+    "1-draw192/reference_frames_match_native_calls": true,
+    "1-draw192/no_song_phase_markers": true,
+    "1-draw192/constructor_before_first_process": true,
+    "1-draw192/preparation_inside_constructor": true,
+    "1-draw192/preparation_matches_requested_frames": true,
+    "1-draw192/constructor_bracketed_by_reference_callbacks": true,
+    "1-draw192/reference_and_song_context_frames_aligned": true
+  },
+  "trials": [
+    {
+      "trial": "1-control",
+      "condition": "control",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 6016,
+        "marker_last_frame": 71551,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/33974",
+        "preparation": {
+          "marker_times_ms": [],
+          "constructor_ms": 1.7873329999997623
+        },
+        "song": {
+          "first_two_outer_ms": [
+            3.787250000000313,
+            2.8571670000001177
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [
+            0,
+            128
+          ],
+          "steady_p99_ms": 1.7716413999999534
+        },
+        "reference": {
+          "constructor_gap_ms": 7.058958999999959,
+          "constructor_between_frames": [
+            30464,
+            30592
+          ],
+          "constructor_start_offset_ms": 5.255583999999999,
+          "constructor_end_to_next_ms": 0.01604200000019773,
+          "nearby_gaps": [
+            {
+              "frame": 29440,
+              "gap_ms": 5.314165999999659
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 0.06841700000040873
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 5.240542000000005
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 0.058374999999614374
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 5.2539160000001175
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 0.05416700000023411
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 5.319624999999633
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 0.060208000000329776
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 7.058958999999959
+            },
+            {
+              "frame": 30592,
+              "gap_ms": 0.6230409999998301
+            },
+            {
+              "frame": 30720,
+              "gap_ms": 2.891834000000017
+            },
+            {
+              "frame": 30848,
+              "gap_ms": 0.08024999999997817
+            },
+            {
+              "frame": 30976,
+              "gap_ms": 5.273583000000144
+            },
+            {
+              "frame": 31104,
+              "gap_ms": 0.09166700000014316
+            },
+            {
+              "frame": 31232,
+              "gap_ms": 5.24087499999996
+            },
+            {
+              "frame": 31360,
+              "gap_ms": 0.08508299999994051
+            },
+            {
+              "frame": 31488,
+              "gap_ms": 5.239458000000013
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.658062500000142,
+            "p95_ms": 5.283562500000016,
+            "p99_ms": 5.294923550000226,
+            "maximum_ms": 5.298999999999978,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    },
+    {
+      "trial": "1-draw192",
+      "condition": "draw192",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "browser": "157.0",
+      "reference_signal": {
+        "sample_count": 65536,
+        "marker_start_frame": 5120,
+        "marker_last_frame": 70655,
+        "first_marker_pcm_difference": null
+      },
+      "timing": {
+        "thread": "GraphRunner/34028",
+        "preparation": {
+          "marker_times_ms": [
+            [
+              "prepare-start",
+              1797.502125
+            ],
+            [
+              "zero-start",
+              1798.299833
+            ],
+            [
+              "zero-end",
+              1798.408708
+            ],
+            [
+              "render-start",
+              1798.415333
+            ],
+            [
+              "render-end",
+              1803.430792
+            ],
+            [
+              "prepare-end",
+              1803.487917
+            ]
+          ],
+          "constructor_ms": 7.501958000000059,
+          "preparation_ms": 5.985791999999947,
+          "discarded_initialization_ms": 0.7977080000000569,
+          "zero_calls_ms": 0.10887499999989814,
+          "discarded_render_ms": 5.015459000000192,
+          "discarded_release_ms": 0.05712499999981446,
+          "completed_preparation_markers": [
+            [
+              "192:64:1000",
+              1803.456
+            ]
+          ]
+        },
+        "song": {
+          "first_two_outer_ms": [
+            2.010624999999891,
+            1.4187500000000455
+          ],
+          "budget_ms": 2.6666666666666665,
+          "over_budget_output_frames": [],
+          "steady_p99_ms": 1.7604420000001484
+        },
+        "reference": {
+          "constructor_gap_ms": 12.797416999999996,
+          "constructor_between_frames": [
+            29568,
+            29696
+          ],
+          "constructor_start_offset_ms": 5.27841699999999,
+          "constructor_end_to_next_ms": 0.01704199999994671,
+          "nearby_gaps": [
+            {
+              "frame": 28544,
+              "gap_ms": 5.26629099999991
+            },
+            {
+              "frame": 28672,
+              "gap_ms": 0.057500000000118234
+            },
+            {
+              "frame": 28800,
+              "gap_ms": 5.285208999999895
+            },
+            {
+              "frame": 28928,
+              "gap_ms": 0.061040999999931955
+            },
+            {
+              "frame": 29056,
+              "gap_ms": 5.27454200000011
+            },
+            {
+              "frame": 29184,
+              "gap_ms": 0.06224999999994907
+            },
+            {
+              "frame": 29312,
+              "gap_ms": 5.266958000000159
+            },
+            {
+              "frame": 29440,
+              "gap_ms": 0.06612499999982901
+            },
+            {
+              "frame": 29568,
+              "gap_ms": 12.797416999999996
+            },
+            {
+              "frame": 29696,
+              "gap_ms": 0.1045000000001437
+            },
+            {
+              "frame": 29824,
+              "gap_ms": 3.069833000000017
+            },
+            {
+              "frame": 29952,
+              "gap_ms": 0.07079199999998309
+            },
+            {
+              "frame": 30080,
+              "gap_ms": 5.252332999999908
+            },
+            {
+              "frame": 30208,
+              "gap_ms": 0.07070900000007896
+            },
+            {
+              "frame": 30336,
+              "gap_ms": 5.235707999999931
+            },
+            {
+              "frame": 30464,
+              "gap_ms": 0.078125
+            },
+            {
+              "frame": 30592,
+              "gap_ms": 5.2590419999999085
+            }
+          ],
+          "baseline_gaps": {
+            "blocks": 96,
+            "median_ms": 2.648479499999894,
+            "p95_ms": 5.2903340000001435,
+            "p99_ms": 5.307487149999974,
+            "maximum_ms": 5.310416000000032,
+            "over_budget_blocks": 48
+          }
+        }
+      },
+      "timing_checks_passed": true
+    }
+  ],
+  "reference_hashes": {
+    "pcm": "8d626473d3234fe8044026a4bf34086dfac2cd7b598179438bd06182ab1a66f1",
+    "observations": "14d4a1e3c6d92f977e1b927206225a14c0f74de30107989675673918655e4c1b",
+    "score": "0d46bf5f8b2df6d2da9a3522b6a222b7e57a5daf28b42f14a04071b5b179e086"
+  },
+  "shared_context": {
+    "aligned_trials": 2,
+    "paired_differences": [
+      {
+        "constructor_gap_increase_ms": 5.738458000000037,
+        "constructor_increase_ms": 5.7146250000002965
+      }
+    ],
+    "groups": {
+      "control": {
+        "first_two_within_budget": 0,
+        "all_quanta_within_budget": 0,
+        "median_constructor_gap_ms": 7.058958999999959,
+        "median_constructor_ms": 1.7873329999997623,
+        "median_first_song_quantum_ms": 3.787250000000313
+      },
+      "draw192": {
+        "first_two_within_budget": 1,
+        "all_quanta_within_budget": 1,
+        "median_constructor_gap_ms": 12.797416999999996,
+        "median_constructor_ms": 7.501958000000059,
+        "median_first_song_quantum_ms": 2.010624999999891
+      }
+    },
+    "median_paired_constructor_gap_increase_ms": 5.738458000000037,
+    "predictions": {
+      "reference_gap_increase": true,
+      "draw_first_two_within_budget": false
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "checks": {
+    "worklet-safari-song-output-notification-20261122-syscalls/pair-1-bulk/covered_all_windows": false,
+    "worklet-safari-song-output-notification-20261122-syscalls/pair-1-split/covered_all_windows": true
+  },
+  "predictions": {
+    "worklet-safari-song-output-notification-20261122-syscalls": {
+      "graph_gap_reduction": true,
+      "bulk_gpu_timing": null
+    }
+  },
+  "captures": {
+    "worklet-safari-song-output-notification-20261122-syscalls": {
+      "pair-1-bulk": {
+        "covered_all_windows": false,
+        "gpu_signal_calibrated": false,
+        "native_cycle_span_ns": null,
+        "syscall_start_span_ns": [
+          430921041,
+          695106125
+        ],
+        "window_bounds_ns": {
+          "baseline": [
+            636000000,
+            716000000
+          ],
+          "preparation": [
+            726000000,
+            865000000
+          ],
+          "post": [
+            875000000,
+            955000000
+          ]
+        },
+        "expected_gpu_timing": null,
+        "proxy_thread_identified": true,
+        "thread_identities": [
+          {
+            "role": "gpu",
+            "pid": 5795,
+            "tid": 3066100,
+            "name": "com.apple.audio.IOThread.client 0x2ec8f4 (com.apple.WebKit.GPU, pid: 5795)",
+            "totals": {
+              "MSC_semaphore_signal_trap": 99,
+              "MSC_semaphore_wait_signal_trap": 98
+            }
+          },
+          {
+            "role": "proxy",
+            "pid": 92293,
+            "tid": 3066073,
+            "name": "RemoteAudioDestinationProxy render thread 0x2ec8d9 (com.apple.WebKit.WebContent, pid: 92293)",
+            "totals": {
+              "BSC_psynch_cvsignal": 99,
+              "BSC_psynch_cvwait": 106,
+              "MSC_semaphore_wait_trap": 98,
+              "MSC_thread_switch": 437
+            }
+          },
+          {
+            "role": "worklet",
+            "pid": 92293,
+            "tid": 3066095,
+            "name": "WebCore: AudioWorklet 0x2ec8ef (com.apple.WebKit.WebContent, pid: 92293)",
+            "totals": {
+              "BSC_psynch_cvsignal": 106,
+              "BSC_gettimeofday": 99,
+              "BSC_psynch_cvwait": 98
+            }
+          }
+        ],
+        "metrics": {
+          "baseline": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 22,
+            "maximum_signal_gap_ms": 2.686458,
+            "proxy_wait_completions": 22,
+            "maximum_proxy_wake_gap_ms": 2.685583,
+            "proxy_median_since_previous_signal_ms": 0.009062500000000001,
+            "proxy_maximum_since_previous_signal_ms": 0.013083,
+            "worklet_mach_waits": 0
+          },
+          "preparation": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 0,
+            "maximum_signal_gap_ms": null,
+            "proxy_wait_completions": 0,
+            "maximum_proxy_wake_gap_ms": null,
+            "proxy_median_since_previous_signal_ms": null,
+            "proxy_maximum_since_previous_signal_ms": null,
+            "worklet_mach_waits": 0
+          },
+          "post": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 0,
+            "maximum_signal_gap_ms": null,
+            "proxy_wait_completions": 0,
+            "maximum_proxy_wake_gap_ms": null,
+            "proxy_median_since_previous_signal_ms": null,
+            "proxy_maximum_since_previous_signal_ms": null,
+            "worklet_mach_waits": 0
+          }
+        },
+        "graph_maximum_ms": 143.0
+      },
+      "pair-1-split": {
+        "covered_all_windows": true,
+        "gpu_signal_calibrated": true,
+        "native_cycle_span_ns": null,
+        "syscall_start_span_ns": [
+          358113125,
+          1046970541
+        ],
+        "window_bounds_ns": {
+          "baseline": [
+            578000000,
+            658000000
+          ],
+          "preparation": [
+            668000000,
+            848000000
+          ],
+          "post": [
+            858000000,
+            938000000
+          ]
+        },
+        "expected_gpu_timing": true,
+        "proxy_thread_identified": true,
+        "thread_identities": [
+          {
+            "role": "gpu",
+            "pid": 5795,
+            "tid": 3069076,
+            "name": "com.apple.audio.IOThread.client 0x2ed494 (com.apple.WebKit.GPU, pid: 5795)",
+            "totals": {
+              "MSC_semaphore_signal_trap": 259,
+              "MSC_semaphore_wait_signal_trap": 258
+            }
+          },
+          {
+            "role": "proxy",
+            "pid": 92985,
+            "tid": 3069058,
+            "name": "RemoteAudioDestinationProxy render thread 0x2ed482 (com.apple.WebKit.WebContent, pid: 92985)",
+            "totals": {
+              "BSC_psynch_cvsignal": 255,
+              "BSC_psynch_cvwait": 267,
+              "MSC_semaphore_wait_trap": 258,
+              "MSC_thread_switch": 699
+            }
+          },
+          {
+            "role": "worklet",
+            "pid": 92985,
+            "tid": 3069073,
+            "name": "WebCore: AudioWorklet 0x2ed491 (com.apple.WebKit.WebContent, pid: 92985)",
+            "totals": {
+              "BSC_psynch_cvsignal": 405,
+              "BSC_gettimeofday": 257,
+              "BSC_psynch_cvwait": 262,
+              "BSC_sys_ulock_wait2": 2,
+              "BSC_madvise": 1,
+              "BSC_mmap": 1,
+              "BSC_mprotect": 3,
+              "MSC_mk_timer_arm": 7,
+              "MSC_thread_switch": 171,
+              "MSC_mach_msg2_trap": 4,
+              "BSC_psynch_mutexwait": 2,
+              "MSC_mk_timer_cancel": 2
+            }
+          }
+        ],
+        "metrics": {
+          "baseline": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 30,
+            "maximum_signal_gap_ms": 2.699459,
+            "proxy_wait_completions": 30,
+            "maximum_proxy_wake_gap_ms": 2.7025,
+            "proxy_median_since_previous_signal_ms": 0.0098335,
+            "proxy_maximum_since_previous_signal_ms": 0.016334,
+            "worklet_mach_waits": 0
+          },
+          "preparation": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 68,
+            "maximum_signal_gap_ms": 2.696958,
+            "proxy_wait_completions": 68,
+            "maximum_proxy_wake_gap_ms": 7.15825,
+            "proxy_median_since_previous_signal_ms": 0.0041045000000000005,
+            "proxy_maximum_since_previous_signal_ms": 1.983792,
+            "worklet_mach_waits": 0
+          },
+          "post": {
+            "cycles": 0,
+            "one_signal_per_cycle": 0,
+            "signal_count": 30,
+            "maximum_signal_gap_ms": 2.692833,
+            "proxy_wait_completions": 30,
+            "maximum_proxy_wake_gap_ms": 4.235334,
+            "proxy_median_since_previous_signal_ms": 0.0038955,
+            "proxy_maximum_since_previous_signal_ms": 1.579375,
+            "worklet_mach_waits": 0
+          }
+        },
+        "graph_maximum_ms": 9.0
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "checks": {
+    "archive_manifest_and_wave_unchanged": true,
+    "legacy_case_provenance_and_encoding": true,
+    "same_archived_pcm16_bits": true,
+    "fresh_fixed_pcm16_matches_archive_bits": true,
+    "normalized_pcm16_equals_independent_float32": true,
+    "signed_conversion_endpoints": true,
+    "float32_render_quantizes_to_archived_integers": true,
+    "quantization_bound_and_observed_first_difference": true,
+    "mixed_format_bit_exactness_rejected": true,
+    "duplicate_legacy_path_rejected": true,
+    "relocated_report_is_byte_identical": true
+  },
+  "archive": {
+    "candidate": {
+      "recorded_case_id": "vowels",
+      "recorded_status": "pass",
+      "run_id": "upstream-20261119-a",
+      "sample_format": "pcm16",
+      "trace": null,
+      "wave": {
+        "bytes": 576044,
+        "path": "artifacts/vowels.wav",
+        "sha256": "4c385a6d4560a88d3dca30abfb34f7ff246c72dcc20783ab35b1530b6ff3c7a8"
+      }
+    },
+    "case_id": "compare-upstream-pcm16",
+    "internal_samples_per_output_frame": 1,
+    "output_frame_range": [
+      0,
+      288000
+    ],
+    "output_frames": 288000,
+    "pcm": {
+      "different_bits": 0,
+      "first_bit_difference_frame": null,
+      "first_bit_difference_values": null,
+      "first_frame_over_tolerance": null,
+      "first_numeric_difference_frame": null,
+      "maximum_absolute_error": 0.0,
+      "status": true
+    },
+    "reference": {
+      "recorded_case_id": "vowels",
+      "recorded_status": "pass",
+      "run_id": "upstream-20261119-a",
+      "sample_format": "pcm16",
+      "trace": null,
+      "wave": {
+        "bytes": 576044,
+        "path": "artifacts/vowels.wav",
+        "sha256": "4c385a6d4560a88d3dca30abfb34f7ff246c72dcc20783ab35b1530b6ff3c7a8"
+      }
+    },
+    "revision": 1,
+    "sample_rate_hz": 48000,
+    "states": {},
+    "status": "pass",
+    "thresholds": {
+      "pcm_absolute": 0.0,
+      "pcm_bit_exact": true,
+      "state_peak_relative": null
+    },
+    "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7"
+  },
+  "independent_decode": {
+    "different_bits": null,
+    "first_bit_difference_frame": null,
+    "first_bit_difference_values": null,
+    "first_frame_over_tolerance": null,
+    "first_numeric_difference_frame": null,
+    "maximum_absolute_error": 0.0,
+    "status": true
+  },
+  "quantized_vs_float": {
+    "different_bits": null,
+    "first_bit_difference_frame": null,
+    "first_bit_difference_values": null,
+    "first_frame_over_tolerance": null,
+    "first_numeric_difference_frame": 0,
+    "maximum_absolute_error": 2.4378299713134766e-05,
+    "status": true
+  },
+  "independent_quantization": {
+    "first_difference_frame": 0,
+    "maximum_difference_frame": 76668,
+    "maximum_absolute_error": 2.4378299713134766e-05,
+    "raw_peak": 0.32509663701057434,
+    "decoded_peak": 0.3250732421875,
+    "raw_value_at_maximum": -0.29909664392471313,
+    "decoded_value_at_maximum": -0.299072265625,
+    "pcm16_at_maximum": -9800,
+    "rounding_mismatch_frames": 0
+  },
+  "archive_manifest_sha256": "15851feaabec8988b7afd9f2735bad9e46566bf4fe3a790e18f7ac730778db0c",
+  "input_validation_exit_codes": {
+    "mixed_exactness": 1,
+    "duplicate_path": 1
+  }
+}

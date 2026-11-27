@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "run_id": "postalveolar-affricate-dzh-20261121-wasm",
+  "case_id": "postalveolar-affricate-dzh-wasm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "postalveolar-affricate-dzh-20261121-b",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/postalveolar-affricate-dzh-wasm.json",
+      "bytes": 412,
+      "sha256": "c5bc36806b2d5e671ae5ccdb22e43bf1c1a50fd0beeed74057b591db7a73a26c"
+    },
+    {
+      "path": "tools/compare_dental_wasm.ts",
+      "bytes": 4168,
+      "sha256": "22589486b244bb26f3c20ca6e516beb96d001cbac20c4a4e3d3957720346e9cf"
+    },
+    {
+      "path": "target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+      "bytes": 1476985,
+      "sha256": "83a75855c1300d0d172da61378e2c773e32c8928090b5f15cbd6473c7a3733a7"
+    },
+    {
+      "path": "data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/manifest.json",
+      "bytes": 69684,
+      "sha256": "167d8e2779de14afc7b0dfa947771c63694c25706f1869795caf27938831e983"
+    },
+    {
+      "path": "crates/vocal-wasm/host/planning.ts",
+      "bytes": 5719,
+      "sha256": "3ebfa2c9c9f2b74a32afa4d7968e1e2d291a7c541944eaf60494fa089c8e0e23"
+    },
+    {
+      "path": "crates/vocal-wasm/host/fixed-voice.ts",
+      "bytes": 18859,
+      "sha256": "b1828e9069565ea582fc2840530f058169e725769f11cdc3e0d8d3ebc5a492aa"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/male/case.json",
+      "bytes": 859,
+      "sha256": "b782696cbc8d81c4b986228854989b68be6087313ba95fc18b4aee451fcd6749"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/male/pcm-128.wav",
+      "bytes": 213850,
+      "sha256": "f9898b3287cf4ab5a5ff3287a106a935db002d966d806fe9cf7b4fa63011857c",
+      "sample_rate_hz": 48000,
+      "frames": 53448,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/short-song/case.json",
+      "bytes": 1061,
+      "sha256": "2ae03debd693038764271437ea4fc4f86f77b78d068c9b840fddac71d0079a62"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/short-song/pcm-128.wav",
+      "bytes": 196858,
+      "sha256": "88af1aeb4b0735a8084ccadd221bb381ee31c1b5cf823a343992cbc67557eb8d",
+      "sample_rate_hz": 48000,
+      "frames": 49200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/FK61_02/case.json",
+      "bytes": 929,
+      "sha256": "4fbcf5ba2e92903268f58f8630ffc5e1436e91547b20ac27a9cb099862d311fd"
+    },
+    {
+      "path": "runs/postalveolar-affricate-dzh-20261121-b/artifacts/FK61_02/pcm-128.wav",
+      "bytes": 578966,
+      "sha256": "9334813e8b77a55af4c9476b3abff48a5edcc7ea3069d4c7b1aa320bd0ff615f",
+      "sample_rate_hz": 48000,
+      "frames": 144727,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "npx",
+        "--offline",
+        "--yes",
+        "--package=bun@1.4.4",
+        "bun",
+        "$WORKSPACE/tools/compare_dental_wasm.ts",
+        "$WORKSPACE/target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+        "$WORKSPACE/runs/postalveolar-affricate-dzh-20261121-b/artifacts",
+        "$WORKSPACE/cases/postalveolar-affricate-dzh-wasm.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/wasm.json",
+      "bytes": 328,
+      "sha256": "9e3bb50bb693e55ca1956fe69d59691b8d711d223b113774da03b8cecc722d6a"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 485,
+      "sha256": "d5dbc8699837016a3653aaeeb26343d00a15e5f47f3af6204a56df46e699beff"
+    }
+  ]
+}

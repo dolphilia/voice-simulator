@@ -1,0 +1,258 @@
+{
+  "checks": {
+    "pair-1-bulk/trusted_input_and_wasm": true,
+    "pair-1-bulk/continuous_render_clock": true,
+    "pair-1-bulk/pcm_bits": true,
+    "pair-1-bulk/observed_state_and_plan": true,
+    "pair-1-bulk/construction_interval": true,
+    "pair-1-bulk/scheduled_notice_and_observed_target": true,
+    "pair-1-bulk/continuous_control_without_pause": true,
+    "pair-1-bulk/preparation_sequence": true,
+    "pair-1-bulk/marker_pcm_bits": true,
+    "pair-1-bulk/marker_continuous_frames": true,
+    "pair-1-bulk/marker_spans_construction_and_song": true,
+    "pair-1-bulk/marker_spans_preparation": true,
+    "pair-1-bulk/trace_recorded": false,
+    "pair-1-split/trusted_input_and_wasm": true,
+    "pair-1-split/continuous_render_clock": true,
+    "pair-1-split/pcm_bits": true,
+    "pair-1-split/observed_state_and_plan": true,
+    "pair-1-split/construction_interval": true,
+    "pair-1-split/scheduled_notice_and_observed_target": true,
+    "pair-1-split/continuous_control_without_pause": true,
+    "pair-1-split/preparation_sequence": true,
+    "pair-1-split/scheduled_after_preparation": true,
+    "pair-1-split/marker_pcm_bits": true,
+    "pair-1-split/marker_continuous_frames": true,
+    "pair-1-split/marker_spans_construction_and_song": true,
+    "pair-1-split/marker_spans_preparation": true,
+    "pair-1-split/block_trace_frames": true,
+    "pair-1-split/block_trace_clock": true,
+    "pair-1-split/trace_recorded": false
+  },
+  "predictions": {
+    "split_reduces_graph_gap": false,
+    "both_io_gaps_below_limit": false
+  },
+  "trials": {
+    "pair-1-bulk": {
+      "condition": "bulk",
+      "song": {
+        "trial": "pair-1-bulk",
+        "pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "observation_count": 488,
+        "maximum_state_error": 0.0,
+        "construction_ms": 137,
+        "node_call_ms": 1,
+        "click_to_first_output_ms": 3403,
+        "pause": {
+          "target_frame": 179072,
+          "target_reached_frame": 179200,
+          "longest_callback_gap_ms": 34,
+          "longest_gap_frames": [
+            158592,
+            158720
+          ]
+        },
+        "graph": null,
+        "safari": "18.6"
+      },
+      "marker": {
+        "start_frame": 6016,
+        "end_frame": 235392,
+        "marker_pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "constructing_ms": 137,
+        "callbacks_strictly_inside_construction": 0,
+        "max_overlapping_gap_ms": 140.0,
+        "max_gap_frames": [
+          153088,
+          153216
+        ],
+        "gap_contains_construction": true,
+        "baseline_median_ms": 3.0,
+        "baseline_max_ms": 4.0,
+        "preparation_window_max_gap_ms": 140.0,
+        "preparation_window_max_gap_frames": [
+          153088,
+          153216
+        ],
+        "callbacks_strictly_inside_preparation_window": 0
+      },
+      "trace_bridge": {
+        "before": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": false
+          }
+        ],
+        "at_gate": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": true
+          }
+        ],
+        "target": {
+          "bundleID": "com.apple.WebKit.GPU",
+          "object": 112,
+          "pid": 5795,
+          "runningOutput": true
+        },
+        "trace_recorded": false,
+        "error": "Command '['/usr/bin/xcrun', 'xctrace', 'record', '--instrument', 'Audio Client', '--instrument', 'System Call Trace', '--time-limit', '2s', '--no-prompt', '--output', '/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/worklet-safari-song-output-notification-20261122-a/artifacts/pair-1-bulk/audio-system.trace', '--all-processes', '--notify-tracing-started', 'org.voice-simulator.chimera.trace.81c47dac84994dd69d462533a6b0fa25']' timed out after 25 seconds"
+      }
+    },
+    "pair-1-split": {
+      "condition": "split",
+      "song": {
+        "trial": "pair-1-split",
+        "pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "observation_count": 488,
+        "maximum_state_error": 0.0,
+        "construction_ms": 5,
+        "node_call_ms": 0.0,
+        "click_to_first_output_ms": 3247,
+        "pause": {
+          "target_frame": 174976,
+          "target_reached_frame": 175104,
+          "longest_callback_gap_ms": 6,
+          "longest_gap_frames": [
+            173056,
+            173184
+          ]
+        },
+        "graph": null,
+        "safari": "18.6"
+      },
+      "marker": {
+        "start_frame": 6016,
+        "end_frame": 235392,
+        "marker_pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "constructing_ms": 5,
+        "callbacks_strictly_inside_construction": 0,
+        "max_overlapping_gap_ms": 8.0,
+        "max_gap_frames": [
+          140416,
+          140544
+        ],
+        "gap_contains_construction": true,
+        "baseline_median_ms": 3.0,
+        "baseline_max_ms": 4.0,
+        "preparation_window_max_gap_ms": 8.0,
+        "preparation_window_max_gap_frames": [
+          140416,
+          140544
+        ],
+        "callbacks_strictly_inside_preparation_window": 67
+      },
+      "preparation_timing": {
+        "clock": "Date.now",
+        "budget_ms": 2.6666666666666665,
+        "first_wasm_ms": 2.0,
+        "later_wasm": {
+          "count": 66,
+          "minimum_ms": 1.0,
+          "mean_ms": 2.0,
+          "median_ms": 2.0,
+          "p95_ms": 2.0,
+          "p99_ms": 3.3499999999999943,
+          "maximum_ms": 4.0,
+          "measured_over_budget": 2,
+          "within_budget_upper_bound": 3,
+          "over_budget_lower_bound": 1,
+          "uncertain_at_clock_step": 62
+        },
+        "first_process_ms": 2.0,
+        "later_process": {
+          "count": 66,
+          "minimum_ms": 1.0,
+          "mean_ms": 2.0,
+          "median_ms": 2.0,
+          "p95_ms": 2.0,
+          "p99_ms": 3.3499999999999943,
+          "maximum_ms": 4.0,
+          "measured_over_budget": 2,
+          "within_budget_upper_bound": 3,
+          "over_budget_lower_bound": 1,
+          "uncertain_at_clock_step": 62
+        },
+        "marker_relation": {
+          "first": {
+            "block": 1,
+            "context_frame": 140544,
+            "prepared_frames": 64,
+            "process_ms": 2.0,
+            "wasm_ms": 2.0,
+            "marker_gap_before_ms": 8.0,
+            "marker_gap_after_ms": 3.0
+          },
+          "slowest": {
+            "block": 5,
+            "context_frame": 141056,
+            "prepared_frames": 256,
+            "process_ms": 4.0,
+            "wasm_ms": 4.0,
+            "marker_gap_before_ms": 2.0,
+            "marker_gap_after_ms": 4.0
+          }
+        }
+      },
+      "trace_bridge": {
+        "before": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": false
+          }
+        ],
+        "at_gate": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": true
+          }
+        ],
+        "target": {
+          "bundleID": "com.apple.WebKit.GPU",
+          "object": 112,
+          "pid": 5795,
+          "runningOutput": true
+        },
+        "trace_recorded": false,
+        "error": "Command '['/usr/bin/xcrun', 'xctrace', 'record', '--instrument', 'Audio Client', '--instrument', 'System Call Trace', '--time-limit', '2s', '--no-prompt', '--output', '/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/worklet-safari-song-output-notification-20261122-a/artifacts/pair-1-split/audio-system.trace', '--all-processes', '--notify-tracing-started', 'org.voice-simulator.chimera.trace.573b0c466bf54fa48630208f8602ff79']' timed out after 25 seconds"
+      }
+    }
+  },
+  "pairs": [
+    {
+      "pair": 1
+    }
+  ],
+  "median_marker_gap_reduction_ms": null,
+  "median_maximum_io_gap_ms": {}
+}

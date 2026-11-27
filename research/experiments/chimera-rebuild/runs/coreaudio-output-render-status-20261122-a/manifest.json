@@ -1,0 +1,1245 @@
+{
+  "schema_version": 1,
+  "run_id": "coreaudio-output-render-status-20261122-a",
+  "case_id": "coreaudio-output-render-status",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "analysis_directory": "/Users/dolphilia/github/voice-simulator/research/experiments/chimera-rebuild",
+  "analysis_command": [
+    "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+    "tools/measure_coreaudio_output_render_status.py",
+    "coreaudio-output-render-status-20261122-a"
+  ],
+  "xctrace": "xctrace version 26.0 (17C52)",
+  "condition_order": [
+    "control",
+    "render-error"
+  ],
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/coreaudio-output-render-status.json",
+      "bytes": 2180,
+      "sha256": "a88a6d47ff9da203ebdb515629487bf704aa8bf7295cbb1ea5a4f460691ee526"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/chimera_output_deadline_probe.swift",
+      "bytes": 7908,
+      "sha256": "88dbd5745b1d972890c73cc4ae07dc0431c68d6921e232c7d1b425f36d17ab1b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_coreaudio_output_render_status.py",
+      "bytes": 11296,
+      "sha256": "8ad48c6790a27f2854d3797af5bd42308849f4e803f68467f0c9383667696177"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/worklet-safari-song-audio-client-20261122-repeat/manifest.json",
+      "bytes": 146769,
+      "sha256": "6bf6f70861eeab424a7696bae31caa120c8665347d6e8e44f09309722f24eab1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/worklet-safari-song-audio-client-20261122-repeat/summary.json",
+      "bytes": 22703,
+      "sha256": "2076552a4644943ac4b92f0a1469f0bff1f970fca20868b77f17899faaa14c91"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/capture_worklet_system_pair.py",
+      "bytes": 6590,
+      "sha256": "83d39f38a5e68655a0c2fdc5fae408f45c643af7ded762d869be38ebbfe52855"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_safari_audio_client_trace.py",
+      "bytes": 9340,
+      "sha256": "07e3b46a556ae6180fc40d0fcee7cd4c3e8992aa65181d6a113c33c124edc168"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_uniform_tube.py",
+      "bytes": 21447,
+      "sha256": "2070b33b35dc28d29b15afaee9b8b3282702cee369be65445f66887a40ad3c96"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/filter_worklet_audioipc_syscalls.py",
+      "bytes": 3581,
+      "sha256": "1ea74cde058b421962c2c63f469ec9c03b75082ceb064785efc34ad729a758e9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "xcrun",
+        "swiftc",
+        "-O",
+        "-framework",
+        "AudioToolbox",
+        "$WORKSPACE/tools/chimera_output_deadline_probe.swift",
+        "-o",
+        "$ARTIFACTS/render-status-probe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$REPOSITORY/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_coreaudio_output_render_status.py",
+        "--capture",
+        "$ARTIFACTS/control",
+        "$ARTIFACTS/render-status-probe",
+        "3s",
+        "24",
+        "0",
+        "48000",
+        "1.3",
+        "0"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/control/audio-system.trace",
+        "--toc",
+        "--output",
+        "$ARTIFACTS/control/toc.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/control/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle\"]",
+        "--output",
+        "$ARTIFACTS/control/audio-hal-client-io-cycle.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/control/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle-ioproc\"]",
+        "--output",
+        "$ARTIFACTS/control/audio-hal-client-io-cycle-ioproc.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/control/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle-load\"]",
+        "--output",
+        "$ARTIFACTS/control/audio-hal-client-io-cycle-load.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/control/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-poi\"]",
+        "--output",
+        "$ARTIFACTS/control/audio-hal-client-poi.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$REPOSITORY/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_coreaudio_output_render_status.py",
+        "--capture",
+        "$ARTIFACTS/render-error",
+        "$ARTIFACTS/render-status-probe",
+        "3s",
+        "24",
+        "0",
+        "48000",
+        "1.3",
+        "16"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/render-error/audio-system.trace",
+        "--toc",
+        "--output",
+        "$ARTIFACTS/render-error/toc.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/render-error/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle\"]",
+        "--output",
+        "$ARTIFACTS/render-error/audio-hal-client-io-cycle.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/render-error/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle-ioproc\"]",
+        "--output",
+        "$ARTIFACTS/render-error/audio-hal-client-io-cycle-ioproc.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/render-error/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-io-cycle-load\"]",
+        "--output",
+        "$ARTIFACTS/render-error/audio-hal-client-io-cycle-load.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "xcrun",
+        "xctrace",
+        "export",
+        "--input",
+        "$ARTIFACTS/render-error/audio-system.trace",
+        "--xpath",
+        "/trace-toc/run/data/table[@schema=\"audio-hal-client-poi\"]",
+        "--output",
+        "$ARTIFACTS/render-error/audio-hal-client-poi.xml"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/coreaudio-output-render-status-20261122-a/artifacts",
+    "estimated_peak_bytes": 180000000
+  },
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1765,
+      "sha256": "e484451f8a352fb6a2f50efe04ffca11c0206541b4cef00a86cc7053b8856816"
+    },
+    {
+      "path": "artifacts/control/audio-hal-client-io-cycle-ioproc.xml",
+      "bytes": 22148,
+      "sha256": "5fa25de273739b5f88c23c672f17e1a9aa0074c8efc50e2ecc1ad7611208c143"
+    },
+    {
+      "path": "artifacts/control/audio-hal-client-io-cycle-load.xml",
+      "bytes": 3127,
+      "sha256": "9f4e4ca3921bf22f485c211b0ae38c06e93d2aac38477739fcb99ea0170a22c8"
+    },
+    {
+      "path": "artifacts/control/audio-hal-client-io-cycle.xml",
+      "bytes": 26220,
+      "sha256": "295a013f7b62a8a2516d94ddbd0c80fbbb82e16fa36ccd0a756f863f2287981d"
+    },
+    {
+      "path": "artifacts/control/audio-hal-client-poi.xml",
+      "bytes": 3099,
+      "sha256": "594ddc171a187d509339e8986546532a0396daa6d4366db1aa92f90158dc07e7"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/Trace1.run/RunIssues.storedata",
+      "bytes": 53248,
+      "sha256": "a47950d1d829a0bfad8d56b90af1d88c70d139266500fa4d524065f49bb2dcac"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/UI_state_metadata.bin",
+      "bytes": 261,
+      "sha256": "fd5203df946d9c459b37b215289e2a2f6db0d1abd53bc63264c3fae0f95e736d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/MANIFEST.plist",
+      "bytes": 1915,
+      "sha256": "70040a66d9f605419abcf6a0ae07ace84c38ec6e15e2665814195dda7617d8e0"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/currentRun/core/uniquing/arrayUniquer/integeruniquer.data",
+      "bytes": 101947,
+      "sha256": "7ec09fb365c9a3c7455ab6cf59fb45b1ebf7d6dc9962114d87341f38700af6d6"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/currentRun/core/uniquing/arrayUniquer/integeruniquer.index",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/currentRun/core/uniquing/typedArrayUniquer/integeruniquer.data",
+      "bytes": 101947,
+      "sha256": "7ec09fb365c9a3c7455ab6cf59fb45b1ebf7d6dc9962114d87341f38700af6d6"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/currentRun/core/uniquing/typedArrayUniquer/integeruniquer.index",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/core-config/exposedTableInfo.plist",
+      "bytes": 3041,
+      "sha256": "a5c25750176d49ba4718843c6bfd12bc9e440d502134d2eefe50a53993a8900e"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-0/bulkstore",
+      "bytes": 2213,
+      "sha256": "c8b3a09881e6995560e30aa2db5d4d8e492ce6e388fe8a60e5ce5006df7bcfd7"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-0/bulkstore_descriptor",
+      "bytes": 1229,
+      "sha256": "07f68a18ffd52d9573e3a9e78eae1a7ec6790366711f33a366baa1572b368347"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-0/schema.xml",
+      "bytes": 268,
+      "sha256": "aa42719d0307a7c10553c35a7518b6d003edd18a4b6c2f60837f43092b2f80f8"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-0/spec.plist",
+      "bytes": 469,
+      "sha256": "cdcff5649a823412cc3ee0d0296909d37e15637e4fcb039ec282f1d3790ec35a"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-0/spindex.0",
+      "bytes": 351,
+      "sha256": "a1640bc251afdd72e648ec3847337eb06ed0477e911b7a5c46cbeb9df62a8ff4"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-1/bulkstore",
+      "bytes": 54155,
+      "sha256": "f60796f8ea60a41c102d395a61f1e95c59fe109aa405a4dd54db2782bd5ed70b"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-1/bulkstore_descriptor",
+      "bytes": 2034,
+      "sha256": "9995ee98d012c9db4483967e478216b079ac20acc317b10b275a0e201265b324"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-1/schema.xml",
+      "bytes": 412,
+      "sha256": "771e47f9820358edd2caa2b87693e988886419db00562dfb0106876c1171460f"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-1/spec.plist",
+      "bytes": 485,
+      "sha256": "3b1ae5045a44452b361be8a0472a51f2ff8388094920c62eacc6338e10d4a9ed"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-1/spindex.0",
+      "bytes": 71292,
+      "sha256": "689f192ea833ac109f750ba0dfc2ac11f6d4878da9b72f978f12abcb4f35f17a"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-10/bulkstore",
+      "bytes": 1174,
+      "sha256": "a975b7d15a689749f889681c750b95abd88af5764e381208216e6862782bd1e6"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-10/bulkstore_descriptor",
+      "bytes": 1078,
+      "sha256": "f5872fbdd3e568bfd85c04c902ba90ca6b3bf1ad177b9aaec66f43631ab3b619"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-10/schema.xml",
+      "bytes": 188,
+      "sha256": "2adcc251210a12f1ecbbd662e0ba0606b217ef4c6bd02c36b0a21f4520a12114"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-10/spec.plist",
+      "bytes": 449,
+      "sha256": "044d5005ebfbcfc92eb5c373306ec4ad20d4a32727ecc5ddd1ea744f98a0b04a"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-10/spindex.0",
+      "bytes": 323,
+      "sha256": "febb614d32a92d8f1108e9130c16bf314a14db82331d513b24b98903059a6b5f"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-2/bulkstore",
+      "bytes": 5343,
+      "sha256": "97f6866f937cd81746ab718d18ff96c1f832b0f7ca0c111b50e9cf1bb435c1dc"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-2/bulkstore_descriptor",
+      "bytes": 2032,
+      "sha256": "66bc7df672e05788a1baa88a91be8802773f53a33fd000f583ba7a11eaaef9f8"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-2/schema.xml",
+      "bytes": 412,
+      "sha256": "771e47f9820358edd2caa2b87693e988886419db00562dfb0106876c1171460f"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-2/spec.plist",
+      "bytes": 543,
+      "sha256": "ba53365edb448193a64fb9100755603682852664921961c5e71e3e1738765849"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-2/spindex.0",
+      "bytes": 232,
+      "sha256": "88d8864462e9c930187eb2c41938d8eabaa93fe385a1756b9c4324b9a249694b"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-3/bulkstore",
+      "bytes": 3836,
+      "sha256": "ec8084ebeaf501d2902bb4ed6cb194d8e79fd9248b7fe8387f721604fcd2fac6"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-3/bulkstore_descriptor",
+      "bytes": 1366,
+      "sha256": "b6e0242867c8777cd7cbb66c8cb60cfc724254ed16764156bf1ef4a2555b6eb8"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-3/schema.xml",
+      "bytes": 309,
+      "sha256": "a3755019d1fd3d80c28d552fd341ff4ef1b22795878967aa59311fd8ff55f835"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-3/spec.plist",
+      "bytes": 467,
+      "sha256": "e82958e3563e5c27fca72b06092ffa9a8fe95f5c70b04180d5788cb93b8d009e"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-3/spindex.0",
+      "bytes": 2693,
+      "sha256": "5061dd4b9ee6cacb61045de34f98dd787a7af94f9f1530bd47c6d21d3705d3cf"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-4/bulkstore",
+      "bytes": 35628,
+      "sha256": "20083f4f043dbe538d4d798e185c2e6b5118f8bd5c2337be433a1e16ef968f65"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-4/bulkstore_descriptor",
+      "bytes": 1414,
+      "sha256": "4c5ddbcd704f61dce27b786cde6bd2899d8664e7f20c24ffc6d5ac61799bc511"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-4/schema.xml",
+      "bytes": 294,
+      "sha256": "4b01602c123e5cc846bca8e0726b547595869a6162834f009dd5787e3a45d4d8"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-4/spec.plist",
+      "bytes": 391,
+      "sha256": "e1603925a708bb07ed70ba45f5264bc8c0f6481fffcf220d2acf7c10a813e0cb"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-4/spindex.0",
+      "bytes": 33700,
+      "sha256": "c23f36b868c62ae7b48899277f548ce15928273b08f0213cfde531edae3af2f1"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-5/bulkstore",
+      "bytes": 3571,
+      "sha256": "9e2b1956bf32c03ee1da28c2f61fbc1c32dfc5c5287197c8c44e513ff512f900"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-5/bulkstore_descriptor",
+      "bytes": 1297,
+      "sha256": "8fc4a0865cf874142537d5a84e8fd025b6b175d41741b7d9da9dfca9e317adef"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-5/schema.xml",
+      "bytes": 293,
+      "sha256": "2cffa719fc41f004049ec6f925fd4ffcb8cae71d6a46a7d4ee223b31979a79eb"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-5/spec.plist",
+      "bytes": 470,
+      "sha256": "46c7a51aa92883ae2b4b2d649d75067d97561aa72c7d5872ee094a2f64a9b0aa"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-5/spindex.0",
+      "bytes": 2627,
+      "sha256": "76ff5cde292bdf71be7d590a035ff4480bf799dac59a7b174fb99c7aada9fb25"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-6/bulkstore",
+      "bytes": 50,
+      "sha256": "1c634713f7ecf6c91ed0ff0c71f397f9ed71935eefdc96149fd8fcc6eaf43b32"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-6/bulkstore_descriptor",
+      "bytes": 1840,
+      "sha256": "7ac545558bc63730814473631af35793434fd230fcaa0e867e220bffcb28e743"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-6/schema.xml",
+      "bytes": 399,
+      "sha256": "c574774bf1ab57059f228c2f366c146c21e524001bf8c10a6fa59ce942c1b6bf"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-6/spec.plist",
+      "bytes": 429,
+      "sha256": "8d419db660c4ee59e058e27156627f172d7b3ecb5a82af69708446ae49e9d9a0"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-7/bulkstore",
+      "bytes": 1865,
+      "sha256": "960f55436bb5d38b6dc32634e3cb44082210e12ee4dc3dbec1b18e292883071c"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-7/bulkstore_descriptor",
+      "bytes": 1296,
+      "sha256": "8e2cc0e808eee0d26ac60c1ce1ea7374c38f510ed52a4a45d8d93331b95ec15d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-7/schema.xml",
+      "bytes": 263,
+      "sha256": "5eb4355c9bdb0186bbd0d7e6f3829a56b0fd3499f36d0f1bb378efcb20bd2122"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-7/spec.plist",
+      "bytes": 466,
+      "sha256": "e9226a4f90b47e79175f8e5623e6d3e87b2d38c3d45da381bfb2125979cc6547"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-7/spindex.0",
+      "bytes": 98,
+      "sha256": "06afef0605bae198cdb6c1be854a82094aada39b731066e2f376dc4704dc064e"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-8/bulkstore",
+      "bytes": 7513,
+      "sha256": "0015ee309274efc3fdec8235193df3e84669ce6542eac640e696161dab984a2d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-8/bulkstore_descriptor",
+      "bytes": 1286,
+      "sha256": "f072e9f9e50873698ed0c56e63073681d1dfaab6b52b500001c4bad7a5384574"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-8/schema.xml",
+      "bytes": 282,
+      "sha256": "fb22943f54b10c8381601dfaca8959e9e1ca02b0c3756627c9ef10fc7337aeda"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-8/spec.plist",
+      "bytes": 390,
+      "sha256": "70516c68fae18cace10236faa456c1175658858c72889c184432c9479d2eecfe"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-8/spindex.0",
+      "bytes": 6893,
+      "sha256": "bf13d60f9a7625702d4146cb9916f582450bc3a63dbb2a5c5bb57b7b17da73d0"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-9/bulkstore",
+      "bytes": 49,
+      "sha256": "806d3adc6fc56e7e2e2180005d69f403856e29fab08c1fbecd0854bc0432d505"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-9/bulkstore_descriptor",
+      "bytes": 1674,
+      "sha256": "3bbd6ca14554859bb4a8967e95baae80f3116257d55065e28a2e0f16f2b27c85"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-9/schema.xml",
+      "bytes": 352,
+      "sha256": "3e7a1d2f5b6b02bd1eaecac1ded63b251966eec834df0d2f65121c87dc00334d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/stores/indexed-store-9/spec.plist",
+      "bytes": 531,
+      "sha256": "421b3a9c4a9c01b740de2837d2b74c996c95c006115c50e1aa67ddb04e0ae0a0"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/table-manager/tables.plist",
+      "bytes": 3391,
+      "sha256": "d3f3c5f5d7f9d065ec4c86a34df727d8c76bebf1d69fa21cb856c10c6fbcaaa4"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/EngineeringTypes.etypes",
+      "bytes": 7443,
+      "sha256": "594567ea04a0303506b64bfefb1fc72008c5f779729ae14196d78a36cd219f45"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/TOC",
+      "bytes": 344,
+      "sha256": "28bb5344b4c59bce7a3535796580fa23c79eb51ac6edbbbc6576069075596ee9"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/arrayUniquer/integeruniquer.data",
+      "bytes": 19255,
+      "sha256": "8ba02abe1f1f649753fb8c7fc702caf1bdd17bdf37ce44e101d381c88e939cc1"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/arrayUniquer/integeruniquer.index",
+      "bytes": 6334,
+      "sha256": "ee7238a1c0457813df785f884b107027cab9b0b9c0f6f75ddc2b94b1b25fefc9"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/strings",
+      "bytes": 7666,
+      "sha256": "e593c92658ecb4a4d25c887e80b10d06232a991d5178b1ee6855797f42cba88b"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/typedArrayUniquer/integeruniquer.data",
+      "bytes": 1162,
+      "sha256": "57da26b25fb1678ad60eea9dde586296e097a1f59a944858ef44fa0881dfe270"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/corespace/run1/core/uniquing/typedArrayUniquer/integeruniquer.index",
+      "bytes": 42,
+      "sha256": "e07805138089ced1a9cdfe0dd721aad91bea4b33f806bd4f77b786429ab1b832"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/form.template",
+      "bytes": 19329518,
+      "sha256": "3f1e292dcc22a842d65073ebd07abcbae23bebe483026dacbfbc0417bde8760d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/instrument_data/0B07E443-3DD1-4152-ADB2-27F42B109F8E/run_data/1.run.zip",
+      "bytes": 4255,
+      "sha256": "3e7fae125928450ccf2897986c900d89339929729c0e33c36a938d25ff3edc86"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/open.creq",
+      "bytes": 6845,
+      "sha256": "b75bd55470ae7b0d9aca32e8d5171edfd229a96f670fe395e2488a9cc41afe9c"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/MANIFEST.plist",
+      "bytes": 290,
+      "sha256": "35365bc545a73b5662fa33a5933919dc76c024b737002465a1449b9ac30a94fb"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/0DF10E87-E2C5-3FC4-BB4F-7F6D151F260C.symbolsarchive",
+      "bytes": 2109,
+      "sha256": "b1b3539cbef2cc1462c2dac72b620c0381eaaabd7c5ae9363b79602b7d9a024a"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/199EACBB-C237-305F-8CFE-E29EF9558488.symbolsarchive",
+      "bytes": 2261,
+      "sha256": "5a3c4eac9cc6d181edabf44b2b0d72dff25485a11ba0c3531293549877340ead"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/24CE0D89-4114-30C2-A81A-3DB1F5931CFF.symbolsarchive",
+      "bytes": 2070,
+      "sha256": "692a58f32285c23be3fafebd49a93922481c0df0bf880c3032b17096a8a54b0d"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/3247E185-CED2-36FF-9E29-47A77C23E004.symbolsarchive",
+      "bytes": 1115,
+      "sha256": "7b363e603cf3ef8aedf1208f56597e928a37be3ecf611e6bb6e1bdccb597e6da"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/351A431E-1520-3B3B-BB1E-F034DA294ECD.symbolsarchive",
+      "bytes": 1472,
+      "sha256": "c443dc15d40abab67b89056807b66f8c76317cf4a32c081816bb50d417e98d59"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/3F69ED5D-9D77-3A65-B8A6-2F631B87A864.symbolsarchive",
+      "bytes": 2574,
+      "sha256": "b6debe55f265dec92753a497701a5afbac67239f4aae485f09c577d2b7e165aa"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/42059FB2-AFC4-3DCA-BE5A-1B799160C3DD.symbolsarchive",
+      "bytes": 1454,
+      "sha256": "581d6d99f2f922340650d00ce8da268fb367aa782b24bbe31548a69d13dd37d5"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/52C7F0A2-F403-391B-9B0D-CE498EFF4D7E.symbolsarchive",
+      "bytes": 3107,
+      "sha256": "0436fdd5e7f6aab3d03f5e967d836be4353c60db62aeb36c77345735e6bc81a7"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/6E4A96AD-04B8-3E8A-B91D-087E62306246.symbolsarchive",
+      "bytes": 932,
+      "sha256": "3b069f882136a7590c0016ac750920cb1a1d582b9cf5d4bf57c3dbad3cf1cee5"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/D6494BA9-171E-39FC-B1AA-28ECF87975D1.symbolsarchive",
+      "bytes": 1012,
+      "sha256": "d88844ec7ca4a9022e3806127149251aac15276cfe85ad1a218c6896508a0211"
+    },
+    {
+      "path": "artifacts/control/audio-system.trace/symbols/stores/F8F266B4-B07E-35F0-8B17-4F52C0B14B41.symbolsarchive",
+      "bytes": 2793,
+      "sha256": "0ad379cf885c2f79f8a990fdb4c81e45d32f28cbd105332f8f56b2aa07121ed4"
+    },
+    {
+      "path": "artifacts/control/native.json",
+      "bytes": 25872,
+      "sha256": "898082d212f4c882b4b885f7735e73f527164706f5e4c88b748beecdd961f9a3"
+    },
+    {
+      "path": "artifacts/control/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/control/ready",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/control/system-trace-command.log",
+      "bytes": 285,
+      "sha256": "158d82d5f1f64c5d2008a2228a7ff9308d1dbca9ea829883fd968fabd62c8ccc"
+    },
+    {
+      "path": "artifacts/control/toc.xml",
+      "bytes": 12484,
+      "sha256": "8660a4b216dac87a23a51c5702fa8becd3d5e53655d3dab1ce2281478f3b2cdf"
+    },
+    {
+      "path": "artifacts/control/trace-command.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-error/audio-hal-client-io-cycle-ioproc.xml",
+      "bytes": 22386,
+      "sha256": "76d4c98ce926559f68fd92db4f10d2b41814ce5ca4492e9a629bd5b56b67c46f"
+    },
+    {
+      "path": "artifacts/render-error/audio-hal-client-io-cycle-load.xml",
+      "bytes": 3288,
+      "sha256": "a96cedd6b2b6b7fe756ba23763d9d917d296922e28ec465e1e63f46093e51431"
+    },
+    {
+      "path": "artifacts/render-error/audio-hal-client-io-cycle.xml",
+      "bytes": 26397,
+      "sha256": "6a542e5321a0b7349caf56fd42b2856f0308f4dc5cd51ea7a616e1f8c4913357"
+    },
+    {
+      "path": "artifacts/render-error/audio-hal-client-poi.xml",
+      "bytes": 3099,
+      "sha256": "661f811e35af9aa3792473e5e8b0de6f86f7b963f38d7797f6ff6daa32d83f13"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/Trace1.run/RunIssues.storedata",
+      "bytes": 53248,
+      "sha256": "d4fb057bd4b83f1af83a1d07875a36c3095376caa5a4f27f1ca2f22b4c18c137"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/UI_state_metadata.bin",
+      "bytes": 261,
+      "sha256": "fd5203df946d9c459b37b215289e2a2f6db0d1abd53bc63264c3fae0f95e736d"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/MANIFEST.plist",
+      "bytes": 1915,
+      "sha256": "70040a66d9f605419abcf6a0ae07ace84c38ec6e15e2665814195dda7617d8e0"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/currentRun/core/uniquing/arrayUniquer/integeruniquer.data",
+      "bytes": 101947,
+      "sha256": "7ec09fb365c9a3c7455ab6cf59fb45b1ebf7d6dc9962114d87341f38700af6d6"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/currentRun/core/uniquing/arrayUniquer/integeruniquer.index",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/currentRun/core/uniquing/typedArrayUniquer/integeruniquer.data",
+      "bytes": 101947,
+      "sha256": "7ec09fb365c9a3c7455ab6cf59fb45b1ebf7d6dc9962114d87341f38700af6d6"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/currentRun/core/uniquing/typedArrayUniquer/integeruniquer.index",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/core-config/exposedTableInfo.plist",
+      "bytes": 3041,
+      "sha256": "702517a349f2427408b8e49bd52cd636c2e99c0972ec99fe838af3dc1d91ead7"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-0/bulkstore",
+      "bytes": 49,
+      "sha256": "806d3adc6fc56e7e2e2180005d69f403856e29fab08c1fbecd0854bc0432d505"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-0/bulkstore_descriptor",
+      "bytes": 1674,
+      "sha256": "3bbd6ca14554859bb4a8967e95baae80f3116257d55065e28a2e0f16f2b27c85"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-0/schema.xml",
+      "bytes": 352,
+      "sha256": "3e7a1d2f5b6b02bd1eaecac1ded63b251966eec834df0d2f65121c87dc00334d"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-0/spec.plist",
+      "bytes": 531,
+      "sha256": "421b3a9c4a9c01b740de2837d2b74c996c95c006115c50e1aa67ddb04e0ae0a0"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-1/bulkstore",
+      "bytes": 8990,
+      "sha256": "ea06890813f2a526dbc77191f1438f90e74fa9d471ab312e6844a202ec8c2c5c"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-1/bulkstore_descriptor",
+      "bytes": 1287,
+      "sha256": "6878fc83a1a599bea00199a09ec7e1cd2390b50ccc886aaf2bec5acd7dfdbf9a"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-1/schema.xml",
+      "bytes": 282,
+      "sha256": "fb22943f54b10c8381601dfaca8959e9e1ca02b0c3756627c9ef10fc7337aeda"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-1/spec.plist",
+      "bytes": 390,
+      "sha256": "70516c68fae18cace10236faa456c1175658858c72889c184432c9479d2eecfe"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-1/spindex.0",
+      "bytes": 7903,
+      "sha256": "a4b3787a4613dda910d124fb5ac2a828137395715022a42ebebca5a376f9aff5"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-10/bulkstore",
+      "bytes": 1867,
+      "sha256": "dbb5b51c907c4819a8a1297481e0ba55e09e64f227e6820a6ec0f43c53debfa9"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-10/bulkstore_descriptor",
+      "bytes": 1296,
+      "sha256": "8e2cc0e808eee0d26ac60c1ce1ea7374c38f510ed52a4a45d8d93331b95ec15d"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-10/schema.xml",
+      "bytes": 263,
+      "sha256": "5eb4355c9bdb0186bbd0d7e6f3829a56b0fd3499f36d0f1bb378efcb20bd2122"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-10/spec.plist",
+      "bytes": 466,
+      "sha256": "e9226a4f90b47e79175f8e5623e6d3e87b2d38c3d45da381bfb2125979cc6547"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-10/spindex.0",
+      "bytes": 98,
+      "sha256": "31654cb4fd01495f5b4f94d3363fe1ec54991699ebc520e61080a8e5e934acb3"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-2/bulkstore",
+      "bytes": 3846,
+      "sha256": "ae9b24435f85ff6ccf36b0e2769469ffdd64949609a1273baed89842cdfe440c"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-2/bulkstore_descriptor",
+      "bytes": 1366,
+      "sha256": "065eb1dcdb9aaac72f298f3e6838c061fb039c44a4f0a88f400fad6016256280"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-2/schema.xml",
+      "bytes": 309,
+      "sha256": "a3755019d1fd3d80c28d552fd341ff4ef1b22795878967aa59311fd8ff55f835"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-2/spec.plist",
+      "bytes": 467,
+      "sha256": "e82958e3563e5c27fca72b06092ffa9a8fe95f5c70b04180d5788cb93b8d009e"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-2/spindex.0",
+      "bytes": 2591,
+      "sha256": "387b92f4463ebeae33ce7b8235af7e507a8a443fa06665c9c7c42eb85d88a239"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-3/bulkstore",
+      "bytes": 5318,
+      "sha256": "f94cc0d5d2244f82c38d5bca0f6861e01db2497a67bac72808a32c6f9f91093b"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-3/bulkstore_descriptor",
+      "bytes": 2034,
+      "sha256": "cf1122c19662d839635e41a7c4e1fed110e662a4e42df3b3243f49b4444f2102"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-3/schema.xml",
+      "bytes": 412,
+      "sha256": "771e47f9820358edd2caa2b87693e988886419db00562dfb0106876c1171460f"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-3/spec.plist",
+      "bytes": 543,
+      "sha256": "ba53365edb448193a64fb9100755603682852664921961c5e71e3e1738765849"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-3/spindex.0",
+      "bytes": 207,
+      "sha256": "b8383bda123cff5636f2daf67a506e6c25f0937849b71a904e63dff9fb50a5ec"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-4/bulkstore",
+      "bytes": 56298,
+      "sha256": "89aef6de50d23acb54565fb1e99018877f7427f8cb4c1971e67fca5f6696b6f3"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-4/bulkstore_descriptor",
+      "bytes": 2035,
+      "sha256": "8650792b35fe97e516eb661ecfab720d65707b1b7bbde9f64e7c6071b78f8756"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-4/schema.xml",
+      "bytes": 412,
+      "sha256": "771e47f9820358edd2caa2b87693e988886419db00562dfb0106876c1171460f"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-4/spec.plist",
+      "bytes": 485,
+      "sha256": "3b1ae5045a44452b361be8a0472a51f2ff8388094920c62eacc6338e10d4a9ed"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-4/spindex.0",
+      "bytes": 75870,
+      "sha256": "121e90c7bfcbfc9da6e7f1c15211f86d752a4b5e166732d319ae8c0c34228d44"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-5/bulkstore",
+      "bytes": 50,
+      "sha256": "1c634713f7ecf6c91ed0ff0c71f397f9ed71935eefdc96149fd8fcc6eaf43b32"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-5/bulkstore_descriptor",
+      "bytes": 1840,
+      "sha256": "7ac545558bc63730814473631af35793434fd230fcaa0e867e220bffcb28e743"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-5/schema.xml",
+      "bytes": 399,
+      "sha256": "c574774bf1ab57059f228c2f366c146c21e524001bf8c10a6fa59ce942c1b6bf"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-5/spec.plist",
+      "bytes": 429,
+      "sha256": "8d419db660c4ee59e058e27156627f172d7b3ecb5a82af69708446ae49e9d9a0"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-6/bulkstore",
+      "bytes": 39339,
+      "sha256": "29e35217cd5da18e3796b81dbd5eb2a43db32de3e110fbc378296eedadbababf"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-6/bulkstore_descriptor",
+      "bytes": 1414,
+      "sha256": "0edc7e4aaca96f4e4509db3cdc62bbb00e9203edac825d8844a46618b21f4024"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-6/schema.xml",
+      "bytes": 294,
+      "sha256": "4b01602c123e5cc846bca8e0726b547595869a6162834f009dd5787e3a45d4d8"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-6/spec.plist",
+      "bytes": 391,
+      "sha256": "e1603925a708bb07ed70ba45f5264bc8c0f6481fffcf220d2acf7c10a813e0cb"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-6/spindex.0",
+      "bytes": 39301,
+      "sha256": "92e4d39311885fd6d606b281e4657fb107e741b1513134174af24c5670be04fb"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-7/bulkstore",
+      "bytes": 1182,
+      "sha256": "9f9d4448246572cc05889fa3150b22decd8ce340ab73227662e6da75aa0f5d2e"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-7/bulkstore_descriptor",
+      "bytes": 1078,
+      "sha256": "5494f3365ccbaf99055c93f07ea27638115ca0ad4016c172e8e36c39d14764a4"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-7/schema.xml",
+      "bytes": 188,
+      "sha256": "2adcc251210a12f1ecbbd662e0ba0606b217ef4c6bd02c36b0a21f4520a12114"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-7/spec.plist",
+      "bytes": 449,
+      "sha256": "044d5005ebfbcfc92eb5c373306ec4ad20d4a32727ecc5ddd1ea744f98a0b04a"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-7/spindex.0",
+      "bytes": 355,
+      "sha256": "4b853f53719a44a82bcd31fc08113b664f476943b85211c8a8a3696ae5f1d923"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-8/bulkstore",
+      "bytes": 2222,
+      "sha256": "6f32af8e9711e01a5173d453b0055ced191c2b891bbb676da7346e9bde92fbd7"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-8/bulkstore_descriptor",
+      "bytes": 1229,
+      "sha256": "39181033c28b6fcb883329a5b712c30859b736e7c9eb16bf7d6e92e771188d37"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-8/schema.xml",
+      "bytes": 268,
+      "sha256": "aa42719d0307a7c10553c35a7518b6d003edd18a4b6c2f60837f43092b2f80f8"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-8/spec.plist",
+      "bytes": 469,
+      "sha256": "cdcff5649a823412cc3ee0d0296909d37e15637e4fcb039ec282f1d3790ec35a"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-8/spindex.0",
+      "bytes": 332,
+      "sha256": "22bd1544a08668d34f49ba02d5d9d7b97e6764146a897c723b03534c94c09372"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-9/bulkstore",
+      "bytes": 3576,
+      "sha256": "6588e87cc3a5e4671a756cebb793d772cbe84cd7d19efd389e056e969c271285"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-9/bulkstore_descriptor",
+      "bytes": 1297,
+      "sha256": "2745869554ef51dca80a6cb3aa152d8dc50a68bd8742a17d2f6a883f16a102d4"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-9/schema.xml",
+      "bytes": 293,
+      "sha256": "2cffa719fc41f004049ec6f925fd4ffcb8cae71d6a46a7d4ee223b31979a79eb"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-9/spec.plist",
+      "bytes": 470,
+      "sha256": "46c7a51aa92883ae2b4b2d649d75067d97561aa72c7d5872ee094a2f64a9b0aa"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/stores/indexed-store-9/spindex.0",
+      "bytes": 2535,
+      "sha256": "f75e0b820d32034eac6f768d23ca10ad68d96b32d586d90835e60e108615b61f"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/table-manager/tables.plist",
+      "bytes": 3399,
+      "sha256": "2f4a67aec74276ae9fd12e337f82ebf96bf7a84f352ecaeffb146aabc8f91caa"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/EngineeringTypes.etypes",
+      "bytes": 7443,
+      "sha256": "594567ea04a0303506b64bfefb1fc72008c5f779729ae14196d78a36cd219f45"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/TOC",
+      "bytes": 344,
+      "sha256": "28bb5344b4c59bce7a3535796580fa23c79eb51ac6edbbbc6576069075596ee9"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/arrayUniquer/integeruniquer.data",
+      "bytes": 19589,
+      "sha256": "3d8a024a0fb359b7099d6f297f65d372656a19d00175e851c0f3af7a245bc528"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/arrayUniquer/integeruniquer.index",
+      "bytes": 6915,
+      "sha256": "dff367fe8d5bd58db0641f78a1eb72de40ff4ac3f5a78bf668e0534d573b042c"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/strings",
+      "bytes": 7726,
+      "sha256": "577fe6101419c32c43574a3e655a466c83f27844c0becc3299777b73424e9677"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/typedArrayUniquer/integeruniquer.data",
+      "bytes": 1165,
+      "sha256": "d54f824104651654ba6775b2d4574de508e010cc09c9cb67d24962cff723547f"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/corespace/run1/core/uniquing/typedArrayUniquer/integeruniquer.index",
+      "bytes": 42,
+      "sha256": "e07805138089ced1a9cdfe0dd721aad91bea4b33f806bd4f77b786429ab1b832"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/form.template",
+      "bytes": 20115039,
+      "sha256": "c0374ae91ce63620bc64a9dcef30025224ef2e3b63f4a682b0eff565b22fd0be"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/instrument_data/8DDD7D2F-275D-4E7A-AA96-0B14DDCA7265/run_data/1.run.zip",
+      "bytes": 4255,
+      "sha256": "baeac4e68e16e4d7585dda4a89008d62425751800ab38d2cb42a14cc1e8a4bd2"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/open.creq",
+      "bytes": 6845,
+      "sha256": "b75bd55470ae7b0d9aca32e8d5171edfd229a96f670fe395e2488a9cc41afe9c"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/MANIFEST.plist",
+      "bytes": 290,
+      "sha256": "35365bc545a73b5662fa33a5933919dc76c024b737002465a1449b9ac30a94fb"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/0DF10E87-E2C5-3FC4-BB4F-7F6D151F260C.symbolsarchive",
+      "bytes": 2109,
+      "sha256": "b1b3539cbef2cc1462c2dac72b620c0381eaaabd7c5ae9363b79602b7d9a024a"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/199EACBB-C237-305F-8CFE-E29EF9558488.symbolsarchive",
+      "bytes": 2261,
+      "sha256": "5a3c4eac9cc6d181edabf44b2b0d72dff25485a11ba0c3531293549877340ead"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/24CE0D89-4114-30C2-A81A-3DB1F5931CFF.symbolsarchive",
+      "bytes": 2070,
+      "sha256": "692a58f32285c23be3fafebd49a93922481c0df0bf880c3032b17096a8a54b0d"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/3247E185-CED2-36FF-9E29-47A77C23E004.symbolsarchive",
+      "bytes": 1115,
+      "sha256": "7b363e603cf3ef8aedf1208f56597e928a37be3ecf611e6bb6e1bdccb597e6da"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/351A431E-1520-3B3B-BB1E-F034DA294ECD.symbolsarchive",
+      "bytes": 1472,
+      "sha256": "dfaa462ff445b7b9a62c0173238a1590b69312253d03a8a8e738b4cdcca00fcc"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/3F69ED5D-9D77-3A65-B8A6-2F631B87A864.symbolsarchive",
+      "bytes": 2574,
+      "sha256": "b6debe55f265dec92753a497701a5afbac67239f4aae485f09c577d2b7e165aa"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/42059FB2-AFC4-3DCA-BE5A-1B799160C3DD.symbolsarchive",
+      "bytes": 1454,
+      "sha256": "581d6d99f2f922340650d00ce8da268fb367aa782b24bbe31548a69d13dd37d5"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/52C7F0A2-F403-391B-9B0D-CE498EFF4D7E.symbolsarchive",
+      "bytes": 3107,
+      "sha256": "0436fdd5e7f6aab3d03f5e967d836be4353c60db62aeb36c77345735e6bc81a7"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/6E4A96AD-04B8-3E8A-B91D-087E62306246.symbolsarchive",
+      "bytes": 932,
+      "sha256": "3b069f882136a7590c0016ac750920cb1a1d582b9cf5d4bf57c3dbad3cf1cee5"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/D6494BA9-171E-39FC-B1AA-28ECF87975D1.symbolsarchive",
+      "bytes": 1012,
+      "sha256": "d88844ec7ca4a9022e3806127149251aac15276cfe85ad1a218c6896508a0211"
+    },
+    {
+      "path": "artifacts/render-error/audio-system.trace/symbols/stores/F8F266B4-B07E-35F0-8B17-4F52C0B14B41.symbolsarchive",
+      "bytes": 2793,
+      "sha256": "0ad379cf885c2f79f8a990fdb4c81e45d32f28cbd105332f8f56b2aa07121ed4"
+    },
+    {
+      "path": "artifacts/render-error/native.json",
+      "bytes": 26100,
+      "sha256": "1ee07324ad97afad5bd4c4c1077868460985ac4dc74544ece7fe5cf44ae30c57"
+    },
+    {
+      "path": "artifacts/render-error/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-error/ready",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-error/system-trace-command.log",
+      "bytes": 285,
+      "sha256": "a5088914fca8ec925d32139c28b48ad5540aa04415e890eb5fea3c57da291a97"
+    },
+    {
+      "path": "artifacts/render-error/toc.xml",
+      "bytes": 12484,
+      "sha256": "69644f498e6fd60b868b86bd9d737aa115fdd439eaba8e34a65ebc827611ab3f"
+    },
+    {
+      "path": "artifacts/render-error/trace-command.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/render-status-probe",
+      "bytes": 138864,
+      "sha256": "80c562c779a924f9211a76216d9a505a85bb9c640a44319d2cf7632be43758bb"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 6134,
+      "sha256": "440f06772ded2da7a3dd1f4246f1f7ac07076ab5dd1ccc730a2725e7513ad1a4"
+    }
+  ]
+}

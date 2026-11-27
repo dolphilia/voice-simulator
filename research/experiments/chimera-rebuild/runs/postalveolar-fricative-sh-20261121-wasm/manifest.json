@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "run_id": "postalveolar-fricative-sh-20261121-wasm",
+  "case_id": "postalveolar-fricative-sh-wasm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "postalveolar-fricative-sh-20261121-a",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/postalveolar-fricative-sh-wasm.json",
+      "bytes": 460,
+      "sha256": "6d928c4dcab698fac420b6e970003c08e7a79a16ba0456bf8c7a4ea563ec1c7f"
+    },
+    {
+      "path": "tools/compare_dental_wasm.ts",
+      "bytes": 4168,
+      "sha256": "22589486b244bb26f3c20ca6e516beb96d001cbac20c4a4e3d3957720346e9cf"
+    },
+    {
+      "path": "target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+      "bytes": 1476737,
+      "sha256": "cbf25baa9a2aa9247ba97ca1c7d04d2f842f1a010c3492f4af3d74074af51041"
+    },
+    {
+      "path": "data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/manifest.json",
+      "bytes": 112357,
+      "sha256": "dd97ff66cc1a4c5b4570a05cbfee2199c357d43be0ec762831e061b2f2f7d710"
+    },
+    {
+      "path": "crates/vocal-wasm/host/planning.ts",
+      "bytes": 5719,
+      "sha256": "3ebfa2c9c9f2b74a32afa4d7968e1e2d291a7c541944eaf60494fa089c8e0e23"
+    },
+    {
+      "path": "crates/vocal-wasm/host/fixed-voice.ts",
+      "bytes": 18859,
+      "sha256": "b1828e9069565ea582fc2840530f058169e725769f11cdc3e0d8d3ebc5a492aa"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/male/case.json",
+      "bytes": 858,
+      "sha256": "ec05f1ae3a57a862a3818e4b089ac36f005afd4cf973bca59733e6bcfe526624"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/male/pcm-128.wav",
+      "bytes": 214586,
+      "sha256": "991b8bae7a28d57cde6688db6516373d21a7cef8fa81fa55636fdb9d69256fed",
+      "sample_rate_hz": 48000,
+      "frames": 53632,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/song/case.json",
+      "bytes": 1044,
+      "sha256": "a442e66ad7bef479a32788306758fa009eb5a121b554016abd9f882fc8f62d40"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/song/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "552b6d041732ec929ea66a8ecbed8ddbd7125d0b8934d43b32d545c673d1c368",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/FA01_02/case.json",
+      "bytes": 928,
+      "sha256": "ee5ab1e54996923a74f9193c72974d41fbb5e9a974f4fb7be19e2ff27feb2c67"
+    },
+    {
+      "path": "runs/postalveolar-fricative-sh-20261121-a/artifacts/FA01_02/pcm-128.wav",
+      "bytes": 535354,
+      "sha256": "d05c0f850f2c125dff138715c7dc5f4620f28deccd3e32a53dcb4eae7f80306b",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "npx",
+        "--offline",
+        "--yes",
+        "--package=bun@1.4.4",
+        "bun",
+        "$WORKSPACE/tools/compare_dental_wasm.ts",
+        "$WORKSPACE/target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+        "$WORKSPACE/runs/postalveolar-fricative-sh-20261121-a/artifacts",
+        "$WORKSPACE/cases/postalveolar-fricative-sh-wasm.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/wasm.json",
+      "bytes": 322,
+      "sha256": "5e59d65522395f68770bc07aa4354d2a2d2244d7b259bf935ec679b4cdee37fd"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 473,
+      "sha256": "6cdbae7672a40405d7de4d6144fd25ccbf01bac6b34a000b32b292f8c49d13db"
+    }
+  ]
+}

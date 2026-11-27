@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "run_id": "safari-recording-video-clock-20261121-a",
+  "case_id": "safari-recording-video-clock",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "analysis_directory": "/Users/dolphilia/github/voice-simulator/research/experiments/chimera-rebuild",
+  "analysis_command": [
+    "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+    "tools/measure_safari_recording_video_clock.py",
+    "safari-recording-video-clock-20261121-a"
+  ],
+  "safaridriver": "Included with Safari 18.6 (20621.3.11.11.3)",
+  "node": "v24.19.0",
+  "ffmpeg": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+  "ffprobe": "ffprobe version 7.1 Copyright (c) 2007-2024 the FFmpeg developers",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/safari-recording-video-clock.json",
+      "bytes": 2940,
+      "sha256": "e9e3cde1e032ad72834834d0f7fe98f55f6d1f4f6ce9e1090926e0edc7fd1672"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/safari-recording-pause-clock-split.json",
+      "bytes": 3820,
+      "sha256": "b3212cd9fd477e7ed698b2720b0d14a4df36d758f11e024123618e1e188308c4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/safari-recording-pause-clock-split-20261121-reanalysis/manifest.json",
+      "bytes": 29017,
+      "sha256": "25be65cf14a08af4da740aa33bcd5258452cb3a30f22b49036ec1d4a9d548def"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/safari-recording-pause-clock-split-20261121-reanalysis/summary.json",
+      "bytes": 89664,
+      "sha256": "2220bfcb53b9e4bd22045649e42a575ebb2c43fc1b1540a5147b41ae0b30e3ef"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_safari_recording_video_clock.py",
+      "bytes": 6295,
+      "sha256": "e4a919c1e5e0b051bf2ab12d22266b0626c733d22eba2f3d78f327e550e0bd83"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tools/capture-safari-recording-clock-split.mjs",
+      "bytes": 10515,
+      "sha256": "af4032c6a4ab439b1af1403c85cc0b05564c64c2e55f47ab445534ae9a36a5fb"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tools/safari-webdriver.mjs",
+      "bytes": 1742,
+      "sha256": "20cd45e1972a1087f849061b9cdeb3407ff6153bf2010c9b130f890aaba0e076"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_safari_recording_pause_clock_split.py",
+      "bytes": 15878,
+      "sha256": "724416ca2fd0bc02dda6aa019ec99611f0da69123b1a2a75b929eb3a6b210087"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_worklet_song_recording.py",
+      "bytes": 24836,
+      "sha256": "7f85fd2207a5ace608068166f8e0168235343b05e1ee57dc3f8bb2d0e0d94731"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_wasm_fixed.py",
+      "bytes": 10753,
+      "sha256": "928076b54ad285a1c9fae71272d757146cb9c99fa81c6dd46dd5ffc2d7e6102e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "$REPOSITORY/web/prototypes/chimera-research/tools/capture-safari-recording-clock-split.mjs",
+        "$WORKSPACE/cases/safari-recording-video-clock.json",
+        "$ARTIFACTS"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/1-audiovisual/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/1-audiovisual/recording.mp4",
+        "-map",
+        "0:a:0",
+        "-ac",
+        "1",
+        "-f",
+        "f32le",
+        "$ARTIFACTS/1-audiovisual/recording-audio.f32le"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/1-audiovisual/recording.mp4",
+        "-map",
+        "0:v:0",
+        "-filter_threads",
+        "1",
+        "-vf",
+        "crop=192:64:16:0,scale=12:4:flags=neighbor,format=gray",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "filter",
+        "-threads",
+        "1",
+        "-c:v",
+        "rawvideo",
+        "-f",
+        "rawvideo",
+        "$ARTIFACTS/1-audiovisual/video-codes.gray"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/1-video_only/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/1-video_only/recording.mp4",
+        "-map",
+        "0:v:0",
+        "-filter_threads",
+        "1",
+        "-vf",
+        "crop=192:64:16:0,scale=12:4:flags=neighbor,format=gray",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "filter",
+        "-threads",
+        "1",
+        "-c:v",
+        "rawvideo",
+        "-f",
+        "rawvideo",
+        "$ARTIFACTS/1-video_only/video-codes.gray"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/2-video_only/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/2-video_only/recording.mp4",
+        "-map",
+        "0:v:0",
+        "-filter_threads",
+        "1",
+        "-vf",
+        "crop=192:64:16:0,scale=12:4:flags=neighbor,format=gray",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "filter",
+        "-threads",
+        "1",
+        "-c:v",
+        "rawvideo",
+        "-f",
+        "rawvideo",
+        "$ARTIFACTS/2-video_only/video-codes.gray"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_frames",
+        "-of",
+        "json",
+        "$ARTIFACTS/2-audiovisual/recording.mp4"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/2-audiovisual/recording.mp4",
+        "-map",
+        "0:a:0",
+        "-ac",
+        "1",
+        "-f",
+        "f32le",
+        "$ARTIFACTS/2-audiovisual/recording-audio.f32le"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "$ARTIFACTS/2-audiovisual/recording.mp4",
+        "-map",
+        "0:v:0",
+        "-filter_threads",
+        "1",
+        "-vf",
+        "crop=192:64:16:0,scale=12:4:flags=neighbor,format=gray",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "filter",
+        "-threads",
+        "1",
+        "-c:v",
+        "rawvideo",
+        "-f",
+        "rawvideo",
+        "$ARTIFACTS/2-audiovisual/video-codes.gray"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/safari-recording-video-clock-20261121-a/artifacts",
+    "estimated_peak_bytes": 15000000
+  },
+  "outputs": [
+    {
+      "path": "artifacts/1-audiovisual/browser.json",
+      "bytes": 15807,
+      "sha256": "5579ea94bf7e4d59ea2e712668f188c38336c3f873f3f2c79ea90cba72e1df2b"
+    },
+    {
+      "path": "artifacts/1-audiovisual/ffprobe.json",
+      "bytes": 105039,
+      "sha256": "f63ffa6ce867042a94a07654e10082076ae213b83f0976db2387684eccf3876e"
+    },
+    {
+      "path": "artifacts/1-audiovisual/recording-audio.f32le",
+      "bytes": 335872,
+      "sha256": "f6cd0513808a4aed960ab4488419d4bad512ae45502d4e072e3b3c765e2dad21"
+    },
+    {
+      "path": "artifacts/1-audiovisual/recording.mp4",
+      "bytes": 11713,
+      "sha256": "73dd73add3894accde12ca00f62fdde1bb05ae62517c950b0db83930551c2593"
+    },
+    {
+      "path": "artifacts/1-audiovisual/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/1-audiovisual/video-codes.gray",
+      "bytes": 2832,
+      "sha256": "c35d3b67e956e04f9b3bb0b5784cbbc7bc011f6ff8308a9e406efa41a602edcd"
+    },
+    {
+      "path": "artifacts/1-video_only/browser.json",
+      "bytes": 15737,
+      "sha256": "bd7c293a16b2c85bb3cfb134408324cf81d49b9a3c3e5052254ef24a2ed9aaa7"
+    },
+    {
+      "path": "artifacts/1-video_only/ffprobe.json",
+      "bytes": 53398,
+      "sha256": "aa39d81b0711acb47db7f431c410a66b45b91537925913966ef6c25b29189c2f"
+    },
+    {
+      "path": "artifacts/1-video_only/recording.mp4",
+      "bytes": 4436,
+      "sha256": "62fd1c36aa979a4d870c978805bbe03354bbaaa4521ec5b55a79b588bc1cfe3b"
+    },
+    {
+      "path": "artifacts/1-video_only/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/1-video_only/video-codes.gray",
+      "bytes": 2832,
+      "sha256": "a04ad07438b5a9166eeec071340b681476ee17ff4612def2bbe9b996d87def0b"
+    },
+    {
+      "path": "artifacts/2-audiovisual/browser.json",
+      "bytes": 15702,
+      "sha256": "f07c69d4d6fd532fe70a0ba3777bdcc0e8e4e38000e21a73e0ef8ee442b21501"
+    },
+    {
+      "path": "artifacts/2-audiovisual/ffprobe.json",
+      "bytes": 105038,
+      "sha256": "a49840efd8d0091861b36bbd9ea3220b240fc626ae35ed9b312749d857b99211"
+    },
+    {
+      "path": "artifacts/2-audiovisual/recording-audio.f32le",
+      "bytes": 335872,
+      "sha256": "f6cd0513808a4aed960ab4488419d4bad512ae45502d4e072e3b3c765e2dad21"
+    },
+    {
+      "path": "artifacts/2-audiovisual/recording.mp4",
+      "bytes": 11661,
+      "sha256": "308e04c3962e1d28d0b6b6b2bb3698bbf9d95c6e3a22e9abeb4231cf51a5dbe2"
+    },
+    {
+      "path": "artifacts/2-audiovisual/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/2-audiovisual/video-codes.gray",
+      "bytes": 2832,
+      "sha256": "e927d90b844ccc77af34ccc800027c2c9dfb284271baa93d397c77c6987ae735"
+    },
+    {
+      "path": "artifacts/2-video_only/browser.json",
+      "bytes": 15651,
+      "sha256": "7fd9fbb955d50e0df4aa32bd1aa4b3037f5ca2dac8d69fbf10071ba82b2735eb"
+    },
+    {
+      "path": "artifacts/2-video_only/ffprobe.json",
+      "bytes": 53398,
+      "sha256": "6c4d051c789a498aeff538dec950a953445a26e8b4895bb69ffb86d2134598b2"
+    },
+    {
+      "path": "artifacts/2-video_only/recording.mp4",
+      "bytes": 4411,
+      "sha256": "63941f76e5ae0aab198aa0c24c8f4ac2d4a280251ef6fd53e85d218a043b7d53"
+    },
+    {
+      "path": "artifacts/2-video_only/signal.f32le",
+      "bytes": 259200,
+      "sha256": "3980c875073e90c876a0b46d095a18eb33c1b1e537677e8133a7fc508b06272a"
+    },
+    {
+      "path": "artifacts/2-video_only/video-codes.gray",
+      "bytes": 2832,
+      "sha256": "ad79f56a3b3dbbdc62098e6ffc855daa565a795db957e506de21a9eac8077527"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/safari.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 42877,
+      "sha256": "d4d893bf6f908c04648fe777c0d9c4bc9a661ac20317c4470fbac920aa69193e"
+    }
+  ]
+}

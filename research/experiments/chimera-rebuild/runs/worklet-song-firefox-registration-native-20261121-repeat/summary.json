@@ -1,0 +1,1746 @@
+{
+  "checks": {
+    "same_wasm_as_reference": true,
+    "1-serial/input_and_assets": true,
+    "1-serial/audio_and_observations": true,
+    "1-serial/upstream_pcm": true,
+    "1-serial/schedule_and_beats": true,
+    "1-serial/expected_bundle": true,
+    "1-serial/javascript_clocks_aligned": true,
+    "1-serial/native_clocks_aligned": true,
+    "1-parallel/input_and_assets": true,
+    "1-parallel/audio_and_observations": true,
+    "1-parallel/upstream_pcm": true,
+    "1-parallel/schedule_and_beats": true,
+    "1-parallel/expected_bundle": true,
+    "1-parallel/javascript_clocks_aligned": true,
+    "1-parallel/native_clocks_aligned": true,
+    "2-parallel/input_and_assets": true,
+    "2-parallel/audio_and_observations": true,
+    "2-parallel/upstream_pcm": true,
+    "2-parallel/schedule_and_beats": true,
+    "2-parallel/expected_bundle": true,
+    "2-parallel/javascript_clocks_aligned": true,
+    "2-parallel/native_clocks_aligned": true,
+    "2-serial/input_and_assets": true,
+    "2-serial/audio_and_observations": true,
+    "2-serial/upstream_pcm": true,
+    "2-serial/schedule_and_beats": true,
+    "2-serial/expected_bundle": true,
+    "2-serial/javascript_clocks_aligned": true,
+    "2-serial/native_clocks_aligned": true,
+    "3-serial/input_and_assets": true,
+    "3-serial/audio_and_observations": true,
+    "3-serial/upstream_pcm": true,
+    "3-serial/schedule_and_beats": true,
+    "3-serial/expected_bundle": true,
+    "3-serial/javascript_clocks_aligned": true,
+    "3-serial/native_clocks_aligned": true,
+    "3-parallel/input_and_assets": true,
+    "3-parallel/audio_and_observations": true,
+    "3-parallel/upstream_pcm": true,
+    "3-parallel/schedule_and_beats": true,
+    "3-parallel/expected_bundle": true,
+    "3-parallel/javascript_clocks_aligned": true,
+    "3-parallel/native_clocks_aligned": true
+  },
+  "reference_hashes": {
+    "pcm": "8d626473d3234fe8044026a4bf34086dfac2cd7b598179438bd06182ab1a66f1",
+    "observations": "14d4a1e3c6d92f977e1b927206225a14c0f74de30107989675673918655e4c1b",
+    "score": "0d46bf5f8b2df6d2da9a3522b6a222b7e57a5daf28b42f14a04071b5b179e086"
+  },
+  "trials": [
+    {
+      "trial": "1-serial",
+      "order": "serial",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 196,
+        "resume_ms": 25,
+        "wasm_ms": 12,
+        "parallel_preparation_ms": 25,
+        "planner_ms": 23,
+        "registration_ms": 148,
+        "registration_overlaps_ms": {
+          "resume": 0,
+          "wasm": 0,
+          "planner": 0
+        },
+        "registration_after_planner_ms": 148,
+        "first_worklet_frame": 8320,
+        "scheduled_frame": 11392
+      },
+      "evaluation": {
+        "call_to_request_ms": 136,
+        "server_response_ms": 3,
+        "response_to_first_statement_ms": 10,
+        "before_evaluation_ms": 149,
+        "first_statement_to_register_call_ms": 0,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 0,
+        "registration_to_resolved_ms": 0,
+        "node_request_to_ready_post_ms": 5,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 1.0,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 1.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68357,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": 0.0,
+            "epoch_ms": -1.0
+          },
+          "worklet_ready_received": {
+            "wall_ms": 0.0,
+            "epoch_ms": -1.0
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            869.105333,
+            1017.650458
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 869.262542,
+          "main_promise_resumed": 1017.262542,
+          "main_ready_received": 1022.262542,
+          "http_request_received": 1005.262451171875,
+          "http_response_sent": 1008.262451171875,
+          "worklet_first_statement": 1018.262451171875,
+          "js_register_call": 1018.262451171875,
+          "js_register_return": 1018.262451171875
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 335566,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1017.610458,
+              1017.61725
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 335566,
+            "interval_ms": [
+              872.376417,
+              873.089375
+            ]
+          },
+          {
+            "tid": 335566,
+            "interval_ms": [
+              1016.375417,
+              1017.626417
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234031574.0251,
+          "content_epoch_minus_anchor_epoch_origin_ms": 0.28759765625
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68351,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1898.751417,
+            "end_ms": 1898.854,
+            "process_start_epoch_ms": 1795234030677.2903,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1898.751417,
+              "endTime": 1898.854,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68351,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1898.854,
+            "end_ms": 1906.619833,
+            "process_start_epoch_ms": 1795234030677.2903,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1898.854,
+              "endTime": 1906.619833,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1899.756958,
+              "responseStart": 1905.48825,
+              "responseEnd": 1905.632583
+            }
+          },
+          {
+            "pid": 68357,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 873.188792,
+            "end_ms": 873.241125,
+            "process_start_epoch_ms": 1795234031574.0251,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 873.188792,
+              "endTime": 873.241125,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68357,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 873.241125,
+            "end_ms": 1013.700792,
+            "process_start_epoch_ms": 1795234031574.0251,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 873.241125,
+              "endTime": 1013.700792,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51428/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1003.017667,
+              "responseStart": 1008.748958,
+              "responseEnd": 1008.893292
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          -0.6519931718750058,
+          -0.6452011718749873
+        ],
+        "add_module_boundary_error_ms": [
+          -0.15720900000007987,
+          -0.38791599999990467
+        ],
+        "native_registration_ms": 148.54512499999998,
+        "estimated_fraction_before_first_statement": 1.0041199142137787,
+        "minimum_fraction_before_first_statement": 0.9704601088179436,
+        "native_register_processor_ms": 0.006792000000018561,
+        "native_register_end_to_promise_ms": 0.03320799999994506,
+        "controls_containing_registration": [
+          {
+            "tid": 335566,
+            "interval_ms": [
+              1016.375417,
+              1017.626417
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 4.135792000000038,
+          "channel_open_to_request_start_ms": 129.77654199999995,
+          "request_to_response_end_ms": 5.875625000000014,
+          "response_end_to_content_stop_ms": 4.8075000000000045,
+          "content_stop_to_register_control_ms": 2.674624999999992,
+          "content_stop_to_first_statement_ms": 4.5616591718750215,
+          "request_start_to_server_ms": 2.2447841718750396,
+          "server_send_to_response_end_ms": 0.630840828124974,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    },
+    {
+      "trial": "1-parallel",
+      "order": "parallel",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 194,
+        "resume_ms": 21,
+        "wasm_ms": 12,
+        "parallel_preparation_ms": 21,
+        "planner_ms": 24,
+        "registration_ms": 193,
+        "registration_overlaps_ms": {
+          "resume": 21,
+          "wasm": 12,
+          "planner": 24
+        },
+        "registration_after_planner_ms": 148,
+        "first_worklet_frame": 8448,
+        "scheduled_frame": 11520
+      },
+      "evaluation": {
+        "call_to_request_ms": 182,
+        "server_response_ms": 3,
+        "response_to_first_statement_ms": 7,
+        "before_evaluation_ms": 192,
+        "first_statement_to_register_call_ms": 0,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 0,
+        "registration_to_resolved_ms": 1,
+        "node_request_to_ready_post_ms": 5,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 0.9948186528497409,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 0.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68371,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_ready_received": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            890.33725,
+            1082.947292
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 889.884333,
+          "main_promise_resumed": 1082.884333,
+          "main_ready_received": 1087.884333,
+          "http_request_received": 1071.88427734375,
+          "http_response_sent": 1074.88427734375,
+          "worklet_first_statement": 1081.88427734375,
+          "js_register_call": 1081.88427734375,
+          "js_register_return": 1081.88427734375
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 336046,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1082.9,
+              1082.90725
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 336046,
+            "interval_ms": [
+              891.204125,
+              891.934792
+            ]
+          },
+          {
+            "tid": 336046,
+            "interval_ms": [
+              1081.659292,
+              1082.916208
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234037422.8254,
+          "content_epoch_minus_anchor_epoch_origin_ms": -0.290283203125
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68366,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1778.06575,
+            "end_ms": 1778.753667,
+            "process_start_epoch_ms": 1795234036538.7217,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1778.06575,
+              "endTime": 1778.753667,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68366,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1778.753667,
+            "end_ms": 1960.069958,
+            "process_start_epoch_ms": 1795234036538.7217,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1778.753667,
+              "endTime": 1960.069958,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1952.896042,
+              "responseStart": 1959.289542,
+              "responseEnd": 1959.440875
+            }
+          },
+          {
+            "pid": 68371,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 892.524833,
+            "end_ms": 892.562042,
+            "process_start_epoch_ms": 1795234037422.8254,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 892.524833,
+              "endTime": 892.562042,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68371,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 892.562042,
+            "end_ms": 1079.673958,
+            "process_start_epoch_ms": 1795234037422.8254,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 892.562042,
+              "endTime": 1079.673958,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51431/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1068.788625,
+              "responseStart": 1075.182125,
+              "responseEnd": 1075.333458
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          1.015722656250091,
+          1.0229726562499764
+        ],
+        "add_module_boundary_error_ms": [
+          0.4529170000000704,
+          -0.06295900000009169
+        ],
+        "native_registration_ms": 192.61004200000002,
+        "estimated_fraction_before_first_statement": 0.994481000859498,
+        "minimum_fraction_before_first_statement": 0.9685218143701455,
+        "native_register_processor_ms": 0.007249999999885404,
+        "native_register_end_to_promise_ms": 0.040042000000084954,
+        "controls_containing_registration": [
+          {
+            "tid": 336046,
+            "interval_ms": [
+              1081.659292,
+              1082.916208
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 2.2247919999999795,
+          "channel_open_to_request_start_ms": 176.2265829999999,
+          "request_to_response_end_ms": 6.544833000000153,
+          "response_end_to_content_stop_ms": 4.34050000000002,
+          "content_stop_to_register_control_ms": 1.9853339999999662,
+          "content_stop_to_first_statement_ms": 2.210319343749916,
+          "request_start_to_server_ms": 3.095652343750089,
+          "server_send_to_response_end_ms": 0.4491806562500642,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    },
+    {
+      "trial": "2-parallel",
+      "order": "parallel",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 198,
+        "resume_ms": 20,
+        "wasm_ms": 10,
+        "parallel_preparation_ms": 21,
+        "planner_ms": 23,
+        "registration_ms": 197,
+        "registration_overlaps_ms": {
+          "resume": 20,
+          "wasm": 10,
+          "planner": 23
+        },
+        "registration_after_planner_ms": 154,
+        "first_worklet_frame": 8704,
+        "scheduled_frame": 11776
+      },
+      "evaluation": {
+        "call_to_request_ms": 183,
+        "server_response_ms": 3,
+        "response_to_first_statement_ms": 11,
+        "before_evaluation_ms": 197,
+        "first_statement_to_register_call_ms": 0,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 0,
+        "registration_to_resolved_ms": 0,
+        "node_request_to_ready_post_ms": 5,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 1.0,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 0.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68387,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": 1.1368683772161603e-13,
+            "epoch_ms": 1.1368683772161603e-13
+          },
+          "worklet_ready_received": {
+            "wall_ms": 1.1368683772161603e-13,
+            "epoch_ms": 1.1368683772161603e-13
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            899.304625,
+            1096.9265
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 899.705292,
+          "main_promise_resumed": 1096.705292,
+          "main_ready_received": 1101.705292,
+          "http_request_received": 1082.705322265625,
+          "http_response_sent": 1085.705322265625,
+          "worklet_first_statement": 1096.705322265625,
+          "js_register_call": 1096.705322265625,
+          "js_register_return": 1096.705322265625
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 336517,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1096.880708,
+              1096.889667
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 336517,
+            "interval_ms": [
+              900.166542,
+              900.961
+            ]
+          },
+          {
+            "tid": 336517,
+            "interval_ms": [
+              1095.581,
+              1096.902125
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234043330.3027,
+          "content_epoch_minus_anchor_epoch_origin_ms": 0.008056640625
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68382,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1784.4595,
+            "end_ms": 1785.081083,
+            "process_start_epoch_ms": 1795234042448.6748,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1784.4595,
+              "endTime": 1785.081083,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68382,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1785.081083,
+            "end_ms": 1968.425458,
+            "process_start_epoch_ms": 1795234042448.6748,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1785.081083,
+              "endTime": 1968.425458,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1961.94625,
+              "responseStart": 1967.851167,
+              "responseEnd": 1968.040542
+            }
+          },
+          {
+            "pid": 68387,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 901.473958,
+            "end_ms": 901.510708,
+            "process_start_epoch_ms": 1795234043330.3027,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 901.473958,
+              "endTime": 901.510708,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68387,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 901.510708,
+            "end_ms": 1090.615792,
+            "process_start_epoch_ms": 1795234043330.3027,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 901.510708,
+              "endTime": 1090.615792,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51436/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1080.314667,
+              "responseStart": 1086.219583,
+              "responseEnd": 1086.408958
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          0.17538573437491323,
+          0.1843447343749176
+        ],
+        "add_module_boundary_error_ms": [
+          -0.40066699999999855,
+          -0.22120799999993324
+        ],
+        "native_registration_ms": 197.62187500000005,
+        "estimated_fraction_before_first_statement": 0.998880803380825,
+        "minimum_fraction_before_first_statement": 0.9735799605464981,
+        "native_register_processor_ms": 0.00895900000000438,
+        "native_register_end_to_promise_ms": 0.036833000000115135,
+        "controls_containing_registration": [
+          {
+            "tid": 336517,
+            "interval_ms": [
+              1095.581,
+              1096.902125
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 2.206083000000035,
+          "channel_open_to_request_start_ms": 178.80395900000008,
+          "request_to_response_end_ms": 6.094290999999885,
+          "response_end_to_content_stop_ms": 4.206834000000072,
+          "content_stop_to_register_control_ms": 4.965207999999848,
+          "content_stop_to_first_statement_ms": 6.089530265624944,
+          "request_start_to_server_ms": 2.3906552656249005,
+          "server_send_to_response_end_ms": 0.7036357343749842,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    },
+    {
+      "trial": "2-serial",
+      "order": "serial",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 197,
+        "resume_ms": 19,
+        "wasm_ms": 12,
+        "parallel_preparation_ms": 20,
+        "planner_ms": 21,
+        "registration_ms": 155,
+        "registration_overlaps_ms": {
+          "resume": 0,
+          "wasm": 0,
+          "planner": 0
+        },
+        "registration_after_planner_ms": 155,
+        "first_worklet_frame": 8704,
+        "scheduled_frame": 11776
+      },
+      "evaluation": {
+        "call_to_request_ms": 141,
+        "server_response_ms": 3,
+        "response_to_first_statement_ms": 10,
+        "before_evaluation_ms": 154,
+        "first_statement_to_register_call_ms": 0,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 0,
+        "registration_to_resolved_ms": 0,
+        "node_request_to_ready_post_ms": 6,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 1.0,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 1.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68401,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": -1.1368683772161603e-13,
+            "epoch_ms": 0.9999999999998863
+          },
+          "worklet_ready_received": {
+            "wall_ms": -1.1368683772161603e-13,
+            "epoch_ms": 0.9999999999998863
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            963.265292,
+            1117.700458
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 962.379,
+          "main_promise_resumed": 1117.379,
+          "main_ready_received": 1123.379,
+          "http_request_received": 1103.37890625,
+          "http_response_sent": 1106.37890625,
+          "worklet_first_statement": 1116.37890625,
+          "js_register_call": 1116.37890625,
+          "js_register_return": 1116.37890625
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 336995,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1117.67875,
+              1117.685958
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 336995,
+            "interval_ms": [
+              967.085625,
+              967.834542
+            ]
+          },
+          {
+            "tid": 336995,
+            "interval_ms": [
+              1116.45825,
+              1117.69675
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234049291.8096,
+          "content_epoch_minus_anchor_epoch_origin_ms": -0.8115234375
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68396,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1997.930167,
+            "end_ms": 1998.109833,
+            "process_start_epoch_ms": 1795234048395.1606,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1997.930167,
+              "endTime": 1998.109833,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68396,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1998.109833,
+            "end_ms": 2004.775042,
+            "process_start_epoch_ms": 1795234048395.1606,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1998.109833,
+              "endTime": 2004.775042,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1998.936458,
+              "responseStart": 2004.220958,
+              "responseEnd": 2004.408875
+            }
+          },
+          {
+            "pid": 68401,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 967.926625,
+            "end_ms": 967.978083,
+            "process_start_epoch_ms": 1795234049291.8096,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 967.926625,
+              "endTime": 967.978083,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68401,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 967.978083,
+            "end_ms": 1111.934208,
+            "process_start_epoch_ms": 1795234049291.8096,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 967.978083,
+              "endTime": 1111.934208,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51441/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1102.28225,
+              "responseStart": 1107.56675,
+              "responseEnd": 1107.754667
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          1.2998437500000364,
+          1.3070517500000278
+        ],
+        "add_module_boundary_error_ms": [
+          0.8862920000000258,
+          -0.3214580000001206
+        ],
+        "native_registration_ms": 154.43516599999998,
+        "estimated_fraction_before_first_statement": 0.9914426760159015,
+        "minimum_fraction_before_first_statement": 0.9590666302647674,
+        "native_register_processor_ms": 0.0072079999999914435,
+        "native_register_end_to_promise_ms": 0.014499999999998181,
+        "controls_containing_registration": [
+          {
+            "tid": 336995,
+            "interval_ms": [
+              1116.45825,
+              1117.69675
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 4.712790999999925,
+          "channel_open_to_request_start_ms": 134.304167,
+          "request_to_response_end_ms": 5.47241699999995,
+          "response_end_to_content_stop_ms": 4.179540999999972,
+          "content_stop_to_register_control_ms": 4.524042000000009,
+          "content_stop_to_first_statement_ms": 4.444698250000101,
+          "request_start_to_server_ms": 1.0966562500000236,
+          "server_send_to_response_end_ms": 1.3757607499999267,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    },
+    {
+      "trial": "3-serial",
+      "order": "serial",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 196,
+        "resume_ms": 19,
+        "wasm_ms": 15,
+        "parallel_preparation_ms": 19,
+        "planner_ms": 23,
+        "registration_ms": 154,
+        "registration_overlaps_ms": {
+          "resume": 0,
+          "wasm": 0,
+          "planner": 0
+        },
+        "registration_after_planner_ms": 154,
+        "first_worklet_frame": 8704,
+        "scheduled_frame": 11776
+      },
+      "evaluation": {
+        "call_to_request_ms": 143,
+        "server_response_ms": 2,
+        "response_to_first_statement_ms": 9,
+        "before_evaluation_ms": 154,
+        "first_statement_to_register_call_ms": 1,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 1,
+        "registration_to_resolved_ms": 0,
+        "node_request_to_ready_post_ms": 4,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 0.9935483870967742,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 1.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68414,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": 0.0,
+            "epoch_ms": -1.0
+          },
+          "worklet_ready_received": {
+            "wall_ms": 0.0,
+            "epoch_ms": 1.0
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            847.534958,
+            1001.344375
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 847.092792,
+          "main_promise_resumed": 1001.092792,
+          "main_ready_received": 1007.092792,
+          "http_request_received": 990.0927734375,
+          "http_response_sent": 992.0927734375,
+          "worklet_first_statement": 1001.0927734375,
+          "js_register_call": 1002.0927734375,
+          "js_register_return": 1002.0927734375
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 337452,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1001.304625,
+              1001.316208
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 337452,
+            "interval_ms": [
+              850.634375,
+              851.314625
+            ]
+          },
+          {
+            "tid": 337452,
+            "interval_ms": [
+              1000.032625,
+              1001.327917
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234055273.9346,
+          "content_epoch_minus_anchor_epoch_origin_ms": 0.02734375
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68409,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1904.449167,
+            "end_ms": 1904.535208,
+            "process_start_epoch_ms": 1795234054355.8823,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1904.449167,
+              "endTime": 1904.535208,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68409,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1904.535208,
+            "end_ms": 1910.87775,
+            "process_start_epoch_ms": 1795234054355.8823,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1904.535208,
+              "endTime": 1910.87775,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1907.335917,
+              "responseStart": 1910.299167,
+              "responseEnd": 1910.434875
+            }
+          },
+          {
+            "pid": 68414,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 851.400083,
+            "end_ms": 851.44925,
+            "process_start_epoch_ms": 1795234055273.9346,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 851.400083,
+              "endTime": 851.44925,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68414,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 851.44925,
+            "end_ms": 996.812125,
+            "process_start_epoch_ms": 1795234055273.9346,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 851.44925,
+              "endTime": 996.812125,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51447/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 989.280333,
+              "responseStart": 992.243583,
+              "responseEnd": 992.379292
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          -0.7881484375000127,
+          -0.7765654375000395
+        ],
+        "add_module_boundary_error_ms": [
+          0.4421659999999292,
+          -0.25158299999998235
+        ],
+        "native_registration_ms": 153.80941700000005,
+        "estimated_fraction_before_first_statement": 0.9983641992317024,
+        "minimum_fraction_before_first_statement": 0.965856436719346,
+        "native_register_processor_ms": 0.011582999999973254,
+        "native_register_end_to_promise_ms": 0.028167000000053122,
+        "controls_containing_registration": [
+          {
+            "tid": 337452,
+            "interval_ms": [
+              1000.032625,
+              1001.327917
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 3.914292000000046,
+          "channel_open_to_request_start_ms": 137.83108300000004,
+          "request_to_response_end_ms": 3.0989589999999225,
+          "response_end_to_content_stop_ms": 4.432833000000073,
+          "content_stop_to_register_control_ms": 3.2205000000000155,
+          "content_stop_to_first_statement_ms": 4.280648437499963,
+          "request_start_to_server_ms": 0.8124404374999585,
+          "server_send_to_response_end_ms": 0.286518562499964,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    },
+    {
+      "trial": "3-parallel",
+      "order": "parallel",
+      "browser": "157.0",
+      "upstream_pcm": {
+        "first_bit_difference_frame": 4114,
+        "first_bit_difference_values": [
+          -2.891353506129235e-05,
+          -2.8913536880281754e-05
+        ],
+        "maximum_absolute_error": 2.3283064365386963e-10,
+        "first_frame_over_tolerance": null
+      },
+      "startup": {
+        "until_connected_ms": 196,
+        "resume_ms": 20,
+        "wasm_ms": 11,
+        "parallel_preparation_ms": 20,
+        "planner_ms": 21,
+        "registration_ms": 196,
+        "registration_overlaps_ms": {
+          "resume": 20,
+          "wasm": 11,
+          "planner": 21
+        },
+        "registration_after_planner_ms": 155,
+        "first_worklet_frame": 8704,
+        "scheduled_frame": 11776
+      },
+      "evaluation": {
+        "call_to_request_ms": 184,
+        "server_response_ms": 3,
+        "response_to_first_statement_ms": 9,
+        "before_evaluation_ms": 196,
+        "first_statement_to_register_call_ms": 0,
+        "register_call_ms": 0,
+        "evaluation_through_registration_ms": 0,
+        "registration_to_resolved_ms": 0,
+        "node_request_to_ready_post_ms": 5,
+        "ready_message_ms": 0,
+        "before_evaluation_fraction": 1.0,
+        "maximum_clock_inversion_ms": 0.0,
+        "main_clock_duration_error_ms": 0.0,
+        "clocks_fit": true
+      },
+      "native": {
+        "anchor_threads": [
+          {
+            "pid": 68429,
+            "counts": {
+              "worklet_module_start": 1,
+              "worklet_module_ready": 1,
+              "worklet_ready_received": 1
+            }
+          }
+        ],
+        "anchor_clock_error_ms": {
+          "worklet_module_start": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_module_ready": {
+            "wall_ms": 0.0,
+            "epoch_ms": 0.0
+          },
+          "worklet_ready_received": {
+            "wall_ms": 1.1368683772161603e-13,
+            "epoch_ms": -0.9999999999998863
+          }
+        },
+        "native_add_module_intervals_ms": [
+          [
+            824.202708,
+            1021.178083
+          ]
+        ],
+        "aligned_add_module_intervals": 1,
+        "events_content_ms": {
+          "main_add_module": 824.6265,
+          "main_promise_resumed": 1020.6265,
+          "main_ready_received": 1025.6265,
+          "http_request_received": 1008.62646484375,
+          "http_response_sent": 1011.62646484375,
+          "worklet_first_statement": 1020.62646484375,
+          "js_register_call": 1020.62646484375,
+          "js_register_return": 1020.62646484375
+        },
+        "native_register_processor_intervals": [
+          {
+            "tid": 337944,
+            "thread": "GraphRunner",
+            "interval_ms": [
+              1021.108375,
+              1021.115292
+            ]
+          }
+        ],
+        "graph_control_intervals": [
+          {
+            "tid": 337944,
+            "interval_ms": [
+              825.0485,
+              825.773458
+            ]
+          },
+          {
+            "tid": 337944,
+            "interval_ms": [
+              1019.847042,
+              1021.128833
+            ]
+          }
+        ],
+        "profile": {
+          "appBuildID": "20261002115412",
+          "version": 36,
+          "platform": "Macintosh",
+          "content_start_epoch_ms": 1795234061090.3738,
+          "content_epoch_minus_anchor_epoch_origin_ms": 0.000244140625
+        },
+        "named_tasks": [],
+        "target_network_markers": [
+          {
+            "pid": 68424,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1683.717917,
+            "end_ms": 1684.815083,
+            "process_start_epoch_ms": 1795234060233.394,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1683.717917,
+              "endTime": 1684.815083,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Unresolved",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68424,
+            "thread": "GeckoMain",
+            "content_process": false,
+            "process_type": 0,
+            "marker": "Load 9: http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 1684.815083,
+            "end_ms": 1869.545833,
+            "process_start_epoch_ms": 1795234060233.394,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 1684.815083,
+              "endTime": 1869.545833,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "cache": "Missed",
+              "pri": 0,
+              "count": 5955,
+              "URI": "http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1862.925458,
+              "responseStart": 1868.607042,
+              "responseEnd": 1868.765833
+            }
+          },
+          {
+            "pid": 68429,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 826.275917,
+            "end_ms": 826.308708,
+            "process_start_epoch_ms": 1795234061090.3738,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 826.275917,
+              "endTime": 826.308708,
+              "id": 8589934601,
+              "status": "STATUS_START",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "URI": "http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "contentType": null
+            }
+          },
+          {
+            "pid": 68429,
+            "thread": "GeckoMain",
+            "content_process": true,
+            "process_type": 2,
+            "marker": "Load 9: http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+            "phase": 1,
+            "start_ms": 826.308708,
+            "end_ms": 1016.3935,
+            "process_start_epoch_ms": 1795234061090.3738,
+            "payload": {
+              "innerWindowID": 8589934593,
+              "type": "Network",
+              "startTime": 826.308708,
+              "endTime": 1016.3935,
+              "id": 8589934601,
+              "status": "STATUS_STOP",
+              "classOfService": "Unset",
+              "priorityHeader": "u=4",
+              "requestStatus": "NS_OK",
+              "pri": 0,
+              "count": 6275,
+              "URI": "http://127.0.0.1:51452/assets/fixed-processor-measured-entry-HRJ-Sj72.js",
+              "requestMethod": "GET",
+              "httpVersion": "http/1.1",
+              "responseStatus": 200,
+              "contentType": "text/javascript",
+              "requestStart": 1005.941375,
+              "responseStart": 1011.622958,
+              "responseEnd": 1011.78175
+            }
+          }
+        ],
+        "clocks_fit": true,
+        "register_clock_error_ms": [
+          0.48191015625002365,
+          0.488827156249954
+        ],
+        "add_module_boundary_error_ms": [
+          -0.4237919999999349,
+          -0.5515830000000506
+        ],
+        "native_registration_ms": 196.97537499999999,
+        "estimated_fraction_before_first_statement": 0.997199557781017,
+        "minimum_fraction_before_first_statement": 0.9718156741356628,
+        "native_register_processor_ms": 0.00691699999993034,
+        "native_register_end_to_promise_ms": 0.0627910000000611,
+        "controls_containing_registration": [
+          {
+            "tid": 337944,
+            "interval_ms": [
+              1019.847042,
+              1021.128833
+            ]
+          }
+        ],
+        "content_network_timing": {
+          "add_module_to_channel_open_ms": 2.1059999999999945,
+          "channel_open_to_request_start_ms": 179.63266699999997,
+          "request_to_response_end_ms": 5.8403749999999945,
+          "response_end_to_content_stop_ms": 4.611750000000029,
+          "content_stop_to_register_control_ms": 3.4535419999999704,
+          "content_stop_to_first_statement_ms": 4.232964843749983,
+          "request_start_to_server_ms": 2.6850898437500064,
+          "server_send_to_response_end_ms": 0.15528515624998818,
+          "http_clocks_fit": true
+        }
+      },
+      "prediction_met": true,
+      "long_wait": {
+        "call_to_request_ms": true,
+        "response_to_first_statement_ms": false
+      }
+    }
+  ]
+}

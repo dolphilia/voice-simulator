@@ -1,0 +1,524 @@
+{
+  "checks": {
+    "both_browser_midi_paths": true,
+    "fixed_browser_maps_presses_and_keeps_call_on_release": true,
+    "ordered_live_midi_uses_render_quantum": true,
+    "continuous_worklet_clock_and_states": true,
+    "downloaded_case_cli_pcm_bit_equal": true,
+    "fixed_upper_without_release_matches_states_and_pcm": true,
+    "independent_transposition_breath_and_pulse": true,
+    "independent_radiation_to_pcm": true,
+    "finite_pcm_and_states": true,
+    "each_press_sets_keyed_pitch_and_envelope": true,
+    "release_preserves_call_and_phonation": true,
+    "retrigger_preserves_smoothed_pitch_and_gate": true,
+    "call_holds_last_pitch_and_restores_performer": true,
+    "performer_pulse_rate_and_duty_persist": true,
+    "valley_pitch_scales_by_midi_ratio": true,
+    "press_1.log_pitch_filter_matches": true,
+    "press_1.discrete_minima_match": true,
+    "press_1.continuous_lag_within_control_step": true,
+    "press_1.valley_follows_release_in_registered_window": true,
+    "press_1.valley_offsets_match_registered_prediction": true,
+    "press_2.log_pitch_filter_matches": true,
+    "press_2.discrete_minima_match": true,
+    "press_2.continuous_lag_within_control_step": true,
+    "press_2.valley_follows_release_in_registered_window": true,
+    "press_2.valley_offsets_match_registered_prediction": true
+  },
+  "sample_rate_hz": 48000,
+  "audio_frames": 115200,
+  "observations": 1800,
+  "chromium": "156.0.8078.4",
+  "events": [
+    {
+      "frame": 18688,
+      "midi_call": {
+        "id": "whistle",
+        "note": 60,
+        "pressed": true
+      }
+    },
+    {
+      "frame": 26368,
+      "midi_call": {
+        "id": "whistle",
+        "note": 60,
+        "pressed": false
+      }
+    },
+    {
+      "frame": 54272,
+      "midi_call": {
+        "id": "whistle",
+        "note": 67,
+        "pressed": true
+      }
+    },
+    {
+      "frame": 62208,
+      "midi_call": {
+        "id": "whistle",
+        "note": 67,
+        "pressed": false
+      }
+    }
+  ],
+  "browser": {
+    "calls": [
+      {
+        "id": "whistle",
+        "pitch": 523.2511306011972,
+        "clock": 0.20799999999999974
+      },
+      {
+        "id": "whistle",
+        "pitch": 783.9908719634985,
+        "clock": 0.9439999999999912
+      }
+    ],
+    "release_windows": [
+      {
+        "notes_held": [],
+        "count": 5,
+        "gate_max": 0.854435051555657,
+        "call_ids": [
+          "whistle"
+        ]
+      },
+      {
+        "notes_held": [],
+        "count": 5,
+        "gate_max": 0.8332299451067694,
+        "call_ids": [
+          "whistle"
+        ]
+      }
+    ]
+  },
+  "start_windows": [
+    {
+      "frame": 18688,
+      "note": 60,
+      "pitch_target_hz": 523.2511306011972,
+      "actual_pitch_hz": 841.0886838118,
+      "preceding_pitch_hz": 900.0,
+      "gate_target": 1.0,
+      "actual_gate": 0.19926259708319194,
+      "preceding_gate": 0.0
+    },
+    {
+      "frame": 54272,
+      "note": 67,
+      "pitch_target_hz": 783.9908719634985,
+      "actual_pitch_hz": 351.3513807331775,
+      "preceding_pitch_hz": 313.34656369914154,
+      "gate_target": 1.0,
+      "actual_gate": 0.43094657312115814,
+      "preceding_gate": 0.28933827144082686
+    }
+  ],
+  "release_windows": [
+    {
+      "frame": 26368,
+      "frames": [
+        27568,
+        31168
+      ],
+      "pitch_hz": 325.3501142486522,
+      "pcm_rms": 0.07411104633585335,
+      "gate_min": 0.770657219959579,
+      "gate_max": 0.8451649648730167,
+      "glottis_peak_cm2": 0.24798378162774595,
+      "call_ids": [
+        3
+      ]
+    },
+    {
+      "frame": 62208,
+      "frames": [
+        63408,
+        67008
+      ],
+      "pitch_hz": 481.6815424025851,
+      "pcm_rms": 0.08814104239093448,
+      "gate_min": 0.7653270091138435,
+      "gate_max": 0.839869250902432,
+      "glottis_peak_cm2": 0.2460662280978426,
+      "call_ids": [
+        3
+      ]
+    }
+  ],
+  "pitch_turns": [
+    {
+      "target_minimum": {
+        "frame": 40320,
+        "pitch_hz": 191.05769896694866,
+        "reference_frame": 40320
+      },
+      "smoothed_minimum": {
+        "frame": 40640,
+        "pitch_hz": 193.61569139839236,
+        "reference_frame": 40640
+      },
+      "minimum_delay_seconds": 0.006666666666666667,
+      "ideal_turn_output_frame": 40288.0,
+      "smoothed_delay_from_key_seconds": 0.007333333333333303,
+      "continuous_delay_seconds": 0.008191272684674037,
+      "continuous_delay_error_control_steps": 0.6434545135055509,
+      "log_filter_comparison": {
+        "target_pitch_hz": {
+          "first_difference_values": [
+            523.2511306011972,
+            523.2511306011974
+          ],
+          "maximum_absolute_error": 5.5990767577895895e-12,
+          "maximum_compared_error": 5.5990767577895895e-12,
+          "passed": true,
+          "tolerance": 1e-08,
+          "first_difference_output_frame": 18688,
+          "first_over_tolerance_output_frame": null
+        },
+        "pitch_hz": {
+          "first_difference_values": [
+            841.0886838118,
+            841.0886838118001
+          ],
+          "maximum_absolute_error": 5.4001247917767614e-12,
+          "maximum_compared_error": 5.4001247917767614e-12,
+          "passed": true,
+          "tolerance": 1e-08,
+          "first_difference_output_frame": 18688,
+          "first_over_tolerance_output_frame": null
+        }
+      }
+    },
+    {
+      "target_minimum": {
+        "frame": 75904,
+        "pitch_hz": 286.26310245397053,
+        "reference_frame": 75904
+      },
+      "smoothed_minimum": {
+        "frame": 76224,
+        "pitch_hz": 290.0957606165829,
+        "reference_frame": 76224
+      },
+      "minimum_delay_seconds": 0.006666666666666667,
+      "ideal_turn_output_frame": 75872.0,
+      "smoothed_delay_from_key_seconds": 0.007333333333333303,
+      "continuous_delay_seconds": 0.008191272684674037,
+      "continuous_delay_error_control_steps": 0.6434545135055509,
+      "log_filter_comparison": {
+        "target_pitch_hz": {
+          "first_difference_values": [
+            783.9908719634985,
+            783.9908719634981
+          ],
+          "maximum_absolute_error": 5.1954884838778526e-11,
+          "maximum_compared_error": 5.1954884838778526e-11,
+          "passed": true,
+          "tolerance": 1e-08,
+          "first_difference_output_frame": 54272,
+          "first_over_tolerance_output_frame": null
+        },
+        "pitch_hz": {
+          "first_difference_values": [
+            351.3513807331775,
+            351.3513807331774
+          ],
+          "maximum_absolute_error": 5.3091753215994686e-11,
+          "maximum_compared_error": 5.3091753215994686e-11,
+          "passed": true,
+          "tolerance": 1e-08,
+          "first_difference_output_frame": 54272,
+          "first_over_tolerance_output_frame": null
+        }
+      }
+    }
+  ],
+  "natural_end_frame": 104704,
+  "pitch_hold_frame": 99904,
+  "final_target_pitch_hz": 691.7566517324987,
+  "tail_pcm_rms": 2.431148229027398e-09,
+  "upstream_pcm_difference": {
+    "max_delta": 7.105427357601002e-15,
+    "tolerance": 1e-06,
+    "first_nonzero_frame": 98732,
+    "first_outside_tolerance": null
+  },
+  "upstream_pcm_different_bits": 5,
+  "upstream_maximum_pcm_difference": 7.105427357601002e-15,
+  "relative_midi_errors_seconds": [
+    0.0,
+    2.7755575615628914e-17,
+    0.0013333333333332975,
+    -0.0033333333333334103
+  ],
+  "worklet_maximum_state_deltas": {
+    "control_clock_seconds": 0.0,
+    "call_id": 0.0,
+    "target_pulse_depth": 0.0,
+    "pulse_rate_hz": 0.0,
+    "pulse_depth": 0.0,
+    "duty": 0.0,
+    "target_pulse_rate_hz": 0.0,
+    "target_duty": 0.0,
+    "gate": 0.0,
+    "pitch_hz": 0.0,
+    "target_pitch_hz": 0.0,
+    "lung_pressure_dyn_cm2": 0.0,
+    "glottis_f0_hz_0": 0.0,
+    "glottis_phase_0": 0.0,
+    "glottis_area_cm2_0": 0.0,
+    "wall_0": 0.0,
+    "oral_0": 0.0,
+    "nasal_0": 0.0,
+    "radiation_0": 0.0,
+    "glottis_f0_hz_1": 0.0,
+    "glottis_phase_1": 0.0,
+    "glottis_area_cm2_1": 0.0,
+    "wall_1": 0.0,
+    "oral_1": 0.0,
+    "nasal_1": 0.0,
+    "radiation_1": 0.0,
+    "gate_target": 0.0,
+    "internal_sample": 0.0,
+    "pulse_phase": 0.0
+  },
+  "upstream_native_deltas": {
+    "control_clock_seconds": {
+      "max_delta": 0.0,
+      "tolerance": 2.5000000000000015e-07,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "call_id": {
+      "max_delta": 0.0,
+      "tolerance": 3.1e-07,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "target_pulse_depth": {
+      "max_delta": 0.0,
+      "tolerance": 6.999999999999999e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "pulse_rate_hz": {
+      "max_delta": 0.0,
+      "tolerance": 1.8099999999999998e-06,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "pulse_depth": {
+      "max_delta": 0.0,
+      "tolerance": 6.999999999999999e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "duty": {
+      "max_delta": 0.0,
+      "tolerance": 6.5e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "target_pulse_rate_hz": {
+      "max_delta": 0.0,
+      "tolerance": 1.8099999999999998e-06,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "target_duty": {
+      "max_delta": 0.0,
+      "tolerance": 6.5e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "gate": {
+      "max_delta": 0.0,
+      "tolerance": 1.0719564905688563e-07,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "pitch_hz": {
+      "max_delta": 0.0,
+      "tolerance": 9.000999999999999e-05,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "target_pitch_hz": {
+      "max_delta": 0.0,
+      "tolerance": 9.000999999999999e-05,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "lung_pressure_dyn_cm2": {
+      "max_delta": 0.0,
+      "tolerance": 0.0009473936758399719,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "glottis_f0_hz_0": {
+      "max_delta": 0.0,
+      "tolerance": 9.011645697271633e-05,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "glottis_phase_0": {
+      "max_delta": 0.0,
+      "tolerance": 1.0999748697314429e-07,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "glottis_area_cm2_0": {
+      "max_delta": 4.440892098500626e-16,
+      "tolerance": 3.484728187062918e-08,
+      "first_nonzero_frame": 19006,
+      "first_outside_tolerance": null
+    },
+    "wall_0": {
+      "max_delta": 2.5579538487363607e-13,
+      "tolerance": 1.2600288213604476e-05,
+      "first_nonzero_frame": 18708,
+      "first_outside_tolerance": null
+    },
+    "oral_0": {
+      "max_delta": 2.1032064978498966e-12,
+      "tolerance": 6.179876265547887e-05,
+      "first_nonzero_frame": 18736,
+      "first_outside_tolerance": null
+    },
+    "nasal_0": {
+      "max_delta": 0.0,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "radiation_0": {
+      "max_delta": 7.636845111846924e-08,
+      "tolerance": 0.56812862184195,
+      "first_nonzero_frame": 18708,
+      "first_outside_tolerance": null
+    },
+    "glottis_f0_hz_1": {
+      "max_delta": 0.0,
+      "tolerance": 9.011645697271633e-05,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "glottis_phase_1": {
+      "max_delta": 0.0,
+      "tolerance": 1.0999912405127543e-07,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "glottis_area_cm2_1": {
+      "max_delta": 4.718447854656915e-16,
+      "tolerance": 3.484430446107763e-08,
+      "first_nonzero_frame": 19005,
+      "first_outside_tolerance": null
+    },
+    "wall_1": {
+      "max_delta": 2.4868995751603507e-13,
+      "tolerance": 1.2596539913972372e-05,
+      "first_nonzero_frame": 18707,
+      "first_outside_tolerance": null
+    },
+    "oral_1": {
+      "max_delta": 2.1032064978498966e-12,
+      "tolerance": 6.18701000584134e-05,
+      "first_nonzero_frame": 18735,
+      "first_outside_tolerance": null
+    },
+    "nasal_1": {
+      "max_delta": 0.0,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "radiation_1": {
+      "max_delta": 6.548361852765083e-08,
+      "tolerance": 0.5785389061627958,
+      "first_nonzero_frame": 18707,
+      "first_outside_tolerance": null
+    }
+  },
+  "independent_control_deltas": {
+    "gate": {
+      "max_delta": 4.754530102957233e-14,
+      "tolerance": 2e-12,
+      "first_nonzero_frame": 18752,
+      "first_outside_tolerance": null
+    },
+    "gate_target": {
+      "max_delta": 4.8960835385969403e-14,
+      "tolerance": 1e-10,
+      "first_nonzero_frame": 18752,
+      "first_outside_tolerance": null
+    },
+    "target_pitch_hz": {
+      "max_delta": 5.184119800105691e-11,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": 18688,
+      "first_outside_tolerance": null
+    },
+    "pitch_hz": {
+      "max_delta": 5.3091753215994686e-11,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": 18688,
+      "first_outside_tolerance": null
+    },
+    "target_pulse_depth": {
+      "max_delta": 0.0,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "pulse_depth": {
+      "max_delta": 3.3306690738754696e-16,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": 18816,
+      "first_outside_tolerance": null
+    },
+    "target_pulse_rate_hz": {
+      "max_delta": 0.0,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "target_duty": {
+      "max_delta": 0.0,
+      "tolerance": 1e-08,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    },
+    "pulse_phase": {
+      "max_delta": 2.4868995751603507e-14,
+      "tolerance": 1e-10,
+      "first_nonzero_frame": 576,
+      "first_outside_tolerance": null
+    },
+    "lung_pressure_dyn_cm2": {
+      "max_delta": 4.68389771413058e-10,
+      "tolerance": 2e-07,
+      "first_nonzero_frame": 18688,
+      "first_outside_tolerance": null
+    },
+    "control_clock_seconds": {
+      "max_delta": 4.596323321948148e-14,
+      "tolerance": 1e-11,
+      "first_nonzero_frame": 384,
+      "first_outside_tolerance": null
+    },
+    "call_id": {
+      "max_delta": 0.0,
+      "tolerance": 0.0,
+      "first_nonzero_frame": null,
+      "first_outside_tolerance": null
+    }
+  },
+  "independent_pcm_max_delta": 0.0,
+  "independent_dc_max_delta": 7.667477763817487e-16
+}

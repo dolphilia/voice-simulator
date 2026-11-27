@@ -1,0 +1,255 @@
+{
+  "checks": {
+    "pair-1-bulk/trusted_input_and_wasm": true,
+    "pair-1-bulk/continuous_render_clock": true,
+    "pair-1-bulk/pcm_bits": true,
+    "pair-1-bulk/observed_state_and_plan": true,
+    "pair-1-bulk/construction_interval": true,
+    "pair-1-bulk/scheduled_notice_and_observed_target": true,
+    "pair-1-bulk/continuous_control_without_pause": true,
+    "pair-1-bulk/preparation_sequence": true,
+    "pair-1-bulk/marker_pcm_bits": true,
+    "pair-1-bulk/marker_continuous_frames": true,
+    "pair-1-bulk/marker_spans_construction_and_song": true,
+    "pair-1-bulk/marker_spans_preparation": true,
+    "pair-1-bulk/trace_recorded": true,
+    "pair-1-bulk/construction_after_trace_gate": true,
+    "pair-1-split/trusted_input_and_wasm": true,
+    "pair-1-split/continuous_render_clock": true,
+    "pair-1-split/pcm_bits": true,
+    "pair-1-split/observed_state_and_plan": true,
+    "pair-1-split/construction_interval": true,
+    "pair-1-split/scheduled_notice_and_observed_target": true,
+    "pair-1-split/continuous_control_without_pause": true,
+    "pair-1-split/preparation_sequence": true,
+    "pair-1-split/scheduled_after_preparation": true,
+    "pair-1-split/marker_pcm_bits": true,
+    "pair-1-split/marker_continuous_frames": true,
+    "pair-1-split/marker_spans_construction_and_song": true,
+    "pair-1-split/marker_spans_preparation": true,
+    "pair-1-split/block_trace_frames": true,
+    "pair-1-split/block_trace_clock": true,
+    "pair-1-split/trace_recorded": true,
+    "pair-1-split/construction_after_trace_gate": true
+  },
+  "predictions": {},
+  "trials": {
+    "pair-1-bulk": {
+      "condition": "bulk",
+      "song": {
+        "trial": "pair-1-bulk",
+        "pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "observation_count": 488,
+        "maximum_state_error": 0.0,
+        "construction_ms": 138,
+        "node_call_ms": 0,
+        "click_to_first_output_ms": 2995,
+        "pause": {
+          "target_frame": 160128,
+          "target_reached_frame": 160128,
+          "longest_callback_gap_ms": 35,
+          "longest_gap_frames": [
+            139392,
+            139520
+          ]
+        },
+        "graph": null,
+        "safari": "18.6"
+      },
+      "marker": {
+        "start_frame": 4864,
+        "end_frame": 234240,
+        "marker_pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "constructing_ms": 138,
+        "callbacks_strictly_inside_construction": 0,
+        "max_overlapping_gap_ms": 141.0,
+        "max_gap_frames": [
+          134144,
+          134272
+        ],
+        "gap_contains_construction": true,
+        "baseline_median_ms": 3.0,
+        "baseline_max_ms": 4.0,
+        "preparation_window_max_gap_ms": 141.0,
+        "preparation_window_max_gap_frames": [
+          134144,
+          134272
+        ],
+        "callbacks_strictly_inside_preparation_window": 0
+      },
+      "trace_bridge": {
+        "before": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": false
+          }
+        ],
+        "at_gate": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": true
+          }
+        ],
+        "target": {
+          "bundleID": "com.apple.WebKit.GPU",
+          "object": 112,
+          "pid": 5795,
+          "runningOutput": true
+        },
+        "trace_recorded": true
+      }
+    },
+    "pair-1-split": {
+      "condition": "split",
+      "song": {
+        "trial": "pair-1-split",
+        "pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "observation_count": 488,
+        "maximum_state_error": 0.0,
+        "construction_ms": 6,
+        "node_call_ms": 1,
+        "click_to_first_output_ms": 3116,
+        "pause": {
+          "target_frame": 169216,
+          "target_reached_frame": 169216,
+          "longest_callback_gap_ms": 5,
+          "longest_gap_frames": [
+            163584,
+            163712
+          ]
+        },
+        "graph": null,
+        "safari": "18.6"
+      },
+      "marker": {
+        "start_frame": 5120,
+        "end_frame": 234496,
+        "marker_pcm": {
+          "first_bit_difference": null,
+          "bit_differences": 0,
+          "first_over_tolerance": null,
+          "maximum_absolute_difference": 0.0
+        },
+        "constructing_ms": 6,
+        "callbacks_strictly_inside_construction": 0,
+        "max_overlapping_gap_ms": 13.0,
+        "max_gap_frames": [
+          134656,
+          134784
+        ],
+        "gap_contains_construction": true,
+        "baseline_median_ms": 3.0,
+        "baseline_max_ms": 4.0,
+        "preparation_window_max_gap_ms": 13.0,
+        "preparation_window_max_gap_frames": [
+          134656,
+          134784
+        ],
+        "callbacks_strictly_inside_preparation_window": 66
+      },
+      "preparation_timing": {
+        "clock": "Date.now",
+        "budget_ms": 2.6666666666666665,
+        "first_wasm_ms": 2.0,
+        "later_wasm": {
+          "count": 66,
+          "minimum_ms": 1.0,
+          "mean_ms": 2.090909090909091,
+          "median_ms": 2.0,
+          "p95_ms": 3.0,
+          "p99_ms": 3.6999999999999886,
+          "maximum_ms": 5.0,
+          "measured_over_budget": 6,
+          "within_budget_upper_bound": 2,
+          "over_budget_lower_bound": 1,
+          "uncertain_at_clock_step": 63
+        },
+        "first_process_ms": 2.0,
+        "later_process": {
+          "count": 66,
+          "minimum_ms": 1.0,
+          "mean_ms": 2.106060606060606,
+          "median_ms": 2.0,
+          "p95_ms": 3.0,
+          "p99_ms": 3.6999999999999886,
+          "maximum_ms": 5.0,
+          "measured_over_budget": 7,
+          "within_budget_upper_bound": 2,
+          "over_budget_lower_bound": 1,
+          "uncertain_at_clock_step": 63
+        },
+        "marker_relation": {
+          "first": {
+            "block": 1,
+            "context_frame": 134784,
+            "prepared_frames": 64,
+            "process_ms": 2.0,
+            "wasm_ms": 2.0,
+            "marker_gap_before_ms": 13.0,
+            "marker_gap_after_ms": 2.0
+          },
+          "slowest": {
+            "block": 5,
+            "context_frame": 135296,
+            "prepared_frames": 256,
+            "process_ms": 5.0,
+            "wasm_ms": 5.0,
+            "marker_gap_before_ms": 5.0,
+            "marker_gap_after_ms": 3.0
+          }
+        }
+      },
+      "trace_bridge": {
+        "before": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": false
+          }
+        ],
+        "at_gate": [
+          {
+            "bundleID": "com.apple.WebKit.GPU",
+            "object": 112,
+            "pid": 5795,
+            "runningOutput": true
+          }
+        ],
+        "target": {
+          "bundleID": "com.apple.WebKit.GPU",
+          "object": 112,
+          "pid": 5795,
+          "runningOutput": true
+        },
+        "trace_recorded": true
+      }
+    }
+  },
+  "pairs": [
+    {
+      "pair": 1
+    }
+  ],
+  "median_marker_gap_reduction_ms": null,
+  "median_maximum_io_gap_ms": {}
+}

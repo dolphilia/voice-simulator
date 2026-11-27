@@ -1,0 +1,189 @@
+{
+  "checks": {
+    "both_browser_entries": true,
+    "candidate/native_source_lifecycle": true,
+    "candidate/native_ump_and_host_times": true,
+    "candidate/standard_web_midi_and_hot_add": true,
+    "candidate/trusted_midi_bytes": true,
+    "candidate/app_held_sequence": true,
+    "candidate/app_listener_cleanup": true,
+    "candidate/no_page_or_capture_errors": true,
+    "candidate/midi_targets_at_worklet": true,
+    "candidate/finite_and_continuous_worklet": true,
+    "candidate/independent_worklet_controls": true,
+    "candidate/worklet_sustained_voice": true,
+    "candidate/worklet_silent_before_and_after": true,
+    "candidate/worklet_pcm_matches_cli": true,
+    "candidate/trusted_removal_before_ui_release": true,
+    "candidate/removed_port_subscriptions": true,
+    "upstream/native_source_lifecycle": true,
+    "upstream/native_ump_and_host_times": true,
+    "upstream/standard_web_midi_and_hot_add": true,
+    "upstream/trusted_midi_bytes": true,
+    "upstream/app_held_sequence": true,
+    "upstream/app_listener_cleanup": true,
+    "upstream/no_page_or_capture_errors": true,
+    "upstream/play_target_pitch_and_gate": true,
+    "upstream/play_finite_and_quiet_before_on": true,
+    "upstream/play_independent_drift_before_on": true,
+    "upstream/play_sustained_voice": true,
+    "upstream/play_release": true,
+    "upstream/trusted_removal_before_ui_release": true,
+    "upstream/removed_port_subscriptions": true,
+    "upstream/removal_before_gate_target": true,
+    "candidate/release_matches_note_off": true,
+    "upstream/release_time_constant": true
+  },
+  "browser": "157.0.8103.79",
+  "release_action": "remove-source",
+  "expected_pitch_hz": 220.0,
+  "result": {
+    "candidate": {
+      "applied_notes": [
+        {
+          "frame": 14976,
+          "note": 57
+        },
+        {
+          "frame": 59008,
+          "note": null
+        }
+      ],
+      "output_frames": 140416,
+      "sample_rate_hz": 48000,
+      "observations": 1097,
+      "sustained_gate_min": 0.9999998988505455,
+      "sustained_f0_max_error_hz": 0.18555232830041746,
+      "initial_pcm_peak": 1.3842327462043613e-07,
+      "voiced_pcm_peak": 0.27796220779418945,
+      "tail_pcm_peak": 9.900759538592255e-16,
+      "control_max_errors": {
+        "gate": 2.220446049250313e-16,
+        "f0_hz": 3.126388037344441e-12
+      },
+      "cli_pcm": {
+        "first_bit_difference_frame": null,
+        "first_bit_difference_values": null,
+        "maximum_absolute_error": 0.0,
+        "first_frame_over_tolerance": null
+      },
+      "unplug": {
+        "event": {
+          "name": "CHIMERA CoreMIDI Probe 5161 candidate",
+          "id": "755012676",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "trusted": true,
+          "eventMs": 2277.6000000089407,
+          "handlerMs": 2277.6000000089407,
+          "inInputMap": false
+        },
+        "removed_input": {
+          "name": "CHIMERA CoreMIDI Probe 5161 candidate",
+          "id": "755012676",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "propertyHandlerSet": false
+        },
+        "observed_ui_release_ms": 2299.1000000089407,
+        "observed_upper_gate_ms": null
+      },
+      "release_comparison": {
+        "elapsed_frames": [
+          128,
+          768,
+          3456,
+          9600
+        ],
+        "unplug": [
+          0.9626212583103545,
+          0.7956694616416932,
+          0.3575173349791698,
+          0.057432619267617564
+        ],
+        "note_off": [
+          0.9626212583103546,
+          0.795669461641693,
+          0.35751733497916965,
+          0.05743261926761756
+        ],
+        "maximum_error": 1.6653345369377348e-16
+      }
+    },
+    "upstream": {
+      "sample_rate_hz": 48000,
+      "internal_sample_rate_hz": 96000,
+      "gate_messages": [
+        {
+          "level": 0,
+          "clock": null,
+          "observedMs": 450
+        },
+        {
+          "level": 1,
+          "clock": 0.48539999999106215,
+          "observedMs": 947.5999999940395
+        },
+        {
+          "level": 0,
+          "clock": 1.3967999999970315,
+          "observedMs": 1859.0999999940395
+        }
+      ],
+      "steady_rows": 13,
+      "tail_rows": 10,
+      "steady_gate_min": 0.999999926550421,
+      "tail_gate_max": 7.309069257945068e-05,
+      "steady_f0_hz": [
+        219.34158316756904,
+        220.2857244856276
+      ],
+      "steady_f0_without_drift_hz": [
+        219.82251061069658,
+        219.9927623403618
+      ],
+      "pre_note_f0_without_drift_max_error_hz": 2.842170943040401e-14,
+      "steady_peak_rms": 0.26373438728019405,
+      "raw_f0_passes_original_tolerance": false,
+      "unplug": {
+        "event": {
+          "name": "CHIMERA CoreMIDI Probe 5161 upstream",
+          "id": "-1798697626",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "trusted": true,
+          "eventMs": 1858.7999999970198,
+          "handlerMs": 1858.8999999910593,
+          "inInputMap": false
+        },
+        "removed_input": {
+          "name": "CHIMERA CoreMIDI Probe 5161 upstream",
+          "id": "-1798697626",
+          "type": "input",
+          "state": "disconnected",
+          "connection": "pending",
+          "propertyHandlerSet": true
+        },
+        "observed_ui_release_ms": 1872.5,
+        "observed_upper_gate_ms": 1859.0999999940395
+      },
+      "release_comparison": {
+        "elapsed_seconds": [
+          0.08,
+          0.3
+        ],
+        "unplug": {
+          "points": 13,
+          "tau_seconds": 0.070000000000004
+        },
+        "note_off": {
+          "points": 14,
+          "tau_seconds": 0.07000000000000406
+        }
+      }
+    }
+  }
+}

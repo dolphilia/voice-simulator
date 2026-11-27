@@ -1,0 +1,5435 @@
+{
+  "schema_version": 1,
+  "run_id": "lip-tuck-crossing-thickness-20261121-b",
+  "case_id": "lip-tuck-crossing-thickness",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "feature": "labial-crossing-thickness",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/lip-tuck-crossing-thickness.json",
+      "bytes": 2246,
+      "sha256": "1d5763ec3855e5e475e6cfd1defba2e93025ca95b8d86e19e3269dce5c2cc066"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_lip_crossing_thickness.py",
+      "bytes": 21016,
+      "sha256": "20d23772455b0fa24ff3c43fec20ef104d148cf98872edc6e2f1f0a2a738ddf1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/lip_tuck_sweep.rs",
+      "bytes": 4424,
+      "sha256": "0845fd0aa5c05dafb2b746112a1c45809fd10434777da684d5e4b356a2917719"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_bilabial_probe.rs",
+      "bytes": 25530,
+      "sha256": "9b230fb5eab12f80ee554c432de1f8345efdc29d90858ee50eb43eaf7e546554"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.toml",
+      "bytes": 156,
+      "sha256": "ac7cb09f7c04feac27f22b385771ddd88bb039f7046f15c214d0187c2f4b1b29"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.lock",
+      "bytes": 7302,
+      "sha256": "46d497c879e8f1201f748a14bbc975496364eb6ce3fb36b6409c44c5a8888726"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/Cargo.toml",
+      "bytes": 312,
+      "sha256": "61d15e418c1da0287d8d9fab51bf82d45533894a717174603e76c5cc2493f7ee"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/Cargo.toml",
+      "bytes": 255,
+      "sha256": "34625e41d805ac7d2005197fb052e1e6b422e69623c8ae51ef596db1f5961a15"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/Cargo.toml",
+      "bytes": 356,
+      "sha256": "56d9e6aac3cc84b5849413a374244cd13cb04347b1427c877089765deab05001"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/alligator_case.rs",
+      "bytes": 9140,
+      "sha256": "20ea4b398a3209f2f5aed798dff7e9a2fe85b2923255ef5c7f36d252483ec174"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6654,
+      "sha256": "34d99fa70762d797dc11a8fe9503d7e090111b08223627875031d8f320300f54"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 8999,
+      "sha256": "8e6a629fe0ef5bc0c9b7a0361ff2d3b649ba33b5b28d0a371565bfa0a21cfcf7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 11503,
+      "sha256": "c4cbc0c11edb2cc7b0a68b58d458672b1831686bf25b5c31ba3fc8d6793067c1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/elephant_case.rs",
+      "bytes": 9012,
+      "sha256": "7623f5049dcca7608e63e0d85edbbfdadfe48268ccd9646d69ed703e506f9110"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/english_case.rs",
+      "bytes": 4199,
+      "sha256": "57e860dc82e317c35a750385a1c422c15b1e1dcfb788f646c6dfea1707be1df4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 6372,
+      "sha256": "76e955e372bffd6166c5cbbf4585776124acf9ce2e111f21943c3a9ff7f7da03"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 18414,
+      "sha256": "30591fd013eacc070a39de066053c76fcac4859b94722d8bcbf0b4731b31cd5b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/ipa_case.rs",
+      "bytes": 3451,
+      "sha256": "8345379856ae4591e78bbbbbe78441fa75e832397f578839245858fecb3a946d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/lip_reed_case.rs",
+      "bytes": 2367,
+      "sha256": "340f5501975de67adf9fc6b471ed6c023ed848b556be9be84e09365a90890fda"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/live_song_case.rs",
+      "bytes": 6601,
+      "sha256": "708521cc08a6d58a3c338bc99b08473ba1e85bed8974da1ad999a97ba01535bd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/main.rs",
+      "bytes": 17188,
+      "sha256": "e99abe21a27306389847a386110a6a5525989a0e0c0bc3ebd976bab15c946fe9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4501,
+      "sha256": "db3c477f9e63e0dc2201372ad2050154ed4ae490abae1719c944a0748f1386e6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case.rs",
+      "bytes": 24011,
+      "sha256": "ede737736a7c8c78915bd71e8a47d8e96fedb7fb710e6fef45e74decf551739e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/saved_compare/input.rs",
+      "bytes": 13681,
+      "sha256": "6a22f33b7174ec34b65a6c2f33c8cdeeaeac69da8f52d0d9a55a4e7f48383336"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/saved_compare.rs",
+      "bytes": 12456,
+      "sha256": "07e4dad2faa0e335b719bfcb76b09210b3172ebff5e62b1b343b37908f661243"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_airway_case.rs",
+      "bytes": 3316,
+      "sha256": "7a1819af0f69addf1051ae9ade70a43bdc2cef931e4aef698125d3b43fedf20a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_breath_case.rs",
+      "bytes": 3974,
+      "sha256": "5725fca007d49df2d3ce1e63a0d50133c8360f99f92682fb33cd17cdb266d4ca"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/seal_voice_case.rs",
+      "bytes": 8842,
+      "sha256": "4bd9b911faa339ce72bd5d2bc1f552047e614aebdb7859ca31fd32b402f6fef5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/song_case.rs",
+      "bytes": 4087,
+      "sha256": "7c50445715ea65ec287f9b46cac12ed2928357ca61f0b5d2a76a4fa4a12722bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/songbird_case.rs",
+      "bytes": 4150,
+      "sha256": "1c05b3a24c313b08c38f27239ddfbf7f73ffd6134c48743d3b5cad48573b6e9c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/songbird_voice_case.rs",
+      "bytes": 8459,
+      "sha256": "724e661c00585d31daac5935cce122f693d03e88d7fd2d4069709be26ad0e039"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/syrinx_case.rs",
+      "bytes": 3022,
+      "sha256": "c520e02add11903433af894f886901668c1b0de75b759a8774709a240196be08"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/observed_score.rs",
+      "bytes": 3500,
+      "sha256": "c0af9f0be6b5ce539e3045fd97dd623ca8bf770d49c1d7c30c1f75949658bd1f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice/beat_pattern.rs",
+      "bytes": 10039,
+      "sha256": "7075a7cdd0c3f5ac04a9cd8290015a72f75cda2a46f338afeee34249f533cf08"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice/telemetry.rs",
+      "bytes": 8044,
+      "sha256": "8aa733a5211eaa2fb17fbf290c17b0ed67ed2b84e5df5c428d5fe1efae67ac12"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice.rs",
+      "bytes": 45255,
+      "sha256": "813da3a237017a6a4753bde5860e253c8706cad55b025919fcb5d788fa7ea771"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case.rs",
+      "bytes": 4164,
+      "sha256": "a2814b781ec9a2e2e637b1bce72cc64e6f12aa095ac3eb4c148e9232ec304c90"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/alligator/call.rs",
+      "bytes": 3711,
+      "sha256": "e736f93e1a6bb4d5bb670064a1918d4c4d978c80bb3a759a98d755e92f838b0e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/alligator.rs",
+      "bytes": 12671,
+      "sha256": "9554edd093046a1d60699f8c301dde5d5d149a40f4715603d79e7c639d1b2e10"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/elephant/call.rs",
+      "bytes": 4949,
+      "sha256": "83dd6e1f362779a6b1d21be3fcf686a6602d7196b24b75b5be90600d624fea51"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/elephant.rs",
+      "bytes": 13846,
+      "sha256": "cae90e560a34df6fe9ea7805d6530e1e0fe8cb31e527a9cde2a6f330097b2558"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human/frication.rs",
+      "bytes": 5271,
+      "sha256": "a0dc18749fe328e3554e2bf0e2702ede81847e10ee3070b0767dee2dcad555df"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human.rs",
+      "bytes": 15076,
+      "sha256": "708493a4076d93c86c938aba700f9937d57a814a6af3173f256806e65b56f105"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/mammal.rs",
+      "bytes": 16961,
+      "sha256": "36048d0e5fcc9efa24d6669226b3d7abe84ffdb9a945fe21696cd66dc5c6a920"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 6155,
+      "sha256": "0e64d959ce7ec00f31841de9178c98da6228eeb3ebe1361b71cfdc7c1f2b701a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 7735,
+      "sha256": "98d2a55a22e79724bce93d6169f7a12dec2b6e0d3f8830d075984561f3125947"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network.rs",
+      "bytes": 27862,
+      "sha256": "f9d5b62c7ba02d14fafc81e046d930ca63778112043ac404c778c0974bb4cb3a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/seal.rs",
+      "bytes": 3314,
+      "sha256": "f4c422b2e69a5a4c2f7500985e73623eaf858ff3a20526616fbf48c331ef4cd9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/songbird.rs",
+      "bytes": 11090,
+      "sha256": "dd8359e872242c79e95f0f4e1441d6b84161640777bc1f64e1e8978bc2ce9662"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control/allocation_tests.rs",
+      "bytes": 5238,
+      "sha256": "cdbe06412a984a818d58378aa320cc9392c383e9cf82edaac245c9adcd85fca4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 7927,
+      "sha256": "4f53026f807d0f1c754e7d8c993155d280f6ba0a31e88534040b4cb0b5888af6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway.rs",
+      "bytes": 12752,
+      "sha256": "6ffee9f8176a33eecba7bc13e5495a5ad3ea4ae4a43f9fec4ca88c2f5f67cb49"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 4936,
+      "sha256": "36ce0134e920fa201cd2f6da3a2bfbe2da52e93027ed01d39657a47ef7235884"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/body.rs",
+      "bytes": 4901,
+      "sha256": "b335a35147fc14150f3aed87dfb395c3be0d9e03c215a0cfc4ef7ca0530f8b17"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7410,
+      "sha256": "3f397be2c8c5667f8bc039b74e6e66d386c78c29cf25930bf78f3c3de54d47e9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 13149,
+      "sha256": "0f8d0ec9681d76b93512696d8e941279514ef7a5abb7e077eedc928c30e58713"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 5088,
+      "sha256": "208f772323689cc698f56c92a5888fc3a485d8a22048c8be83c7b6f53ff0bc79"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy.rs",
+      "bytes": 19670,
+      "sha256": "3911229e3042bb35690ce9d66b076d93b41039cccfb868410fe11b346c95b827"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/articulators.rs",
+      "bytes": 11435,
+      "sha256": "4fc1f43b4de18f55b251af97f429d78f94b12f86e816ba4c82d1da304ecd790d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/breath.rs",
+      "bytes": 4835,
+      "sha256": "812c17105fe754126a8cb1edeb0b453886de37fad4ee2f2469309ac56209f2a0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/creature_midi.rs",
+      "bytes": 736,
+      "sha256": "6b715c1c42b6c853a9b766f5bc196f1108629ad8936bd2ffbc7e35498092099a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/glottis.rs",
+      "bytes": 12162,
+      "sha256": "dc2afbb82ebd4c01948fd46ce1ff921b228734bff79db4dfb9537151942ce4d0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/lib.rs",
+      "bytes": 388,
+      "sha256": "b51265f762b7a5aa8adb350c0dbf9e93ac0471902e43aa8db411861028945e63"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/lip_reed.rs",
+      "bytes": 2930,
+      "sha256": "28b2f07c672db2f2ab55eb13c6072deda74480b551285abcdf3118915d600d8c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/output.rs",
+      "bytes": 9439,
+      "sha256": "b4086fe58a37649c51656c5309bb9bfc72b7cf933ca4d6ada53dda4d8e7b17e5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox/player.rs",
+      "bytes": 10117,
+      "sha256": "a7c52c66bf40fe776ca461d31c922ce7c9574c55639bce65e45e39e580606a6e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox.rs",
+      "bytes": 17409,
+      "sha256": "fd11e870baa9b4f01cddb260baf1b6e35934b8d66c821eba1520caeb686eff04"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/catalog.rs",
+      "bytes": 3791,
+      "sha256": "d783ec20e83da0d2c7057d67aedc9884bbed914e1139b0bccae61885a9bc615c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/spelling.rs",
+      "bytes": 4147,
+      "sha256": "c0f2d0bc6dfc9bc218c92c5502f20fec9a6137e80357018100759d4cc5f08e69"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english.rs",
+      "bytes": 12700,
+      "sha256": "1f038c4508fb80dccac459dd27bd946adc32ae0eb8bd1c0f3446110deec1067f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/gestures.rs",
+      "bytes": 2129,
+      "sha256": "085cadb444da27a21db1879026125b7ec59d3620a57b78bc0864af8b6faa87e8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/normalization.rs",
+      "bytes": 4279,
+      "sha256": "4b5a0ed2d6ba2a2c675c56332c8daeb843cbe41d50720660d8423bf4efb621b4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa.rs",
+      "bytes": 10536,
+      "sha256": "a38e7ae2cf442463613d7600cf85e70d4f1e7795e45a131895f3f6b9d073c9f6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa_plan.rs",
+      "bytes": 2427,
+      "sha256": "5931bba0cfcc4f4e25c52bbe9063d883423799854c2077a2c990db5f55ebf113"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/korean.rs",
+      "bytes": 9831,
+      "sha256": "4cd316a6732982c2a301bfaab6b4ff9e0dfc3248d30e9804dd625d60e7373846"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/live_song.rs",
+      "bytes": 11726,
+      "sha256": "9611d156393567d44147a131e5792ba3dea0fe15c445f9ed3891dcf759361dc4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/mandarin.rs",
+      "bytes": 21579,
+      "sha256": "5a6e2ae0031800e9492e0511db32cb77fb7bc2af2f5d0516c582b1139c2969f8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/russian.rs",
+      "bytes": 13470,
+      "sha256": "95103b529eb68d0b1b791df6c130c1b169c17ea505fb7b474939d9053f854f7d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/song.rs",
+      "bytes": 19648,
+      "sha256": "8086598e5af7267669fd85fd2b0c28a9ee8199b27564393fe4d5393a5cde36cc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/speech.rs",
+      "bytes": 36361,
+      "sha256": "cfa35779bddf8b88901702db33a55bce145810759ebf4209133c9a6ae9b81521"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/syllables.rs",
+      "bytes": 9457,
+      "sha256": "7d6c9f4bdcf53e7574ae843531ebb9da1d005c8decbeb89ec7cef97ea524f7f7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing/durations.rs",
+      "bytes": 5395,
+      "sha256": "41853fd785eacefdbd1df39c08a9d08da4555f1c96d61ac323194a0d37dc21aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.rs",
+      "bytes": 3979,
+      "sha256": "2c5b0e7e14d1ea78ab9f595545ab0c89b1d8d2e912b5520505d9a32656665ade"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowels.rs",
+      "bytes": 3840,
+      "sha256": "8aa9a3fe71634983e8c15fe051a261051476c053601cda32c9a7afb1d25d1dad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics.rs",
+      "bytes": 1827,
+      "sha256": "13b28f998a03b2f6270c6890392e70973df01f2c4caf8d44efb38e2a9b0afdc3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/score.rs",
+      "bytes": 6652,
+      "sha256": "3697b9c1009b538684cf03e6a482b3d45d5997e6951088d90c845665645616fd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_breath.rs",
+      "bytes": 4916,
+      "sha256": "bdc9b9b98e8bd438692574c88f778959e65f6611b681923fcef4604cb4be455b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_voice/call.rs",
+      "bytes": 5821,
+      "sha256": "023525879acad7c2ee0438a24e76c68081ce9deaf38e8c224914fe3554215d41"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/seal_voice.rs",
+      "bytes": 10011,
+      "sha256": "d147ec9fc8842d364b5bbfd1049c82fda9963c8ea659ba8779eed268f8b6156c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/songbird_voice/call.rs",
+      "bytes": 7326,
+      "sha256": "191b6c1ef60dfceef3982dfd74e1806acbf46ec6d2258b6daa9c45bb81b702bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/songbird_voice.rs",
+      "bytes": 9355,
+      "sha256": "eb045336a32aa7e263bfc51468f6621d091da8652aa9411e0543da006ae1c43c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/syrinx.rs",
+      "bytes": 7375,
+      "sha256": "4eb24d060ec5daa0622c1677d85950f1753cd8c2ebfaa11a7bb78e0fd6801efb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/voice.rs",
+      "bytes": 18068,
+      "sha256": "c1c36d9b258e6b8a895007e59a55e7108589de2b5bdcd98856ec1c02aeaa7b6d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/alligator.rs",
+      "bytes": 9145,
+      "sha256": "4ff304fa09b6c6ab4ab9d87db16191db120e7e615b7d87a042cde32ea4bd367a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/duet_head.rs",
+      "bytes": 2989,
+      "sha256": "0acd3b4c79ee2d59155182472530bdf76b740d1715b21ca20712906658eae436"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/elephant.rs",
+      "bytes": 8563,
+      "sha256": "b1fab4fd4e006be550b74aa9bcc126223a4e6bd891701a3bf8f60f20b1d02b34"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/lib.rs",
+      "bytes": 73667,
+      "sha256": "a4df4640ce39a638c61afaf7ec51607d4006f0fd77c36adf40a344db3f14ce28"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/planning.rs",
+      "bytes": 11585,
+      "sha256": "926e756909cd0ba0505ba66bed9d56edb89ed9baac046880f16e038f087f9eec"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/seal.rs",
+      "bytes": 8726,
+      "sha256": "38cb2dd9fc42b2da48876b69ed10163f90b5c0e8c27444240e2c545be8e2df34"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/songbird.rs",
+      "bytes": 8328,
+      "sha256": "1b842d02c990c869da8ba577fbf9e350405ae9d9dd4b1f8aa07d9b336b500a4a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/consonant-targets.generated.json",
+      "bytes": 2092,
+      "sha256": "f8c86f2d7ef4992f8531d67c07e57f4382a38cc738cf7fa247b3aabd40465bc0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/lts.generated.json",
+      "bytes": 2184,
+      "sha256": "9a2f07d25d87ef5e4cc2ae36025b1dea14305db2d9109cfce8a8da7797f3e154"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/catalog.generated.json",
+      "bytes": 5202,
+      "sha256": "69b3de13295a1c21cc859eda67e25d696176d8303049ae5b198e6cbc47977f6a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/nfc.generated.json",
+      "bytes": 11335,
+      "sha256": "ce9003b078b588e9142a9d5b5896787d8efaa7432818c2612ccc7478d39e1b98"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.generated.json",
+      "bytes": 6749,
+      "sha256": "0a0850aaddf3feb2b57687564c5f44742bb390c43ef50dae1b58a77f35953a3e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowel-targets.generated.json",
+      "bytes": 30671,
+      "sha256": "2dee540ced5171444c314243643a654281e94f37a1a2c5c9bcf5176776eef24f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/syrinx-table.generated.json",
+      "bytes": 3560,
+      "sha256": "ea1d6c66f5b0f608db27672aed9ec920fa6aec7de92d7392c42ce40718a44841"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_area.py",
+      "bytes": 9114,
+      "sha256": "a1d4068e6a73efe0512daca4d54b6b8b67fc7cf6d4c50c893c5817bb65a060bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_bilabial_stop.py",
+      "bytes": 13191,
+      "sha256": "5613444ff016fb9fb733accf48c21a4c8f8569410e7c847e233900900292199b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_grid.py",
+      "bytes": 9421,
+      "sha256": "cc6fc53be474cf63fcdf23f7d13a29c4cc5b04d5fd4c894161fab59b516fff63"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_labiodental_fricatives.py",
+      "bytes": 16907,
+      "sha256": "1fa0a39777910555506b6a8c3e440a39b5c30212871e7db9327734cdd1ab77c6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_lip_tuck_continuity.py",
+      "bytes": 22176,
+      "sha256": "235fd47bf84cc8c8e487b0f06890ad2054db2c1a5e25a82c550916631acbbabd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_lip_tuck_radiation.py",
+      "bytes": 21417,
+      "sha256": "839a2ffcb168234a606722978dc6a25e0a20329fedb2921b7940d225f3a49e83"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_resample.py",
+      "bytes": 10622,
+      "sha256": "1ccecef0eff49afa3c0ec6c3f5e2f0551f5c8430cfe77e1da3b0a5fe5df8bed4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tract_control.py",
+      "bytes": 14785,
+      "sha256": "28aa428ce2364fba46c1cef6705b1d7f90b0a9716113680be171540e7fdf91f9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_uniform_tube.py",
+      "bytes": 21374,
+      "sha256": "0812e52ff406521eb9f89ef4244e1ceb4d559164e2555940d8bf0ef2142480c7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/manifest.json",
+      "bytes": 186163,
+      "sha256": "0f5e91d4277b3f6fc7b87348d5928331b2c88018cfc6cc76c8805dd8a8ce847b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/summary.json",
+      "bytes": 30120,
+      "sha256": "461c0b976905122496d6ead42061adf17ffcbf65fe0cfd922a7a180fd36f1707"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-01/low/upstream-geometry.csv",
+      "bytes": 12836,
+      "sha256": "dd1bf5192f6e12467565f8221228846a7893a5a5db2a53869c7004915f3f6de3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-01/high/upstream-geometry.csv",
+      "bytes": 12844,
+      "sha256": "ac1884a12d37a00cfb0eaa82a106a989d055c7eb764e7304a48699d2588d6e60"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-02/low/upstream-geometry.csv",
+      "bytes": 12842,
+      "sha256": "869578e94213a67ea252c4684899b646c643b8d821839305ac90a8570e372fb2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-02/high/upstream-geometry.csv",
+      "bytes": 12837,
+      "sha256": "c50ab495c657d58e3ea1390f6715d946634cd0e5e9ba970c3d762172a65b46ea"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-03/low/upstream-geometry.csv",
+      "bytes": 12847,
+      "sha256": "caa762ce9eb34aa6888292482ae509d7e7149ae6db12d95a47fb3a6f70d892d4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-03/high/upstream-geometry.csv",
+      "bytes": 12848,
+      "sha256": "7a9fd7025e8dc23a8345c49a26bdec73ae6a88777471c56d74b59ca80e6603fb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-04/low/upstream-geometry.csv",
+      "bytes": 12838,
+      "sha256": "708e8bc8157fd4e960ed663ff93d348a5fcdf8fe9dbb21e3052e878f9346de22"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-04/high/upstream-geometry.csv",
+      "bytes": 12832,
+      "sha256": "737723efc16f168a533367ee063cd98ab5a18c27af9e1d0e359f6018848c06d4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-05/low/upstream-geometry.csv",
+      "bytes": 12830,
+      "sha256": "2a3805931b50a6f81cce942ecacc232cbea1960cf9ed7296126ebecbe93202d3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-05/high/upstream-geometry.csv",
+      "bytes": 12836,
+      "sha256": "78b8bc398fc245f0c9471920e187c0b19544eeb69910c2f076923990113bcc7d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-06/low/upstream-geometry.csv",
+      "bytes": 12842,
+      "sha256": "cd4de7c119e5d2ebd9ed0d67199531370f1411b6ab4a599d37718643e7f3735d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-06/high/upstream-geometry.csv",
+      "bytes": 12844,
+      "sha256": "7aab10119c5ccbce4479f81ab3bb1c87f70414d61a0cb5acfc48612fcc617267"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-07/low/upstream-geometry.csv",
+      "bytes": 13155,
+      "sha256": "e40df7b3b3f9f120737586e20fd03227c5c11010837777603be7d7700ee01237"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-07/high/upstream-geometry.csv",
+      "bytes": 13153,
+      "sha256": "a80b715324dd881cb23a808a54e1d8edd505fe545f4f16ea5f1c21b97a6ea131"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-08/low/upstream-geometry.csv",
+      "bytes": 13148,
+      "sha256": "cbace407c86464819c26f263e4826f21726831a4e25c997f419367584be86133"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-08/high/upstream-geometry.csv",
+      "bytes": 13151,
+      "sha256": "99c61337a32d73b017d26100b404849215e08879c27456db1b0f815d1ddbf6b2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-09/low/upstream-geometry.csv",
+      "bytes": 13156,
+      "sha256": "61600580b5beabd1767c2ff853af6fe7c319f2f39babc992d7ea492b7e0232fe"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-09/high/upstream-geometry.csv",
+      "bytes": 13158,
+      "sha256": "746425630182a69a7bbe22d10620236b95b4cedf4bb921e0eab1bfe532aa35f8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-10/low/upstream-geometry.csv",
+      "bytes": 13159,
+      "sha256": "37a0f8df6dd8dce41a475614d7cd218c1e862722c556d80a088ce67b6f5b1780"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-10/high/upstream-geometry.csv",
+      "bytes": 13161,
+      "sha256": "32c65f16a26236246b1a3978a1cc4b6dda171222222e430c5d71d9b3fd135f0f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-11/low/upstream-geometry.csv",
+      "bytes": 13155,
+      "sha256": "a8ade6028dca6a37f9ccb8a7b29a725adbfc79381c70f994d281a854abdafbcd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-11/high/upstream-geometry.csv",
+      "bytes": 13158,
+      "sha256": "da3edb38d5d280257a7ce7e78a4e6ced1af2346349a70dbe18fa125fa89e0093"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-12/low/upstream-geometry.csv",
+      "bytes": 13153,
+      "sha256": "1fbfcac13cc0e1ea90c75057896c1f3412c6042d74edde95e706a63616f55480"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-12/high/upstream-geometry.csv",
+      "bytes": 13154,
+      "sha256": "fc1f2b1a8e39231f4bb5bfbffd6fea08c3886d3fdd0d16e9b209490a1928cb92"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-13/low/upstream-geometry.csv",
+      "bytes": 13386,
+      "sha256": "a944e53ca5fc6397cd4f68f83eed76e17f0f55cba667840a7597b124d61d4e07"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-13/high/upstream-geometry.csv",
+      "bytes": 13390,
+      "sha256": "53941308262fc5062c9f0ea46a32601f73864aa8de40516277368dbf4c335cad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-14/low/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "fe3c57893876360866e8bb2d6df206bc0b4e995abab6bfe21ea1919893307860"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-14/high/upstream-geometry.csv",
+      "bytes": 13384,
+      "sha256": "ed3d67d9e5f83cafe615e1b74a0a8ae54ff4c43be7ba20d7b70d2fbac3b22423"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-15/low/upstream-geometry.csv",
+      "bytes": 13388,
+      "sha256": "8b8214bfb6fa8e4b7dec27636f6e0946214d7b9562df85e393168794372fa702"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-15/high/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "150534b08174040b083edec1a22c54719f55a0a0e20f81d8cab55b5eda55fd67"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-16/low/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "a9d8a2e16c5eb62f6faf16565d6f250ddb9f48b963708865ae29243ee9709e65"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-16/high/upstream-geometry.csv",
+      "bytes": 13382,
+      "sha256": "15c4236fbdfdb4cff1bd038b90fa51871d18f228c5cd8cddf4911fff7a8cb1b1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-17/low/upstream-geometry.csv",
+      "bytes": 13389,
+      "sha256": "3c28ee1fc7fd91cb12a0a37d84eb37ce5cc560d5f11c5ee7a977dbbf55fd41f5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-17/high/upstream-geometry.csv",
+      "bytes": 13385,
+      "sha256": "055049e2d289d9f2d6f31558c51871edca9a6b159c6a2dda23d98ec93b4cf3db"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-18/low/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "eac938d65edfd85b47db20ffe5b8987bd320dd5911f2c49d15946f92de694e1e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-area-continuity-20261121-verified/artifacts/event-18/high/upstream-geometry.csv",
+      "bytes": 13383,
+      "sha256": "0387be65fa447b76af584f7b4d3f45ffb1b01cfddfce4fed72887ea47dde44bc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/lip-tuck-area-continuity.json",
+      "bytes": 2124,
+      "sha256": "8b49c906f0a3fb4126431df2d7b2537aadf3a39a1fc2ad38a7b410efaba4c555"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/manifest.json",
+      "bytes": 40509,
+      "sha256": "91ca437c2fbf5eb7fff4ac35f4a587a2afba5c45c7849213fc2d6a5508ce6b35"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/summary.json",
+      "bytes": 37008,
+      "sha256": "8cddec2eb03083ef3bc350ee39f3db0f8c17de9897088040174dbea8af261d9a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/geometry-case.json",
+      "bytes": 1392,
+      "sha256": "063de2f6e92b7269d11abea8fb1fac201a145704803ebc4c24201b1c9e3f2d49"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/case.json",
+      "bytes": 3126,
+      "sha256": "8300582d3d68a824921b2f8d401665bcdf8cab8d33f6d2c937105ebfabb236c0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/block-128.wav",
+      "bytes": 46138,
+      "sha256": "b259867866e28fbef62623d273e73429a54f9f7b7e1039fca57c85220512bb2b",
+      "sample_rate_hz": 48000,
+      "frames": 11520,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/hold/case.json",
+      "bytes": 3027,
+      "sha256": "ef868e59a413f214ba33ccaff5e928cc43a67c8f6f09136bf1ebffb6919bc8bd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/hold/block-128.wav",
+      "bytes": 46138,
+      "sha256": "4a769dcc6211735e89787d69c804c0ae4528139980ba4c5b2adfd3f0d1a286d2",
+      "sample_rate_hz": 48000,
+      "frames": 11520,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/lip-tuck-voiced-radiation.json",
+      "bytes": 2713,
+      "sha256": "94f4aa377ebecd9282b918d38e2abc742218c3390d74a5571c10f01e88d05756"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/manifest.json",
+      "bytes": 67484,
+      "sha256": "3717f32ec523651888187f1c51039e5e31e30fd3d0c10355ce015653dd2bfb2d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-f/case.json",
+      "bytes": 861,
+      "sha256": "638505fb9e75c22daf9a03359d886cfd63de9331a0623567b6302a4035973e57"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-f/settings.json",
+      "bytes": 5323,
+      "sha256": "4c8f46685cdb6e74ecd9c7c1b4d0a26ff4589be20282b5e4e45f30fda49aa5c0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-f/upstream-plan.json",
+      "bytes": 3076,
+      "sha256": "a72c43b996d9ce7b52c11f65cd4037580a5af0e1b399d8d4fd8e2055c53ce6ff"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-f/voicing.csv",
+      "bytes": 44781360,
+      "sha256": "edda40586d7f8e5d6245ba548f2f553d0818285ff65add7e726cef427fa70f50"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-f/pcm-128.wav",
+      "bytes": 213770,
+      "sha256": "d59eb1ae3e6066fa6169de5d5782c838eef44f705b34aa66c43974ee12f21ccb",
+      "sample_rate_hz": 48000,
+      "frames": 53428,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v/case.json",
+      "bytes": 861,
+      "sha256": "b26bc1307c0ab283c786b3ccb666d614c464f391dfd3057e152fba1940ca2fa0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v/settings.json",
+      "bytes": 5346,
+      "sha256": "86c0440a8fd4ed5a7016403f9ba03681686c8d3df2922efe62a89569ae0f2cb9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v/upstream-plan.json",
+      "bytes": 3093,
+      "sha256": "adff4873e23ff081552c80fd1699f6839f6455e7d987dc7c8f997a6582d26a82"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v/voicing.csv",
+      "bytes": 43303025,
+      "sha256": "84cd87d7c24ba27ca8e69935dfc646ceb21927ece393e63f79eeaf6e6d9c49d6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v/pcm-128.wav",
+      "bytes": 208062,
+      "sha256": "4d78577e3d1322ec8e92c044fe0770a42ea08336a099e04e91d408234022cf1e",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/case.json",
+      "bytes": 873,
+      "sha256": "fa9eb84836287eec5302c9da8d3c08a4a02eebac22a342a371527fdcf36fdd15"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/settings.json",
+      "bytes": 5682,
+      "sha256": "dbede7f4f0e3f9496ffbb413e190a85f77f26cd48c5a9e60fd87047a29de3d71"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/upstream-plan.json",
+      "bytes": 3403,
+      "sha256": "83588d52560540c587f208b15479d3a96dbc64c670a2615f9b9c283803e54744"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/voicing.csv",
+      "bytes": 39325400,
+      "sha256": "7b37af9995c1162a1f8bc9d8f12f165a9c6f6b57d8948bca54de8c8618dadf57"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/pcm-128.wav",
+      "bytes": 189306,
+      "sha256": "64746fba329890df2426691b2ca874b693178f6cf8ff139c478201b63f0a2860",
+      "sample_rate_hz": 48000,
+      "frames": 47312,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/female-v/case.json",
+      "bytes": 867,
+      "sha256": "fabef1d72798afb10bf125828c1cca116627aa3f1c8d1886079c156102c2cfdc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/female-v/settings.json",
+      "bytes": 5341,
+      "sha256": "fee97faf10931c9077a7adb1a1e1c578dab3262daa7784881b6aaf5bf5fa67cb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/female-v/upstream-plan.json",
+      "bytes": 3080,
+      "sha256": "404e95248bdd8389eba8db9b581a0a4b5a28f0d426b57419d76bbb495c625e86"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/female-v/voicing.csv",
+      "bytes": 41691968,
+      "sha256": "4880ad0206026e424ac1f70bdb27763789e8ab923cd1420cbcfa67d6820ad923"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/female-v/pcm-128.wav",
+      "bytes": 208062,
+      "sha256": "4731ea2ec27688bcba4e22f4007e72cd28ac6cd3bbbc747e9ac0e7a647d3b024",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/child-f/case.json",
+      "bytes": 864,
+      "sha256": "17533ac90252a876ac711bd4fae8ed0c4bc5a8ce28b321e56aa10d42db41e3d5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/child-f/settings.json",
+      "bytes": 5333,
+      "sha256": "eeaf00564045f50895ff2f3780983748660a5b4e7877720046034622cf4335ce"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/child-f/upstream-plan.json",
+      "bytes": 3082,
+      "sha256": "5fb9d3a9e157322f0c34a0e05adec2b5a5a957b7c37d6f9128543b29b54a8c51"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/child-f/voicing.csv",
+      "bytes": 40641458,
+      "sha256": "ceaf9bd70bca9f1cc9833fa9edff72b716934528c519eae3fb4a79f7875dabc8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/child-f/pcm-128.wav",
+      "bytes": 213770,
+      "sha256": "5965bb46b0fd30999bd7de53ecbc967c7c295427a283ab7f729806d0dd532080",
+      "sample_rate_hz": 48000,
+      "frames": 53428,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/case.json",
+      "bytes": 907,
+      "sha256": "cb81c11feeb0172411a54cde1c889a1a221c4c2c5117be37f47ca5e54d390ac5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/settings.json",
+      "bytes": 5782,
+      "sha256": "b400e8289e40a24e64bf700548b8b73ec889013ed82f20bf1c9eb8d19bf99472"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/upstream-plan.json",
+      "bytes": 3467,
+      "sha256": "2fd074e00b6203f397f4807ef5048c708dd05f89c593d1acb5f258a2e942358d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/voicing.csv",
+      "bytes": 38434200,
+      "sha256": "05cdc58b00a2a1611904c53be68e9337588b7f8d687f18036b28b4c76dcc49e4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/pcm-128.wav",
+      "bytes": 189306,
+      "sha256": "a25fc2502e33a21ddb142ea4b15d491b1b0b9f199b0e3f4048e42011eb798721",
+      "sample_rate_hz": 48000,
+      "frames": 47312,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/case.json",
+      "bytes": 915,
+      "sha256": "d26093121a81255af9926de03b72837785cfd4588919735170ff74b96793ebc6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/settings.json",
+      "bytes": 5476,
+      "sha256": "7228ab5cff4f4b286cf575cd706e5f94b1c097a2bfa9c7e7f7b73f278d95ae08"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/upstream-plan.json",
+      "bytes": 3157,
+      "sha256": "5ad6ade93ecc821cbbe0becac778404235812db8bd27a6b9c038cdce43a05ac5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/voicing.csv",
+      "bytes": 42289939,
+      "sha256": "7a093ffda514a5c1b79bd611ef5496f722d29de5e2b5c9442976384f4184d2bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/pcm-128.wav",
+      "bytes": 208062,
+      "sha256": "e072f5bc20eaa9f3a4d14005bdaac0a0011bf315c327751b6b45383583364cd2",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/case.json",
+      "bytes": 907,
+      "sha256": "a729cb207de97471851833717556679565cef90979ea86f9018e941845e81fe9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/settings.json",
+      "bytes": 5399,
+      "sha256": "bbeccc4e9c91f464da4a08bed3ea0bf48465601e7182ff3f322c3e98b6bb98af"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/upstream-plan.json",
+      "bytes": 3093,
+      "sha256": "adff4873e23ff081552c80fd1699f6839f6455e7d987dc7c8f997a6582d26a82"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/voicing.csv",
+      "bytes": 42591603,
+      "sha256": "8b4be54da015252c80c103e6ae8188cb612098a7783a7b887bb0b5f15a73cfd2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/pcm-128.wav",
+      "bytes": 208062,
+      "sha256": "d3d89c20577c49da86fba8791fa0ea659eac7d66e57f6b6489fa330082c7dc0c",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/veter/case.json",
+      "bytes": 1049,
+      "sha256": "ff4fbc01f93b92bef31e6f7fb92bb669b667e75584a4ab090c1b1db6e89d011a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/veter/settings.json",
+      "bytes": 14485,
+      "sha256": "88b7b8cf29f42160b48ecbfb0ec7015bd4a6357686cf82dc4e1463de777ab6b6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/veter/upstream-plan.json",
+      "bytes": 7977,
+      "sha256": "f50453056dd62250d00e943120086bd4bfbc4bf42fd1703d696ecc46cd9841c3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/veter/voicing.csv",
+      "bytes": 117394809,
+      "sha256": "26bf92daaf1b793c40361bd90e5e44e117f56145a1c390ae21c3be5066b89740"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/labiodental-fricatives-20261120-c/artifacts/veter/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "58b9f81d8500220868eecdd651b2c1eeeb5480765aa342b8ef0aa9454f3e151a",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/labiodental-fricatives-v2.json",
+      "bytes": 5233,
+      "sha256": "897f91238847ebf3accc38c6a4b5cfbc252c9b3d4e216218171fec35827d97cc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/bilabial-p.json",
+      "bytes": 2003,
+      "sha256": "26b7a137c273865d6014f3aeda2f2900866b3926a1c0e530e85a51f7112530aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/bilabial-b.json",
+      "bytes": 1964,
+      "sha256": "2b876b063acfb4d89822aae5e6717fb62e124b9c4b21b9099dc9dccd22cc1467"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/anatomy/human.rs",
+      "bytes": 62589,
+      "sha256": "9df76b032b617c4be389d7cc58c70d546ce83a8c75bac2ccc1e70edfbe00e564"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/anatomy/geom.rs",
+      "bytes": 7552,
+      "sha256": "916cab35cd2345534b23b4e9aea7ba080a15e286fd6c3adaa7e636fb175c9c23"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/src/voice/human_airway.rs",
+      "bytes": 21616,
+      "sha256": "f92adb2f09015542e991dfb4f6684bf0c900dd5e1f75d166dcf1d790fceba044"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/crates/chimera/tests/geometry_continuity.rs",
+      "bytes": 13115,
+      "sha256": "00037fd8a082f0ddef05ad4c02c6cb07d114fe3ca091b573f0a559ffefd75daa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "vocal-core",
+        "--features",
+        "labial-crossing-thickness",
+        "anatomy::grid"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--cfg",
+        "fixed_upstream",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/lip_tuck_sweep.rs",
+        "-o",
+        "$ARTIFACTS/lip_tuck_sweep.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-core",
+        "--features",
+        "labial-crossing-thickness",
+        "--message-format=json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=off",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "vocal_core=$WORKSPACE/target/release/libvocal_core.rlib",
+        "-L",
+        "dependency=$WORKSPACE/target/release/deps",
+        "$WORKSPACE/tools/lip_tuck_sweep.rs",
+        "-o",
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/lip-tuck-vckka3j2/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-01-low/case.json",
+        "$ARTIFACTS/event-01-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-01-high/case.json",
+        "$ARTIFACTS/event-01-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-02-low/case.json",
+        "$ARTIFACTS/event-02-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-02-high/case.json",
+        "$ARTIFACTS/event-02-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-03-low/case.json",
+        "$ARTIFACTS/event-03-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-03-high/case.json",
+        "$ARTIFACTS/event-03-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-04-low/case.json",
+        "$ARTIFACTS/event-04-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-04-high/case.json",
+        "$ARTIFACTS/event-04-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-05-low/case.json",
+        "$ARTIFACTS/event-05-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-05-high/case.json",
+        "$ARTIFACTS/event-05-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-06-low/case.json",
+        "$ARTIFACTS/event-06-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-06-high/case.json",
+        "$ARTIFACTS/event-06-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-07-low/case.json",
+        "$ARTIFACTS/event-07-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-07-high/case.json",
+        "$ARTIFACTS/event-07-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-08-low/case.json",
+        "$ARTIFACTS/event-08-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-08-high/case.json",
+        "$ARTIFACTS/event-08-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-09-low/case.json",
+        "$ARTIFACTS/event-09-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-09-high/case.json",
+        "$ARTIFACTS/event-09-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-10-low/case.json",
+        "$ARTIFACTS/event-10-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-10-high/case.json",
+        "$ARTIFACTS/event-10-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-11-low/case.json",
+        "$ARTIFACTS/event-11-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-11-high/case.json",
+        "$ARTIFACTS/event-11-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-12-low/case.json",
+        "$ARTIFACTS/event-12-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-12-high/case.json",
+        "$ARTIFACTS/event-12-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-13-low/case.json",
+        "$ARTIFACTS/event-13-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-13-high/case.json",
+        "$ARTIFACTS/event-13-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-14-low/case.json",
+        "$ARTIFACTS/event-14-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-14-high/case.json",
+        "$ARTIFACTS/event-14-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-15-low/case.json",
+        "$ARTIFACTS/event-15-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-15-high/case.json",
+        "$ARTIFACTS/event-15-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-16-low/case.json",
+        "$ARTIFACTS/event-16-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-16-high/case.json",
+        "$ARTIFACTS/event-16-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-17-low/case.json",
+        "$ARTIFACTS/event-17-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-17-high/case.json",
+        "$ARTIFACTS/event-17-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-18-low/case.json",
+        "$ARTIFACTS/event-18-low/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "area",
+        "$ARTIFACTS/event-18-high/case.json",
+        "$ARTIFACTS/event-18-high/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.05/lip-tuck-ucmj_rg3/schedule.csv",
+        "0.3",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.3/lip-tuck-517_pzlh/schedule.csv",
+        "0.3",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.3-opening-0.8/lip-tuck-9o2fi124/schedule.csv",
+        "0.3",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.05/lip-tuck-clsq7t4z/schedule.csv",
+        "0.5",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.3/lip-tuck-69nf06z2/schedule.csv",
+        "0.5",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.5-opening-0.8/lip-tuck-syz50cmn/schedule.csv",
+        "0.5",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.05/lip-tuck-2esngn4s/schedule.csv",
+        "0.8",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.3/lip-tuck-iuo8j93s/schedule.csv",
+        "0.8",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-0.8-opening-0.8/lip-tuck-36wk72oy/schedule.csv",
+        "0.8",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.05/lip-tuck-l5yn1ben/schedule.csv",
+        "1.2",
+        "0.05",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.3/lip-tuck-spm9_ndv/schedule.csv",
+        "1.2",
+        "0.3",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/lip_tuck_sweep-vocal-core.exe",
+        "$ARTIFACTS/ordinary-jaw-1.2-opening-0.8/lip-tuck-64m9_uof/schedule.csv",
+        "1.2",
+        "0.8",
+        "6.45",
+        "7.3",
+        "20",
+        "24"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "inspect",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/hold/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/hold/case.json",
+        "$ARTIFACTS/voice/hold/candidate-samples.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/hold/case.json",
+        "$ARTIFACTS/voice/hold/block-128.wav",
+        "$ARTIFACTS/voice/hold/block-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "inspect",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/case.json",
+        "$ARTIFACTS/voice/cross/candidate-samples.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/case.json",
+        "$ARTIFACTS/voice/cross/block-128.wav",
+        "$ARTIFACTS/voice/cross/block-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/lip-tuck-voiced-radiation.json",
+        "$ARTIFACTS/voice/default-cross.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/lip-tuck-voiced-radiation-20261121-a/artifacts/cross/geometry-case.json",
+        "$ARTIFACTS/voice/experimental-targets.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/bilabial-p.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/cases/bilabial-p.json",
+        "$ARTIFACTS/stops/bilabial-p/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/bilabial-p.json",
+        "$ARTIFACTS/stops/bilabial-p/pcm-128.wav",
+        "$ARTIFACTS/stops/bilabial-p/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/bilabial-p.json",
+        "$ARTIFACTS/stops/bilabial-p/pcm-77.wav",
+        "$ARTIFACTS/stops/bilabial-p/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "aspiration",
+        "--test",
+        "fast_speech"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "--extern",
+        "serde_json=$UPSTREAM/target/release/deps/libserde_json-f2e90e468d4ad724.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_bilabial_probe.rs",
+        "-o",
+        "$ARTIFACTS/stops/bilabial-p/upstream_bilabial_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/stops/bilabial-p/upstream_bilabial_probe.exe",
+        "$WORKSPACE/cases/bilabial-p.json",
+        "$ARTIFACTS/stops/bilabial-p/upstream-voicing.csv",
+        "$ARTIFACTS/stops/bilabial-p/upstream-pcm.f32",
+        "$ARTIFACTS/stops/bilabial-p/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/bilabial-b.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/cases/bilabial-b.json",
+        "$ARTIFACTS/stops/bilabial-b/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/bilabial-b.json",
+        "$ARTIFACTS/stops/bilabial-b/pcm-128.wav",
+        "$ARTIFACTS/stops/bilabial-b/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/bilabial-b.json",
+        "$ARTIFACTS/stops/bilabial-b/pcm-77.wav",
+        "$ARTIFACTS/stops/bilabial-b/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "aspiration",
+        "--test",
+        "fast_speech"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "--extern",
+        "serde_json=$UPSTREAM/target/release/deps/libserde_json-f2e90e468d4ad724.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_bilabial_probe.rs",
+        "-o",
+        "$ARTIFACTS/stops/bilabial-b/upstream_bilabial_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/stops/bilabial-b/upstream_bilabial_probe.exe",
+        "$WORKSPACE/cases/bilabial-b.json",
+        "$ARTIFACTS/stops/bilabial-b/upstream-voicing.csv",
+        "$ARTIFACTS/stops/bilabial-b/upstream-pcm.f32",
+        "$ARTIFACTS/stops/bilabial-b/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-f/case.json",
+        "$ARTIFACTS/fricatives/male-f/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-f/case.json",
+        "$ARTIFACTS/fricatives/male-f/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-v/case.json",
+        "$ARTIFACTS/fricatives/male-v/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-v/case.json",
+        "$ARTIFACTS/fricatives/male-v/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/case.json",
+        "$ARTIFACTS/fricatives/male-v-fast/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/male-v-fast/case.json",
+        "$ARTIFACTS/fricatives/male-v-fast/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/female-v/case.json",
+        "$ARTIFACTS/fricatives/female-v/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/female-v/case.json",
+        "$ARTIFACTS/fricatives/female-v/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/child-f/case.json",
+        "$ARTIFACTS/fricatives/child-f/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/child-f/case.json",
+        "$ARTIFACTS/fricatives/child-f/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/case.json",
+        "$ARTIFACTS/fricatives/mixed-v/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v/case.json",
+        "$ARTIFACTS/fricatives/mixed-v/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/case.json",
+        "$ARTIFACTS/fricatives/mixed-v-slow/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/mixed-v-slow/case.json",
+        "$ARTIFACTS/fricatives/mixed-v-slow/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/case.json",
+        "$ARTIFACTS/fricatives/muted-v/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/muted-v/case.json",
+        "$ARTIFACTS/fricatives/muted-v/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/veter/case.json",
+        "$ARTIFACTS/fricatives/veter/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-q",
+        "-p",
+        "vocal-cli",
+        "--features",
+        "vocal-core/labial-crossing-thickness",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/runs/labiodental-fricatives-20261120-c/artifacts/veter/case.json",
+        "$ARTIFACTS/fricatives/veter/pcm.wav",
+        "--no-trace",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/lip-tuck-crossing-thickness-20261121-b/artifacts",
+    "estimated_peak_bytes": 536870912
+  },
+  "outputs": [
+    {
+      "path": "artifacts/candidate-sweep.csv.gz",
+      "bytes": 2887645,
+      "sha256": "01fff7f7857458fed01176734f26b99cad4b7cd45744dc85f826ea3824978470"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 4097,
+      "sha256": "cbff5f848ec3d9616fed48813ad9fc0c776d4c87ab1d4be983df7364b901856d"
+    },
+    {
+      "path": "artifacts/dynamic-report.json",
+      "bytes": 7229,
+      "sha256": "239c01ad8ad69a7af057d3508eebc8475b80dd57d51ca16043da9fb61690e8b8"
+    },
+    {
+      "path": "artifacts/event-01-high/area.csv",
+      "bytes": 9160,
+      "sha256": "82ee35de0212954d8a843ddbca48ec4bae7d76df9feb3fa6320797e2e1244b60"
+    },
+    {
+      "path": "artifacts/event-01-high/case.json",
+      "bytes": 994,
+      "sha256": "c41166709f960a1338bbae8e2c28f7f589c66b3912ce0df2dfbad4e8fe296863"
+    },
+    {
+      "path": "artifacts/event-01-high/independent-cells.csv",
+      "bytes": 5109,
+      "sha256": "f2dd15efc9b6db2ff12f1ea2ec78e42a0ee96eeae14aa7c131acae9daf705133"
+    },
+    {
+      "path": "artifacts/event-01-low/area.csv",
+      "bytes": 9159,
+      "sha256": "1691fa7c8b01a89d5840fc0de6bb1409627daab604fc33aee793700f2bb3e5ac"
+    },
+    {
+      "path": "artifacts/event-01-low/case.json",
+      "bytes": 994,
+      "sha256": "6a8ae39ed1a93893e853c2c2d909e7107eecf284c4b78d9afefa8d9c3eca45ef"
+    },
+    {
+      "path": "artifacts/event-01-low/independent-cells.csv",
+      "bytes": 5105,
+      "sha256": "c0788edc006e67922de9377340ead78b91815e45cac61845b3a38a04f4a2333d"
+    },
+    {
+      "path": "artifacts/event-02-high/area.csv",
+      "bytes": 9159,
+      "sha256": "4479ed48f8727b423dcca9e484ac29a06f8986994897445ef11827bc35da4109"
+    },
+    {
+      "path": "artifacts/event-02-high/case.json",
+      "bytes": 994,
+      "sha256": "77cb95952f97ce662bc363a5666c2ddbcd4d9afe4a2c3de24f711ca8dfa230a4"
+    },
+    {
+      "path": "artifacts/event-02-high/independent-cells.csv",
+      "bytes": 5107,
+      "sha256": "6ecce8a4276827b45fd9781d18b5060f3908e61ebb282baea19f488b4ba94eef"
+    },
+    {
+      "path": "artifacts/event-02-low/area.csv",
+      "bytes": 9160,
+      "sha256": "ce810810a8c9d5941c605cce02302ba0e76b9b0d2997ec33c1d4f10b18096410"
+    },
+    {
+      "path": "artifacts/event-02-low/case.json",
+      "bytes": 993,
+      "sha256": "2f392c46a883fa82e80b43d1e2d8dd2c5ad7e256f749d500254d7f70623fce17"
+    },
+    {
+      "path": "artifacts/event-02-low/independent-cells.csv",
+      "bytes": 5105,
+      "sha256": "f36dd375095e91d773b456d12d63567066abb0934c80ff68e9bacea631bfb0f1"
+    },
+    {
+      "path": "artifacts/event-03-high/area.csv",
+      "bytes": 9162,
+      "sha256": "988268224aa17b180e1ab73c21e8d3ea2adee3a1f417760fcdc5729dc48b40de"
+    },
+    {
+      "path": "artifacts/event-03-high/case.json",
+      "bytes": 994,
+      "sha256": "46fd8734f848ec175fad998de4e85aea30b1c36bb1fcbef408266671b26b42b1"
+    },
+    {
+      "path": "artifacts/event-03-high/independent-cells.csv",
+      "bytes": 5095,
+      "sha256": "1b84e8cbf37d553d313589d8290629dead05c26f1915d00d6a56bce97ab37b97"
+    },
+    {
+      "path": "artifacts/event-03-low/area.csv",
+      "bytes": 9157,
+      "sha256": "43e68112897c8c208981d0a12d6bb82dd72bdfb64c07809ead9e93c6bd0b6016"
+    },
+    {
+      "path": "artifacts/event-03-low/case.json",
+      "bytes": 994,
+      "sha256": "f182c25f7b9cc5aa883ba8f2b956768c3b4e345fdf94d2d5f6f2a202f7477be1"
+    },
+    {
+      "path": "artifacts/event-03-low/independent-cells.csv",
+      "bytes": 5096,
+      "sha256": "270c39fafd4e2d3255f800de3d3594d23f2b3116c40fc2e538510794c8df1f35"
+    },
+    {
+      "path": "artifacts/event-04-high/area.csv",
+      "bytes": 9158,
+      "sha256": "07f4d42f6850d92dc847472846ab9721d11c3fac5147a4575cf03934cbfb1a94"
+    },
+    {
+      "path": "artifacts/event-04-high/case.json",
+      "bytes": 994,
+      "sha256": "5d0d53c1cb8f957831be4bb28432e992fb7643480867093f3444cb7bcc8f864f"
+    },
+    {
+      "path": "artifacts/event-04-high/independent-cells.csv",
+      "bytes": 5076,
+      "sha256": "aa040d46bcfdb92839eafc3dcc09ce8cf539d2b42156eba149a59ab59d85c670"
+    },
+    {
+      "path": "artifacts/event-04-low/area.csv",
+      "bytes": 9157,
+      "sha256": "d249f0fabad6b3107488b75d222b39bf58861c8497eac5adef198e86bab2d3ed"
+    },
+    {
+      "path": "artifacts/event-04-low/case.json",
+      "bytes": 994,
+      "sha256": "f6d6417c474a9e01a410ad145b6d4753787280da8ce957baa10807e8cdc84e75"
+    },
+    {
+      "path": "artifacts/event-04-low/independent-cells.csv",
+      "bytes": 5080,
+      "sha256": "a4641eac3aeba6ab3552c29f771a707c205bea491b507f5a9c5708c3fc1ef525"
+    },
+    {
+      "path": "artifacts/event-05-high/area.csv",
+      "bytes": 9157,
+      "sha256": "042aec194464f8f74de3e3e8ad0a7181065e644ac1ef8af071d9923bc2a71437"
+    },
+    {
+      "path": "artifacts/event-05-high/case.json",
+      "bytes": 994,
+      "sha256": "917c5459d6a8105d27d19f358785b165a750aa00f45f4efaac29dfb67acb37e0"
+    },
+    {
+      "path": "artifacts/event-05-high/independent-cells.csv",
+      "bytes": 5084,
+      "sha256": "31358bf59e88947f462aea980d0941867bbd3e454b862956e119cd1152059e53"
+    },
+    {
+      "path": "artifacts/event-05-low/area.csv",
+      "bytes": 9162,
+      "sha256": "07ef849f0ce6b170996bc60f852849f13dafb83d33b14e8444aecd313f3c396d"
+    },
+    {
+      "path": "artifacts/event-05-low/case.json",
+      "bytes": 994,
+      "sha256": "547311f5d3d3a9956330a978b009aa0407ee0e205ff06b0c586fcafb8df7a8c8"
+    },
+    {
+      "path": "artifacts/event-05-low/independent-cells.csv",
+      "bytes": 5074,
+      "sha256": "629cacddd3449275ec3e45d68a4fe46a592694e8d118c3dd3e6672c6892d733c"
+    },
+    {
+      "path": "artifacts/event-06-high/area.csv",
+      "bytes": 9155,
+      "sha256": "6890025214938f086ed8f6a405d7668ce8bf43497a8e8126db078936e653cb4e"
+    },
+    {
+      "path": "artifacts/event-06-high/case.json",
+      "bytes": 994,
+      "sha256": "1264820fda748e7531b8853b9000dc46df2992446310c06a10ea849aeab5a0e2"
+    },
+    {
+      "path": "artifacts/event-06-high/independent-cells.csv",
+      "bytes": 5099,
+      "sha256": "a28d9b6a5621b10481fd9514607975b40ab0d9fd9c459e307b823c40579b3e1e"
+    },
+    {
+      "path": "artifacts/event-06-low/area.csv",
+      "bytes": 9156,
+      "sha256": "b46fbf2bffd88f7a3b06226af819af390a9cbc3451200278f7d6cca961996c24"
+    },
+    {
+      "path": "artifacts/event-06-low/case.json",
+      "bytes": 994,
+      "sha256": "9c2a2a545d33dfbc7494844333d3e8018a39519bfd2ede130c4df6158e23065d"
+    },
+    {
+      "path": "artifacts/event-06-low/independent-cells.csv",
+      "bytes": 5091,
+      "sha256": "e21e7eb8da426066610c5298738ea10569d66eb94ff837676371158e03e9679e"
+    },
+    {
+      "path": "artifacts/event-07-high/area.csv",
+      "bytes": 9091,
+      "sha256": "5587f10a3b266d06b2d7a303f558fd0a00e362834ad1013c9635eef1a8c3fe25"
+    },
+    {
+      "path": "artifacts/event-07-high/case.json",
+      "bytes": 996,
+      "sha256": "bb7de4886465e4e180a49d03a6b63c37e78674d6b1125d962ccb2241050a1217"
+    },
+    {
+      "path": "artifacts/event-07-high/independent-cells.csv",
+      "bytes": 5155,
+      "sha256": "070f4f21e073b8d0010bea0a018354fd673106bf9407bb6a1dc18a09a46c002f"
+    },
+    {
+      "path": "artifacts/event-07-low/area.csv",
+      "bytes": 9095,
+      "sha256": "c3c6798f294ecbf47a08a5d7a08ed3118bac44bfeb0a10aa8067b216d344bf41"
+    },
+    {
+      "path": "artifacts/event-07-low/case.json",
+      "bytes": 996,
+      "sha256": "1732e2fe4ade64aaf1552aaf4f71f854f670c58dd3cb96062eca4d70c145e5d7"
+    },
+    {
+      "path": "artifacts/event-07-low/independent-cells.csv",
+      "bytes": 5163,
+      "sha256": "32d51c42f959eadd411b6bfa693a9a5ab6767164e885acf056fe0dd35a7cfd1c"
+    },
+    {
+      "path": "artifacts/event-08-high/area.csv",
+      "bytes": 9094,
+      "sha256": "a55ea55c440622b57fc91eeff2f370e6ae65c9f2ca4e93acfdd1c35bce0b9cbb"
+    },
+    {
+      "path": "artifacts/event-08-high/case.json",
+      "bytes": 996,
+      "sha256": "5ca358f982abba0ed30a65e011793857c6129cb2bd41f2518b05d917d22a657c"
+    },
+    {
+      "path": "artifacts/event-08-high/independent-cells.csv",
+      "bytes": 5151,
+      "sha256": "edf5c534bd9a6f50413d282b26a620b079379649bfc6c130059812a0ced22e05"
+    },
+    {
+      "path": "artifacts/event-08-low/area.csv",
+      "bytes": 9100,
+      "sha256": "088ae0c143f354ae2820990355b7f7a501f74d5a5e5b246b91551b6c29b2407a"
+    },
+    {
+      "path": "artifacts/event-08-low/case.json",
+      "bytes": 995,
+      "sha256": "391326aeef8b7f24fe6945654921a10cfde04600121bad484854480c45b67413"
+    },
+    {
+      "path": "artifacts/event-08-low/independent-cells.csv",
+      "bytes": 5171,
+      "sha256": "59ccc79d5c336b4f44ad37c07f5006c572ba11d43f46554d54fd416d1310cfda"
+    },
+    {
+      "path": "artifacts/event-09-high/area.csv",
+      "bytes": 9098,
+      "sha256": "157eb359ca49fa8eefe62c790b601c8557e62c57d174d54b3ea33ebea4a91d05"
+    },
+    {
+      "path": "artifacts/event-09-high/case.json",
+      "bytes": 996,
+      "sha256": "fb12c0ccf12f552d100f7cd9dfb7a6742da0fc517a91316aecb20ba6850542a6"
+    },
+    {
+      "path": "artifacts/event-09-high/independent-cells.csv",
+      "bytes": 5148,
+      "sha256": "d56d75d0be2a1ad22b952c06f07711cc389dcd5002f220a7c8ffc65dd69f23da"
+    },
+    {
+      "path": "artifacts/event-09-low/area.csv",
+      "bytes": 9097,
+      "sha256": "4b90e45a0a1630becdfdb338258aa0d38300b46086b28d06ec79641f94966c2d"
+    },
+    {
+      "path": "artifacts/event-09-low/case.json",
+      "bytes": 996,
+      "sha256": "500cdb4bce3dd095f2e6b8ad2af6a933d6058157defc14b0514e469f8ce972c8"
+    },
+    {
+      "path": "artifacts/event-09-low/independent-cells.csv",
+      "bytes": 5154,
+      "sha256": "31b71064b59d1bd54745e0d1256d49e7d0c639e5efbaeb035b7bc209b75e2411"
+    },
+    {
+      "path": "artifacts/event-10-high/area.csv",
+      "bytes": 9088,
+      "sha256": "49a53d69b4ad4502e7eaa3421bfbb29fa034d83851c320dc2ae5685f0f5a415c"
+    },
+    {
+      "path": "artifacts/event-10-high/case.json",
+      "bytes": 996,
+      "sha256": "7a6af9c530d84c1436fc4a737e3d9690a785303c3e572a8d15b8f91219e902eb"
+    },
+    {
+      "path": "artifacts/event-10-high/independent-cells.csv",
+      "bytes": 5132,
+      "sha256": "70e7ebc6100a8949daa3e35b5af41d44aab98300d2f512504f653949def1c9fc"
+    },
+    {
+      "path": "artifacts/event-10-low/area.csv",
+      "bytes": 9087,
+      "sha256": "a0c8a1c42c7a7fe9140bf0ce762554a1ee39101bb4782e52c7d86da891b1a21b"
+    },
+    {
+      "path": "artifacts/event-10-low/case.json",
+      "bytes": 996,
+      "sha256": "cc07fabca0c2853aa3853919434457ea107a6cd087c39eed7703d9590cabba60"
+    },
+    {
+      "path": "artifacts/event-10-low/independent-cells.csv",
+      "bytes": 5138,
+      "sha256": "032382e136109d5e8e3b5729fe62fe7feaf3652ab3c6443fac85698b7cfb2941"
+    },
+    {
+      "path": "artifacts/event-11-high/area.csv",
+      "bytes": 9094,
+      "sha256": "f1ca6bb8a25111273fcdd30961be97993da64b605182bf772f1b1bf3dd827f37"
+    },
+    {
+      "path": "artifacts/event-11-high/case.json",
+      "bytes": 996,
+      "sha256": "f3edc1119ffc0f92fb15a6fcce8bc7f33daf2bdafc36753dc33a24c9b862df1b"
+    },
+    {
+      "path": "artifacts/event-11-high/independent-cells.csv",
+      "bytes": 5122,
+      "sha256": "7e59ad7b7ec6d6c5b3f5677a4f0c19a56a8f9f6137381d5cb716ffcb313408b1"
+    },
+    {
+      "path": "artifacts/event-11-low/area.csv",
+      "bytes": 9095,
+      "sha256": "e0700e42488ef514eccfe4ad745c345da80cdafbff0c3f4cf2610518cf896459"
+    },
+    {
+      "path": "artifacts/event-11-low/case.json",
+      "bytes": 996,
+      "sha256": "54221f3f2bd0c731c9fe6651b54f8b4f4d36984b4fa4a45bb52e9a8fca614f05"
+    },
+    {
+      "path": "artifacts/event-11-low/independent-cells.csv",
+      "bytes": 5148,
+      "sha256": "484f0f1fe9d5185011f8f5c2a58828c3d6269630b1fde0a2dfbbac4e03712444"
+    },
+    {
+      "path": "artifacts/event-12-high/area.csv",
+      "bytes": 9096,
+      "sha256": "dcd0ed03d15766098e40f6bfc0e425278fd23e9312525b827dacf23194d0b853"
+    },
+    {
+      "path": "artifacts/event-12-high/case.json",
+      "bytes": 996,
+      "sha256": "4ba55ee13e0552a2ebaf419a3747412b6dd60a59b02a10b1241b55e37374fb3f"
+    },
+    {
+      "path": "artifacts/event-12-high/independent-cells.csv",
+      "bytes": 5143,
+      "sha256": "2241e6f79c6a8c9ae38d1dd7d23c9783777a5685b2c2d6a2c8c7ec4407f1c439"
+    },
+    {
+      "path": "artifacts/event-12-low/area.csv",
+      "bytes": 9089,
+      "sha256": "e014a5f7436e56e6f10009d360bde775a3545a0e2168e814483425a0fecb3f8c"
+    },
+    {
+      "path": "artifacts/event-12-low/case.json",
+      "bytes": 996,
+      "sha256": "78a19c5b356160faf20e12660886627da06030745af8b80866fd0ddbe5cfdc13"
+    },
+    {
+      "path": "artifacts/event-12-low/independent-cells.csv",
+      "bytes": 5140,
+      "sha256": "f7d944ac142ec30089fb9c1ef4b42ae0efd3dbf0127460fc2c6ee3ed32cc7aef"
+    },
+    {
+      "path": "artifacts/event-13-high/area.csv",
+      "bytes": 9170,
+      "sha256": "b2b96267e58d12a68603cb0f3945e414780e0b97e386d2578cdc251e5c970145"
+    },
+    {
+      "path": "artifacts/event-13-high/case.json",
+      "bytes": 995,
+      "sha256": "dfde8868a9ed1bd4d5f0a1ad58bced200688fee49362b85b643fe8630484472e"
+    },
+    {
+      "path": "artifacts/event-13-high/independent-cells.csv",
+      "bytes": 5173,
+      "sha256": "7618b1edf10da8c84294ef365f6bbaf28c5a456de0f530c06a25cc5941738175"
+    },
+    {
+      "path": "artifacts/event-13-low/area.csv",
+      "bytes": 9172,
+      "sha256": "5c9741611c2abc3203d685643001b872b4c5ea9d7398fad3d9f5c641f39b5267"
+    },
+    {
+      "path": "artifacts/event-13-low/case.json",
+      "bytes": 995,
+      "sha256": "092572b17254351763a7cd09d53d5c3c4364cefd0ca9687bece96ff4e3c0b461"
+    },
+    {
+      "path": "artifacts/event-13-low/independent-cells.csv",
+      "bytes": 5193,
+      "sha256": "cc58c20ed693d5232ab51589777d2f9f9cb56d36a026c543ac1f1f6cfd332c47"
+    },
+    {
+      "path": "artifacts/event-14-high/area.csv",
+      "bytes": 9166,
+      "sha256": "1db10742698f89aa5e1ed00c32b9b8af7934f6aa5014957583fd4820694fbd73"
+    },
+    {
+      "path": "artifacts/event-14-high/case.json",
+      "bytes": 995,
+      "sha256": "7390bc1690067ef5438a193dfa25728204b5e87d0fb4dbefca36504eb23e736a"
+    },
+    {
+      "path": "artifacts/event-14-high/independent-cells.csv",
+      "bytes": 5188,
+      "sha256": "061edfaaf8efa4f6edb1382561a27bb909264032182008ac46d3b092bce79bf1"
+    },
+    {
+      "path": "artifacts/event-14-low/area.csv",
+      "bytes": 9169,
+      "sha256": "8f81298084dcecceebc537be644837009fd0511ff2edaee7b991f8be96725cb0"
+    },
+    {
+      "path": "artifacts/event-14-low/case.json",
+      "bytes": 994,
+      "sha256": "daad8d55df7fabd5dc196faeb779d2eec2c2068ab4f3dae6d89ad597946b11f6"
+    },
+    {
+      "path": "artifacts/event-14-low/independent-cells.csv",
+      "bytes": 5182,
+      "sha256": "b3c97f74f9dfdbb5a817aa93632f7a5fb2c23ad2f79594a586a560faa7ad2f4d"
+    },
+    {
+      "path": "artifacts/event-15-high/area.csv",
+      "bytes": 9176,
+      "sha256": "ff846a5d4265c9087c8317e870fdb52633af88fee50b1a78a838c7633ba23f59"
+    },
+    {
+      "path": "artifacts/event-15-high/case.json",
+      "bytes": 995,
+      "sha256": "8cb589fce974091969f24e7e95cc08768022f61fcb5fc818bf3b295466850f0b"
+    },
+    {
+      "path": "artifacts/event-15-high/independent-cells.csv",
+      "bytes": 5191,
+      "sha256": "6aa3b5ac733b6fe63c94cd5b6655d7d5bfcbc8a53b5bfbc98e789ee5357cd44c"
+    },
+    {
+      "path": "artifacts/event-15-low/area.csv",
+      "bytes": 9169,
+      "sha256": "f6901f0d7c630274b08ba620353c8f39dd4bb31ad3c456f794b58db4b09043ae"
+    },
+    {
+      "path": "artifacts/event-15-low/case.json",
+      "bytes": 995,
+      "sha256": "46ba6dbd78e8c77f88bcbc557ad29092001f031b1b70a8f3b5e22ba4a9c1380c"
+    },
+    {
+      "path": "artifacts/event-15-low/independent-cells.csv",
+      "bytes": 5185,
+      "sha256": "58be509689556ce8ff6088222341c4935cb2daf9dcbdac7f54db3b3082fece8c"
+    },
+    {
+      "path": "artifacts/event-16-high/area.csv",
+      "bytes": 9171,
+      "sha256": "bad5e363a8995b5534d60afa5012014e1499ec789e62164eb29fdd9942e2842f"
+    },
+    {
+      "path": "artifacts/event-16-high/case.json",
+      "bytes": 995,
+      "sha256": "216f3fb61d3468268e778566ad0bb497710145a18a50e956219f855e64058bfb"
+    },
+    {
+      "path": "artifacts/event-16-high/independent-cells.csv",
+      "bytes": 5159,
+      "sha256": "e60866c43d418601c03d12688300000b0f8a2d65052a08666e919967754120c4"
+    },
+    {
+      "path": "artifacts/event-16-low/area.csv",
+      "bytes": 9163,
+      "sha256": "344dbc728522746666f5626f250b8be6c13fb258cee08494cdcdaf239c172f51"
+    },
+    {
+      "path": "artifacts/event-16-low/case.json",
+      "bytes": 995,
+      "sha256": "07578086e11614c0da6773a928893daf9870ec59fffaa94f5f3f5c9d1b32a614"
+    },
+    {
+      "path": "artifacts/event-16-low/independent-cells.csv",
+      "bytes": 5170,
+      "sha256": "16a853c0d28ebeac3fc5203e3e3c253c210eddfa39a6d58488c8ce21c62de9ee"
+    },
+    {
+      "path": "artifacts/event-17-high/area.csv",
+      "bytes": 9175,
+      "sha256": "518cc300328eb1cdecdf2d7f93c588d01c0768fad9490911c5cef507fed5c0ea"
+    },
+    {
+      "path": "artifacts/event-17-high/case.json",
+      "bytes": 995,
+      "sha256": "ba4147a7230c4b95bb662fde3534c53a6c5d168c8115fda016683efee4343a0c"
+    },
+    {
+      "path": "artifacts/event-17-high/independent-cells.csv",
+      "bytes": 5161,
+      "sha256": "f1be701ff4341d888388f9eada5cdbc8a5e302a6417fd3da80f56004072992ce"
+    },
+    {
+      "path": "artifacts/event-17-low/area.csv",
+      "bytes": 9172,
+      "sha256": "88e349bad7c16f964391fd1ac9545fa56cd738bd876e8c1db6859205cead291e"
+    },
+    {
+      "path": "artifacts/event-17-low/case.json",
+      "bytes": 995,
+      "sha256": "7f16ed7597c41fc11f33a60a6244ea75f5a13527efb9cf7017c06ab0951ae560"
+    },
+    {
+      "path": "artifacts/event-17-low/independent-cells.csv",
+      "bytes": 5174,
+      "sha256": "0e1561c8033a8e2ac6d370109dcf7d53606a6d85bf786c5888adfac36f6d3ad9"
+    },
+    {
+      "path": "artifacts/event-18-high/area.csv",
+      "bytes": 9165,
+      "sha256": "1841a9f3f9b9b2f21bc5e43073dc362326fb1cdba6e954df4c7c74ec4176c445"
+    },
+    {
+      "path": "artifacts/event-18-high/case.json",
+      "bytes": 995,
+      "sha256": "c9925fb684c6c36c3457567dc7967c628fea3b9ca365fe8b751f1b0fdffe749f"
+    },
+    {
+      "path": "artifacts/event-18-high/independent-cells.csv",
+      "bytes": 5168,
+      "sha256": "b950441f9d360f2799835006cd220105d3472b9be08bfaa4ff1902f4e3dee900"
+    },
+    {
+      "path": "artifacts/event-18-low/area.csv",
+      "bytes": 9170,
+      "sha256": "f058cd9413ccadd68d25caaab291650867fe364d1c83f987cdbe20b0d0dec446"
+    },
+    {
+      "path": "artifacts/event-18-low/case.json",
+      "bytes": 995,
+      "sha256": "a9c5193f74d6cc01fbd7bccafe38be970d9227ffc9a5717e23765d609e3b808a"
+    },
+    {
+      "path": "artifacts/event-18-low/independent-cells.csv",
+      "bytes": 5155,
+      "sha256": "19d50a8f5e4a3dcaeafe9ff95185b1a216b8a35c1e6c6097f87f31e1578019d5"
+    },
+    {
+      "path": "artifacts/fricatives/child-f/pcm.wav",
+      "bytes": 213770,
+      "sha256": "5965bb46b0fd30999bd7de53ecbc967c7c295427a283ab7f729806d0dd532080",
+      "sample_rate_hz": 48000,
+      "frames": 53428,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/child-f/voicing.csv.gz",
+      "bytes": 10769150,
+      "sha256": "7c0b0aa9333917aefd4c888fafebe83099226e3acfc07ce5539da8155f485e2e"
+    },
+    {
+      "path": "artifacts/fricatives/female-v/pcm.wav",
+      "bytes": 208062,
+      "sha256": "4731ea2ec27688bcba4e22f4007e72cd28ac6cd3bbbc747e9ac0e7a647d3b024",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/female-v/voicing.csv.gz",
+      "bytes": 11524795,
+      "sha256": "5054253d3e1f63fa52c3fe5c7095ca6efe165e2a1d5c27f68fda454a2db90886"
+    },
+    {
+      "path": "artifacts/fricatives/male-f/pcm.wav",
+      "bytes": 213770,
+      "sha256": "d59eb1ae3e6066fa6169de5d5782c838eef44f705b34aa66c43974ee12f21ccb",
+      "sample_rate_hz": 48000,
+      "frames": 53428,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/male-f/voicing.csv.gz",
+      "bytes": 12755205,
+      "sha256": "020279d8127d2053fe065a52e488ab8df8022c4ffb1df036d5ba067fdfb4fd1a"
+    },
+    {
+      "path": "artifacts/fricatives/male-v/pcm.wav",
+      "bytes": 208062,
+      "sha256": "4d78577e3d1322ec8e92c044fe0770a42ea08336a099e04e91d408234022cf1e",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/male-v/voicing.csv.gz",
+      "bytes": 12306796,
+      "sha256": "62af2e5ab6e898a49d93b639ce56c1eca381eeb38c01ed7c73bcd3efe63bc048"
+    },
+    {
+      "path": "artifacts/fricatives/male-v-fast/pcm.wav",
+      "bytes": 189306,
+      "sha256": "64746fba329890df2426691b2ca874b693178f6cf8ff139c478201b63f0a2860",
+      "sample_rate_hz": 48000,
+      "frames": 47312,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/male-v-fast/voicing.csv.gz",
+      "bytes": 11087890,
+      "sha256": "210ffc254f8377700ad13cd4fb6c06820e2f14d16683478c27a31abbe5760e6f"
+    },
+    {
+      "path": "artifacts/fricatives/mixed-v/pcm.wav",
+      "bytes": 189306,
+      "sha256": "a25fc2502e33a21ddb142ea4b15d491b1b0b9f199b0e3f4048e42011eb798721",
+      "sample_rate_hz": 48000,
+      "frames": 47312,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/mixed-v/voicing.csv.gz",
+      "bytes": 10365328,
+      "sha256": "a698f8c7d320511b8eb7e25f6f524cf361016fd75fdbc73d1dbb9cafcb5db2d4"
+    },
+    {
+      "path": "artifacts/fricatives/mixed-v-slow/pcm.wav",
+      "bytes": 208062,
+      "sha256": "e072f5bc20eaa9f3a4d14005bdaac0a0011bf315c327751b6b45383583364cd2",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/mixed-v-slow/voicing.csv.gz",
+      "bytes": 11492302,
+      "sha256": "e638dbd033dce156fa003a485a854d8987c38dc2023a196a60504e14d0fb0dc4"
+    },
+    {
+      "path": "artifacts/fricatives/muted-v/pcm.wav",
+      "bytes": 208062,
+      "sha256": "d3d89c20577c49da86fba8791fa0ea659eac7d66e57f6b6489fa330082c7dc0c",
+      "sample_rate_hz": 48000,
+      "frames": 52001,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/muted-v/voicing.csv.gz",
+      "bytes": 11866991,
+      "sha256": "64ff2cc9ddac2534e2ca47f115e4e7e5d18a2d08c260c82307a63918f34baed2"
+    },
+    {
+      "path": "artifacts/fricatives/veter/pcm.wav",
+      "bytes": 364858,
+      "sha256": "58b9f81d8500220868eecdd651b2c1eeeb5480765aa342b8ef0aa9454f3e151a",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/fricatives/veter/voicing.csv.gz",
+      "bytes": 35746800,
+      "sha256": "05ca3a271d12c00e745bdf1db00fb9b51b031d03a7f949f19b7039b451cfce64"
+    },
+    {
+      "path": "artifacts/fricatives-report.json",
+      "bytes": 29163,
+      "sha256": "4943514bf79192d138a8df1897c12ab60d827a1cf7ceddf9b9d3322868aec5dd"
+    },
+    {
+      "path": "artifacts/geometry-tests.log",
+      "bytes": 744,
+      "sha256": "ca0e46b85f5ae51f6dac27bd4ebdc6991f33e3877dfc82bc4885e112a8aacdae"
+    },
+    {
+      "path": "artifacts/lip_tuck_sweep-vocal-core.exe",
+      "bytes": 580768,
+      "sha256": "f7e33db00f284223e28646cbcc4bcefbb466bf89dabfd8ae7ffd508801701d7e"
+    },
+    {
+      "path": "artifacts/lip_tuck_sweep.exe",
+      "bytes": 515360,
+      "sha256": "586de2c080cd5e5a94f14944b68f19879c6f73aa6a24ad60377b8e77a677c6b7"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.05/candidate-sweep.csv.gz",
+      "bytes": 640409,
+      "sha256": "d1965dbe102a61fa3c329a5328caf717d10c72f9b00ac579cb70b8b5f538d798"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.05/upstream-sweep.csv.gz",
+      "bytes": 640504,
+      "sha256": "168499bdf02cdba120d2937a0840280c930abdb6c22e4d3753042b8035f411ec"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.3/candidate-sweep.csv.gz",
+      "bytes": 618436,
+      "sha256": "72d8e8052623cebe8da8ae59d92f34fbaf1af969b027fc9d4ad4cb7ef7dafb3e"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.3/upstream-sweep.csv.gz",
+      "bytes": 618527,
+      "sha256": "d5a4bd5162c5437a8f23e7a6a9663eaa2eb1198389aa8e4a98f985954a4a262e"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.8/candidate-sweep.csv.gz",
+      "bytes": 585818,
+      "sha256": "17c25091c1a27c98e6208f65b98f435785434f2bf31ef0c5ac2df2c09bde8dce"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.3-opening-0.8/upstream-sweep.csv.gz",
+      "bytes": 585869,
+      "sha256": "22c95ac7cd0fa72b3ee6fa1165c102237bf34a3c154f1c0ca9512e9fa049f600"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.05/candidate-sweep.csv.gz",
+      "bytes": 642994,
+      "sha256": "b5de6f778f39ff468972f1e20337dd82219398d2a9b73e170c322dd92416ad67"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.05/upstream-sweep.csv.gz",
+      "bytes": 642954,
+      "sha256": "e1dc543bbd4b06f506dd50013f1a34fc0c4bb1a88c61119b72824822328a906f"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.3/candidate-sweep.csv.gz",
+      "bytes": 618191,
+      "sha256": "399decfbfe882956a72c4bf7da72186f3e9ac44c5f7a8929c25369d15f6876c5"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.3/upstream-sweep.csv.gz",
+      "bytes": 618302,
+      "sha256": "1e23cdbf6e0ba29ed87793fcb1fc736dce2911087afd1751440c026cca4a3ae8"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.8/candidate-sweep.csv.gz",
+      "bytes": 583797,
+      "sha256": "af706909efa60a392fee4c7f7c61aaa969b98c55db7b3eadb8b08d01b994065f"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.5-opening-0.8/upstream-sweep.csv.gz",
+      "bytes": 583810,
+      "sha256": "71505709b9cf8306732f12e6455d1dc311658ca0b15834da89c05d9d5ef4f5af"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.05/candidate-sweep.csv.gz",
+      "bytes": 646003,
+      "sha256": "20d338ff14f09136a56f4a63b775627a79693c8f58e757afe32b3cd3f6614909"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.05/upstream-sweep.csv.gz",
+      "bytes": 646181,
+      "sha256": "f231a6fc3cf463b8d2666e21d25c75c6d7cfcbd33ef2634d35d81457b9276d5c"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.3/candidate-sweep.csv.gz",
+      "bytes": 620223,
+      "sha256": "6f407507e7200a16844cd1c181d966a86bff8f3397396eda6bcfc8581e594d3f"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.3/upstream-sweep.csv.gz",
+      "bytes": 620517,
+      "sha256": "f7db84417c96cd439dafcce30e8133aa640e232d96772b3c70a2c3588d1e9416"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.8/candidate-sweep.csv.gz",
+      "bytes": 579056,
+      "sha256": "0f3484aae2e74e13a586049993034d29ea02ccb98383ba0b3f241733e1025912"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-0.8-opening-0.8/upstream-sweep.csv.gz",
+      "bytes": 579075,
+      "sha256": "1b3ab42c18245bc6f79f6dbe8ae681a6b59406eb06eeaedb3586af3534c2e399"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.05/candidate-sweep.csv.gz",
+      "bytes": 639397,
+      "sha256": "cf089840be6325d89f1813ebc482005ee89ec83476ea2a1c21db1439c0ac87f3"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.05/upstream-sweep.csv.gz",
+      "bytes": 639365,
+      "sha256": "8074411833824d3d83af489935448884041bdea2ca02d5b1da278620ddcfc5cc"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.3/candidate-sweep.csv.gz",
+      "bytes": 618938,
+      "sha256": "498ab6cd05acc8b1ca18194b01c6964d27aaa49fa59cbadb00a324a461c3d423"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.3/upstream-sweep.csv.gz",
+      "bytes": 619203,
+      "sha256": "540cd11627180d972c177fc7079f2588a8c4c2963d7090ef32350c80d16ddb07"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.8/candidate-sweep.csv.gz",
+      "bytes": 575116,
+      "sha256": "73e9f3cf5ef2738d7787bb01edc5cb20837234d762bbce8f9ad315fb77c1af5c"
+    },
+    {
+      "path": "artifacts/ordinary-jaw-1.2-opening-0.8/upstream-sweep.csv.gz",
+      "bytes": 574980,
+      "sha256": "811d09b027ea8388ce780880f29f0c79408225e6c228000d9de8d9b9ec7219cf"
+    },
+    {
+      "path": "artifacts/static-report.json",
+      "bytes": 23551,
+      "sha256": "2b1ce2000bf41175522f7e2d86a27d0bc8c6bce2869d7acbdbcef7b3be1ce4bb"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/pcm-128.csv",
+      "bytes": 4644776,
+      "sha256": "52652200dee5ace606de1934db4a71088552cdc7fd16989e397f0d9459302683"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/pcm-128.wav",
+      "bytes": 201222,
+      "sha256": "0deeeb544528fe91d3fba7449e331e467ca5b0fcb4d9454a287be47574854387",
+      "sample_rate_hz": 48000,
+      "frames": 50291,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/pcm-77.csv",
+      "bytes": 4644776,
+      "sha256": "52652200dee5ace606de1934db4a71088552cdc7fd16989e397f0d9459302683"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/pcm-77.wav",
+      "bytes": 201222,
+      "sha256": "0deeeb544528fe91d3fba7449e331e467ca5b0fcb4d9454a287be47574854387",
+      "sample_rate_hz": 48000,
+      "frames": 50291,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/settings.json",
+      "bytes": 6557,
+      "sha256": "bff335127e0d3d9b49954f57e17f0903f7ce93c13b2526f2bd7712ecc41fd93d"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "ae6fd18c6a53fac6fac3f509fceedfe8f7fd37d2ebb094fc61174d4198a4045b"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream-pcm.f32",
+      "bytes": 201164,
+      "sha256": "7b2e7714128ac31cb59c5d3e24bdcae247cfd51b76f33fcf64e31349a0419c62"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream-plan.json",
+      "bytes": 2878,
+      "sha256": "93ee8f26819153e73c0cb0754f2492d3efcc0521f92c0354f0683e8b5d2f750a"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream-tests.log",
+      "bytes": 405,
+      "sha256": "d1ae77901115dea0d9bc3104fca4d2322a56834e86d2f8fac7a22b8d2ae19260"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream-voicing.csv.gz",
+      "bytes": 4415608,
+      "sha256": "c1289eedcfbae8eba6b172b6a62b388f1e1a37e2c493f3aadc3a462915f6f3c2"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/upstream_bilabial_probe.exe",
+      "bytes": 1167096,
+      "sha256": "77c052a192c018bb362c65fea3e6a3a083f3ed7994038a6c686dcfd829cdf159"
+    },
+    {
+      "path": "artifacts/stops/bilabial-b/voicing.csv.gz",
+      "bytes": 4455687,
+      "sha256": "ad1629ba966564afe8975f4d204077abc65c517de2675d959ad4ccb1cc497f9c"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/pcm-128.csv",
+      "bytes": 4612887,
+      "sha256": "2a9f47a14636e64453c95b1242cfd3e07ac7bd3c4f8ed187b2cbed97594e6c4e"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/pcm-128.wav",
+      "bytes": 199370,
+      "sha256": "d9e69e80ed091e6c49e8810d2de5fd3514be6c6dd683fa1ded7f1eeab70f5f4a",
+      "sample_rate_hz": 48000,
+      "frames": 49828,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/pcm-77.csv",
+      "bytes": 4612887,
+      "sha256": "2a9f47a14636e64453c95b1242cfd3e07ac7bd3c4f8ed187b2cbed97594e6c4e"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/pcm-77.wav",
+      "bytes": 199370,
+      "sha256": "d9e69e80ed091e6c49e8810d2de5fd3514be6c6dd683fa1ded7f1eeab70f5f4a",
+      "sample_rate_hz": 48000,
+      "frames": 49828,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/settings.json",
+      "bytes": 6817,
+      "sha256": "a758a24a26bac6d07e567f1cb1e1f8c166322b21a4edaa394714231d48a91119"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "15490f17d8fa79643ade47afb4edfe83c036bfb47d3e93e74549eb6895852ab0"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream-pcm.f32",
+      "bytes": 199312,
+      "sha256": "50f819403dc66ba9c67442e008242631247a552b7a97db49c4d6fbf4d0df761e"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream-plan.json",
+      "bytes": 3147,
+      "sha256": "c856ef11c3f1b55281753c1a2ef3358153c2f1d2bd8c09b1a0499eb300b7a9c8"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream-tests.log",
+      "bytes": 405,
+      "sha256": "0ddb52f094998bf43b889695165e7fef7d66bdde8311deed5e99aaba9679d5ab"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream-voicing.csv.gz",
+      "bytes": 4405631,
+      "sha256": "21c4a1d20d0b9555b938b1d0cd59288e2d2ceca0bb56e7ce08b453fc83790551"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/upstream_bilabial_probe.exe",
+      "bytes": 1167096,
+      "sha256": "a0717aadc3cd8b17698e8274b28275824b9f93f1f4666d3ebaf668977e3bcc25"
+    },
+    {
+      "path": "artifacts/stops/bilabial-p/voicing.csv.gz",
+      "bytes": 4445853,
+      "sha256": "53409a290998716c4805c8e256edb3be079cbaff559844c24d5daf92308d8892"
+    },
+    {
+      "path": "artifacts/stops-report.json",
+      "bytes": 10002,
+      "sha256": "5732a985632590d92e97467106b7707dcc1aa318aacb57003f2cfcefdd40a61c"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "966d53000949eb348e83565dff399f4dd12e627ad459527ed0e7f236b6278e33"
+    },
+    {
+      "path": "artifacts/upstream-sweep.csv.gz",
+      "bytes": 2890834,
+      "sha256": "16324ac146a4a7481647bc017d855091bd6091fab6035eeca8b180d04c1860e6"
+    },
+    {
+      "path": "artifacts/vocal-core-build.jsonl",
+      "bytes": 26702,
+      "sha256": "2b7c747ea50743131ede257635bd8ab0d146d3aaa1d60e16d4b76fc8ffb2bc2c"
+    },
+    {
+      "path": "artifacts/voice/cross/block-128.csv",
+      "bytes": 997209,
+      "sha256": "93abf01a6a4029f06a0775ae33badde48909b3b4cd30207a4ecf2cb05bc41136"
+    },
+    {
+      "path": "artifacts/voice/cross/block-128.wav",
+      "bytes": 46138,
+      "sha256": "2777fbd53efd73ae44f8beff0d2a5a858cb945a9e5b8ecf51a7dabc7e414e286",
+      "sample_rate_hz": 48000,
+      "frames": 11520,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/voice/cross/candidate-samples.csv.gz",
+      "bytes": 3781339,
+      "sha256": "77abf318d2ae9462a8b81d7ba13a20c6afa197d445e59f425d275ae615b8d123"
+    },
+    {
+      "path": "artifacts/voice/cross/settings.json",
+      "bytes": 8091,
+      "sha256": "f86d5676db38799c474b358a69ce8a5ad8ca3e5f0894df1487260bad5e4702bd"
+    },
+    {
+      "path": "artifacts/voice/default-cross.wav",
+      "bytes": 46138,
+      "sha256": "b259867866e28fbef62623d273e73429a54f9f7b7e1039fca57c85220512bb2b",
+      "sample_rate_hz": 48000,
+      "frames": 11520,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/voice/experimental-targets.csv",
+      "bytes": 1203168,
+      "sha256": "eab19f6a2d832ecc548af547bfa2bd79748126cc967ace703258dc0cdeb3b2ac"
+    },
+    {
+      "path": "artifacts/voice/hold/block-128.csv",
+      "bytes": 998009,
+      "sha256": "615436004ca11dbd07fe2c85b2f22b2dbcc691ef6bf0467b806f1aa94d07675b"
+    },
+    {
+      "path": "artifacts/voice/hold/block-128.wav",
+      "bytes": 46138,
+      "sha256": "4a769dcc6211735e89787d69c804c0ae4528139980ba4c5b2adfd3f0d1a286d2",
+      "sample_rate_hz": 48000,
+      "frames": 11520,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/voice/hold/candidate-samples.csv.gz",
+      "bytes": 3070448,
+      "sha256": "8c4c363eb131fa944a493606612353e008065f030128448127809d61b4f1eae2"
+    },
+    {
+      "path": "artifacts/voice/hold/settings.json",
+      "bytes": 7978,
+      "sha256": "e72f46ff59576980ae37d98e8e2fc1f31dacee9ead2f9ace7ae1eec1008d2378"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 75753,
+      "sha256": "cbd08e1c83b8f748b9e702ec3b2ca1a28694b7727e993e332326eef8f772e81c"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "checks": {
+    "1-control/control": true,
+    "1-control/clock-gap": true,
+    "1-control/clock-and-pcm-gap": true,
+    "1-control/conflicting-clocks": true,
+    "1-draw192/control": true,
+    "1-draw192/clock-gap": true,
+    "1-draw192/clock-and-pcm-gap": true,
+    "1-draw192/conflicting-clocks": true
+  },
+  "trials": [
+    {
+      "test": "1-control/control",
+      "valid": true,
+      "clock_gaps_frames": [],
+      "pcm_missing_frames": 0,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 0.0,
+          "scheduled_interval_ms": 5.333333333333333,
+          "entry_interval_ms": 5.333333333333333,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-control/clock-gap",
+      "valid": true,
+      "clock_gaps_frames": [
+        256.0
+      ],
+      "pcm_missing_frames": 0,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 256.0,
+          "scheduled_interval_ms": 10.666666666666666,
+          "entry_interval_ms": 10.666666666666666,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-control/clock-and-pcm-gap",
+      "valid": true,
+      "clock_gaps_frames": [
+        256.0
+      ],
+      "pcm_missing_frames": 256,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 256.0,
+          "scheduled_interval_ms": 10.666666666666666,
+          "entry_interval_ms": 10.666666666666666,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-control/conflicting-clocks",
+      "valid": false,
+      "reason": "sample_and_host_clock_disagree"
+    },
+    {
+      "test": "1-draw192/control",
+      "valid": true,
+      "clock_gaps_frames": [],
+      "pcm_missing_frames": 0,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 0.0,
+          "scheduled_interval_ms": 5.333333333333333,
+          "entry_interval_ms": 5.333333333333333,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-draw192/clock-gap",
+      "valid": true,
+      "clock_gaps_frames": [
+        256.0
+      ],
+      "pcm_missing_frames": 0,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 256.0,
+          "scheduled_interval_ms": 10.666666666666666,
+          "entry_interval_ms": 10.666666666666666,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-draw192/clock-and-pcm-gap",
+      "valid": true,
+      "clock_gaps_frames": [
+        256.0
+      ],
+      "pcm_missing_frames": 256,
+      "graph_center": 24576,
+      "center_clock_intervals": [
+        {
+          "block_index": 96,
+          "stage": "data",
+          "pcm_start_frame": 24576,
+          "sample_time_gap_frames": 256.0,
+          "scheduled_interval_ms": 10.666666666666666,
+          "entry_interval_ms": 10.666666666666666,
+          "callback_ms": 0.001
+        }
+      ]
+    },
+    {
+      "test": "1-draw192/conflicting-clocks",
+      "valid": false,
+      "reason": "sample_and_host_clock_disagree"
+    }
+  ]
+}

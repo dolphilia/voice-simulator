@@ -1,0 +1,3014 @@
+{
+  "checks": {
+    "same_built_wasm": true,
+    "1-control/unique_native_intervals": true,
+    "1-control/match_supported_by_callback_gaps": true,
+    "1-control/registered_browser_and_assets": true,
+    "1-control/registered_case_and_states": true,
+    "1-control/registered_pcm": true,
+    "1-control/ordinary_clock": true,
+    "1-control/control_has_no_markers": true,
+    "1-phases/unique_native_intervals": true,
+    "1-phases/match_supported_by_callback_gaps": true,
+    "1-phases/registered_browser_and_assets": true,
+    "1-phases/registered_case_and_states": true,
+    "1-phases/registered_pcm": true,
+    "1-phases/ordinary_clock": true,
+    "1-phases/phase_markers_complete": true,
+    "1-phases/calibration_inside_final_wait_quantum": true,
+    "1-phases/phases_inside_author_quantum_0": true,
+    "1-phases/phases_inside_author_quantum_1": true,
+    "1-phases/phases_inside_author_quantum_32": true,
+    "1-phases/phases_inside_author_quantum_33": true,
+    "2-phases/unique_native_intervals": true,
+    "2-phases/match_supported_by_callback_gaps": true,
+    "2-phases/registered_browser_and_assets": true,
+    "2-phases/registered_case_and_states": true,
+    "2-phases/registered_pcm": true,
+    "2-phases/ordinary_clock": true,
+    "2-phases/phase_markers_complete": true,
+    "2-phases/calibration_inside_final_wait_quantum": true,
+    "2-phases/phases_inside_author_quantum_0": true,
+    "2-phases/phases_inside_author_quantum_1": true,
+    "2-phases/phases_inside_author_quantum_32": true,
+    "2-phases/phases_inside_author_quantum_33": true,
+    "2-control/unique_native_intervals": true,
+    "2-control/match_supported_by_callback_gaps": true,
+    "2-control/registered_browser_and_assets": true,
+    "2-control/registered_case_and_states": true,
+    "2-control/registered_pcm": true,
+    "2-control/ordinary_clock": true,
+    "2-control/control_has_no_markers": true
+  },
+  "trials": [
+    {
+      "pair": 1,
+      "condition": "control",
+      "checks": {
+        "unique_native_intervals": true,
+        "match_supported_by_callback_gaps": true,
+        "registered_browser_and_assets": true,
+        "registered_case_and_states": true,
+        "registered_pcm": true,
+        "ordinary_clock": true,
+        "control_has_no_markers": true
+      },
+      "mapping": {
+        "expected_author_calls": 865,
+        "startup_and_lead_quanta": 24,
+        "matched_threads": 1,
+        "threads": [
+          {
+            "name": "MediaTrackGrph",
+            "pid": 84466,
+            "tid": 4432854,
+            "process_blocks": 841,
+            "author_calls": 841
+          },
+          {
+            "name": "GraphRunner",
+            "pid": 84466,
+            "tid": 4432932,
+            "process_blocks": 866,
+            "author_calls": 865
+          }
+        ],
+        "selected_thread": {
+          "name": "GraphRunner",
+          "pid": 84466,
+          "tid": 4432932,
+          "process_blocks": 866,
+          "author_calls": 865,
+          "engine_blocks_without_author": 1,
+          "unpaired_engine_blocks_between_author_calls": 0
+        }
+      },
+      "quantum_budget_ms": 2.6666666666666665,
+      "mean_callback_gap_error_ms": 0.3935003357142905,
+      "one_quantum_shift_error_ms": [
+        2.7713051930870014,
+        2.772301568533963
+      ],
+      "timing": {
+        "date": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 3.0,
+            "over_budget_blocks": 3
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 3.0,
+            "over_budget_blocks": 1
+          }
+        },
+        "engine": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.2041669999998703,
+            "p95_ms": 1.6801249999998618,
+            "p99_ms": 1.7266834000000018,
+            "maximum_ms": 3.6484580000001188,
+            "over_budget_blocks": 1
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.203125,
+            "p95_ms": 1.67922499999986,
+            "p99_ms": 1.7223636399999669,
+            "maximum_ms": 1.7623340000000098,
+            "over_budget_blocks": 0
+          }
+        },
+        "author": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.202458000000206,
+            "p95_ms": 1.6762499999999818,
+            "p99_ms": 1.7242420000000493,
+            "maximum_ms": 3.646874999999909,
+            "over_budget_blocks": 1
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.2017909999999574,
+            "p95_ms": 1.6761999999999717,
+            "p99_ms": 1.7213450000001103,
+            "maximum_ms": 1.7597500000001673,
+            "over_budget_blocks": 0
+          }
+        }
+      },
+      "classification": {
+        "all": {
+          "date_only_frames": [
+            128,
+            64896
+          ],
+          "both_engine_and_date_frames": [
+            0
+          ],
+          "engine_only_frames": [],
+          "author_frames": [
+            0
+          ]
+        },
+        "warmed": {
+          "date_only_frames": [
+            64896
+          ],
+          "both_engine_and_date_frames": [],
+          "engine_only_frames": [],
+          "author_frames": []
+        }
+      },
+      "hypothesis": {
+        "warmed_native_p99_within_budget": true,
+        "date_over_budget_while_engine_within_budget": true
+      },
+      "browser": "157.0",
+      "clock": {
+        "startup_first_context_frame": 1920,
+        "startup_contiguous_first_context_frame": 1920,
+        "startup_discontinuities": 0,
+        "startup_callbacks": 8,
+        "armed_context_frame": 2944,
+        "scheduled_context_frame": 4992,
+        "lead_callbacks": 16,
+        "active_callbacks": 841,
+        "last_valid_frames": 7,
+        "last_padding_frames": 121,
+        "observation_points": 3361,
+        "first_nonzero_output_frame": 2439,
+        "first_nonzero_context_frame": 7431,
+        "wasm_memory_growths": 0
+      },
+      "phase_measurement": {
+        "quanta": [
+          {
+            "index": 0,
+            "output_frame": 0,
+            "author_ms": 3.646874999999909,
+            "outer_ms": 3.6484580000001188
+          },
+          {
+            "index": 1,
+            "output_frame": 128,
+            "author_ms": 2.6234159999999065,
+            "outer_ms": 2.628791000000092
+          },
+          {
+            "index": 32,
+            "output_frame": 4096,
+            "author_ms": 1.2607920000000377,
+            "outer_ms": 1.2649579999997513
+          },
+          {
+            "index": 33,
+            "output_frame": 4224,
+            "author_ms": 1.198790999999801,
+            "outer_ms": 1.199666999999863
+          }
+        ]
+      }
+    },
+    {
+      "pair": 1,
+      "condition": "phases",
+      "checks": {
+        "unique_native_intervals": true,
+        "match_supported_by_callback_gaps": true,
+        "registered_browser_and_assets": true,
+        "registered_case_and_states": true,
+        "registered_pcm": true,
+        "ordinary_clock": true,
+        "phase_markers_complete": true,
+        "calibration_inside_final_wait_quantum": true,
+        "phases_inside_author_quantum_0": true,
+        "phases_inside_author_quantum_1": true,
+        "phases_inside_author_quantum_32": true,
+        "phases_inside_author_quantum_33": true
+      },
+      "mapping": {
+        "expected_author_calls": 865,
+        "startup_and_lead_quanta": 24,
+        "matched_threads": 1,
+        "threads": [
+          {
+            "name": "MediaTrackGrph",
+            "pid": 84504,
+            "tid": 4433595,
+            "process_blocks": 841,
+            "author_calls": 841
+          },
+          {
+            "name": "GraphRunner",
+            "pid": 84504,
+            "tid": 4433674,
+            "process_blocks": 866,
+            "author_calls": 865
+          }
+        ],
+        "selected_thread": {
+          "name": "GraphRunner",
+          "pid": 84504,
+          "tid": 4433674,
+          "process_blocks": 866,
+          "author_calls": 865,
+          "engine_blocks_without_author": 1,
+          "unpaired_engine_blocks_between_author_calls": 0
+        }
+      },
+      "quantum_budget_ms": 2.6666666666666665,
+      "mean_callback_gap_error_ms": 0.4423262452381009,
+      "one_quantum_shift_error_ms": [
+        2.7832828164481485,
+        2.7833798557806873
+      ],
+      "timing": {
+        "date": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 4.0,
+            "over_budget_blocks": 3
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 3.0,
+            "over_budget_blocks": 1
+          }
+        },
+        "engine": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.2119159999997464,
+            "p95_ms": 1.6833750000000691,
+            "p99_ms": 1.7465754000000744,
+            "maximum_ms": 3.965125000000171,
+            "over_budget_blocks": 2
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.21158400000013,
+            "p95_ms": 1.683325000000059,
+            "p99_ms": 1.744929719999927,
+            "maximum_ms": 1.773916999999983,
+            "over_budget_blocks": 0
+          }
+        },
+        "author": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.2107080000000678,
+            "p95_ms": 1.6809170000001359,
+            "p99_ms": 1.7448328000001312,
+            "maximum_ms": 3.962083999999777,
+            "over_budget_blocks": 2
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.209875000000011,
+            "p95_ms": 1.6809002000000874,
+            "p99_ms": 1.7424510800001551,
+            "maximum_ms": 1.7725839999998243,
+            "over_budget_blocks": 0
+          }
+        }
+      },
+      "classification": {
+        "all": {
+          "date_only_frames": [
+            42496
+          ],
+          "both_engine_and_date_frames": [
+            0,
+            128
+          ],
+          "engine_only_frames": [],
+          "author_frames": [
+            0,
+            128
+          ]
+        },
+        "warmed": {
+          "date_only_frames": [
+            42496
+          ],
+          "both_engine_and_date_frames": [],
+          "engine_only_frames": [],
+          "author_frames": []
+        }
+      },
+      "hypothesis": {
+        "warmed_native_p99_within_budget": true,
+        "date_over_budget_while_engine_within_budget": true
+      },
+      "browser": "157.0",
+      "clock": {
+        "startup_first_context_frame": 1792,
+        "startup_contiguous_first_context_frame": 1792,
+        "startup_discontinuities": 0,
+        "startup_callbacks": 8,
+        "armed_context_frame": 2816,
+        "scheduled_context_frame": 4864,
+        "lead_callbacks": 16,
+        "active_callbacks": 841,
+        "last_valid_frames": 7,
+        "last_padding_frames": 121,
+        "observation_points": 3361,
+        "first_nonzero_output_frame": 2439,
+        "first_nonzero_context_frame": 7303,
+        "wasm_memory_growths": 0
+      },
+      "phase_measurement": {
+        "quanta": [
+          {
+            "index": 0,
+            "output_frame": 0,
+            "author_ms": 3.962083999999777,
+            "outer_ms": 3.965125000000171,
+            "wasm_ms": 3.418833000000177,
+            "pcm_copy_ms": 0.1256239999997888,
+            "render_other_ms": 0.09741799999983414,
+            "glottal_copy_ms": 0.06987399999979971,
+            "observation_ms": 0.05045800000016243,
+            "tract_ms": 0.0,
+            "capture_ms": 0.03016699999989214,
+            "author_other_ms": 0.16971000000012282,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 1.240208000000166,
+                "pcm_copy_ms": 0.061375000000225555,
+                "render_other_ms": 0.04066699999930279,
+                "glottal_copy_ms": 0.036499999999705324,
+                "observation_ms": 0.03787499999998545,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.5895409999998265,
+                "pcm_copy_ms": 0.004416000000219356,
+                "render_other_ms": 0.03166800000008152,
+                "glottal_copy_ms": 0.02687500000001819,
+                "observation_ms": 0.0048750000000836735,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 1.0325840000000426,
+                "pcm_copy_ms": 0.056291999999757536,
+                "render_other_ms": 0.012749000000439992,
+                "glottal_copy_ms": 0.0034160000000156288,
+                "observation_ms": 0.00437499999998181,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.5565000000001419,
+                "pcm_copy_ms": 0.0035409999995863473,
+                "render_other_ms": 0.012334000000009837,
+                "glottal_copy_ms": 0.003083000000060565,
+                "observation_ms": 0.0033330000001114968,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.0858339999999771
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.10616699999991397
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.1268339999996897
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.3670419999998558
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.3794589999997697
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.4408339999999953
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.4484169999996084
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.4539589999999407
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.490458999999646
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.4992089999996097
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.537083999999595
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.5457499999997708
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.5538339999998243
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.1433749999996508
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.1643339999995987
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.168749999999818
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.171374999999898
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.1741250000000036
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.201000000000022
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.2048339999996642
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.209708999999748
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 2.213833999999679
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 2.21737499999972
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 3.2499589999997625
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 3.255999999999858
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 3.3122919999996157
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 3.315458999999919
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 3.3179589999999735
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 3.321374999999989
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 3.326999999999771
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 3.3313749999997526
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 3.3341669999999795
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 3.3373749999996107
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 3.8938749999997526
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 3.898584000000028
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 3.9021249999996144
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 3.9065419999997175
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 3.909041999999772
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 3.9121249999998327
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 3.9149169999996047
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 3.9182499999997162
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 3.9251249999997526
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 3.9552919999996448
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 3.959541999999601
+              }
+            ]
+          },
+          {
+            "index": 1,
+            "output_frame": 128,
+            "author_ms": 2.836334000000079,
+            "outer_ms": 2.8384580000001733,
+            "wasm_ms": 2.6175829999997404,
+            "pcm_copy_ms": 0.021542000000408734,
+            "render_other_ms": 0.07320900000013353,
+            "glottal_copy_ms": 0.015165000000251894,
+            "observation_ms": 0.023665999999593623,
+            "tract_ms": 0.0,
+            "capture_ms": 0.0072079999999914435,
+            "author_other_ms": 0.07796099999995931,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 1.0155829999998787,
+                "pcm_copy_ms": 0.012500000000272848,
+                "render_other_ms": 0.03987599999982194,
+                "glottal_copy_ms": 0.004541000000244821,
+                "observation_ms": 0.007374999999683496,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.45024999999986903,
+                "pcm_copy_ms": 0.0027920000002268353,
+                "render_other_ms": 0.013207999999849562,
+                "glottal_copy_ms": 0.003040999999939231,
+                "observation_ms": 0.0036250000002837623,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.7616250000000946,
+                "pcm_copy_ms": 0.003541999999924883,
+                "render_other_ms": 0.01070800000024974,
+                "glottal_copy_ms": 0.0029580000000350992,
+                "observation_ms": 0.0033329999996567494,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.39012499999989814,
+                "pcm_copy_ms": 0.0027079999999841675,
+                "render_other_ms": 0.009417000000212283,
+                "glottal_copy_ms": 0.004625000000032742,
+                "observation_ms": 0.009332999999969616,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.013249999999970896
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.02162499999985812
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.03845899999987523
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.054041999999754
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.071791999999732
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.084292000000005
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.0895839999998316
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.0963339999998425
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.1008750000000873
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.1042090000000826
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.111583999999766
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.117083999999977
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.1227920000001177
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.5730419999999867
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.5765419999997903
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.5793340000000171
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.5833339999999225
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.586334000000079
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.5893750000000182
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.5917919999997139
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.5954169999999976
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.5980839999997443
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.6008339999998498
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.3624589999999444
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.3680420000000595
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.3715839999999844
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.3739590000000135
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.376209000000017
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.379167000000052
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.3815420000000813
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.384874999999738
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 2.3902499999999236
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 2.3930420000001504
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.7831670000000486
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.7867089999999735
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.7894169999999576
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.792500000000018
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.8047919999999067
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.8094169999999394
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.8119590000001153
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.821292000000085
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 2.824916999999914
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 2.8321249999999054
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 2.8350420000001577
+              }
+            ]
+          },
+          {
+            "index": 32,
+            "output_frame": 4096,
+            "author_ms": 1.622707999999875,
+            "outer_ms": 1.6250829999999041,
+            "wasm_ms": 1.2738750000003165,
+            "pcm_copy_ms": 0.041375000000243745,
+            "render_other_ms": 0.0604999999991378,
+            "glottal_copy_ms": 0.02324899999985064,
+            "observation_ms": 0.08008399999971516,
+            "tract_ms": 0.0,
+            "capture_ms": 0.016541000000415806,
+            "author_other_ms": 0.12708400000019537,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 0.44312500000023647,
+                "pcm_copy_ms": 0.002666999999746622,
+                "render_other_ms": 0.014374999999745341,
+                "glottal_copy_ms": 0.011500000000069122,
+                "observation_ms": 0.004667000000154076,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.1948330000000169,
+                "pcm_copy_ms": 0.0025000000000545697,
+                "render_other_ms": 0.010124999999788997,
+                "glottal_copy_ms": 0.0028750000001309672,
+                "observation_ms": 0.0033749999997780833,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.44112500000028376,
+                "pcm_copy_ms": 0.02358300000014424,
+                "render_other_ms": 0.015083999999660591,
+                "glottal_copy_ms": 0.002540999999837368,
+                "observation_ms": 0.0029999999997016857,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.19479199999977936,
+                "pcm_copy_ms": 0.012625000000298314,
+                "render_other_ms": 0.02091599999994287,
+                "glottal_copy_ms": 0.0063329999998131825,
+                "observation_ms": 0.06904200000008132,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.027374999999665306
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.036125000000083674
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.04279199999973571
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.4859169999999722
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.4911250000000109
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.49379199999975754
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.4962919999998121
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.4988749999997708
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.5103749999998399
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.513332999999875
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.5180000000000291
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.5425000000000182
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.5459169999999176
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.7407499999999345
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.7451670000000377
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.7476670000000922
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.7499579999998787
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.7522919999996702
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.7551669999998012
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.7581669999999576
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.7615419999997357
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.7639999999996689
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.766374999999698
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.2074999999999818
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.2131669999998849
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.236750000000029
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.2437919999997575
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.246291999999812
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.2488329999996495
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.2515419999999722
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.2545419999996739
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.2576249999997344
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.26825000000008
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.4630419999998594
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.4678329999997004
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.4804579999999987
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.485957999999755
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.5102919999999358
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.516624999999749
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.5257079999996677
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.594749999999749
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 1.5981669999996484
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 1.6147080000000642
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 1.6212499999996908
+              }
+            ]
+          },
+          {
+            "index": 33,
+            "output_frame": 4224,
+            "author_ms": 1.5372500000003129,
+            "outer_ms": 1.5388330000000678,
+            "wasm_ms": 1.2835010000003422,
+            "pcm_copy_ms": 0.013958999999886146,
+            "render_other_ms": 0.1102059999998346,
+            "glottal_copy_ms": 0.011335000000144646,
+            "observation_ms": 0.043875000000298314,
+            "tract_ms": 0.0,
+            "capture_ms": 0.007167000000208645,
+            "author_other_ms": 0.06720699999959834,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 0.44766699999991033,
+                "pcm_copy_ms": 0.005042000000230473,
+                "render_other_ms": 0.023207999999613094,
+                "glottal_copy_ms": 0.0027500000001055014,
+                "observation_ms": 0.012916000000132044,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.19362499999988358,
+                "pcm_copy_ms": 0.002708999999867956,
+                "render_other_ms": 0.026374000000032538,
+                "glottal_copy_ms": 0.0027920000002268353,
+                "observation_ms": 0.0026250000000800355,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.44283400000040274,
+                "pcm_copy_ms": 0.0038749999998799467,
+                "render_other_ms": 0.04183199999988574,
+                "glottal_copy_ms": 0.0030839999999443535,
+                "observation_ms": 0.025292000000263215,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.19937500000014552,
+                "pcm_copy_ms": 0.00233299999990777,
+                "render_other_ms": 0.018792000000303233,
+                "glottal_copy_ms": 0.002708999999867956,
+                "observation_ms": 0.0030419999998230196,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.005542000000332337
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.008250000000316504
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.011292000000139524
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.45895900000004985
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.46366699999998673
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.4687090000002172
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.4841670000000704
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.4875000000001819
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.4902500000002874
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.4932090000002063
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.5061250000003383
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.5089590000002318
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.5282500000002983
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.7218750000001819
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.7250000000003638
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.7277090000002318
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.7316670000000158
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.7339999999999236
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.7367920000001504
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.7456250000000182
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.7482500000000982
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.7509589999999662
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.7853749999999309
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.2282090000003336
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.2326670000002196
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.2365420000000995
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.2395000000001346
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.2418750000001637
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.244959000000108
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.2496249999999236
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.2749170000001868
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.2799589999999625
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.2852090000001226
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.4845840000002681
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.4876670000003287
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.4900000000002365
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.500459000000319
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.5035000000002583
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.5062090000001263
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.5142500000001746
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.5172919999999976
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 1.5205000000000837
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 1.5276670000002923
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 1.5344589999999698
+              }
+            ]
+          }
+        ],
+        "calibration_steps_ms": [
+          0.012333000000126049,
+          0.003333999999995285,
+          0.0026250000000800355,
+          0.002540999999837368,
+          0.0025000000000545697,
+          0.008499999999912689,
+          0.0024170000001504377
+        ],
+        "calibration_within_goal": true,
+        "early_minus_steady_ms": [
+          {
+            "outer_ms": 2.383167000000185,
+            "author_ms": 2.382104999999683,
+            "wasm_ms": 2.1401449999998476,
+            "pcm_copy_ms": 0.09795699999972385,
+            "observation_ms": -0.011521499999844309,
+            "glottal_copy_ms": 0.052581999999802065,
+            "capture_ms": 0.018312999999579915,
+            "tract_ms": 0.0,
+            "render_other_ms": 0.012065000000347936,
+            "author_other_ms": 0.07256450000022596
+          },
+          {
+            "outer_ms": 1.2565000000001874,
+            "author_ms": 1.256354999999985,
+            "wasm_ms": 1.338894999999411,
+            "pcm_copy_ms": -0.006124999999656211,
+            "observation_ms": -0.038313500000413114,
+            "glottal_copy_ms": -0.002126999999745749,
+            "capture_ms": -0.004646000000320782,
+            "tract_ms": 0.0,
+            "render_other_ms": -0.012143999999352673,
+            "author_other_ms": -0.019184499999937543
+          }
+        ],
+        "wasm_share_of_first_excess": 0.8984259719870167,
+        "prediction_met": true
+      }
+    },
+    {
+      "pair": 2,
+      "condition": "phases",
+      "checks": {
+        "unique_native_intervals": true,
+        "match_supported_by_callback_gaps": true,
+        "registered_browser_and_assets": true,
+        "registered_case_and_states": true,
+        "registered_pcm": true,
+        "ordinary_clock": true,
+        "phase_markers_complete": true,
+        "calibration_inside_final_wait_quantum": true,
+        "phases_inside_author_quantum_0": true,
+        "phases_inside_author_quantum_1": true,
+        "phases_inside_author_quantum_32": true,
+        "phases_inside_author_quantum_33": true
+      },
+      "mapping": {
+        "expected_author_calls": 865,
+        "startup_and_lead_quanta": 24,
+        "matched_threads": 1,
+        "threads": [
+          {
+            "name": "MediaTrackGrph",
+            "pid": 84554,
+            "tid": 4434326,
+            "process_blocks": 841,
+            "author_calls": 841
+          },
+          {
+            "name": "GraphRunner",
+            "pid": 84554,
+            "tid": 4434433,
+            "process_blocks": 866,
+            "author_calls": 865
+          }
+        ],
+        "selected_thread": {
+          "name": "GraphRunner",
+          "pid": 84554,
+          "tid": 4434433,
+          "process_blocks": 866,
+          "author_calls": 865,
+          "engine_blocks_without_author": 1,
+          "unpaired_engine_blocks_between_author_calls": 0
+        }
+      },
+      "quantum_budget_ms": 2.6666666666666665,
+      "mean_callback_gap_error_ms": 0.373590807142862,
+      "one_quantum_shift_error_ms": [
+        2.782205426698458,
+        2.782251911799769
+      ],
+      "timing": {
+        "date": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 4.0,
+            "over_budget_blocks": 3
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 2.0,
+            "maximum_ms": 3.0,
+            "over_budget_blocks": 1
+          }
+        },
+        "engine": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.1717920000000959,
+            "p95_ms": 1.6460419999998521,
+            "p99_ms": 1.6794254000000366,
+            "maximum_ms": 3.885958999999957,
+            "over_budget_blocks": 2
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.170875000000251,
+            "p95_ms": 1.6457751999999346,
+            "p99_ms": 1.6756855600000926,
+            "maximum_ms": 1.6973329999996167,
+            "over_budget_blocks": 0
+          }
+        },
+        "author": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.1707499999997708,
+            "p95_ms": 1.6443750000003092,
+            "p99_ms": 1.6760667999999896,
+            "maximum_ms": 3.882957999999917,
+            "over_budget_blocks": 2
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.168999999999869,
+            "p95_ms": 1.6439086000001224,
+            "p99_ms": 1.6746967200001381,
+            "maximum_ms": 1.69399999999996,
+            "over_budget_blocks": 0
+          }
+        }
+      },
+      "classification": {
+        "all": {
+          "date_only_frames": [
+            100736
+          ],
+          "both_engine_and_date_frames": [
+            0,
+            128
+          ],
+          "engine_only_frames": [],
+          "author_frames": [
+            0,
+            128
+          ]
+        },
+        "warmed": {
+          "date_only_frames": [
+            100736
+          ],
+          "both_engine_and_date_frames": [],
+          "engine_only_frames": [],
+          "author_frames": []
+        }
+      },
+      "hypothesis": {
+        "warmed_native_p99_within_budget": true,
+        "date_over_budget_while_engine_within_budget": true
+      },
+      "browser": "157.0",
+      "clock": {
+        "startup_first_context_frame": 1792,
+        "startup_contiguous_first_context_frame": 1792,
+        "startup_discontinuities": 0,
+        "startup_callbacks": 8,
+        "armed_context_frame": 2816,
+        "scheduled_context_frame": 4864,
+        "lead_callbacks": 16,
+        "active_callbacks": 841,
+        "last_valid_frames": 7,
+        "last_padding_frames": 121,
+        "observation_points": 3361,
+        "first_nonzero_output_frame": 2439,
+        "first_nonzero_context_frame": 7303,
+        "wasm_memory_growths": 0
+      },
+      "phase_measurement": {
+        "quanta": [
+          {
+            "index": 0,
+            "output_frame": 0,
+            "author_ms": 3.882957999999917,
+            "outer_ms": 3.885958999999957,
+            "wasm_ms": 3.3625010000000657,
+            "pcm_copy_ms": 0.09491800000000694,
+            "render_other_ms": 0.09462200000007215,
+            "glottal_copy_ms": 0.0682489999999234,
+            "observation_ms": 0.046959000000015294,
+            "tract_ms": 0.0,
+            "capture_ms": 0.026333000000022366,
+            "author_other_ms": 0.18937599999981103,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 1.2245000000000346,
+                "pcm_copy_ms": 0.033333999999968,
+                "render_other_ms": 0.0401240000001053,
+                "glottal_copy_ms": 0.030375000000049113,
+                "observation_ms": 0.033583000000135144,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.5877500000001419,
+                "pcm_copy_ms": 0.007082999999965978,
+                "render_other_ms": 0.030375000000049113,
+                "glottal_copy_ms": 0.031333000000131506,
+                "observation_ms": 0.00641700000005585,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 1.0201669999999012,
+                "pcm_copy_ms": 0.05079200000000128,
+                "render_other_ms": 0.01399900000001253,
+                "glottal_copy_ms": 0.003499999999803549,
+                "observation_ms": 0.003833999999869775,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.530083999999988,
+                "pcm_copy_ms": 0.0037090000000716827,
+                "render_other_ms": 0.010123999999905209,
+                "glottal_copy_ms": 0.003040999999939231,
+                "observation_ms": 0.0031249999999545253,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.09249999999997272
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.11112499999990177
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.13358299999981682
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.3580829999998514
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.36979099999985
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.403124999999818
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.4090830000000096
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.413915999999972
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.444291000000021
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.4515829999998004
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.4851659999999356
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.4929579999998168
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.5014159999998355
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.0891659999999774
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.1077080000000024
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.1147909999999683
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.118165999999974
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.1369579999998223
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.168290999999954
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.1779159999998683
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.184332999999924
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 2.187832999999955
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 2.191665999999941
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 3.2118329999998423
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 3.21879100000001
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 3.2695830000000115
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 3.27279099999987
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 3.2752080000000205
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 3.278707999999824
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 3.2811659999999847
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 3.2849999999998545
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 3.2875409999999192
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 3.290790999999899
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 3.8208749999998872
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 3.8254159999999047
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 3.8291249999999764
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 3.831457999999884
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 3.8336249999999836
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 3.836665999999923
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 3.839332999999897
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 3.8424579999998514
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 3.8483749999998054
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 3.8747079999998277
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 3.8802499999999327
+              }
+            ]
+          },
+          {
+            "index": 1,
+            "output_frame": 128,
+            "author_ms": 2.810375000000022,
+            "outer_ms": 2.8122909999999592,
+            "wasm_ms": 2.558541999999761,
+            "pcm_copy_ms": 0.026915999999800988,
+            "render_other_ms": 0.08133400000019719,
+            "glottal_copy_ms": 0.02416699999980665,
+            "observation_ms": 0.01895899999976791,
+            "tract_ms": 0.0,
+            "capture_ms": 0.01129199999991215,
+            "author_other_ms": 0.08916500000077576,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 0.9649999999999181,
+                "pcm_copy_ms": 0.014374999999972715,
+                "render_other_ms": 0.01854100000014114,
+                "glottal_copy_ms": 0.005666999999903055,
+                "observation_ms": 0.00437499999998181,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.4490419999999631,
+                "pcm_copy_ms": 0.0061659999998937565,
+                "render_other_ms": 0.04262600000015482,
+                "glottal_copy_ms": 0.00483299999996234,
+                "observation_ms": 0.0053339999999479915,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.7774999999999181,
+                "pcm_copy_ms": 0.0037500000000818545,
+                "render_other_ms": 0.011041999999861218,
+                "glottal_copy_ms": 0.003249999999979991,
+                "observation_ms": 0.00416599999994105,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.3669999999999618,
+                "pcm_copy_ms": 0.002624999999852662,
+                "render_other_ms": 0.009125000000040018,
+                "glottal_copy_ms": 0.010416999999961263,
+                "observation_ms": 0.00508399999989706,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.013042000000041298
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.01708399999984067
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.025208999999904336
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.9902089999998225
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.9966669999998885
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.0110419999998612
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.0149999999998727
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.018624999999929
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.0242919999998321
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.0271249999998417
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.0314999999998236
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.0357500000000073
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.0396670000000086
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.4887089999999716
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.523584000000028
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.5297499999999218
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.533584000000019
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.536333999999897
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.5411669999998594
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.54424999999992
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.549583999999868
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.5529169999999795
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.556291999999985
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.333791999999903
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.338999999999942
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.3427500000000236
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.3452089999998407
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.3474169999999503
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.3506669999999303
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.353208999999879
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.35737499999982
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 2.369374999999991
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 2.372708999999986
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 2.739708999999948
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 2.7431249999999636
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 2.7457499999998163
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 2.7481249999998454
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 2.752999999999929
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 2.7634169999998903
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 2.782375000000002
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 2.787458999999899
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 2.7926669999999376
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 2.8039589999998498
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 2.8086249999998927
+              }
+            ]
+          },
+          {
+            "index": 32,
+            "output_frame": 4096,
+            "author_ms": 1.526915999999801,
+            "outer_ms": 1.531083000000308,
+            "wasm_ms": 1.3032090000001517,
+            "pcm_copy_ms": 0.011083999999755179,
+            "render_other_ms": 0.050874000000021624,
+            "glottal_copy_ms": 0.017458000000260654,
+            "observation_ms": 0.023541999999906693,
+            "tract_ms": 0.0,
+            "capture_ms": 0.009083000000373431,
+            "author_other_ms": 0.11166599999933169,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 0.46258399999987887,
+                "pcm_copy_ms": 0.0032919999998739513,
+                "render_other_ms": 0.017624000000068918,
+                "glottal_copy_ms": 0.00937500000009095,
+                "observation_ms": 0.003749999999854481,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.19750000000021828,
+                "pcm_copy_ms": 0.002791999999772088,
+                "render_other_ms": 0.013207999999849562,
+                "glottal_copy_ms": 0.0029589999999188876,
+                "observation_ms": 0.005375000000185537,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.44787499999983993,
+                "pcm_copy_ms": 0.002666999999746622,
+                "render_other_ms": 0.008750000000418368,
+                "glottal_copy_ms": 0.0025829999999587017,
+                "observation_ms": 0.004833999999846128,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.19525000000021464,
+                "pcm_copy_ms": 0.0023330000003625173,
+                "render_other_ms": 0.011291999999684776,
+                "glottal_copy_ms": 0.002541000000292115,
+                "observation_ms": 0.009583000000020547,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.03245799999967858
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.04399999999986903
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.05029100000001563
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.5128749999998945
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.5199579999998605
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.5232499999997344
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.5274999999996908
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.5304579999997259
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.5398329999998168
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.5431659999999283
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.5469159999997828
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.5679159999999683
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.5724999999997635
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.7699999999999818
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.775916000000052
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.7787079999998241
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.7814159999998083
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.7839159999998628
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.7868749999997817
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.7902079999998932
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.7955830000000788
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.8012079999998605
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.8039159999998446
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.2517909999996846
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.2555409999999938
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.2582079999997404
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.2604999999998654
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.2627079999997477
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.2652909999997064
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.2685409999999138
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.27337499999976
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.276332999999795
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.2807079999997768
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.4759579999999914
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.4804999999996653
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.4828330000000278
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.485208000000057
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.4876249999997526
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.4901660000000447
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.5001250000000255
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.509708000000046
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 1.5124579999996968
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 1.5215410000000702
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 1.5252499999996871
+              }
+            ]
+          },
+          {
+            "index": 33,
+            "output_frame": 4224,
+            "author_ms": 1.4732920000001286,
+            "outer_ms": 1.477041999999983,
+            "wasm_ms": 1.2874580000002425,
+            "pcm_copy_ms": 0.012332999999671301,
+            "render_other_ms": 0.06170700000075158,
+            "glottal_copy_ms": 0.028207999999722233,
+            "observation_ms": 0.012542000000394182,
+            "tract_ms": 0.0,
+            "capture_ms": 0.005957999999736785,
+            "author_other_ms": 0.06508599999961007,
+            "pieces": [
+              {
+                "offset_frames": 0,
+                "wasm_ms": 0.4455000000002656,
+                "pcm_copy_ms": 0.0022089999997660925,
+                "render_other_ms": 0.008207000000311382,
+                "glottal_copy_ms": 0.0023330000003625173,
+                "observation_ms": 0.0026250000000800355,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 32,
+                "wasm_ms": 0.1917910000001939,
+                "pcm_copy_ms": 0.0049579999999878055,
+                "render_other_ms": 0.03108399999973699,
+                "glottal_copy_ms": 0.004083999999693333,
+                "observation_ms": 0.003459000000020751,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 64,
+                "wasm_ms": 0.453125,
+                "pcm_copy_ms": 0.0027079999999841675,
+                "render_other_ms": 0.013458000000355241,
+                "glottal_copy_ms": 0.008540999999695487,
+                "observation_ms": 0.0034160000000156288,
+                "tract_ms": 0.0
+              },
+              {
+                "offset_frames": 96,
+                "wasm_ms": 0.197041999999783,
+                "pcm_copy_ms": 0.002457999999933236,
+                "render_other_ms": 0.008958000000347965,
+                "glottal_copy_ms": 0.013249999999970896,
+                "observation_ms": 0.003042000000277767,
+                "tract_ms": 0.0
+              }
+            ],
+            "markers": [
+              {
+                "offset_frames": 0,
+                "phase": "quantum-start",
+                "time_from_author_start_ms": 0.005541999999877589
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.009416999999757536
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.012291999999888503
+              },
+              {
+                "offset_frames": 0,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.4577920000001541
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.4609580000001188
+              },
+              {
+                "offset_frames": 0,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.46316699999988487
+              },
+              {
+                "offset_frames": 0,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.4653330000001006
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.46749999999974534
+              },
+              {
+                "offset_frames": 0,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.46983300000010786
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.4721249999997781
+              },
+              {
+                "offset_frames": 32,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.4747499999998581
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.4776670000001104
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.4806669999998121
+              },
+              {
+                "offset_frames": 32,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 0.672458000000006
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 0.6822499999998399
+              },
+              {
+                "offset_frames": 32,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 0.6872079999998277
+              },
+              {
+                "offset_frames": 32,
+                "phase": "render-end",
+                "time_from_author_start_ms": 0.7055000000000291
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 0.7108330000000933
+              },
+              {
+                "offset_frames": 32,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 0.7149169999997866
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 0.7243330000001151
+              },
+              {
+                "offset_frames": 64,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 0.7277920000001359
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-start",
+                "time_from_author_start_ms": 0.7305419999997866
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 0.7364579999998568
+              },
+              {
+                "offset_frames": 64,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.1895829999998568
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.1947919999997794
+              },
+              {
+                "offset_frames": 64,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.1974999999997635
+              },
+              {
+                "offset_frames": 64,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.199833000000126
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.2029170000000704
+              },
+              {
+                "offset_frames": 64,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.2114579999997659
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.2162920000000668
+              },
+              {
+                "offset_frames": 96,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.2197080000000824
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-start",
+                "time_from_author_start_ms": 1.2226670000000013
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-start",
+                "time_from_author_start_ms": 1.2253749999999854
+              },
+              {
+                "offset_frames": 96,
+                "phase": "wasm-end",
+                "time_from_author_start_ms": 1.4224169999997684
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-start",
+                "time_from_author_start_ms": 1.4256669999999758
+              },
+              {
+                "offset_frames": 96,
+                "phase": "pcm-copy-end",
+                "time_from_author_start_ms": 1.428124999999909
+              },
+              {
+                "offset_frames": 96,
+                "phase": "render-end",
+                "time_from_author_start_ms": 1.4311250000000655
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-start",
+                "time_from_author_start_ms": 1.4360419999998157
+              },
+              {
+                "offset_frames": 96,
+                "phase": "glottal-end",
+                "time_from_author_start_ms": 1.4492919999997866
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-start",
+                "time_from_author_start_ms": 1.4563749999997526
+              },
+              {
+                "offset_frames": 128,
+                "phase": "observation-end",
+                "time_from_author_start_ms": 1.4594170000000304
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-start",
+                "time_from_author_start_ms": 1.4620420000001104
+              },
+              {
+                "offset_frames": 128,
+                "phase": "capture-end",
+                "time_from_author_start_ms": 1.4679999999998472
+              },
+              {
+                "offset_frames": 128,
+                "phase": "quantum-end",
+                "time_from_author_start_ms": 1.4708329999998568
+              }
+            ]
+          }
+        ],
+        "calibration_steps_ms": [
+          0.015832999999929598,
+          0.01608299999998053,
+          0.005084000000124433,
+          0.003249999999979991,
+          0.0025829999999587017,
+          0.002292000000124972,
+          0.0022499999997762643
+        ],
+        "calibration_within_goal": true,
+        "early_minus_steady_ms": [
+          {
+            "outer_ms": 2.3818964999998116,
+            "author_ms": 2.382853999999952,
+            "wasm_ms": 2.0671674999998686,
+            "pcm_copy_ms": 0.0832095000002937,
+            "observation_ms": 0.028916999999864856,
+            "glottal_copy_ms": 0.045415999999931955,
+            "capture_ms": 0.018812499999967258,
+            "tract_ms": 0.0,
+            "render_other_ms": 0.03833149999968555,
+            "author_other_ms": 0.10100000000034015
+          },
+          {
+            "outer_ms": 1.3082284999998137,
+            "author_ms": 1.310271000000057,
+            "wasm_ms": 1.263208499999564,
+            "pcm_copy_ms": 0.015207500000087748,
+            "observation_ms": 0.0009169999996174738,
+            "glottal_copy_ms": 0.0013339999998152052,
+            "capture_ms": 0.003771499999857042,
+            "tract_ms": 0.0,
+            "render_other_ms": 0.025043499999810592,
+            "author_other_ms": 0.0007890000013048848
+          }
+        ],
+        "wasm_share_of_first_excess": 0.8675174811381269,
+        "prediction_met": true
+      }
+    },
+    {
+      "pair": 2,
+      "condition": "control",
+      "checks": {
+        "unique_native_intervals": true,
+        "match_supported_by_callback_gaps": true,
+        "registered_browser_and_assets": true,
+        "registered_case_and_states": true,
+        "registered_pcm": true,
+        "ordinary_clock": true,
+        "control_has_no_markers": true
+      },
+      "mapping": {
+        "expected_author_calls": 865,
+        "startup_and_lead_quanta": 24,
+        "matched_threads": 1,
+        "threads": [
+          {
+            "name": "MediaTrackGrph",
+            "pid": 84617,
+            "tid": 4435168,
+            "process_blocks": 841,
+            "author_calls": 841
+          },
+          {
+            "name": "GraphRunner",
+            "pid": 84617,
+            "tid": 4435261,
+            "process_blocks": 866,
+            "author_calls": 865
+          }
+        ],
+        "selected_thread": {
+          "name": "GraphRunner",
+          "pid": 84617,
+          "tid": 4435261,
+          "process_blocks": 866,
+          "author_calls": 865,
+          "engine_blocks_without_author": 1,
+          "unpaired_engine_blocks_between_author_calls": 0
+        }
+      },
+      "quantum_budget_ms": 2.6666666666666665,
+      "mean_callback_gap_error_ms": 0.4262601845237977,
+      "one_quantum_shift_error_ms": [
+        2.8175834564958135,
+        2.8172724707985553
+      ],
+      "timing": {
+        "date": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 3.0,
+            "maximum_ms": 4.0,
+            "over_budget_blocks": 11
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.0,
+            "p95_ms": 2.0,
+            "p99_ms": 3.0,
+            "maximum_ms": 3.0,
+            "over_budget_blocks": 10
+          }
+        },
+        "engine": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.181583000000046,
+            "p95_ms": 1.6437919999998485,
+            "p99_ms": 1.6825918000003186,
+            "maximum_ms": 3.5587909999999283,
+            "over_budget_blocks": 1
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.17975000000024,
+            "p95_ms": 1.6436251999999512,
+            "p99_ms": 1.6783602800001243,
+            "maximum_ms": 1.6979169999999613,
+            "over_budget_blocks": 0
+          }
+        },
+        "author": {
+          "all": {
+            "blocks": 841,
+            "median_ms": 1.1798330000001442,
+            "p95_ms": 1.643000000000029,
+            "p99_ms": 1.6805332000000819,
+            "maximum_ms": 3.5568750000002183,
+            "over_budget_blocks": 1
+          },
+          "warmed": {
+            "blocks": 809,
+            "median_ms": 1.1778329999997368,
+            "p95_ms": 1.6427999999999883,
+            "p99_ms": 1.675586080000139,
+            "maximum_ms": 1.6965000000000146,
+            "over_budget_blocks": 0
+          }
+        }
+      },
+      "classification": {
+        "all": {
+          "date_only_frames": [
+            19840,
+            56192,
+            65536,
+            67456,
+            67840,
+            80384,
+            80896,
+            81280,
+            89472,
+            90368
+          ],
+          "both_engine_and_date_frames": [
+            0
+          ],
+          "engine_only_frames": [],
+          "author_frames": [
+            0
+          ]
+        },
+        "warmed": {
+          "date_only_frames": [
+            19840,
+            56192,
+            65536,
+            67456,
+            67840,
+            80384,
+            80896,
+            81280,
+            89472,
+            90368
+          ],
+          "both_engine_and_date_frames": [],
+          "engine_only_frames": [],
+          "author_frames": []
+        }
+      },
+      "hypothesis": {
+        "warmed_native_p99_within_budget": true,
+        "date_over_budget_while_engine_within_budget": true
+      },
+      "browser": "157.0",
+      "clock": {
+        "startup_first_context_frame": 1664,
+        "startup_contiguous_first_context_frame": 1664,
+        "startup_discontinuities": 0,
+        "startup_callbacks": 8,
+        "armed_context_frame": 2688,
+        "scheduled_context_frame": 4736,
+        "lead_callbacks": 16,
+        "active_callbacks": 841,
+        "last_valid_frames": 7,
+        "last_padding_frames": 121,
+        "observation_points": 3361,
+        "first_nonzero_output_frame": 2439,
+        "first_nonzero_context_frame": 7175,
+        "wasm_memory_growths": 0
+      },
+      "phase_measurement": {
+        "quanta": [
+          {
+            "index": 0,
+            "output_frame": 0,
+            "author_ms": 3.5568750000002183,
+            "outer_ms": 3.5587909999999283
+          },
+          {
+            "index": 1,
+            "output_frame": 128,
+            "author_ms": 2.5579999999999927,
+            "outer_ms": 2.5592499999997926
+          },
+          {
+            "index": 32,
+            "output_frame": 4096,
+            "author_ms": 1.2712500000002365,
+            "outer_ms": 1.27599999999984
+          },
+          {
+            "index": 33,
+            "output_frame": 4224,
+            "author_ms": 1.2024160000000848,
+            "outer_ms": 1.203457999999955
+          }
+        ]
+      }
+    }
+  ],
+  "first_author_times_ms": {
+    "control": [
+      3.646874999999909,
+      3.5568750000002183
+    ],
+    "phases": [
+      3.962083999999777,
+      3.882957999999917
+    ]
+  },
+  "median_first_author_shift_ms": 0.32064599999978327,
+  "median_first_author_shift_within_goal": true
+}

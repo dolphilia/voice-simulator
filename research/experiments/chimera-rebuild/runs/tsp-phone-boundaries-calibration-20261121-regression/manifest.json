@@ -1,0 +1,556 @@
+{
+  "schema_version": 1,
+  "run_id": "tsp-phone-boundaries-calibration-20261121-regression",
+  "case_id": "tsp-phone-boundaries-calibration",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "archive_sha256": "9cfb3a3a13014c8ff90770a5d1923f376da73ac927b9100f09826f60cf06cf43",
+  "aligner": {
+    "version": "3.4.3",
+    "environment_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa",
+    "model_version": "english_us_arpa v3.0.0",
+    "model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+    "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+    "configuration": "tools/tsp/mfa.yaml",
+    "seed_hex": "2545f491",
+    "noise_db": -47,
+    "noise_window_frames": 960,
+    "jobs": 1
+  },
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/tsp-phone-boundaries-calibration.json",
+      "bytes": 2263,
+      "sha256": "db138504db10c287682afce8101f76584313c43186da19a149e7d4555b22d463"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/tsp-active-duration-pilot.json",
+      "bytes": 3015,
+      "sha256": "e9e685ab124b64483b5b832871f5b144ee6f71d3632543e34014d612160cf704"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_tsp_phone_boundaries.py",
+      "bytes": 20218,
+      "sha256": "f20b278aa7345341befc726ccfd85b431f43a38db54dd3ed6d80a5973caf40a8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_english_probe.rs",
+      "bytes": 3794,
+      "sha256": "e4de59b693dd6e7c59c2316b65499eaa0583fadca118c0e383631ff22a1de921"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/tools/tsp/sentences.tsv",
+      "bytes": 70520,
+      "sha256": "d2e5e30d4001dc11505b0a39a04ff966f3cc3c11c246c4b96119b59b4a906886"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/tools/tsp/alignment.tsv.gz",
+      "bytes": 290103,
+      "sha256": "5ca7724c346cd861486e73e0706e156a940feb9d631e65842174ab2eea15a3b2"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/tools/tsp/mfa.yaml",
+      "bytes": 577,
+      "sha256": "12bab28c702b45de18a0c60641f47b93b15ebf44c01b94c4707b61d747202bba"
+    },
+    {
+      "path": "docs/reference/chimera-vocal-synth/upstream/public/data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/manifest.json",
+      "bytes": 88830,
+      "sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/summary.json",
+      "bytes": 45533,
+      "sha256": "de6a1f85145cedbf455dfbce38a2264801755926ab26ceac5d2bc8680c8ea0f5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "0f103e4249a5bae89784f517b55b76783f98b5a33cadec7ac75ccbe48285df2f",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "d05c0f850f2c125dff138715c7dc5f4620f28deccd3e32a53dcb4eae7f80306b",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/upstream.wav",
+      "bytes": 535340,
+      "sha256": "febe252e6e1e3e67f54ba98ca2c09436edd0088d6907570ce8739f4e6fee00d4",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/candidate.wav",
+      "bytes": 535354,
+      "sha256": "abe6405c9022e33a1c147c089dd1491ee7ee2391c5c83ba45033de38b87e832c",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/FA01_02/inspect.json",
+      "bytes": 35944,
+      "sha256": "3d761a9349092f7e4d8003e2ef7863a44f19074121a5a31dcc8aaf1526985109"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/runs/tsp-active-duration-original-20261121-repeat/artifacts/MA01_02/inspect.json",
+      "bytes": 35968,
+      "sha256": "8f63f11425b807e7e468c449aca9d244bd03ed24e31d4e62f8e8a37a32ce2b36"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/micromamba-osx-arm64",
+        "--no-rc",
+        "--root-prefix",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/root",
+        "list",
+        "--explicit",
+        "--prefix",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "--extern",
+        "serde_json=$UPSTREAM/target/release/deps/libserde_json-f2e90e468d4ad724.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_english_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_english_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_english_probe.exe",
+        "$ARTIFACTS/english-input.json",
+        "$ARTIFACTS/cmudict.tsv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "english",
+        "Glue the sheet to the dark blue background."
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-recording",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-recording/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "version"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-recording",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-recording/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "align",
+        "--clean",
+        "-c",
+        "$UPSTREAM/tools/tsp/mfa.yaml",
+        "-j",
+        "1",
+        "--output_format",
+        "json",
+        "$ARTIFACTS/corpus/recording",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.dict",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.zip",
+        "$ARTIFACTS/aligned-1-recording"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-synth",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-1-synth/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "align",
+        "--clean",
+        "-c",
+        "$UPSTREAM/tools/tsp/mfa.yaml",
+        "-j",
+        "1",
+        "--output_format",
+        "json",
+        "$ARTIFACTS/corpus/synth",
+        "$ARTIFACTS/synth.dict",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.zip",
+        "$ARTIFACTS/aligned-1-synth"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-2-recording",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-2-recording/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "align",
+        "--clean",
+        "-c",
+        "$UPSTREAM/tools/tsp/mfa.yaml",
+        "-j",
+        "1",
+        "--output_format",
+        "json",
+        "$ARTIFACTS/corpus/recording",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.dict",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.zip",
+        "$ARTIFACTS/aligned-2-recording"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "PATH=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "MFA_ROOT_DIR=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-2-synth",
+        "XDG_CACHE_HOME=/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/tmp/mfa-2-synth/cache",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/env/bin/mfa",
+        "align",
+        "--clean",
+        "-c",
+        "$UPSTREAM/tools/tsp/mfa.yaml",
+        "-j",
+        "1",
+        "--output_format",
+        "json",
+        "$ARTIFACTS/corpus/synth",
+        "$ARTIFACTS/synth.dict",
+        "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa/downloads/english_us_arpa.zip",
+        "$ARTIFACTS/aligned-2-synth"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/tsp-phone-boundaries-calibration-20261121-regression/artifacts",
+    "estimated_peak_bytes": 2147483648
+  },
+  "outputs": [
+    {
+      "path": "artifacts/aligned-1-recording/FA01_02/FA01_02.json",
+      "bytes": 5218,
+      "sha256": "9882847d338e1651a0aab553186cac7143d1095ac292481c14f7dadbb81e464a"
+    },
+    {
+      "path": "artifacts/aligned-1-recording/MA01_02/MA01_02.json",
+      "bytes": 5238,
+      "sha256": "d515e3cd3f6e511d1a0e24977128d624c5d93b544e7ec1d18ca9fa8e4a07a83d"
+    },
+    {
+      "path": "artifacts/aligned-1-recording/alignment_analysis.csv",
+      "bytes": 365,
+      "sha256": "fb7a74bf518b48058f691b146dde642f84773d5e664f183cd6429e9976ba98d5"
+    },
+    {
+      "path": "artifacts/aligned-1-synth/FA01_02-candidate/FA01_02-candidate.json",
+      "bytes": 5227,
+      "sha256": "13bcf8f1144b71fc686307a13c4b833950c72b854246d0cecdf890a5185d3a53"
+    },
+    {
+      "path": "artifacts/aligned-1-synth/FA01_02-upstream/FA01_02-upstream.json",
+      "bytes": 5227,
+      "sha256": "13bcf8f1144b71fc686307a13c4b833950c72b854246d0cecdf890a5185d3a53"
+    },
+    {
+      "path": "artifacts/aligned-1-synth/MA01_02-candidate/MA01_02-candidate.json",
+      "bytes": 5229,
+      "sha256": "5e11d38e6406cd7d811505f2496eed198469e9cc3b7047664a1ba236685514ef"
+    },
+    {
+      "path": "artifacts/aligned-1-synth/MA01_02-upstream/MA01_02-upstream.json",
+      "bytes": 5229,
+      "sha256": "d548a3cd86c514e1b25c1d5f89a3efbfa4ccc8d85c4974a49e952e08c6bfb74e"
+    },
+    {
+      "path": "artifacts/aligned-1-synth/alignment_analysis.csv",
+      "bytes": 643,
+      "sha256": "5dde61e364e1fed2e1459731d6ea12de83ffc8ea0e49e70c8f9aa9f31154a0b1"
+    },
+    {
+      "path": "artifacts/aligned-2-recording/FA01_02/FA01_02.json",
+      "bytes": 5218,
+      "sha256": "9882847d338e1651a0aab553186cac7143d1095ac292481c14f7dadbb81e464a"
+    },
+    {
+      "path": "artifacts/aligned-2-recording/MA01_02/MA01_02.json",
+      "bytes": 5238,
+      "sha256": "d515e3cd3f6e511d1a0e24977128d624c5d93b544e7ec1d18ca9fa8e4a07a83d"
+    },
+    {
+      "path": "artifacts/aligned-2-recording/alignment_analysis.csv",
+      "bytes": 365,
+      "sha256": "fb7a74bf518b48058f691b146dde642f84773d5e664f183cd6429e9976ba98d5"
+    },
+    {
+      "path": "artifacts/aligned-2-synth/FA01_02-candidate/FA01_02-candidate.json",
+      "bytes": 5227,
+      "sha256": "13bcf8f1144b71fc686307a13c4b833950c72b854246d0cecdf890a5185d3a53"
+    },
+    {
+      "path": "artifacts/aligned-2-synth/FA01_02-upstream/FA01_02-upstream.json",
+      "bytes": 5227,
+      "sha256": "13bcf8f1144b71fc686307a13c4b833950c72b854246d0cecdf890a5185d3a53"
+    },
+    {
+      "path": "artifacts/aligned-2-synth/MA01_02-candidate/MA01_02-candidate.json",
+      "bytes": 5229,
+      "sha256": "5e11d38e6406cd7d811505f2496eed198469e9cc3b7047664a1ba236685514ef"
+    },
+    {
+      "path": "artifacts/aligned-2-synth/MA01_02-upstream/MA01_02-upstream.json",
+      "bytes": 5229,
+      "sha256": "d548a3cd86c514e1b25c1d5f89a3efbfa4ccc8d85c4974a49e952e08c6bfb74e"
+    },
+    {
+      "path": "artifacts/aligned-2-synth/alignment_analysis.csv",
+      "bytes": 643,
+      "sha256": "5dde61e364e1fed2e1459731d6ea12de83ffc8ea0e49e70c8f9aa9f31154a0b1"
+    },
+    {
+      "path": "artifacts/candidate-english.json",
+      "bytes": 15541,
+      "sha256": "e314edd40376fbf36a398fe0708750e5f274870142461abe0e9f21cc4944f22f"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 13187,
+      "sha256": "df5adf771df7b6b6b5badb05568cc2c913317b528840e325f86dec2da7893151"
+    },
+    {
+      "path": "artifacts/conda-explicit.txt",
+      "bytes": 19263,
+      "sha256": "ca92d609cdc85b7ad1032eb9676453dfa7c4574a7c955c784d466f8d96dfc67c"
+    },
+    {
+      "path": "artifacts/corpus/recording/FA01_02/FA01_02.lab",
+      "bytes": 44,
+      "sha256": "30e74592a9a3b534af4a0a4d0e685881ddca4be17981f6ca4d1eebe7faa88383"
+    },
+    {
+      "path": "artifacts/corpus/recording/FA01_02/FA01_02.wav",
+      "bytes": 220270,
+      "sha256": "2a665eb3b2ab5757112eabd73493f743a18aa70a1a5a4b0e35a5fc8d2c905db4",
+      "sample_rate_hz": 48000,
+      "frames": 109962,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/recording/MA01_02/MA01_02.lab",
+      "bytes": 44,
+      "sha256": "30e74592a9a3b534af4a0a4d0e685881ddca4be17981f6ca4d1eebe7faa88383"
+    },
+    {
+      "path": "artifacts/corpus/recording/MA01_02/MA01_02.wav",
+      "bytes": 224250,
+      "sha256": "9da6aadbdb91a7bb42190f701c3a55d43299a37e6bbb69e2a3fd70d584b9b03b",
+      "sample_rate_hz": 48000,
+      "frames": 111954,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/synth/FA01_02-candidate/FA01_02-candidate.lab",
+      "bytes": 43,
+      "sha256": "c1de2e747efc7caa03d9220cdf89a0b06f59fa237681e66cfde1dc2c7b7c0f69"
+    },
+    {
+      "path": "artifacts/corpus/synth/FA01_02-candidate/FA01_02-candidate.wav",
+      "bytes": 267692,
+      "sha256": "3fec4ef7588514b5a3973912baeecb783066c38701726176c6ca71bcff0d0df8",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/synth/FA01_02-upstream/FA01_02-upstream.lab",
+      "bytes": 43,
+      "sha256": "c1de2e747efc7caa03d9220cdf89a0b06f59fa237681e66cfde1dc2c7b7c0f69"
+    },
+    {
+      "path": "artifacts/corpus/synth/FA01_02-upstream/FA01_02-upstream.wav",
+      "bytes": 267692,
+      "sha256": "b2d0399a76b3eef7ebd35433823561eab3778e7f7b4b38f64eb0ba6173ed6cb4",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/synth/MA01_02-candidate/MA01_02-candidate.lab",
+      "bytes": 43,
+      "sha256": "c1de2e747efc7caa03d9220cdf89a0b06f59fa237681e66cfde1dc2c7b7c0f69"
+    },
+    {
+      "path": "artifacts/corpus/synth/MA01_02-candidate/MA01_02-candidate.wav",
+      "bytes": 267692,
+      "sha256": "d94f9f5dcecc724f33a89b67883798704970d217b09cb5c08b849ed042b23729",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/corpus/synth/MA01_02-upstream/MA01_02-upstream.lab",
+      "bytes": 43,
+      "sha256": "c1de2e747efc7caa03d9220cdf89a0b06f59fa237681e66cfde1dc2c7b7c0f69"
+    },
+    {
+      "path": "artifacts/corpus/synth/MA01_02-upstream/MA01_02-upstream.wav",
+      "bytes": 267692,
+      "sha256": "afdd6758cdb4c8f2751cd8bd9886bc3e81f68aab65537406122ee13e50a9dd1f",
+      "sample_rate_hz": 48000,
+      "frames": 133824,
+      "channels": 1,
+      "sample_bytes": 2
+    },
+    {
+      "path": "artifacts/english-input.json",
+      "bytes": 277,
+      "sha256": "2d8b3bac0881c21f9e83e302bcd25cc4225525ef45c64b34ae5c0521f2719b11"
+    },
+    {
+      "path": "artifacts/mfa-version.txt",
+      "bytes": 6,
+      "sha256": "0ca6c7591d8ed155ad3e925e2279149da5c782c0b57266a016fdd862dcc647da"
+    },
+    {
+      "path": "artifacts/synth.dict",
+      "bytes": 107,
+      "sha256": "df0fbe01400cb3b806e7a31e61a1c59f8a2ed86a1387bdb90bf7e1abe9b305c5"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "cc68e2e70476e8b65752c74a986aa0b31d1331fb8d356e6c0bb6bfabd7eebd8d"
+    },
+    {
+      "path": "artifacts/upstream-english.json",
+      "bytes": 21349,
+      "sha256": "6cbc283355890b7fc459ccfb403b9fc8ae9d61c925f740055f8e0ac986339ba6"
+    },
+    {
+      "path": "artifacts/upstream_english_probe.exe",
+      "bytes": 756776,
+      "sha256": "a265874ac7edf509584e4d5ef3cebf32406746758abc3a26127d47eab1a2c799"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 153947,
+      "sha256": "38e62320a1a207b1f538b812e2631085560f01ffd4475d5bea53ec17f65e0164"
+    }
+  ]
+}

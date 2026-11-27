@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "run_id": "cubeb-output-callback-20261121-repeat",
+  "case_id": "cubeb-output-callback-probe",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "cubeb_coreaudio_revision": "840f69c1b3f95accd582555e10abcef8ee67514b",
+  "firefox_revision": "fdd757a2e09c9471cddf383e64e631e4ce178499",
+  "probe_binary": "/Volumes/RTL9210B-CG/voice-simulator/build/chimera-cubeb-output/target/release/examples/chimera-output-probe",
+  "probe_binary_sha256": "8cc084d1f98ba30f9fbb8a86d06ee39361aaa233d63645de787e4b7fddbf0f1f",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/cubeb-output-callback-probe.json",
+      "bytes": 1358,
+      "sha256": "2c2e3fb9fc1869433011ab274e2ccec3ed24c4bc3ee4173b608836806df71dfb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_cubeb_output_callback.py",
+      "bytes": 6325,
+      "sha256": "a2a307e8d4d1fec672d314e0494c3417741e32d75426bf73baeb3d611e21f01c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/chimera-cubeb-output-probe.rs",
+      "bytes": 5059,
+      "sha256": "88d1b16028ca44a32e258c9973554dbecaf29ff834e1ca8ffd78b76db47c2fb2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/chimera-cubeb-output-snapshot.patch",
+      "bytes": 9947,
+      "sha256": "046cacfce3cb5685bb8e8fecc5278be99cdf339c6c4f477a903c3130574f69e9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/run_storage.py",
+      "bytes": 4959,
+      "sha256": "2417c588066c1c0dba7ed983a9ba1474c641e8651d7879bd27c598079db50c42"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "env",
+        "CHIMERA_CUBEB_OUTPUT_DIR=$ARTIFACTS/control-1",
+        "/Volumes/RTL9210B-CG/voice-simulator/build/chimera-cubeb-output/target/release/examples/chimera-output-probe",
+        "48000",
+        "256",
+        "65",
+        "0",
+        "130"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "env",
+        "CHIMERA_CUBEB_OUTPUT_DIR=$ARTIFACTS/overrun-1",
+        "/Volumes/RTL9210B-CG/voice-simulator/build/chimera-cubeb-output/target/release/examples/chimera-output-probe",
+        "48000",
+        "256",
+        "65",
+        "8400",
+        "130"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "env",
+        "CHIMERA_CUBEB_OUTPUT_DIR=$ARTIFACTS/overrun-2",
+        "/Volumes/RTL9210B-CG/voice-simulator/build/chimera-cubeb-output/target/release/examples/chimera-output-probe",
+        "48000",
+        "256",
+        "65",
+        "8400",
+        "130"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "env",
+        "CHIMERA_CUBEB_OUTPUT_DIR=$ARTIFACTS/control-2",
+        "/Volumes/RTL9210B-CG/voice-simulator/build/chimera-cubeb-output/target/release/examples/chimera-output-probe",
+        "48000",
+        "256",
+        "65",
+        "0",
+        "130"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/cubeb-output-callback-20261121-repeat/artifacts",
+    "estimated_peak_bytes": 10000000
+  },
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/control-1/cubeb-output-96586-0/blocks.csv",
+      "bytes": 8045,
+      "sha256": "0fa98d8bed18096acc99b25e696b40c0e74bb34ce56b148a37f97a463b0fc791"
+    },
+    {
+      "path": "artifacts/control-1/cubeb-output-96586-0/pcm.f32le",
+      "bytes": 262144,
+      "sha256": "e350730d19f1a372ce342a892434e0184d3521c59bfb6c0ab019f84153537af1"
+    },
+    {
+      "path": "artifacts/control-1/cubeb-output-96586-0/state.txt",
+      "bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "artifacts/control-1/probe.json",
+      "bytes": 85,
+      "sha256": "b39755fdae3516453aee5e76708b94e306a0d6a2506ddd00589d0400d320d2f5"
+    },
+    {
+      "path": "artifacts/control-2/cubeb-output-96599-0/blocks.csv",
+      "bytes": 8045,
+      "sha256": "384557fadad2507e54919a0a35151aedb0459860293e22a764de5369ef6e2f25"
+    },
+    {
+      "path": "artifacts/control-2/cubeb-output-96599-0/pcm.f32le",
+      "bytes": 262144,
+      "sha256": "e350730d19f1a372ce342a892434e0184d3521c59bfb6c0ab019f84153537af1"
+    },
+    {
+      "path": "artifacts/control-2/cubeb-output-96599-0/state.txt",
+      "bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "artifacts/control-2/probe.json",
+      "bytes": 85,
+      "sha256": "d886c284f1b1c24c4dac7133febad7788373363e418da31e543101a6a2cf43b6"
+    },
+    {
+      "path": "artifacts/overrun-1/cubeb-output-96590-0/blocks.csv",
+      "bytes": 8045,
+      "sha256": "c8fd4af4b3903e854acfeed24b23e39ae45160f1428c7f86da6bd913b54c8e15"
+    },
+    {
+      "path": "artifacts/overrun-1/cubeb-output-96590-0/pcm.f32le",
+      "bytes": 262144,
+      "sha256": "e350730d19f1a372ce342a892434e0184d3521c59bfb6c0ab019f84153537af1"
+    },
+    {
+      "path": "artifacts/overrun-1/cubeb-output-96590-0/state.txt",
+      "bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "artifacts/overrun-1/probe.json",
+      "bytes": 85,
+      "sha256": "d886c284f1b1c24c4dac7133febad7788373363e418da31e543101a6a2cf43b6"
+    },
+    {
+      "path": "artifacts/overrun-2/cubeb-output-96595-0/blocks.csv",
+      "bytes": 8045,
+      "sha256": "bfa015c6747b3872aa6664ae1b7c6da898af72f45ee2d958558f0f563cb0a7e8"
+    },
+    {
+      "path": "artifacts/overrun-2/cubeb-output-96595-0/pcm.f32le",
+      "bytes": 262144,
+      "sha256": "e350730d19f1a372ce342a892434e0184d3521c59bfb6c0ab019f84153537af1"
+    },
+    {
+      "path": "artifacts/overrun-2/cubeb-output-96595-0/state.txt",
+      "bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "artifacts/overrun-2/probe.json",
+      "bytes": 85,
+      "sha256": "d886c284f1b1c24c4dac7133febad7788373363e418da31e543101a6a2cf43b6"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 23020,
+      "sha256": "8ac2930e601d588a7c1b0406078816654b29eeb8517441a868e9caf674d03868"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "run_id": "english-rhotic-20261121-wasm",
+  "case_id": "english-rhotic-wasm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "english-rhotic-20261121-b",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/english-rhotic-wasm.json",
+      "bytes": 673,
+      "sha256": "13111fb0561b942dd3249bfe3dbba6915aedf6222b38406655aee1b0314fd797"
+    },
+    {
+      "path": "tools/compare_dental_wasm.ts",
+      "bytes": 4168,
+      "sha256": "22589486b244bb26f3c20ca6e516beb96d001cbac20c4a4e3d3957720346e9cf"
+    },
+    {
+      "path": "target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+      "bytes": 1475803,
+      "sha256": "eae6cbd3194b8185e976bbc5f9d4114f7445dca87aea2886e9d15fcefd246bc1"
+    },
+    {
+      "path": "data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/manifest.json",
+      "bytes": 68461,
+      "sha256": "3e31979c0153db5413fe1f3654597bd15cbc5739cabb5aad0230dba8b1f409eb"
+    },
+    {
+      "path": "crates/vocal-wasm/host/planning.ts",
+      "bytes": 5719,
+      "sha256": "3ebfa2c9c9f2b74a32afa4d7968e1e2d291a7c541944eaf60494fa089c8e0e23"
+    },
+    {
+      "path": "crates/vocal-wasm/host/fixed-voice.ts",
+      "bytes": 18859,
+      "sha256": "b1828e9069565ea582fc2840530f058169e725769f11cdc3e0d8d3ebc5a492aa"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/between-vowels/case.json",
+      "bytes": 878,
+      "sha256": "94fe0c691b85be3edd47386cae97ff4356363d44123b3c4f5764fd49ea1f1b0d"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/between-vowels/pcm-128.wav",
+      "bytes": 209066,
+      "sha256": "57a15e7956e118c623c3097dc4b9f9956d0162756ee75729976e8ed4f644dec1",
+      "sample_rate_hz": 48000,
+      "frames": 52252,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/song/case.json",
+      "bytes": 1042,
+      "sha256": "87f601a5a389afd72423d944698133d2d3b3acd62185b3b6964de5d815d9ba29"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/song/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "5de39e0c31be8484204b0c81b9179e97d111c124966050f64b65faf57104c334",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/FK61_01/case.json",
+      "bytes": 922,
+      "sha256": "a46d66f32b01cdd4dbe25f93f7f9923e882af71de84eed76ddbdb57cd9120cd7"
+    },
+    {
+      "path": "runs/english-rhotic-20261121-b/artifacts/FK61_01/pcm-128.wav",
+      "bytes": 464586,
+      "sha256": "9ca9636eea9db873a1e5df8b8340676a28b6addddf9ba9b54044d7e30b8db484",
+      "sample_rate_hz": 48000,
+      "frames": 116132,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "tools/run_storage.py",
+      "bytes": 3989,
+      "sha256": "d6144bc586aa31eabd7dcc44550f6236cffedda77c7f7218d0b752055e37fd3b"
+    },
+    {
+      "path": "tools/trace_retention.py",
+      "bytes": 4665,
+      "sha256": "1cf26bf16c47684350cc8ae1c25e51e02c0ba19698131de55797879c6c136625"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "npx",
+        "--offline",
+        "--yes",
+        "--package=bun@1.4.4",
+        "bun",
+        "$WORKSPACE/tools/compare_dental_wasm.ts",
+        "$WORKSPACE/target/wasm32-unknown-unknown/release/vocal_wasm.wasm",
+        "$WORKSPACE/runs/english-rhotic-20261121-b/artifacts",
+        "$WORKSPACE/cases/english-rhotic-wasm.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/wasm.json",
+      "bytes": 332,
+      "sha256": "1c96abaf5e7c676482f7d6ffc2befdbd9899daecf899e4093e6a2e84928a3c65"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 493,
+      "sha256": "6ce727750985c1d4f3aa496598105ab48ff8c581fbb255a1c49f238beff23a19"
+    }
+  ]
+}
