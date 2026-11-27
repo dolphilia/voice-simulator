@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-tsp-english-planner-reuse-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-tsp-44100-report-buffer-final-20261122",
+  "reference_case": "worklet-live-tsp-44100",
+  "measurement": {
+    "normal_page_compilations": 1,
+    "normal_page_planner_instances": 1,
+    "probe": {
+      "start_seconds": 0.05,
+      "rate": 1,
+      "f0_hz": 205,
+      "body": "female",
+      "long_text": "Map, map. Map?",
+      "short_text": "Map.",
+      "dictionaries": ["map\tM AE1 P\n", "map\tM AH1 P\n"],
+      "expected_vowels": ["æ", "ʌ"]
+    }
+  },
+  "prediction": "同一ページで確認用07をオフライン発話から実時間発話へ続けると、ページ側のコンパイルと計画インスタンス生成が各2回から1回になる。入力と辞書は呼び出しごとに書き込むため、同じ綴りの発音を同じバイト長の辞書で差し替えたとき、指定した母音だけが対応して切り替わる。以前返したスコアと報告は後続の呼び出し後も同じバイトと値を保つ。",
+  "criteria": "確認用07のオフラインと実時間発話を同一ページで実行し、ページ側のコンパイル数とインスタンス数、PCM全98,790フレーム、調音計画・観測を基準に照合する。固定上流との最大PCM差も従来の閾値内とする。別のブラウザ内対照で、長い英語入力、短い英語入力、同じ長さで発音が異なる辞書への切り替え、不正な辞書、元の入力と辞書への復帰を同一モジュールで行い、毎回新たにコンパイルする条件と計画JSONとスコアの全バイトを比較する。ページが初回のWASM取得に失敗したときは同じページで再取得できることを確認する。"
+}

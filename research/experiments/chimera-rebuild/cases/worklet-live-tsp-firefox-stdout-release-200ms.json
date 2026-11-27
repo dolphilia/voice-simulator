@@ -1,0 +1,61 @@
+{
+  "id": "worklet-live-tsp-firefox-stdout-release-200ms",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-trace-start-signals-56q",
+  "initial_control_run": "worklet-live-tsp-firefox-trace-start-signals-56q-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "darwin",
+        "stdout-200ms"
+      ],
+      [
+        "stdout-200ms",
+        "darwin"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "observe_start_signals": true,
+    "compare_stdout_release_delay_ms": 200,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "minimum_margin_gain_ns": 4000000,
+    "minimum_pairs_with_margin_gain": 2,
+    "maximum_release_overshoot_ns": 20000000
+  },
+  "hypothesis": "先行4試行で記録範囲と再生後の処理時間を固定して換算すると、開始行の受信から約51〜351 ms後に再生を許可できる共通範囲があった。中点付近の200 msを選ぶ。Darwin通知を待つ対照より、Audio Client末尾までの発話開始の余裕が2組とも4 msを超えて増え、発話開始の音声I/O、機器Write、スレッド状態を同時に照合できる試行が増えると予測する。",
+  "acceptance": "両条件で計測用Firefoxへアタッチし、確認用07、48 kHz・256フレーム、先行音56量子、同期事前描画、1秒、保持窓なし、3収録器、タップなし、同じFirefoxを固定する。2組で実行順を反転する。対照はDarwin通知で再生を許可し、先行条件は改行まで読み取れた開始行から200 ms後に許可する。実測したゲート時刻は指定から0〜20 ms以内とし、両通知も保存する。発話WAVと状態の一致、実際の構築位置、機器Writeから求めた時計起点、全窓または発話開始の局所窓での音声I/Oと状態の対応を照合する。欠測を保持し、2組が比較できる場合に予測を判定する。"
+}

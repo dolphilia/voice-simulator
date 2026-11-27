@@ -1,0 +1,45 @@
+diff --git a/src/backend/chimera_output_snapshot.rs b/src/backend/chimera_output_snapshot.rs
+--- a/src/backend/chimera_output_snapshot.rs
++++ b/src/backend/chimera_output_snapshot.rs
+@@ -15,8 +15,9 @@
+ use std::sync::atomic::{AtomicUsize, Ordering};
+ 
+ const DEFAULT_BLOCKS: usize = 128;
+-const MAX_BLOCKS: usize = 256;
+-const MAX_PCM_BYTES: usize = 1024 * 1024;
++const MAX_BLOCKS: usize = 4096;
++const DEFAULT_PCM_BYTES: usize = 1024 * 1024;
++const MAX_PCM_BYTES: usize = 8 * 1024 * 1024;
+ static NEXT_STREAM: AtomicUsize = AtomicUsize::new(0);
+ 
+ #[derive(Debug)]
+@@ -61,6 +62,11 @@
+             .and_then(|value| value.parse::<usize>().ok())
+             .filter(|count| (1..=MAX_BLOCKS).contains(count))
+             .unwrap_or(DEFAULT_BLOCKS);
++        let pcm_bytes = if block_limit <= 256 {
++            DEFAULT_PCM_BYTES
++        } else {
++            MAX_PCM_BYTES
++        };
+         let stream = NEXT_STREAM.fetch_add(1, Ordering::Relaxed);
+         Some(Self {
+             directory: directory.join(format!("cubeb-output-{}-{}", process::id(), stream)),
+@@ -68,7 +74,7 @@
+             stream_rate_hz: output.rate(),
+             buffer_rate_hz: None,
+             blocks: Vec::with_capacity(block_limit),
+-            pcm: Vec::with_capacity(MAX_PCM_BYTES),
++            pcm: Vec::with_capacity(pcm_bytes),
+             invalid_buffer: false,
+         })
+     }
+@@ -93,7 +99,7 @@
+             || self.buffer_rate_hz.is_some_and(|rate| rate != desc.mSampleRate)
+             || desc.mBytesPerFrame != 8
+             || bytes > buffer.mDataByteSize as usize
+-            || bytes > MAX_PCM_BYTES - self.pcm.len()
++            || bytes > self.pcm.capacity() - self.pcm.len()
+         {
+             self.invalid_buffer = true;
+             return;

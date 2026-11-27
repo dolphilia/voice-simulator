@@ -1,0 +1,58 @@
+{
+  "id": "songbird-syrinx",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "駆動と張力を固定して指定音高を2倍にすると、変位の周波数も約2倍になる。側別ゲートを閉じても変位の積分は進み、開口だけが指数的に減衰する。ゲートの減衰時定数は内部レートに反比例する。",
+  "syrinx_labia": {
+    "sample_rate_hz": 192000,
+    "sample_count": 23040,
+    "seed": 0.0,
+    "controls": {"drive": 0.35, "tension": 0.4, "f0_hz": 2600.0, "gate": 1.0},
+    "events": []
+  },
+  "measurement": {
+    "variants": [
+      {"id": "nominal", "overrides": {}},
+      {"id": "octave", "overrides": {"controls": {"drive": 0.35, "tension": 0.4, "f0_hz": 5200.0, "gate": 1.0}}},
+      {"id": "rate-48000", "overrides": {"sample_rate_hz": 48000, "sample_count": 5760}},
+      {"id": "gated", "overrides": {"events": [
+        {"sample": 9600, "controls": {"drive": 0.35, "tension": 0.4, "f0_hz": 2600.0, "gate": 0.0}},
+        {"sample": 17280, "controls": {"drive": 0.35, "tension": 0.4, "f0_hz": 2600.0, "gate": 1.0}}
+      ]}},
+      {"id": "grid-node", "overrides": {"seed": 1.0, "controls": {"drive": 0.4803921568627451, "tension": 0.45454545454545453, "f0_hz": 2600.0, "gate": 1.0}}},
+      {"id": "upper-edge", "overrides": {"controls": {"drive": 1.0, "tension": 1.0, "f0_hz": 2600.0, "gate": 1.0}}},
+      {"id": "held", "overrides": {"sample_count": 4096, "seed": 1.0, "controls": {"drive": 0.35, "tension": 0.4, "f0_hz": 0.0, "gate": 0.6}}}
+    ],
+    "steady_start_seconds": 0.08,
+    "independent_trajectory_samples": 512,
+    "independent_period_start_tau": 300.0,
+    "independent_period_end_tau": 420.0,
+    "independent_max_step_tau": 0.1,
+    "independent_ode_rtol": 1e-11,
+    "independent_ode_atol": 1e-13,
+    "upstream_opening_absolute_tolerance": 1e-9,
+    "typescript_fixture_relative_tolerance": 1e-9,
+    "interpolation_absolute_tolerance": 1e-12,
+    "gate_and_projection_absolute_tolerance": 1e-10,
+    "trajectory_displacement_absolute_tolerance": 0.001,
+    "trajectory_velocity_absolute_tolerance": 0.004,
+    "frequency_vs_independent_relative_tolerance": 0.002,
+    "frequency_vs_nominal_relative_tolerance": 0.02,
+    "octave_ratio_relative_tolerance": 0.002,
+    "gate_tau_rate_ratio_relative_tolerance": 0.002,
+    "maximum_gate_residual_after_closed_window": 1e-6,
+    "typescript_fixture": {
+      "sample_rate_hz": 192000,
+      "sample_count": 2000,
+      "seed": 1.0,
+      "initial": {"drive": 0.3, "tension": 0.4, "f0_hz": 2500.0, "gate": 1.0},
+      "drive_change_sample": 1000,
+      "drive_after": 0.9,
+      "tension_change_sample": 666,
+      "tension_after": 0.05,
+      "gate_change_sample": 1666,
+      "gate_after": 0.2,
+      "pitch_step_hz": 1.0
+    }
+  }
+}

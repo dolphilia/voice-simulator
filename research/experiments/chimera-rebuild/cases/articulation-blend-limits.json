@@ -1,0 +1,173 @@
+{
+  "id": "articulation-blend-limits",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "hypothesis": "目標を可動域に収め、弱い重みで合成した軟口蓋の有効目標は閉鎖側に残る。顎は重み付き平均で移動し、強い目標で上下限に達する。",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 0.05,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 0,
+        "targets": {
+          "jaw_cm": 4.0,
+          "velum_cm2": -1.0
+        }
+      },
+      {
+        "frame": 20,
+        "blend": {
+          "jaw_cm": {
+            "value": 1,
+            "weight": 0.1,
+            "speed": 1.4
+          },
+          "velum_cm2": {
+            "value": 0.95,
+            "weight": 0.1,
+            "speed": 1.3
+          },
+          "dorsum": {
+            "value": 1,
+            "weight": 0,
+            "speed": 5
+          }
+        }
+      },
+      {
+        "frame": 52,
+        "blend": {
+          "jaw_cm": {
+            "value": 12,
+            "weight": 3,
+            "speed": 1
+          },
+          "velum_cm2": {
+            "value": 1.9,
+            "weight": 2.4,
+            "speed": 1
+          }
+        }
+      },
+      {
+        "frame": 72,
+        "tip_free": true,
+        "blend": {}
+      }
+    ]
+  },
+  "measurement": {
+    "frames": 128,
+    "articulators": {
+      "position_error_lt": 2e-12,
+      "velocity_error_lt": 2e-10,
+      "time_error_lt_seconds": 1e-13,
+      "checkpoints": [
+        {
+          "frame": 0,
+          "articulator": "jaw_cm",
+          "column": "target",
+          "interval": [
+            2.6,
+            2.6
+          ]
+        },
+        {
+          "frame": 0,
+          "articulator": "velum_cm2",
+          "column": "target",
+          "interval": [
+            -0.25,
+            -0.25
+          ]
+        },
+        {
+          "frame": 20,
+          "articulator": "jaw_cm",
+          "column": "effective",
+          "interval": [
+            1.5333,
+            1.5334
+          ]
+        },
+        {
+          "frame": 20,
+          "articulator": "velum_cm2",
+          "column": "effective",
+          "interval": [
+            -0.19001,
+            -0.18999
+          ]
+        },
+        {
+          "frame": 20,
+          "articulator": "velum_cm2",
+          "column": "applied_speed",
+          "interval": [
+            1.3,
+            1.3
+          ]
+        },
+        {
+          "frame": 20,
+          "articulator": "dorsum",
+          "column": "applied_speed",
+          "interval": [
+            1,
+            1
+          ]
+        },
+        {
+          "frame": 52,
+          "articulator": "jaw_cm",
+          "column": "effective",
+          "interval": [
+            2.6,
+            2.6
+          ]
+        },
+        {
+          "frame": 52,
+          "articulator": "velum_cm2",
+          "column": "effective",
+          "interval": [
+            1.4,
+            1.4
+          ]
+        },
+        {
+          "frame": 72,
+          "articulator": "velum_cm2",
+          "column": "effective",
+          "interval": [
+            -0.25,
+            -0.25
+          ]
+        }
+      ],
+      "settling": []
+    }
+  }
+}

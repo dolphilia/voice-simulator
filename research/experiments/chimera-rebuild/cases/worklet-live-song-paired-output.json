@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-paired-output",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "cubeb_case": "worklet-live-song-cubeb-output.json",
+  "tap_probe_case": "worklet-live-song-process-tap-probe.json",
+  "sample_rate_hz": 48000,
+  "minimum_contiguous_anchor_frames": 256,
+  "maximum_error_marker_units": 0.15,
+  "maximum_anchor_displacement_frames": 1024,
+  "capture": {
+    "condition_order": [["control", "draw192"]],
+    "ready_quanta": 192,
+    "tap_attach_quanta": 64,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.65,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0
+  },
+  "hypothesis": "未準備では両方の観測点で先行音が連続する。192フレームの事前描画後にcubebの機器要求時刻が256フレーム飛んだとき、同じ試行のタップで先行音の欠落・繰り返し・無音があればどの番号で始まったかを特定できる。PCMが連続する場合も、両端の番号を合わせてタップとcubebの間の時刻差が変化したかを検査できる。",
+  "criteria": {
+    "input": "既知の48 kHzステレオPCMの校正を通した専用アプリと、cubebに計測を追加した試験用Firefoxを使う。未準備と192フレームの事前描画で同じPop Deeと逆相の先行音を流す。先行音の64量子目でタップの起動を依頼し、192量子の完了とタップ準備を待ってから歌唱ノードを構築する。",
+    "validity": "歌唱PCMと先行音は既存の基準に照合する。構築前後8要求の256フレームのグラフ進行を確認する。cubebの対象ストリームとタップの両方でグラフ窓の両端をそれぞれ256フレームの連続した番号で一意に照合し、タップに実際の入力時刻とPCMがあり、両方のホスト時刻の単位が一致することを確認する。実際の時刻の飛びは観測値として扱う。",
+    "diagnostics": "同じ先行音の両端でホスト時刻の差を計算し、タップ側のフレーム欠落、繰り返し、無音、時刻の飛びを別々に記録する。タップの起動が間に合わない条件や、いずれかの窓が採取範囲から外れる条件は欠測とする。タップより後ろの物理出力は別途確認する。"
+  }
+}

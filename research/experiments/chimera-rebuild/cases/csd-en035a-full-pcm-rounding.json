@@ -1,0 +1,44 @@
+{
+  "id": "csd-en035a-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "full_song": {
+    "run": "csd-long-note-vibrato-20261121-theta",
+    "case": "csd-long-note-vibrato",
+    "manifest_sha256": "3b96f5a27fcd5fb0f5e7c04d2a022156ca09ccccbd69dcb2bff69b02ca574a66"
+  },
+  "reference": {
+    "run": "csd-en005a-full-pcm-rounding-20261124-verified-repeat",
+    "case": "csd-en005a-full-pcm-rounding",
+    "manifest_sha256": "eaa709a63b850f87b2fa4dea11875e955f70c3eb1c79314b5af5c9723a4f5daf"
+  },
+  "measurement": {
+    "song": "en035a",
+    "phrases": 76,
+    "notes": 109,
+    "frames": 5590588,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "block_frames": 128,
+    "first_beat_frame": 161472,
+    "last_score_end_frame": 5517787,
+    "common_prefix_witness_frame": 20363,
+    "segments": {
+      "before_first_beat": [0, 161472],
+      "score": [161472, 5517787],
+      "after_last_score_end": [5517787, 5590588]
+    },
+    "focus_frames": [0, 20363, 161472, 5517787, 5590587],
+    "quiet_pcm_threshold": 0.000001,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "same_settings_pcm_tolerance": 0.000001
+  },
+  "hypotheses": {
+    "startup_witness_is_shared": "en005aの第1拍前の丸め前最大差が出たフレーム20363までは、同じ版の両曲でPCMがビット一致する。",
+    "pcm_maximum_after_first_beat": "en005aと同じく、全曲のPCM最大差は第1拍以降に現れる。",
+    "precast_and_pcm_peaks_differ": "全曲の丸め前とfloat32変換後の最大誤差は別のフレームに現れる。",
+    "same_limiter_active_frames": "同設定の両版で利得抑制が作動するフレームの集合は一致する。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差の95%以上は両版のPCM絶対値が10⁻⁶以下のフレームにある。"
+  },
+  "acceptance": "固定上流は通常設定のPCMを既存の公式全曲出力に照合する。同設定の固定上流と研究版それぞれで未計装と計装の全PCM・全歌唱計画を照合する。研究版は保存済み全曲の計画とPCMにも照合する。確認曲en005aで使った出力係数と独立計算を用い、116.470583秒の全11181176内部標本で放射合算と差分を確認し、全5590588出力フレームでFIR、DC除去、リミッターからfloat32までを独立に再計算する。同設定のPCM最大絶対差が10⁻⁶以下で、1 ULPの差が対応する丸め中点をまたぐことを確認する。各区間で丸め前・PCMの誤差、1 ULP・複数ULPの数、利得抑制の作動範囲を記録する。既存のen005aのPCMとの冒頭一致の終点を求め、最大誤差を1フレーム除いたRMSと最大誤差が現れた句または区間を報告する。"
+}

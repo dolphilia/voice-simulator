@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-pharynx-reversal-low-harmonics",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "逆流を判定する波形に第3〜第6倍音だけを加えると、固定 /i/ の7.2と5.76 cmH₂Oの両方で符号不一致が半減し、実際の逆流枝の半数以上を捉え、過検出した枝も減る。鼻端の2,310 Hzの複素誤差の増加は従来比5%以内と予測する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-low-pressure-20261124-repeat",
+      "manifest_sha256": "8926ad19a072ec73f5c924f25ef0d5d6ccd932f44b3329eece2a68ab84a8d853"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "pairs_hz": [[110, 2200], [-110, 2420], [220, 2090]],
+    "pharynx_branch_count": 17,
+    "added_harmonic_orders": [3, 4, 5, 6],
+    "minimum_mismatch_reduction_fraction": 0.50,
+    "minimum_reversing_branch_recall": 0.50,
+    "maximum_nose_error_growth_fraction": 0.05,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "前回までの両肺圧・両版の固定 /i/ の保存収録を読む。3組の周波数積と接線項、咽頭外の圧力源は従来の値に保つ。逆流補正に使う波形の成分だけを、従来の6周波数に330、440、550、660 Hzを加えた10周波数へ変える。",
+    "observation": "同じ400〜500 msの17枝×9,600標本で流向の真陽性、見落とし、過検出を標本単位と枝単位で求める。逆流補正の圧力の2,310 Hz成分の複素誤差、鼻端の複素誤差と、観測逆流を戻した参照を測る。",
+    "acceptance": "従来の符号不一致と鼻端応答を保存値に照合し、追加入力を含む波形を直接和と逆FFTで独立に再構成する。周波数追加の影響が逆流補正の差だけであることを節点式で確認する。両版の数値と判定を照合し、符号不一致半減、逆流枝の半数検出、過検出枝減少、鼻端誤差の増加5%以内を全圧力で判定する。"
+  }
+}

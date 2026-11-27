@@ -1,0 +1,28 @@
+{
+  "id": "coreaudio-output-render-status",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "webkit_underrun_change": "c315a716758008c2e11d996fe2e663db6097d114",
+  "reference_run": "worklet-safari-song-audio-client-20261122-repeat",
+  "reference_trial": "pair-1-bulk",
+  "archive_audit_runs": ["worklet-safari-song-audio-client-20261122-a", "worklet-safari-song-audio-client-20261122-repeat"],
+  "sample_rate_hz": 48000,
+  "duration_seconds": 1.3,
+  "trace_seconds": 3,
+  "first_error_callback": 24,
+  "error_callback_count": 16,
+  "error_status": -1,
+  "neighbor_callbacks": 8,
+  "clock_guard_ms": 1.5,
+  "minimum_unique_trace_match_fraction": 0.95,
+  "maximum_period_ratio": 1.25,
+  "order": ["control", "render-error"],
+  "tables": ["audio-hal-client-io-cycle", "audio-hal-client-io-cycle-ioproc", "audio-hal-client-io-cycle-load", "audio-hal-client-poi"],
+  "criteria": {
+    "input": "同じ既定出力と48 kHzのAudioUnitを2回起動する。両条件で同じ番号付きの低音量PCMをコールバックから書き、待機を加えない。比較だけは0起算24〜39番の16要求の戻り値を-1にする。別の作業ディレクトリから順を反転する。",
+    "validity": "両条件で故障位置の前後8要求を含むこと。実際に返した値、要求フレーム数、ホスト時刻、デバイスのサンプル時刻、PCMの番号をAudioUnit側で保存する。前後を含め、xctraceのCycle区間に1.5 msの誤差幅で95%以上を一意に照合する。",
+    "prediction": "処理を待たせず-1を返しても、比較窓のサンプル時刻は連続し、最大開始間隔は同じ窓の中央値の1.25倍以下に収まると予測する。Audio Clientの開始間隔単独では戻り値を判別できないはずである。I/O処理、負荷、注目点の表に戻り値や固有の異常イベントがあるかを別に確認し、なければ判別の根拠が得られなかったと記録する。",
+    "scope": "ネイティブの対照はAudioUnitへの戻り値と要求時計の比較に使う。公開WebKitのバッファ不足条件を読むが、Safari自身の戻り値や出力側のPCMをこの対照から推定しない。",
+    "archive_followup": "最初の較正後に予測を変えず追記。Safariの保存記録にOverload付きのCycleが見つかったため、8試行すべての保存窓で、付記ありを含めた場合の開始間隔を再集計する。以前の集計値を残し、付記を除いた場合に一致するかを照合する。"
+  }
+}

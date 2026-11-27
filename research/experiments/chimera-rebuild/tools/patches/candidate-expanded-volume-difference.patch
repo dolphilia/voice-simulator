@@ -1,0 +1,49 @@
+--- a/crates/vocal-core/src/airway/network/geometry.rs
++++ b/crates/vocal-core/src/airway/network/geometry.rs
+@@ -1,6 +1,6 @@
+ //! セルの面積補間と移動壁の体積速度源。
+ 
+-use super::{SOUND_SPEED, Section, trim_tiny};
++use super::{MIN_CELL_AREA_CM2, SOUND_SPEED, Section, trim_tiny};
+ use std::f64::consts::TAU;
+ 
+ const SQUEEZE_AREA_CM2: f64 = 0.12;
+@@ -8,7 +8,6 @@
+ 
+ #[derive(Clone, Copy)]
+ struct VolumeCell {
+-    volume_cm3: f64,
+     target_minimum_area_cm2: f64,
+     area_increment_cm2: f64,
+     minimum_area_increment_cm2: f64,
+@@ -31,7 +30,6 @@
+             cells: sections
+                 .iter()
+                 .map(|section| VolumeCell {
+-                    volume_cm3: section.volume(),
+                     target_minimum_area_cm2: section.minimum_area_cm2,
+                     area_increment_cm2: 0.0,
+                     minimum_area_increment_cm2: 0.0,
+@@ -124,15 +122,19 @@
+             for i in 0..sections.len() {
+                 let section = &mut sections[i];
+                 let cell = &mut self.cells[i];
++                let old_area = section.area_cm2.max(MIN_CELL_AREA_CM2);
++                let old_length = section.length_cm;
+                 section.area_cm2 = (section.area_cm2 + cell.area_increment_cm2).max(0.0);
+                 section.minimum_area_cm2 = (section.minimum_area_cm2
+                     + cell.minimum_area_increment_cm2)
+                     .clamp(0.0, section.area_cm2);
+                 section.length_cm += cell.length_increment_cm;
+                 let area = section.minimum_area_cm2;
+-                let next_volume = section.volume();
+-                let raw = (cell.volume_cm3 - next_volume) / dt;
+-                cell.volume_cm3 = next_volume;
++                let new_area = section.area_cm2.max(MIN_CELL_AREA_CM2);
++                // 丸めた体積を引かず、面積と長さの差をそれぞれ体積へ換算する。
++                let displaced_volume = (old_area - new_area) * old_length
++                    + new_area * (old_length - section.length_cm);
++                let raw = displaced_volume / dt;
+                 if raw == 0.0 || area >= SQUEEZE_AREA_CM2 {
+                     self.spill[i] += raw;
+                     continue;

@@ -1,0 +1,28 @@
+{
+  "id": "coreaudio-headphone-drift-44100-attach-preserved",
+  "revision": 1,
+  "source_case": "coreaudio-headphone-drift-44100-late-attach.json",
+  "timing_run": "coreaudio-headphone-drift-44100-attach-timing-pairs-20261122-a",
+  "source_runs": [
+    "coreaudio-headphone-drift-44100-attach-before-1",
+    "coreaudio-headphone-drift-44100-attach-before-2",
+    "coreaudio-headphone-drift-44100-attach-before-3"
+  ],
+  "analysis": {
+    "first_frame": 9216,
+    "old_last_exclusive": 55216,
+    "last_exclusive": 118816,
+    "window_frames": 400,
+    "hop_frames": 200,
+    "tone_bins": [20, 160, 180, 190],
+    "frequencies_hz": [2205, 17640, 19845, 20947.5],
+    "wide_band_lower_limit": 0.4,
+    "reduced_band_upper_limit": 0.2,
+    "minimum_consecutive_windows": 4,
+    "reference_late_event_frame": 85616,
+    "maximum_event_difference_frames": 400,
+    "maximum_complex_ratio_error_in_old_window": 1e-10
+  },
+  "prediction": "後から接続する時刻をずらしても帯域低下が出力フレーム85,616に揃ったという結果を得た。先行接続の保存済み収録のうち当初未解析だった区間にも、同じ出力フレーム付近の帯域低下が少なくとも2回分にあると予測する。",
+  "criteria": "先行接続の3収録を使い、既存の前マーカーの位置は動かさず、同じ400フレーム窓と200フレーム刻みの範囲だけを118,816フレームまで延ばす。左右差の実FFTで4周波数の複素比を求め、従来の範囲では全複素比を既存の要約に照合する。追加区間では広い帯域の窓が4つ続いた後に0.20未満の窓が4つ続く最初の中心を保存し、85,616から400フレーム以内の結果を数える。PCMのサイズ、出力幅、収録の時計の連続性を確認する。以前の判定と区間はそのまま保持する。"
+}

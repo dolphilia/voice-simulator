@@ -1,0 +1,62 @@
+{
+  "id":"glottal-stop",
+  "revision":1,
+  "upstream_revision":"c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis":"標準の母音間 /ʔ/ は口腔が開いたまま声門振動と流量を抑え、閉鎖指示が下がると周期発声が戻る。静的な声門の隙間は式の上で閉鎖時も8%残る。「愛」の頭子音は48 msで、後続の二重母音の最初の母音が拍に合う。診断句全体をCLIとブラウザで発声できる。",
+  "speech_case":"sibilant-s.json",
+  "song_case":"song-voice-flat.json",
+  "speech":[
+    {"id":"male-vcv","body":"male","f0_hz":112,"rate":1,"text":"ˈɑʔɑ","duration_seconds":0.0385,"check_vcv":true},
+    {"id":"female-vcv","body":"female","f0_hz":205,"rate":1,"text":"ˈɑʔɑ","duration_seconds":0.0385,"check_vcv":true},
+    {"id":"mixed-fast-front","body":{"female":0.4,"child":0.25},"f0_hz":150,"rate":1.35,
+      "text":"ˈiʔʲi","duration_seconds":0.0385},
+    {"id":"short-explicit","body":"male","f0_hz":112,"rate":1,"duration_seconds":0.011,
+      "segments":[{"ipa":"ɑ","dur":0.16,"stress":1},{"ipa":"ʔ","dur":0.011},{"ipa":"ɑ","dur":0.20}]}
+  ],
+  "song":[
+    {"id":"ai-solo","lyrics":"爱","notes":1,"target_note":0,"output_frames":67200},
+    {"id":"ren-ai","lyrics":"人爱","notes":2,"target_note":1,"output_frames":91200,"browser":true},
+    {"id":"diagnostic","lyrics":"四是吃字人爱","notes":6,"target_note":5,"output_frames":187200,"browser":true}
+  ],
+  "measurement":{
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "bpm":120,
+    "start_seconds":0.5,
+    "midi":57,
+    "sung_duration_seconds":0.048,
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "independent_command_tolerance":1e-9,
+    "independent_static_area_tolerance_cm2":1e-10,
+    "closure_smoothing_seconds":0.004,
+    "static_retained_fraction_closed":0.08,
+    "static_sample_phase_threshold":0.98,
+    "minimum_static_samples":64,
+    "closed_area_cm2":0.0002,
+    "open_oral_minimum_cm2":0.10,
+    "center_fraction":[0.60,0.85],
+    "prior_window_seconds":[-0.075,-0.025],
+    "minimum_prior_voicing":0.8,
+    "maximum_center_voicing":0.15,
+    "maximum_center_flow_ratio":0.25,
+    "closed_force_threshold":0.95,
+    "glottal_voicing_minimum":0.55,
+    "glottal_area_peak_prominence_cm2":0.015,
+    "period_to_f0_ratio":[0.75,1.25],
+    "voicing_search_padding_seconds":0.18,
+    "browser_observed_fields":[
+      "gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz",
+      "radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2",
+      "nose_flow_cm3_s","velum_port_area_cm2"
+    ],
+    "initial_state":"親ケースの初期姿勢、呼気、出力段を継承し、発話は体型とF0を指定。歌唱は成人男性、MIDI 57、ビブラート0。発話の既定の乱流倍率0、歌唱の既定倍率1を固定上流と候補でそろえる。",
+    "window":"標準の母音間発話は声門閉鎖音中央60〜85%で口腔と唇の最小断面0.10 cm²超、声門発声率の中央値0.15以下、声門流量RMSが先行区間の25%以下を判定する。先行窓は閉鎖音開始の75〜25 ms前。全条件で音素終端から180 ms後までに声門面積の周期が戻ることを確認する。独立計算で指示と時定数4 msのフィルタを復元し、位相0.98以上で振動波形の寄与が0になる試料の静的面積を照合する。歌唱の中央は前の鼻音と重なる場合もあるため開口・流量は記述値。歌詞から音節と拍を照合し、2譜例は実ブラウザから保存ケースも再演する。"
+  }
+}

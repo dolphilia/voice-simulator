@@ -1,0 +1,25 @@
+{
+  "id": "worklet-wasm-dsp-warmup",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_case": "worklet-wasm-wrapper-shared-context.json",
+  "shared_run": "worklet-wasm-wrapper-shared-context-20261121-repeat",
+  "wasm_sha256": "67b6f1e1be88dc54c65ded4e709624c42c73c86af007c683b6840e52521bc02e",
+  "hypothesis": "ゲート0の使い捨て発声状態を同じWASMインスタンスで128フレーム描画すると、先頭量子で見つかった10関数の遅延コンパイルが事前描画へ移る。使い捨て状態を作って解放するだけでは、これらは本番の先頭量子に残る。新しく開始する本番状態のPCMは一致する。",
+  "measurement": {
+    "warmup_calls": {"wrapper": 1000, "discarded_zero": 1000, "discarded_render": 1000},
+    "dsp_warmup_frames": {"wrapper": null, "discarded_zero": 0, "discarded_render": 128},
+    "expected_zero_based_quantum": {"wrapper": null, "discarded_zero": null, "discarded_render": null},
+    "capture_order": [
+      ["wrapper", "discarded_zero", "discarded_render"],
+      ["discarded_render", "wrapper", "discarded_zero"],
+      ["discarded_zero", "discarded_render", "wrapper"]
+    ],
+    "lazy_event": "wasm.CompileLazy",
+    "first_quantum_lazy_functions": [191, 894, 890, 750, 755, 699, 746, 749, 919, 915]
+  },
+  "criteria": {
+    "trace": "前回のWASMバイナリと一致すること。両対照で登録の10関数が発声の先頭量子に現れ、128フレーム条件で同じ10関数が事前描画区間に現れて発声の先頭量子から消えること。1,000回のラッパー準備は全試行でコンストラクター内に照合する。",
+    "sound": "本番の累計フレームは従来と同じく先頭量子末尾で128。発声音・音響状態および先行音のPCMが従来の単独・共有Contextの計測や独立計算と一致すること。",
+    "timing": "構築全体、事前描画、発声先頭と1,000量子目、先行音の構築前後の間隔を記録する。予算超過回数と時刻の差は診断値とする。"
+  }
+}

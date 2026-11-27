@@ -1,0 +1,31 @@
+{
+  "id": "coreaudio-headphone-drift-44100-silence-resumption",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "attach_reference_case": "coreaudio-headphone-drift-44100-long-recurrence.json",
+  "reference_run": "coreaudio-headphone-drift-44100-long-recurrence-20261122-a",
+  "silence_comparison": {
+    "start_frame": 384000,
+    "end_frame": 430080,
+    "ramp_frames": 128,
+    "pre_last_exclusive": 383616,
+    "post_first_frame": 430216,
+    "pre_band_window_count": 44,
+    "quiet_margin_frames": 512
+  },
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-silence-control-1", "coreaudio-headphone-drift-44100-silence-gap-1"],
+    ["coreaudio-headphone-drift-44100-silence-control-2", "coreaudio-headphone-drift-44100-silence-gap-2"],
+    ["coreaudio-headphone-drift-44100-silence-control-3", "coreaudio-headphone-drift-44100-silence-gap-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-silence-control-1", "leading_frames": 0, "apply_silence": false},
+    {"run_id": "coreaudio-headphone-drift-44100-silence-gap-1", "leading_frames": 0, "apply_silence": true},
+    {"run_id": "coreaudio-headphone-drift-44100-silence-gap-2", "leading_frames": 0, "apply_silence": true},
+    {"run_id": "coreaudio-headphone-drift-44100-silence-control-2", "leading_frames": 0, "apply_silence": false},
+    {"run_id": "coreaudio-headphone-drift-44100-silence-control-3", "leading_frames": 0, "apply_silence": false},
+    {"run_id": "coreaudio-headphone-drift-44100-silence-gap-3", "leading_frames": 0, "apply_silence": true}
+  ],
+  "prediction": "出力セッションを維持したまま試験音だけを無音にした場合は、既に狭帯域へ収束した出力とタップの関係が続くと予測する。無音ありで再開後に19,845 Hzの比が0.40以上の4連続窓に達する場合は広帯域への回復と判定し、その後の狭帯域への移行も記録する。",
+  "criteria": "同じ外部ヘッドフォン・44.1 kHz・幅512で、両条件とも先行タップ、直接出力12秒、タップ14秒とする。無音ありでは出力フレーム384,000〜430,079だけを変え、両端の128フレームを半余弦でつないで中央をデジタルゼロにする。残る区間のPCMは無音なしとビット一致させ、出力停止と再起動は加えない。両条件で同じ400フレーム窓を200フレーム刻みで測り、境界の窓を避ける。直前44窓すべてで19,845 Hzの比が0.20未満だった組を開始状態の成立とする。再開後の最初の窓と観測区間全体の振幅比、広帯域が4連続窓あるか、そこから低下する窓、2,205 Hzの位相とホスト時計を保存する。無音区間の直接出力とタップPCM、全区間の出力要求とタップの連続性も確認する。"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "songbird-chirps-radiation-derivative-scale-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-sac-momentum-44100-20261123-repeat",
+    "manifest_sha256": "95a55c16ac8462e9c3bc4a29efe9076fc9137b1d1929486307dd80c351625a32"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "prediction": {
+    "matched_time": {
+      "first_effect_offset": 9,
+      "first_effect_hex": "0x1.2b31398c7fbadp+2",
+      "changed_derivative_samples": 11,
+      "first_upstream_difference_offset": 60,
+      "upstream_bitwise_matches": 60
+    },
+    "native_block": {
+      "first_effect_offset": 11,
+      "first_effect_hex": "0x1.6c2676f098de6p+3",
+      "changed_derivative_samples": 6,
+      "first_upstream_difference_offset": 24,
+      "upstream_bitwise_matches": 36
+    },
+    "no_tracking": {
+      "first_effect_offset": null,
+      "first_effect_hex": null,
+      "changed_derivative_samples": 0,
+      "first_upstream_difference_offset": null,
+      "upstream_bitwise_matches": 64
+    }
+  },
+  "hypothesis": "放射流量の後退差分で、丸めた標本間隔 T による除算を、設定時の標本レート fs による乗算へ変更する。両制御の最初の差分値が固定上流とビット一致し、上流との差は放射流量自体が分かれる60点後と24点後から残る。流量、圧力、形状、押鍵前、追従0の出力は対照と一致する。",
+  "observation": "左の空気嚢ポートまで再現した3条件を通常の render CLI に通す。内部176400 Hzで、押鍵後0〜63点の放射流量とその後退差分を照合する。後退差分の再計算には押鍵直前1点も使う。押鍵前を含めて差分以外の全列を比較し、残差の最初の点で現在と前回の放射流量を個別に置換する。",
+  "acceptance": "対照バイナリとCSVを再現し、参照する固定上流CSVをハッシュ照合する。対照、実験版、固定上流の後退差分を演算順ごとに全点ビット再計算する。変更点数、初差、初差の値、上流と一致する点数が事前予測に一致する。差分以外の全列と押鍵前は対照とビット一致し、追従0は全CSVが一致する。残る差は現在の放射流量だけの置換で復元する。"
+}

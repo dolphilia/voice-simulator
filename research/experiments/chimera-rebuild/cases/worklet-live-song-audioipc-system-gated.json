@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-song-audioipc-system-gated",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "comparison_run": "worklet-live-song-audioipc-20261121-pilot-verified-b",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {
+      "template": "Audio System Trace",
+      "time_limit": "2s",
+      "all_processes": true,
+      "marker_ready_offset_ms": 980,
+      "marker_capture_quanta": 1536
+    }
+  },
+  "criteria": {
+    "alignment": "先行音を192量子処理した状態でxctraceを起動し、開始通知の980 ms後に歌唱ノードの構築を解放する。ソケット対照で観測した通知の先行0.7〜0.9秒と、トレースの実データ長0.19〜0.30秒が同程度なら、構築前後17要求がトレースに入ると予測する。実際の収録時刻と要求窓の包含を試行ごとに判定する。",
+    "events": "対象は同じFirefoxの親および歌唱を処理した子のAudioIPCコールバックスレッド。クライアントのマーカーに隣接し、両端でバイト数・順序・fdが揃う一意な送受信を採用する。前後8件を揃える。ソケットの送受信と音声機器からの要求開始は別に扱う。",
+    "perturbation": "既存の未準備・事前描画と同じ歌唱WAV、観測、調音計画、先行音の連続フレームを照合する。ノード構築時間と直後の要求間隔は通常の予備採取に対する増分を報告する。同じ条件でいずれかの増分が2 msを超えた試行は、収録による負荷の影響を分けるため、元のタイミング予測の判定数に含めない。"
+  }
+}

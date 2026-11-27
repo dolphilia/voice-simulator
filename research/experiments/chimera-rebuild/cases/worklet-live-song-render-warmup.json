@@ -1,0 +1,22 @@
+{
+  "id": "worklet-live-song-render-warmup",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_case": "worklet-live-song-render-phases.json",
+  "phase_reference_run": "worklet-live-song-render-phases-20261121-repeat",
+  "measurement": {
+    "condition_order": [["control", "zero", "draw"], ["draw", "control", "zero"], ["zero", "draw", "control"]],
+    "zero_frame_calls": 1000,
+    "draw_frames": 256,
+    "draw_block_frames": 64,
+    "maximum_draw_to_control_first_wasm_ratio": 0.7,
+    "maximum_draw_to_zero_first_wasm_ratio": 0.8,
+    "minimum_draw_trials_within_first_quantum_budget": 2
+  },
+  "hypothesis": "0フレーム呼び出しが準備するのは主にWASM入口までなので、同じインスタンスの使い捨て状態で実際に描画した方が、本番の先頭量子のWASM時間が短くなる。描画条件のその中央値は未準備の70%以下、0フレーム条件の80%以下と予測する。",
+  "criteria": {
+    "input": "通常のFirefoxの画面で、48 kHzのPop Deeを現行順で再生する。直前の失敗歌詞、資産検証の延期、量子内のマーカーは共通にする。ブラウザを試行ごとに起動し、条件順をずらして3組を採る。",
+    "preparation": "未準備、使い捨て状態で0フレームを1,000回、同じ0フレーム呼び出しに加えて64フレームを4回描画する3条件を設ける。後2条件の使い捨て状態は本番と同じ設定・調音スコアで開始し、同じWASMインスタンス上で破棄して本番状態を新規に作る。",
+    "timing": "準備全体と0フレーム・事前描画の区間をコンストラクターのマーカーと照合する。先頭2量子と定常側の2量子ではWASM・JS観測・ネイティブ区間を従来の区間計時と同じ方法で計測する。128/48000秒を予算とし、描画条件の少なくとも2/3で先頭量子が予算内と予測する。準備・構築時間の増分、量子単位の超過、冒頭32量子を除くp99、計時印の間隔も記録する。",
+    "reference": "調音計画・拍・WASM・辞書に加え、PCM全91,200点と観測1,425行を既存CLI・ブラウザの基準に照合する。拍の位置を拍数とテンポから独立計算し、固定上流との差を既存の許容幅で照合する。準備マーカーの確認と信号の一致を判定とし、処理時間の予測の当否は個別に保持する。"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tsp-matched-speech-formants",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "previous_report": {
+    "run": "tsp-f2-candidates-20261123-on",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "7eea69934b5925a1bf9e051689a41a836ddf95c85f79b68120b1cb6953f8fb03"
+  },
+  "matched_pcm": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "counts": {"utterances": 4, "vowels": 12, "centers": 5, "different_saved_window_starts": 15},
+  "recording_gap": {"utterance": "MK61_01", "word": "seems", "center": 0.5, "minimum_f2_difference_hz": 1000},
+  "hypotheses": {
+    "shared_windows_agree_after_matching_pcm": "設定を揃えた両版に固定上流の同じ窓を適用すると、12母音の60窓で公開極と採択F1・F2が先行の0.05 Hz以内で一致し、候補順と欠測判定も一致する。ナイキスト軸上の極は既存規則に沿って照合する。",
+    "saved_boundary_offsets_remain_visible": "資料にある各版固有のMFA境界を使うと、共通窓と開始位置が異なる15窓が残る。同じ研究版PCMを共通窓へ切り替えると、そのうち少なくとも1窓でF2が0.05 Hzを超えて変化するか欠測判定が変わる。",
+    "seems_recording_gap_persists": "MK61_01のseemsの50%窓は両版のF2が0.05 Hz以内で一致し、録音のF2採択値との差は1,000 Hz以上残る。"
+  },
+  "acceptance": "既存の4発話の同じ12母音、5窓中心、MFAの保存境界、録音の元PCM、F1・F2の採択規則を引き継ぐ。設定を揃えた研究版PCMだけを差し替え、固定上流PCMは保存済みWAVとのビット一致を確認して使う。各版固有の録音・合成境界で再計測し、研究版の同じPCMに固定上流の境界を割り当てる共通窓も計測する。固定Rustと独立Pythonで、波形外または無音の対照、窓、公開極、採用極と中央値を従来の許容差で照合する。先行レポートと録音・固定上流の数値が維持されることを確認する。各比較の窓開始、公開極、候補の順位と採択または欠測の差が最初に生じる段を記録する。人手のF2注釈は使用しない。"
+}

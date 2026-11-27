@@ -1,0 +1,39 @@
+{
+  "id": "duet-telemetry",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "一つの混合WAVと各声部の採取列は同じサンプル0を持つ。768サンプルの境界に達するまで前の観測点を保持し、部分区間を余分に採らず、声部の終端後はその声部の最終観測を保持する。採取の有無でPCMは変わらない。",
+  "reference": {
+    "case": "duet-transport.json",
+    "run": "duet-transport-20261120-clock-bracket-repeat",
+    "manifest_sha256": "16ecaa5119de8d01a1a86224407a5d4487f9abc8bd81a530c0f0a846600272c2"
+  },
+  "format": {
+    "magic": "CHTL",
+    "version": 1,
+    "header_bytes": 48,
+    "sample_rate_hz": 48000,
+    "hop_samples": 768,
+    "articulators": 17,
+    "scope_points": 32,
+    "stem_frames": [91200, 97920],
+    "expected_records": [119, 128],
+    "body_mix": [[0, 0], [1, 0]],
+    "clock_absolute_tolerance_seconds": 2e-7,
+    "control_period_output_samples": 64,
+    "pressure_stride_output_samples": 2,
+    "pressure_test_hop_indices": [1, 44, 81],
+    "pressure_rms_relative_tolerance": 2e-7,
+    "flow_relative_tolerance": 2e-7,
+    "flow_absolute_tolerance_cm3_s": 1e-7,
+    "pcm_rms_absolute_tolerance": 2e-8
+  },
+  "browser": {
+    "paused_seek_samples": [0, 767, 768, 769, 30719, 30720, 30721, 91000, 97152, 105600],
+    "play_from_sample": 23040,
+    "forward_seek_sample": 53760,
+    "backward_seek_sample": 24576,
+    "wait_after_seek_samples": 1200,
+    "invalid_file": "truncated_payload"
+  }
+}

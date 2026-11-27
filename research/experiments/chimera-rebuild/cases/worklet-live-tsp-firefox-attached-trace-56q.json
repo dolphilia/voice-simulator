@@ -1,0 +1,66 @@
+{
+  "id": "worklet-live-tsp-firefox-attached-trace-56q",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-retained-trace-window-56q",
+  "initial_control_run": "worklet-live-tsp-firefox-retained-trace-window-56q-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "all-processes",
+        "attach-firefox"
+      ],
+      [
+        "attach-firefox",
+        "all-processes"
+      ],
+      [
+        "all-processes",
+        "attach-firefox"
+      ],
+      [
+        "attach-firefox",
+        "all-processes"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "compare_attach_target": true,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "minimum_margin_gain_ns": 4000000,
+    "minimum_pairs_with_margin_gain": 3
+  },
+  "hypothesis": "Firefox親プロセスを指定すれば、スレッド状態の収録対象が絞られ、FirefoxのAudio Client行が発話開始まで残りやすくなると予測する。音声サーバーと機器Writeの行が残り、4組中3組以上で発話開始からAudio Client末尾までの余裕が4 msを超えて増え、スレッド状態とWriteを同時に照合できる窓が増えた場合に予測を支持する。システム側の表や該当行が欠測なら、その位置を記録する。",
+  "acceptance": "確認用07・48 kHz・256フレーム、先行音56量子、実際の構築位置7,168〜7,424フレーム、同期事前描画、通常の発話入力、タップなし、保持窓なし、再生前のDarwin通知、1秒・3収録器を固定する。両条件で準備済みのFirefox親PIDを識別し、順序を組ごとに反転する。目次の表、FirefoxのAudio Client行、同じ予定ホスト時刻のAudio Serverと機器Write、対象スレッドの状態、発話WAVと状態を確認する。全窓と発話開始の要求10〜16の局所窓を従来と同じ時刻許容差で照合し、最初の3量子を含む要求12と13を判定する。4組が比較できる場合に予測を判定し、前の保持窓の失敗を保持する。"
+}

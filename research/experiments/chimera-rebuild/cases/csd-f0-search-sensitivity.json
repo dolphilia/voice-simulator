@@ -1,0 +1,33 @@
+{
+  "id": "csd-f0-search-sensitivity",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "short_source_run": "csd-song-planning-20261121-final",
+  "short_spectrum_run": "csd-note-spectrum-20261121-all",
+  "short_periodicity_run": "csd-vibrato-aperiodicity-20261121-a",
+  "long_case": "csd-long-note-vibrato.json",
+  "long_run": "csd-long-note-vibrato-20261121-theta",
+  "long_control_run": "csd-long-note-vibrato-f0-control-20261121-a",
+  "spectrum_case": "csd-note-spectrum.json",
+  "periodicity_case": "csd-vibrato-aperiodicity.json",
+  "songs": [
+    {"id": "en001a", "split": "calibration", "notes": 86, "frames_per_signal": 4032,
+     "wave_case": "csd-acoustic-f0-en001a.json", "wave_run": "csd-acoustic-f0-en001a-20261121-final"},
+    {"id": "en005a", "split": "held_out", "notes": 106, "frames_per_signal": 4707,
+     "wave_case": "csd-acoustic-f0-en005a.json", "wave_run": "csd-acoustic-f0-en005a-20261121-final"},
+    {"id": "en012a", "split": "calibration", "notes": 185, "frames_per_signal": 12087},
+    {"id": "en035a", "split": "held_out", "notes": 109, "frames_per_signal": 8622}
+  ],
+  "measurement": {
+    "upper_semitones": [7, 5],
+    "high_error_cents": 600,
+    "independent_sample_stride": 251,
+    "f0_replay_tolerance_hz": 0.00000001,
+    "aperiodicity_replay_tolerance": 0.000000001,
+    "metric_replay_tolerance": 0.0000001,
+    "published_rounding_tolerance": 0.005000001
+  },
+  "hypothesis": "探索上限を+7から+5半音へ狭めると、+600セント以上に外れた短い遅延を除外し、両合成の一部の音符でH1−H2とビブラートの要約が動く。探索窓や上流の閾値を保てば、もともと周期が得られなかった窓が新たに有声になることはない。狭い探索に真の周期が含まれない場合は、有声率が減る可能性もある。録音の変化は確認曲を含めて同じ表に残す。両条件の順位や改善の採否は、測定の合格条件と分ける。",
+  "measurement_description": "録音・固定上流・候補の同一PCM、通常報告、時刻、位相、サンプルレート、窓、電力ゲート、YIN閾値、探索下限−7半音、FFTを固定する。正規化差を同じ列で前後2つの探索へ渡す。H1−H2は同じ窓のFFT、ビブラートは各条件の連続有声F0と既存の定義で計算する。最初に値または有声判定が分かれた窓と採択遅延を保存する。",
+  "acceptance": "4曲486音符・3波形計88,344窓を保存する。通常のF0・有声判定・ゲート以下まで含む非周期性・ビブラート・H1−H2を先行実行または上流通常報告に照合する。検索上限変更後にF0または非周期性が動いた全窓と固定間隔の窓では従来の独立な探索でも再計算する。過去の1音符対照を再現する。通常と対照の欠測、曲別H1−H2、ビブラート及び非周期性・有声率を残し、PCMの合成や試聴用音声は従来条件を参照する。"
+}

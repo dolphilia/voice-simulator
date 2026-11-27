@@ -1,0 +1,24 @@
+{
+  "id": "fixed-vowel-i-velum-oral-nasal-loss",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ のポートのみ開条件で、ポートの二次損失を戻した後の2,310 Hzの鼻端の複素誤差は、口腔と鼻腔の通常枝の二次損失を加えると50%以上減る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-mean-flow-tangent-20261124-repeat",
+      "case_id": "fixed-vowel-i-velum-mean-flow-tangent",
+      "manifest_sha256": "453ddd23a60187015e93717836e786a17135e3cd7393119cad01918f2465fbe5"
+    },
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "steady_window_internal_samples": [38400, 48000],
+    "tubes": ["oral", "nasal"],
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "branch_balance_relative_error_lt": 1e-9,
+    "upstream_series_peak_relative_error_lt": 1e-8,
+    "complex_identity_relative_error_lt": 1e-9,
+    "input": "前回と同じ固定 /i/ の閉輪郭で口蓋帆ポートだけを0.30 cm²開く。通常発声で内部標本38,399〜47,999を収録する。発声条件と初期化は保存済みのケースに従う。",
+    "observation": "口腔・鼻腔内の隣接節点を結ぶ普通枝の流量と両端圧を記録する。幾何で流向別の損失係数を再計算し、同じ窓の2,310 Hzで枝ごとの圧力損失を独立した圧力源として加える。ポートのみ、ポートと口腔、ポートと鼻腔、ポートと両管の応答を鼻端の実測と比較する。有限窓の枝更新に由来する端点項は複素収支に入れ、損失とは独立に観測する。",
+    "acceptance": "観測有無でPCMが一致し、旧時系列と同じ列が一致する。固定上流で同じ枝の観測を再取得して照合する。各枝の時系列と複素圧力収支を登録許容差で照合し、枝ごとの重ね合わせと一括した節点注入の応答が一致する。鼻端の複素誤差の50%改善については両版で判定し、成立・不成立と実数値を保存する。"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "csd-en001a-pharynx-cell7-first-block",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "cell_source": {
+    "run": "csd-en001a-pharynx-cell7-source-20261124-repeat",
+    "case": "csd-en001a-pharynx-cell7-source",
+    "manifest_sha256": "f278a27c6dd08399dd383790a959d132106755860d184e632b129a011bb67622"
+  },
+  "centerline": {
+    "run": "csd-en001a-centerline-coordinate-swap-20261124-repeat",
+    "case": "csd-en001a-centerline-coordinate-swap",
+    "manifest_sha256": "0d8e67a50a9a32bd2b2a9ffb84e34f5588ca1d1b2a846ced617c89a8d512bc80"
+  },
+  "render": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "measurement": {
+    "pharynx_cells": 15,
+    "pharynx_cell_index": 7,
+    "focus_node": 20,
+    "coordinate_exchange_ray": 5,
+    "completed_frames": [0, 1, 65],
+    "comparison_internal_samples": [0, 128],
+    "control_internal_samples": 128,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "block_frames": 128,
+    "frames": 201600,
+    "conditions": {"native": 0, "initial_only": 1},
+    "raw_volume_prediction": {"upstream": {"first": 12, "count": 20}, "candidate": {"first": 8, "count": 32}},
+    "scope": "en001aの通常描画と、同じ版の測定線5交換時の咽頭セル7初期面積だけを渡す描画で、最初の制御ブロックの全128内部標本を採取する。咽頭セル7と前後1節点を局所モデルに含め、外側の枝の流量は各描画から採る。"
+  },
+  "hypotheses": {
+    "raw_volume_matches_first_block_prediction": "前回の補間増分から予測した通り、局所体積速度差は上流の標本12（計20標本）、研究版の標本8（計32標本）で初めて出る。",
+    "cell_compliance_differs_at_zero": "セル7の体積の絶対値が違うので、コンプライアンスは標本0から分かれる。",
+    "local_pressure_differs_before_volume_source": "セル7の圧力差は、体積速度が分かれるより前に現れる。"
+  },
+  "acceptance": "両版各2条件の201600 PCMフレームと全歌唱計画を先行実行へ照合する。128標本の全節点で体積速度の算出、配分、二段平滑を独立に再計算し、節点19〜21の圧力と壁、枝18→19から21→22の係数、流量、収支を照合する。局所モデルでは外側の流量を強制して節点19〜21の圧力、壁運動、内側2枝を順に再現する。体積源、コンプライアンス、内側枝の係数、壁の係数、外側流量を個別に交換し、初回の差と128標本で相手に近づいた程度を記録する。すべての入力と初期状態を交換すると相手の観測系列を再現する。"
+}

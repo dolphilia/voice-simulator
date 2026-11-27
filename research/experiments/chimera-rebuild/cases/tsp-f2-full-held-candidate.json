@@ -1,0 +1,39 @@
+{
+  "id": "tsp-f2-full-held-candidate",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-f2-full-held-women-20261123-repeat",
+    "case": "tsp-f2-full-held-women",
+    "manifest_sha256": "f31b94e14d484f9ccdd4f763db8cdfe88fedeee1b1c6aac15e1c017c5b8248ae"
+  },
+  "matched_settings": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "render_template": "artifacts/FK61_01/matched-case.json",
+  "lpc_case": "tsp-stressed-vowel-formants-held-out.json",
+  "measurement": {
+    "recordings": 120,
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "pcm_absolute": 1e-6,
+    "tolerance": 1e-10,
+    "focus_case": "FA/FA01_03/13/before",
+    "intervals": "通常の英語発話CLIの予定区間を48 kHz標本に換算してから、固定上流と同じG2P・MFA設定で合成音を整列する。F2は雑音付加前の合成PCMで計測し、固定録音の注釈・学習参照・78介入を維持する。",
+    "settings": "既存の女性用通常入力を基準にし、計画済みの休止舌先・女性ゲイン・音源変動の一致設定を適用する。英語G2P、本文、体型は元の条件。"
+  },
+  "hypotheses": {
+    "planned_timing_matches_every_utterance": "予定したIPA・強勢・開始終了フレーム・出力長が全120発話で一致する。",
+    "some_pcm_exceeds_tolerance": "上流と研究版のPCMには絶対差1e-6を超える発話がある。",
+    "some_alignment_or_f2_changes": "実PCMを整列し直すと、少なくとも一つの音素境界かF2の採否・値が変わる。",
+    "female_zero_classification_changes": "女性参照では少なくとも1介入でF2費用の0判定が変わる。"
+  },
+  "acceptance": "全120発話の候補を通常入口から描画し、失敗・欠測を記録する。固定上流の予定区間・PCM・対応音素・F2を照合し、F2は候補PCMからの独立計算でも照合する。固定参照と各集約方式の79条件の費用を許容差1e-10以内で独立計算する。実装間の差と予測の成否は計測の合否から分ける。"
+}

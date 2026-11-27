@@ -1,0 +1,51 @@
+{
+  "id": "songbird-chirps-left-bronchus-momentum-44100",
+  "revision": 1,
+  "left_bronchus_term": "momentum",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-bronchus-linear-44100-20261123-repeat",
+    "manifest_sha256": "1f1c3946ddaf711ad6a1077dda6dfda519bee3659bd15634b4611ef49b743abb"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02
+  },
+  "predicted_first_inflow_effect": {
+    "matched_time": {"offset": 23, "flow_hex": "-0x1.43abf8efee589p-18"},
+    "native_block": {"offset": 22, "flow_hex": "-0x1.88af1c994c0a5p-20"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_left_branch_samples": {
+    "left_bronchus_pressure_dyn_cm2": 0,
+    "left_bronchus_1_pressure_dyn_cm2": 0,
+    "left_bronchus_1_inflow_cm3_s": 1,
+    "left_bronchus_0_pressure_dyn_cm2": 1,
+    "left_bronchus_0_inflow_cm3_s": 2,
+    "left_flow_cm3_s": 1,
+    "trachea_pressure_dyn_cm2": 1,
+    "trachea_wall_flow_cm3_s": 2,
+    "right_flow_cm3_s": 2,
+    "right_bronchus_pressure_dyn_cm2": 2,
+    "trachea_end_pressure_dyn_cm2": 16,
+    "oec_pressure_dyn_cm2": 17,
+    "radiation_flow_cm3_s": 23,
+    "radiation_derivative_cm3_s2": 23
+  },
+  "hypothesis": "左気管支のセル1から末端セル2への枝だけで、上流順に求めた慣性を使って持ち越し項を (L × Uprev) × fs に切り替える。235点制御の押鍵23点後と256点制御の22点後の流量が固定上流とビット一致する。線形係数は先行実験と一致する。両端の節点圧は同じ標本、鳴管と気管入口圧は1標本後以降に変化し得る。",
+  "observation": "先行の235点制御、256点制御、追従0を同じ初期化と通常render CLIで描画する。176400 Hzの押鍵後0〜63点で左右の気管支末端の流入と圧力、鳴管流量、気管圧と放射を観測する。",
+  "acceptance": "対照バイナリとCSVを再現し、固定上流CSVをハッシュ照合する。両側の末端圧と流入、両鳴管流量と気管入口圧を全点ビット再計算する。最初の流量差の解消と予測値を確認し、幾何、閉鎖、押鍵前、追従0と伝播の下限を照合する。残る初差を項ごとの置換で追う。"
+}

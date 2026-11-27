@@ -1,0 +1,41 @@
+{
+  "id": "csd-acoustic-f0-en005a",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song": "en005a",
+  "split": "held_out",
+  "source_run": "csd-song-planning-20261121-final",
+  "prefix_run": "csd-continuous-song-20261121-repeat",
+  "render": {
+    "phrases": 36,
+    "notes": 106,
+    "recording_rate_hz": 44100,
+    "recording_frames": 3256616,
+    "sample_rate_hz": 48000,
+    "output_frames": 3544616,
+    "same_prefix_frames": 288000,
+    "prefix_from_current_score": true,
+    "host_block_frames": [128, 77]
+  },
+  "measurement": {
+    "alignment_tolerance_seconds": 0.03,
+    "regular_window": [0.3, 0.2],
+    "melisma_window": [0.1, 0.1],
+    "hop_seconds": 0.005,
+    "search_half_width_semitones": 7,
+    "yin_threshold": 0.2,
+    "yin_minimum_periods": 2.5,
+    "envelope_seconds": 0.01,
+    "envelope_floor_db": -80,
+    "gate_percentile": 95,
+    "gate_drop_db": 35,
+    "published_cents_tolerance": 0.005000001,
+    "published_voiced_share_tolerance": 0.005000001,
+    "known_tone_hz": 330,
+    "known_tone_tolerance_hz": 0.15,
+    "minimum_candidate_notes_with_f0": 96,
+    "pcm_diagnostic_tolerance": 1e-6
+  },
+  "hypothesis": "調整用と同じ音符窓、±7半音、電力ゲート、声源設定で確認用の全36句を測る。固定上流の通常報告のF0と有声率は丸め幅内で再現し、調整用と同じ90%の条件で、候補の106音符中96音符以上でF0が得られると予測する。録音との実測差の大きさは観測値として扱う。探索上限の変更は別のケースで試す。",
+  "acceptance": "録音・固定上流・候補の全106音符について音符座標、F0、有声率、欠測理由を保存する。48 kHzの録音長、異なるホスト分割、同じ全曲計画を6秒で終了させた波形の先頭一致を確認する。CSV省略では先行する調整用2句を引き続き検証する。既知周期と欠測の対照を実行する。"
+}

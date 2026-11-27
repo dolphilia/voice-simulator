@@ -1,0 +1,19 @@
+{
+  "id": "fixed-voice-pharyngeal-second-cell-inertance-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "balance_run": ["fixed-voice-pharyngeal-second-cell-48000-repeat", "a5c6b2f1ce34404f0e359e589e93a4d0a1eed12e258f7e89b3cd0a8eac0a5241"],
+  "changed_branch_nodes": [14, 15],
+  "first_outgoing_target": 8207,
+  "pressure_target": 8214,
+  "incoming_target": 8229,
+  "blocks": [128, 77],
+  "sample_rate_hz": 48000,
+  "internal_rate_hz": 96000,
+  "full_frames": 93056,
+  "gate_open_frame": 4096,
+  "gate_close_frame": 54656,
+  "pcm_absolute_tolerance": 5e-7,
+  "hypothesis": "枝14→15の現在慣性だけを L×Fs にすると、8,207点目はほかの入力が一致するため流出が上流とビット一致する。8,214点目の節点14圧と8,229点目の枝13→14の流入も上流に近づくと予測する。再帰する流量、持ち越し圧、次セルの圧力の違いがその後に再び寄与しうるため、完全一致の有無と最初の残差を測る。",
+  "observation": "先行の固定 /i/ を使い、出力48 kHz・内部96 kHz、ゲート開放4,096・停止54,656。節点14の圧力と前後の枝を内部8,188〜8,239点目で採る。放射は既存の64内部点と同じ番号で比較する。発声と停止を含む全93,056フレームをホスト分割128と77で描画する。",
+  "acceptance": "対照は保存済みの節点・枝・放射・全PCMを再現する。変更版は8,207点目の流出が上流とビット一致し、観測52点で壁・圧力・前後の枝を独立再計算できる。8,214・8,229点目と最初の残差を記録する。両版のPCMは分割幅間でビット一致し、固定上流および対照との差は既存の5e-7以内に収まる。"
+}

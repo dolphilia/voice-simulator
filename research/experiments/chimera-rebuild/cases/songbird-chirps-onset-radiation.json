@@ -1,0 +1,25 @@
+{
+  "id": "songbird-chirps-onset-radiation",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "worklet-midi-songbird-chirps-20261121-final",
+  "onset_frame": 8320,
+  "output_sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 192000,
+  "control_frames": 64,
+  "presilence_internal_samples": 256,
+  "observation_internal_samples": 16,
+  "no_pitch_tracking": 0.0,
+  "hypothesis": "最初の制御更新では呼気がゼロでも、上昇した平滑音高に追従して口腔食道腔が縮む。体積速度源と口腔食道腔内の圧力がその1点目で立ち上がり、くちばし端からの放射は6内部サンプル後に現れる。音高追従をゼロにすると、この区間の放射は両版ともゼロになる。",
+  "observation": "保存済みのMIDI 60の最初の採用時刻と、その前後の音高・左右配分・駆動・ゲートを使う。同じ初期状態の通常CLIと上流の公開鳴禽を使い、最初の16内部サンプルで口腔食道腔の断面・圧力、左右の鳴管流量、気管圧、くちばし端の放射流量と時間差分を照合する。音高だけ更新する試行と、最初から音高追従をゼロとする試行を入れる。",
+  "acceptance": "呼気の前提と元の放射の出現位置を照合する。元の制御を与えた両版で最初の16個の放射微分がそれぞれ保存済み系列と一致することを調べ、差があれば判定を残す。0点目の断面・体積速度源・圧力を独立計算して両版に照合する。音高だけを変えた最初の放射を元の制御と比較し、追従ゼロ試行で無励振を確認する。ビット差の最初の演算は取得した系列で特定できる範囲を報告する。",
+  "expected_first_radiation_offset": 6,
+  "first_pressure_absolute_tolerance_dyn_cm2": 1e-12,
+  "first_area_absolute_tolerance_cm2": 1e-15,
+  "derivative_replay": {
+    "baseline_run": "songbird-chirps-onset-radiation-20261122-a",
+    "hypothesis": "初出点の流量は両版で同じ。再実装は流量差を刻みで割り、上流は標本レートを掛けて最後の1ビットが変わる。再実装の流量に掛け算を適用すると、次に流量そのものが分岐するときまで固定上流と一致する。",
+    "acceptance": "再実装の除算、上流の乗算を各16点の流量からビット単位で再現する。最初に分かれる点で流量は一致し、乗算対照は上流と一致する。元の最初の差は6点目、乗算対照の最初の差と流量の差は8点目。固定版の合成器と通常の再実装は同じ条件で再採取し、計算式だけを変えた対照は保存済み流量へ適用する。",
+    "expected_first_flow_delta": 8
+  }
+}

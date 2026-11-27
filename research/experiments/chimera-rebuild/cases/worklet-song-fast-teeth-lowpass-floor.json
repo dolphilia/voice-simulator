@@ -1,0 +1,22 @@
+{
+  "id": "worklet-song-fast-teeth-lowpass-floor",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-song-voice-fast.json",
+  "source_case": "song-voice-fast.json",
+  "cli_study": "song-voice-fast-teeth-lowpass-floor.json",
+  "reference_run": "song-voice-fast-constriction-source-20261121-repeat",
+  "floor_run": "song-voice-fast-teeth-lowpass-floor-20261121-repeat",
+  "zero_reference_run": "worklet-song-voice-fast-20261121-return-reference",
+  "noise_seed": 12345,
+  "turbulence": { "scale": 1, "glottis_gain_multiplier": 0, "constriction_gain_multiplier": 0 },
+  "teeth_lowpass_floors_hz": [0, 1200],
+  "expected_first_pcm_change_frames": { "floor0": 27968, "floor1200": 27927 },
+  "pcm_difference_floor": 1e-6,
+  "windows": { "before_reopening": [27840, 27904], "first_opening": [27904, 27968] },
+  "hypothesis": "Pop Deeの歌唱スコアに声門・狭窄ゲイン0と歯の低域通過周波数の下限を渡す。0 Hzと1,200 Hzの各オフラインWorkletのPCMは保存済みの同条件のCLIと全フレームでビット一致する。全体係数0との最初のPCM差は0 Hzで27,968、1,200 Hzで27,927フレーム。差は閉鎖直前の64フレームには現れず、開口直後に現れる。",
+  "criteria": {
+    "input": "通常の歌唱画面の短い音符を使う。Pop Dee、240 BPM、48 kHz出力、96 kHz内部、49,200フレーム、128フレーム量子。乱流設定は再生ケースに保存し、他のスコア・姿勢・声の設定を揃える。省略時の入口も保存済みの全体係数0のWorkletで再確認する。",
+    "acquisition": "ChromiumのオフラインAudioWorkletからPCM・歌唱計画・観測状態を取得する。保存済みCLIケースと波形・時系列・設定・固定上流の波形をマニフェストのSHA-256で検証する。形式、フレーム数、観測位置、使用したWASM・辞書、設定の書き出しを照合する。",
+    "verdict": "各条件のCLIとのPCM完全一致と、64フレームごとのCLI・Workletの音響状態の誤差が既存の許容差内にあることを確認する。拍とMIDI音高を独立式で照合し、同条件の固定上流と0 Hzの一致、1,200 Hzで生じる最初の差と最大差を別に記録する。予測の開始位置と閉鎖中の一致は、ブラウザとCLIの両方について保存したPCMから調べる。"
+  }
+}

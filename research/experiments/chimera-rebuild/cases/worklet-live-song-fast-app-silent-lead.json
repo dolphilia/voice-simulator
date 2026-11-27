@@ -1,0 +1,22 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "lead_study": "worklet-live-song-fast-zero-lead-wait.json",
+  "lead_reference_run": "worklet-live-song-fast-zero-lead-wait-20261121-repeat",
+  "offline_condition": "floor1200",
+  "silent_lead_quanta": 8,
+  "routes": ["direct", "observed"],
+  "condition_order": [["ordinary", "silent"], ["silent", "ordinary"], ["silent", "ordinary"], ["ordinary", "silent"]],
+  "hypothesis": {
+    "startup": "先行枝が128フレームの入力を連続8量子受けた後で歌唱ノードを接続すると、無音先行の全試行で開始待ちの飛びが0になり、最初の歌唱量子と予約の間は3,072フレームになる。飛んだフレームの総数は通常より少なくなる。",
+    "click_time": "歌唱Worklet登録後に先行枝の登録と8量子の待ち時間を加えるため、飛びを防いでもクリックから歌唱先頭の量子までの時間は組内差の中央値で延びると予測する。減少した場合もそのまま報告する。",
+    "pcm": "歌唱開始の予約位置で揃えたPCM49,200フレーム、観測769点、歌唱計画は両条件とも保存済みのオフライン基準と一致する。"
+  },
+  "criteria": {
+    "input": "Chromiumの通常画面と実時間で歌唱ボタンを使う。ページごとに新たなContextで開始する。同じ短音Pop Dee、WASM、辞書、48 kHz、128フレーム量子、全体乱流係数1、声門と狭窄の倍率0、歯のフィルタ下限1,200 Hz。直接出力と並列観測付きのそれぞれで順序を均衡化した4組。通常経路とクエリsongSilentLead=8の経路を比較する。",
+    "lead": "試験の観測用スクリプトから先行枝を作らない。画面側は歌唱Worklet登録後、同じContextで全サンプル0のPCMをループする。先行Workletから実測フレームを保存し、連続する128フレーム量子が8点、入力はすべて0、最終量子末尾以前に歌唱ノードが走っていないことを照合する。",
+    "clock": "再生ボタンのtrusted clickを文書のキャプチャフェーズでDate.nowにより記録する。最初に歌唱を描画するWorklet呼び出しの開始時刻も同じ単位で記録する。クリックから歌唱PCM先頭までの差はミリ秒で組ごとに保存し、直接出力で得た中央値の符号を判定する。絶対Contextフレームの取得と8量子+2,048フレームの予約は並列観測から独立に照合する。",
+    "audio": "予約の直前と歌唱終端の補完の後をそれぞれ最低256フレーム検査し、0と連番を確認する。録音機器を通さないWeb Audioグラフ内の計測とする。固定上流との比較にはSHA-256照合済みの同一入力の保存PCMを使う。"
+  }
+}

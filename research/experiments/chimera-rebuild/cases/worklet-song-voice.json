@@ -1,0 +1,25 @@
+{
+  "id": "worklet-song-voice",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ英語辞書、歌詞、拍、姿勢と音源であれば、WASMの計画とCLIの計画が一致し、Workletの加工前PCMはCLIとビット一致する。母音の音高とビブラート、および呼気が続く段階で始まる語尾の開大を観測できる。",
+  "song_voice_case": "song-voice-long.json",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 91200,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "expected_beat_seconds": [0.5, 1.0],
+    "score_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "smoothed_f0_hz", "abduction_cm2"],
+    "expected_release_checks": {
+      "held_breath_at_seconds": 1.42,
+      "minimum_gate_during_opening": 0.98,
+      "minimum_abduction_cm2_during_opening": 0.05,
+      "released_breath_at_seconds": 1.6,
+      "maximum_released_gate": 0.02
+    },
+    "check_unrenderable_lyric_then_recover": true
+  }
+}

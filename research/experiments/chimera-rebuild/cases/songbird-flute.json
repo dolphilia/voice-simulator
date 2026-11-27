@@ -1,0 +1,43 @@
+{
+  "id": "songbird-flute",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "コールは次の64出力フレーム境界で経過0秒を評価する。補間はパラメータ別にキーを結び、後続キーの曲線と指定音高の比率を用いる。手動停止は演奏側の目標をその場で戻し、実際の平滑値は次の境界から変わる。",
+  "songbird_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 74400,
+    "level": 1.0,
+    "controls": {"pitch_hz": 2600.0, "interval_semitones": 7.0, "voices": 0.5, "drive": 0.35, "tension": 0.4, "pressure_kpa": 0.9, "purity": 0.8, "oec_cm3": 0.4, "gape": 0.55},
+    "events": [{"frame": 73, "play_call": {"id": "flute"}}]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "offgrid-48000", "overrides": {}},
+      {"id": "stopped-48000", "overrides": {"frames": 32160, "events": [
+        {"frame": 73, "play_call": {"id": "flute", "pitch_hz": 3380.0, "amplitude": 0.8}},
+        {"frame": 5371, "gate": 0.35, "controls": {"pitch_hz": 3000.0, "interval_semitones": 2.0, "voices": 0.8, "drive": 0.4, "tension": 0.45, "pressure_kpa": 1.1, "purity": 0.65, "oec_cm3": 0.5, "gape": 0.35}},
+        {"frame": 17291, "stop_call": true},
+        {"frame": 24031, "gate": 0.0}
+      ]}},
+      {"id": "pitched-96000", "overrides": {"sample_rate_hz": 96000, "frames": 144000, "events": [
+        {"frame": 147, "play_call": {"id": "flute", "pitch_hz": 3380.0, "amplitude": 0.8}}
+      ]}},
+      {"id": "upper-cli", "overrides": {"frames": 158400, "events": [
+        {"frame": 0, "gate": 1.0, "controls": {"pitch_hz": 2600.0, "interval_semitones": 7.0, "voices": 0.0, "drive": 0.35, "tension": 0.4, "pressure_kpa": 0.9, "purity": 0.8, "oec_cm3": 0.4, "gape": 0.55}},
+        {"frame": 57600, "gate": 0.0},
+        {"frame": 76800, "controls": {"pitch_hz": 2600.0, "interval_semitones": 7.0, "voices": 0.5, "drive": 0.35, "tension": 0.4, "pressure_kpa": 0.9, "purity": 0.8, "oec_cm3": 0.4, "gape": 0.55}, "play_call": {"id": "flute"}}
+      ]}}
+    ],
+    "output_reference": "songbird-sustain-pcm.json",
+    "control_and_target_absolute_tolerance": 1e-9,
+    "clock_absolute_tolerance_seconds": 1e-12,
+    "pcm_absolute_tolerance": 1e-6,
+    "tail_window_seconds": 0.02,
+    "tail_to_peak_rms_maximum": 1e-6,
+    "minimum_active_pcm_rms": 0.03,
+    "active_window_relative_seconds": [0.06, 0.16],
+    "default_control_frames": {"start": 128, "natural_end": 60160},
+    "stopped_control_frames": {"stop": 17291, "next_control": 17344},
+    "pitch_scale": 1.3
+  }
+}

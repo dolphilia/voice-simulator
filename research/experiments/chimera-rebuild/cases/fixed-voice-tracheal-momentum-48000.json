@@ -1,0 +1,18 @@
+{
+  "id": "fixed-voice-tracheal-momentum-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "onset_run": ["fixed-voice-tracheal-onset-48000-repeat", "50475bfaee05d21c007d6b767e76366d847e94b58b0d5de7cce28a3400e44155"],
+  "pcm_input_run": ["worklet-rate-48000-memory-repeat", "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b"],
+  "sample_rate_hz": 48000,
+  "internal_rate_hz": 96000,
+  "full_frames": 93056,
+  "gate_open_frame": 4096,
+  "gate_close_frame": 54656,
+  "blocks": [128, 77],
+  "target_cell": 1,
+  "target_internal_sample": 8196,
+  "pcm_absolute_tolerance": 5e-7,
+  "hypothesis": "肺側から最初の直列枝の持ち越し運動量を、(L_carry/dt)×U_prev から (L_carry×U_prev)×Fs に変更すると、8,195点目までの気管の流量・圧力を保ったまま、8,196点目の枝1の流量とセル1の圧力が上流値に一致する。係数 L/dt の換算、粘性抵抗、他の枝の運動量の計算順は対照と同じとする。",
+  "observation": "先行の固定 /i/ の到達波の52内部点で、肺ポートと気管の13枝・13セルを対照と変更版で採取する。固定上流の保存済み採取物と照合する。発声と停止を含む93,056フレームのPCMを両方のビルドから通常CLIで2分割幅ずつ生成し、対照、変更版、上流の組ごとに初差・差のあるフレーム数・最大絶対差を保存する。",
+  "acceptance": "対照の全内部系列とPCMが保存済みの出力とバイト一致する。変更版の目標点を検証し、独立計算で52点の圧力収支と枝流量を復元する。各版の分割幅128・77のPCMがビット一致し、上流・対照への最大絶対差が既存の5e-7以内。後続の差の時刻、区間、影響範囲を記録する。"
+}

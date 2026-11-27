@@ -1,0 +1,61 @@
+{
+  "id": "csd-note-spectrum",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "csd-song-planning-20261121-final",
+  "songs": [
+    {
+      "id": "en001a",
+      "split": "calibration",
+      "wave_run": "csd-acoustic-f0-en001a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en001a.json",
+      "notes": 86,
+      "pilot_indices": [0, 10, 29, 33, 72]
+    },
+    {
+      "id": "en005a",
+      "split": "held_out",
+      "wave_run": "csd-acoustic-f0-en005a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en005a.json",
+      "notes": 106,
+      "pilot_indices": []
+    }
+  ],
+  "spectrum": {
+    "minimum_frame_seconds": 0.04,
+    "hop_seconds": 0.01,
+    "bands_hz": [0, 500, 1000, 2000, 4000, 8000],
+    "band_names": ["0-.5k", ".5-1k", "1-2k", "2-4k", "4-8k"],
+    "band_epsilon": 1e-30,
+    "mel_edges_hz": [60, 8000],
+    "mel_bands": 40,
+    "mel_epsilon": 1e-20,
+    "cepstral_coefficients": 13,
+    "harmonic_fraction": 0.03,
+    "harmonic_minimum_bins": 2,
+    "power_relpeak_tolerance": 2e-11,
+    "parseval_relative_tolerance": 2e-12,
+    "independent_feature_tolerance": 1e-9,
+    "published_db_tolerance": 0.005000001,
+    "score_raw_db_tolerance": 1e-8,
+    "score_guard_tolerance": 0.000500001
+  },
+  "controls": {
+    "fundamental_bin": 32,
+    "amplitudes": [0.3, 0.15],
+    "expected_power_fractions": [0, 0.8, 0.2, 0, 0],
+    "band_power_fraction_tolerance": 0.005,
+    "harmonic_db_tolerance": 0.02,
+    "gain_factor": 2,
+    "noise_seed": 256
+  },
+  "f0_control": {
+    "run": "csd-f0-third-harmonic-en001a-20261121-verified",
+    "note_index": 29,
+    "center_seconds": 21.94,
+    "minimum_predicted_h1h2_change_db": 3
+  },
+  "hypothesis": "既知の第1倍音と第2倍音を別々の帯域に置くと帯域電力比は振幅の二乗比になる。第2倍音の振幅を半分にすると、H1−H2は約+6.02 dBになる。床の影響を受けない広帯域信号の振幅を定数倍しても、帯域の相対値とc0を除いたMCDはほぼ変わらない。調整用で第3倍音に起因するF0誤推定を確認した音符では、同じFFTのH1−H2だけが修正F0に敏感で、帯域とケプストラムは同じと予測する。H1−H2の変動量は通常の再現判定と別に報告する。",
+  "measurement": "保存済みの録音と両合成を同じ音符の時刻で測る。録音は44.1 kHz、合成は48 kHzの既存PCMのまま用いる。安定区間は通常の音符の開始30%と終端20%を除き、メリスマでは各10%を除く。区間冒頭から10 msを加算し、終端以内の中心に2048点の対称Hann窓を置く。波形の外に出る窓は除き、非正規化の片側FFT電力を窓間で合計する。0–8 kHzを母数に5帯域をdB化し、40のメル帯域の対数電力をケプストラムへ変換してc1–c13のMCDを測る。H1−H2は元のF0 CSVをハッシュ照合し、5 ms格子の偶数番目で有声の窓だけを使い、F0と2倍のF0の近傍のピークを補間する。合成同士の最初の差を同じPCM・Hann窓・電力の段で記録する。",
+  "acceptance": "最初に調整用の音符5件で通常報告の帯域、H1−H2、帯域差とMCDが丸め幅内で一致し、基準の最初のFFT窓を直接DFTと照合する。既知倍音、Parseval、定数倍、無音、有効窓なしの対照を通す。その後、同じ条件で両曲の全192音符を測る。H1−H2の欠測は欠測同士で合わせ、通常報告の音符ごとの値と曲ごとの集約を照合する。調整用は上流スコアの丸め前の帯域、H1−H2と平均MCDまで、確認用は区分のMCDまで比較する。候補と録音または固定上流との差は観測値として記録する。"
+}

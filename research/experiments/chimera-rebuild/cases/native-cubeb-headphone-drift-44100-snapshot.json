@@ -1,0 +1,13 @@
+{
+  "id": "native-cubeb-headphone-drift-44100",
+  "revision": 2,
+  "base_case": "native-cubeb-headphone-drift-44100.json",
+  "snapshot_patch": "chimera-cubeb-output-snapshot-44100.patch",
+  "trailing_anchor_search_frames": 64,
+  "trial_ids": [
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-1",
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-2",
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-3"
+  ],
+  "reason": "先行例のネイティブプローブはAudioUnitに44.1 kHzを要求して再生できたが、PCMを採る差分が48000 Hz専用だった。同じ固定版cubebの別ビルドで出力ストリームとAudioUnitバッファの記録条件だけを44100 Hzに変更する。先行3収録のタップでは前マーカーを一意に決められたが後マーカーを全収録から探索すると欠測した。後端は前マーカーで固定した位置から予測し、その前後64フレーム内で同じ相関・残差条件を使う。"
+}

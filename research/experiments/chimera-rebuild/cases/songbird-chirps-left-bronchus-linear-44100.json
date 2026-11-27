@@ -1,0 +1,50 @@
+{
+  "id": "songbird-chirps-left-bronchus-linear-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-syrinx-linear-time-44100-20261123-repeat",
+    "manifest_sha256": "9f95ae68f5bbbbddc19c4dac8e15cba6daf1aa3cd2440ce9e03508fd625b19f5"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02
+  },
+  "predicted_first_inflow_effect": {
+    "matched_time": {"offset": 18, "flow_hex": "-0x1.c6d3afae2cf2bp-30"},
+    "native_block": {"offset": 18, "flow_hex": "-0x1.96f09c1d06be1p-30"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_left_branch_samples": {
+    "left_bronchus_pressure_dyn_cm2": 0,
+    "left_bronchus_1_pressure_dyn_cm2": 0,
+    "left_bronchus_1_inflow_cm3_s": 1,
+    "left_bronchus_0_pressure_dyn_cm2": 1,
+    "left_bronchus_0_inflow_cm3_s": 2,
+    "left_flow_cm3_s": 1,
+    "trachea_pressure_dyn_cm2": 1,
+    "trachea_wall_flow_cm3_s": 2,
+    "right_flow_cm3_s": 2,
+    "right_bronchus_pressure_dyn_cm2": 2,
+    "trachea_end_pressure_dyn_cm2": 16,
+    "oec_pressure_dyn_cm2": 17,
+    "radiation_flow_cm3_s": 23,
+    "radiation_derivative_cm3_s2": 23
+  },
+  "hypothesis": "左気管支のセル1から末端セル2への枝だけで、線形係数に入る半セル慣性の組み立てと時間換算を上流順にする。両制御の押鍵18点後の流量が予測した固定上流値に一致する。隣接する両セルの圧力は同じ標本、左鳴管流量と気管入口圧は1標本後から変更の影響を受け得る。",
+  "observation": "保存した235点制御、256点制御、追従0を通常render CLIで再現し、176400 Hzの押鍵後0〜63点で左右気管支末端、鳴管、気管入口と放射を観測する。",
+  "acceptance": "対照バイナリとCSVを再現し、固定上流CSVをハッシュ照合する。両側の気管支末端の圧力と流入、両鳴管流量および気管入口圧を全点ビット再計算する。18点後の枝流量を予測値どおり上流に揃え、幾何、伝播の下限、押鍵前、閉鎖、追従0を確認する。残る初差を演算項、圧力、流量の局所置換で追う。"
+}

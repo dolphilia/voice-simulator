@@ -1,0 +1,31 @@
+{
+  "id": "worklet-tsp-source-defaults",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_run": "tsp-fine-source-defaults-20261122-final",
+  "candidate_case": "tsp-fine-source-defaults",
+  "upstream_run": "tsp-fine-source-variation-20261122-repeat",
+  "upstream_case": "tsp-fine-source-variation",
+  "recording_id": "FK64_08",
+  "measurement": {
+    "output_frames": 107527,
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 32,
+    "traced_output_frames": 21120,
+    "attention_frames": [15360, 20016],
+    "upper_pcm_absolute_tolerance": 1e-6,
+    "plan_numeric_tolerance": 1e-12,
+    "state_absolute_tolerance": {
+      "gate": 1e-12,
+      "glottal_f0_hz": 1e-9,
+      "glottal_phase": 1e-10,
+      "glottal_area_cm2": 1e-10,
+      "glottal_flow_cm3_s": 1e-8,
+      "radiation_derivative_cm3_s2": 0.001
+    }
+  },
+  "hypothesis": "同じケースを英語発話画面から読み込むと、ブラウザWASMの加工前PCMと保存ケースのCLI再演が全107,527フレームでビット一致する。固定上流とのPCM最大絶対差は1×10⁻⁶以下。冒頭440 msの各観測では、内部96 kHzの第2サンプルを参照すると声門位相・F0・面積が対応する。",
+  "acceptance": "実ブラウザで元ケースを開き、通常のWASM・辞書とオフラインAudioWorkletを経由して描画し、PCM、観測JSON、再実行ケースを保存する。保存された発声設定と再実行計画を参照に照合する。出力長、128フレーム量子、観測時計、SHA-256を検査する。上流と研究版の保存済み観測、独立計算の周期境界から声門と放射を検証し、差があれば最初の箇所を記録する。"
+}

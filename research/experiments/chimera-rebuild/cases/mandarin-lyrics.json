@@ -1,0 +1,51 @@
+{
+  "id": "mandarin-lyrics",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "漢字の最長一致で同じ 行 の読みが変わり、不・一と第三声連続の順で番号が変わる。声調表記があるピンインは英語に先立って語全体を判定する。声調1〜5の ma は同じ音素とMIDIで歌唱でき、漢字とピンインで加工前PCMが一致する。「你好」の好は終端の滑音を滑らかに閉じ、二つの母音の核を拍に置く。",
+  "parent_song_case": "song-voice-flat.json",
+  "dictionary_sha256": "15529cebf851d13def12c14eb94bbc0f088f324c497a120db5cbe0dd0137853d",
+  "han_readings": {
+    "银行":["yin2","hang2"],"行走":["xing2","zou3"],"你好":["ni2","hao3"],
+    "我你好":["wo2","ni2","hao3"],"不会":["bu2","hui4"],"一个":["yi2","ge4"],
+    "一人":["yi4","ren2"],"一会儿":["yi2","hui4","er5"],"女儿":["nv3","er2"],
+    "妈麻马骂吗":["ma1","ma2","ma3","ma4","ma5"],"你𠀀好":["ni3","","hao3"]
+  },
+  "lyric_cases": [
+    {"id":"polyphone","text":"银行 行走","labels":["银","行","行","走"]},
+    {"id":"sandhi","text":"我你好 不会 一个 一人","count":9},
+    {"id":"character-tone","text":"妈麻马骂吗","labels":["妈","麻","马","骂","吗"],"ipa":["ma","ma","ma","ma","ma"]},
+    {"id":"pinyin-tone","text":"mā má mǎ mà ma5","labels":["mā","má","mǎ","mà","ma5"],"ipa":["ma","ma","ma","ma","ma"]},
+    {"id":"typed","text":"nǐhǎo xièxie ni3 hao3 de5 Xī'ān nǚ","labels":["nǐ","hǎo","xiè","xie","ni3","hao3","de5","Xī","ān","nǚ"],"ipa":["ni","xaʊ̠","ɕiɛ","ɕiɛ","ni","xaʊ̠","t˭ə","ɕi","ʔan","ny"]},
+    {"id":"numeric","text":"ni3hao3 zhong1guo2 de0","labels":["ni3","hao3","zhong1","guo2","de5"]},
+    {"id":"neutral","text":"de5 de2","labels":["de5","de2"],"ipa":["t˭ə","t˭ɤ"]},
+    {"id":"finals","text":"光天你风举 多头鸟","count":8},
+    {"id":"lengths","text":"跑的天","ipa":["pʰaʊ̠","t˭ə","tʰiɛn"]},
+    {"id":"erhua","text":"一点儿 块儿 哪儿 一会儿 女儿 儿子","labels":["一","点儿","块儿","哪儿","一","会儿","女","儿","儿","子"],"ipa":["i","t˭iɛɻ","kʰu̠aɻ","naɻ","i","xweɻ","ny","ʔəɝ","ʔəɝ","ts˭ɿ"]},
+    {"id":"erhua-pinyin","text":"nǎr yìdiǎnr","ipa":["naɻ","i","t˭iɛɻ"]},
+    {"id":"mixed","text":"我爱 you, 你。 nǐhǎo hello","labels":["我","爱","you","你","nǐ","hǎo","hel","lo"],"phrase_ends":[2,3]},
+    {"id":"english-accent","text":"hello café Zürich über","labels":["hel","lo","caf","Z","rich","ber"]},
+    {"id":"barred-suffix","text":"café née élan","count_min":3},
+    {"id":"unknown","text":"你☃好𠀀妈","labels":["你","好","妈"]},
+    {"id":"missing","text":"四是吃字人爱","count":6}
+  ],
+  "song": [
+    {"id":"character-tones","lyrics":"妈麻马骂吗","midi":[57,60,62,64,65],"nuclei":["a","a","a","a","a"]},
+    {"id":"typed-tones","lyrics":"mā má mǎ mà ma5","midi":[57,60,62,64,65],"nuclei":["a","a","a","a","a"]},
+    {"id":"hello-zh","lyrics":"你好","midi":[60,62],"nuclei":["i","aʊ̠"],"offglide_seconds":0.1,"offglide_ipa":"ʊ̠"},
+    {"id":"aspiration","lyrics":"八趴","midi":[60,60],"nuclei":["a","a"],"onset_vot":[null,0.09]}
+  ],
+  "plan_only": {
+    "id":"missing-sounds","lyrics":"四是吃字人爱","midi":[60,60,60,60,60,60],
+    "unavailable":["ts","tʂ","ʂ","ʔ","ɻ"]
+  },
+  "measurement": {
+    "bpm":120,"start_seconds":0.5,
+    "output_rate_hz":48000,"internal_rate_hz":96000,"seed":12345,"host_block_frames":[128,77],
+    "gesture_abs_tolerance":1e-12,"geometry_absolute_tolerance":1e-9,
+    "audio_state_peak_relative_tolerance":1e-6,"pcm_abs_tolerance":1e-6,
+    "browser_cases":["character-tones","hello-zh"],
+    "initial_state":"発声は男性体型、親ケースの姿勢と肺圧を使い、ビブラート0で毎回初期化する。",
+    "window":"全音節・全ジェスチャーを固定上流と比較する。拍の秒とMIDIからF0を独立に計算する。你好の最後の核は0.45秒のうち最後の0.10秒を滑音の移行に使う。全フレームでPCMと内部系列を比較し、漢字とピンインの同譜をサンプル単位で照合する。漢字の実時間ブラウザ歌唱で保存ケースを取得し、CLI再演とビット単位で比較する。"
+  }
+}

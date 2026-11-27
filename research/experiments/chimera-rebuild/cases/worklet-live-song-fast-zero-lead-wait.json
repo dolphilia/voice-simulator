@@ -1,0 +1,20 @@
+{
+  "id": "worklet-live-song-fast-zero-lead-wait",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "lead_study": "worklet-live-song-fast-context-lead.json",
+  "lead_reference_run": "worklet-live-song-fast-context-lead-20261121-repeat",
+  "zero_lead_study": "worklet-live-song-fast-zero-lead-pcm.json",
+  "zero_lead_reference_run": "worklet-live-song-fast-zero-lead-pcm-20261121-repeat",
+  "condition_order": [["long", "short"], ["short", "long"], ["short", "long"], ["long", "short"]],
+  "marker_pcm_overrides": {
+    "short": { "multiplier": 0, "offset": 32760, "ready_quanta": 8 },
+    "long": { "multiplier": 0, "offset": 32760, "ready_quanta": 32 }
+  },
+  "ready_quanta_contrast": { "maximum_reduction_error_quanta": 1 },
+  "hypothesis": "先行PCMがすべて0のまま先行枝を待つ量子数を32から8に短縮しても、歌唱の開始待ちの飛びは増えず、最初の歌唱量子から3,072フレーム後に開始する。先行枝の最初の観測量子から歌唱開始までの短縮は24量子、個々の組の誤差は1量子以内と予測する。",
+  "criteria": {
+    "input": "48 kHz・128フレーム量子のChromium。同じ短音Pop Dee、全体乱流係数1、声門・狭窄の倍率0、歯フィルタの下限1,200 Hz。先行PCM、グラフと採取位置を揃え、先行枝がreadyを送るまでの量子数だけを8と32に変える。",
+    "clock": "先行枝の最初の観測、歌唱Workletの最初の呼び出し、開始予約、歌唱の終了を各AudioContextの絶対フレームで読む。開始待ちの欠けたフレーム数、先行枝で実際に観測した先行量子数、先行枝の最初の観測から歌唱開始までを同じ組で比較する。",
+    "acquisition": "先行枝の512量子で128フレームの入力チャンネルと全サンプル0を確認し、並列観測の絶対フレームで歌唱の前後の連番と無音を検査する。PCM49,200フレームと状態769点、歌唱計画をオフライン基準に照合する。取得の成否と開始時刻に関する2種の予測を独立に判定する。"
+  }
+}

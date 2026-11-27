@@ -1,0 +1,26 @@
+{
+  "id": "coreaudio-headphone-drift-44100-tap-wait",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "phase_clock_case": "coreaudio-headphone-drift-44100-clock-plateaus.json",
+  "reference_waveform_departure_output_frame": 27088,
+  "maximum_departure_deviation_frames": 256,
+  "minimum_start_gap_change_ms": 180,
+  "maximum_start_gap_change_ms": 340,
+  "maximum_timing_residual_ms": 12,
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-tap-wait-short-1", "coreaudio-headphone-drift-44100-tap-wait-long-1"],
+    ["coreaudio-headphone-drift-44100-tap-wait-short-2", "coreaudio-headphone-drift-44100-tap-wait-long-2"],
+    ["coreaudio-headphone-drift-44100-tap-wait-short-3", "coreaudio-headphone-drift-44100-tap-wait-long-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-short-1", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-long-1", "leading_frames": 0, "tap_lead_seconds": 0.35},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-long-2", "leading_frames": 0, "tap_lead_seconds": 0.35},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-short-2", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-short-3", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-long-3", "leading_frames": 0, "tap_lead_seconds": 0.35}
+  ],
+  "prediction": "タップ準備後の出力開始待機を250 ms延ばす。波形差が出力の起動後に決まるなら、波形差の出力上の位置は前回のフレーム27,088付近に残り、タップの最初の予定時刻から測った差の開始は実測した開始間隔の増分だけ遅くなる。タップの起動後に決まるなら、その逆に出力上の位置が早まる。前の6試行から、少なくとも2組で出力開始に揃うと予測する。",
+  "criteria": "同一の無音追加なしのPCM、同じデバイスと44.1 kHz、同じ採取時間・要求幅で待機だけを切り替え、trialsの順に採取する。先頭のタップ・出力ブロックの予定ホスト時刻の差を開始間隔として使う。長い待機で間隔が180〜340 ms増えた組を判定する。短い待機で波形差が前回のフレーム27,088から256フレーム以内に現れることを確認する。波形差を含むブロック先頭の予定hostTimeにブロック内フレーム数を公称1フレーム時間で換算して足す。出力基準の差が256フレーム以内かつタップ基準の変化が開始間隔の増分に12 ms以内で一致すれば出力開始に揃ったと判定する。タップ基準の変化が12 ms以内かつ出力基準の時刻が開始間隔の増分だけ12 ms以内で早まればタップ開始に揃ったと判定する。どちらにも揃わない組、欠測、収録不成立と、帯域低下や位相の変化の成否はそれぞれ記録する。"
+}

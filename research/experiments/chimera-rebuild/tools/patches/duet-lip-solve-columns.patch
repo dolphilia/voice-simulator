@@ -1,0 +1,23 @@
+--- a/tools/duet_child_noise_trace.rs
++++ b/tools/duet_child_noise_trace.rs
+@@ -12,8 +12,9 @@
+ );
+ 
+ pub const RADIATION_HEADER: &str = concat!(
+-    "internal_sample,lip_cm3_s,nose_cm3_s,wall_cm3_s,total_cm3_s,",
+-    "derivative_cm3_s2,velum_branch_area_cm2"
++    "internal_sample,solved,area_cm2,length_cm,compliance_cm5_dyn,resistance_dyn_s_cm5,",
++    "inertance_g_cm4,old_pressure_dyn_cm2,old_inertance_flow_cm3_s,geometry_inflow_cm3_s,",
++    "before_wall_inflow_cm3_s,inflow_cm3_s,new_pressure_dyn_cm2,new_inertance_flow_cm3_s,lip_flow_cm3_s"
+ );
+ 
+ pub fn trace_arg<'a>(args: &'a [String], option: &str) -> (&'a [String], Option<&'a String>) {
+@@ -26,7 +27,7 @@
+ pub fn write_radiation_pair(
+     out: &mut impl Write,
+     frame: usize,
+-    values: [[f64; 6]; 2],
++    values: [[f64; 14]; 2],
+ ) -> io::Result<()> {
+     for (offset, row) in values.into_iter().enumerate() {
+         write_row(out, 2 * frame + offset + 1, row)?;

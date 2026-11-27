@@ -1,0 +1,33 @@
+{
+  "id": "worklet-song-recording",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song_case": "worklet-song-voice.json",
+  "live_case": "worklet-live-song.json",
+  "hypothesis": "既存の実時間歌唱の出力を動画へ分岐しても加工前PCMは変わらない。出力時計の第1拍と第2拍で切り替える映像マーカーは、デコード後の音声を加工前PCMへ整列した拍時刻から85 ms以内に現れる。完走は動画を一つ保存し、中止は保存を取り消して録画経路が所有するトラックを解放する。",
+  "reference": {
+    "run": "worklet-live-song-20261120-b",
+    "manifest_sha256": "ffcbf0b5a4aa61d033bcbc62380096169673d30ae7450003e17c6f49318f8c92"
+  },
+  "measurement": {
+    "output_rate_hz": 48000,
+    "output_frames": 91200,
+    "beat_seconds": [0.5, 1.0],
+    "width_px": 720,
+    "height_px": 1280,
+    "target_video_fps": 30,
+    "minimum_effective_video_fps": 20,
+    "audio_alignment_windows_seconds": [[0.47, 0.73], [0.98, 1.25]],
+    "quiet_windows_seconds": [[0.1, 0.25], [1.78, 1.87]],
+    "audio_offset_search_seconds": [-0.15, 0.42],
+    "minimum_audio_correlation": 0.92,
+    "maximum_audio_lag_variation_seconds": 0.025,
+    "maximum_quiet_to_active_rms_ratio": 0.02,
+    "maximum_marker_error_seconds": 0.085,
+    "maximum_candidate_upstream_marker_difference_seconds": 0.12,
+    "relative_audio_end_seconds_bounds": [1.87, 2.25],
+    "maximum_audio_video_end_difference_seconds": 0.18,
+    "maximum_video_frame_gap_seconds": 0.17,
+    "cancel_after_recording_seconds": 0.7
+  }
+}

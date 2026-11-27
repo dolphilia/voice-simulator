@@ -1,0 +1,43 @@
+{
+  "id": "vowel-open-o-high-bandwidth",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "vowels-reference-20261119-b-linear-open-o",
+    "case": "vowel-transfer-open-o",
+    "manifest_sha256": "7d8a18df0cc9cf2535a8374aadab3943f2c2674cdbe482ec0f12865d91f37ac8"
+  },
+  "grid": {
+    "start_hz": 120,
+    "original_end_hz": 4600,
+    "original_intervals": 699,
+    "extended_intervals": 800,
+    "refinement_factor": 8
+  },
+  "measurement": {
+    "peak_drop_db": 3,
+    "target_peak_windows_hz": {
+      "lower": [
+        4190,
+        4270
+      ],
+      "upper": [
+        4520,
+        4615
+      ]
+    },
+    "samples_per_matrix_batch": 128,
+    "overlap_peak_relative_error_lt": 1e-9,
+    "tolerance_to_continuous_hz": 1,
+    "maximum_continuous_root_residual_db": 1e-7
+  },
+  "hypotheses": {
+    "refining_original_grid_keeps_both_right_crossings_missing": "4,600 Hzまで点を8倍に増やしても、両ピークで右側3 dB交点は得られない。",
+    "extending_keeps_the_old_samples": "元の対数刻みを保って上限を広げると、従来の700点は先頭に重なり、同じ周波数で同じ応答が得られる。",
+    "extending_recovers_both_widths": "上限を約7,791 Hzに伸ばすと、両ピークの右側3 dB交点が見つかる。",
+    "lower_peak_shares_its_band_with_upper": "4,238 Hz付近のピークから4,570 Hz付近のピークまでの谷が前者の−3 dB水準より高いため、前者の帯域幅は後者のピークも含む。",
+    "upper_peak_has_local_width": "4,570 Hz付近のピークの左側3 dB交点は二つのピークの間にあり、右側3 dB交点は4,600 Hzより高い。",
+    "refining_extended_grid_approaches_continuous_roots": "上限を広げた掃引で刻みを8倍細かくすると、各ピークの両交点が独立連立方程式から求めた連続周波数の交点に近づく。"
+  },
+  "acceptance": "元のケースの姿勢、体型、96 kHzの気道、注入節点、声門ポートの切断、放射境界を保持する。4条件全てで通常の研究CLIと固定上流の応答を元の許容差で照合し、同じ上流の節点・枝に対する独立の複素連立方程式で口・鼻・壁・合計を再計算する。元の700点と欠測2件を保存出力に照合する。左右それぞれの探索結果と範囲を保存する。連続周波数の独立参照で両交点が求まる場合は残差1e-7 dB以内、8倍密度の交点は各1 Hz以内とする。欠測や隣接ピークを含む帯域を区別して記録する。"
+}

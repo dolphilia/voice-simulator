@@ -1,0 +1,30 @@
+{
+  "id": "fixed-alpha-lf-fundamental-smoothed-branches",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "節点26→27と25→26のゼロ流量をまたぐ損失をC²でつなぐと、固定LFの基本波変更で生じた660 Hz・770 Hzの比例・二次からのずれの絶対値は、4比較で元の値を下回ると予想する。定常流量は変更区間より大きいため、定常流のみの対照で圧力・流量は元の描画と一致する。損失仕事率は非負を保つ。",
+  "reference": {
+    "run": "fixed-alpha-lf-fundamental-amplitude-branch-loss-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental-amplitude-branch-loss",
+    "sha256": "32208ee7515f9321632ec7fdef881664482ac7cc716489f76741b1aa8b919e2f"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "smoothing_width_cm3_s": 60,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "variants": {"baseline": [], "smoothed": [[26, 27], [25, 26]]},
+    "series_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10
+  },
+  "input": "固定 /ɑ/・96 kHzで、前回の固定LFからの基本波110 Hzの変更を倍率0、±1、±0.5で与える。固定上流と研究版の隔離ビルドで、標本76,800から選択した2枝だけに平滑化した二次損失を適用する。絶対流量60 cm³/s以下では元の損失に g(x)=1−(1−x)^3、x=|U|/60 を掛ける。区間外では元の損失を使う。変更を有効にしない対照と、定常流だけを与える対照も描画する。",
+  "observation": "切替直前1標本・直後128標本および末尾22周期とその直前1標本の枝流量・節点圧を保存する。出力は固定上流と研究版、保存済みの無変更波形と照合する。圧力差から慣性・粘性を引き、計算式と観測した損失、仕事率、定常流だけの対照を確認する。660 Hz・770 Hzの口端流量の奇成分・偶成分と比例・二次からの複素差を求め、元の流量での損失式の差と流量が変わった分の圧力源から観測差を再構成する。低減の予想は手順の合否と分けて報告する。"
+}

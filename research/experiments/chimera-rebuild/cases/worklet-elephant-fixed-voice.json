@@ -1,0 +1,46 @@
+{
+  "id": "worklet-elephant-fixed-voice",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-fixed-voice.json",
+  "source_revision": 1,
+  "hypothesis": "44.1 kHzで経路の目標は22,051に変わり、口先と軟口蓋は22,080の制御更新から反対方向に移る。切り替えを省いた対照との差は、断面から鼻の基部・入口弁・鼻先へ順に伝わる。鼻の入口弁の実断面は4.5 cm²を保つ。",
+  "measurement": {
+    "variants": ["official-sustain-48000", "route-switch-44100", "oral-sustain-96000", "silent-48000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_stride_by_variant": {"route-switch-44100": 1},
+    "observation_windows_output_frames": {
+      "official-sustain-48000": [[0, 256], [57599, 57665]],
+      "oral-sustain-96000": [[0, 512]]
+    },
+    "extra_output_frames": {
+      "official-sustain-48000": [],
+      "route-switch-44100": [],
+      "oral-sustain-96000": [],
+      "silent-48000": []
+    },
+    "arrival_fields": [
+      "nasal_base_pressure_dyn_cm2", "trunk_valve_flow_cm3_s", "trunk_tip_pressure_dyn_cm2", "nasal_cm3_s"
+    ],
+    "arrival_output_frames": {
+      "official-sustain-48000": [82, 83, 231, 231],
+      "route-switch-44100": [139, 140, 253, 253],
+      "oral-sustain-96000": [172, 173, 430, 430],
+      "silent-48000": [null, null, null, null]
+    },
+    "route_control": {
+      "variant": "route-switch-44100",
+      "omitted_event_frame": 22051,
+      "first_control_frame": 22080,
+      "pressure_threshold_dyn_cm2": 1e-6,
+      "flow_threshold_cm3_s": 1e-5,
+      "pcm_threshold": 1e-6
+    },
+    "health": {"exclude_startup_blocks": 2, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

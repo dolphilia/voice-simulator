@@ -1,0 +1,194 @@
+{
+  "id": "worklet-midi-beatbox",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "input": {
+    "body": "male",
+    "output_rate_hz": 48000,
+    "events": [
+      {
+        "seconds": 0.1,
+        "type": "note-on",
+        "note": 40,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.65,
+        "type": "note-on",
+        "note": 47,
+        "velocity": 96
+      },
+      {
+        "seconds": 1.15,
+        "type": "note-off",
+        "note": 47
+      },
+      {
+        "seconds": 1.65,
+        "type": "note-off",
+        "note": 40
+      }
+    ],
+    "pattern": ". . . . . . . .",
+    "bpm": 120,
+    "swing": 0,
+    "capture_seconds": 2.9,
+    "toggle_hum": {
+      "seconds": 1.42,
+      "step": 0
+    }
+  },
+  "hypothesis": "ビートボックスのMIDI押下は唇を閉じ、軟口蓋を開いて鼻に抜ける持続音を作る。上に重ねた47を解放すると保持中の40のF0へ戻る。パターンのmに使うbassNoteには最後に押下した47が残る。",
+  "criteria": {
+    "routing": "仮想MIDIの発生時刻、採用フレーム、保持音、パターンのmへ渡る音番号を固定上流と比較する。",
+    "sound": "押下前、持続40・47、40への復帰、最後の解放後に口腔末端、軟口蓋開口、鼻端流量、F0、呼気を記録し、閉唇・鼻への流れと減衰を照合する。",
+    "reproduction": "通常のビートボックスの再生経路から測定し、量子境界で採用した入力をCLIで再現する。",
+    "physical_comparison": "固定上流の通常画面でキーとグリッドを操作し、固定Rust Engineへ同じ採用フレームを再入力して鼻端流量、口唇の閉鎖と軟口蓋開口を照合する。候補の加工前PCMから独立にYINでF0を測り、MIDI式から求める目標と比較する。"
+  },
+  "measurement": {
+    "time_reference": "ブラウザの状態遷移では入力イベントを起点とし、候補CLIはWorkletの採用フレームを使う。ステップ0の予約・計測窓は音源起動を起点とする。",
+    "windows_seconds": {
+      "before_first_key_relative": [
+        -0.07,
+        -0.02
+      ],
+      "after_on_40": [
+        0.27,
+        0.48
+      ],
+      "after_on_47": [
+        0.27,
+        0.42
+      ],
+      "after_off_47": [
+        0.27,
+        0.42
+      ],
+      "after_off_40": [
+        0.27,
+        0.4
+      ],
+      "sequenced_hum_absolute": [
+        2.46,
+        2.68
+      ]
+    },
+    "frame_quantum": 128,
+    "held_pitch_tolerance_cents": 50,
+    "pcm_pitch_tolerance_cents": 70,
+    "closed_lip_max_cm2": 0.05,
+    "open_velum_min_cm2": 0.1,
+    "held_nose_rms_min_cm3_s": 0.1,
+    "released_gate_max": 0.03,
+    "held_gate_min": 0.95,
+    "released_velum_max_cm2": 0.025,
+    "restored_lip_target_cm": 0.25,
+    "hum_slot_expected_note": 47,
+    "hum_hit_seconds": 2.2,
+    "observation_stride_frames": 64,
+    "latest_relative_event_error_seconds": 0.06,
+    "flow_rms_relative_tolerance": 1e-06,
+    "physical_absolute_tolerance": 1e-08
+  },
+  "retain_csv": {
+    "cli-voice.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "lip_flow_cm3_s",
+        "nose_flow_cm3_s",
+        "velum_port_area_cm2",
+        "smoothed_f0_hz",
+        "glottal_f0_hz",
+        "gate",
+        "beat_step",
+        "beat_next_step"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          4096
+        ],
+        [
+          9600,
+          20736
+        ],
+        [
+          32384,
+          42752
+        ],
+        [
+          56192,
+          66560
+        ],
+        [
+          71680,
+          75520
+        ],
+        [
+          80256,
+          90624
+        ],
+        [
+          102400,
+          115200
+        ],
+        [
+          127488,
+          131584
+        ]
+      ]
+    },
+    "upstream-trace.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "lip_flow_cm3_s",
+        "nose_flow_cm3_s",
+        "velum_port_area_cm2",
+        "smoothed_f0_hz",
+        "glottal_f0_hz",
+        "gate",
+        "beat_step"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          4096
+        ],
+        [
+          9600,
+          20736
+        ],
+        [
+          32384,
+          42752
+        ],
+        [
+          56192,
+          66560
+        ],
+        [
+          71680,
+          75520
+        ],
+        [
+          80256,
+          90624
+        ],
+        [
+          102400,
+          115200
+        ],
+        [
+          127488,
+          131584
+        ]
+      ]
+    }
+  }
+}

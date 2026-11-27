@@ -1,0 +1,24 @@
+{
+  "id": "upstream-safari-song-fixed-schedule-frame",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "case": "upstream-safari-song-recording-pause.json",
+    "run": "upstream-safari-song-recording-pause-20261121-repeat-b"
+  },
+  "schedule_engine_frames": [16384, 16512],
+  "condition_order": [["continuous", "paused"], ["paused", "continuous"]],
+  "expected_pcm_samples": 29760,
+  "minimum_state_snapshots": 38,
+  "positive_control_pcm_difference": 0.000001,
+  "hypothesis": {
+    "fixed_frame": "譜面が届いた時点が異なっても、同じエンジンフレームで譜面を予約すれば、連続と停止の同じ出力サンプル位置でPCMと上流の状態観測値がビット一致する。",
+    "one_quantum_control": "譜面を予約するエンジンフレームだけを128サンプル後ろにずらすと、譜面に相対的な音素区間はそろう一方、加工前PCMは停止位置より前に10⁻⁶を超えて分かれる。",
+    "clock": "譜面の時刻0は指定エンジンフレームに30 ms相当の1,440サンプルを足した位置になる。停止中はContextとエンジン時計が進まず、停止境界の量子ラベルは128フレーム間隔で続く。"
+  },
+  "criteria": {
+    "entry": "固定上流のRecord videoから前回のPop Deeを歌唱する。前回と同じ譜面と録画条件を読み込み、測定用Workletは到着したscheduleを保持してエンジン時計が指定フレームに達した描画量子の直前に渡す。届いたエンジンフレーム、適用したフレーム、主スレッドに通知された値を保存する。",
+    "condition": "前回の停止位置、120 msの保持、録画からの観測方法を使う。16,384と16,512フレームのそれぞれで連続描画・途中停止を比較する。各フレームで停止を与える順序を交代し、別ディレクトリから再実行する。指定したフレームを過ぎてから譜面が届いた場合は取得失敗として残す。",
+    "observations": "譜面の時刻0から29,760サンプルのPCM、128フレームごとの時計、上流が通常送信する6量子ごとの状態通知を保存する。状態通知の時刻、肺圧、声門の状態、F0、鼻腔の開口、乱流、調音、断面積、声門面積と流量を比較する。計測用に状態通知を追加発行すると上流のRMS集計がリセットされるため、既存の通知を受け取る。",
+    "verdict": "同じ指定フレームでは前後のPCM全点と同じタイミングの状態通知すべてを比較する。128フレームずらした2条件では、最初にPCM差が閾値を超える位置を停止位置に照合する。録画音声・映像は前回の判定も行い、PCM・状態の予測と取得の成否は別々に記録する。"
+  }
+}

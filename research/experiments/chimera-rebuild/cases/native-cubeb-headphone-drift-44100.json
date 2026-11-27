@@ -1,0 +1,30 @@
+{
+  "id": "native-cubeb-headphone-drift-44100",
+  "revision": 1,
+  "base_case": "firefox-process-tap-headphone-drift-44100.json",
+  "native_probe_reference": "cubeb-output-callback-process-tap-20261122-repeat",
+  "reference_browser_run": "firefox-process-tap-headphone-drift-44100-20261122-1",
+  "browser_comparison_runs": [
+    "firefox-process-tap-headphone-drift-44100-20261122-1",
+    "firefox-process-tap-headphone-drift-44100-20261122-2",
+    "firefox-process-tap-headphone-drift-44100-20261122-3"
+  ],
+  "cubeb_revision": "840f69c1b3f95accd582555e10abcef8ee67514b",
+  "capture_native": {
+    "requested_frames": 256,
+    "observation_callbacks": 256,
+    "tap_seconds": 4,
+    "tap_ready_timeout_seconds": 5,
+    "tap_lead_seconds": 0.1,
+    "overrun_callback_index": 65,
+    "delay_us": 0,
+    "device_snapshot_seconds_after_release": 0.2
+  },
+  "trial_ids": [
+    "native-cubeb-headphone-drift-44100-20261122-1",
+    "native-cubeb-headphone-drift-44100-20261122-2",
+    "native-cubeb-headphone-drift-44100-20261122-3"
+  ],
+  "prediction": "同じヘッドフォンの44.1 kHzでネイティブcubebに同一PCMを渡しても、初期は19,845 Hzの比が0.5付近で、少なくとも1試行は帯域低下と異符号の位相傾斜の区間を示すと予測する。ブラウザと同じ比較窓・窓幅・時計の判定を使う。実際のバッファ幅や時計が一致しない場合は記録に残し、経路の差の解釈に使う。",
+  "criteria": "ブラウザ収録の61,440フレームのPCMをハッシュ照合し、同じモノラルPCMから左右が逆相のFloat32ステレオをネイティブのcubebへ渡す。既存のペア収録と同じ計測バイナリを用い、コールバックに待ち時間を加えない。44.1 kHzの同じ外部ヘッドフォンを使い、実際の出力機器・cubebとタップの幅・予定サンプル番号の連続性・cubebが返したPCMを保存する。元のデバイスを復元する。小窓と帯域低下、位相傾斜、波形差の検出条件は長いブラウザ収録を継承し、予測と採取の成否を分けて保存する。ブラウザと同じ機器バッファ幅かも別に記録する。"
+}

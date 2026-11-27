@@ -1,0 +1,245 @@
+{
+  "id": "glottal-cycle-voiced",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "声門の周期長と振幅の変動を肺圧と固定声道に結合しても、同じシードの上流と圧力・流量・面積・放射が一致する。PCMはホスト側の分割に依存しない。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "wall": {
+          "mass_g_cm2": 0.6,
+          "resistance_dyn_s_cm3": 1000.0,
+          "stiffness_dyn_cm3": 1000000.0,
+          "radiation_fraction": 0.0
+        }
+      },
+      {
+        "length_cm": 17.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.0
+        }
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      52
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 0.0,
+        "ramp_samples": 0
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          53,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 2.5,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0,
+        "extra_resistance": 7.9799999999999995
+      },
+      {
+        "nodes": [
+          12,
+          13
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "breath": {
+    "port": [
+      53,
+      0
+    ],
+    "pressure_cm_h2o": 8.0,
+    "body_scale": 1.0,
+    "control_block_samples": 128,
+    "compensate": true,
+    "steps": [
+      [
+        0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        65536,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        89600,
+        0.5,
+        -0.5,
+        0.8
+      ],
+      [
+        106496,
+        0.0,
+        0.6,
+        1.0
+      ],
+      [
+        133120,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 32768,
+    "volume_cm3": 0.002
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      12,
+      13,
+      52,
+      53
+    ],
+    "branches": [
+      [
+        53,
+        0
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        51,
+        52
+      ]
+    ]
+  },
+  "measurement": {
+    "sample_count": 192000,
+    "analysis_window_samples": [
+      19200,
+      61440
+    ],
+    "phase_window_samples": [
+      19200,
+      190000
+    ],
+    "minimum_complete_cycles": 45,
+    "minimum_analysis_voicing": 0.98,
+    "block_frames": [
+      128,
+      77
+    ],
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "phase_increment_max_absolute_error_lt": 2e-12,
+    "independent_area_peak_relative_error_lt": 1e-09,
+    "cycle_lengths_max_absolute_error_samples": 1.2,
+    "jitter_period_std_min_samples": 2.0,
+    "constant_period_std_max_samples": 0.51,
+    "shimmer_area_peak_relative_std_min": 0.02,
+    "steady_area_peak_relative_std_max": 0.0002
+  },
+  "glottis": {
+    "port": [
+      12,
+      13
+    ],
+    "params": {
+      "f0_hz": 125.0,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625,
+      "jitter": 0.004,
+      "shimmer": 0.03,
+      "cycle_seed": 777
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  },
+  "pcm": {
+    "sample_rate_hz": 48000,
+    "gain": 8e-06
+  }
+}

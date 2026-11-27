@@ -1,0 +1,35 @@
+{
+  "id": "tsp-f2-annotation-w06-pre-emphasis",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "window_sweep": {
+    "run": "tsp-f2-annotation-w06-window-shift-20261123-repeat",
+    "case": "tsp-f2-annotation-w06-window-shift",
+    "manifest_sha256": "fee62d6f96c8d625e6b4338e6d5c06e967ca216ac0d616c13e0cf82285fe0360"
+  },
+  "endpoints": {
+    "run": "tsp-lpc-pre-emphasis-recordings-20261122-repeat",
+    "case": "tsp-lpc-pre-emphasis-recordings",
+    "manifest_sha256": "128047223387416a2e75153d15b8371744da6d42d14d569b84f82cbc1169d8eb"
+  },
+  "baseline": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "measurement": {
+    "trial": "W06",
+    "sample_rate_hz": 12000,
+    "frame_samples": [24149, 24449],
+    "order": 12,
+    "coefficient_steps": [0, 970],
+    "coefficient_divisor": 1000,
+    "low_f2_band_hz": [550, 1000],
+    "high_f2_band_hz": [1850, 2250]
+  },
+  "hypotheses": {
+    "low_to_high_selection_transition": "0から0.97へ係数を上げると、少なくとも1組の隣り合う点で低いF2から約2.1 kHzのF2に直接切り替わる。",
+    "low_f2_becomes_f1_at_transition": "切り替え前のF2極は次の点に残りF1になる。切り替え前のF1は次の点でF1の条件から外れる。"
+  },
+  "acceptance": "W06の窓位置比較に保存した12 kHzの300標本と次数12を全条件で固定する。0〜0.97の0.001刻み971点で公開FormantOptsのプリエンファシスだけを変える。既定値の点と明示的な0の点は先行の上流係数・全根・公開極・F2採択に照合する。全点で同じラグ窓・候補の条件を用い、上流の前処理、自己相関、係数、残差、全根、公開極と採択を独立に照合する。許容差は既存のプリエンファシス対照・F2計測を引き継ぐ。切り替わりの前後で複素根の対応、周波数差、帯域幅、F1とF2の適格性を保存する。欠測と上流・独立計算の最初の不一致を保存し、予測と実測の合否を別に記録する。"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-gap-edges",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 44100,
+  "request_frames": 256,
+  "capture_groups": [
+    {
+      "run": "worklet-live-tsp-44100-headphone-load-same-request-20261122-2",
+      "case_id": "worklet-live-tsp-44100-headphone-load-same-request",
+      "case_revision": 2,
+      "request_offsets": [
+        0
+      ],
+      "expected_gaps": [
+        292
+      ]
+    },
+    {
+      "run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-1",
+      "case_id": "worklet-live-tsp-44100-headphone-load-416-repeat",
+      "case_revision": 1,
+      "request_offsets": [
+        0,
+        6
+      ],
+      "expected_gaps": [
+        308,
+        316
+      ]
+    },
+    {
+      "run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-2",
+      "case_id": "worklet-live-tsp-44100-headphone-load-416-repeat",
+      "case_revision": 1,
+      "request_offsets": [
+        0,
+        6
+      ],
+      "expected_gaps": [
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": {
+    "edge_offset_frames": 208,
+    "trailing_boundary_extra_frames": 1,
+    "window_frames": 64,
+    "distances_frames": [
+      0,
+      64,
+      128,
+      256
+    ],
+    "maximum_local_lag_frames": 8,
+    "maximum_far_alignment_error_frames": 1,
+    "maximum_lag_difference_error_frames": 1,
+    "maximum_relative_residual": 0.025,
+    "minimum_other_lag_margin": 0.01,
+    "minimum_reference_amplitude": 0.000244140625,
+    "minimum_informative_frames": 16
+  },
+  "prediction": "無音から256フレーム離れた窓では、逆相マーカーの相対残差が0.025以下となり、累積する予定時刻の飛びから±1フレーム以内の整列で対応し、前後のラグ差は当該の飛びに±1フレームで一致すると予測する。時刻が連続した対照では無音の仮想境界の近傍と遠方で両成分の残差が0.025以下と予測する。先行の292フレームの比較で単純挿入モデルが許容差を外れたため、無音に接する64フレームでは飛びのある3箇所のうち少なくとも1箇所で遠方と同じラグの残差が0.025を超えると予測する。",
+  "criteria": "cubebの前後の予定サンプル番号とステレオゼロ区間から観測位置を照合し、直前要求の位置208に先頭があり、長さが飛び+1であることを再確認する。対照は同じ発話位置に位置208・209の境界を仮置きする。両側とも境界から0、64、128、256フレーム離れた外側の64フレームを観測する。累積の飛びを使用して基準ラグを置き、近傍±8フレームで逆相の整数ラグを最小二乗の比例残差から推定する。推定は次点（最良と2フレーム以上違う候補）との差0.01以上かつ残差0.025以下で採用する。同相は逆相で選んだラグおよび遠方のラグで測る。境界隣接窓では片方の成分から標本ごとのゲインを求めて他方を予測し、基準の絶対値が両成分で1/4096以上の標本が16以上あれば、時刻位置を保つ共通ゲインモデルの残差を両方向で報告する。欠測・適用不能は理由を保存する。"
+}

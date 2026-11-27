@@ -1,0 +1,27 @@
+{
+  "id": "songbird-chirps-beak-inlet-rate-propagation-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-beak-momentum-propagation-44100-20261123-repeat",
+    "manifest_sha256": "351ee487372a3bc564049c856fdf3149db0035fcd89616c50eb0c17d2b3c630a"
+  },
+  "volume_patch": {
+    "run": "songbird-chirps-volume-rate-propagation-44100-20261123-repeat",
+    "manifest_sha256": "7c64266454981e07a06aeaa8181af974cde60d4431ec157bed2658c0cb93beb5"
+  },
+  "upstream_observations": {
+    "run": "songbird-chirps-oec-pressure-44100-20261123-repeat",
+    "manifest_sha256": "47894188133fb531c32b1f0c6c857304c4a24c56bef8e18f2dc4d32ea7677084"
+  },
+  "sample_rate_hz": 176400,
+  "volume_source_cutoff_hz": 60,
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "observation_internal_samples": 16,
+  "baseline_first_inlet_flow_offset": 4,
+  "baseline_first_radiated_flow_offset": 10,
+  "hypothesis": "235点制御では入口枝の線形係数の慣性項だけをL/dtからL×fsに揃えると、押鍵4内部サンプル後の入口流量差が消え、放射流量の初差は10内部サンプル後より遅れると予測する。音高追従0では全サンプルが対照に一致すると予測する。",
+  "observation": "体積速度の換算と内部5枝の運動量の計算順を揃えた前回の実験版を再構成する。口腔食道腔からくちばしの最初のセルに入る1本の直列枝で線形係数の慣性項だけを切り替える。235点制御、通常の256点制御、追従0について押鍵後16内部サンプルの入口流量・両端圧・終端流入・放射流量・放射微分を比較する。",
+  "acceptance": "対照のCSVが前回の実験版とバイト一致する。差分から入口枝の選択と慣性項だけの変更を監査でき、全条件の形状と注入量は両ビルドで一致する。両ビルドと固定上流の入口流量、終端圧、放射流量を独立計算と照合する。最初の流量差がどこに残るかを数え、予測が外れた場合も登録時の予測と判定を保存する。"
+}

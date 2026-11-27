@@ -1,0 +1,9 @@
+{
+  "id": "worklet-midi-coremidi-same-name",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-midi-coremidi-passive",
+  "comparison": "同じ名前の仮想送信元を2端子接続し、ネイティブで選択した1端子から音57を1回押して離す。もう1端子からは送信しない。",
+  "hypothesis": "候補ポートの個数を1件に限定すると、同名の2端子が開いた時点で収録前に停止する。接続時に候補を保持し、信頼済みWeb MIDIの押鍵・離鍵が同じポートIDから届き、選択したCoreMIDI端子の2受信と一致した場合に対応を確認できる。",
+  "observation": "CoreMIDIの端子参照と名前、Chromeの候補ポートIDと状態、押鍵・離鍵のMIDIバイトと個別時計、Worklet採用時刻と48 kHz全PCMを保存する。未選択端子のイベントなし、追加のノート、離鍵の送信元違いを点検する。",
+  "acceptance": "修正前に同名2端子が開いても録音前の待機がタイムアウトした結果を残す。修正後は同名の異なるChrome IDが2件、CoreMIDIとChromeの同じ2メッセージ、合成の音57と220 Hz、無音復帰、全PCMのCLI一致を仮想条件で得る。追加の入力、別IDからの離鍵、選択UIDと同じChrome IDが候補にあるのに別IDへ付け替えた押鍵・離鍵を不合格とする。成功条件は別の作業ディレクトリからも実行する。"
+}

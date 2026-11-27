@@ -1,0 +1,25 @@
+{
+  "id": "worklet-song-firefox-registration-native",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "evaluation_reference_run": "worklet-song-module-evaluation-20261121-repeat",
+  "live_case": "worklet-live-song.json",
+  "hypothesis": "Firefoxの現行順と並行登録の両方で、登録区間の75%以上がモジュールの最初の計測文より前にあり、ネイティブのregisterProcessorはその文の直後に始まる。並行登録でHTTP要求前が長い試行では、取得タスク開始前の待ちが長いと予測する。",
+  "measurement": {
+    "condition_order": [["serial", "parallel"], ["parallel", "serial"], ["serial", "parallel"]],
+    "unrenderable_lyrics": "...",
+    "rejection_contains": "音符に割り当てる歌詞の音節がありません",
+    "profiler_features": ["audiocallbacktracing", "nostacksampling", "nomarkerstacks", "markersallthreads"],
+    "thread_filters": ["GeckoMain", "GraphRunner", "MediaTrackGraph", "Audio", "Socket", "StreamTrans"],
+    "clock_tolerance_ms": 5,
+    "before_evaluation_fraction": 0.75,
+    "long_wait_ms": 100
+  },
+  "criteria": {
+    "input": "各試行は新規Firefoxの通常画面で開始する。現行順の歌詞エラーで辞書の準備を済ませ、計時設定を入れてから48 kHzのPop Deeを同じ入力で歌う。各回終了時にプロファイルを取得する。",
+    "hard_alignment": "メインの呼び出し・解決・ready受信の3印が同じGeckoMainに一意にあり、印の相対間隔をperformance.nowとDate.nowの両方に5 ms以内で合わせる。ネイティブ登録区間の両端がメインの呼び出しと解決に5 ms以内で一致する。registerProcessorの実行区間を同じプロセスで見つけ、評価開始・登録前後と5 ms以内で合わせる。",
+    "fetch": "要求・応答送出のサーバー時刻を同一試行の印から変換する。登録区間付近の同一プロセスのRunnable、AudioNodeTrackの制御メッセージと、全プロセスの対象URLのNetworkマーカーを記録する。取得タスクを一意に同定できる場合は取得開始と要求受信の間隔を照合する。取得タスクの開始・完了やURL付きマーカーで欠測があれば明記し、他プロセスの時刻は原点の保証が得られるまで合否に使わない。",
+    "timing_prediction": "評価前比率と、要求前・応答送出後それぞれの100 ms以上の待ちを試行ごとに記録する。両型が現れることは必須としない。応答送出はブラウザ側の取得完了と区別する。",
+    "audio": "CLIとブラウザの基準にPCM全点、音響観測、歌唱計画を照合する。固定上流のPCMとの既定許容差と最初の差、独立計算した拍フレーム、辞書再利用と歌詞エラーからの回復を確認する。"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap-draw-control-early",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-device-tap-draw-control.json",
+  "initial_control_run": "worklet-live-tsp-firefox-device-tap-draw-control-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "tap_request_before_marker": true,
+    "marker_lead_quanta": 128,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.95,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "measurement": {
+    "condition_order": [["no-tap", "tap"], ["tap", "no-tap"], ["no-tap", "tap"], ["tap", "no-tap"]]
+  },
+  "tap_control": {
+    "reference_center_marker_frame": 24576,
+    "maximum_center_error_frames": 256,
+    "minimum_matched_pairs": 3,
+    "minimum_effect_ms": 0.25
+  },
+  "revision_note": "初回の対照の先行2組では、タップ付きの構築位置が36864、26112フレームへ遅れ、タップなしの24576フレームと一致しなかった。両条件で先行音の発音予定をContextの開始から128量子以上先へ置き、先行音が鳴る前に同じゲートへ起動依頼を送る。先行音192量子の待機、構築の照合条件、0.25 msの比較基準は維持する。初回の判定と採取資料は保持する。",
+  "hypothesis": "先行音より前に起動依頼を送ると、タップの準備待ちが先行音192量子の終了に間に合い、少なくとも3組で構築位置が一致すると予測する。構築位置が一致する組では、採取アプリを起動してタップを付けた条件の先頭2量子のWASM合計時間が短くなるという初回と同じ予測を検査する。",
+  "acceptance": "初回と同じ同期描画と発話、48 kHz・256フレームの要求、滑らかな先行音を使う。同じ先行音の位置で構築し、同じ相対位置の先頭2量子を含む要求のWorklet、グラフ、cubeb、Audio Clientを比較する。未成立組は理由を記録する。通常再生の発話PCM・状態と固定上流を照合し、最初に繰り返す差、予定時計の飛び、予算内で飛んだ際のタップPCMの有無を初回と同じ方法で集計する。"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "compare-saved-voice-run",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "検証済みのマニフェストから保存済みWAVと観測系列を同じ時刻で読み直せば、合成器を再実行せずに比較の判定と最初の差を再現できる。",
+  "input": {
+    "run": "worklet-midi-voice-pitch-20261121-final",
+    "reference_wave": "artifacts/upstream-voice.wav",
+    "candidate_wave": "artifacts/native.wav",
+    "reference_trace": "artifacts/upstream-trace.retained.csv",
+    "candidate_trace": "artifacts/native-state.retained.csv"
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "output_frames": 124416,
+    "internal_samples_per_output_frame": 2,
+    "pcm_absolute_tolerance": 5e-07,
+    "state_peak_relative_tolerance": 1e-08,
+    "same_pcm_control": "artifacts/midi.wav",
+    "observation_fields": [
+      "gate",
+      "glottal_phase",
+      "glottal_flow_cm3_s",
+      "radiation_derivative_cm3_s2"
+    ],
+    "output_frame_range": [
+      0,
+      124416
+    ],
+    "reference_trace_coordinate": "internal_sample",
+    "candidate_trace_coordinate": "internal_sample"
+  },
+  "expected": {
+    "first_pcm_bit_difference_frame": 0,
+    "pcm_different_bits": 13082,
+    "pcm_max_abs_diff": 2.1756321726552463e-11,
+    "same_pcm_different_bits": 0,
+    "relative_pcm_policy": "絶対差が許容差を超えると不合格",
+    "state_peak_policy": "ピーク正の列は絶対差が許容比と上流ピークの積以上で不合格。上流ピーク0の列は差0で合格。",
+    "full_trace_values": {
+      "gate": {
+        "max_absolute_difference": 0.0,
+        "max_abs_diff_over_reference_peak": 0.0
+      },
+      "glottal_phase": {
+        "max_absolute_difference": 0.0,
+        "max_abs_diff_over_reference_peak": 0.0
+      },
+      "glottal_flow_cm3_s": {
+        "max_absolute_difference": 1.4340065050722784e-11,
+        "max_abs_diff_over_reference_peak": 3.8768549982658834e-14
+      },
+      "radiation_derivative_cm3_s2": {
+        "max_absolute_difference": 3.178275594305309e-05,
+        "max_abs_diff_over_reference_peak": 6.1136445348739e-11
+      }
+    },
+    "invalid_inputs": [
+      "成果ファイルのSHA-256不一致",
+      "観測点の不足",
+      "音声長の不一致"
+    ],
+    "reproduction": "作業場所と/tmpから同じケースと実行マニフェストを与え、JSONがバイト一致する。",
+    "window_control": [
+      30208,
+      30848
+    ],
+    "measurement_failure_control": "符号付きゼロは絶対差0でビットが異なる。ビット一致を要求すると不合格。基準値0の系列の観測差も不合格。"
+  }
+}

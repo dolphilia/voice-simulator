@@ -1,0 +1,23 @@
+{
+  "id": "worklet-ipa-body",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "native_case": "human-body-ipa.json",
+  "reference_run": "bodyipa-20261120-repeat",
+  "hypothesis": "体型を変えてもIPAの音素時刻と/p/の唇目標は同じ。/s z/の舌先目標と狭窄は体型に従い、録音した同一条件はオフラインと実時間AudioWorklet、保存ケースのCLIで一致する。",
+  "initial_state": "先行CLIと同じ中立姿勢、110 Hzで開始。肺圧・流量・位相は0。3つの端点と混合体型を既定F0で試す。乱流倍率1、シード12345。",
+  "measurement": {
+    "output_frames": 134454,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 16,
+    "maximum_sampled_event_delay_frames": 15,
+    "expected_cells": {"male": [18, 18], "female": [15, 16], "child": [11, 13], "three-way": [15, 16]},
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "noise_minimum_cm2", "teeth_noise_source", "teeth_noise_level", "teeth_noise_forward_pressure"],
+    "plan_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "geometry_absolute_tolerance": 1e-9,
+    "upper_state_peak_relative_tolerance": 1e-6,
+    "upper_pcm_absolute_tolerance": 1e-6,
+    "pcm_against_saved_case": "全フレームでビット一致。/p/の開閉は先行CLIの観測窓、/s z/は計画区間の中央50%を使う。",
+    "expected_live_schedule_lead_frames": 2048
+  }
+}

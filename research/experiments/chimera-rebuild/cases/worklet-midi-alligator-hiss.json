@@ -1,0 +1,66 @@
+{
+  "id": "worklet-midi-alligator-hiss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-hiss.json",
+  "input": {
+    "creature": "alligator",
+    "key_mode": "call",
+    "call_id": "hiss",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [12, 120],
+    "capture_seconds": 2.40,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.42, "type": "note-off", "note": 60},
+      {"seconds": 0.68, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 0.98, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "Hissには音高の制御点がない。押下・離鍵を同じ採用フレームに置いて音番号だけを交換すると、候補と固定上流それぞれで全PCMと内部観測が一致する。再発音で開大指示の目標は1、口は0.9、呼気は0に戻り、平滑値と気道の状態を引き継ぐ。口腔乱流源の有無と声門乱流の注入圧を追跡して、離鍵後にも無声の放射が残る時期を確かめる。",
+  "criteria": {
+    "fixed_clock_control": "押下・離鍵の採用フレームを保持し、60と67だけを交換する。候補CLIのWAV・全CSV、固定上流のPCMを含む全CSVが各実装の通常入力とバイト一致することを求める。",
+    "retrigger": "押下直後に呼気目標0、口0.9、開大指示1とし、音高の目標・平滑値は演奏者の28 Hzを保つ。再発音前の呼気は0.98以上、再発音直後は0.95以上かつ直前未満とする。開大指示と口の平滑値は目標未満のまま増加し、口先は2 cm²より広いまま連続する。",
+    "noise": "両離鍵後25〜100 msと両押下後400〜500 msは、口腔源がなく、有声ゲートは1e-8以下、声門の枝注入圧とPCMのRMSは正とする。固定版の同時刻の乱流倍率を0にする対照では、各窓のPCM RMSは通常の固定版の10%以下とする。全内部サンプルで固定版と比較し、候補の枝注入圧を流量・断面・乱数列から独立計算する。",
+    "end": "最後の押下から約1.35秒後にコールが終了して口と開大指示の目標が手動値へ戻り、呼気目標は0のまま残る。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-alligator-hiss-20261120-repeat",
+    "baseline_case_id": "worklet-alligator-hiss",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": -3,
+    "maximum_relative_input_error_seconds": 0.055,
+    "release_window_seconds": [0.025, 0.10],
+    "sustained_hiss_window_seconds": [0.4, 0.5],
+    "minimum_release_gate": 0.90,
+    "minimum_retrigger_gate_before": 0.98,
+    "minimum_retrigger_gate_after": 0.95,
+    "minimum_pcm_rms": 0.001,
+    "minimum_glottal_noise_pressure_rms_dyn_cm2": 1.0,
+    "maximum_muted_pcm_rms_ratio": 0.10,
+    "browser_target_tolerance_hz": 1e-10,
+    "control_tolerance": 1e-9,
+    "clock_tolerance_seconds": 1e-10,
+    "worklet_tolerance": 1e-12,
+    "native_tolerance_source": "alligator-fixed-voice-v2.json"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["sample", "frame", "call_id", "gate", "gate_target", "target_pitch_hz", "target_hiss", "hiss", "target_mouth", "mouth", "oral_tip_area_cm2", "oral_noise", "glottis_area_cm2", "glottis_flow_cm3_s", "glottis_voicing", "glottal_noise_level_dyn_cm2", "glottal_noise_pressure_dyn_cm2", "oral_noise_level_dyn_cm2", "lung_flow_cm3_s", "trachea_inlet_pressure_dyn_cm2", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 230400]]
+    },
+    "upstream.csv": {
+      "columns": ["sample", "frame", "call_id", "gate", "target_pitch_hz", "target_hiss", "hiss", "target_mouth", "mouth", "oral_tip_area_cm2", "oral_noise", "glottis_area_cm2", "glottis_flow_cm3_s", "glottis_voicing", "glottal_noise_level_dyn_cm2", "glottal_noise_pressure_dyn_cm2", "oral_noise_level_dyn_cm2", "lung_flow_cm3_s", "trachea_inlet_pressure_dyn_cm2", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 230400]]
+    },
+    "muted-upstream.csv": {
+      "columns": ["sample", "frame", "glottis_voicing", "glottal_noise_pressure_dyn_cm2", "oral_noise_level_dyn_cm2", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 230400]]
+    }
+  }
+}

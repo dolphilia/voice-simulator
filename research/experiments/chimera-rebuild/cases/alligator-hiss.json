@@ -1,0 +1,49 @@
+{
+  "id": "alligator-hiss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": ["alligator-fixed-voice-v2.json", "alligator-bellow.json", "alligator-growl.json"],
+  "hypothesis": "hissは音高のキーを持たない。声門開大・口の目標は開始から閉鎖に向かう。保持された呼気の途中では、有声ゲートと口腔乱流源が消える一方、流量が駆動する声門の乱流が残る。声門の乱流係数と枝への注入圧を、前サンプルの流量と開口、乱数列から再計算できる。",
+  "alligator_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 336000,
+    "shape": {"pitch_hz": 28.0, "chaos": 0.75, "pressure_cm_h2o": 18.0, "mouth": 0.02, "nostrils": 0.8, "hiss": 0.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "bellow"}},
+               {"frame": 196800, "play_call": {"id": "growl"}},
+               {"frame": 249600, "play_call": {"id": "hiss"}}],
+    "observe_call": true,
+    "observe_noise": true,
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "first_control": 249600, "end": 314432,
+       "curve_frames": [249600, 252032, 288000, 309504, 313600, 314432]},
+      {"id": "switch-44100", "sample_rate_hz": 44100, "frames": 82000,
+       "first_control": 19072, "end": 78656, "before_switch_edit": 10001, "during_hiss_edit": 24001,
+       "curve_frames": [19008, 19009, 19071, 19072, 24001, 24064, 54336, 74240, 78656],
+       "events": [
+         {"frame": 73, "play_call": {"id": "growl"}},
+         {"frame": 10001, "params": {"pitch_hz": 55.0, "chaos": 0.27}},
+         {"frame": 19009, "play_call": {"id": "hiss", "pitch_hz": 110.0, "amplitude": 0.75}},
+         {"frame": 24001, "params": {"pitch_hz": 60.0, "chaos": 0.31, "pressure_cm_h2o": 20.0,
+                                      "mouth": 0.25, "hiss": 0.17}}
+       ]},
+      {"id": "standalone-96000", "sample_rate_hz": 96000, "frames": 140800,
+       "first_control": 64, "end": 129728, "curve_frames": [64, 4864, 76864, 120064, 127232, 129728],
+       "events": [{"frame": 17, "play_call": {"id": "hiss"}}]}
+    ],
+    "hiss_keys": {"gate_rise_seconds": 0.1, "hold_seconds": 1.2, "release_seconds": 1.3,
+                  "ownership_tail_seconds": 0.05, "hiss_first": 1.0, "hiss_last": 0.0,
+                  "mouth_first": 0.9, "mouth_last": 0.02},
+    "noise_model": {"closed_area_cm2": 0.0002, "critical_reynolds": 1800.0, "saturation_reynolds": 12000.0,
+                    "glottal_gain": 6e-6, "lowpass_hz": 4000.0, "highpass_hz": 250.0,
+                    "normalization_rate_hz": 96000.0, "white_scale": 1.732,
+                    "absolute_tolerance_dyn_cm2": 1e-6},
+    "aspiration_window": {"seconds": [0.4, 0.7], "gap_base_cm2": 0.026, "gap_per_hiss_cm2": 0.8,
+                           "gap_tau_seconds": 0.004, "area_absolute_tolerance_cm2": 2e-9, "max_voicing": 1e-8},
+    "mute_control": {"variant": "standalone-96000", "trace_frames": 70000, "max_pcm_rms_ratio": 0.10},
+    "stage_observations": "既存の制御・声門・気道・出力の照合に、声門と口腔の乱流レベル、声門乱流の枝注入圧、閾値と再登録の時刻を加える。声門乱流は前サンプルの断面と流量から係数を求め、口腔乱流源の有無に応じた乱数インデックスで注入圧を独立に再計算する。48 kHzは公式先頭336,000フレームとhiss区間86,400フレームを照合する。"
+  }
+}

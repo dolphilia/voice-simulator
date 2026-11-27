@@ -1,0 +1,33 @@
+{
+  "id": "csd-en001a-pharynx-cell7-compliance-pulse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "block": {
+    "run": "csd-en001a-pharynx-cell7-first-block-20261124-repeat",
+    "case": "csd-en001a-pharynx-cell7-first-block",
+    "manifest_sha256": "dd0f0b43b3fb7d80b965ff8bfb1984e68192962c1fd911c539e129d6d2c2db86"
+  },
+  "output": {
+    "run": "csd-en001a-two-phrase-pcm-rounding-20261124-repeat",
+    "case": "csd-en001a-two-phrase-pcm-rounding",
+    "manifest_sha256": "be31e8b89cc012982df2ffbfee87d75bf8f4efea251f038e9f5fbc284e29a05c"
+  },
+  "measurement": {
+    "song": "en001a",
+    "conditions": {"native": 0, "initial_only": 1, "compliance_only": 0},
+    "focus_node": 20,
+    "lip_node": 43,
+    "observed_pressure_samples": 128,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "frames": 201600
+  },
+  "intervention": "各版の通常描画で内部標本0の節点20の非放射圧力式に渡すコンプライアンス一値だけを、同じ版の初期面積交換時の採取値へ差し替える。必要な値は第1制御ブロックの保存記録から読む。",
+  "hypotheses": {
+    "first_local_pressure_reproduced": "圧力は標本0の節点20だけで初めて分かれ、初期面積交換と同じ値になる。",
+    "lip_causal_minimum": "口端流量の差が現れる場合は、23本の枝を経た標本23以降になる。",
+    "wall_before_lip": "局所の壁流量は圧力差を次の標本から参照できる。壁放射の合計に差が出る場合は、口端流量の差より先に現れる。",
+    "whole_pcm_requires_more_than_one_update": "標本0のコンプライアンス単独交換は、初期面積交換の全PCMを再現しない。"
+  },
+  "acceptance": "通常と初期面積交換の全PCM・歌唱計画・先頭128標本の節点圧力を第1制御ブロックの実行に照合する。通常描画の全放射成分を保存済みの出力段の実行に照合する。単独交換では初期形状、標本0の元のコンプライアンス、更新前圧力と正味流入の一致を確認し、節点20の圧力を圧力式で独立に再計算する。各条件の全403200内部標本で壁・口・鼻の放射体積速度、放射合計と差分を採取し、全201600出力でFIR、ゲイン、DC除去、変換前の値、PCMを独立に再計算する。節点、放射成分、変換前、PCMで最初の差、件数と最大差を記録する。伝搬時刻とPCM差の有無は仮説の判定に用いる。"
+}

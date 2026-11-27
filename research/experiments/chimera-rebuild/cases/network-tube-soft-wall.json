@@ -1,0 +1,111 @@
+{
+  "id": "network-tube-soft-wall",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "壁振動を気道グラフに移しても、同じ一様管・体積インパルスで圧力、枝流量、壁流量と口端の放射が単管と一致する。壁面放射係数を0.25にすると、外部への合計放射は口端の到達に先立ちサンプル1で始まる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 17.5,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.25
+        }
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      39
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 0,
+    "volume_cm3": 1.0
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      19,
+      39
+    ],
+    "branches": [
+      [
+        0,
+        1
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        19,
+        20
+      ],
+      [
+        38,
+        39
+      ]
+    ],
+    "wall_nodes": [
+      0,
+      19,
+      39
+    ]
+  },
+  "measurement": {
+    "sample_count": 48000,
+    "tail_sample_count": 9600,
+    "uniform_case_id": "uniform-tube-soft-wall",
+    "expected_first_wall_radiation_sample": 1,
+    "expected_first_mouth_radiation_sample": 39,
+    "upstream_trace_peak_relative_error_lt": 1e-10,
+    "uniform_trace_peak_relative_error_lt": 1e-10,
+    "balance_peak_relative_error_lt": 1e-10,
+    "tail_over_peak_lt": 0.01
+  }
+}

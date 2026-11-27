@@ -1,0 +1,26 @@
+{
+  "id": "coreaudio-headphone-drift-44100-tap-wait-extended",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "phase_clock_case": "coreaudio-headphone-drift-44100-clock-plateaus.json",
+  "reference_waveform_departure_output_frame": 27088,
+  "maximum_departure_deviation_frames": 256,
+  "minimum_start_gap_change_ms": 700,
+  "maximum_start_gap_change_ms": 1200,
+  "maximum_timing_residual_ms": 12,
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-tap-wait-extended-short-1", "coreaudio-headphone-drift-44100-tap-wait-extended-long-1"],
+    ["coreaudio-headphone-drift-44100-tap-wait-extended-short-2", "coreaudio-headphone-drift-44100-tap-wait-extended-long-2"],
+    ["coreaudio-headphone-drift-44100-tap-wait-extended-short-3", "coreaudio-headphone-drift-44100-tap-wait-extended-long-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-short-1", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-long-1", "leading_frames": 0, "tap_lead_seconds": 1.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-long-2", "leading_frames": 0, "tap_lead_seconds": 1.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-short-2", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-short-3", "leading_frames": 0, "tap_lead_seconds": 0.1},
+    {"run_id": "coreaudio-headphone-drift-44100-tap-wait-extended-long-3", "leading_frames": 0, "tap_lead_seconds": 1.1}
+  ],
+  "prediction": "前の0.10秒と0.35秒の比較では実際の両開始間隔が55〜57 ms縮まった。待機を1.10秒に延ばした条件でも最初のタップの予定時刻が出力の開始に伴って動く場合、開始間隔の増分は事前の700〜1200 msに入らないと予測する。増分が基準に入った組では、前回と同じ出力開始基準の位置に波形差が現れると予測する。",
+  "criteria": "タップの準備から直接出力を始めるまでの待機0.10秒と1.10秒を各3回採取する。タップ開始API呼び出し直前と出力開始API呼び出し直前のホスト時計の基準、最初のタップ・出力の予定ホスト時刻、最初の出力コールバックの実際の入口時刻を比較する。実測した最初の予定時刻の間隔が0.70〜1.20秒増えた組の波形差を前回と同じ256フレーム、12 msの基準で分類する。増分の条件を外れた場合も観測した値と波形の位置を保存する。"
+}

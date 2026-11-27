@@ -1,0 +1,68 @@
+{
+  "id": "vowel-open-o-lpc-matched",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sequence": {
+    "run": "vowels-reference-20261119-b",
+    "case": "vowel-benchmark",
+    "manifest_sha256": "9e573b38be5b17d0c3433bf411b9bf4108ccdad24d234d15753f166aa75513be"
+  },
+  "fixed": {
+    "run": "vowels-reference-20261119-b-voice-open-o",
+    "case": "vowel-voice-open-o",
+    "manifest_sha256": "fc86242574338634bc46b40cb874d2e44a85570a82099acc28adeb226d5236e2"
+  },
+  "measurement": {
+    "ipa": "ɔ",
+    "sequence_vowel_index": 5,
+    "vowel_segment_frames": 28800,
+    "source_rate_hz": 48000,
+    "sequence_gate_end_frame": 23040,
+    "source_frames": {
+      "sequence": 288000,
+      "fixed": 32768
+    },
+    "common_starts_frames": [
+      14400,
+      18000
+    ],
+    "durations_frames": [
+      1536,
+      4800
+    ],
+    "analysis_rates_hz": [
+      12000,
+      16000
+    ],
+    "decimators": [
+      "box",
+      "polyphase"
+    ],
+    "orders": [
+      12,
+      18
+    ],
+    "legacy_fixed_start_frame": 19200,
+    "pre_emphasis": 0.97,
+    "lpc_min_hz": 90,
+    "lpc_max_bandwidth_hz": 600,
+    "lpc_nyquist_guard_hz": 0.000001,
+    "pitch_min_hz": 70,
+    "pitch_max_hz": 200,
+    "yin_threshold": 0.15,
+    "voiced_pitch_hz": [
+      100,
+      125
+    ],
+    "maximum_probe_independent_error_hz": 0.02,
+    "legacy_fixed_error_hz": 0.000001,
+    "minimum_reference_matched_difference_hz": 10,
+    "minimum_explicit_analysis_effect_hz": 1
+  },
+  "hypotheses": {
+    "fixed_peak_remains_higher_with_matched_choices": "0.300秒開始および0.375秒開始で、元の2つの分析設定（窓長・レート・間引き・次数）を両波形に揃えても、固定発声の第1ピークが連続母音列より各10 Hz以上高い。",
+    "analysis_choices_change_a_single_wave": "0.300秒開始の同じ波形内で元の2つの分析設定を切り替えると、少なくとも一方は第1ピークが1 Hz以上移動する。",
+    "the_waveform_accounts_for_most_of_the_legacy_difference": "0.300秒開始で分析設定と波形を交換する順を両方向に通り、波形だけを交換した効果の平均が、旧条件の第1ピーク差の半分以上を占める。"
+  },
+  "acceptance": "固定上流の通常の連続母音列と研究CLIの固定 /ɔ/ を再描画し、各保存済み48 kHz・float32波形に全フレームをビット照合する。固定研究版と保存済み固定上流のPCMも照合する。比較に使う両波形の0.300秒および0.375秒開始の窓は連続母音列の呼気停止0.480秒までに収める。窓長、分析レート、間引き方式、LPC次数の各水準を全組合せで両波形へ適用する。生PCM、間引いたLPC入力と推定根を保存し、固定上流の公開LPC推定器と独立Toeplitz解で、ナイキストの実根を記録上区別して周波数・帯域幅が0.02 Hz以内に一致すること。元の設定で連続側の最初の3ピークの整数表示を、固定側の全LPC推定とLPC入力を再現すること。条件別の差、波形と分析設定の交換による差、分析開始時刻を交換した差をそれぞれ記録する。"
+}

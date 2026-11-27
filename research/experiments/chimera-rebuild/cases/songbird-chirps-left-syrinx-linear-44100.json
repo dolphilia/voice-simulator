@@ -1,0 +1,27 @@
+{
+  "id": "songbird-chirps-left-syrinx-linear-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-syrinx-momentum-44100-20261123-repeat",
+    "manifest_sha256": "214873e0d71ec02b79aa43ce35cfd3dcb958fd8d181f7ecbf0bf4d19facdb93c"
+  },
+  "left_port_term": "linear",
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_flow_offsets": {
+    "matched_time": 27,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "target_condition": "native_block",
+  "hypothesis": "左ポートの線形係数の慣性項だけを L / dt から L × fs に替えると、256点制御の押鍵19点後の左流量の差は消えると予測する。同じ標本の右ポート流量は直前の圧力だけを使うため、その標本では対照と同じ値になり、上流との差は残る。気管入口圧と左気管支末端圧への効果は左流量と同じ標本から、右ポート流量への効果は1標本後から現れうる。235点制御の27点後の左流量差は直前の左気管支末端圧で再現したため、左流量の初差はそのままと予測する。追従0では無励振を保つ。",
+  "observation": "左ポートの持ち越し換算まで揃えた先行版を通常render CLIで再描画する。内部176400 Hzの押鍵後0〜63点で、左右の弁面積・流量・気管支末端圧、気管入口と末端の圧力、首部、腔圧、くちばし、放射流量と差分を固定上流保存CSVおよび対照と比較する。左右の枝流量と気管入口圧は観測状態を使って独立に再計算する。",
+  "acceptance": "先行レンダーをバイト再現し、弁面積と押鍵前の状態、閉鎖時の流量0、追従0での無励振を確認する。3条件・3版で左右流量と気管入口圧を全点ビット照合する。256点制御の押鍵19点後の左流量が上流と一致し、同点の右は対照と一致することを確認する。最短伝播より前に影響が出ないことと、残差の起点および予測が外れた場合の判定を保存する。"
+}

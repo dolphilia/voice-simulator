@@ -1,0 +1,27 @@
+{
+  "id": "worklet-live-song-process-tap",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "frame_validation_case": "worklet-live-song-output-callback.json",
+  "probe_case": "worklet-live-song-process-tap-probe.json",
+  "sample_rate_hz": 48000,
+  "expected_request_frames": 256,
+  "window_radius_requests": 8,
+  "minimum_contiguous_anchor_frames": 256,
+  "maximum_error_marker_units": 0.15,
+  "maximum_anchor_displacement_frames": 1024,
+  "capture": {
+    "condition_order": [["control", "draw192"]],
+    "ready_quanta": 192,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 2.5,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.25
+  },
+  "hypothesis": "192フレームの事前描画後にI/O開始間隔が約1要求分増える。既知のフレーム印を出力で復元し、256フレーム付近の欠落、繰り返し、またはゼロ補填が構築前後に現れるかを比較する。無変化が観測された場合も、採取が有効なら記録する。",
+  "criteria": {
+    "input": "Firefoxの48 kHz共有Contextで通常のPop Dee歌唱を再生する。先行音だけを左右逆相にし、元の歌唱は通常の出力接続を使う。試験で起動したFirefoxの音声プロセスだけをタップする。タップの準備を最長2.5秒待つ。歌唱終了後は先行音の記録が完成してからContextを閉じる。",
+    "validity": "通常の歌唱と先行音の観測に加え、構築前後8出力要求で256フレームのグラフ前進を確認する。録音のフレーム時刻が連続し、先行音の前端と後端をそれぞれ連続256フレームで一意に合わせられる試行だけをPCMの判定に使う。",
+    "diagnostics": "復元した連番が順方向へ飛んだ数、逆方向へ戻った数、復元できない出力区間を区別する。逆相の成分がゼロでも、左右のPCMがゼロである範囲だけを無音として数える。プロセスタップより後の物理機器の出力は別の観測点とする。内部接続だけを確認する対照では既存の512量子を記録し、出力PCMの判定から外す。"
+  }
+}

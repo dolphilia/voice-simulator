@@ -1,0 +1,45 @@
+{
+  "id": "safari-recording-pause-clock-split",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "recording_reference": {
+    "case": "worklet-live-song-fast-safari-recording-pause.json",
+    "run": "worklet-live-song-fast-safari-recording-pause-20261121-repeat-b"
+  },
+  "condition_order": [
+    ["continuous", "context", "recorder"],
+    ["context", "recorder", "continuous"],
+    ["recorder", "continuous", "context"]
+  ],
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "signal_seconds": 1.35,
+    "signal_initial_hz": 347,
+    "signal_sweep_hz_per_second": 3901,
+    "signal_gain": 0.12,
+    "start_lead_seconds": 0.12,
+    "drain_seconds": 0.23,
+    "hold_at_signal_seconds": 0.62,
+    "hold_ms": 240,
+    "timeout_ms": 10000,
+    "mime_type": "video/mp4; codecs=avc1.42000a,mp4a.40.2",
+    "audio_alignment_windows_seconds": [[0.30, 0.44], [0.95, 1.09]],
+    "audio_offset_search_seconds": [-0.30, 0.45],
+    "minimum_audio_correlation": 0.9,
+    "audio_pause_tolerance_seconds": 0.05,
+    "video_hold_margin_ms": 25,
+    "video_minimum_context_hold_frames": 3,
+    "video_maximum_recorder_hold_frames": 1,
+    "video_maximum_retained_context_hold_seconds": 0.12
+  },
+  "hypothesis": {
+    "clock": "AudioContextだけを止めると停止完了から再開要求まで音声の絶対フレームが固定される。録画だけを止めると同じ間に音声の絶対フレームが約240 ms分進む。",
+    "audio": "録画が連続する対照とAudioContext停止では、停止を挟む2窓のサンプル順とPTSで求めたオフセット差は0±50 ms。録画を一時停止するとContextは描画を続けるため、2窓の差は実測したContextの進行時間を引いた値の±50 ms。",
+    "video": "AudioContextを停止した間も壁時計で描く値は進むため、停止区間の両端25 msを除いた録画に3枚以上の異なる壁時計値と同じContext値が残る。その映像のPTS幅は先行ケースと同様に停止時間より短く、最大120 msと予測する。録画だけを止めた間に描かれた値は録画に最大1枚しか残らない。"
+  },
+  "criteria": {
+    "input": "Safariの信頼済みクリックから、48 kHzの実時間AudioContextと通常のMP4 H.264/AAC形式で開始する。各試行のContext・MediaRecorder・キャンバスを新設。MediaRecorderのチャンク間隔は500 ms、キャンバスは30 fps。実時間出力用の一定の短いチャープを音声トラックへ送り、連続条件・AudioContextだけの停止・MediaRecorderだけの一時停止を順序交代で各3回取得する。240 ms保持は30 fpsで複数フレームを確実に区別するために選ぶ。",
+    "treatment": "チャープの0.62秒付近を起点に、対象APIの停止完了から240 ms後に再開を要求する。対照でも同じ長さを観測する。操作要求・完了時の両state、Context絶対フレーム、performance.now()、各rAFによる描画時刻、チャンク通知とトラック状態を保存する。",
+    "audio": "チャープの解析式から合成前PCMを計算し、復号後PCMを停止の前後各1窓で照合する。窓の相関・復号順の位置・対応する実PTSは取得判定、両窓の差は予測の検証に使う。AACフレームの整数PTSとサンプル数も個別に保存する。",
+    "video": "同一キャンバスの2行に、開始からの壁時計ミリ秒と音声開始予定からのContextミリ秒を12桁の二進数で描く。1個の符号値を1画素列として読み、同じ描画ログに照合する。停止完了と再開要求の間の動画フレーム数、映像PTSの範囲、最も近い前後フレームの壁時計差とPTS差を保存し、保持区間の長さと比較する。"
+  }
+}

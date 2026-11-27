@@ -1,0 +1,53 @@
+{
+  "id": "worklet-live-tsp-firefox-onset-load-64",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-stdout-release-500ms",
+  "initial_control_run": "worklet-live-tsp-firefox-stdout-release-500ms-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true
+  },
+  "measurement": {
+    "condition_order": [
+      ["split-early-load", "split-onset-load"],
+      ["split-onset-load", "split-early-load"],
+      ["split-early-load", "split-onset-load"]
+    ],
+    "onset_load": {
+      "block_frames": 64,
+      "quantum_offsets": {
+        "split-early-load": [0, 2, 4, 6],
+        "split-onset-load": [0, 2, 4, 16]
+      }
+    }
+  },
+  "system_io": {
+    "instruments": ["Audio Client", "Audio Server", "Thread State Trace"],
+    "time_limit": "1s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 500,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [12, 13],
+    "local_onset_offsets": [10, 16],
+    "maximum_constructor_after_ready_frames": 256,
+    "maximum_release_overshoot_ns": 20000000,
+    "minimum_comparable_pairs": 2,
+    "minimum_change_ns": 400000
+  },
+  "hypothesis": "両条件の発話を128フレーム遅らせ、先行する3片の時点を固定する。64フレームの最後の破棄描画を待機量子6から16へ移すと、最初の発話量子と同じ256フレーム要求に入ると予測する。最後の描画を同じ要求に含んだ対照組で、Audio Clientの区間長が0.4 ms以上伸び、直後のサーバー処理開始までの余裕が0.4 ms以上縮むと予測する。両方向の変化が3組中2組以上で観測されれば予測を支持する。近傍の予算内・予算超過の時刻飛びは別に数える。",
+  "acceptance": "48 kHz、同じ256フレーム要求、先行音56量子、同一WASM、Firefoxへのアタッチ、開始行から500 ms、3収録器、保持窓・タップなしを固定する。採取は待機量子17から始める。両条件で64フレーム×4片と最初の0フレーム呼び出し1000回を使い、最後の片の時点だけ変更する。発話WAVと状態は通常再生に一致し、固定上流との差が既存の許容内であること。先頭3発話量子の配分が両条件で1＋2、対照の最後の片が要求12より前、比較条件の最後の片が先頭発話量子と同じ要求12で、要求12・13のCore Audioと状態を一意に照合できた組を比較する。0〜20 msのゲート誤差と機器Writeによる時計起点も検算する。未照合は欠測とし、2組に満たなければ予測を保留する。飛びの有無にかかわらず予算、機器Write、各周期のIOProcと状態を保存する。"
+}

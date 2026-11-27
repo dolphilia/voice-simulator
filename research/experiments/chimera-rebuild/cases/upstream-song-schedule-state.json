@@ -1,0 +1,46 @@
+{
+  "id": "upstream-song-schedule-state",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_reference": {
+    "case": "upstream-safari-song-fixed-schedule-frame.json",
+    "run": "upstream-safari-song-fixed-schedule-frame-20261121-repeat"
+  },
+  "schedule_engine_frames": [16384, 16512],
+  "noise_scales": [1, 0],
+  "output_rate_hz": 48000,
+  "internal_rate_hz": 96000,
+  "lead_seconds": 0.03,
+  "comparison_samples": 29760,
+  "pcm_difference_floor": 0.000001,
+  "maximum_browser_onset_difference_frames": 128,
+  "phase_advance_tolerance_cycles": 0.02,
+  "thresholds": {
+    "gate": 0.000000001,
+    "lip_opening_cm": 0.000000001,
+    "lip_area_cm2": 0.000000001,
+    "lung_pressure_dyn_cm2": 0.000001,
+    "glottal_phase_cycles": 0.000000001,
+    "glottal_f0_hz": 0.000000001,
+    "glottal_voicing": 0.000000001,
+    "glottal_area_cm2": 0.000000001,
+    "glottal_flow_cm3_s": 0.000001,
+    "subglottal_pressure_dyn_cm2": 0.000001,
+    "supraglottal_pressure_dyn_cm2": 0.000001,
+    "dominant_noise_level": 0.000000001,
+    "signed_noise_pressure_dyn_cm2": 0.000001,
+    "lip_radiation_cm3_s": 0.000001,
+    "nose_radiation_cm3_s": 0.000001,
+    "radiation_derivative_cm3_s2": 0.000001
+  },
+  "hypothesis": {
+    "initial_state": "譜面の予約時点には声門の位相に差があり、128サンプル分の進みは既定F0から求める周期の0.02以内になる。予約直後から唇や呼気の目標は同じ譜面の相対位置で揃う。",
+    "arrival_at_output": "停止を行わず予約フレームだけを変えても、ネイティブのPCM差はブラウザの初回位置14,330から128フレーム以内に現れる。放射の差は出力PCM差に先行するか同じサンプルに現れる。",
+    "noise_control": "気道の乱流の注入だけを0にしても、声門位相の差と歌唱区間のPCM差は残る。最初の出力差の位置と大きさは通常の乱流量と比較して記録する。"
+  },
+  "criteria": {
+    "replay": "前回のブラウザの2音の譜面、男声、既定音源、自由な舌先の中立姿勢、呼吸ゲート0を使用する。固定上流の公開プランナーとEngineの予約を使い、予約前の描画量のみ128フレーム変える。ネイティブでの初期設定は描画前に適用し、ブラウザでは初回描画と初期設定の到着に順序差がありうることを結果に残す。",
+    "window": "予約直前の状態を1点採取し、その後の先行区間1,440サンプルと、譜面時刻0から29,760サンプルを全点走査する。内部96 kHzの計算のうち、出力48 kHzの1サンプルを生成した直後の状態を記録する。時刻と音素区間は整数の出力サンプル位置でそろえる。",
+    "observation": "唇と肺圧、声門位相・面積・流量、声門上下圧、乱流のレベルと実際に加算された枝圧、口・鼻の放射を比較する。位相差は周期の折返しを考慮する。通常の乱流量1と、注入量だけを0にした条件を同じ初期化で別々に実行する。項目ごとに登録した許容差を超えた最初のサンプルを保存する。",
+    "verification": "譜面の音素と拍はブラウザの記録と照合する。PCMはブラウザとビット一致の可否、最大差、最初の差を別に報告する。同じ実行を別の作業ディレクトリでやり直し、PCMと物理量の再現性を確かめる。"
+  }
+}

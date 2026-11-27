@@ -1,0 +1,24 @@
+{
+  "id": "csd-long-note-vibrato",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "dataset_case": "csd-song-planning.json",
+  "pitch_case": "csd-acoustic-f0-en001a.json",
+  "periodicity_case": "csd-vibrato-aperiodicity.json",
+  "candidate_settings_run": "csd-continuous-song-20261121-repeat",
+  "selection": {
+    "song_number_range": [1, 50],
+    "key": "a",
+    "eligible_frames": 80,
+    "preferred_frames": 100,
+    "max_grid_difference_frames": 1,
+    "rank": "区分ごとに安定区間100窓以上の音符数の降順、80窓以上の音符数の降順、最長の窓数の降順、曲IDの昇順。各区分の先頭1曲を固定する。1曲も80窓に届かなければ区分の欠測を残す。"
+  },
+  "analysis": {
+    "alignment_tolerance_seconds": 0.03,
+    "minimum_voiced_run_frames": 80,
+    "candidate_host_block_frames": [128, 77]
+  },
+  "hypothesis": "配布注釈で安定区間が長い曲を区分ごとに選ぶと、各曲の人間の録音に0.4秒以上連続する有声区間が1音以上ある。音響結果を見ずに選んだ全音符を解析する。両合成は同じ歌唱計画を使い、固定上流の音符別・曲別のビブラートと非周期性は既存の独立計算で再現できる。調整用の結果から検出条件を変更せず、同じ設定を確認用にも使う。検出数や録音と合成の差は観測値として扱う。",
+  "acceptance": "英語aキー50曲の注釈だけを最初に取得し、CRC32・SHA-256、ランキング、選定IDを保存する。整数10進式と上流の浮動小数点式の格子点数は1窓以内で一致すること。選定を別実行に保存した後で該当2曲だけのWAVを取得する。固定上流の通常compare csdと候補の通常inspect・render-pcmを使い、録音と合成を同じ音符時刻と標準の安定窓で測定する。計画の母音開始と採否、44.1 kHz録音と48 kHz描画の長さ、128・77分割での波形一致、普通のレポートと調整用スコアの再現、独立回帰と自己相関の一致を照合する。録音の対象が0件ならその区分を未検証として記録する。"
+}

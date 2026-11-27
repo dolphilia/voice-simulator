@@ -1,0 +1,18 @@
+{
+  "id": "cubeb-output-callback-probe",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "playwright_version": "1.64.1",
+  "firefox_revision": "fdd757a2e09c9471cddf383e64e631e4ce178499",
+  "cubeb_coreaudio_revision": "840f69c1b3f95accd582555e10abcef8ee67514b",
+  "sample_rate_hz": 48000,
+  "channels": 2,
+  "requested_frames": 256,
+  "overrun_callback_index": 65,
+  "delay_ms": 8.4,
+  "window_radius_callbacks": 8,
+  "observation_callbacks": 128,
+  "expected_overrun_gap_frames": 256,
+  "host_clock_tolerance_ms": 0.5,
+  "prediction": "48 kHzのステレオ出力で256フレームが選ばれると、1要求は5.333 ms。65番目（0始まり）に8.4 ms待機を入れると、直後の機器サンプル時刻が256フレーム飛び、ホスト時刻の間隔は2周期になる。対照では要求時刻は等間隔になる。どちらもcubebが返すPCMのフレーム連番は連続する。",
+  "acceptance": "待機なしと待機ありを2組実行する。前後8要求の全ブロックで実際の要求が256フレームであること、2時計が有効であること、左右の全PCMが独立計算した連番とビット一致することを確認する。機器サンプル時刻の欠落とホスト時刻を全区間で照合する。量子が変わった場合はこのケースの判定を保存する。"
+}

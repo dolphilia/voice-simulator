@@ -1,0 +1,49 @@
+--- a/crates/chimera/src/voice/human_voice.rs
++++ b/crates/chimera/src/voice/human_voice.rs
+@@ -165,6 +165,9 @@
+     pub probe_radiation_pair: [f64; 2],
+     pub probe_output: [f64; 5],
+     pub probe_source_pair: [[f64; 13]; 2],
++    pub probe_pressure_input: Option<Vec<f64>>,
++    probe_pressure_index: usize,
++    pub probe_pressure_pair: [[f64; 2]; 2],
+     pub probe_radiation_components: [[f64; 6]; 2],
+     /// internal samples per control step
+     ctrl_every: usize,
+@@ -241,6 +244,9 @@
+             probe_radiation_pair: [0.0; 2],
+             probe_output: [0.0; 5],
+             probe_source_pair: [[0.0; 13]; 2],
++            probe_pressure_input: None,
++            probe_pressure_index: 0,
++            probe_pressure_pair: [[0.0; 2]; 2],
+             probe_radiation_components: [[0.0; 6]; 2],
+             ctrl_every: 64 * m,
+             ctrl_counter: 0,
+@@ -400,7 +406,12 @@
+                 self.lung_flow += lung_coef * (net.u[lung_port] - self.lung_flow);
+                 net.set_fixed_pressure(lungs, self.p_lung_now + lung_excess * self.lung_flow);
+                 let pressure_drop = net.p[sub_node] - net.p[supra];
+-                let a = self.glottis.next(pressure_drop);
++                let input_pressure = self.probe_pressure_input.as_ref()
++                    .map_or(pressure_drop, |series| series[self.probe_pressure_index]);
++                self.probe_pressure_index += 1;
++                let a = self.glottis.next(input_pressure);
++                self.probe_pressure_pair = [self.probe_pressure_pair[1],
++                    [input_pressure, self.glottis.probe_smoothed_pressure()]];
+                 net.set_port_area(gp, a);
+                 let y = net.step();
+                 self.probe_source_pair = [self.probe_source_pair[1], [
+--- a/crates/chimera/src/sources/glottis.rs
++++ b/crates/chimera/src/sources/glottis.rs
+@@ -228,6 +228,10 @@
+         a
+     }
+ 
++    pub fn probe_smoothed_pressure(&self) -> f64 {
++        self.dp_sm
++    }
++
+     pub fn cycle_phase(&self) -> f64 {
+         self.phase
+     }

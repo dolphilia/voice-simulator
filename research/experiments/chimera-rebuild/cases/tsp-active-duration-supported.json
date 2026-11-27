@@ -1,0 +1,152 @@
+{
+  "id": "tsp-active-duration-supported",
+  "revision": 1,
+  "base_case": "tsp-active-duration-pilot.json",
+  "input_support_run": "tsp-active-duration-inspect-20261121-a",
+  "selection_rule": "元の調整用・確認用の話者を維持する。固定上流が採用した各話者の本文を候補の inspect で検査し、女性・男性の両方で発話計画を作れる同一文を録音ID順に各分割で最大2文選ぶ。録音の音声と計測値は選定に使わない。",
+  "calibration_ids": [
+    "FA02_07",
+    "MA02_07"
+  ],
+  "held_out_ids": [
+    "FK64_08",
+    "FK64_09",
+    "MK64_08",
+    "MK64_09"
+  ],
+  "acceptance": "元の登録条件の測定式、無音対照、合成2版の10 msの許容差を適用する。この6件の録音と両合成の結果を分割別に残す。元の8件の不合格と234件の入力未対応を保持する。",
+  "scope": "合成可能な3文の発話区間長の比較。調整用は1文のため、しきい値と音源の設定の調整には使わない。英語全体、音素対応範囲、自然さの判定は元の対象と後続の実験に残す。",
+  "implementation": {
+    "settings_case": "human-body-english.json",
+    "block_frames": 128,
+    "zero_padding_control": {
+      "leading_frames": 2400,
+      "nonzero_frames": 4800,
+      "trailing_frames": 2400,
+      "amplitude": 0.25,
+      "extra_frames_at_either_end": 4800
+    },
+    "listening": {
+      "order_seed": 20261121,
+      "maximum_rms_dbfs": -26,
+      "peak_ceiling_dbfs": -1,
+      "interval": "主しきい値の半開区間"
+    }
+  },
+  "retain_csv": {
+    "FA02_07/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    },
+    "MA02_07/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    },
+    "FK64_08/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    },
+    "FK64_09/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    },
+    "MK64_08/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    },
+    "MK64_09/candidate.csv": {
+      "sample_column": "frame",
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "pcm_f32"
+      ],
+      "sample_ranges": [
+        [
+          0,
+          32
+        ],
+        [
+          2400,
+          2432
+        ]
+      ]
+    }
+  }
+}

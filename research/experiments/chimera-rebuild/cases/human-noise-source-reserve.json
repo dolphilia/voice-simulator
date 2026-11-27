@@ -1,0 +1,20 @@
+{
+  "id": "human-noise-source-reserve",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "tract-area-buffer-reuse-20261122-b",
+  "allocation_reference_case_id": "tract-area-buffer-reuse",
+  "geometry_reference_run": "tract-area-buffer-reuse-20261122-b",
+  "geometry_reference_case_id": "tract-area-buffer-reuse",
+  "browser_reference_run": "worklet-live-song-tract-area-buffer-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": "turbulence",
+  "removed_allocations_per_geometry_update": 0,
+  "allocations_per_geometry_update": 0,
+  "expected_removed_allocations": 1,
+  "expected_allocations": 0,
+  "contact_grid_allocations_per_call": {"roof_cumulative": 0, "measurement_grid": 0, "contact_samples": 0},
+  "prediction": "人間の気道の初期化時に、交換する二つの乱流源の領域を最大3件分ずつ確保する。48 kHzのPop Deeでは出力フレーム0〜127の初回量子にあった登録の1件が減り、713量子全てで割り当てがゼロになる。後続の語境界25量子も各0件。",
+  "criteria": "量子・制御周期・入力はallocation_caseに従う。削減されるのは最初の量子のcontrol内のturbulenceの1件だけで、全工程の呼び出し回数と他工程の割り当ては一致すること。通常CLIの4条件の全断面、歌唱PCM全91,200標本と全ABI観測1,425点が基準と一致すること。96 kHzで初期化した実際の人間の気道を使い、乱流源1件→3件→順序・利得を変えた3件→1件の各登録で両領域の確保先が交換され、同じシードで描画した各登録後128内部サンプルのフィルタ状態と注入圧が、事前確保なしの対照とビット一致すること。通常CLIのsibilant-sで歯の乱流帯域の独立式と固定上流の時系列・PCMも既定の許容差内であること。"
+}

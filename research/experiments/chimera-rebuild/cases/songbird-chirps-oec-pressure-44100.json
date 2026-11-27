@@ -1,0 +1,16 @@
+{
+  "id": "songbird-chirps-oec-pressure-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-beak-tip-inflow-44100-20261123-repeat",
+    "manifest_sha256": "1494171cacceb2681f1ee4279478aec609254af4d6e5ff7e5db1cec35bc5c3ae"
+  },
+  "sample_rate_hz": 176400,
+  "volume_source_cutoff_hz": 60,
+  "observation_internal_samples": 16,
+  "matched_time_first_pressure_difference": 1,
+  "hypothesis": "235点の制御刻みで現れた押鍵1内部サンプル後の口腔食道腔圧の差は、体積差を体積速度に換算する際の除算と乗算から始まると予測する。前回圧と両枝の流量を同じ値に固定し、異なる換算法から得た注入量だけを置き換えると圧力差を再現できると予測する。",
+  "observation": "176.4 kHzの先行実行から235点制御・256点制御・235点の音高追従0を読む。入力更新前の1点と更新直後16点で、口腔食道腔の断面・セル長、気管からの流入とくちばしへの流出、体積速度源と節点圧を比較する。断面から体積差、60 Hzの一次低域通過2段、節点の収支と圧力を独立計算する。",
+  "acceptance": "通常CLIと固定上流の既存列は保存した出力に一致する。両版の口腔食道腔圧を全観測点でビット復元し、候補の保存した体積速度源とコンプライアンスを独立計算と照合する。追従0の対照では圧力と流量がゼロ。最初の圧力差では注入・枝流量・加算順を単独と組み合わせで交換し、予測が外れても元の判定を保存する。"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "worklet-manual-body-switch",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "hypothesis": "手動発声中に成人男性から成人女性へ切り替えると声道の観測セルが18・18から15・16へ変わる。唇の目標0.35 cmと呼気目標1は引き継ぎ、調音位置・速度と音響状態は中立・静止から再開する。F0は110 Hzから205 Hzへ接近する。保存ケースの加工前PCMはCLIでビット一致する。",
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "quantum_frames": 128,
+    "control_interval_output_frames": 64,
+    "gestures": [{"axis": "lip_aperture_cm", "value_cm": 0.35}],
+    "wait_before_each_action_ms": 100,
+    "body_switch": {"body": "female", "wait_after_gestures_ms": 300},
+    "wait_before_stop_ms": 450,
+    "expected_new_cells": [15, 16],
+    "before_switch_settled_position_tolerance_cm": 0.015,
+    "after_switch_settled_position_tolerance_cm": 0.015,
+    "after_switch_settled_pitch_tolerance_hz": 1.0,
+    "settled_window_frames": 2400,
+    "independent_state_absolute_tolerance": 1e-9,
+    "upstream_pcm_absolute_tolerance": 5e-7,
+    "upstream_geometry_absolute_tolerance": 1e-9,
+    "upstream_state_peak_relative_tolerance": 1e-8,
+    "host_block_frames": [128, 77],
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_phase", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "tongue_body_x_cm", "tongue_body_y_cm", "oral_minimum_cm2"],
+    "windows": "切り替え直前の1量子、直後の1量子、停止前2400フレーム、PCMは全区間。時刻はWorkletの適用フレームを保存する。"
+  }
+}

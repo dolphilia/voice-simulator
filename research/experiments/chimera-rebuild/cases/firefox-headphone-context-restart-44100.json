@@ -1,0 +1,84 @@
+{
+  "id": "firefox-headphone-context-restart-44100",
+  "revision": 2,
+  "calibration_run": "safari-process-tap-smooth-marker-44100-20261122-repeat",
+  "fixture_run": "coreaudio-headphone-drift-44100-long-recurrence-1",
+  "native_reference_run": "coreaudio-headphone-drift-44100-output-restart-20261122-a",
+  "reference_windows_case": "coreaudio-headphone-drift-44100-long-recurrence.json",
+  "capture_duration_seconds": 16,
+  "context_study": {
+    "target_frame": 384000,
+    "maximum_stop_offset_frames": 2048,
+    "hold_seconds": 1.0448979591836736,
+    "maximum_hold_error_ms": 50,
+    "minimum_callback_gap_ms": 900,
+    "graph_capture_quanta": 4112
+  },
+  "analysis": {
+    "pre_last_exclusive": 383416,
+    "post_guard_frames": 512,
+    "pre_window_count": 44,
+    "maximum_post_drop_frame_error": 2048,
+    "native_reference_drop_frame": 27136
+  },
+  "trials": [
+    {
+      "run_id": "firefox-headphone-context-restart-44100-control-1-retry",
+      "suspend": false
+    },
+    {
+      "run_id": "firefox-headphone-context-restart-44100-pause-1-retry",
+      "suspend": true
+    },
+    {
+      "run_id": "firefox-headphone-context-restart-44100-pause-2-retry",
+      "suspend": true
+    },
+    {
+      "run_id": "firefox-headphone-context-restart-44100-control-2-retry",
+      "suspend": false
+    },
+    {
+      "run_id": "firefox-headphone-context-restart-44100-control-3-retry",
+      "suspend": false
+    },
+    {
+      "run_id": "firefox-headphone-context-restart-44100-pause-3-retry",
+      "suspend": true
+    }
+  ],
+  "pairs": [
+    [
+      "firefox-headphone-context-restart-44100-control-1-retry",
+      "firefox-headphone-context-restart-44100-pause-1-retry"
+    ],
+    [
+      "firefox-headphone-context-restart-44100-control-2-retry",
+      "firefox-headphone-context-restart-44100-pause-2-retry"
+    ],
+    [
+      "firefox-headphone-context-restart-44100-control-3-retry",
+      "firefox-headphone-context-restart-44100-pause-3-retry"
+    ]
+  ],
+  "prediction": "44.1 kHz同一PCMの停止・再開でグラフとcubebの左右の試験音は元のビットを保つと予測する。タップの停止前が狭帯域の場合、停止なしでは約0.01542が続き、停止・再開で19,845 Hzの振幅比は0.40以上へ復帰し、再開から27,136フレームの前後2,048フレーム以内に0.20未満へ低下すると予測する。cubebで停止区間をまたぐホスト時計、予定サンプル番号、ストリーム識別子とゼロ区間を観測し、停止方式は実測で判定する。",
+  "criteria": "同一Firefoxと同一の外部ヘッドフォン44.1 kHzで連続・停止再開を3組採取する。既知Float32 PCMの左右を逆相にして、グラフの128フレーム、cubebの256フレーム、タップの512フレームを照合する。cubebのPCMは前後マーカーから位置を決め、両区間の元信号とのビット一致、要求時計、停止をまたぐ経路を記録する。出力が分かれた場合は前後で別ストリームを許す。タップは前後のマーカーで別々に整列させ、400フレーム窓・200フレーム刻みで4周波数の複素比を測る。停止は出力384,000付近で約1.045秒。停止前の最後44窓で19,845 Hzの比が0.20未満の組を狭帯域からの復帰の判定に使う。再開後の広帯域と狭帯域の検出は各閾値を4窓連続で満たした最初の窓中心とする。比較前提・採取の有効性と帯域の予測を別々に記録する。",
+  "firefox_reference_run": "firefox-process-tap-headphone-drift-44100-20261122-1",
+  "safari_reference_run": "safari-headphone-context-restart-44100-20261122-a",
+  "snapshot_blocks": 3072,
+  "pilot": {
+    "run_id": "firefox-headphone-context-restart-44100-pilot-256",
+    "suspend": true,
+    "snapshot_blocks": 256
+  },
+  "cubeb_expected_frames": 256,
+  "initial_trial_ids": [
+    "firefox-headphone-context-restart-44100-control-1",
+    "firefox-headphone-context-restart-44100-pause-1",
+    "firefox-headphone-context-restart-44100-pause-2",
+    "firefox-headphone-context-restart-44100-control-2",
+    "firefox-headphone-context-restart-44100-control-3",
+    "firefox-headphone-context-restart-44100-pause-3"
+  ],
+  "revision_note": "初回の計測用Firefoxに先行版と同じPlaywrightの起動設定を適用し直す。入力と停止条件、合否基準は初版と共通。"
+}

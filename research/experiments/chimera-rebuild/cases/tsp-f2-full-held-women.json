@@ -1,0 +1,44 @@
+{
+  "id": "tsp-f2-full-held-women",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "partial": {
+    "run": "tsp-f2-held-synth-over-sets-20261123-repeat",
+    "case": "tsp-f2-held-synth-over-sets",
+    "manifest_sha256": "bc070f22b9e970282efb0c7e1333e9c7c1e59783203bbcd4570fc79d4c09809c"
+  },
+  "fk_recordings": {
+    "run": "tsp-again-f2-term-effect-20261123-repeat",
+    "case": "tsp-again-f2-term-effect",
+    "manifest_sha256": "a6d479f704f89ea2f9e5d66b84b05a5712694fe6c4b5f1f0cb60a8a2709ca771"
+  },
+  "fl_recordings": {
+    "run": "tsp-f2-pooled-reference-held-fl-20261123-repeat",
+    "case": "tsp-f2-pooled-reference-held-fl",
+    "manifest_sha256": "7794b62ae872509352be1f41354767dd29c75f10719475a6906f160fc5152c44"
+  },
+  "alignment_reference": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "archive_case": "tsp-active-duration-pilot.json",
+  "corpus": {
+    "lists": {"FK": [61, 66], "FL": [67, 72]},
+    "sentences_per_list": 10,
+    "recordings": 120,
+    "selection": "固定上流の音素注釈に現れるFKとFLの全発話。母音記号を使って録音IDを絞る工程は省き、音素対応後に従来のF2条件を適用する。"
+  },
+  "measurement": {
+    "intervals": "固定上流の録音注釈とG2P・MFAで整列した合成の秒区間。対応する強勢付き /ɛ/ の3窓を従来と同じ方法で測る。学習側の78介入と女性・男女の参照は第59版の保存記録を使う。",
+    "ref_cases": 79,
+    "prior_recordings": 12,
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "shared_recordings_keep_matched_f2": "前回の12録音は、全発話に加えた場合も対応音素、境界、F2の測定値を再現する。",
+    "mixed_aggregate_stays_zero": "全発話の上流集約値を男女参照に通しても、78条件すべてで費用が0となる。",
+    "female_zero_count_changes": "女性参照で費用が0となる条件数は、第59版の部分文集合から変わる。"
+  },
+  "acceptance": "FK・FL各60録音すべてに固定上流の音素対応を得て、元12録音との差を保存する。録音・合成の強勢付き /ɛ/ の支持数を話者ごとに出す。基準を含む79条件、2参照、4集約方式で固定上流と独立計算を1e-10以内で照合する。部分文集合と全発話で同じ参照を使った証拠を保存し、予測の成否は機構の合否と分ける。"
+}

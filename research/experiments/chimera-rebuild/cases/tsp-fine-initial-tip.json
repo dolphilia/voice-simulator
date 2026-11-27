@@ -1,0 +1,40 @@
+{
+  "id": "tsp-fine-initial-tip",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_run": "tsp-fine-output-gain-20261122-repeat",
+  "base_case": "tsp-fine-output-gain",
+  "reference_run": "tsp-fine-source-variation-20261122-repeat",
+  "reference_case": "tsp-fine-source-variation",
+  "recording_id": "FK64_08",
+  "frames": 107527,
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "initial_f0_hz": 110.0,
+  "speaking_f0_hz": 205.0,
+  "pre_roll_frames": [0, 2400],
+  "attention_frames": [15360, 20016],
+  "previous_peak_frame": 219,
+  "expected_reference_first_nonzero_frame": 2439,
+  "base_gain": 4.8125e-7,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerance": {
+    "pre_roll_pcm": 1e-12,
+    "tip_cm": 1e-12,
+    "significant_pcm": 0.000001,
+    "independent_normalized": 1e-10,
+    "radiation_derivative_cm3_s2": 0.001
+  },
+  "hypothesis": "同じ音源・体型ゲインの再実装で、舌先の初期座標だけを上流の休止位置にすると、発話前50 msの準備状態の放射が減り、PCMの最大差が1×10⁻¹²以内になる。出力の最初の非ゼロは固定上流と同じ2,439フレームになる。元の最大差があるフレーム219では口端放射の寄与が声道壁の寄与より大きいと予測する。",
+  "observation": "ゲイン照合済みの候補と、揺らぎ0の固定上流を基準とする。女性上流の HumanVoice 初期状態と独立した座標式を照合する。再実装の speech_voice.posture.tongue_tip_cm の2座標だけを変更し、通常CLIで全107,527フレームを描画する。内部96 kHzで口端・鼻端・声道壁の体積流量と合計差分を保存する。",
+  "acceptance": "通常CLIと観測器の全PCM、口端・鼻端・声道壁の和と時間差分、間引き・DC除去・出力を独立計算へ照合する。固定上流と初期座標の独立式が1×10⁻¹² cm以内で一致する。低い包絡の区間で放射成分ごとの線形出力の和が出力段と一致する。予測の成否を計測の合否と分けて保存する。"
+}

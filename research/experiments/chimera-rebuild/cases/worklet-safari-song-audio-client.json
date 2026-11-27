@@ -1,0 +1,35 @@
+{
+  "id": "worklet-safari-song-audio-client",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "audio_client_case": "safari-audio-client-trace.json",
+  "audio_client_reference_run": "safari-audio-client-trace-20261122-repeat",
+  "reference": {
+    "case": "worklet-safari-song-score-preparation-switch.json",
+    "run": "worklet-safari-song-score-preparation-switch-20261122-repeat",
+    "trial": "pair-1-initial-64x4"
+  },
+  "warm_up_frames": 16384,
+  "split_block_frames": 256,
+  "split_initial_blocks": [64, 64, 64, 64],
+  "marker_capture_quanta": 1792,
+  "startup_timeout_seconds": 25,
+  "condition_order": [["bulk", "split"], ["split", "bulk"]],
+  "preparation_timing": {"clock": "Date.now", "clock_step_ms": 1},
+  "trace": {
+    "duration_seconds": 2,
+    "release_after_notification_ms": 200,
+    "baseline_from_ms": 90,
+    "baseline_to_ms": 10,
+    "post_from_ms": 10,
+    "post_to_ms": 90,
+    "minimum_window_intervals": 12,
+    "minimum_marker_gap_reduction_ms": 70,
+    "maximum_median_io_gap_ms": 10
+  },
+  "criteria": {
+    "settings": "Safariの実時間歌唱でPop Deeを48 kHz、乱流係数1、出力31,200サンプル、観測刻み64で実行する。予備描画16,384フレームを構築中の一括と、64フレーム4片に続く256フレーム63片で比較する。各実行2ペアとし、実行場所を変えてペア内順を反転する。",
+    "capture": "既知の先行信号を流し、Safariの出力が無効から有効になった一意のCore AudioプロセスへAudio Clientだけを付ける。xctraceの開始通知から200 ms後に歌唱を解放する。構築開始前90〜10 msを基準、構築開始から最後の準備完了までを処理窓、準備完了後10〜90 msを確認窓とする。先行信号・歌唱PCMは保存基準と独立計算に照合する。",
+    "prediction": "準備窓の先行信号の最大コールバック間隔は分割でペア中央値70 ms以上短縮すると予測する。同じ窓のGPU側I/O開始間隔の最大値は、両条件とも試行の中央値で10 ms以下と予測する。準備窓を含むI/O間隔と処理時間、予定フレーム、WASM片の値を記録する。音声機器でのPCM欠落の判定は別の計測とする。"
+  }
+}

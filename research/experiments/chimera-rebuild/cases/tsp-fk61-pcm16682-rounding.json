@@ -1,0 +1,51 @@
+{
+  "id": "tsp-fk61-pcm16682-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "indexed_upstream": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-paired-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area-paired",
+    "manifest_sha256": "a7f055d404945af079ebd4d23e1abd52072667ed8063313a17adcd349e8db564"
+  },
+  "indexed_research": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area",
+    "manifest_sha256": "34404c8be2eea133f3004f1a2633f3d9fc47605eef84cdd432bfe01cf5f974f9"
+  },
+  "expanded": {
+    "run": "tsp-fk61-control4992-5120-expanded-volume-paired-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-expanded-volume-paired",
+    "manifest_sha256": "f2c945dadbe56d819e2ac2058fa77cb8d864698f339c67e3d12e1551a2285c6b"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110,
+    "prefix_frames": 16704,
+    "focus_frame": 16682,
+    "local_frames": [
+      16680,
+      16685
+    ],
+    "scope": "両版の直接補間・通常式と直接補間・展開式の4条件を、第91版の差分で再現する。観測は出力フレーム0〜16703、内部標本0〜33407。口・壁・鼻の体積速度、和と時間差分、FIR・ゲイン・DC除去・リミッター、f32の丸めを照合する。通常CLIと観測版の全116132フレームを保存済みのPCMに照合する。16682では同じ版の二条件で、口・壁・鼻の全7部分集合の履歴を互いに交換する。差分入力の線形応答と履歴を交換した応答を両方残す。"
+  },
+  "hypotheses": {
+    "only_upstream_indexed_below_16682_midpoint": "冒頭の採取窓でリミッターは作動せず、16682では上流の通常式だけが隣接する2つのPCM値の中点より下側になる。",
+    "upstream_mouth_alone_switches_pcm_in_both_directions": "上流の通常式と展開式の口端履歴を単独で双方向に交換すると、16682のPCMは移植元側に切り替わる。",
+    "upstream_wall_and_nose_without_mouth_do_not_switch_pcm": "上流の壁・鼻を同時に交換しても、口端の履歴を保持すれば16682のPCMは変わらない。"
+  },
+  "acceptance": "全条件で通常CLI・観測版・保存済みの全PCMをビット照合する。放射の採取窓の口端を全発話の保存済み流量と照合し、採取済み冒頭の系列もビット照合する。全系列は有限。放射流量の和・差分から間引き、DC除去、包絡とPCMまでを順序通り独立再計算する。中点は隣接f32値から求め、観測の変換前値から全条件のPCMを再現する。同じ版の全成分の交換は移植元の冒頭のPCMと変換前値をビット再現する。全区間の初差、16682の中点との符号付き距離、各部分集合の交換結果、仮説の真偽を保存する。"
+}

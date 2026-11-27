@@ -1,0 +1,19 @@
+{
+  "id": "worklet-live-song-audioipc-system-calls-series",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "capture_source_case": "worklet-live-song-audioipc-system-calls.json",
+  "correlation_case": "worklet-live-song-audioipc-system-centered.json",
+  "frame_validation_case": "worklet-live-song-output-callback.json",
+  "perturbation_reference_run": "worklet-live-song-audioipc-20261121-pilot-verified-b",
+  "previous_gated_case": "worklet-live-song-audioipc-system-calls.json",
+  "previous_gated_run": "worklet-live-song-audioipc-20261121-gated-syscalls",
+  "condition_order": [["control", "draw192"], ["draw192", "control"], ["control", "draw192"], ["draw192", "control"]],
+  "hypothesis": "192フレームの事前描画を入れた4試行のうち少なくとも3試行で、構築を含む要求から次のサーバー送信までが256フレーム相当の予算より2 ms以上長く、クライアントの処理開始間隔との差は0.5 ms以内になる。この比較で観測するサーバー時刻はソケットのsendmsg開始時刻とする。",
+  "criteria": {
+    "input": "準備192量子、通知後80 ms、実データ2秒を狙うSystem Call Trace単独の条件を予備採取から引き継ぐ。通常の歌唱画面で未準備と192フレームの事前描画を指定の順序で各4回実行する。",
+    "validity": "歌唱と先行音の通常判定、前後8件の予算マーカー、256フレームのグラフ前進と先行音2量子、全17要求の一意な送受信照合を確認する。時計の残差、送受信の対応、構築時間と次の要求間隔の増分2 msの条件は予備採取と共通にする。",
+    "evaluation": "欠測、照合不合格と計測負荷超過の全試行を残す。事前描画4回を分母とし、有効かつ2 ms以上と0.5 ms以内の両方を満たす試行を数える。両条件が有効な組では、サーバー側の往復時間と応答受信から次の送信までの時間を引き算して増分を分ける。音声機器からの要求や実時間コールバックの入口は別の計測で判定する。"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "tsp-matched-source-variation-zero-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterances": ["FK61_01", "MK61_01", "FK61_02", "MK61_02"],
+  "matched_render": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "matched_alignment": {
+    "run": "tsp-matched-speech-mfa-20261123-repeat",
+    "case": "tsp-matched-speech-mfa",
+    "manifest_sha256": "b24443ae55f3f7b1b0112fd712b450f742ae0711906ea104af6b33f14f38ac03"
+  },
+  "old_alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "single_intervention": {
+    "run": "tsp-again-pitch-drift-mfa-20261123-repeat",
+    "case": "tsp-again-pitch-drift-mfa",
+    "manifest_sha256": "cd3248d6989e226c6d01b07b1b927c5fada4e35b380c586a9582ffb21d88b84e"
+  },
+  "all_zero_reference": {
+    "run": "tsp-again-male-period-jitter-mfa-20261123-repeat",
+    "case": "tsp-again-male-period-jitter-mfa",
+    "manifest_sha256": "37cabb8ac3976acf28818588d926653b0cee580b784cd09b7c54d66f22439e30"
+  },
+  "drift_only_reference": {
+    "run": "tsp-matched-pitch-drift-mfa-20261123-repeat",
+    "case": "tsp-matched-pitch-drift-mfa",
+    "manifest_sha256": "943b70ee8e84e3f39882dd3e0a467bca81be80725e7948b6aef783cef3ff423b"
+  },
+  "old_render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "variation": {"pitch_drift_cents": 0, "period_jitter": 0, "amplitude_shimmer": 0},
+  "outside_window_boundary": {"utterance": "FK61_02", "words": ["he", "lent"], "phones": ["IY0", "L"]},
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "measurement": {
+    "windows": 60,
+    "analysis_sample_rate_hz": 12000,
+    "frame_samples": 300,
+    "centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "old_changed_starts": {"FK61_01": 5, "MK61_01": 10, "FK61_02": 0, "MK61_02": 0},
+    "prediction": "音源の3変動係数を0にした共通条件で、旧差のある15窓の開始位置をすべて再現し、残る45窓の開始位置を保つ。FK61_02のhe–lent語境界と /i/–/l/ 音素境界は旧研究版の0.330秒に合うと予測する。",
+    "acceptance": "4発話で本文・計画・初期姿勢・ゲインを固定し、音源の3変動係数を0にする。基準のPCMとMFA境界を再現し、MK61_01の同条件の前回PCMと境界へ照合する。60窓の固定Rustと独立LPC、旧PCM上へ旧境界を適用した結果、全語・音素区間と事前登録した評価外の境界を保存する。予測の採否にかかわらず観測値を残す。"
+  }
+}

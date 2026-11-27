@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-song-paired-output-smooth",
+  "base_case": "worklet-live-song-paired-output.json",
+  "smooth_calibration_case": "safari-process-tap-smooth-marker.json",
+  "song_reference_run": "worklet-song-voice-20261122-paired-reference",
+  "quiet_marker_amplitude": 0.00001,
+  "capture": {
+    "condition_order": [["control", "draw192"]],
+    "ready_quanta": 192,
+    "tap_attach_quanta": 64,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.65,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "hypothesis": "連続した入力時刻が得られた段差のある連番では採取側が波形照合に届かなかった。同じ48 kHzの滑らかな逆相信号を使い、未準備と192フレーム事前描画でcubebとタップの前後の波形を一意に合わせる。未準備の両地点では先行音が連続すると予測する。192フレーム事前描画でcubebの予定時刻が256フレーム飛ぶ場合は、同じ試行のタップでPCMと時刻がどのように変わったかを比較する。",
+  "criteria": {
+    "conditions": "既存の1ペアと構築前後8要求ずつの窓を使う。校正と同じ滑らかな逆相信号を48 kHzで再生し、同じ採取器のバイナリと設定を使う。タップ準備の直後は先行音がまだ届かないため、両条件で準備から構築解放まで100 ms待つ。歌唱は同じ入力と現行WASMで独立に取得したオフライン基準に照合する。固定上流との許容幅と各出力要求の判定は従来条件を保つ。",
+    "anchor": "各窓の両端の1,024フレームに対して、校正と同じ相関・独立ピークとの差・分数遅延補正後の残差を適用する。両端の間隔がグラフの窓から1,024フレーム以内であることを要求する。両端の分数位相を補正したホスト時刻と波形のずれを保存する。",
+    "interior": "窓全体を一つの遅延で説明できるかは相対RMS残差と端点間の位相差で判定する。1,024フレームの区間別位相、完全ゼロと絶対振幅1e-5以下の点を保存する。区間途中のずれは1,024フレーム単位で検出し、位相が取れない間の欠落と繰り返しは推定しない。",
+    "controls": "両端を同じ分数だけ遅らせた連続、途中256フレームの欠落・繰り返し、後続時刻を変えない256フレームのゼロを小さな独立対照とする。端点の位相と時刻を照合し、途中のゼロを連続と誤判定しない。"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "songbird-chirps-beak-load",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "songbird-chirps-onset-radiation-20261122-repeat",
+  "sample_rate_hz": 192000,
+  "event_sample": 256,
+  "observation_internal_samples": 16,
+  "beak_length_cm": 1.3,
+  "cavity_initial_volume_cm3": 0.4,
+  "hypothesis": "押鍵8内部サンプル後の放射流量差までに、くちばしの圧力か流入枝が分岐すると予測する。腔の音高追従を止めた対照ではこれらの圧力・流量はゼロになる。",
+  "observation": "前回の無励振からの押鍵対照と追従0を、通常CLIでの追加観測と固定上流の公開プローブに繰り返す。更新後のくちばし全セルの断面、圧力、更新時に各セルへ入る直列枝の流量を16点ずつ記録する。終端のR–L負荷の慣性枝と抵抗枝の流量は圧力の時系列から復元し、直列枝の運動方程式と節点の体積収支を独立計算する。",
+  "acceptance": "追加列の有無にかかわらず既存列は保存済み結果と一致する。前回の最初の放射微分差6、放射流量差8を再現する。開口断面と圧力から復元した負荷流量および節点圧力は両版の実出力に許容差内で一致する。温存した形状と初期状態で、最初に異なる枝・セル・内部サンプル番号を記録する。仮説が外れたときは判定を保存する。",
+  "pressure_absolute_tolerance_dyn_cm2": 2e-14,
+  "flow_absolute_tolerance_cm3_s": 2e-17,
+  "rounding_replay": {
+    "prior_run": "songbird-chirps-beak-load-20261122-a",
+    "first_inlet_flow_delta": 4,
+    "first_tip_pressure_delta": 6,
+    "first_tip_inflow_delta": 9,
+    "hypothesis": "最初の入口枝の差は、同じ前回流量・圧力差・慣性に対する慣性項の時間正規化で説明できる。終端の流入は同じでも、コンプライアンスの時間正規化だけを替えると、8点目の放射流量は上流に一致する。",
+    "acceptance": "入口枝の慣性は同じ値に復元し、再実装の圧力差・履歴・抵抗を揃えた対照でL/dtとL×fsを入れ替える。4点目の流量をそれぞれの実測とビット照合する。終端の各版の更新を保存済み流入から16点ビット一致で復元する。流入を再実装側に固定し、C×fsのみで8点目の放射流量が一致し、加減算の括りもそろえると流入が分かれる9点目まで圧力と放射流量が両方一致する。"
+  }
+}

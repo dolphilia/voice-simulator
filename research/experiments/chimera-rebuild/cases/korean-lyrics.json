@@ -1,0 +1,53 @@
+{
+  "id": "korean-lyrics",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "完成形のハングル、現代の結合字母、母音まで合成済みで終声だけ分解した入力で、合成後の綴りと音節の音素・境界が一致する。歌唱で同じ両唇閉鎖音を使う三語では平音・激音の開大保持に45 msの差が出て、濃音では声門開大の指示が小さくなる。",
+  "lyric_cases": [
+    {"id":"liaison","text":"먹어","marked_ipa":"mʌ.gʌ"},
+    {"id":"block-plus-final","text":"먹어","canonical":"liaison"},
+    {"id":"nasalization","text":"국물","marked_ipa":"kʰ45uŋ.mul"},
+    {"id":"liquids","text":"신라","marked_ipa":"ɕil.la"},
+    {"id":"aspiration","text":"좋다","marked_ipa":"tɕʰ45o.tʰ90a"},
+    {"id":"h-deletion","text":"싫어","marked_ipa":"ɕi.ɾʌ"},
+    {"id":"palatalization","text":"같이 굳이","marked_ipa":"kʰ45a.tɕʰ90i.kʰ45u.dʑi"},
+    {"id":"tensing","text":"학교","marked_ipa":"hak.k˭jo"},
+    {"id":"nasal-final","text":"빵야","marked_ipa":"p˭aŋ.ja"},
+    {"id":"cluster-stem","text":"밟다 밟고 밟는 밟히다","marked_ipa":"pʰ45ap.t˭a.pʰ45ap.k˭o.pʰ45am.nɯn.pʰ45al.pʰ90i.da"},
+    {"id":"cluster-regular","text":"읽다 읽어 닭고기 넓어 여덟","marked_ipa":"ik.t˭a.il.gʌ.tʰ45ak.k˭o.gi.nʌl.bʌ.jʌ.dʌl"},
+    {"id":"medial-glide","text":"의사 희","marked_ipa":"ɰi.sa.hi"},
+    {"id":"old-jamo","text":"사ᄅᆞᆷ 노래","canonical":"old-jamo-reference"},
+    {"id":"old-jamo-reference","text":"사 노래","marked_ipa":"sa.no.ɾɛ"},
+    {"id":"mixed","text":"twinkle 빵야 ~, star","labels":[["twin",false,false],["kle",true,false],["빵",false,false],["야",true,true],["star",true,false]]},
+    {"id":"isolated-melisma","text":"twinkle 빵야 ~ , star","labels":[["twin",false,false],["kle",true,false],["빵",false,false],["야",true,false],["~",true,true],["star",true,false]]},
+    {"id":"spaced","text":"먹 어！ 먹어","marked_ipa":"mʌk.ʌ.mʌ.gʌ"},
+    {"id":"sung","text":"불 풀 뿔.","marked_ipa":"pʰ45ul.pʰ90ul.p˭ul","labels":[["불",true,false],["풀",true,false],["뿔",true,true]]}
+  ],
+  "generated_input": "Python unicodedata.normalize('NFD', text) を各入力へ適用し、上流と候補の完全な音節JSONを比較する。旧字母の扱いを調べる入力は、原文のまま比較する。",
+  "voice_case": "song-voice-flat.json",
+  "score": {
+    "id": "korean-bilabials",
+    "lyrics": "불 풀 뿔.",
+    "notes": [{"midi":57,"beats":1},{"midi":60,"beats":1},{"midi":64,"beats":1}],
+    "bpm": 120,
+    "start_seconds": 0.5
+  },
+  "measurement": {
+    "output_rate_hz": 48000,
+    "output_frames": 115200,
+    "host_block_frames": [128, 77],
+    "observation_stride_frames": 64,
+    "expected_render_quantum_frames": 128,
+    "plan_absolute_tolerance": 1e-10,
+    "pcm_absolute_tolerance": 1e-6,
+    "audio_state_peak_relative_tolerance": 1e-6,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "geometry_absolute_tolerance": 1e-9,
+    "upstream_head_aspiration_past_release_seconds": [0.015,0.060,0.0048],
+    "head_aspiration_abduction_cm2": [0.36,0.36,0.22],
+    "head_aspiration_ramp_out_seconds": [0.045,0.045,0.020],
+    "minimum_vowel_center_pcm_peak": 0.001,
+    "observed_fields": ["gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz","radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2"],
+    "window": "全歌唱フレーム。調音計画の各頭子音 /p/、語の中央の母音 /u/ の10〜90%を確認する。WASMはAudioWorkletが返す観測時刻にCLIのCSVを合わせる。"
+  }
+}

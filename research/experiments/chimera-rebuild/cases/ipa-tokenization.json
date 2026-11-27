@@ -1,0 +1,1158 @@
+{
+  "id": "ipa-tokenization",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "上流に合わせて表記を正準化すると、複数文字音素と適用可能な修飾を保持できる。音素と診断を元のUTF-8バイト位置に結び付けられる。",
+  "ipa": {
+    "inputs": [
+      {
+        "id": "vcv",
+        "text": "ɑpɑ / ɑbɑ / ɑsɑ / ɑzɑ / ɑmɑ",
+        "expected": {
+          "symbols": [
+            "ɑ",
+            "p",
+            "ɑ",
+            "ɑ",
+            "b",
+            "ɑ",
+            "ɑ",
+            "s",
+            "ɑ",
+            "ɑ",
+            "z",
+            "ɑ",
+            "ɑ",
+            "m",
+            "ɑ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 5,
+          "segment_fields": [
+            {
+              "index": 2,
+              "fields": {
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 5,
+              "fields": {
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 8,
+              "fields": {
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 11,
+              "fields": {
+                "wordEnd": true
+              }
+            }
+          ],
+          "utterance_symbols": [
+            [
+              "ɑ",
+              "p",
+              "ɑ"
+            ],
+            [
+              "ɑ",
+              "b",
+              "ɑ"
+            ],
+            [
+              "ɑ",
+              "s",
+              "ɑ"
+            ],
+            [
+              "ɑ",
+              "z",
+              "ɑ"
+            ],
+            [
+              "ɑ",
+              "m",
+              "ɑ"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "slash",
+        "text": "ɑpɑ/ɑbɑ",
+        "expected": {
+          "symbols": [
+            "ɑ",
+            "p",
+            "ɑ",
+            "ɑ",
+            "b",
+            "ɑ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 2,
+          "segment_fields": [
+            {
+              "index": 2,
+              "fields": {},
+              "absent": [
+                "wordEnd"
+              ]
+            },
+            {
+              "index": 5,
+              "fields": {},
+              "absent": [
+                "wordEnd"
+              ]
+            }
+          ],
+          "utterance_symbols": [
+            [
+              "ɑ",
+              "p",
+              "ɑ"
+            ],
+            [
+              "ɑ",
+              "b",
+              "ɑ"
+            ]
+          ],
+          "segment_spans": [
+            {
+              "index": 0,
+              "bytes": [
+                0,
+                2
+              ]
+            },
+            {
+              "index": 1,
+              "bytes": [
+                2,
+                3
+              ]
+            },
+            {
+              "index": 2,
+              "bytes": [
+                3,
+                5
+              ]
+            },
+            {
+              "index": 3,
+              "bytes": [
+                6,
+                8
+              ]
+            },
+            {
+              "index": 4,
+              "bytes": [
+                8,
+                9
+              ]
+            },
+            {
+              "index": 5,
+              "bytes": [
+                9,
+                11
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "affricates",
+        "text": "t͜ɕ d͡ʑ t͜ʂ d͡ʐ ts dz pf aɪ aʊ ɔɪ eɪ oʊ iaɪ",
+        "expected": {
+          "symbols": [
+            "tɕ",
+            "dʑ",
+            "tʂ",
+            "dʐ",
+            "ts",
+            "dz",
+            "pf",
+            "aɪ",
+            "aʊ",
+            "ɔɪ",
+            "eɪ",
+            "oʊ",
+            "i",
+            "aɪ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1
+        }
+      },
+      {
+        "id": "applied-marks",
+        "text": "ˈt͡ʃʰaɪ̃ː ˌd͜ʒʱɛː̤ | ˈpʰ˭ɑ",
+        "expected": {
+          "symbols": [
+            "tʃ",
+            "aɪ",
+            "dʒ",
+            "ɛ",
+            "_",
+            "p",
+            "ɑ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 0,
+              "fields": {
+                "aspirated": true,
+                "stress": 0
+              }
+            },
+            {
+              "index": 1,
+              "fields": {
+                "stress": 1,
+                "nasalized": true,
+                "dur": 0.255,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 2,
+              "fields": {
+                "breathy": true,
+                "stress": 0
+              }
+            },
+            {
+              "index": 3,
+              "fields": {
+                "stress": 2,
+                "breathy": true,
+                "dur": 0.255,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 4,
+              "fields": {
+                "dur": 0.16,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 5,
+              "fields": {
+                "aspirated": false,
+                "stress": 0
+              }
+            },
+            {
+              "index": 6,
+              "fields": {
+                "stress": 1
+              }
+            }
+          ],
+          "segment_spans": [
+            {
+              "index": 0,
+              "bytes": [
+                2,
+                7
+              ]
+            },
+            {
+              "index": 1,
+              "bytes": [
+                9,
+                14
+              ]
+            },
+            {
+              "index": 2,
+              "bytes": [
+                19,
+                24
+              ]
+            },
+            {
+              "index": 3,
+              "bytes": [
+                26,
+                28
+              ]
+            },
+            {
+              "index": 4,
+              "bytes": [
+                33,
+                34
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "canonical",
+        "text": "ã ã ṳ ṳ ç ç r̥ ɐ̯ ɡ ʧ ʤ ɔ̃ œ̃",
+        "expected": {
+          "symbols": [
+            "a",
+            "a",
+            "u",
+            "u",
+            "ç",
+            "ç",
+            "r",
+            "ɐ",
+            "g",
+            "tʃ",
+            "dʒ",
+            "ɔ",
+            "œ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 0,
+              "fields": {
+                "nasalized": true
+              }
+            },
+            {
+              "index": 1,
+              "fields": {
+                "nasalized": true
+              }
+            },
+            {
+              "index": 2,
+              "fields": {
+                "breathy": true
+              }
+            },
+            {
+              "index": 3,
+              "fields": {
+                "breathy": true
+              }
+            },
+            {
+              "index": 11,
+              "fields": {
+                "nasalized": true
+              }
+            },
+            {
+              "index": 12,
+              "fields": {
+                "nasalized": true
+              }
+            }
+          ],
+          "segment_spans": [
+            {
+              "index": 0,
+              "bytes": [
+                0,
+                2
+              ]
+            },
+            {
+              "index": 1,
+              "bytes": [
+                3,
+                6
+              ]
+            },
+            {
+              "index": 2,
+              "bytes": [
+                7,
+                10
+              ]
+            },
+            {
+              "index": 3,
+              "bytes": [
+                11,
+                14
+              ]
+            },
+            {
+              "index": 4,
+              "bytes": [
+                15,
+                17
+              ]
+            },
+            {
+              "index": 5,
+              "bytes": [
+                18,
+                21
+              ]
+            },
+            {
+              "index": 6,
+              "bytes": [
+                22,
+                25
+              ]
+            },
+            {
+              "index": 7,
+              "bytes": [
+                26,
+                30
+              ]
+            },
+            {
+              "index": 8,
+              "bytes": [
+                31,
+                33
+              ]
+            },
+            {
+              "index": 9,
+              "bytes": [
+                34,
+                36
+              ]
+            },
+            {
+              "index": 10,
+              "bytes": [
+                37,
+                39
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "unread",
+        "text": "ʲ ̥a🙂2[A] n̥ n̩ uʲ pʱ hʲ mː̃ ʏː ʏ \tɕiɛ˥˩˥",
+        "expected": {
+          "symbols": [
+            "a",
+            "n",
+            "n",
+            "u",
+            "p",
+            "h",
+            "m",
+            "ʏ",
+            "ʏ",
+            "ɕ",
+            "i",
+            "ɛ"
+          ],
+          "skipped": {
+            "unknown": [
+              "◌̥",
+              "🙂",
+              "2",
+              "A",
+              "˥",
+              "˩"
+            ],
+            "noSound": [
+              "ʏ"
+            ],
+            "ignoredMarks": [
+              "ʲ",
+              "n̥",
+              "uʲ",
+              "pʱ",
+              "hʲ",
+              "m̃"
+            ]
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 6,
+              "fields": {
+                "dur": 0.153
+              }
+            },
+            {
+              "index": 7,
+              "fields": {
+                "dur": 0.255
+              }
+            }
+          ],
+          "diagnostic_spans": [
+            {
+              "kind": "ignored_mark",
+              "symbol": "ʲ",
+              "bytes": [
+                0,
+                2
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "◌̥",
+              "bytes": [
+                3,
+                5
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "🙂",
+              "bytes": [
+                6,
+                10
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "A",
+              "bytes": [
+                12,
+                13
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "n̥",
+              "bytes": [
+                16,
+                18
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "uʲ",
+              "bytes": [
+                24,
+                26
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "pʱ",
+              "bytes": [
+                28,
+                30
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "hʲ",
+              "bytes": [
+                32,
+                34
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "m̃",
+              "bytes": [
+                38,
+                40
+              ]
+            },
+            {
+              "kind": "no_sound",
+              "symbol": "ʏ",
+              "bytes": [
+                41,
+                43
+              ]
+            },
+            {
+              "kind": "no_sound",
+              "symbol": "ʏ",
+              "bytes": [
+                46,
+                48
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "˥",
+              "bytes": [
+                55,
+                57
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "˥",
+              "bytes": [
+                59,
+                61
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "boundaries",
+        "text": "a\tb\nc d e..f,,g||ɑ",
+        "expected": {
+          "symbols": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "_",
+            "_",
+            "g",
+            "_",
+            "_",
+            "ɑ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 0,
+              "fields": {},
+              "absent": [
+                "wordEnd"
+              ]
+            },
+            {
+              "index": 1,
+              "fields": {},
+              "absent": [
+                "wordEnd"
+              ]
+            },
+            {
+              "index": 2,
+              "fields": {},
+              "absent": [
+                "wordEnd"
+              ]
+            },
+            {
+              "index": 3,
+              "fields": {
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 6,
+              "fields": {
+                "dur": 0.16,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 7,
+              "fields": {
+                "dur": 0.16
+              }
+            },
+            {
+              "index": 9,
+              "fields": {
+                "dur": 0.16,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 10,
+              "fields": {
+                "dur": 0.16
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "length",
+        "text": "ː ,ː aː: ˌ'kΩɑ",
+        "expected": {
+          "symbols": [
+            "_",
+            "a",
+            "k",
+            "ɑ"
+          ],
+          "skipped": {
+            "unknown": [
+              "Ω"
+            ],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 0,
+              "fields": {
+                "dur": 0.272,
+                "wordEnd": true
+              }
+            },
+            {
+              "index": 1,
+              "fields": {
+                "dur": 0.4335,
+                "stress": 0
+              }
+            },
+            {
+              "index": 2,
+              "fields": {
+                "stress": 0
+              }
+            },
+            {
+              "index": 3,
+              "fields": {
+                "stress": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "unicode-table",
+        "text": "à̕ n̩̥ Á A Á ź ź ɛ́",
+        "expected": {
+          "symbols": [
+            "n",
+            "ɛ"
+          ],
+          "skipped": {
+            "unknown": [
+              "à",
+              "A",
+              "Á",
+              "ź"
+            ],
+            "noSound": [],
+            "ignoredMarks": [
+              "n̥",
+              "ɛ́"
+            ]
+          },
+          "utterance_count": 1,
+          "segment_spans": [
+            {
+              "index": 0,
+              "bytes": [
+                6,
+                11
+              ]
+            },
+            {
+              "index": 1,
+              "bytes": [
+                28,
+                32
+              ]
+            }
+          ],
+          "diagnostic_spans": [
+            {
+              "kind": "unknown",
+              "symbol": "à",
+              "bytes": [
+                0,
+                5
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "n̥",
+              "bytes": [
+                9,
+                11
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "A",
+              "bytes": [
+                12,
+                13
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "A",
+              "bytes": [
+                16,
+                17
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "Á",
+              "bytes": [
+                18,
+                20
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "ź",
+              "bytes": [
+                21,
+                24
+              ]
+            },
+            {
+              "kind": "ignored_mark",
+              "symbol": "ɛ́",
+              "bytes": [
+                30,
+                32
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "floating",
+        "text": "ˈa ̩ ˌ|ʲɛː̃ʱ ́ bʱa̯",
+        "expected": {
+          "symbols": [
+            "a",
+            "_",
+            "ɛ",
+            "b",
+            "a"
+          ],
+          "skipped": {
+            "unknown": [
+              "◌́"
+            ],
+            "noSound": [],
+            "ignoredMarks": [
+              "ʲ",
+              "ɛʱ"
+            ]
+          },
+          "utterance_count": 1,
+          "segment_fields": [
+            {
+              "index": 0,
+              "fields": {
+                "stress": 1
+              }
+            },
+            {
+              "index": 1,
+              "fields": {
+                "dur": 0.16
+              }
+            },
+            {
+              "index": 2,
+              "fields": {
+                "stress": 2,
+                "nasalized": true,
+                "dur": 0.255
+              }
+            },
+            {
+              "index": 3,
+              "fields": {
+                "breathy": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "empty",
+        "text": "",
+        "expected": {
+          "symbols": [],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 0
+        }
+      },
+      {
+        "id": "structure",
+        "text": " \t / / [] \n",
+        "expected": {
+          "symbols": [],
+          "skipped": {
+            "unknown": [],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1
+        }
+      },
+      {
+        "id": "only-unknown",
+        "text": "¿ʘ🙂🙂ͯ",
+        "expected": {
+          "symbols": [],
+          "skipped": {
+            "unknown": [
+              "¿",
+              "ʘ",
+              "🙂"
+            ],
+            "noSound": [],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1,
+          "diagnostic_spans": [
+            {
+              "kind": "unknown",
+              "symbol": "🙂",
+              "bytes": [
+                4,
+                8
+              ]
+            },
+            {
+              "kind": "unknown",
+              "symbol": "🙂",
+              "bytes": [
+                8,
+                12
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "known-no-sound",
+        "text": "ʏʉɘɵɜɞɶɚ ɿʅ",
+        "expected": {
+          "symbols": [
+            "ʏ",
+            "ʉ",
+            "ɘ",
+            "ɵ",
+            "ɜ",
+            "ɞ",
+            "ɶ",
+            "ɚ",
+            "ɿ",
+            "ʅ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [
+              "ʏ",
+              "ʉ",
+              "ɘ",
+              "ɵ",
+              "ɜ",
+              "ɞ",
+              "ɶ"
+            ],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1
+        }
+      },
+      {
+        "id": "all-symbols",
+        "text": "a aɪ aʊ b c d dz dʐ dʑ dʒ e eɪ f g h i j k l m n o oʊ p pf q r s t ts tɕ tʂ tʃ u v w x y z æ ç ð ø ħ ŋ œ ɐ ɑ ɒ ɔ ɔɪ ɕ ɖ ɘ ə ɚ ɛ ɜ ɝ ɞ ɟ ɢ ɣ ɤ ɥ ɦ ɨ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɸ ɹ ɻ ɽ ɾ ɿ ʀ ʁ ʂ ʃ ʅ ʈ ʉ ʊ ʋ ʌ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʙ ʝ β θ χ",
+        "expected": {
+          "symbols": [
+            "a",
+            "aɪ",
+            "aʊ",
+            "b",
+            "c",
+            "d",
+            "dz",
+            "dʐ",
+            "dʑ",
+            "dʒ",
+            "e",
+            "eɪ",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "oʊ",
+            "p",
+            "pf",
+            "q",
+            "r",
+            "s",
+            "t",
+            "ts",
+            "tɕ",
+            "tʂ",
+            "tʃ",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "æ",
+            "ç",
+            "ð",
+            "ø",
+            "ħ",
+            "ŋ",
+            "œ",
+            "ɐ",
+            "ɑ",
+            "ɒ",
+            "ɔ",
+            "ɔɪ",
+            "ɕ",
+            "ɖ",
+            "ɘ",
+            "ə",
+            "ɚ",
+            "ɛ",
+            "ɜ",
+            "ɝ",
+            "ɞ",
+            "ɟ",
+            "ɢ",
+            "ɣ",
+            "ɤ",
+            "ɥ",
+            "ɦ",
+            "ɨ",
+            "ɪ",
+            "ɫ",
+            "ɬ",
+            "ɭ",
+            "ɮ",
+            "ɯ",
+            "ɰ",
+            "ɱ",
+            "ɲ",
+            "ɳ",
+            "ɴ",
+            "ɵ",
+            "ɶ",
+            "ɸ",
+            "ɹ",
+            "ɻ",
+            "ɽ",
+            "ɾ",
+            "ɿ",
+            "ʀ",
+            "ʁ",
+            "ʂ",
+            "ʃ",
+            "ʅ",
+            "ʈ",
+            "ʉ",
+            "ʊ",
+            "ʋ",
+            "ʌ",
+            "ʎ",
+            "ʏ",
+            "ʐ",
+            "ʑ",
+            "ʒ",
+            "ʔ",
+            "ʕ",
+            "ʙ",
+            "ʝ",
+            "β",
+            "θ",
+            "χ"
+          ],
+          "skipped": {
+            "unknown": [],
+            "noSound": [
+              "ɘ",
+              "ɜ",
+              "ɞ",
+              "ɵ",
+              "ɶ",
+              "ʉ",
+              "ʏ"
+            ],
+            "ignoredMarks": []
+          },
+          "utterance_count": 1
+        }
+      }
+    ]
+  },
+  "measurement": {
+    "known_symbol_count": 108,
+    "catalog_counts": {
+      "consonants": 71,
+      "calibrated_vowels": 26,
+      "expanded_vowels": 6
+    },
+    "pair_matrix": {
+      "prefix": "ˈ",
+      "suffixes": [
+        "",
+        "ʰ",
+        "˭",
+        "ʲ",
+        "ʱ",
+        "̃",
+        "̤",
+        "ː̃",
+        "ː̤",
+        "̩",
+        "̯",
+        "̥"
+      ],
+      "tail": "ɑ",
+      "suffix_separator": ""
+    }
+  }
+}

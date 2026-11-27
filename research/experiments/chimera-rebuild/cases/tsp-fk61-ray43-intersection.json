@@ -1,0 +1,39 @@
+{
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "id": "tsp-fk61-ray43-intersection",
+  "area": {
+    "run": "tsp-fk61-node42-area-origin-20261123-repeat",
+    "case": "tsp-fk61-node42-area-origin",
+    "manifest_sha256": "0f05930d0787020a534e9e81522b35bc9593e367081f42de05337b4eaeff24ec"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "completed_frames": [
+      0,
+      1984,
+      1985,
+      2048
+    ],
+    "oral_cells_from_end": 2,
+    "grid_index": 43,
+    "focus_frame": 0,
+    "scope": "固定上流、標準版、唇前端を揃えた試験版の通常発話で、描画前と1984・1985・2048フレームの測定線43に対応する光線・上下輪郭・接触補正前の上下距離を採る。描画前の下側交差は線分ごとに独立に求め、光線・線分の片端・両端を交換する。交差後の面積を節点42へ集約し、記録した差と照合する。"
+  },
+  "hypotheses": {
+    "same_rays_and_anatomical_segment": "描画前の固定上流と試験版で光線の原点・方向が一致する。下側交差を採用した線分はどちらも同じ部位の輪郭で対応する。",
+    "lower_endpoints_recover_native_hit": "試験版で実際に採用した下側線分の端点だけを固定上流の値に揃えると、下側の交差距離・y座標・生の隙間が固定上流に一致する。",
+    "difference_before_contact_and_resampling": "描画前の上下の交差と口唇面積則から測定線43の差を再現する。上流の下側線分に交換した測定線43の面積を試験版のセル計算に入れると、節点42の初期平均断面積が固定上流と一致する。"
+  },
+  "acceptance": "通常CLI・観測ビルド・保存済みの全PCMを条件ごとにビット照合する。前回の測定線と節点42の観測を保持する。前方の光線について、実測した交差距離と隙間・交点座標を独立再計算に一致させ、採用線分の端点・光線の交換結果と有理数の垂直交差を併記する。仮説と計測の合否を分ける。"
+}

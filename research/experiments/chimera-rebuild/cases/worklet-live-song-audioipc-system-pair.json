@@ -1,0 +1,15 @@
+{
+  "id": "worklet-live-song-audioipc-system-pair",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {"template": "System Trace", "time_limit": "12s", "all_processes": true}
+  },
+  "criteria": {
+    "input": "既知のローカルソケットの送受信は対象限定のSystem Traceに現れる一方、Firefoxの親子が別プロセスとして動く。短いシステムトレース内で測定用Firefoxを起動し、同じ48 kHzの共有Contextを未準備と192フレームで1組ずつ採取する。",
+    "events": "採取後の解析は、測定用Firefoxの親子プロセスとAudioIPC音声スレッドに限定する。対応づけはシステムトレースの時刻、接続のfd、送受信のバイト数、プロファイルのDataCallbackを使う。当てはまる候補が複数なら棄却する。"
+  }
+}

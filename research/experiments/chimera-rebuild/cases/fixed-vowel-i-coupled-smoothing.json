@@ -1,0 +1,39 @@
+{
+  "id": "fixed-vowel-i-coupled-smoothing",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "voice_reference": {
+    "run": "vowel-voice-i-20261119-j",
+    "case": "vowel-voice-i",
+    "sha256": "06a42253b072351ff3636dda70fd2ab224ac2c35cd81dc347ab247c663b38265"
+  },
+  "geometry_reference": {
+    "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+    "case": "fixed-vowel-i-lf-branch-loss",
+    "sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+  },
+  "smoothing_reference": {
+    "run": "fixed-vowel-i-lf-smoothed-branches-20261124-repeat",
+    "case": "fixed-vowel-i-lf-smoothed-branches",
+    "sha256": "865ecfbf317197fadd911e5e6792eaa9e7579244d5a4b7ea393388b131437b92"
+  },
+  "hypothesis": "7.2 cmH₂O、110 Hzの通常の固定 /i/ 発声でも、対象枝の流量が幅60 cm³/s内に入り、圧力損失の変更が発生する。切替以降に無変更の枝流量が初めて0<|U|<60となる標本を局所の最初の差と予測する。局所の枝・節点圧から、口端放射と咽頭入口圧へ差が伝わる。咽頭入口圧の最初の差より声門流量の差は少なくとも1内部標本後、PCMの最初の差を含むフレームの内部終端は放射差以降と予測する。",
+  "measurement": {
+    "activation_sample": 38400,
+    "steady_window_samples": [38400, 65536],
+    "sample_count": 65536,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": 128,
+    "smoothing_width_cm3_s": 60,
+    "edges": [[34, 35], [35, 36]],
+    "component_peak_relative_error_lt": 1e-8,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "pcm_absolute_error_lt": 5e-7,
+    "pcm_delta_relative_error_lt": 0.01
+  },
+  "input": "通常の固定 /i/ 発声の保存ケースをそのまま使う。姿勢、肺圧、声門設定、出口処理を揃え、標本38,400から口腔の2枝だけを平滑化する。幅内の損失に 1−(1−|U|/60)^3 を掛ける。声門流量は各描画で声門と気道の結合から求める。",
+  "observation": "0～65,535の各内部標本で肺境界圧、声門上下圧、声門開口と流量、口端・鼻端流量、放射微分、節点34～36の圧力、2枝の流量を保存する。無変更の幅内標本から発生時刻を予測し、両版の48 kHz・全32,768フレームのPCMと、内部放射微分を別に再計算したPCMを比較する。",
+  "acceptance": "無変更の全PCMと出力時刻に対応する観測は保存記録に一致する。切替前は変更版と無変更がビット一致し、定常窓で両版の内部系列とPCMが規定の許容差内に入る。対象枝の圧力収支を独立に検証し、丸め許容差を超す負の仕事率は0標本。記録した放射微分を独立したFIRと出力段でPCMへ変換し、元のPCMと照合する。先行関係と非零の効果を仮説として別途記録する。"
+}

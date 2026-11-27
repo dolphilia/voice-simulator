@@ -1,0 +1,51 @@
+{
+  "id": "seal-zap",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "zapの音高は0.15秒で指数下降し、ゲートは始点から0.17秒まで直線で下がる。trillからの切り替えでは、trillが所有していた目標が指示フレームで手動値に戻り、zapの音高とパルス深さのキーは次の制御境界で反映される。パルス深さの目標が0になると平滑値は指数減衰し、位相は進み続ける。",
+  "seal_voice": {
+    "breath": {
+      "sample_rate_hz": 48000,
+      "frames": 320160,
+      "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+      "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0}]
+    },
+    "shape": {"pitch_hz": 900.0, "brightness": 0.6, "roughness": 0.05, "mouth": 0.35},
+    "level": 1.0,
+    "observe_call_id": true,
+    "events": [
+      {"frame": 76800, "play_call": {"id": "trill"}},
+      {"frame": 288000, "play_call": {"id": "zap"}}
+    ]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "breath": {}, "expected_zap_control": 288000, "expected_zap_end": 298624,
+        "curves_sample": 291840},
+      {"id": "switch-44100", "breath": {
+        "sample_rate_hz": 44100, "frames": 28000,
+        "events": [
+          {"frame": 0, "gate": 0.25},
+          {"frame": 7101, "controls": {"pulse_rate_hz": 27.0, "pulse_depth": 0.25, "duty": 0.65, "pressure_cm_h2o": 14.0}},
+          {"frame": 9437, "controls": {"pulse_rate_hz": 31.0, "pulse_depth": 0.45, "duty": 0.72, "pressure_cm_h2o": 16.0}}
+        ]
+      }, "events": [
+        {"frame": 73, "play_call": {"id": "trill", "amplitude": 0.9}},
+        {"frame": 7117, "pitch_hz": 1200.0},
+        {"frame": 8301, "play_call": {"id": "zap", "pitch_hz": 4200.0, "amplitude": 0.65}}
+      ], "expected_zap_control": 8320, "expected_zap_end": 18048,
+        "edit_during_zap": 9437, "edit_control": 9472},
+      {"id": "zero-depth-96000", "breath": {
+        "sample_rate_hz": 96000, "frames": 32000, "events": [],
+        "controls": {"pulse_rate_hz": 12.0, "pulse_depth": 0.0, "duty": 0.55, "pressure_cm_h2o": 10.0}
+      }, "events": [
+        {"frame": 17, "play_call": {"id": "zap", "pitch_hz": 3000.0, "amplitude": 1.2}}
+      ], "expected_zap_control": 64, "expected_zap_end": 21184}
+    ],
+    "zap_keys": {"initial_pitch_hz": 6000.0, "final_pitch_hz": 1100.0, "reference_pitch_hz": 6000.0,
+                 "sweep_seconds": 0.15, "release_seconds": 0.17, "ownership_tail_seconds": 0.05, "pulse_depth": 0.0},
+    "clock_model_for_key_ownership": "制御境界のf64累積時計。連続曲線の比較は出力フレーム差から求めた経過時刻。",
+    "stage_observations": "全出力フレームのコール識別子・目標・平滑値・肺圧・内部放射・PCM。公式CLIの先頭6.67秒を比較。切り替えは指示の直前・指示フレーム・最初の制御境界を個別に検査する。",
+    "zero_depth_pressure_absolute_tolerance_dyn_cm2": 1e-10
+  }
+}

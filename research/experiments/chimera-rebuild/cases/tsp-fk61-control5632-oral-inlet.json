@@ -1,0 +1,127 @@
+{
+  "id": "tsp-fk61-control5632-oral-inlet",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control5632-upstream-drive-20261123-repeat",
+    "case": "tsp-fk61-control5632-upstream-drive",
+    "manifest_sha256": "eabbd33e5c6cc782df3f3fa195c782d95fa5aa6e9494ae8e71dcc6ede4a11581"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      5630,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "固定上流・研究版・下唇評価順を上流に揃えた試験版の通常CLIと観測版を比較する。5630〜5875の節点27〜43、直列枝16本、壁、節点コンプライアンスと口端負荷を採る。5632から口腔の節点28〜43を連成し、咽頭から入る枝27→28を観測値で駆動する。入口28では枝の登録順に従い、右への流出を引いてから咽頭側の流入を足す。交換する5群は開始時の状態、枝27→28の系列、節点28〜37の体積源、節点38〜43の体積源、局所係数と乱流圧。全32組と各節点の体積源の単独交換を比較する。PCMの比較では壁・鼻の放射を試験版の観測値に固定する。番号は0始まりで範囲は半開区間。"
+  },
+  "hypotheses": {
+    "anterior_volume_sources_outweigh_terminal_sources_for_edge37": "5863の枝37→38で、節点28〜37の体積源の交換による流量変化は、節点38〜43の体積源の交換による変化より大きい。",
+    "pharyngeal_inflow_is_largest_single_group_at_edge37": "5863の枝37→38では、咽頭からの枝27→28の流量系列の交換が、他群の単独交換より大きい。",
+    "initial_state_is_smaller_than_later_forcing": "5863の枝37→38で開始状態の交換より大きな流量変化を、5632以降の入力群のいずれかで得られる。",
+    "post_boundary_inputs_recover_pcm_in_full_interval": "5632の開始状態を試験版のままにし、後続入力を交換した条件の再計算した口端流量を全区間戻すと、冒頭からPCM 2937まで一致する。"
+  },
+  "acceptance": "各版の通常CLIと観測版・保存PCMを全発話でビット照合し、先行採取と共通する節点37〜43と枝37→38以降、壁、口端負荷を照合する。収支の加算順を枝の採取順で確認し、枝・壁・体積源・圧力・放射を独立に検算する。無交換の16節点の逐次計算を両版の観測に照合する。枝37→38を上流の観測に固定した対照と、さらに節点38〜41の体積源を交換した対照が前の六節点計算のPCMを再現する。全32組と16節点の体積源単独交換をPCM 2937と枝37→38で比較し、量と予測判定を保存する。"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "worklet-manual-case-export",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "ブラウザの初期姿勢・音源とWorkletが適用したイベントをそのままCLIの制御フレームに変換すると、ダウンロードしたJSONから同じ長さのPCMと内部状態を再現できる。",
+  "manual_case": "worklet-manual-articulation.json",
+  "measurement": {
+    "expected_download_filename": "worklet-articulation-case.json",
+    "expected_export_id": "manual-articulation-replay",
+    "control_interval_output_frames": 64,
+    "require_cli_pcm_bit_equality": true,
+    "boundary": {
+      "start_frame": 4096,
+      "stop_frame": 8192,
+      "output_frames": 8320,
+      "targets_at_start_cm": [3.683, 7.1, 1.046],
+      "targets_at_stop_cm": [3.1, 7.1, 0.35],
+      "expected_control_frames": [64, 128],
+      "expected_total_control_frames": 130,
+      "unaligned_stop_frame": 8193
+    }
+  }
+}

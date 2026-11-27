@@ -1,0 +1,32 @@
+{
+  "id": "worklet-live-song-fast-teeth-lowpass-floor",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "offline_study": "worklet-song-fast-teeth-lowpass-floor.json",
+  "live_case": "worklet-live-song.json",
+  "offline_run": "worklet-song-fast-teeth-lowpass-floor-20261121-repeat",
+  "measurement_revision": 2,
+  "previous_run": "worklet-live-song-fast-teeth-lowpass-floor-20261121-a",
+  "turbulence": { "scale": 1, "glottis_gain_multiplier": 0, "constriction_gain_multiplier": 0 },
+  "cutoffs_hz": { "floor0": 0, "floor1200": 1200 },
+  "order": { "ordinary": ["floor0", "floor1200"], "observed": ["floor1200", "floor0"] },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "frames": 49200,
+    "quantum": 128,
+    "startup_contiguous_callbacks": 8,
+    "lead_frames": 2048,
+    "output_probe_quanta": 448,
+    "minimum_before_song_quanta": 2,
+    "minimum_after_padding_quanta": 2,
+    "change_floor": 1e-6,
+    "expected_first_bit_difference": 27927,
+    "expected_first_difference_over_floor": 27939
+  },
+  "hypothesis": "Pop Deeの乱流設定を揃えて歯の低域通過周波数の下限だけを変えると、描画開始は各Contextの最初の連続した量子から同じ3,072フレーム後になる。実時間歌唱のWorklet出力と保存済みオフラインPCMは各条件で全49,200フレームがビット一致する。出力を別のWorkletで読み取っても同じ位置で波形を確認でき、歌唱前と最終量子の補完、歌唱後は0になる。",
+  "criteria": {
+    "input": "通常の歌唱画面の短い音符と実時間歌唱ボタンを使用する。2種類の下限をChromiumの通常実行と観測付き実行で比較する。CLIおよび固定上流への照合を済ませたオフライン実行の設定・PCM・観測・WASMと辞書をマニフェストのSHA-256で照合する。",
+    "schedule": "同じContextの内部の出力フレームを使う。飛びが出た場合は連続8量子を数え直した始点を記録し、そこから8量子と2,048フレームを加えて予約値を照合する。最初の量子から3,072フレームになるという初回の仮説も別に判定する。385量子の絶対時刻と累積フレーム末尾、最終量子の有効48フレームと補完80フレームを確認する。",
+    "audio": "通常通り出力先へ接続し、並列の計測Workletで合成ノードの出力を同じContextで採取する。試験時だけContextを保持する。各量子を記録した絶対フレームで照合し、開始予約の直前256フレームから最終量子の後256フレームまでの連番、PCMのビット列、歌唱前後の無音、画面の観測と再実行ケースを確認する。この区間より前の飛びは別に記録する。",
+    "limits": "機器の出力に先立つWeb Audioグラフ内の観測を比較する。処理時間は通常実行と観測付きの両方で採取し、波形と時刻の判定とは独立に記録する。"
+  }
+}

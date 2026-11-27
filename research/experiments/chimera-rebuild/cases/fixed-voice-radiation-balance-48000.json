@@ -1,0 +1,15 @@
+{
+  "id": "fixed-voice-radiation-balance-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "slit_run": ["fixed-voice-glottal-slit-48000-repeat", "c1d6a803b79787e0ac58d357e9ec73db559f96ddc1ef097a320b6832abc126d1"],
+  "prefix_run": ["fixed-voice-glottal-slit-prefix-48000-repeat", "64ef213138b0e5035261d6aa83650661caab954c4ba54a1480e31337d5b0f28a"],
+  "internal_rate_hz": 96000,
+  "output_rate_hz": 48000,
+  "prefix_frames": 4810,
+  "expected_first_frame_sample": 8207,
+  "pcm_probe_internal_sample": 9605,
+  "windows": [[8188, 8240], [9598, 9610]],
+  "hypothesis": "既知のフレーム末尾8,207点目の放射流量微分は研究版の方が小さい。正の流量差分が両版で同一なら、厳密な1/Fsより小さい二進64ビットのdtで割る研究版が、定数Fsを掛ける上流より小さくなることはない。この点では時間換算だけで差を復元できず、現在または前回の流量和に差があると予想する。時間換算と壁・口端・鼻端の寄与を個別に比較する。",
+  "observation": "固定 /i/ の出力4,810フレームまでを通常CLIと固定上流で描画する。開始直後と出力4,802フレーム目前後の内部番号を採取し、壁ごとの圧力・速度・面積・放射寄与、口端・鼻端流量、合計の前後値と時間微分を比較する。",
+  "acceptance": "追加観測後の時系列とPCMは保存出力を再現する。すべての採取点で壁の運動と寄与、全放射流量の加算・差分・時間換算を独立に再計算し、フレーム末尾8,207点目の差と、どの入力または演算の置換で再現できるかを記録する。"
+}

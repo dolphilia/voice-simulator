@@ -1,0 +1,31 @@
+{
+  "id": "worklet-safari-song-score-preparation-switch",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "reference": {
+    "case": "worklet-safari-song-score-preparation-initial-blocks.json",
+    "run": "worklet-safari-song-score-preparation-initial-blocks-20261122-repeat",
+    "trial": "pair-1-split-256"
+  },
+  "warm_up_frames": 16384,
+  "block_frames_by_condition": {"initial-128x2": 256, "initial-64x4": 256},
+  "initial_blocks_by_condition": {"initial-128x2": [128, 128], "initial-64x4": [64, 64, 64, 64]},
+  "marker_capture_quanta": 640,
+  "condition_order": [["initial-128x2", "initial-64x4"], ["initial-64x4", "initial-128x2"], ["initial-128x2", "initial-64x4"], ["initial-64x4", "initial-128x2"]],
+  "preparation_timing": {"clock": "Date.now", "clock_step_ms": 1},
+  "switch_comparison": {
+    "control": "initial-128x2",
+    "candidate": "initial-64x4",
+    "frames_before_switch": 256,
+    "blocks_at_switch": 3,
+    "maximum_absolute_median_first_full_difference_ms": 1,
+    "minimum_median_prefix_peak_reduction_ms": 1,
+    "maximum_median_first_full_ms": 4,
+    "maximum_median_startup_increase_ms": 25
+  },
+  "criteria": {
+    "settings": "Safariの通常の歌唱画面でPop Deeを48 kHz、乱流係数1、出力31,200サンプル、観測刻み64で実行する。量子128フレーム、予備描画総量16,384フレームを保つ。最初の256フレームを128フレーム2片または64フレーム4片に分け、以降は両条件とも256フレーム63片とする。4ペアを別の作業ディレクトリからペア内順を逆にして再実行する。",
+    "identity": "切り替え直前に累積256フレームの描画を終えたこと、計65片または67片の長さとContextフレーム、歌唱の予約を検査する。先行PCM81,920点を独立計算、歌唱PCM31,200点と488観測点と調音計画を保存基準に照合する。",
+    "timing": "切り替え前のピークと切り替え後3片のWASM時間、無音出力までの時間、各片に対応する先行信号の前後の間隔を保存する。4片条件の切り替え前ピークはペア中央値で1 ms以上低下すると予測する。最初の256フレーム片は両条件の中央値で4 ms以下、同じペアの処理時間差の中央値の絶対値は1 ms以下と予測する。クリックから歌唱開始までの延長はペア中央値で25 ms以下と予測する。観測時計は1 ms刻みで、2.667 msの量子予算の判定には1 msの丸めを考慮する。"
+  }
+}

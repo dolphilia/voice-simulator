@@ -1,0 +1,47 @@
+{
+  "id": "seal-whistle",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "whistleの音高は0.45秒の谷を境に指数下降と指数上昇を切り替え、平滑音高の転換はその後になる。ゲートは音高のキーとは独立に1秒かけて直線で下がる。",
+  "seal_voice": {
+    "breath": {
+      "sample_rate_hz": 48000,
+      "frames": 392160,
+      "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+      "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0}]
+    },
+    "shape": {"pitch_hz": 900.0, "brightness": 0.6, "roughness": 0.05, "mouth": 0.35},
+    "level": 1.0,
+    "observe_call_id": true,
+    "events": [
+      {"frame": 76800, "play_call": {"id": "trill"}},
+      {"frame": 288000, "play_call": {"id": "zap"}},
+      {"frame": 320160, "play_call": {"id": "whistle"}}
+    ]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "breath": {}, "expected_start_control": 320192,
+        "expected_turn": 341824, "expected_end": 370624, "fall_sample": 330944, "rise_sample": 353792,
+        "pitch_hold_sample": 365824, "gate_zero_sample": 368192},
+      {"id": "half-pitch-44100", "breath": {
+        "sample_rate_hz": 44100, "frames": 56000,
+        "events": [{"frame": 0, "gate": 0.25},
+          {"frame": 20003, "controls": {"pulse_rate_hz": 24.0, "pulse_depth": 0.42, "duty": 0.7, "pressure_cm_h2o": 12.0}}]
+      }, "events": [{"frame": 73, "play_call": {"id": "whistle", "pitch_hz": 850.0, "amplitude": 0.8}},
+        {"frame": 20003, "pitch_hz": 1250.0}], "expected_start_control": 128,
+        "expected_turn": 19968, "expected_end": 46464, "fall_sample": 10048, "rise_sample": 30976,
+        "pitch_hold_sample": 42048, "gate_zero_sample": 44288,
+        "manual_edit_sample": 20003, "manual_control_sample": 20032, "manual_gate_sample": 35392},
+      {"id": "turnaround-96000", "breath": {"sample_rate_hz": 96000, "frames": 112000, "events": []},
+        "events": [{"frame": 17, "play_call": {"id": "whistle"}}], "expected_start_control": 64,
+        "expected_turn": 43264, "expected_end": 100864, "fall_sample": 21696, "rise_sample": 67264,
+        "pitch_hold_sample": 91264, "gate_zero_sample": 96064}
+    ],
+    "whistle_keys": {"initial_pitch_hz": 1700.0, "turn_pitch_hz": 620.0, "final_pitch_hz": 1500.0,
+        "reference_pitch_hz": 1700.0, "turn_seconds": 0.45, "sweep_seconds": 0.95,
+        "release_seconds": 1.0, "ownership_tail_seconds": 0.05, "pulse_depth": 0.1},
+    "smoothed_turn_window_seconds": [0.455, 0.465],
+    "stage_observations": "音高の下降、谷、上昇、保持、終了を段階別に検査する。PCM・制御値は全フレームを上流と比較し、公式CLIの先頭8.17秒とwhistle区間を個別に照合する。"
+  }
+}

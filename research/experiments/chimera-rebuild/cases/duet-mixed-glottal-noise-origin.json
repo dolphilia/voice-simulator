@@ -1,0 +1,40 @@
+{
+  "id": "duet-mixed-glottal-noise-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-turbulence-body-20261122-repeat",
+  "reference_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "body": {"female": 0.4, "child": 0.3},
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "expected_pcm_frames": 97920,
+  "trace_output_samples": 35328,
+  "first_prior_difference_sample": 33792,
+  "checkpoints_output_samples": [33024, 33792, 34560, 35328],
+  "attention_window_output_samples": [33024, 34561],
+  "expected_glottis_ports": {"candidate": 67, "upstream": 65},
+  "gate_geometry_and_flow_tolerances": {
+    "lip_cm": 1e-9,
+    "lip_area_cm2": 1e-9,
+    "pharynx_area_cm2": 1e-9,
+    "gate": 1e-10,
+    "f0_hz": 1e-6,
+    "phase": 1e-8,
+    "glottal_area_cm2": 1e-9,
+    "drive_area_cm2": 1e-9,
+    "drive_flow_cm3_s": 1e-6,
+    "glottal_level_dyn_cm2": 1e-7
+  },
+  "formula": {
+    "density_g_cm3": 0.00114,
+    "dynamic_viscosity_poise": 0.000186,
+    "closed_area_cm2": 0.0002,
+    "critical_reynolds": 1800,
+    "saturation_reynolds": 12000,
+    "expected_glottis_gain": 0.0000032,
+    "absolute_tolerance_dyn_cm2": 1e-9
+  },
+  "upstream_variants": ["default", "without_drift", "without_jitter", "without_shimmer", "without_all_three"],
+  "hypothesis": "同じ混合体型と譜面ではジェスチャーが一致し、33,792出力サンプルで両版とも最大源は声門である。振幅の差はレイノルズ数から振幅への変換より前にあり、声門枝の面積と流量から説明できる。ドリフト、ジッター、シマーを固定上流で個別および一括で0にすると、一括条件で観測窓の面積差・流量差・振幅差の最大値は既定条件より小さくなる。",
+  "criteria": "先行の混合体型の譜面、体型係数、初期舌先、出力ゲインを固定する。研究版は通常CLIのPCMとCHTL、上流は無変更版の混合体型観測器の生PCMと最大乱流観測を再実行し、それぞれ計測版と保存結果に照合する。描画開始から35,328出力サンプルまで第2内部サンプルのゲート、唇・咽頭断面、声門のF0・位相・面積、乱流更新前の枝断面積・流量・振幅を観測する。観測窓は33,024から34,560を含む。振幅の式と、33,792を含む4点における面積または流量の置換を独立計算し、残差1×10⁻⁹ dyn/cm²以下で説明する。出力サンプルごとの差はCHTLの768サンプル刻みの最初の差と別に記録する。"
+}

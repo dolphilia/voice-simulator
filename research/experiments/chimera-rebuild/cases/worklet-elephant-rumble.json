@@ -1,0 +1,34 @@
+{
+  "id": "worklet-elephant-rumble",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-rumble.json",
+  "source_revision": 1,
+  "hypothesis": "44.1 kHzの開始要求173は制御192で目標音高15×22/14 Hzと経路1へ反映される。次の制御まで肺圧は0だが、断面移行で口端とPCMは変化する。経路を初期値に保つ対照は同じ平滑音高と肺圧を保ち、放射とPCMは0になる。途中停止61,913で手動目標が戻り、平滑値は次の制御61,952で変化する。",
+  "measurement": {
+    "variants": ["official-rumble-48000", "manual-stop-44100", "natural-end-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "manual-stop-44100": [[0, 512], [30012, 30081], [40018, 40065], [54812, 54849], [61912, 61953]]
+    },
+    "extra_output_frames": {
+      "official-rumble-48000": [76799, 228031],
+      "manual-stop-44100": [],
+      "natural-end-96000": [16, 17, 63, 302527]
+    },
+    "prebreath_control": {
+      "variant": "manual-stop-44100",
+      "frames": 256,
+      "interval_output_frames": [192, 256],
+      "first_lung_pressure_frame": 256,
+      "first_geometry_frame": 192,
+      "minimum_pcm_peak": 0.001
+    },
+    "health": {"exclude_startup_blocks": 2, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

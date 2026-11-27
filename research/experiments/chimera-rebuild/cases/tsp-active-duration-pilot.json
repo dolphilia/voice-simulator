@@ -1,0 +1,40 @@
+{
+  "id": "tsp-active-duration-pilot",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "語頭前の50 msと語末後の300 msを含む合成WAVの全長を比べると、発話に由来しない無音が差に入る。短時間RMSで発話の始端と終端をそろえると、この影響を減らせる。2つの合成実装で発話区間の長さの差は10 ms以内と予測する。",
+  "reference": {
+    "dataset": "TSP Speech Database v2 (2018-11)",
+    "archive_url": "https://www.mmsp.ece.mcgill.ca/Documents/Data/TSP-Speech-Database/48k.zip",
+    "archive_path": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-reference/tsp-v2/48k.zip",
+    "archive_bytes": 253816919,
+    "sha256": "9cfb3a3a13014c8ff90770a5d1923f376da73ac927b9100f09826f60cf06cf43",
+    "license": "Simplified BSD, Copyright (c) 2018 Peter Kabal",
+    "license_url": "https://www.mmsp.ece.mcgill.ca/Documents/Data/TSP-Speech-Database/Licence.html",
+    "transcriptions": "固定上流版の tools/tsp/sentences.tsv の録音IDと本文",
+    "calibration_ids": ["FA01_01", "FA01_02", "MA01_01", "MA01_02"],
+    "held_out_ids": ["FK61_01", "FK61_02", "MK61_01", "MK61_02"]
+  },
+  "synthesis": {
+    "reference_entry": "chimera render text",
+    "candidate_entry": "vocal-cli render-pcm の speech_voice（language: english）と体型指定",
+    "sample_rate_hz": 48000,
+    "base_f0_hz": {"female": 205, "male": 112},
+    "speech_rate": 1.0,
+    "plan_start_seconds": 0.05,
+    "tail_seconds": 0.30
+  },
+  "measurement": {
+    "window_ms": 20,
+    "hop_ms": 5,
+    "threshold_db_relative_to_maximum_window_rms": -35,
+    "sensitivity_threshold_db": -45,
+    "active_interval": "ファイル先頭を原点とする完全な窓を使う。しきい値以上の窓が3つ連続した区間のみ残し、最初の窓の開始から最後の窓の直後までの半開区間とする。",
+    "observations": ["元のPCM長", "窓ごとの有限なRMS", "発話区間の開始・終了・長さ", "録音と各合成音の長さの符号付き差", "しきい値による長さの差"],
+    "synthetic_pair_duration_tolerance_ms": 10,
+    "method_control": "同じ非ゼロ信号に前後100 msのゼロを足しても、発話区間長の差が5 ms以内であることを独立した既知の半開区間で確かめる。",
+    "acceptance": "全8件で録音と両合成を同じ式で測り、無音対照と合成同士の許容差を独立に判定する。録音との差は録音IDごとに記述し、欠測があれば理由を残す。調整用と確認用を別々に出力し、確認用の値で設定を選ばない。"
+  },
+  "listening": "録音と候補を発話区間で同じ音量にそろえ、番号を伏せた対を用意する。聞き手の記録は音響計測と別に保存する。",
+  "scope": "最初の指標は文全体の音響区間長。音素の対比較、一般的な自然さの判定、歌唱評価は別のケースで扱う。"
+}

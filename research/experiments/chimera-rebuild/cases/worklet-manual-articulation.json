@@ -1,0 +1,32 @@
+{
+  "id": "worklet-manual-articulation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "舌体座標と口唇開度の目標を発声中に切り替えると、合成時計の境界で目標が変わり、部位ごとの臨界減衰に従って位置が追従する。唇を狭めると口端の最小断面積が減少する。同じ初期状態と適用フレームで再実行するCLIは、ブラウザの加工前PCMと内部状態に一致する。",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "realtime_case": "worklet-realtime-voice.json",
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "render_quantum_frames": 128,
+    "control_interval_output_frames": 64,
+    "gestures": [
+      {"axis": "tongue_body_y_cm", "value_cm": 7.1},
+      {"axis": "tongue_body_x_cm", "value_cm": 3.1},
+      {"axis": "lip_aperture_cm", "value_cm": 0.35}
+    ],
+    "wait_before_each_action_ms": 250,
+    "wait_before_stop_ms": 380,
+    "minimum_hold_frames": 6000,
+    "settled_window_frames": 2400,
+    "settled_position_tolerance_cm": 0.015,
+    "independent_position_tolerance_cm": 1e-9,
+    "independent_gate_absolute_tolerance": 1e-10,
+    "minimum_lip_area_decrease_cm2": 0.2,
+    "upstream_geometry_absolute_tolerance": 1e-9,
+    "upstream_state_peak_relative_tolerance": 1e-8,
+    "upstream_pcm_absolute_tolerance": 5e-7,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "host_block_frames": [128, 77],
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_phase", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "tongue_body_x_cm", "tongue_body_y_cm", "oral_minimum_cm2"]
+  }
+}

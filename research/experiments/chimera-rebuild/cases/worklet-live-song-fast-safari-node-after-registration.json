@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-fast-safari-node-after-registration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "safari",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "offline_condition": "floor1200",
+  "resume_order_reference": {
+    "case": "worklet-live-song-fast-safari-resume-order.json",
+    "run": "worklet-live-song-fast-safari-resume-order-20261121-repeat"
+  },
+  "hold_frames_by_mode": { "immediate": 0, "one_quantum": 128 },
+  "condition_order": [["immediate", "one_quantum"], ["one_quantum", "immediate"]],
+  "routes": ["direct", "observed"],
+  "startup_timeout_seconds": 8,
+  "hypothesis": {
+    "clock": "登録完了直後の最初のWorklet呼び出しだけ古いContextフレームを読むなら、Contextの時計が1量子以上進むまでノード生成を待つと、待機ありでは最初の2量子の番号差が128になり、通常の即時生成では少なくとも1回128より大きくなる。",
+    "audio": "待機の有無で歌唱の生成サンプル列は変わらず、連続8量子の先頭から3,072フレーム後の開始、PCM49,200フレーム、状態769点、計画がオフライン基準と一致する。"
+  },
+  "criteria": {
+    "input": "macOS Safari 18.6の通常歌唱ボタンを認証済みWebDriverで操作する。再開後にWorkletを登録し、無音先行を省く。Pop Dee、240 BPM、出力48 kHz・内部96 kHz、歯フィルタ下限1,200 Hzを前回と同じ値にする。試行ごとに新しいページとContextを使用する。直接出力と並列観測の各2組で順を逆転し、別ディレクトリから繰り返す。",
+    "control": "直接出力の最後のaddModuleは合成用、並列観測では観測用。ネイティブの最後の登録Promiseが解決した時点の round(currentTime × sampleRate) を基準とし、待機ありは128フレーム以上進んでからノード生成へ進める。実際の進行量と経過msを記録し、時間の丸めやタイマーの刻みによる超過を保存する。待機なしは追加待機を設けない。",
+    "clock": "歌唱Workletの最初の2つのprocessからcurrentFrameを直接記録し、番号差を128と照合する。並列観測がある場合は観測枝の最初の2値も比較し、歌唱の開始位置と開始前・後の実PCMを保存する。両条件で番号差が128になるという主張と、待機で飛びが減るという予測は取得の合否から独立して判定する。",
+    "audio": "連続区間からの予約は8×128＋2,048フレーム。開始付近の256フレームずつと末尾の補完80フレームを独立に検査し、歌唱のPCM、状態、計画を既存の基準に照合する。操作から歌唱先頭までの時間差は実測値を報告する。"
+  }
+}

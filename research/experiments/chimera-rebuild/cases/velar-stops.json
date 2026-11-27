@@ -1,0 +1,41 @@
+{
+  "id": "velar-stops",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "舌背の高さの目標が共通の /k g/ は、唇を開いたまま声道を閉じる。/k/ は既定または明示した帯気指定に従って破裂後も声門を開大し、/g/ は通常の開大を追加しない。舌背の前後位置は弱くしか固定しないため、/i/ では /ɑ/ より前で閉じる。",
+  "speech_case": "alveolar-t.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"back-k","text":"ɑkɑ","rate":1,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045]},
+    {"id":"back-g","text":"ɑgɑ","rate":1,"stop":"g","aim_delay_seconds":0.015,"aspiration":null},
+    {"id":"front-k","text":"iki","rate":1,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045]},
+    {"id":"unaspirated","text":"ɑk˭ɑ","rate":1,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.22,0.0048,0.02]},
+    {"id":"palatalized","text":"ɑkʲɑ","rate":1,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045],"palatalized":true},
+    {"id":"repeated","text":"ˈɑkɑkɑkɑ","rate":1,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045]},
+    {"id":"fast","text":"ˈɑkɑkɑkɑ","rate":1.8,"stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045]}
+  ],
+  "song": [
+    {"id":"liaison","lyrics":"먹어","stop":"g","aim_delay_seconds":0.015,"aspiration":null,
+     "word_end":[false,true],"onsets":[["m"],["g"]],"codas":[[],[]],"stop_note_index":1},
+    {"id":"word-break","lyrics":"먹 어","stop":"k","aim_delay_seconds":0.015,"aspiration":[0.36,0.02,0.045],
+     "word_end":[true,true],"onsets":[["m"],[]],"codas":[["k"],[]],"stop_note_index":0}
+  ],
+  "notes": [{"midi":57,"beats":1},{"midi":64,"beats":1}],
+  "measurement": {
+    "rate_hz":48000,
+    "host_block_frames":[128,77],
+    "geometry_absolute_tolerance":1e-9,
+    "gesture_absolute_tolerance":1e-12,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "pcm_absolute_tolerance":1e-6,
+    "closed_area_cm2":0.0002,
+    "open_lip_minimum_cm2":0.10,
+    "minimum_closed_frames":64,
+    "closure_window_padding_seconds":0.06,
+    "minimum_release_peak":0.0001,
+    "release_peak_window_seconds":0.04,
+    "fast_to_slow_minimum_open_area_ratio":0.5,
+    "minimum_front_back_difference_cm":0.2,
+    "window":"全フレームで調音・咽頭と口腔の最小断面積・声門・放射・PCMを照合する。各閉鎖の計画区間を前後60 ms広げ、唇が開いている最長の連続閉鎖を音素へ対応づける。再開口後40 msの波形ピークを測る。"
+  }
+}

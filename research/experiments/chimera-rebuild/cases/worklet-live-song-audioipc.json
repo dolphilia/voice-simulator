@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-audioipc",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "output_reference_run": "worklet-live-song-output-callback-20261121-repeat",
+  "capture": {
+    "log_modules": ["timestamp", "audioipc2_server::server:5", "audioipc2_client::stream:5", "audioipc2::rpccore:5", "audioipc2::ipccore:5"],
+    "pilot_rounds": 1
+  },
+  "analysis": {
+    "expected_frames": 256,
+    "sample_rate_hz": 48000,
+    "window_radius_requests": 8,
+    "maximum_client_clock_residual_ms": 0.5,
+    "minimum_delayed_interval_excess_ms": 2.0,
+    "maximum_server_client_interval_difference_ms": 0.5,
+    "minimum_trials_meeting_prediction": 3
+  },
+  "hypothesis": "歌唱ノードの構築を含む音声要求ではサーバーがクライアントの応答を待つ。192フレームの事前描画をした次の要求で増えた間隔はサーバーのコールバック開始時点ですでに現れ、サーバーとクライアントの開始間隔の差は0.5 ms以内と予測する。",
+  "criteria": {
+    "input": "既存の48 kHz Pop Deeの共有Contextケースを使い、通常の歌唱画面で未準備と192フレームの事前描画を4組比較する。先行音と歌唱のPCM、観測と調音計画を既存の基準と照合する。予備の1組はログの取得と形式の確認に使う。",
+    "events": "AudioIPCのサーバー側のコールバック、要求送信と応答受信、クライアント側の受信、データ処理区間と応答送信を区別する。取得できない端点は欠測を明示する。ログ同士ではUTC時刻と同一接続の順序を使い、クライアントのログとグラフのプロファイルはプロセス開始時刻を使って差を確認したうえで対応づける。",
+    "timing": "歌唱構築を含む要求の前後8件でフレーム数と順序を照合する。事前描画の4試行中3試行以上で、次の要求の間隔が256フレーム相当の時間より2 ms以上長く、サーバーとクライアントの開始間隔の差が0.5 ms以内だと予測する。ログを有効にした試行は以前のログなし計測と分けて報告する。"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "safari-audio-client-trace",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "playback_case": "safari-process-tap-calibration.json",
+  "graph_reference_run": "safari-process-tap-calibration-20261122-graph-repeat",
+  "client_trace": {
+    "idle_seconds": 1,
+    "active_seconds": 2,
+    "active_graph_quanta": 1800,
+    "minimum_overlapping_cycles": 12,
+    "maximum_nominal_frame_error": 4
+  },
+  "criteria": {
+    "settings": "Safariの既知の逆相ステレオ試験音を48 kHzで開始・停止・再開し、対応するCore Audioの出力プロセスを特定する。xctraceにはAudio Clientだけを載せ、候補のPIDを指定して停止中・再生中をそれぞれ短時間観測する。",
+    "graph": "最初の試験音20,480点は前回のグラフ対照および独立計算に一致する。再開後に記録する230,400点は独立計算に一致し、Contextフレームは128ずつ進む。",
+    "timing": "audio-hal-client-io-cycle表で同じPIDを選ぶ。停止中のCycleは0件と予測する。再生中はグラフ観測の時刻範囲に12件以上のCycleが入り、1本のI/Oスレッドに属し、I/O開始間隔の中央値を48 kHz相当のフレーム数に換算すると128の整数倍に4フレーム以内で近づくと予測する。区間の時刻はグラフPCMとは別の観測とし、PCMやスピーカーでの欠落を判定しない。"
+  }
+}

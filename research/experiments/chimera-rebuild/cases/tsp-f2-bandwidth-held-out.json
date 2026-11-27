@@ -1,0 +1,32 @@
+{
+  "id": "tsp-f2-bandwidth-held-out",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "pilot": {
+    "run": "tsp-f2-bandwidth-envelope-20261122-repeat",
+    "case": "tsp-f2-bandwidth-envelope",
+    "manifest_sha256": "077d790f72e0760eb83434297ac9ccc874f415fb1991e547ebcca038e3b9054b"
+  },
+  "recording_ids": ["FK61_01", "MK61_01", "FK61_02", "MK61_02"],
+  "exclude": {"MK61_01": [3, 13]},
+  "retained_tokens": 10,
+  "voices": ["recording", "upstream", "candidate"],
+  "centers": [0.35, 0.5, 0.65],
+  "measurement": {
+    "candidate_f2_bandwidth_limit_hz": 300,
+    "diagnostic_peak_half_width_hz": 150
+  },
+  "selection": "先行MFA比較で録音・固定上流合成・研究版合成に共通した主強勢の単母音から、調査に使ったMK61_01のpleaとseemsを除く。残る10母音×3生成元×3基準窓を比較する。録音PCM16と整列用ノイズ添加前の合成float32は先行実行のSHA-256で照合する。",
+  "hypotheses": {
+    "no_added_coverage": "帯域幅条件の追加でF1の極は変わらず、F1・F2が揃う窓は増えない。",
+    "at_least_one_new_missing": "300 Hz未満の候補が無く、新たにF2が欠測する窓が少なくとも1つある。",
+    "recording_more_affected": "極の置き換わりと新たな欠測を足した窓数は、録音の方がどちらの合成より多い。"
+  },
+  "diagnostics": "録音、固定上流合成、研究版合成のそれぞれで、最初の置き換わりと最初の新たな欠測を採る。全窓の最大の周波数移動も含め、重複は1窓にまとめる。最初の順序は登録発話順、録音側の音素位置、中心35・50・65%。先行観測と同じLPC包絡・平滑化ピリオドグラムから各選択極の前後150 Hzの局所最大を別々に探す。局所最大が無い場合とF2の欠測を分ける。",
+  "acceptance": "90窓の開始標本、全極、固定規則の採否と値を独立LPCと保存済みの固定Rustで照合する。ナイキスト上の負の実根は先行ケース第2版の基準で扱い、件数を残す。300 Hz未満の条件を加えた規則は固定Rustの極と独立LPCの極で同じ採否・値になることを確かめる。F1の極と音素対応は同じで、F2が得られない窓は両規則の中央値の集計からそれぞれ除く。診断窓では先行ケースと同じ許容差で両包絡を照合する。波形に関する予測は合否と区別する。"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "webkit-output-underrun",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "capture_case": "worklet-safari-song-process-output.json",
+  "capture_runs": ["worklet-safari-song-process-output-20261122-b", "worklet-safari-song-process-output-20261122-repeat"],
+  "sample_rate_hz": 48000,
+  "quantum_frames": 128,
+  "output_requests": 112,
+  "fifo_capacity_frames": 12288,
+  "maximum_write_frames": 4096,
+  "maximum_ramp_error": 1e-8,
+  "model_conditions": {
+    "continuous": {"resume_before_request": 0, "initial_fifo_frames": 128, "expected_recovery_writes": [], "expected": [["signal", 112]]},
+    "empty_fifo": {"resume_before_request": 0, "initial_fifo_frames": 0, "expected_recovery_writes": [], "expected": [["signal", 1], ["fifo_zero", 1], ["signal", 110]]},
+    "short_pause": {"resume_before_request": 7, "initial_fifo_frames": 128, "expected_recovery_writes": [768], "expected": [["signal", 2], ["ring_ramp", 1], ["ring_zero", 4], ["signal", 1], ["fifo_zero", 5], ["signal", 99]]},
+    "long_pause": {"resume_before_request": 52, "initial_fifo_frames": 128, "expected_recovery_writes": [4096, 2432], "expected": [["signal", 2], ["ring_ramp", 1], ["ring_zero", 49], ["signal", 1], ["fifo_zero", 31], ["signal", 28]]},
+    "long_pause_smaller_write": {"resume_before_request": 52, "initial_fifo_frames": 128, "maximum_write_frames": 2048, "expected_recovery_writes": [2048, 2048, 2048, 384], "expected": [["signal", 2], ["ring_ramp", 1], ["ring_zero", 49], ["signal", 1], ["fifo_zero", 15], ["signal", 44]]}
+  },
+  "recorded_comparison": {
+    "maximum_phase_error_frames": 0.5,
+    "maximum_silent_interior_loss_frames": 128,
+    "maximum_middle_waveform_relative_error": 0.08,
+    "minimum_boundary_signal_amplitude": 0.001,
+    "maximum_quiet_to_boundary_ratio": 0.05,
+    "extra_alignment_range_frames": 16,
+    "edge_exclusion_frames": 24
+  },
+  "criteria": {
+    "model": "48 kHz、128フレームの出力要求。先行信号の最初の1量子をリングに置き、FIFOの初期残量を0または1量子にする。Web側は最初の要求に応じてリングへ書いた後に停止する。指定番号の出力要求直前に描画を補充し、累計要求との差分を処理する。長い停止は52量子、短い停止は7量子を目安に選ぶ。リングの周回、リサンプラーと実機のスレッド競合をモデルの外に置く。",
+    "prediction": "リング不足では読み出し位置が止まり、最初の失敗で減衰する。不足したFIFOから書いた無音は、リング側で読み出しに成功して位置が進む。長い停止で6,400フレームのリング不足の直後に128フレームの信号、続いて3,968フレームのFIFO無音が来ると予測する。書き込み上限だけを2,048フレームに変えると前者は維持され、後者は1,920フレームになると予測する。",
+    "validation": "出力時刻を128フレームずつ進め、リング・FIFOの残量、要求累計と読み書き位置、出力PCMを記録する。事前の区分表、閉形式の減衰、元の先行信号と無音を照合する。保存済み一括2試行は、大きな二つの低振幅区間に挟まれた信号の中央80フレームと、前後の照合窓の位相を照合する。各無音区間はモデルの対応区間を超えず、短くなる量は128フレーム以内と予測する。",
+    "edge_probe": "二つの低振幅区間の間から128フレームの信号区間の中心を推定し、前後16フレームの開始位置をすべて試す。最初のリング不足コールバックと仮定する区間の64〜95点を読む。直前の先行信号が0.001以上と推定できる位置で、観測RMSがその5%以下なら、公開版の減衰がそのまま出力される仮説を支持しない。公開版に沿ったモデルと、失敗時のバッファをゼロと仮定した参照の両方を記録する。この照合でSafari内部の実行経路を確定しない。"
+  }
+}

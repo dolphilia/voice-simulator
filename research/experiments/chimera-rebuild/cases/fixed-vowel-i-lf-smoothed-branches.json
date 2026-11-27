@@ -1,0 +1,40 @@
+{
+  "id": "fixed-vowel-i-lf-smoothed-branches",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+    "case": "fixed-vowel-i-lf-branch-loss",
+    "sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+  },
+  "hypothesis": "固定 /i/ の節点34→35と35→36を幅60 cm³/sで平滑化する。保存した上流の流量を固定して圧力損失の差を伝搬させると、660 Hzの奇・偶成分と770 Hzの偶成分は振幅則からのずれが増え、770 Hzの奇成分だけ減る。再描画の増減率とこの予測との差は各0.2パーセントポイント未満、実際の複素差のうち流量が変わった分の大きさは1%未満と予想する。",
+  "fixed_flow_prediction": {
+    "660/odd_scaling_gap": 0.180226,
+    "660/even_scaling_gap": 0.261818,
+    "770/odd_scaling_gap": -0.172668,
+    "770/even_scaling_gap": 0.290959
+  },
+  "prediction_rounding_tolerance": 1e-6,
+  "hypothesis_prediction_error_lt": 0.002,
+  "hypothesis_flow_response_share_lt": 0.01,
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "smoothing_width_cm3_s": 60,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "variants": {"baseline": [], "smoothed": [[34, 35], [35, 36]]},
+    "series_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10
+  },
+  "input": "固定 /i/ の登録姿勢と、固定LFの基本波110 Hzの変更を倍率0、±1、±0.5で与えた5入力を保存済みケースから使う。固定上流と研究版の隔離ビルドで、標本76,800から選択した2枝に平滑化を適用する。絶対流量60 cm³/s以下で元の損失に 1−(1−|U|/60)^3 を掛ける。全5入力の無変更と、定常流だけを与える無変更・平滑化の対照も描画する。",
+  "observation": "切替前1標本・その後128標本、末尾22周期とその直前1標本の節点圧、枝流量、口端および壁流量を保存する。両実装、従来の無変更、圧力収支、最初の差、仕事率と定常流を照合する。口端の660 Hz・770 Hzの比例・二次からの複素差を、元の流量で新旧の式を比較した寄与と、流量が変わった寄与から再構成する。",
+  "acceptance": "対象の2枝は無変更の4比較の寄与上位2枝と一致する。無変更の保存系列、および定常流だけの無変更・平滑化はビット一致する。両実装の動的な観測、圧力損失、複素差を従来と同じ閾値で判定し、許容差を超える負の損失仕事率は0標本とする。固定流量の増減率を登録値の丸め許容差内で再現する。再描画に関する仮説の成否は計測手順の合否と分けて保存する。"
+}

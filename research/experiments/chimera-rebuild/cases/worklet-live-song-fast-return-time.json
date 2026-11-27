@@ -1,0 +1,15 @@
+{
+  "id": "worklet-live-song-fast-return-time",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "offline_case": "worklet-song-voice-fast.json",
+  "deferred_case": "worklet-live-song-deferred-split-preparation.json",
+  "return_reference_run": "worklet-live-song-cubeb-return-time-20261121-repeat",
+  "condition_order": [["draw192", "split192", "deferred192"], ["deferred192", "split192", "draw192"]],
+  "expected_frames_before_song": 3072,
+  "hypothesis": "歌詞はPop Deeで揃え、240 BPM・各4分の1拍のスコアと乱流係数0で確認する。仕様を変えた歌唱でも、既知PCMから固定した返却時の残り時間の範囲で構築要求の時刻の飛びを判別できると予測する。2量子遅らせた場合は第1片が構築の次の要求に入り、先行音と歌唱のPCMおよび歌唱開始位置は揃う。",
+  "criteria": {
+    "baseline": "短い歌唱をCLI、固定上流、通常のオフラインWorkletで基準化する。出力49,200フレーム、拍0.5秒と0.5625秒、子音と母音の区間、開大、ビブラートなしを照合する。",
+    "capture": "48 kHz・256フレームの試験用Firefoxで、構築時の一括事前描画、分割、2量子遅らせた分割を各2回実行する。先行音、フレーム番号、時計、PCMの取得条件を維持し、歌唱開始までは無音量子の最初から3,072フレームとする。",
+    "verdict": "構築直後の飛びを、前回の既知PCMだけで定めた範囲で判別する。基準の生データを選び直さず、誤判定と保留も保存する。分割の配置は要求の相対位置と前後4要求の処理時間で比較し、音と計画の照合結果を判定と別に保存する。"
+  }
+}

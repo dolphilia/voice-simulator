@@ -1,0 +1,67 @@
+{
+  "id": "worklet-midi-elephant-squeak",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-squeak.json",
+  "input": {
+    "creature": "elephant",
+    "key_mode": "call",
+    "call_id": "squeak",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [8, 45],
+    "capture_seconds": 1.35,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.21, "type": "note-off", "note": 60},
+      {"seconds": 0.36, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 0.46, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "両方のキーで弁音高目標は820 Hzから始まり、0.45秒で880 Hzへ達する。2回目の押下では弁の高さ・速度と声門の状態を引き継ぎながら、呼気目標を0、モード目標を1へ戻す。モードが上がる最初の更新で、鼻の実断面の下限4.5×(1−モード)は再発音の直前より小さくなる。採用時刻を保って音番号だけを交換した対照のPCMと弁の状態はビット一致する。",
+  "criteria": {
+    "routing": "固定上流と研究版の通常画面でSqueakを選び、入力した音番号・割り当てた周波数・採用時刻を照合する。",
+    "physics": "各離鍵後と再発音の前後で弁の目標音高、差圧、変位、速度、自由開口、実断面、鼻先と口端の流量を測る。自由開口と面積下限のどちらが実断面を決めるかを独立式で照合する。",
+    "counterfactual": "2回の押下と離鍵の音番号だけを交換し、採用位置を保った再実行で加工前PCMと観測系列が一致するかを検証する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-elephant-squeak-20261120-repeat",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": -4,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_target_tolerance_hz": 1e-10,
+    "worklet_tolerance": 1e-12,
+    "release_window_seconds": [0.02, 0.10],
+    "reed_winner_window_seconds": [0.0, 0.04],
+    "squeak_curve_observation_seconds": [0.0, 0.04, 0.20, 0.45],
+    "minimum_release_gate": 0.55,
+    "minimum_release_pcm_rms": 0.0001,
+    "minimum_release_reed_opening_range_cm2": 0.0001,
+    "minimum_release_nasal_ac_rms_cm3_s": 0.1,
+    "lip_pitch_tolerance_hz": 1e-9,
+    "natural_end_tolerance_control_ticks": 1
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "call_id", "gate_goal", "gate", "target_pitch_hz", "mode", "target_mode", "lip_pitch_hz", "target_lip_pitch_hz", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "glottis_area_cm2", "glottis_phase", "nasal_base_pressure_dyn_cm2", "trunk_inlet_pressure_dyn_cm2", "reed_drive_dyn_cm2", "reed_height_cm", "reed_speed_cm_s", "reed_opening_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 64800]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "call_id", "gate", "target_pitch_hz", "mode", "target_mode", "lip_pitch_hz", "target_lip_pitch_hz", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "glottis_area_cm2", "glottis_phase", "nasal_base_pressure_dyn_cm2", "trunk_inlet_pressure_dyn_cm2", "reed_drive_dyn_cm2", "reed_opening_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 64800]]
+    },
+    "swapped-cli.csv": {
+      "columns": ["frame", "target_lip_pitch_hz", "reed_height_cm", "reed_speed_cm_s", "reed_opening_cm2", "trunk_valve_area_cm2", "nasal_cm3_s", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 64800]]
+    },
+    "swapped-upstream.csv": {
+      "columns": ["frame", "target_lip_pitch_hz", "reed_drive_dyn_cm2", "reed_opening_cm2", "trunk_valve_area_cm2", "nasal_cm3_s", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 64800]]
+    }
+  }
+}

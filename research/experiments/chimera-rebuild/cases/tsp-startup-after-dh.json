@@ -1,0 +1,25 @@
+{
+  "id": "tsp-startup-after-dh",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-after-dh-20261121-a",
+  "recording_ids": ["FA01_01", "MA01_01", "MK62_02", "MK62_04"],
+  "hypothesis": "先行対照と同じ舌先座標を使うと、追加4件でも最初の調音目標の適用前は無音になる。MA01_01と確認用男性2件は副しきい値の境界が固定上流に揃う。",
+  "controlled_input": "tsp-startup-resting-tip.json と同じく、同じバイナリで舌先の初期座標2値だけを静止位置に変える。",
+  "observation": "出力48 kHzの最初の2352フレームの間引き出力とPCM。全体の発話区間は主しきい値−35 dBと副しきい値−45 dBの両方を記録する。",
+  "prior_result": "tsp-startup-after-dh-20261121-a",
+  "guard_basis": "第1版の50 msの中に、発話頭 /ð/ の調音目標が入っていた。第2版のガード終端は t0=0.110 から舌先の準備31 msとランプ30 msを引いた0.049 s（2352フレーム）。/ð/ で始まる3件で、これを過ぎた最初の64フレーム制御境界2368を独立に確認する。",
+  "pre_roll_frames": 2352,
+  "maximum_pre_roll_pcm_peak": 1e-12,
+  "maximum_pre_roll_decimated_peak": 1e-12,
+  "sensitivity_threshold_db": -45,
+  "match_sensitivity_intervals": ["MA01_01", "MK62_02", "MK62_04"],
+  "expected_first_nonzero_frames": {"FA01_01": 2368, "MA01_01": 2368, "MK62_02": 2368},
+  "acceptance": "全4件でガード内の固定上流のPCMはゼロ、元の候補では先頭の間引き出力から非ゼロを確認。舌先対照でガード内のPCMピーク、間引き出力ピークが上限を満たし、総フレーム数は元の候補と同じ。指定3件は副しきい値の両境界が固定上流と一致すること。指定された /ð/ 始まりでは固定上流と舌先対照の最初の非ゼロフレームが独立計算と一致すること。",
+  "retain_csv": {
+    "FA01_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]},
+    "MA01_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]},
+    "MK62_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]},
+    "MK62_04/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]}
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "songbird-sustain-pcm",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "呼気の指示は次の64フレーム境界で反映され、4 msで立ち上がり12 msで減衰する。PCMのレンダーを分割しても絶対フレーム番号に対応する出力は一致する。増幅条件ではDC除去後の絶対値0.7を超える部分に飽和がかかる。",
+  "songbird_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 36000,
+    "level": 1.0,
+    "controls": {"pitch_hz": 2600.0, "interval_semitones": 7.0, "voices": 0.5, "drive": 0.35, "tension": 0.4, "pressure_kpa": 0.9, "purity": 0.8, "oec_cm3": 0.4, "gape": 0.55},
+    "events": [{"frame": 73, "gate": 1.0}, {"frame": 11567, "gate": 0.0}]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "sustain-48000", "overrides": {}},
+      {"id": "sustain-44100", "overrides": {"sample_rate_hz": 44100, "frames": 33075}},
+      {"id": "sustain-96000", "overrides": {"sample_rate_hz": 96000, "frames": 72000, "events": [{"frame": 147, "gate": 1.0}, {"frame": 23135, "gate": 0.0}]}},
+      {"id": "gesture-loud", "overrides": {"level": 3.0, "events": [
+        {"frame": 73, "gate": 1.0},
+        {"frame": 5071, "gate": 1.3, "controls": {"pitch_hz": 3100.0, "interval_semitones": -5.0, "voices": 0.25, "drive": 0.45, "tension": 0.35, "pressure_kpa": 1.1, "purity": 0.65, "oec_cm3": 0.55, "gape": 0.35}},
+        {"frame": 11567, "gate": 0.0}
+      ]}},
+      {"id": "upper-cli-prefix", "overrides": {"frames": 76800, "events": [
+        {"frame": 0, "gate": 1.0, "controls": {"pitch_hz": 2600.0, "interval_semitones": 7.0, "voices": 0.0, "drive": 0.35, "tension": 0.4, "pressure_kpa": 0.9, "purity": 0.8, "oec_cm3": 0.4, "gape": 0.55}},
+        {"frame": 57600, "gate": 0.0}
+      ]}}
+    ],
+    "host_block_frames": [128, 77],
+    "control_frames": 64,
+    "attack_seconds": 0.004,
+    "release_seconds": 0.012,
+    "parameter_time_constants_seconds": {"pitch_hz": 0.008, "interval_semitones": 0.02, "voices": 0.02, "drive": 0.02, "tension": 0.02, "pressure_kpa": 0.01, "purity": 0.02, "oec_cm3": 0.03, "gape": 0.02},
+    "logarithmic_parameters": ["pitch_hz", "oec_cm3"],
+    "nominal_gain": 4.8e-7,
+    "dc_cutoff_hz": 12.0,
+    "limiter_threshold": 0.7,
+    "pcm_absolute_tolerance": 1e-6,
+    "dc_absolute_tolerance": 1e-9,
+    "fir_absolute_floor": 1e-9,
+    "fir_peak_relative_tolerance": 1e-9,
+    "acoustic_absolute_floor": 1e-8,
+    "acoustic_peak_relative_tolerance": 1e-7,
+    "control_absolute_tolerance": 1e-9,
+    "steady_window_before_release_seconds": [0.07, 0.02],
+    "tail_window_seconds": 0.02,
+    "minimum_steady_rms": 0.03,
+    "maximum_tail_to_steady_rms_ratio": 1e-8,
+    "minimum_limited_frames_loud": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "worklet-pcm-spectrum",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "ipa_case": "worklet-ipa-voice.json",
+  "hypothesis": "同じ出力PCMと窓から計算した片側振幅がブラウザ、CLI、固定上流で一致する。絶対目盛では母音から閉鎖にかけてピークが下がり、再開口後の窓で戻る。",
+  "measurement": {
+    "fft_size": 2048,
+    "window": "blackman-periodic",
+    "frequency_range_hz": [60, 8000],
+    "display_min_dbfs": -120,
+    "selected_frames": [0, 6750, 12287, 14591, 49827],
+    "voiced_frame": 6750,
+    "closure_frame": 12287,
+    "release_frame": 14591,
+    "voiced_peak_frequency_hz": [650, 900],
+    "minimum_voiced_to_closure_drop_db": 50,
+    "minimum_closure_to_release_rise_db": 20,
+    "independent_fft_absolute_tolerance": 1e-12,
+    "upstream_amplitude_absolute_tolerance": 5e-12,
+    "svg_coordinate_tolerance": 1e-8,
+    "viewport_widths_css_px": [960, 390],
+    "analytic": {
+      "tone_bin": 53,
+      "tone_peak": 0.5,
+      "dc_peak": 0.25,
+      "nyquist_peak": 0.125,
+      "amplitude_tolerance": 1e-8
+    }
+  }
+}

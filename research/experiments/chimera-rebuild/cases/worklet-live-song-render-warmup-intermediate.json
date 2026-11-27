@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-song-render-warmup-intermediate",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_case": "worklet-live-song-render-phases.json",
+  "warmup_case": "worklet-live-song-render-warmup.json",
+  "warmup_reference_run": "worklet-live-song-render-warmup-20261121-repeat",
+  "frame_reference_run": "worklet-live-song-render-warmup-frames-20261121-repeat",
+  "measurement": {
+    "condition_order": [["draw192", "draw256"], ["draw256", "draw192"], ["draw192", "draw256"], ["draw256", "draw192"]],
+    "preparation_frames": {"draw192": 192, "draw256": 256},
+    "block_frames": 64,
+    "zero_frame_calls": 1000,
+    "minimum_trials_with_first_two_within_budget": 3,
+    "expected_budget_results": {"draw192": true, "draw256": true},
+    "minimum_constructor_saving_192_vs_256_ms": 0.5
+  },
+  "hypothesis": "最初の比較で128フレームは最初の量子に予算超過を残し、256フレームは全4試行を予算内に収めた。64フレームずつ3回描画する192フレームの事前描画でも、先頭2量子が予算内になる試行は4回中3回以上、構築は256フレームより各組の差の中央値で0.5 ms以上短くなると予測する。",
+  "criteria": {
+    "input": "フレーム数の最初の比較と同じFirefoxの通常画面、48 kHzのPop Dee、失敗歌詞からの復帰、延期した資産本文の検証を用いる。192と256出力フレームを交互に4組採る。",
+    "timing": "本番量子には印を追加せず、構築・最初の2量子・定常部・超過フレームを前回と同じネイティブ区間で照合する。構築区間内で準備を完了したフレーム数を検査する。",
+    "reference": "本番PCM全91,200点・音響観測1,425行・調音計画・拍・辞書・WASMを同じブラウザとCLIの基準に照合し、固定上流との差には従来の許容幅を使う。先頭2量子の時間の判定と、信号の一致の判定は個別に保存する。"
+  }
+}

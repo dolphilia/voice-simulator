@@ -1,0 +1,63 @@
+{
+  "id": "songbird-chirps-trachea-all-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-cell13-balance-44100-20261123-repeat",
+    "manifest_sha256": "0bba6e287261ad21d9fd991576fb3e9772f25096fffcb345d8a1b583f2bad32f",
+    "case_id": "songbird-chirps-trachea-cell13-balance-44100"
+  },
+  "sample_rate_hz": 176400,
+  "reference_observation_internal_samples": 16,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "trachea_cell_index": 13,
+  "trachea_cells": 16,
+  "trachea_observation_cells": [
+    14,
+    13,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "baseline_momentum_inlet_cells": [
+    14
+  ],
+  "momentum_scope": "all_tracheal_branches",
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "volume_source_cutoff_hz": 60,
+  "neck": {
+    "area_cm2": 0.03,
+    "length_cm": 0.25,
+    "entrance_loss": 0.3,
+    "expansion_loss": 0.8,
+    "viscosity_reference_hz": 700
+  },
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000,
+    "stiffness_dyn_cm3": 1000000
+  },
+  "expected_baseline_inlet_offsets": {
+    "matched_time": 11,
+    "native_block": 10,
+    "no_tracking": null
+  },
+  "hypothesis": "気管内の全直列枝で前回運動量の換算順を揃えると、235点制御で押鍵11点後、256点制御で10点後にセル13へ入る流量の初差が遅れると予測する。他の枝から先に残る差が届く場合は、観測した圧力と流量の順序を使って起点を絞る。壁の面積換算に由来する差は残る。追従0では全版で無励振を保つ。",
+  "observation": "前回の10差分を適用した隔離Rustビルドを対照に、気管の直列枝15本で前回運動量の時間換算だけを (L×Uprev)×fs へ揃える。235点制御、256点制御、追従0で押鍵後64内部点を取得する。気管の両端圧と全15枝の流量、壁・首部・腔・くちばし・放射を観測する。保存する再計算系列は気管セル13、14、15とする。",
+  "acceptance": "従来のCSV列が固定上流と対照で前回の先頭16点をバイト再現する。実験変更は気管内の連続範囲の選択に限定し、気管形状と注入の一致、流量と節点圧の対応を確認する。全気管直列枝の流量と観測した節点圧・壁の運動、首部・腔・先端・放射を独立計算とビット照合する。追従0を無励振で確認し、上流との差が遅れるという予測は検証の合否と分けて、残差の起点を保存する。"
+}

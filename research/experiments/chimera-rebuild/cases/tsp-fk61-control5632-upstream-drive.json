@@ -1,0 +1,105 @@
+{
+  "id": "tsp-fk61-control5632-upstream-drive",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "branch_first": {
+    "run": "tsp-fk61-branch-first-difference-20261123-repeat",
+    "case": "tsp-fk61-branch-first-difference",
+    "manifest_sha256": "f843981be4c14633d12bd24ba0e0f095317407bf6a444aaa34b88a155e4ca67e"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control5632-mouth-flow-20261123-repeat",
+    "case": "tsp-fk61-control5632-mouth-flow",
+    "manifest_sha256": "ce06cdaad9170eed1618674e77ef1d9e8bcbafe70ccf7b4b57a9d65bd4438d18"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      5630,
+      5876
+    ],
+    "nodes": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      38,
+      39,
+      40,
+      41
+    ],
+    "terminal_nodes": [
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "point_samples": [
+      5675,
+      5723,
+      5781,
+      5863
+    ],
+    "scope": "固定上流・研究版・下唇評価順を上流に揃えた試験版の通常CLIと観測版を比較し、5630〜5875の節点37〜43、6枝、壁、負荷を採取する。5632から節点38〜43を連成して進め、枝37→38を外から与える。交換する5入力群は開始時の状態、枝37→38の流量系列、節点38〜41の体積源系列、節点42〜43の体積源系列、枝・壁・負荷等の局所係数と乱流圧。全32組と、体積源を各節点で単独交換する条件を比較する。出力の比較では口端流量だけを交換し、壁と鼻端の放射は試験版で固定する。標本番号は0始まりで区間は半開区間。"
+  },
+  "hypotheses": {
+    "inner_volume_sources_exceed_terminal_sources_for_edge41": "5863の枝41→42では節点38〜41の体積源系列を交換した変化が、節点42・43だけの交換より大きい。",
+    "upstream_boundary_is_largest_single_group": "5863の枝41→42では枝37→38の系列の交換が、その他の入力群の単独交換より大きい。",
+    "initial_state_is_smaller_than_later_forcing": "5863の枝41→42では開始状態の交換より大きな変化を、5632以降の入力群の交換のいずれかで得られる。",
+    "post_boundary_inputs_recover_pcm": "5632の開始状態を試験版のままにし、以降の4入力群のどれかを交換した条件で、5863・5864を戻したPCMが冒頭から2937まで一致する。"
+  },
+  "acceptance": "各版の通常CLIと観測版・保存PCMをビット照合する。採取期間の枝・壁・体積源・節点圧・口端を独立に再計算し、先行採取と共通する枝・節点・口端負荷を照合する。両版で6節点を5632から逐次再計算して枝・壁・圧力・口端流量を観測と照合する。枝41→42を外から上流の系列で与える対照で第82版の二節点モデルのPCMを再現する。4時点で枝40→41と41→42の局所交換を記録し、全32条件と6節点の体積源単独交換で枝41→42と口端流量、PCMを比較する。予測の判定は実行の合否と別に保存する。"
+}

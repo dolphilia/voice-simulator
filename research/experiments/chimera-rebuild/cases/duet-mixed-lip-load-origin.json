@@ -1,0 +1,25 @@
+{
+  "id": "duet-mixed-lip-load-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-mixed-radiation-origin-20261122-repeat",
+  "reference_manifest_sha256": "ec7ee549c43b557ea14db9e931dbe185eabcddc20805a8983205741554ddb415",
+  "settings_run": "duet-mixed-output-gain-20261122-repeat",
+  "settings_manifest_sha256": "33fd5009c344b885c7aedf973dda34950cd9b9a08400269e466b48a72193c031",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "body": {"female": 0.4, "child": 0.3},
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "pcm_frames": 97920,
+  "reference_traced_internal_samples": 50304,
+  "first_observed_lip_difference": 50049,
+  "observation_internal_samples": [50033, 50080],
+  "tolerances": {
+    "pressure_dyn_cm2": 1e-9,
+    "output_flow_cm3_s": 1e-11,
+    "first_difference_residual_cm3_s": 5e-19
+  },
+  "hypothesis": "通常レベルの混合体型で最初に口端流量が異なる内部サンプル50,049では、更新前の口端圧力と慣性枝流量が両版とも0である。差は口端のR–L負荷の丸めだけで説明できる量を超え、終端セルへの正味流入かコンプライアンス・放射抵抗・慣性のいずれかに現れると予測する。",
+  "criteria": "混合体型・休止舌先・音源の変動0・一致ゲインの入力を固定し、通常CLIのPCMと各版の観測PCMを先行実行に全97,920フレームでビット照合する。内部96 kHzの50,033〜50,080を採取し、放射負荷を解いたか、断面積、セル長、コンプライアンス、抵抗・慣性、更新前圧力・慣性枝流量、断面更新後と枝更新後と壁更新後の流入、更新後圧力・慣性枝流量・口端流量を照合する。放射出力の先行値をビット照合する。中点の圧力・流量を十進多倍長で求め、各版の圧力と流量の誤差を照合する。最初に異なるステップでは、一方の入力の流入だけを入れ替える順序と、他の入力を先に入れ替える順序を平均し、流入とそれ以外の寄与を比較する。解を丸めた時点で残る差は、測定した最初の差から独立計算の差を引いて別に記録する。"
+}

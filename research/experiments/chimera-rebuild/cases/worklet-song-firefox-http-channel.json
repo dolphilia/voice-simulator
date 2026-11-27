@@ -1,0 +1,33 @@
+{
+  "id": "worklet-song-firefox-http-channel",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "profile_runs": [
+    "worklet-song-firefox-registration-native-20261121-a",
+    "worklet-song-firefox-registration-native-20261121-b",
+    "worklet-song-firefox-registration-native-20261121-repeat"
+  ],
+  "hypothesis": "送信前の長い待ちは親がAsyncOpenを受け取った後に集中し、受信後に長く待った試行では親のチャネル完了マーカーまでに大半が現れる。コンテンツ側チャネルを開いてから親の受け取りまで、および親から子の完了マーカーまでの間隔は、それぞれ10 ms以内と予測する。",
+  "measurement": {
+    "long_wait_ms": 100,
+    "expected_parent_open_and_stop_boundary_ms": 10,
+    "maximum_shared_timing_residual_ms": 0.1,
+    "maximum_profile_origin_error_ms": 1,
+    "maximum_async_open_flow_difference_ms": 0.1,
+    "additional_capture": {
+      "condition_order": [["serial", "parallel"], ["parallel", "serial"]],
+      "profiler_feature": "ipcmessages",
+      "log_modules": "nsHttp:4",
+      "maximum_constructor_marker_distance_ms": 1
+    }
+  },
+  "criteria": {
+    "selection": "前回の初回・修正後・再実行の全18試行を使う。初回の不合格2件も保存プロファイルから再照合して含める。通常画面から得た実時間歌唱のWAV全体、レート、採取フレーム、観測と歌唱計画をCLIと固定上流の既存判定に照合する。",
+    "channel": "1件のサーバー要求と同じURLの成功した開始と停止を、親・コンテンツのメインスレッドでURL、チャネルID、ウィンドウIDにより一意に結ぶ。両プロセスに複製されたトランザクションのrequestStart、responseStart、responseEndから原点の差を求める。残差は0.1 ms以内、プロファイルの開始時刻からの独立な原点差とのずれは1 ms以内とする。各マーカーの出所と照合に使った時刻を保存する。",
+    "opening": "コンテンツのチャネル開設、親のReceive AsyncOpen、親チャネル開設、ProcessNewTransaction、DispatchTransaction、送信開始を取り、時間差を測る。チャネルID付きマーカーはURLと一緒に照合する。送信前に100 ms以上かかった各試行の最大区間を記録する。",
+    "completion": "responseEnd、親のOnStopRequestの開始・終了、親と子の完了の順に観測する。親のOnStopRequestは親メインのAsyncOpenFinal開始をチャネル開設の時刻と0.1 ms以内で一意に照合し、同じフローIDで結べた場合に採用する。応答受信後に100 ms以上かかった試行について、停止処理開始の前後と親子の境界との差を記録する。",
+    "evidence": "観測の有効性と時間予測の成否を別に出す。IPC送受信やRunnableの投入・実行は、メッセージIDや同じフローIDで対象チャネルに結べる場合だけ帰属させ、取得できなければ欠測として出す。プロファイル内で同じ時刻帯に出た別タスクは原因の根拠に使わない。後続の再実行では同じ18プロファイルから同じ分析結果が得られることを確認する。",
+    "additional_capture": "保存プロファイルにIPCがない場合の追加採取では、現行順・並行登録を各2回行う。プロファイルのIPCとnsHttpログを同時に採り、チャネルIDが一致する子のContinueAsyncOpenと親のReceive AsyncOpenに挟まれる一つのコンストラクタを相互のPID、メッセージ名、シーケンス番号で結ぶ。子のログから1 ms以内に同名メッセージが複数ある場合は帰属を保留する。送信・転送・受信・受信処理の段階はマーカーがある区間のみ測る。",
+    "additional_stop_analysis": "追加採取の完了通知については、子のContinueAsyncOpenとProcessOnStopRequestに出る同じオブジェクト識別子を用いる。同じソケットスレッドでProcessOnStopRequestの1 ms以内に一つだけ先行するBackgroundChannelの停止IPCを結べる場合は、親の完了マーカー、子のIPC処理、子の完了マーカーを比較する。ログや一意な照合が欠ける試行は時刻の帰属を保留する。"
+  }
+}

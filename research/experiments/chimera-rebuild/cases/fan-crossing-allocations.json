@@ -1,0 +1,25 @@
+{
+  "id": "fan-crossing-allocations",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "扇状走査線で最大64件の交差を固定容量に入れ、等距離の順を保ったまま処理すると、断面とPCMをビット一致させたまま描画中の割り当てが減る。",
+  "reference": {
+    "live_run": "worklet-live-ipa-20261119-d",
+    "live_manifest_sha256": "e7a733a019e70bbf9bbeb15eae743bd7ac6642a94834fea296b133414cf18c4c",
+    "grid_source_sha256": "33c04929918a60ac26bf16cb99e08eb53d59c6346357967963f39046fb56f9ff",
+    "geometry_runs": {
+      "tract-slew-vowels": "tract-slew-vowels-20261119-d",
+      "tract-slew-lips": "tract-slew-lips-20261119-b",
+      "tract-slew-contact": "tract-slew-contact-20261119-d"
+    }
+  },
+  "measurement": {
+    "maximum_crossings": 64,
+    "minimum_native_allocation_reduction_fraction": 0.60,
+    "allocation_windows": ["all", "after_32_quanta"],
+    "require_bitwise_live_pcm_and_observations": true,
+    "require_byte_identical_native_dense_and_geometry_traces": true,
+    "expected_same_distance_floors_cm": [9.0, -2.5],
+    "expected_capped_floor_cm": 48.0,
+    "expected_missing_inner_floor_cm": -2.5
+  }
+}

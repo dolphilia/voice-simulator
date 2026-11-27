@@ -1,0 +1,29 @@
+{
+  "id": "worklet-live-song-fast-context-lead",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "realtime_reference_run": "worklet-live-song-fast-teeth-lowpass-floor-20261121-repeat",
+  "measurement_revision": 2,
+  "previous_run": "worklet-live-song-fast-context-lead-20261121-a",
+  "condition": "floor1200",
+  "condition_order": [["cold", "lead"], ["lead", "cold"], ["lead", "cold"], ["cold", "lead"]],
+  "marker": {
+    "quantum": 128,
+    "initial_lead_quanta": 16,
+    "ready_quanta": 32,
+    "capture_quanta": 512,
+    "defer_close_until_marker": true,
+    "multiplier": 421,
+    "offset": 173,
+    "modulus": 65521,
+    "center": 32760,
+    "scale": 524288
+  },
+  "marker_observation_quanta": { "before_first_voice_callback": 8, "after_final_voice_quantum": 2 },
+  "hypothesis": "通常画面で同じPop Deeを実時間歌唱し、先行信号を32量子以上動かしてから歌唱を接続すると、無音から始める対照より、開始待ちにフレームが飛んだ試行が減る。両条件とも最後の連続8量子の始点から3,072フレームで開始し、歌唱PCMはオフライン基準に全点一致する。",
+  "criteria": {
+    "input": "Chromiumの短い音符、48 kHz・128フレーム量子・49,200フレーム。全体係数1、声門と狭窄のゲイン倍率0、歯フィルタの下限1,200 Hz。同じ音源・量子・並列観測を使い、先行信号ありのみ別の連続する信号枝を加える。",
+    "clock": "歌唱が最初に呼ばれてから開始予約までの飛びの回数と欠けたフレーム数、連続区間の先頭、予約時刻を記録する。歌唱の最初の呼び出しより前8量子から歌唱の最後の量子の後2量子まで、先行信号のPCMと時刻を独立計算に照合する。",
+    "pcm": "歌唱枝の最初の入力量子から448量子を採取し、絶対フレームで整列する。先行信号の有無の両方で、歌唱PCM・観測・保存ケースを前回のオフライン実行に照合する。固定上流との既知の差も記録する。開始待ちの飛びが減るという予測は、取得の成否と別に扱う。"
+  }
+}

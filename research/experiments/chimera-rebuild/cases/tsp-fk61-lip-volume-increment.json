@@ -1,0 +1,29 @@
+{
+  "id": "tsp-fk61-lip-volume-increment",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "lip": {"run": "tsp-fk61-lip-onset-20261123-repeat", "case": "tsp-fk61-lip-onset", "manifest_sha256": "958c4844526da6767ceaf065e99624678362904c703945f99fb5f4df6c09eaf5"},
+  "output": {"run": "tsp-fk61-pcm-first-difference-20261123-repeat", "case": "tsp-fk61-pcm-first-difference", "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"},
+  "matched": {"run": "tsp-held-out-matched-speech-20261123-repeat", "case": "tsp-held-out-matched-speech", "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"},
+  "measurement": {
+    "recording_id": "FK61_01",
+    "scope": "研究版の人間の口端1節点の体積流量だけを変更する。面積下限、保存体積、狭窄での配分、平滑化、管内負荷、出力は同じ経路を使う。臨時のRustビルドを通常CLIと観測器で実行する。",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "internal_window": [3952, 3980],
+    "registered_onset": 3968,
+    "prefix_frames": 2048,
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "raw_absolute_error_cm3_s": 1e-16,
+    "minimum_onset_error_improvement": 1000,
+    "baseline_first_pcm_difference": 1989
+  },
+  "hypotheses": {
+    "increment_is_more_accurate": "内部標本3968で、面積と長さの積差の有理数参照に対する研究版の生の体積流量の絶対誤差が1000分の1以下に減る。",
+    "radiation_onset_agreement_improves": "内部標本3968で放射差分の固定上流との差が縮む。",
+    "first_pcm_difference_moves_later": "固定上流との最初のfloat32 PCM差はフレーム1989より後ろに移る。"
+  },
+  "acceptance": "固定上流と標準研究版の保存済みPCMから最初の差1989を再現する。試験版の通常CLI・観測器の全PCMをビット照合する。口端の28標本で面積・長さ・保存体積・負荷係数が標準版に一致し、同じ幾何を使った有理数参照との誤差が1e-16 cm³/s以下であることを確認する。体積流量、平滑値、口端R–L負荷、出力段を独立に再現し、放射・PCMの最初の差と最大差を報告する。仮説は合否と個別に記録する。"
+}

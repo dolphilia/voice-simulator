@@ -1,0 +1,39 @@
+{
+  "id": "human-body-fixed-voice",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-airway", "vowel-voice-alpha"],
+  "hypothesis": "共通の固定 /ɑ/ 姿勢に体型を適用すると、既定音高は対数補間され、成人女性と子どもの声門パルスは成人男性より長い位相範囲で開く。声門面積の周期振幅は成人男性、成人女性、子どもの順に小さくなる。肺の補償抵抗は気管の面積に反応し、肺境界は前サンプルのポート流量から再構成できる。",
+  "pose_from_case": "vowel-voice-alpha.json",
+  "initial_state": "圧力、流量、呼気ゲート、声門位相を0にし、姿勢は指定値、音高は指定値または体型既定値に初期化する。ジッタ、シマー、ピッチドリフト、乱流を0にする。スコアとイベントは与えない。",
+  "voice": {
+    "pressure_cm_h2o": 7.2,
+    "gate": 1.0,
+    "breathiness": 0.15,
+    "tension": 0.5,
+    "output_gain": 5.5e-7
+  },
+  "variants": [
+    {"id": "male", "body": "male", "weights": [1, 0, 0]},
+    {"id": "female", "body": "female", "weights": [0, 1, 0]},
+    {"id": "child", "body": "child", "weights": [0, 0, 1]},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3]},
+    {"id": "female-110", "body": "female", "weights": [0, 1, 0], "f0_hz": 110},
+    {"id": "child-64k-direct", "body": "child", "weights": [0, 0, 1], "internal_rate_hz": 64000, "output_rate_hz": 64000}
+  ],
+  "measurement": {
+    "duration_s": 0.8,
+    "steady_window_s": [0.4, 0.7],
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "block_frames": [128, 77],
+    "maximum_pcm_absolute_error_lt": 5e-7,
+    "maximum_trace_peak_relative_error_lt": 1e-8,
+    "maximum_pitch_absolute_error_hz_lt": 1e-6,
+    "maximum_steady_area_absolute_error_cm2_lt": 2e-8,
+    "maximum_direct_area_absolute_error_cm2_lt": 2e-9,
+    "maximum_direct_lung_boundary_absolute_error_dyn_cm2_lt": 2e-6,
+    "minimum_steady_voicing": 0.95,
+    "minimum_expected_open_quotient_increase_female_110": 0.12,
+    "maximum_pcm_peak": 0.75
+  }
+}

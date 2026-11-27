@@ -1,0 +1,27 @@
+{
+  "id": "tsp-seems-drift-only",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-seems-spectrum-stages-20261123-repeat",
+    "case": "tsp-seems-spectrum-stages",
+    "manifest_sha256": "1262641b248c5db570a3ee17d41216de9fa99a717936fd32e256bf7188f8c839"
+  },
+  "source_drift": {
+    "default_cents": 5,
+    "disabled_cents": 0,
+    "control_interval_samples": 32,
+    "filter_base_hz": 0.3,
+    "seed": 4242
+  },
+  "limits": {
+    "pitch_ratio_agreement_cents": 1e-8,
+    "meaningful_lpc_convergence_hz": 2
+  },
+  "hypotheses": {
+    "first_change_is_f0_and_phase": "既定のドリフトを止めると、最初の内部標本で瞬時F0と位相が変わる。各標本で1200×log2(F0既定/F0停止)は独立に再計算したドリフト量と1e-8セント以内で一致する。",
+    "glottal_distribution_moves_toward_candidate": "同じ25 ms窓で、1950〜2600 Hzの声門流量パワー分布の研究版までの全変動距離が小さくなる。",
+    "pcm_pole_moves_toward_candidate": "同じ25 ms窓で、研究版との高域PCM LPC極の絶対差が2 Hz以上縮まる。"
+  },
+  "acceptance": "固定したseemsの発話計画、辞書、男性体型、96 kHz内部レート、48 kHz PCM、観測範囲と1.1525〜1.1775秒の窓は先行ケースを引き継ぐ。上流の音源設定のうちドリフト振幅だけを5セントから0セントにする。jitter、shimmer、声帯下と声帯上の圧力の結合は既定のまま動かす。既定の通常CLI・観測付き全PCM・保存済みPCMのビット一致、両上流条件の発話計画の一致、保存済み窓との一致を確認する。瞬時F0比を96 kHzの観測先頭から独立計算し、状態が最初に分かれる時刻を記録する。両上流条件を独立な放射・出力計算で照合する。研究版の保存窓を同じ手法で計算し、全3条件のフーリエ和とFFT、固定Rustと独立LPCを先行の許容差で照合する。効果量の仮説判定は計測の合否と併記する。"
+}

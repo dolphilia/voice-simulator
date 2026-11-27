@@ -1,0 +1,29 @@
+{
+  "id": "worklet-live-song-audioipc-system-centered",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "previous_gated_case": "worklet-live-song-audioipc-system-gated.json",
+  "previous_gated_run": "worklet-live-song-audioipc-20261121-gated-a",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {
+      "template": "Audio System Trace",
+      "time_limit": "2s",
+      "all_processes": true,
+      "marker_ready_offset_ms": 830,
+      "marker_capture_quanta": 1536
+    }
+  },
+  "correlation": {
+    "maximum_trace_epoch_adjustment_ms": 1.0,
+    "maximum_transport_time_ms": 2.0,
+    "maximum_instrumentation_increase_ms": 2.0
+  },
+  "criteria": {
+    "alignment": "980 ms条件では構築が収録末尾の5〜8 ms後だったので、歌唱ノードの構築許可だけを150 ms早める。構築がトレース開始の約110〜168 ms後に入り、前後8要求を含むと予測する。",
+    "events": "保持したトレースの時刻とクライアントのDataCallbackの時計は、受信終了と応答送信開始の両端で残差0.5 ms以内、時刻の補正幅1 ms以内、同じfdの順序を採用条件とする。送信から相手の受信終了までを各2 ms以内として、バイト数が一致する一意なサーバー系列を探す。",
+    "perturbation": "ブラウザ採取と別のトレース書き出しが同時に動かないようにする。比較用の予備採取、PCMと観測の判定、構築時間と要求間隔の増分2 msの条件は前回と共通とする。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "fixed-voice-release-output-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_run": ["fixed-voice-pharyngeal-second-cell-history-48000-repeat", "a76d9fdd91bde09ccc5ed34d0fd37c05d4f65cb4397e5275a8d5008d4d03c898"],
+  "upstream_pcm_run": ["worklet-rate-48000-memory-repeat", "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b"],
+  "internal_rate_hz": 96000,
+  "output_rate_hz": 48000,
+  "full_frames": 93056,
+  "blocks": [128, 77],
+  "gate_open_frame": 4096,
+  "gate_close_frame": 54656,
+  "target_frame": 55880,
+  "output_window": [55872, 55889],
+  "internal_window": [111697, 111778],
+  "fir_taps": 49,
+  "hypothesis": "出力55,880フレーム目の1 ULPのPCM差は、先行する内部放射または出力段の持ち越し状態の差がf32の丸め境界をまたいだ結果と予測する。入力放射とFIR係数を交差させ、現在の間引き出力、直流除去の前回入力・出力、リミッターの状態を分けて置換する。",
+  "observation": "固定 /i/、出力48 kHz・内部96 kHzで開始から93,056フレームの通常描画。ゲート開放4,096・停止54,656。出力55,872〜55,888の17点と全FIR履歴を含む内部111,697〜111,777の81点で、放射、係数、間引き、直流除去、リミッター直前の状態とf32への丸めを採る。ホスト分割128・77で研究版を再生する。",
+  "acceptance": "追加観測後の全PCMが対照の保存出力とビット一致する。両版の全17点で同じ係数と放射履歴から間引き、直流除去、出力制限とf32への丸めを独立再計算し、対象フレームのPCM差を再現する。各段が分かれる最初の観測点と、上流のPCMを復元する入力・状態の最小組を記録する。"
+}

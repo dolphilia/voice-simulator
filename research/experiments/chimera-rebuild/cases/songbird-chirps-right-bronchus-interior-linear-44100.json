@@ -1,0 +1,32 @@
+{
+  "id": "songbird-chirps-right-bronchus-interior-linear-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-bronchus-interior-balance-44100-20261123-repeat",
+    "manifest_sha256": "6c1aecd857355a9f65e370f0944c3ec297d6e4cabce682966cdcf8aa738014c4"
+  },
+  "right_bronchus_term": "interior_linear",
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "interior_cell": 1,
+  "expected_control_inflow_offsets": {
+    "matched_time": 19,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "predicted_first_inflow_effect": {
+    "matched_time": {"offset": 19, "flow_hex": "-0x1.380405ce2185fp-32"},
+    "native_block": {"offset": 19, "flow_hex": "-0x1.c14dc21fba911p-31"},
+    "no_tracking": null
+  },
+  "hypothesis": "右気管支のセル0から1への直列枝だけで、線形係数に入る慣性を両端の長さと逆面積の積から組み立て、サンプルレートを掛ける。両条件の押鍵19点後の流入が予測した値で上流と一致する。セル0と1の圧力には同じ標本、セル2への流入には次の標本、右鳴管へは早くても2標本後に効果が届く。持ち越し運動量と粘性抵抗には候補の式を使う。",
+  "observation": "右気管支末端の持ち越しまで揃えた先行版を通常render CLIで再描画する。内部176400 Hzの押鍵後0〜63点で、左右の気管支の先頭、セル1、末端、右鳴管、気管、口腔食道腔、くちばしと放射を観測する。気管支のセル1と末端の収支、枝流量、鳴管と下流の応答を観測入力から再計算する。",
+  "acceptance": "対照のCSVと固定上流のCSVを照合し、最初の流入差を解消する。3条件・3版で流量・節点圧のビット照合、幾何と押鍵前の一致、閉鎖時の流量0、追従0の無励振、最短伝播時刻を確認する。圧力と枝流量の最初の残差を単独置換で調べ、局所予測と連続描画が異なる場合は両方を記録する。"
+}

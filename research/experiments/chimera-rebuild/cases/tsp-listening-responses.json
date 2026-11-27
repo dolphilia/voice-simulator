@@ -1,0 +1,29 @@
+{
+  "id": "tsp-listening-responses",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "tsp-active-duration-original-20261121-repeat",
+  "source_case": "tsp-active-duration-original",
+  "hypothesis": "既存18対のWAVをそのまま再生し、音源名を伏せたまま発話テンポと文中の間の比較を回答できる。資料IDと元のA/B対応で、回答は元の調整用・確認用の区分へ戻せる。",
+  "observation": "36件の48 kHzモノラルFloat32 WAVのバイト列と標本数、ブラウザの再生、CSVの資料ID・A/B・同程度・判定不能・空欄・自由記述、調整用6対と確認用12対。各対の聴取範囲は元の発話区間のままとする。",
+  "acceptance": "36件のWAVと利用条件を変更せずに保存し、元の発話区間長を照合する。音源の鍵を試聴用フォルダに置かない。ブラウザの試験回答と別の合成回答を手計算に照合し、別資料・重複・不正値を拒否する。試験回答と空欄の雛形を人による回答として登録しない。",
+  "sample_rate_hz": 48000,
+  "splits": {"calibration": 6, "held_out": 12},
+  "manual_fixture": [
+    ["01", "B", "same", ""],
+    ["10", "A", "unsure", ""],
+    ["11", "", "", "語中に強勢があるように聞こえた"]
+  ],
+  "expected_fixture": {
+    "calibration": {
+      "rows": [12, 7, 3],
+      "tempo": {"candidate": 1, "recording": 1, "same": 1, "unsure": 0, "unanswered": 9},
+      "pauses": {"candidate": 0, "recording": 1, "same": 1, "unsure": 1, "unanswered": 9}
+    },
+    "held_out": {
+      "rows": [24, 14, 3],
+      "tempo": {"candidate": 0, "recording": 2, "same": 0, "unsure": 0, "unanswered": 22},
+      "pauses": {"candidate": 1, "recording": 0, "same": 0, "unsure": 1, "unanswered": 22}
+    }
+  }
+}

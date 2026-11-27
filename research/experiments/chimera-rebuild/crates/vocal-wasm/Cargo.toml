@@ -1,0 +1,20 @@
+[package]
+name = "vocal-wasm"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+render-allocation-probe = ["vocal-core/render-allocation-probe"]
+render-phase-probe = ["vocal-core/render-phase-probe"]
+
+[dependencies]
+vocal-core = { path = "../vocal-core" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+
+[dev-dependencies]
+flate2 = "=1.1.10"

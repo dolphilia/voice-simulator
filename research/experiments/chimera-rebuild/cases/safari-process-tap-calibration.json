@@ -1,0 +1,24 @@
+{
+  "id": "safari-process-tap-calibration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 48000,
+  "quantum_frames": 128,
+  "graph_capture_quanta": 160,
+  "graph_lead_quanta": 16,
+  "capture_duration_seconds": 1,
+  "tap_start_timeout_seconds": 8,
+  "output_switch_timeout_seconds": 4,
+  "minimum_contiguous_frames": 16384,
+  "maximum_error_marker_units": 0.1,
+  "maximum_stereo_common_mode_ratio": 0.001,
+  "minimum_contiguous_anchor_frames": 256,
+  "maximum_anchor_displacement_frames": 256,
+  "control_discontinuity_frames": 128,
+  "candidate_bundle_ids": ["com.apple.Safari", "com.apple.WebKit.GPU", "com.apple.WebKit.WebContent"],
+  "marker": {"multiplier": 421, "offset": 173, "modulus": 65521, "center": 32760, "scale": 8388608},
+  "criteria": {
+    "input": "Safariの検証ページで既知の信号を左チャンネル、同じ波形を逆相で右チャンネルに出す。48 kHzのAudioContextと既定の出力経路を使う。試験音の開始・停止・再開始に対応するCore Audioの出力状態の変化を採り、同じプロセスが一意に識別できた場合に限りその出力だけをタップする。",
+    "graph": "グラフでは対照の先行音20,480点と128フレーム刻みの時刻を独立計算に照合する。このPCMから連続、128フレーム欠落、重複、無音置換の対照を作り、位置・種類・フレーム数を識別できることを確かめる。",
+    "tap": "許可と開始が成立すれば48 kHzステレオFloat32の有限なPCMと入力時刻を得ると予測する。少なくとも16,384点の連続した既知のフレーム列、単調なホスト時刻、連続するサンプル時刻、逆相の整合を判定する。対象の特定、開始API、許可待機、無音、形式違い、入力時刻・照合の不合格を別に記録する。歌唱を取り入れる前の較正とし、アプリや装置の入出力設定は保つ。"
+  }
+}

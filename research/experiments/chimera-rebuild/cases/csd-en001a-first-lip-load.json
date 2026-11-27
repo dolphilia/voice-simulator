@@ -1,0 +1,33 @@
+{
+  "id": "csd-en001a-first-lip-load",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "csd-en001a-two-phrase-pcm-rounding-20261124-repeat",
+    "case": "csd-en001a-two-phrase-pcm-rounding",
+    "manifest_sha256": "be31e8b89cc012982df2ffbfee87d75bf8f4efea251f038e9f5fbc284e29a05c"
+  },
+  "render": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "measurement": {
+    "comparison_internal_samples": [0, 2],
+    "focus_internal_sample": 0,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "block_frames": 128,
+    "frames": 201600,
+    "minimum_flow_exchange_recovery": 0.95,
+    "volume_source_cutoff_hz": 60.0,
+    "volume_pole_absolute_tolerance": 2.3e-16,
+    "predecessor": "en001a の先頭2句で初期姿勢、声源、ゲインを揃えた保存済みレンダーを入力にする。全PCMを照合し、口端負荷へ入る最後の口腔セルと、その最初の制御目標、内部標本0・1だけを保存する。"
+  },
+  "hypotheses": {
+    "first_load_starts_at_rest": "内部標本0の放射負荷の前回圧力と慣性流量は両版とも0で、枝流量と壁流量による口端への正味追加入力も0。",
+    "geometry_flow_explains_first_lip_delta": "標本0の口端負荷に対し入口の流量だけを往復で交換すると、両方向で口端流量差の95%以上を解消する。",
+    "volume_difference_precedes_lip_delta": "標本0で口端の体積差分の両版差が二段平滑器に伝わり、放射負荷に入る前に差が現れる。"
+  },
+  "acceptance": "全201600フレームのPCMと歌唱計画を未計装・計装・先行観測で照合する。内部2標本の口端流量を先行観測に照合し、各版で初回目標から毎標本の面積・長さ・体積、平滑器の2状態、入口の流量とR–L負荷の出力3値を独立に再計算する。平滑器係数は60 Hzの式に絶対差2.3e-16以内とし、観測係数を使った平滑器、幾何、負荷の再計算はビット一致を判定する。観測値の交換は標本0・1の入力を一方から他方に渡す数値計算とし、両方向の単独交換と全交換を記録する。初期姿勢、制御目標、丸め後の一歩の体積差、平滑状態のどこで数値が初めて分かれたかを残す。"
+}

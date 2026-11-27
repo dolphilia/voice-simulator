@@ -1,0 +1,36 @@
+{
+  "id": "fixed-vowel-i-velum-wide-port-upper-harmonics",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "肺圧7.2 cmH₂Oで口蓋帆ポートを0.30 cm²に広げても、第1〜22倍音を先に補正してから第23〜44倍音へ予測損失を一度戻すと、上位のポート流量係数のL2誤差は接線解から50%以上減る。2,310 Hzの鼻端では、実測の第23〜44倍音を加えた場合に誤差が減り、その改善量を予測で80%以上回復する。再実装版と固定上流で別々に判定する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-selected-pair-feedback-20261124-repeat",
+      "manifest_sha256": "81cec298941e8a266cc006c6f4e01297b41849d8731da699a821d3478b41f33e"
+    },
+    "narrow_reference": {
+      "run": "fixed-vowel-i-velum-narrow-port-upper-harmonics-20261124-repeat",
+      "manifest_sha256": "2c0e51c0a567c6b0c5c05842c0d0b67c1bdee27d558da486f6467fe2a8f5ce0f"
+    },
+    "pressure_cm_h2o": 7.2,
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "upper_harmonics": [23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "minimum_port_error_reduction_fraction": 0.50,
+    "minimum_recovered_nose_improvement_fraction": 0.80,
+    "measured_source_port_relative_error_lt": 1e-4,
+    "measured_source_nose_transfer_relative_error_lt": 1e-8,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "0.30 cm²の固定 /i/ の保存収録を用い、声門流量と形状から平均流および第1〜22倍音の接線解を作る。二次損失の圧力源から計上済みの接線抵抗を引いたものを一度戻し、ポートで得た低域係数を固定する。他60枝の低域は接線解とし、全61枝に第23〜44倍音の接線解を足した波形から追加帯域の残差源を得て、追加帯域だけを一度解き直す。窓初端の一つ前のサンプルは観測対照の状態差分に用いる。",
+    "observation": "第23〜44倍音のポート流量係数、ポート損失と鼻端の声門流量正規化複素伝達の2,310 Hz成分を比較する。鼻端評価では他60枝の圧力源を先行する10周波数モデルに固定し、ポート平均と補正済み低域も固定する。追加なし、接線解、予測損失補正、観測損失補正、実測係数を比較し、追加なしからの複素変化量と実測追加時との差も記録する。",
+    "acceptance": "両開口の設定、声道輪郭、入力肺圧、窓を照合し、開口ごとの結合で得た声門流量を使う。既存の0.30 cm²の無補正時の鼻端伝達と低域流量、平均を再現する。両帯域のFFTと元の粘性節点解、上位追加による鼻端伝達変化の枝源重ね合わせを照合する。実測上位を加えても鼻端誤差が減らない場合、鼻端改善の仮説は不成立とし回復率を欠測として保存する。"
+  }
+}

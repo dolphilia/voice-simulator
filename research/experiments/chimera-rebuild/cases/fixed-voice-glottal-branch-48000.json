@@ -1,0 +1,32 @@
+{
+  "id": "fixed-voice-glottal-branch-48000",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "combined": ["fixed-voice-centerline-render-48000-repeat", "54e21daca806a1511afe5d8789ccd7da3dc94433313f373c43cc479ccd132f07"],
+    "upstream": ["fixed-voice-pharynx-onset-48000-repeat", "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d"],
+    "pcm": ["worklet-rate-48000-memory-repeat", "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b"],
+    "first_capture": ["fixed-voice-glottal-branch-48000-a", "3377ce88aefc18d490b6ec498c225ae1b04025b14142c8c8808379d1d9d2f221"]
+  },
+  "hypothesis": "声門面積と咽頭長を上流と揃えた固定/i/で、8,210点目に残った流量差は声門ポートの離散運動量式で再現できる。上流と研究版で圧差と前回流量は最初の差まで一致し、慣性・粘性抵抗・非線形損失の係数または時間換算の順に残る差が流量の最終丸めに影響する見込み。",
+  "observation": "通常描画の声門ポート1本で、内部8,188〜8,239点の更新前圧力、雑音源、面積、慣性、抵抗と両方向の損失、前回の流量と運動量、今回の駆動圧と分母、解いた流量を採る。両版の計算を独立の有理数・十進演算と中間丸めで再現し、初差で上流項を差し替える。",
+  "acceptance": "計測を追加しても研究版の内部系列、固定上流の出力点系列と先頭PCMが保存済み実行に一致する。全52内部点の枝流量と中間演算を両版でビット一致に復元し、保存済み8,210点目の流量差を検出する。差を作る項の最小集合を報告し、圧差と前回流量が一致するという予測も検査する。",
+  "inertance_scale_followup": {
+    "hypothesis": "第1版の8,210点目の線形項差はL/dtをL×Fsに置き換えるだけで解消する。声門枝だけを通常描画で変更しても、先行窓の8,188〜8,209点の流量を保ち、8,210点目の流量と声門上圧が上流に一致する。",
+    "acceptance": "第1版の判定を再現する。第2版では線形項のうち抵抗だけを差し替えたときに旧流量、慣性換算だけを差し替えたときに上流流量を再現する。隔離した実験版の52点で枝方程式を独立計算し、先行区間と8,210点目の予測を検証する。全93,056フレームを二つの分割で照合し、上流・先行両変更版との差を保存する。",
+    "full_output_frames": 93056,
+    "gate_close_frame": 54656,
+    "pcm_block_sizes": [128, 77],
+    "pcm_absolute_tolerance": 5e-7
+  },
+  "measurement": {
+    "ipa": "i",
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "prefix_output_frames": 4120,
+    "gate_open_frame": 4096,
+    "first_internal_sample": 8188,
+    "end_internal_sample_exclusive": 8240,
+    "first_flow_difference": 8210
+  }
+}

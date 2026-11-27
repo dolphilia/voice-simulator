@@ -1,0 +1,18 @@
+{
+  "id": "tract-resample-buffer-reuse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "tract-limited-buffer-reuse-20261122-b",
+  "allocation_reference_case_id": "tract-limited-buffer-reuse",
+  "geometry_reference_run": "tract-limited-buffer-reuse-20261122-b",
+  "geometry_reference_case_id": "tract-limited-buffer-reuse",
+  "browser_reference_run": "worklet-live-song-limited-buffer-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": "resample",
+  "allocations_per_geometry_update": 4,
+  "expected_removed_allocations": 2952,
+  "expected_allocations": 5905,
+  "prediction": "再標本化に前回の咽頭・口腔のrawセル容量を使う。48 kHzのPop Deeの声道更新1476回につき各2件が減り、合計8857回から5905回、語境界の25量子は24件から16件になると予測する。",
+  "criteria": "通常CLIの4ケースでseed、apply、reapplyの制限前後の全断面系列を変更前とバイト照合する。歌唱はPCM全91200標本、ABIの1425点・23値をビット照合する。ネイティブの全713量子で、総件数の減少が変更前の再標本化の件数と一致し、呼び出し数と他の非包含処理の件数が一致することを確かめる。無効な面積プロファイルの検査が再利用先を変更しないことも確認する。"
+}

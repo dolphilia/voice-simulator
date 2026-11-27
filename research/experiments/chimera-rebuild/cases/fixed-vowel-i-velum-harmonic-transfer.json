@@ -1,0 +1,27 @@
+{
+  "id": "fixed-vowel-i-velum-harmonic-transfer",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ輪郭・ポートごとの微小な流量入力では、内部時間差分を含めた線形モデルが連続時間の伝達より通常レンダーに近い。通常発声では声門流量の変化と微小入力時の線形負荷を組み合わせても、少なくとも一つの周波数・条件で総放射の複素比に3%以上の差が残る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-only-20261124-repeat",
+      "case": "fixed-vowel-i-velum-port-only",
+      "sha256": "9cc92d16611e72c0373f4a4dd95b2df991e73bc75efe569122d2a628e72d1f05"
+    },
+    "frequencies_hz": [440, 2310],
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "f0_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "steady_pcm_frames": [19200, 24000],
+    "small_drive_per_tone_cm3_s": 0.001,
+    "continuous_solver_peak_relative_error_lt": 1e-8,
+    "discrete_small_drive_peak_relative_error_lt": 0.002,
+    "complex_identity_peak_relative_error_lt": 1e-8,
+    "finite_amplitude_total_mismatch_minimum_relative": 0.03,
+    "input": "前回の固定 /i/ の輪郭とポート面積の4条件を使う。440 Hzと2,310 Hzの通常の線形伝達に加え、呼気ゲートを0にして声門枝に各0.001 cm³/sの2つの正弦波を直接与える。通常発声の入力・全時系列は前回の保存値を使う。",
+    "observation": "閉・開および輪郭とポートの分離4条件で、単位声門流量に対する口端・鼻端・壁・合算の複素伝達を観測する。通常発声は400〜500 msで声門流量・4つの放射とPCMをDFTする。ポートの開口効果を両輪郭で求めて差し引き、閉条件の声門流量を共通の基準に、線形負荷・声門流量の変化・微小信号伝達で説明できない残差に分ける。",
+    "acceptance": "通常CLIと固定上流の連続時間伝達、全節点の独立複素連立方程式を照合する。離散時間応答は微小入力の通常CLIに対して登録閾値に収まり、合算では連続時間の推定より誤差が小さい。通常発声は固定上流の保存系列と位相・振幅を照合し、直接DFT、FFT、窓境界を含む放射微分の式に一致する。3項の和を実測した放射の差の差と照合し、各項の大きさ・位相・実測差の方向への射影を記録する。"
+  }
+}

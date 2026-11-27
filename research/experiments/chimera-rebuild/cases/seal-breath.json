@@ -1,0 +1,44 @@
+{
+  "id": "seal-breath",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "無呼気の初期化を含めて位相は制御更新ごとに進む。肺圧は半正弦の包絡と平滑化ゲートの積で決まり、デューティ比を広げると1周期平均が増える。深さ0ではパルス倍率が1になる。",
+  "seal_breath": {
+    "sample_rate_hz": 48000,
+    "frames": 48000,
+    "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+    "events": [{"frame": 0, "gate": 1.0}]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "nominal-48000", "overrides": {}},
+      {"id": "depth-zero", "overrides": {"controls": {"pulse_depth": 0.0}}},
+      {"id": "narrow", "overrides": {"controls": {"pulse_depth": 1.0, "duty": 0.15}}},
+      {"id": "wide", "overrides": {"controls": {"pulse_depth": 1.0, "duty": 1.0}}},
+      {"id": "phase-boundary", "overrides": {"frames": 8192, "controls": {"pulse_rate_hz": 46.875, "pulse_depth": 1.0, "duty": 0.5}}},
+      {"id": "changed-44100", "overrides": {"sample_rate_hz": 44100, "frames": 33075, "events": [
+        {"frame": 73, "gate": 1.0},
+        {"frame": 6079, "controls": {"pulse_rate_hz": 42.0, "pulse_depth": 1.0, "duty": 0.35, "pressure_cm_h2o": 20.0}},
+        {"frame": 10009, "gate": 0.0},
+        {"frame": 17017, "gate": 2.0}
+      ]}},
+      {"id": "silent-96000", "overrides": {"sample_rate_hz": 96000, "frames": 16384, "controls": {"pulse_depth": 1.0}, "events": []}}
+    ],
+    "control_frames": 64,
+    "initial_control_count": 1,
+    "cm_h2o_to_dyn_cm2": 980.665,
+    "attack_seconds": 0.006,
+    "release_seconds": 0.03,
+    "parameter_time_constants_seconds": {"pulse_rate_hz": 0.02, "pulse_depth": 0.02, "duty": 0.02, "pressure_cm_h2o": 0.01},
+    "upstream_control_absolute_tolerance": 1e-12,
+    "upstream_pressure_absolute_tolerance_dyn_cm2": 1e-9,
+    "independent_phase_circular_tolerance": 1e-11,
+    "independent_envelope_absolute_tolerance": 1e-11,
+    "independent_pressure_absolute_tolerance_dyn_cm2": 5e-8,
+    "mean_window_control_indices": [250, 750],
+    "mean_multiplier_absolute_tolerance": 0.002,
+    "active_fraction_absolute_tolerance": 0.015,
+    "changed_event_control_frames": [128, 6080, 10048, 17024],
+    "boundary_phases": [0.0, 0.25, 0.5]
+  }
+}

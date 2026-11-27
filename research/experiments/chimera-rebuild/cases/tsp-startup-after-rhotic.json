@@ -1,0 +1,22 @@
+{
+  "id": "tsp-startup-after-rhotic",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-after-rhotic-20261121-a",
+  "recording_ids": ["FK61_01", "MK61_01"],
+  "hypothesis": "舌先だけを静止位置に初期化すると、語頭 /ə/ のランプ前の放射が消え、MK61_01の副しきい値の開始が固定上流の75 msに揃う。両合成の最初の非ゼロPCMは第31制御更新の1984フレームになる。",
+  "controlled_input": "同じバイナリと本文で、先行の舌先対照と同じ計算を使って舌先の初期座標2値を置き換える。",
+  "observation": "出力48 kHzの先頭0〜1919フレームのPCMと間引き出力、最初の非ゼロPCM、主しきい値−35 dBと副しきい値−45 dBの発話区間。",
+  "guard_basis": "語頭 /ə/ の目標は110 ms、立ち上がり70 ms。40 msに当たる1920フレームでは重みが0で、制御の次の境界は64フレーム後の1984。",
+  "pre_roll_frames": 1920,
+  "maximum_pre_roll_pcm_peak": 1e-12,
+  "maximum_pre_roll_decimated_peak": 1e-12,
+  "sensitivity_threshold_db": -45,
+  "match_sensitivity_intervals": ["MK61_01"],
+  "expected_first_nonzero_frames": {"FK61_01": 1984, "MK61_01": 1984},
+  "acceptance": "両件で上流と舌先対照のランプ前のピークが登録上限内、開始は独立に求めた制御境界1984。MK61_01では副しきい値の両端が上流と一致する。元の区間長計測と試聴対は元の条件を維持する。",
+  "retain_csv": {
+    "FK61_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2048]]},
+    "MK61_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2048]]}
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "worklet-live-tsp-planner-report-buffer-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "planner_reference_run": "worklet-live-tsp-planner-direct-text-plan-44100-20261122-b",
+  "planner_reference_case": "worklet-live-tsp-planner-direct-text-plan-44100",
+  "prediction": "従来と同じ128バイトの初期容量からJSONを書き、次回は既存領域の長さだけをゼロにして書き直す。確認用07の初回はJSON出力9回・ABI全体1,742回、同じ入力の再計画はJSON出力0回・ABI全体188回と予測する。短い成功報告と入力エラーを挟んで同じ発話へ戻る場合も、既存容量に収まる報告の出力は各0回になる。",
+  "criteria": "女性体型・話速1の確認用07の初回と再計画で、ABI入口から戻り値までの六工程を計数する。基準のJSON・数値スコア、44.1 kHzの全98,790フレームのPCM・内部観測・量子別計数を照合し、通常のFirefox発話、同じ報告入口を使う通常歌唱でも確認する。描画後に同じABIで短いA.、不正UTF-8のFF、元の確認用07の順に渡す。短い報告の長さが縮み、エラーは期待するJSON一件と空のスコア、元の入力に戻すと長い報告と数値スコアが復元すること。別の試験で報告の一部を書いた後のシリアライズ失敗を起こし、エラーと空のスコアを得て次の呼び出しが成功すること。削減予測は出力一致と別に判定する。"
+}

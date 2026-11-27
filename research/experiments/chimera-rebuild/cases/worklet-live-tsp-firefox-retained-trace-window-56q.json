@@ -1,0 +1,65 @@
+{
+  "id": "worklet-live-tsp-firefox-retained-trace-window-56q",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-trace-instruments-56q",
+  "initial_control_run": "worklet-live-tsp-firefox-trace-instruments-56q-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "whole-trace",
+        "tail-900ms"
+      ],
+      [
+        "tail-900ms",
+        "whole-trace"
+      ],
+      [
+        "whole-trace",
+        "tail-900ms"
+      ],
+      [
+        "tail-900ms",
+        "whole-trace"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "compare_retained_window": "900ms",
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "minimum_margin_gain_ns": 4000000,
+    "minimum_pairs_with_margin_gain": 3
+  },
+  "hypothesis": "終了前900 msだけを保持すれば、3収録器を併用したまま発話開始まで音声I/Oの行が届きやすいと予測する。前回の収録ではこの長さなら全窓の入口を159.7 ms以上手前から保持できた。4組中3組以上でFirefoxのAudio Clientの末尾までの余裕が4 msを超えて増え、発話開始を音声I/Oとスレッド状態の両方で照合できる試行が増えれば予測を支持する。",
+  "acceptance": "確認用07・48 kHz・256フレーム、先行音56量子、同期事前描画、通常の発話入力、タップなし、再生前のDarwin通知、1秒・全プロセス・3収録器を固定する。実行順は組ごとに反転する。先行音の準備境界を7,168フレーム、実際の構築位置を境界から1機器要求以内に固定し、実測した発話入口を時計の基準にする。全窓と、先頭3量子を含む登録済みの要求10〜16を同じ時刻許容差で照合する。発話WAVと状態、各表の先頭と末尾、トレース起点、スレッド状態とIOProc、欠測を保存する。前回の4組判定は保持し、今回も4組に時計で比較できる記録がそろった場合に予測を判定する。"
+}

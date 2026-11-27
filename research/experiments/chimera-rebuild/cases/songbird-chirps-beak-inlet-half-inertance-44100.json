@@ -1,0 +1,31 @@
+{
+  "id": "songbird-chirps-beak-inlet-half-inertance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-radiation-derivative-scale-44100-20261123-repeat",
+    "manifest_sha256": "960975dcb8a72727027189da1fa20c06e2b612b9d9138b5e947eadd47e248e39"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "beak_length_cm": 1.3,
+  "beak_cells": 6,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "predicted_first_inlet_effect": {
+    "matched_time": {"offset": 53, "flow_hex": "0x1.27fe5f1284f4dp-4"},
+    "native_block": {"offset": 18, "flow_hex": "0x1.40f2bcaad7fe6p-9"},
+    "no_tracking": null
+  },
+  "hypothesis": "口腔食道腔とくちばしセル0をつなぐ直列枝だけで、現在と前回の半セル慣性に使う dx/A を dx × (1/A) にする。235点制御の押鍵53点後は前回形状が持ち越し運動量に、256点制御の18点後は現在形状が線形慣性に効き、両点の流量が固定上流とビット一致する。セル0圧は同じ標本で変わり得る。くちばし末端流入と放射流量への効果は、入口から少なくとも5内部サンプルを要する。",
+  "observation": "先行と同じ初期状態と操作を通常 render CLI に通し、内部176400 Hzの押鍵後0〜63点を採取する。押鍵直前の状態と各時点の断面、口腔食道腔圧、くちばし各セルの流入・圧力、終端流入、放射流量、放射流量の後退差分を参照する。条件は235点制御、256点制御、追従0。",
+  "acceptance": "先行バイナリと対照CSVを再現し、固定上流資料をハッシュ照合する。三者で入口の流量、放射負荷、放射流量の後退差分を全64点で再計算する。入口が最初に変わる点と値が事前予測に一致し、初差が解消すること、幾何と押鍵前の一致、伝播の下限、追従0が維持されることを確認する。残る入口差と放射差は入力や係数の個別置換で起点を調べる。"
+}

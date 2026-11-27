@@ -1,0 +1,80 @@
+{
+  "id": "worklet-midi-seal-trill",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-trill.json",
+  "input": {
+    "creature": "seal",
+    "key_mode": "call",
+    "call_id": "trill",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [40, 6000],
+    "capture_seconds": 6.0,
+    "events": [
+      {"seconds": 0.14, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.6, "type": "note-off", "note": 60},
+      {"seconds": 1.55, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 1.91, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "Descending trillの音高目標はMIDI 60・67で523.25・783.99 Hzから指数的に下降する。パルス周波数は鍵盤による移調を受けず、42 Hzから6 Hzへ向かう。再発音で2つの目標が先頭へ戻っても、肺圧に掛かるパルス位相は連続する。第2音の終盤で音高目標が40 Hzで止まった後も、パルス周波数は6 Hzまで下降すると予測する。",
+  "criteria": {
+    "onset": "両押下で音高目標は鍵盤の周波数、パルス周波数目標は42 Hz、呼気目標は1になる。押下後0.25・0.8・1.2秒の各制御境界で、2音の音高目標は鍵盤による移調比だけ異なり、パルス周波数の目標は一致する。",
+    "retrigger": "再発音時に呼気が0.98以上で続き、パルス周波数の平滑値と肺圧が引き継がれる位相から求まることを確認する。位相だけを0に戻して同じ制御を一更新した肺圧は、位相を引き継いだ実測値と異なると予測する。",
+    "low_limit": "最後の押下後、指数補間で求めた40 Hzへの到達時刻から1制御区間以内で音高目標が下限に達し、自然終了まで保つ。その間にパルス周波数の目標は6 Hzへ下がる。3.95秒付近で演奏者の目標へ戻る。",
+    "release": "離鍵25〜100 ms後もコールが続き、両窓で平滑ゲート0.95以上、声門最大面積0.03 cm²以上、PCM RMS 0.001以上とする。採用フレームからCLIと固定Rustを再生し、ブラウザとCLIのPCMはビット一致とする。"
+  },
+  "revision_reason": "初回の独立ゲートの閾値1e-12に対し、下降区間で最大1.1813e-12の差があった。固定Rustと候補のゲートは全区間一致した。累積制御時計とフレーム差で求めた経過時間の差に、下降区間の傾き1/0.3を掛けるとゲート目標の差は1.1917e-12以内に収まり、指数追従後の差も同じ上限に収まる。独立ゲートだけを2e-12に改訂する。旧判定と全系列はworklet-midi-seal-trill-20261121-aに保存した。",
+  "measurement": {
+    "baseline_run": "worklet-seal-trill-20261120-repeat",
+    "baseline_case_id": "worklet-seal-trill",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": 1,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [0.025, 0.10],
+    "browser_release_gate_minimum_peak": 0.95,
+    "release_window_seconds": [0.025, 0.10],
+    "minimum_release_gate": 0.95,
+    "minimum_release_pcm_rms": 0.001,
+    "minimum_open_glottis_peak_cm2": 0.03,
+    "minimum_restart_gate": 0.98,
+    "minimum_reset_pressure_difference_dyn_cm2": 0.01,
+    "paired_curve_seconds": [0.25, 0.8, 1.2],
+    "maximum_tail_pcm_rms": 0.002,
+    "tail_window_seconds": 0.1,
+    "native_pcm_tolerance": 1e-6,
+    "native_state_absolute_tolerance": 1e-8,
+    "native_state_relative_tolerance": 1e-7,
+    "independent_tolerances": {
+      "gate": 2e-12,
+      "gate_target": 1e-10,
+      "target_pitch_hz": 1e-8,
+      "pitch_hz": 1e-8,
+      "target_pulse_rate_hz": 1e-8,
+      "pulse_rate_hz": 1e-8,
+      "pulse_depth": 1e-8,
+      "target_pulse_depth": 1e-8,
+      "duty": 1e-8,
+      "target_duty": 1e-8,
+      "pulse_phase": 1e-10,
+      "lung_pressure_dyn_cm2": 2e-7,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0
+    },
+    "reference_definition_run": "seal-trill-before-worklet-1"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "gate_target", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "pulse_rate_hz", "pulse_depth", "duty", "pulse_phase", "lung_pressure_dyn_cm2", "glottis_phase_0", "glottis_phase_1", "glottis_area_cm2_0", "wall_0", "oral_0", "nasal_0", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 122880], [126976, 145408], [206848, 288000]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "pulse_rate_hz", "pulse_depth", "duty", "lung_pressure_dyn_cm2", "glottis_phase_0", "glottis_phase_1", "glottis_area_cm2_0", "wall_0", "oral_0", "nasal_0", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 122880], [126976, 145408], [206848, 288000]]
+    }
+  }
+}

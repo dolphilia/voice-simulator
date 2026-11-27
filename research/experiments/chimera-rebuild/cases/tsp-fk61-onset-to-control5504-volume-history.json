@@ -1,0 +1,145 @@
+{
+  "id": "tsp-fk61-onset-to-control5504-volume-history",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control5504-oral-history-20261123-repeat",
+    "case": "tsp-fk61-control5504-oral-history",
+    "manifest_sha256": "6597d32c6a637634b7a2842aca7bd4876e2b5f0c78a89e5203a9dd8d855cda35"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      3966,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "3版の3966〜5875の節点28〜43の体積・配分後の体積速度と二段平滑状態を観測する。3968〜5503の節点28〜37で、各標本の実測入力と3967終了時の状態の寄与を5503の両極へ畳み込む。追加で、幾何の積を丸めない体積速度、積の丸めと体積差の演算、配分残差を分ける。初期値のみ、全入力のみ、両方、制御ブロック単独、終端まで連続する制御ブロック群の入力を交換する。PCM比較は5504〜5631の体積速度を上流、5632以降を前回の全形状・咽頭流入交換条件に固定した上で、冒頭から2937までを調べる。",
+    "control_boundaries": [
+      5504,
+      5632,
+      5760
+    ],
+    "linear_filter_tolerance_cm3_s": 4e-14,
+    "attribution_internal_samples": [
+      3968,
+      5504
+    ],
+    "handoff_internal_samples": [
+      5504,
+      5632
+    ],
+    "focus_block_candidates": [
+      5120,
+      5248
+    ]
+  },
+  "hypotheses": {
+    "input_effect_exceeds_initial_state": "5503の第二極の10節点のL2ノルムで、3968以降の全入力差の効果が3967終了時の状態差の効果より大きい。",
+    "strongest_block_near_peak_filter_weight": "5503の第二極への寄与のL2ノルムが最大の制御ブロックの開始標本は5120または5248である。",
+    "strongest_block_alone_leaves_pcm_difference": "上記で最大のブロックの入力だけを交換する条件では、固定上流との差がPCM 2937までに残る。",
+    "native_history_recovers_previous_pcm": "全入力と開始状態を上流にした条件で5503終了時の両極を再現し、冒頭からPCM 2937まで上流と一致する。"
+  },
+  "acceptance": "3版の全発話PCMをビット照合し、前回との共通区間5502〜5875を照合する。観測した体積速度から進めた両極を各標本でビット照合する。丸めたセル体積と配分を含む入力差から求めた閉形式の寄与の和を、5503の両極の観測差と比較する。各節点・各極の絶対残差は4e-14 cm³/s以内とする。無交換と全交換の5503での状態を各版に照合し、PCMは前回の体積源交換の対照と一致する。符号付きの標本別・ブロック別の寄与を保存する。"
+}

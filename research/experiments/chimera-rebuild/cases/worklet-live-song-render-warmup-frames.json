@@ -1,0 +1,28 @@
+{
+  "id": "worklet-live-song-render-warmup-frames",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_case": "worklet-live-song-render-phases.json",
+  "warmup_case": "worklet-live-song-render-warmup.json",
+  "warmup_reference_run": "worklet-live-song-render-warmup-20261121-repeat",
+  "measurement": {
+    "condition_order": [
+      ["control", "draw64", "draw256", "draw128"],
+      ["draw64", "draw128", "control", "draw256"],
+      ["draw128", "draw256", "draw64", "control"],
+      ["draw256", "control", "draw128", "draw64"]
+    ],
+    "preparation_frames": {"control": 0, "draw64": 64, "draw128": 128, "draw256": 256},
+    "block_frames": 64,
+    "zero_frame_calls": 1000,
+    "minimum_trials_with_first_two_within_budget": 3,
+    "minimum_constructor_saving_128_vs_256_ms": 0.5
+  },
+  "hypothesis": "本番の先頭2量子に含まれる呼び出しは同じ64フレーム単位なので、128フレームの事前描画で先頭2量子を予算内にできると予測する。64フレームでは2回目以降の描画に余分な時間が残り、予算を満たす試行が少なくなると予測する。",
+  "criteria": {
+    "input": "Firefoxの通常画面で48 kHzのPop Deeを再生する。失敗歌詞からの復帰、現行順の登録、資産本文検証の延期を共通にする。試行ごとにブラウザを起動し、各条件の実行順と直前条件を4組で均等にする。",
+    "preparation": "未準備と64・128・256出力フレームを比較する。事前描画する3条件は、同じスコアの使い捨て状態で0フレームを1,000回呼び、64フレームずつ描画する。要求したフレーム数・ブロック長・0フレーム回数を描画完了後の印で構築区間内に照合する。",
+    "timing": "本番量子と先行無音にJSの計時印を追加せず、GraphRunner上のWorkletNodeEngine::ProcessBlockとAudioWorkletNodeEngine::CallProcessの区間を出力フレームに合わせる。構築終了は最初のprocessより前にあることを確認する。先頭2量子、冒頭32量子を除くp99、全量子の超過、構築時間と事前描画時間を保存する。",
+    "evaluation": "各組の比較で先頭2量子が両方128/48000秒以内の試行が4回中3回以上となる最短の事前描画長を求める。128・256フレームは基準に達し、64フレームは達しないと予測する。128フレームの構築時間は256フレームより、同じ組で引いた差の中央値で0.5 ms以上短いと予測する。時間の判定は信号の一致と分けて保存する。",
+    "reference": "PCM全91,200点、観測1,425行、設定・拍・調音計画・辞書・WASMをCLIとブラウザの基準に照合する。拍の時刻は小節内の拍数とテンポから独立計算する。固定上流との差は既存の許容幅に照合する。"
+  }
+}

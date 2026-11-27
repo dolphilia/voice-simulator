@@ -1,0 +1,22 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-firefox",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "duration_study": "worklet-live-song-fast-app-silent-lead-four-quanta.json",
+  "chromium_reference_runs": ["worklet-live-song-fast-app-silent-lead-four-quanta-20261121-a",
+    "worklet-live-song-fast-app-silent-lead-four-quanta-20261121-repeat"],
+  "previous_runs": ["worklet-live-song-fast-app-silent-lead-firefox-20261121-a",
+    "worklet-live-song-fast-app-silent-lead-firefox-20261121-b"],
+  "acquisition_revision": 2,
+  "browser_engine": "firefox",
+  "hypothesis": {
+    "lead": "Firefoxでも、通知後に歌唱の開始待ちを数え始めるので、4と8量子の両条件で歌唱の開始待ちの飛びはなく、歌唱Workletの初回から3,072フレーム後に描画を始める。",
+    "clock": "先行枝の連続区間の先頭から歌唱開始までの組内短縮は512フレーム、誤差1量子以内と予測する。クリックから歌唱先頭までは直接出力の組内差の中央値が負になると予測し、短縮幅はブラウザ別に保存する。",
+    "pcm": "保存WAVの49,200フレーム、観測769点、計画が同入力のオフライン基準およびChromiumと一致する。"
+  },
+  "criteria": {
+    "input": "直列登録の歌唱画面でsongSilentLeadを4と8に設定する。Chromiumの保存済みケースの短音Pop Dee、WASM、辞書、48 kHz、128フレーム、歯フィルタ下限1,200 Hz、組の順序、直接・並列観測の別を引き継ぎ、ブラウザをFirefoxに変える。各試行でContextとページを新設する。",
+    "clock": "先行枝の連続区間先頭と通知位置、歌唱Workletの初回と予約を絶対フレームで採り、4×128フレームの予測と照合する。信頼済みクリックと歌唱描画をDate.nowで計時し、直接出力で組内差の中央値が負ならクリック時間の短縮と判断する。並列観測付きの時間は別に保存する。",
+    "audio": "保存済みChromiumの実行をマニフェストで固定し、両ブラウザを同じオフライン基準・固定上流へ照合する。並列観測では歌唱の絶対位置と前後の無音を検査する。ブラウザごとに取得できなかった項目や先行区間の状態を記録する。",
+    "buffer_revision": "Firefoxでは未読のAudioBufferを割り当てると、先行Workletの入力チャンネルが空になった。AudioBufferSourceNodeに割り当てる前にチャンネルを展開して128フレームを0で初期化する。歌唱PCM、先行枝の接続と開始予約、判定基準を維持する。"
+  }
+}

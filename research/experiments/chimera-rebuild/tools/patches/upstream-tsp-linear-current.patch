@@ -1,0 +1,17 @@
+diff --git a/crates/chimera/src/airway/network.rs b/crates/chimera/src/airway/network.rs
+--- a/crates/chimera/src/airway/network.rs
++++ b/crates/chimera/src/airway/network.rs
+@@ -1196,4 +1196,13 @@
++    /// 計測専用。実際に描画に使った形状を複製し、線形解析の入力にする。
++    pub fn linear_elements_at_current_geometry(&self) -> LinearElements {
++        let mut snapshot = self.clone();
++        snapshot.area_target.clone_from(&self.area);
++        snapshot.dx_target.clone_from(&self.dx);
++        snapshot.port_area_target.clone_from(&self.port_area);
++        snapshot.linear_elements()
++    }
++
+     /// Linearised element values at the *target* geometry (what the next block ramps to), for
+     /// frequency-domain analysis. Same formulas as step(); kinetic losses are omitted (they
+     /// vanish for small signals about zero mean flow).
+     pub fn linear_elements(&self) -> LinearElements {

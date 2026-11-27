@@ -1,0 +1,23 @@
+{
+  "id": "worklet-wasm-wrapper-warmup",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "threshold_case": "worklet-wasm-wrapper-threshold.json",
+  "threshold_runs": ["worklet-wasm-wrapper-threshold-20261121-a", "worklet-wasm-wrapper-threshold-20261121-repeat"],
+  "profile": "reference",
+  "hypothesis": "同じWorkletとWASMハンドルで、状態を進めない0フレームの呼び出しを起動時に1,000回行うと、同期コンパイルはPCMの採取前に1回起きる。999回なら採取の最初の量子で起きる。音響状態とPCMはどの条件でも変わらない。",
+  "measurement": {
+    "warmup_calls": {"cold": 0, "incomplete": 999, "prepared": 1000},
+    "expected_zero_based_quantum": {"cold": 999, "incomplete": 0, "prepared": null},
+    "capture_order": [
+      ["cold", "incomplete", "prepared"],
+      ["prepared", "cold", "incomplete"],
+      ["incomplete", "prepared", "cold"]
+    ],
+    "clock": "コンストラクター内のWASM初期化と事前呼び出しをWorklet時計で別々に計る。起動前の同期コンパイル、最初と1,000量子目の処理時間、および予算超過の位置はChromiumトレースからµsで採る。コンストラクター・最初のコールバック・PCM先頭のContextフレーム、接続から発声通知までの経過も記録する。"
+  },
+  "criteria": {
+    "trace": "各試行でラッパーの同期コンパイルは同じオーディオスレッドで1回。0および999回は指定量子を完全一致で照合する。1,000回は起動待ちを含むすべてのprocess()の前にあることを確認する。",
+    "sound": "通常のPCM・連続性・上流・独立ゲートの判定に加え、全試行のPCMハッシュが回数変更実験の既定条件と同一で、量子末尾の状態列が全試行間でビット一致すること。",
+    "startup": "時刻、量子予算超過、起動からの遅延は診断値として記録する。処理の移動を確認する実験であり、時間の改善量に固定の合格下限は設けない。"
+  }
+}

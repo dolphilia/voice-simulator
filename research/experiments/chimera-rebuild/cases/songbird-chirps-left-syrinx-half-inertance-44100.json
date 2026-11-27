@@ -1,0 +1,46 @@
+{
+  "id": "songbird-chirps-left-syrinx-half-inertance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-all-momentum-44100-20261123-repeat",
+    "manifest_sha256": "e97afac66332facecbb1b1e67b6b70ab7196a9240872dd45fe8ea443f3759e18"
+  },
+  "port_analysis": {
+    "run": "songbird-chirps-left-syrinx-port-44100-20261123-repeat",
+    "manifest_sha256": "4a97632501d8e53e17ec63b3fc20b192769936fac844bbb4b58b062b7c15a285"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_flow_offsets": {
+    "matched_time": 19,
+    "native_block": 18,
+    "no_tracking": null
+  },
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "volume_source_cutoff_hz": 60,
+  "neck": {
+    "area_cm2": 0.03,
+    "length_cm": 0.25,
+    "entrance_loss": 0.3,
+    "expansion_loss": 0.8,
+    "viscosity_reference_hz": 700
+  },
+  "distances_from_port_in_samples": {
+    "left_bronchus_pressure_dyn_cm2": 0,
+    "trachea_pressure_dyn_cm2": 0,
+    "trachea_end_pressure_dyn_cm2": 15,
+    "oec_neck_inflow_cm3_s": 16,
+    "radiation_flow_cm3_s": 22
+  },
+  "hypothesis": "左鳴管ポートの気管支側半セルだけで長さ÷面積を長さ×面積の逆数へ切り替える。慣性の変更は現在の線形項と前回流量を持ち越す項の両方に伝わる。235点制御の19点後と256点制御の18点後の流量差は消え、上流との差の初出はそれより後へ移ると予測する。左気管支末端と気管入口の圧力への影響は同じ標本から現れうる。気管末端へは直列15枝、口食道腔側首部へはさらに1枝を通る。追従0では全観測点で無励振を保つ。",
+  "observation": "保存した固定上流と同一の3入力を通常のrender CLIから描画する。押鍵を0とした0〜63点で左鳴管の面積・流量、左気管支末端圧、気管入口・末端圧、首部流量、口食道腔圧、くちばし側の流量、放射流量・差分を比較する。押鍵直前の状態を含めて端点の観測からポート流量を独立に再計算する。",
+  "acceptance": "先行実行の候補CSVを対照でバイト再現し、固定上流CSVのハッシュを照合する。三者で弁面積の同一性、閉鎖時の流量0、押鍵前の一致、局所流量の全標本のビット再計算、追従0の無励振を確認する。左鳴管の先行初差が消えることと、部位別の影響が最短伝播より前に現れないことを確認する。上流との残差時刻および予測が外れた場合の判定を保存する。"
+}

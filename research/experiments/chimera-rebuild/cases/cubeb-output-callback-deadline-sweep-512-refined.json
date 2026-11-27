@@ -1,0 +1,21 @@
+{
+  "id": "cubeb-output-callback-deadline-sweep-512-refined",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "cubeb-output-callback-probe.json",
+  "requested_frames": 512,
+  "overrun_control_us": 14000,
+  "delay_us": [0, 9995, 10013, 10019, 10025, 10032, 10043, 10060, 10080, 14000],
+  "round_order": ["ascending", "descending", "descending", "ascending"],
+  "maximum_early_return_ms": 0.01,
+  "comparison": {
+    "reference_case_id": "cubeb-output-callback-deadline-sweep",
+    "reference_runs": ["cubeb-output-deadline-sweep-20261121-a", "cubeb-output-deadline-sweep-20261121-repeat"],
+    "prediction_tolerance_ms": 0.075
+  },
+  "followup_of": "cubeb-output-deadline-sweep-512-20261121-a",
+  "hypothesis": "512フレームの初回に連続と飛びを挟んだ9.911〜10.084 msの範囲で、周期に比例する予測範囲の下端10.028 msをまたぐように待機を細かく振る。連続する処理が増える側と飛ぶ側を改めて分ける。",
+  "criteria": {
+    "input": "48 kHz・512フレームの初回から、制御条件以外の待機時間だけを変更する。比較に使う256フレームの基準、計測位置、観測窓、2つの予測範囲、許容幅、採取の合否基準は同じにする。",
+    "verdict": "飛びがある最短の実測時間と連続した最長の実測時間を、元の512フレーム条件の判定を残したまま別に報告する。観測範囲と予測範囲の重なりを元の条件と同じ式で判定する。"
+  }
+}

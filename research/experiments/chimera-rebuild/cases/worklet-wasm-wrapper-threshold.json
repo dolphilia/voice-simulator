@@ -1,0 +1,21 @@
+{
+  "id": "worklet-wasm-wrapper-threshold",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "release_case": "worklet-realtime-release-alignment.json",
+  "release_run": "worklet-release-alignment-20261121-a",
+  "profile": "reference",
+  "hypothesis": "汎用JS→WASMラッパーの呼び出し予算を動かすと、オーディオスレッドで同期コンパイルする描画量子も同じ呼び出し回数に移る。PCMと呼気停止の時刻は一致する。",
+  "measurement": {
+    "budgets": {"default": null, "640": 640, "1200": 1200},
+    "expected_zero_based_quantum": {"default": 999, "640": 639, "1200": 1199},
+    "capture_order": [["default", "640", "1200"], ["1200", "default", "640"]],
+    "trace_categories": ["disabled-by-default-audio-worklet", "disabled-by-default-v8.wasm.detailed", "v8.wasm"],
+    "callback_event": "AudioWorkletProcessor::Process (author script execution)",
+    "wrapper_event": "wasm.CompileJSToWasmWrapper",
+    "window_radius_quanta": 1
+  },
+  "criteria": {
+    "trace_alignment": "同一プロセス・スレッド上の処理イベント数が起動待ちコールバック数と採取量子数の合計に一致すること。起動待ちを除いた区間の内部にラッパーコンパイルが1回あり、全試行で指定回数の範囲に入ること。",
+    "timing": "トレースの区間をµsで保存する。1.333… msの超過は診断値として保持し、ラッパーの帰属判定には使わない。その他の通常の発声判定は呼気停止ケースを継承する。"
+  }
+}

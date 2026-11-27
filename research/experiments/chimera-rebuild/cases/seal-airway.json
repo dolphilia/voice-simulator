@@ -1,0 +1,52 @@
+{
+  "id": "seal-airway",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "呼気の立ち上がりでは、肺ポートと気管入口が最初に応答する。気管の節点を一つずつ伝わった圧力差を次の内部サンプルで声門が読み、開口を反映して同じステップで声門流量を解く。無呼気では隙間だけが立ち上がり、枝流量と放射はゼロを保つ。",
+  "seal_airway": {
+    "breath": {
+      "sample_rate_hz": 48000,
+      "frames": 4096,
+      "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+      "events": [{"frame": 0, "gate": 1.0}]
+    },
+    "shape": {"pitch_hz": 900.0, "brightness": 0.6, "roughness": 0.05, "mouth": 0.35}
+  },
+  "measurement": {
+    "variants": [
+      {"id": "nominal-48000", "breath": {}, "shape": {}},
+      {"id": "depth-zero", "breath": {"controls": {"pulse_depth": 0.0}}, "shape": {}},
+      {"id": "delayed-44100", "breath": {"sample_rate_hz": 44100, "frames": 3072, "events": [{"frame": 73, "gate": 1.0}, {"frame": 2187, "gate": 0.0}]}, "shape": {}},
+      {"id": "silent-96000", "breath": {"sample_rate_hz": 96000, "frames": 1024, "events": []}, "shape": {}},
+      {"id": "narrow-mouth-96000", "breath": {"sample_rate_hz": 96000, "frames": 4096}, "shape": {"mouth": 0.0, "brightness": 0.85, "pitch_hz": 550.0}}
+    ],
+    "trachea_length_cm": 24.0,
+    "trachea_area_cm2": 4.0,
+    "lung_length_cm": 1.0,
+    "lung_area_cm2": 100.0,
+    "lung_port_length_cm": 1.0,
+    "cfl": 0.93,
+    "trachea_coarse_factor": 1.6,
+    "sound_speed_cm_s": 35000.0,
+    "density_g_cm3": 0.00114,
+    "dynamic_viscosity_poise": 0.000186,
+    "viscosity_frequency_hz": 700.0,
+    "chink_cm2": 0.01,
+    "chink_tau_seconds": 0.004,
+    "seeds": {"cycles": 777, "pitch_drift": 4242, "airway_noise": 12345},
+    "window": "全内部サンプル。初回肺ポート流量と気管入口圧は呼気が反映された1サンプル。無呼気の隙間は全1024サンプル。",
+    "nominal_first_active_internal_sample": 0,
+    "delayed_first_active_internal_sample": 256,
+    "direct_pressure_absolute_tolerance_dyn_cm2": 1e-5,
+    "direct_flow_absolute_tolerance_cm3_s": 1e-7,
+    "direct_area_absolute_tolerance_cm2": 2e-9,
+    "direct_f0_absolute_tolerance_hz": 1e-8,
+    "direct_radiation_derivative_absolute_tolerance_cm3_s2": 0.01,
+    "causal_first_signal_threshold": 0.0,
+    "independent_initial_flow_absolute_tolerance_cm3_s": 1e-10,
+    "independent_initial_pressure_absolute_tolerance_dyn_cm2": 1e-7,
+    "independent_chink_absolute_tolerance_cm2": 1e-13,
+    "contrast_window_internal_samples": [0, 8192],
+    "first_inactive_pulse_window_internal_samples": [3000, 4000]
+  }
+}

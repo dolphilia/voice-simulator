@@ -1,0 +1,54 @@
+{
+  "id": "tsp-soap-saves-transition",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "tsp-active-duration-original-20261121-repeat",
+  "source_case": "tsp-active-duration-original",
+  "alignment_run": "tsp-phone-boundaries-listening-07-20261122-a",
+  "alignment_case": "tsp-phone-boundaries-listening-07",
+  "attribution_run": "tsp-listening-gaps-20261122-repeat",
+  "recording_id": "FK64_08",
+  "speech": {
+    "body": "female",
+    "candidate_host_block": 128,
+    "phone_input_indexes": [5, 6],
+    "stop_after_vowel_delay_seconds": 0.005,
+    "minimum_stop_seconds": 0.030,
+    "minimum_hold_seconds": 0.010,
+    "lip_closure_lead_seconds": 0.022,
+    "lip_release_lead_seconds": 0.019,
+    "fricative_lead_seconds": 0.008
+  },
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "frame_range": [31200, 46080],
+    "mfa_phone_frames": [[34080, 39360], [39360, 44160]],
+    "lip_closed_area_cm2": 0.0002,
+    "lip_area_sensitivity_cm2": 0.005,
+    "reopening_pcm_window_frames": 384,
+    "sustained_teeth_frames": 48,
+    "low_energy_threshold_db": -35,
+    "plan_tolerance_seconds": 1e-12,
+    "minimum_low_energy_closed_fraction": 0.5
+  },
+  "hypothesis": "soapの/p/に割り当てられた低エネルギー時間の半分以上は、唇の最小面積が0.0002 cm²以下にある。唇が再開口した後に、saves語頭の/s/付近で歯の乱流振幅が1 ms以上続くと予測する。開放と乱流の厳密な前後関係は計測結果を残す。",
+  "acceptance": "通常CLIの全PCMを保存済み波形と照合し、固定上流プローブと候補のPCMトレースも各通常PCMと一致させる。計画時刻と/p/・/s/の主ジェスチャーを固定上流および独立式に照合する。MFA、閉鎖面積、低エネルギー区間、開放後8 msのPCM・放射、歯の乱流の時刻をフレームで保存し、閉鎖との重複とピーク位置を独立計算に照合する。物理的な予測の成否は計測の合否と別に記録する。",
+  "retain_csv": {
+    "candidate-state.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "lip_minimum_cm2", "lip_flow_cm3_s", "radiation_derivative_cm3_s2", "teeth_noise_source", "teeth_noise_gain", "teeth_noise_level", "teeth_noise_forward_pressure", "teeth_noise_reverse_pressure"],
+      "sample_ranges": [[31200, 46080]]
+    },
+    "upstream-state.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "lip_minimum_cm2", "lip_flow_cm3_s", "radiation_derivative_cm3_s2", "teeth_noise_source", "teeth_noise_gain", "teeth_noise_level", "teeth_noise_forward_pressure", "teeth_noise_reverse_pressure"],
+      "sample_ranges": [[31200, 46080]]
+    },
+    "candidate-pcm.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "pcm_f32"],
+      "sample_ranges": [[31200, 46080]]
+    }
+  }
+}

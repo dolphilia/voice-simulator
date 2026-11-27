@@ -1,0 +1,26 @@
+{
+  "id": "worklet-live-song-fast-safari-mid-song-pause",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "safari",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "offline_condition": "floor1200",
+  "paused_registration_reference": {
+    "case": "worklet-live-song-fast-safari-paused-registration.json",
+    "run": "worklet-live-song-fast-safari-paused-registration-20261121-repeat"
+  },
+  "mid_song_pause": { "target_output_frame": 28672, "target_tolerance_frames": 2048, "hold_ms": 120 },
+  "condition_order": [["continuous", "paused"], ["paused", "continuous"]],
+  "routes": ["direct", "observed"],
+  "startup_timeout_seconds": 8,
+  "hypothesis": {
+    "positions": "既存の歌唱ノードを保持してContextを停止すると、停止したフレームPは再開要求まで一定となる。最後の停止前の描画はP−128、最初の再開後の描画はPと予測する。",
+    "duration": "停止前と再開後の隣接コールバックの壁時計上の間隔は100 ms以上になり、連続条件で同じ出力位置を挟む間隔を超える。",
+    "pcm_and_state": "全49,200フレームのPCM、769点の声門・調音などの観測と歌唱計画は連続条件と同じオフライン基準に一致する。停止位置の前後256フレームを絶対フレームから取り出して連番とPCMを照合する。"
+  },
+  "criteria": {
+    "input": "Safari 18.6の通常歌唱ボタンを使い、Pop Dee、240 BPM、48 kHz出力・96 kHz内部、歯フィルタ下限1,200 Hz、無音先行なしをそろえる。各試行でページとContextを新設する。通常通り歌唱を開始し、両条件で既存のscheduledメッセージを有効にして開始予約を取得する。",
+    "pause": "予約された歌唱の先頭から28,672フレーム後を停止要求の目標とする。Contextフレームが目標以上になった時点を観測する。目標から2,048フレーム以内で、歌唱を続ける条件と、Contextのsuspendを完了してから120 msのタイマーを待ってresumeする条件とを比べる。停止完了・再開要求・再開完了の状態、フレーム、時刻を保存する。",
+    "boundary": "Context停止完了時のPと前後の絶対フレーム、描画開始の壁時計時刻、対応するPCMの位置を保存する。停止中のContextフレーム差と停止前後のコールバック間隔から、描画サンプルの連続性と実時間に空いた区間を独立して判定する。Pの前後で描画量子や並列観測のラベルが合わない場合も保存する。",
+    "repetition": "直接出力と並列観測で各2組を順序反転して実施し、別ディレクトリから繰り返す。並列観測では絶対フレームから歌唱位置と全PCMを照合し、状態系列、欠測、タイムアウト、再開後の不一致を保存する。"
+  }
+}

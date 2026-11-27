@@ -1,0 +1,27 @@
+{
+  "id": "fixed-vowel-i-velum-port-bandwidth",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の口蓋帆ポート30→49では、10周波数に限定した影響が、予測波形から生じる2,310 Hzの二次圧力損失の残差方向への射影の50%以上を占める。両肺圧と両版で照合する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-predicted-radiation-20261124-repeat",
+      "manifest_sha256": "319636232c5153f5e69035df522f3906635e2762c7c96ae1c45759081bd8073f"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "minimum_bandwidth_projection_fraction": 0.50,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "両肺圧・両版の保存済み固定 /i/ を用いる。前回の10周波数の予測波形、平均だけを実測に合わせた予測波形、平均と10周波数を実測から抽出した波形、全帯域の実測波形の順で比較する。口蓋帆ポートの面積0.30 cm²と枝の流向別係数は共通とする。",
+    "observation": "各波形の2,310 Hzの二次圧力損失、逆流標本数、平均流量を記録する。予測と全帯域の実測の複素差を、平均流量の差、同じ10周波数の係数の差、選択外の周波数の影響に分ける。粘性抵抗の節点解でポートの圧力源だけを差し替えて鼻端の複素誤差を求める。",
+    "acceptance": "ポート流量の2つの観測経路を照合し、10周波数の再構成を逆FFTと照合する。3項の複素ベクトルの和、鼻端の一括求解と枝源の重ね合わせが一致する。前回の全予測の鼻端とポートの残差を再現し、窓端項は帯域差から分けて記録する。周波数成分を絞った影響の仮説の成否を保存する。"
+  }
+}

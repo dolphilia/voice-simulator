@@ -1,0 +1,18 @@
+{
+  "id": "worklet-midi-permission",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "panels": ["voice", "beat", "songbird", "seal", "alligator", "elephant"],
+  "audio_regression_case": "worklet-midi-voice.json",
+  "browser": {
+    "permission": {"name": "midi", "sysex": false},
+    "timeout_ms": 10000,
+    "fixture": "試験コンテキストの通常MIDIとSysExの権限を同じ方向に設定する。通常MIDIだけの許可はPermissions APIでgrantedでも、このChromeでは標準の要求がNotAllowedErrorだったため、試験環境の設定を改訂した。アプリの要求はsysex:falseを保ち、返った接続でもsysexEnabledがfalseであることを照合する。"
+  },
+  "hypothesis": "Chromiumの権限を許可するとポートが0件でも接続済みの機器待ちになり、拒否すると接続の再試行が可能になる。権限の結果を画面に返す順番を制御すると、研究版の手動発声では取り消すことができ、ビートと動物の従来UIでは待機中に切断できないと予測する。固定上流はモジュールの切断で遅い結果を無視するが、画面の待機中のボタンは再度接続を呼ぶ。取り消した要求の許可結果や拒否結果で現在の表示、購読、音高が変わらないようにする。",
+  "criteria": {
+    "native_permission": "ループバックで配信した研究版の6パネルと固定上流Playで、別々のChromiumコンテキストに許可と拒否を設定する。実装が呼び出す標準のrequestMIDIAccessの結果、sysexオプション、権限状態、画面状態、ポート数を記録する。拒否のあとに権限を許可した同じ画面で接続を再試行する。",
+    "pending_requests": "Chromium自身が返した結果のみをテスト側で一時保持する。研究版の6パネルで待機中の切断後に許可結果を返し、購読や画面が復活しないことを確認する。拒否を保留したまま切断・再接続し、古い拒否を許可済みの新しい要求より先に返しても現在の待機状態を保つ。固定上流は画面の二度押しとモジュールの切断を分けて記録する。",
+    "scope_and_replay": "画面とMIDIイベントの前段に限って比較する。固定上流のMIDI所有者テストと、既存の2仮想ポートからAudioWorklet、WASM、CLIまでのPCM比較を回帰として実行する。試験コンテキストの権限は起動した試験ブラウザだけで扱う。ブラウザのダイアログ自体と物理MIDI機器は今回の比較に含めない。"
+  }
+}

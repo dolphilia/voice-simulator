@@ -1,0 +1,82 @@
+{
+  "id": "worklet-alligator-fixed-voice",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-fixed-voice-v2.json",
+  "source_revision": 2,
+  "hypothesis": "描画量子と観測点に合わせて分割しても、加工前PCMと気道の状態はCLIと一致する。壁面は口端・鼻端より先に放射し、標準経路の端の微小応答は制御境界の消去を省いた固定上流の対照より遅い。鼻孔最小でも鼻端の放射が残り、hiss=1は声門の発声ゲートを0に保つ。",
+  "measurement": {
+    "variants": [
+      "official-sustain-48000",
+      "open-mouth-48000",
+      "minimum-nostrils-48000",
+      "hiss-44100",
+      "silent-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_stride_by_variant": {
+      "silent-96000": 1
+    },
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "official-sustain-48000": [
+        [
+          0,
+          192
+        ]
+      ],
+      "open-mouth-48000": [
+        [
+          0,
+          192
+        ]
+      ],
+      "minimum-nostrils-48000": [
+        [
+          0,
+          192
+        ]
+      ],
+      "hiss-44100": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    "extra_output_frames": {
+      "official-sustain-48000": [57599],
+      "open-mouth-48000": [],
+      "minimum-nostrils-48000": [],
+      "hiss-44100": [],
+      "silent-96000": []
+    },
+    "arrival_fields": [
+      "lung_pressure_dyn_cm2",
+      "glottis_flow_cm3_s",
+      "wall_cm3_s",
+      "velum_flow_cm3_s",
+      "oral_cm3_s",
+      "nasal_cm3_s"
+    ],
+    "expected_first_internal_samples": {
+      "official-sustain-48000": [0, 47, 48, 82, 139, 143],
+      "open-mouth-48000": [0, 47, 48, 82, 139, 143],
+      "minimum-nostrils-48000": [0, 47, 48, 82, 139, 144],
+      "hiss-44100": [256, 299, 300, 331, 373, 376],
+      "silent-96000": [null, null, null, null, null, null]
+    },
+    "standard_untrimmed_endpoint_samples": {
+      "oral_cm3_s": 128,
+      "nasal_cm3_s": 132
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

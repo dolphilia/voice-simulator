@@ -1,0 +1,16 @@
+{
+  "id": "coreaudio-output-deadline-probe-512",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "previous_case": "coreaudio-output-deadline-probe.json",
+  "previous_run": "worklet-live-song-output-deadline-20261121-native",
+  "sample_rate_hz": 48000,
+  "overrun_callback_index": 64,
+  "duration_seconds": 1.2,
+  "delay_ms": 14,
+  "window_radius_callbacks": 8,
+  "criteria": {
+    "input": "前の対照と同じ既定機器のAudioUnitで低音量の番号付きPCMを再生する。前の試行の要求は512フレームで、8.4 msの待機は10.667 msの予算内だった。比較条件の待機だけを14 msにする。",
+    "prediction": "実行時間が10.667 msを超えた回の後に、実際のコールバック開始間隔と提示されたホスト時刻の増分が約2要求分になると予想する。サンプル時刻の飛びとアプリが書き込む連番の飛びを別々に測る。",
+    "validity": "前後8要求のホスト時刻、サンプル時刻、要求長と書き込み側の順序を記録する。デバイスに提示された時刻の飛びは記録するが、物理機器から実際に出たPCMはこの比較から判定しない。"
+  }
+}

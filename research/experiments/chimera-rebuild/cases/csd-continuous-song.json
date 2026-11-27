@@ -1,0 +1,37 @@
+{
+  "id": "csd-continuous-song",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "csd-song-planning-20261121-final",
+  "song": "en001a",
+  "phrases": ["en001a-01", "en001a-02"],
+  "body": "female",
+  "voice_base_case": "song-voice-flat.json",
+  "vibrato_cents": 35,
+  "output_gain": 4.8125e-7,
+  "measurement": {
+    "recording_rate_hz": 44100,
+    "recording_frames": 2857680,
+    "output_rate_hz": 48000,
+    "output_frames": 3110400,
+    "short_frames": 201600,
+    "reference_prefix_frames": 192000,
+    "host_blocks": [128, 77],
+    "beat_seconds": [2.4, 2.9813, 3.5813],
+    "beat_midi": [61, 61, 68],
+    "interphrase_window_seconds": [2.825, 2.87],
+    "history_observation_seconds": [2.825, 3.52],
+    "minimum_gap_rms_delta_pcm": 1e-7,
+    "control_tolerance": 1e-8,
+    "same_settings_pcm_tolerance": 1e-6
+  },
+  "hypothesis": "各句を別に計画し絶対時刻のジェスチャーを1回で予約すると、拍と息の開始は固定上流と同じになる。第1句を省いた対照では、第1句の末尾と第2句の調音準備の間のPCMのRMSが下がり、第2句でも差を観測できる。通常上流の先頭4秒は先行した全曲の波形とビット一致すると見込む。通常上流と候補で初期姿勢と声門変動が異なるので、そのPCM差を記録する。姿勢・声源・ゲインを候補にそろえた上流対照ではPCM最大差が1e-6以内になると予測する。",
+  "acceptance": "通常の候補CLIで録音と同じ長さのWAVを生成し、短い計測版でもホスト128・77分割でPCMと計測CSVが一致する。短い版の先頭は録音と同じ長さの版に一致する。両上流対照と候補で3音符の拍・F0と両句の呼気目標を照合し、候補と通常上流のゲートを独立計算する。上流の全曲のPCMと先頭2句のPCMは最初の192000フレームで一致する。句間には同じ出力時計で第1句の履歴が残ることを対照で示す。",
+  "retain_csv": {
+    "candidate-full.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 64], [110400, 201600], [3110336, 3110400]]},
+    "candidate-short-128.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 64], [110400, 201600]]},
+    "candidate-short-77.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 64], [110400, 201600]]},
+    "candidate-second.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 64], [134400, 175200]]},
+    "candidate-state.csv": {"sample_column": "frame", "columns": ["frame", "gate", "smoothed_f0_hz", "glottal_f0_hz", "glottal_area_cm2", "glottal_flow_cm3_s", "lip_flow_cm3_s", "radiation_derivative_cm3_s2"], "sample_ranges": [[0, 64], [110400, 201600]]}
+  }
+}

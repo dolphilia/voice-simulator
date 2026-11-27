@@ -1,0 +1,40 @@
+{
+  "id": "human-body-calibrated-vowels",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-fixed-voice", "vowel-gesture-score", "sagittal-neutral"],
+  "hypothesis": "体型ごとの較正済み母音を選ぶと、共通姿勢の体型変換に加えて目標成分も変わる。混合時は成分を持つ端点だけで重みを正規化し、/a/ の成人男性と子どもの中間体型では第1・第2共鳴も両端の間に入る。舌先座標は /ɝ ʅ ɿ/ のみで選ばれる。",
+  "initial_state": "調音目標は発話プランナと同じ較正目標を中立姿勢に重ね、その姿勢を形状と発声に適用する。調音器は動かさず、圧力、流量、ゲート、位相を0にし、音高を体型既定値に初期化する。ジッタ、シマー、ピッチドリフト、乱流を0にする。",
+  "neutral_case": "sagittal-neutral.json",
+  "catalog_size": 26,
+  "vowel_with_fixed_airway_and_voice": "a",
+  "explicit_tip_targets": ["ɝ", "ʅ", "ɿ"],
+  "unsupported_fixed_vowel": "aɪ",
+  "variants": [
+    {"id": "male", "body": "male", "weights": [1, 0, 0]},
+    {"id": "female", "body": "female", "weights": [0, 1, 0]},
+    {"id": "child", "body": "child", "weights": [0, 0, 1]},
+    {"id": "child-mid", "body": {"child": 0.5}, "weights": [0.5, 0, 0.5]},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3]}
+  ],
+  "transfer": {"start_hz": 60.0, "end_hz": 8000.0, "points": 360, "peak_search_min_hz": 150.0},
+  "voice": {"pressure_cm_h2o": 7.2, "gate": 1.0, "breathiness": 0.15, "tension": 0.5, "output_gain": 5.5e-7},
+  "measurement": {
+    "duration_s": 0.8,
+    "steady_window_s": [0.4, 0.7],
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "block_frames": [128, 77],
+    "target_absolute_tolerance": 1e-12,
+    "length_absolute_tolerance_cm": 1e-8,
+    "area_absolute_tolerance_cm2": 1e-8,
+    "relative_compliance_tolerance": 1e-8,
+    "linear_element_relative_tolerance": 1e-8,
+    "frequency_absolute_tolerance_hz": 1e-9,
+    "response_peak_relative_tolerance": 1e-8,
+    "pressure_db_absolute_tolerance": 1e-7,
+    "peak_frequency_absolute_tolerance_hz": 1e-5,
+    "maximum_pcm_absolute_error_lt": 5e-7,
+    "maximum_trace_peak_relative_error_lt": 1e-8,
+    "minimum_steady_pcm_rms": 0.01
+  }
+}

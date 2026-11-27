@@ -1,0 +1,34 @@
+{
+  "id": "coreaudio-headphone-drift-44100",
+  "revision": 1,
+  "base_case": "firefox-process-tap-headphone-drift-44100.json",
+  "reference_browser_run": "firefox-process-tap-headphone-drift-44100-20261122-1",
+  "reference_pcm_sha256": "fb854623a5a10b7209480f619c79a7fb2b293e17449d0f7e845c42a954de2530",
+  "native_comparison_runs": [
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review-verified",
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review-verified",
+    "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review-verified"
+  ],
+  "anchor": {
+    "last_exclusive": 60416
+  },
+  "trailing_anchor_search_frames": 64,
+  "capture_direct": {
+    "audio_unit_subtype": "DefaultOutput",
+    "event_callback": 2047,
+    "event_callbacks": 1,
+    "native_seconds": 1.49,
+    "tap_seconds": 4,
+    "tap_ready_timeout_seconds": 5,
+    "tap_lead_seconds": 0.1,
+    "device_snapshot_seconds_after_release": 0.2,
+    "observed_output_expected_frames": 512
+  },
+  "trial_ids": [
+    "coreaudio-headphone-drift-44100-20261122-1",
+    "coreaudio-headphone-drift-44100-20261122-2",
+    "coreaudio-headphone-drift-44100-20261122-3"
+  ],
+  "prediction": "同じ外部ヘッドフォンと44.1 kHzで、DefaultOutputの直接出力でも最初の4窓の19,845 Hzの振幅比は0.47〜0.53になると予測する。3回中少なくとも1回は19,845 Hzの比が0.20未満の区間と、2,205 Hzの位相が+20 ppmを超える区間がそれぞれ4窓続き、立ち上がりが512フレーム以内に現れると予測する。実際の出力コールバック幅は512と予測し、先行cubebの256との差を記録する。",
+  "criteria": "ブラウザ保存済みの61,440標本のハッシュと直接出力が書いた左右逆相のFloat32をビット照合する。レンダリングは遅延0、戻り値0で、イベントは観測コールバックの外に置く。採取対象PID、再生中の物理機器と公称レート、フレーム幅、PCM長、サンプル時計の連続性と単調なホスト時計、元の出力の復元を確認する。先行ネイティブcubebと同じ前マーカーおよび反復境界を避けた後マーカーで整列し、前マーカーの整数位置を固定する。4周波数・9216から55216までの400標本窓と200標本ホップ、先行の40標本周期、帯域・位相の検出方法を長いブラウザ収録から継承する。最初の4窓の帯域、幅の予測、帯域低下と位相の有無は採取条件と別に記録する。"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "compare-upstream-pcm16",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "初期の固定上流マニフェストのケース別成果にも、保存済み比較を適用できる。符号付き16ビットの振幅を32768で割れば、固定上流の参照読み出しと同じ値で比較できる。",
+  "input": {
+    "run": "upstream-20261119-a",
+    "reference_wave": "artifacts/vowels.wav",
+    "candidate_wave": "artifacts/vowels.wav"
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "output_frames": 288000,
+    "output_frame_range": [
+      0,
+      288000
+    ],
+    "comparison": "PCM16の同一成果と、換算した値を保存したfloat32対照。量子化の異なる形式間ではサンプル値の絶対差を比較する。",
+    "pcm_absolute_tolerance": 0,
+    "internal_samples_per_output_frame": 1,
+    "require_pcm_bit_exact": true,
+    "independent_decode_divisor": 32768
+  },
+  "expected": {
+    "archived_case_id": "vowels",
+    "archived_wave_sha256": "4c385a6d4560a88d3dca30abfb34f7ff246c72dcc20783ab35b1530b6ff3c7a8",
+    "minimum_pcm16": -10262,
+    "maximum_pcm16": 10652,
+    "same_format_different_bits": 0,
+    "mixed_format_different_bits": null,
+    "mixed_exactness_error": "異なる保存形式でビット一致を要求した場合は入力エラー。値の比較では保存形式をJSONに記録。",
+    "quantized_vs_engine_pcm_absolute_tolerance": 4.57763671875e-05,
+    "fresh_render": "同じ固定コミット・成人男性の10母音をPCM16とfloat32でレンダーする。前者を初期マニフェストのWAVに、後者は丸めと読み出しの独立計算に照合する。",
+    "path_controls": "成果がケースに属していること、異なるケースから同じパスが登録された曖昧な成果が拒否されること、元の実行とWAVのSHA-256が維持されることを照合する。",
+    "conversion_endpoints": [
+      -32768,
+      -1,
+      0,
+      1,
+      32767
+    ]
+  }
+}

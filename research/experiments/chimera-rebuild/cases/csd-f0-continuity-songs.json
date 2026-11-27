@@ -1,0 +1,20 @@
+{
+  "id": "csd-f0-continuity-songs",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "corpus_case": "csd-f0-search-sensitivity.json",
+  "corpus_reference_run": "csd-f0-search-sensitivity-20261122-continuity-regression",
+  "tracker_case": "csd-f0-continuity.json",
+  "single_note_reference_run": "csd-f0-continuity-20261122-repeat",
+  "conventional_window_count": 88344,
+  "large_step_cents": 600,
+  "maximum_recording_median_change_cents": 10,
+  "variation_tolerance_cents": 0.0000001,
+  "hypothesis": "±7半音で周期候補を保持して選ぶと、録音と両合成の有声窓の位置は保たれ、合成の+600セント以上の窓は4曲合計で減る。時間費用を加えた条件では、窓ごとに候補を選ぶ条件より音符内の累積F0変化量が増えない。録音の曲別F0中央値は10セント以内に収まると予測する。H1−H2とビブラートへの影響は方向を仮定せず保存する。",
+  "criteria": {
+    "inputs": "調整曲en001a・en012a、確認曲en005a・en035aの録音・固定上流・再実装の同一PCM、486音符、5 msの88,344窓を使う。確認曲en035aの第21音は方式確認に使った音符として明記する。前回の周期候補の費用0.02、遷移費用0.5、ゲートと探索範囲を固定し、通常+7半音、上限+5半音、候補費用のみ、時間費用の4条件を比較する。",
+    "replay": "従来2条件のF0、CMND、有声状態、採択遅延、平均二乗電力、H1−H2を全窓で保存済みのCSVに照合する。各音符のビブラートと非周期性を既存の通常報告や保存基準に照合する。選択が変わった窓と固定間隔の窓で従来の推定を独立計算する。確認曲第21音も前回の追跡結果に照合する。",
+    "spectrum": "従来と同じ2窓おきのHann窓のFFT電力を全条件で共有し、選んだF0の1倍・2倍近傍のピークを用いる。各曲・各波形で初めてH1−H2が変わった窓については直接DFTからも計算し、FFTとピークの位置を照合する。",
+    "report": "各条件の音域外の窓、有声からの欠測、1音符内の600セント以上の隣接窓差、ビブラート、H1−H2の窓数と音符中央値を保存する。選択が変わる最初の窓と候補のラグ、選択後に指標が変わる最初の窓を、曲と波形ごとに記録する。曲別集計は固定上流が整列を認めた音符から求め、高低の外れ窓の総数は全登録窓の値と明記する。実録音のF0の真値は既知波形と混同しない。"
+  }
+}

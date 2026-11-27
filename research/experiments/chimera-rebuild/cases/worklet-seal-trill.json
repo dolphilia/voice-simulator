@@ -1,0 +1,57 @@
+{
+  "id": "worklet-seal-trill",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-trill.json",
+  "source_revision": 1,
+  "hypothesis": "同じ入力を渡すと実時間PCMとCLIの全フレームがビット一致する。48 kHzでキーの中点が音高・パルス周波数の幾何平均に達し、自然終了時に手動目標が戻る。44.1 kHzで途中停止したフレームに目標が戻り、平滑値と肺圧は次の64フレーム制御境界から変わる。96 kHzで移調後の音高だけが上限6,000 Hzに制限される。",
+  "measurement": {
+    "variants": [
+      "official-prefix-48000",
+      "manual-restore-44100",
+      "pitch-clamp-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [
+        76799,
+        163199,
+        263999,
+        264063,
+        266431
+      ],
+      "manual-restore-44100": [
+        72,
+        73,
+        127,
+        8400,
+        8401,
+        10730,
+        10731,
+        11222,
+        11223,
+        11263,
+        18326,
+        18327,
+        18367,
+        23220,
+        23221,
+        23231
+      ],
+      "pitch-clamp-96000": [
+        16,
+        17,
+        63
+      ]
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

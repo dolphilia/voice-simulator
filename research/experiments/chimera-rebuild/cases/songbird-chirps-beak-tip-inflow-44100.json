@@ -1,0 +1,24 @@
+{
+  "id": "songbird-chirps-beak-tip-inflow-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source": {
+    "run": "songbird-chirps-beak-load-20261122-c-repeat",
+    "manifest_sha256": "ac631d0e68c7a6043e6cc985617d4168809790312642f78db32f8f99e66dc953"
+  },
+  "reference": {
+    "run": "songbird-chirps-beak-tip-inflow-20261123-repeat",
+    "manifest_sha256": "96278f5850eaf1027cb53b55b481a5b60a453d8529c42f82c12573fb7d9b8dd7",
+    "sample_rate_hz": 192000,
+    "control_block_samples": 256
+  },
+  "output_rate_hz": 44100,
+  "oversampling": 4,
+  "output_control_frames": 64,
+  "beak_length_cm": 1.3,
+  "expected_beak_cells": 6,
+  "observation_internal_samples": 16,
+  "hypothesis": "176.4 kHzでもくちばしは6セルで、最後の枝の初差は押鍵から6〜12内部サンプルに現れると予測する。内部レートが変わっても、192 kHzで見つかった運動量の時間換算だけを上流に揃えると最初の流量差を説明できると予測する。この帰属を制御時間を揃えた条件と通常の制御刻みでそれぞれ判定する。",
+  "observation": "192 kHzの押鍵ケースから音高・呼気・開口・口腔食道腔の目標を保存したまま内部レートだけ176.4 kHzへ移す。主条件は1.333333 msを内部235点へ丸め、初期化と形状補間に同じ点数を使う。補助条件は上流の64出力フレームに相当する内部256点。主条件で追従0も測る。各条件で更新から16点を観測し、断面・前回圧・前回流量から最後の枝の流量を再計算する。",
+  "acceptance": "すべての条件で最後の枝の断面と6セルの形状が192 kHzの記録と一致し、両版の最後の枝の流量を全観測点でビット単位に復元する。追従0の流量は全点0。最初の差を内部サンプルとµsで記録し、前回の圧力差、運動量の時間換算、線形係数、二乗損失の置換で再現できるかを各条件で判定する。差が観測窓にない場合と、複数または単独の項で説明できる場合を区別し、予測が外れたときも記録する。"
+}

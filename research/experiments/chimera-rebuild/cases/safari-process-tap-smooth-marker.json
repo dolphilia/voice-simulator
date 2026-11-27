@@ -1,0 +1,25 @@
+{
+  "id": "safari-process-tap-smooth-marker",
+  "base_case": "safari-process-tap-calibration.json",
+  "marker": {
+    "shape": "smooth-binary",
+    "chips": 4095,
+    "frames_per_chip": 16,
+    "seed": 1851936439,
+    "scale": 256
+  },
+  "window_frames": 1024,
+  "minimum_consecutive_windows": 16,
+  "minimum_correlation": 0.995,
+  "minimum_distinct_peak_margin": 0.1,
+  "maximum_relative_residual": 0.025,
+  "maximum_graph_zero_error": 1e-14,
+  "maximum_consecutive_delay_change_frames": 0.125,
+  "criteria": {
+    "input": "従来と同じ48 kHzのSafariとCore Audioのプロセス採取を使う。逆相の試験音のみ変更する。既知の二値列を16サンプルごとの節点とし、値と一階微分が連続する三次式で節点間を補間する。グラフの保存波形は独立生成した波形とビット照合する。",
+    "observation": "採取側の連続する1024フレームの窓ごとに、参照波形一周期との相関から位相を求める。±32フレームより外の競合ピークと比較し、選んだ位相の±1フレームで補間と正のゲインを推定する。ホスト時刻、サンプル時刻、逆相の検査は従来条件を保つ。",
+    "prediction": "滑らかな試験音では16窓（16384サンプル）以上連続し、参照位相が窓長分ずつ進む。各窓の相関は0.995以上、競合ピークとの差は0.1以上、補間後の相対RMS残差は0.025以下、隣接窓の細かな遅延の変化は0.125フレーム以下とする。",
+    "controls": "独立生成の逆相信号を0.25フレームずらした連続対照と、1024フレーム境界に128フレームの欠落・重複・無音を入れた対照を用意する。連続対照では分数遅延と位相を復元し、各欠損対照では窓の観測位置から種類と変化量を確認する。",
+    "graph_zero_error": "初回の全点ビット照合では、参照値がゼロの点だけに約5.2e-17以下の差があった。初回の判定を保存し、以後の波形照合では参照値がゼロの点に限って絶対誤差1e-14以下とする。その他はビット照合を保つ。"
+  }
+}

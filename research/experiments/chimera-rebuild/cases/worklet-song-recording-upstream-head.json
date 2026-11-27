@@ -1,0 +1,34 @@
+{
+  "id": "worklet-song-recording-upstream-head",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "input": {
+    "upstream_mode": "sing",
+    "upstream_tune": "joyful",
+    "upstream_view": "3d",
+    "body": "male",
+    "lyrics": "",
+    "tempo_multiplier": 1.0,
+    "viewport_width_css_px": 960
+  },
+  "measurement": {
+    "minimum_decoded_fps": 20,
+    "maximum_av_end_difference_seconds": 0.18,
+    "minimum_voiced_vowels": 4,
+    "minimum_envelope_correlation": 0.65,
+    "maximum_envelope_shift_seconds": 0.18,
+    "maximum_pitch_difference_cents": 40,
+    "pitch_notes": [0, 2, 3, 7],
+    "frame_sample_seconds": [0.85, 2.15, 4.15],
+    "frame_comparison_size_px": [90, 160],
+    "frame_search_tolerance_seconds": 0.2,
+    "maximum_mean_rgb_error": 8.0,
+    "cancel_after_seconds": 1.2
+  },
+  "hypothesis": "固定上流の歌唱画面から録画を開始すると、3D頭部は調音の更新を続け、録画中は計測の表示を抑制する。停止・完走でClipの所有が解放されて計測表示が戻り、保存映像にはその歌唱中の頭部と音声が入る。",
+  "criteria": {
+    "lifecycle": "固定上流の通常の3D歌唱画面で準備、録画、完走と保存、別試行の中止を観測する。Clipの所有、共有音声、録画用映像トラックの変化を記録する。",
+    "view": "計測表示を有効にした同じ頭部について、録画前・収録中・復帰後の計測描画と調音テレメトリを確認し、保存した映像の頭部画面も復号して確認する。",
+    "sound": "入力した曲の音符と予約時刻を記録し、復号音声の有声区間を画面の調音テレメトリと比較する。既存の色付き拍の比較とは別に、実際の頭部を使った収録での対応と差を記録する。"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "lip-tuck-area-continuity",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "下唇を引き込んでも輪郭の各頂点は連続に動く。唇端より後ろの前方測定線が下唇の折り返しをかすめると、その線で採る下側交差が切り替わる。接触による制限はすでに解除され、隙間と格子断面が跳び、口腔セルの調和平均にも段差が残る。再実装でも同じ条件と位置で起きる。",
+  "body_parameters": {
+    "male": {"scale": 1.0, "pharynx": 1.0, "lip_width_cm_at_full_spread_before_scaling": 4.6},
+    "female": {"scale": 0.9, "pharynx": 0.88, "lip_width_cm_at_full_spread_before_scaling": 4.4},
+    "child": {"scale": 0.74, "pharynx": 0.8, "lip_width_cm_at_full_spread_before_scaling": 4.0}
+  },
+  "base_posture": {
+    "jaw_cm": 0.3,
+    "tongue_body_cm": [2.9, 6.85],
+    "tongue_tip_cm": [6.45, 7.3],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.05,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "lip_protrusions_cm": [0.2, 0.6],
+  "lip_spreads": [0.5, 1.0],
+  "cells": {"pharynx": 20, "oral": 24},
+  "measurement": {
+    "frames": 1,
+    "sweep": {
+      "start": 0.0,
+      "end": 1.0,
+      "steps": 400,
+      "refinement_rounds": 20,
+      "threshold_cm2": 0.05,
+      "expected_upstream_test_exit": 101,
+      "expected_reported_steps_per_body": 6,
+      "reference_event": {"body": "male", "lip_protrusion_cm": 0.2, "lip_spread": 0.5, "anchor_interval": [0.861, 0.862], "cell_jump_interval_cm2": [0.4, 0.42]}
+    },
+    "position_error_lt_cm": 1e-8,
+    "area_error_lt_cm2": 1e-8,
+    "moving_vertex_delta_lt_cm": 1e-7,
+    "visible_floor_jump_gt_cm": 0.05,
+    "resample": {"closure_threshold_cm2": 0.00001},
+    "observation": "各区間で44セルの平均断面積の最大差を求め、0.05 cm²を超える両半区間を20回まで追う。段差の両端で輪郭、全格子、前方6線の上下交差と線分、補正前後の隙間、断面積、中心線距離、平均・最小セル断面積を比較する。"
+  }
+}

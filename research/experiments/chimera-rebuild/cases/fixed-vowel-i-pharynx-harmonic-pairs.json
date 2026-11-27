@@ -1,0 +1,25 @@
+{
+  "id": "fixed-vowel-i-pharynx-harmonic-pairs",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の咽頭17枝で同じ3組の周波数積と、残した周波数から再構成した逆流補正を使うと、観測流量に接線抵抗だけを掛けた場合と比べ、2,310 Hzの鼻端複素誤差が50%以上減る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-mean-flow-tangent-20261124-repeat",
+      "manifest_sha256": "39d7a444bb953d075f5a3129858d495d2e83689c939baf0cc2a85cf945dd5cba",
+      "known_failed_check": "pharynx_mean_flow_tangent_removes_half_of_nose_error"
+    },
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "pairs_hz": [[110, 2200], [-110, 2420], [220, 2090]],
+    "pharynx_branch_count": 17,
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "固定 /i/ のポートだけを0.30 cm²にした保存済みの通常発声を使う。節点22→23で前回観測した寄与上位3組を全17枝に固定し、平均流量と対に含まれる倍音、および一次項用の2,310 Hzだけを残した波形で逆流補正を計算する。他の声門上枝と声門流量の複素入力は保存観測を使う。",
+    "observation": "2,310 Hzの咽頭各枝の圧力源を、接線項のみ、1組・3組の二乗項、3組と再構成逆流、3組と観測逆流、全DFTの二乗項と観測逆流で比較する。全110 Hz倍音の周波数積と観測逆流を使う対照も保存する。鼻端の振幅・位相・複素誤差、逆流のある枝の圧力源の誤差と逆流標本数を記録する。",
+    "acceptance": "全周波数積の和と時間領域で二乗した係数が一致し、指定した周波数を残して再構成した符号付きの時系列からの直接計算が3組の式と一致する。枝ごとの逆流補正で符号付き損失の複素係数を再現し、従来の観測全損失と観測流量の接線診断を保存値に照合する。両版で3組と再構成逆流による50%改善仮説の成否を保存する。"
+  }
+}

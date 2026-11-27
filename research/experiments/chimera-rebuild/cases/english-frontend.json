@@ -1,0 +1,219 @@
+{
+  "id": "english-frontend",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "英語の数字と句読点は語・句・休止へ写る。同じIPAでも句末の疑問符で最後のF0目標が上がる。",
+  "measurement": {
+    "plan_absolute_tolerance": 1e-12,
+    "dictionary_entries": 126052,
+    "typescript_fixture_words": 504,
+    "typescript_fixture_arpabet": 9,
+    "typescript_fixture_phrases": 38
+  },
+  "english_text": {
+    "inputs": [
+      {
+        "id": "dictionary",
+        "text": "Hello world",
+        "expect": [
+          {
+            "words": [
+              "hello",
+              "world"
+            ],
+            "shown": "həlˈoʊwˈɝɫd",
+            "pause": 0.3
+          }
+        ]
+      },
+      {
+        "id": "tap",
+        "text": "water",
+        "expect": [
+          {
+            "words": [
+              "water"
+            ],
+            "shown": "wˈɔɾɚ"
+          }
+        ]
+      },
+      {
+        "id": "punct",
+        "text": "Is it on? Yes, it is.",
+        "expect": [
+          {
+            "words": [
+              "is",
+              "it",
+              "on"
+            ],
+            "intonation": "question",
+            "pause": 0.35
+          },
+          {
+            "words": [
+              "yes"
+            ],
+            "pause": 0.18
+          },
+          {
+            "words": [
+              "it",
+              "is"
+            ],
+            "intonation": "statement",
+            "pause": 0.35
+          }
+        ]
+      },
+      {
+        "id": "question-fall",
+        "text": "Mom? Pop.",
+        "expect": [
+          {
+            "shown": "mˈɑm?",
+            "last_pitch_hz": 151.2
+          },
+          {
+            "shown": "pˈɑp",
+            "last_pitch_hz": 91.84
+          }
+        ]
+      },
+      {
+        "id": "numbers",
+        "text": "007; 42: 1001, 1000000.",
+        "expect": [
+          {
+            "words": [
+              "seven"
+            ],
+            "pause": 0.18
+          },
+          {
+            "words": [
+              "forty",
+              "two"
+            ],
+            "pause": 0.18
+          },
+          {
+            "words": [
+              "one",
+              "thousand",
+              "one"
+            ],
+            "pause": 0.18
+          },
+          {
+            "words": [
+              "one",
+              "zero",
+              "zero",
+              "zero",
+              "zero",
+              "zero",
+              "zero"
+            ],
+            "pause": 0.35
+          }
+        ]
+      },
+      {
+        "id": "marks",
+        "text": "It’s -- Mom?!   ' Pop",
+        "expect": [
+          {
+            "words": [
+              "it's",
+              "mom"
+            ],
+            "pause": 0.35,
+            "intonation": "question"
+          },
+          {
+            "words": [
+              "pop"
+            ],
+            "pause": 0.3
+          }
+        ]
+      },
+      {
+        "id": "empty",
+        "text": "  -- '  ? ...",
+        "expect": []
+      },
+      {
+        "id": "homographs",
+        "text": "Read wind close",
+        "expect": [
+          {
+            "words": [
+              "read",
+              "wind",
+              "close"
+            ],
+            "sources": [
+              "homograph",
+              "homograph",
+              "homograph"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "unknown",
+        "text": "Zorblat quixotical",
+        "expect": [
+          {
+            "words": [
+              "zorblat",
+              "quixotical"
+            ],
+            "sources": [
+              "rules",
+              "rules"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "no-dictionary",
+        "text": "Mom? Pop.",
+        "dictionary": false,
+        "expect": [
+          {
+            "sources": [
+              "rules"
+            ],
+            "last_pitch_hz": 151.2
+          },
+          {
+            "sources": [
+              "rules"
+            ],
+            "last_pitch_hz": 91.84
+          }
+        ]
+      }
+    ],
+    "words": [
+      "the",
+      "to",
+      "and",
+      "water",
+      "zorblat",
+      "wind",
+      "well-known",
+      "👋y",
+      "x🙂y",
+      "---"
+    ],
+    "arpabet": [
+      "AH0 AH1 ER0 ER2 T1 UW2",
+      "AH3 ey junk HH",
+      "AE1 T﻿ER0"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "fixed-alpha-loss-tangent",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ で、節点26→27の1枝、または節点25→26、26→27、27→28の3枝の二次損失を定常点の接線に替えると、660 Hz・770 Hzの複素応答の差は、前回見積もった各枝の寄与を引く方向に変わる。残りの枝の流量が変わることによる差も別に測る。",
+  "reference": {
+    "run": "fixed-alpha-branch-loss-20261124-repeat",
+    "case": "fixed-alpha-branch-loss",
+    "sha256": "0da750a9584047593fc0117d2eb94009b6b51e4afa6add98cd7035d48ae36d41"
+  },
+  "initial_dc_comparison": {
+    "run": "fixed-alpha-loss-tangent-20261124-rebuilt",
+    "sha256": "d06746b66adc5dca5e97bd620600a792e6fd3d51eb1373a7a14e0206b5092982",
+    "failed_checks": ["dc/candidate/stationary_at_the_tangent_point", "dc/upstream/stationary_at_the_tangent_point"]
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "variants": {"baseline": [], "one_branch": [[26, 27]], "three_branches": [[25, 26], [26, 27], [27, 28]]},
+    "series_peak_relative_error_lt": 1e-9,
+    "dc_stationarity_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "archived_contribution_relative_error_lt": 1e-8,
+    "complex_change_reconstruction_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10,
+    "open_loop_prediction_relative_error_hypothesis_lt": 0.1
+  },
+  "input": "前回保存した通常発声と固定LFの固定声道再入力を使う。事前の定常流、形状、注入流量、計測窓を揃える。標本76,800で対象枝の二次損失だけを定常流での値と傾きが等しい接線に替える。さらに定常流を維持したまま3枝の接線を有効にする対照を、無変更の定常流と比較する。",
+  "observation": "固定上流と研究版の隔離ビルドで枝の面積・粘性・慣性、未選択枝の二次損失を保つ。切替前の波形と定常流対照、選択・未選択枝の圧力方程式を確かめる。最後の19,200標本から、口端の複素応答の変化を測る。前回の対象枝の寄与を引いた予測と比較し、残りの枝の二次損失の変化を加えて差を再構成する。",
+  "revision_reason": "初回の定常流対照ではほぼゼロとなる口端圧・放射差分を列ごとのピークで割り、丸めの差が相対値を支配した。定常状態での最大絶対差を圧力、流量、放射流量の差分に分け、入口定常圧、基準流量、基準流量×サンプル周波数でそれぞれ正規化する。許容値10⁻⁹と加振条件を保ち、初回の不合格と観測バイト列を照合する。"
+}

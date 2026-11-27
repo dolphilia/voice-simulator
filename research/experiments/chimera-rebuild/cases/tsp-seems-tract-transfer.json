@@ -1,0 +1,30 @@
+{
+  "id": "tsp-seems-tract-transfer",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "previous": {
+    "run": "tsp-seems-tract-transfer-20261123-a",
+    "case": "tsp-seems-tract-transfer",
+    "manifest_sha256": "b15d37f6f4c5e1d4f4d245bf0d8af35822b7833307394997ac243899264f29d2"
+  },
+  "revision_reason": "初版では線形ピーク間の丸め誤差の符号だけで仮説が真になった。初版のピーク照合に設定した0.1 Hzを線形ピーク差の符号の判別にも適用し、それ以下は判別不能にする。試料・計算・線形応答の合否基準は維持する。",
+  "source_comparison": {
+    "run": "tsp-f2-source-comparison-20261123-repeat",
+    "case": "tsp-f2-source-comparison",
+    "manifest_sha256": "6bdf25e22a7639278ffaa6bc71b8836b581d61cbd8a1dc64a71037434d8ab61f"
+  },
+  "render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "target": {"utterance": "MK61_01", "word": "seems", "center": 0.5, "start_sample_12khz": 13830, "window_samples": 300},
+  "observation": {"pcm_rate_hz": 48000, "internal_rate_hz": 96000, "completed_pcm_frames": 55920},
+  "transfer": {"start_hz": 150, "end_hz": 4600, "step_hz": 5, "high_band_hz": [1950, 2600]},
+  "limits": {"solver_relative_error": 1e-9, "native_peak_difference_hz": 0.1, "peak_to_pcm_difference_hz": 180, "minimum_linear_difference_to_resolve_sign_hz": 0.1},
+  "hypotheses": {
+    "high_band_peak_near_pcm": "両版で母音中央の声道を固定した高域の流量比ピークが、同じ窓のPCMの高域LPC極から180 Hz以内に現れる。",
+    "sign_of_high_band_difference_matches_pcm": "研究版と固定上流の高域の線形ピーク差の絶対値が0.1 Hzより大きい場合、PCMの高域LPC極の差と符号が一致する。0.1 Hz以下では判別不能を記録する。"
+  },
+  "acceptance": "保存済みの男性設定MK61_01と通常CLIのWAVを照合し、録音済みのLPC比較の中央時刻1.165秒に相当する55920フレームの出力直後を採る。研究版はCLIの既存断面CSVでも同フレームの面積・最小面積・長さを独立照合する。固定上流は孤立した固定版の作業コピーで、現在値を目標値へ複製した気道のコピーを線形化する。両版の実効断面と各線形係数を保存し、声門枝を切断して咽頭入口に単位体積速度を入れる。150〜4600 Hzの5 Hz間隔で口・鼻・壁の総放射流量比を各版の木の求解と独立した複素節点方程式に照合する。1950〜2600 Hzの局所ピークを拾い、帯域内で最も強いピークとPCMの高域LPC極を比較する。仮説の成否は線形計算の合否と分け、ピークや帯域幅が測れない場合は記録する。"
+}

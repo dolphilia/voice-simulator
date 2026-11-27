@@ -1,0 +1,53 @@
+{
+  "id": "elephant-trumpet",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": ["elephant-fixed-voice.json", "elephant-rumble.json", "elephant-valve.json"],
+  "hypothesis": "trumpetの弁音高は380→520→470 Hz、呼気圧と粗さはそれぞれ26→34 cmH₂O、0.1→0.6を指数補間する。呼気圧は最後に16 cmH₂Oへ線形で戻る。モードは開始直後から1→0へ線形に下がる。ゲート倍率は呼気を変え、音高指定は弁音高を変えない。rumbleからの置き換えで手動の声門音高と経路の目標が復帰し、コール中の弁音高など4項目の変更は停止まで保留される。",
+  "elephant_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 333600,
+    "shape": {"pitch_hz": 14.0, "pressure_cm_h2o": 16.0, "trunk": 1.0, "chaos": 0.2,
+              "mode": 0.0, "lip_pitch_hz": 470.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "rumble"}},
+               {"frame": 249600, "play_call": {"id": "trumpet"}}],
+    "level": 1.0,
+    "observe_call": true,
+    "observe_valve": true
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-trumpet-48000", "official_prefix": true, "first_control": 249600, "end_frame": 312064,
+       "curve_frames": [249600, 252032, 261632, 273600, 288000, 302400, 309632, 312000, 312064],
+       "windows_seconds": [[0.12, 0.3], [0.7, 0.9], [1.32, 1.5]]},
+      {"id": "switch-stop-44100", "sample_rate_hz": 44100, "frames": 98000, "first_control": 48064, "end_frame": 86011,
+       "shape": {"pitch_hz": 20.0, "pressure_cm_h2o": 20.0, "trunk": 0.35, "mode": 0.15, "lip_pitch_hz": 610.0},
+       "events": [{"frame": 173, "play_call": {"id": "rumble"}},
+                  {"frame": 42013, "params": {"pitch_hz": 31.0, "trunk": 0.55}},
+                  {"frame": 48021, "play_call": {"id": "trumpet", "amplitude": 0.75}},
+                  {"frame": 62317, "params": {"pitch_hz": 24.0, "trunk": 0.7, "mode": 0.4,
+                                            "lip_pitch_hz": 655.0, "pressure_cm_h2o": 21.0, "chaos": 0.25}},
+                  {"frame": 86011, "stop_call": true}],
+       "curve_frames": [48020, 48021, 48063, 48064, 50304, 62316, 62317, 70144, 86010, 86011, 86016],
+       "windows_seconds": [[0.12, 0.3], [0.6, 0.78]], "replacement_and_stop": true},
+      {"id": "requested-pitch-96000", "sample_rate_hz": 96000, "frames": 156000,
+       "first_control": 64, "end_frame": 124928,
+       "events": [{"frame": 31, "play_call": {"id": "trumpet", "pitch_hz": 700.0}}],
+       "curve_frames": [31, 64, 4864, 24064, 48064, 76864, 105664, 120064, 124864, 124928],
+       "windows_seconds": [[0.12, 0.3], [0.7, 0.9], [1.32, 1.5]]},
+      {"id": "default-pitch-96000-prefix", "sample_rate_hz": 96000, "frames": 32768,
+       "first_control": 64, "end_frame": null,
+       "events": [{"frame": 31, "play_call": {"id": "trumpet"}}],
+       "curve_frames": [31, 64, 4864, 24064], "windows_seconds": [[0.12, 0.3]]}
+    ],
+    "trumpet_keys": {"pitch_reference_hz": 470.0, "ownership_tail_seconds": 0.05,
+                     "gate": [[0.0, 0.0], [0.05, 1.0], [1.25, 0.0]],
+                     "lip_pitch_hz": [[0.0, 380.0], [0.5, 520.0], [1.1, 470.0]],
+                     "pressure_cm_h2o": [[0.0, 26.0], [1.1, 34.0], [1.25, 16.0]],
+                     "chaos": [[0.0, 0.1], [1.1, 0.6]], "mode": [[0.0, 1.0], [1.25, 0.0]],
+                     "exponential_into_seconds": [0.5, 1.1]},
+    "matched_pitch_request": {"case": "requested-pitch-96000", "control": "default-pitch-96000-prefix", "frames": 32768},
+    "stage_observations": "公式CLIの先頭333,600フレームとtrumpet区間84,000フレームを照合する。各レートで目標・平滑値・制御時計を独立した線形／指数補間と照合し、弁の変位と速度、実断面、鼻先放射とPCMまで追う。96 kHzの0〜32,767は音高指定の有無以外をそろえ、CSVとPCMの一致を検査する。44.1 kHzの途中停止では演奏値の所有・復帰と制御時刻を検査し、すべての条件で固定発声・入口弁の許容差を引き継ぐ。"
+  }
+}

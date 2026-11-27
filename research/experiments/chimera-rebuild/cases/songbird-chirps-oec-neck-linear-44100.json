@@ -1,0 +1,22 @@
+{
+  "id": "songbird-chirps-oec-neck-linear-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-oec-neck-momentum-44100-20261123-repeat",
+    "manifest_sha256": "03c325cf06fe3ab64d27abee80f65526c0358b875795bca41c25f1d4e445d0f6"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 64,
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "volume_source_cutoff_hz": 60,
+  "expected_baseline_neck_offsets": {
+    "matched_time": 6,
+    "native_block": 25,
+    "no_tracking": null
+  },
+  "hypothesis": "235点制御では、線形係数の慣性項を上流と同じ乗算で求めると、押鍵6点後に観測された最初の首部流量差は消えると予測する。同じ標本の気管端圧とその後の腔圧・放射を計測する。256点制御では13点後から気管端圧の差が先行しているため、首部流量の初差を解消できるかは未定。追従0は全版で無励振を保つ。",
+  "observation": "呼気ゲート0の235点制御、256点制御、追従0で前回の7差分を適用した描画を復元する。実験版では首部1枝の線形係数に使う現在の慣性の換算だけを L/dt から L×fs へ切り替える。前回運動量、粘性抵抗、方向別二次損失は対照と同じ式を使う。固定上流の64点は直前の実行からハッシュ照合して再利用する。",
+  "acceptance": "対照の全CSVが前回の実験版にバイト一致し、差分がネットワーク内の首部1枝の係数選択に限定される。形状と注入は両ビルドでビット一致。3条件の3版について首部流量・腔圧・先端圧・放射流量と微分を独立計算とビット照合する。追従0の無励振と、変更時に枝が前回節点圧を使う順序を確認する。残差の最初の標本について、入力・演算項の置換結果を保存する。"
+}

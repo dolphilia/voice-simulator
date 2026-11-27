@@ -1,0 +1,24 @@
+{
+  "id": "csd-f0-yin-threshold",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "corpus_case": "csd-f0-search-sensitivity.json",
+  "corpus_reference_run": "csd-f0-continuity-songs-20261122-repeat",
+  "known_wave_case": "csd-f0-continuity.json",
+  "recording_controls": [
+    {"song": "en001a", "run": "csd-f0-recording-period-evidence-20261122-verified-repeat", "windows": [17]},
+    {"song": "en035a", "run": "csd-f0-recording-period-evidence-held-out-20261122-repeat", "windows": [-4, 1]}
+  ],
+  "thresholds": [0.2, 0.15],
+  "note_count": 486,
+  "frame_count": 88344,
+  "baseline_voiced_frames": 85940,
+  "hypothesis": "PCMと電力ゲートが同じなら、0.15への変更で新たな有声窓は発生しない。既知の浅い極小2窓は長い周期へ移る。補助窓では閾値未満の短い極小が残る。4曲全体では両方で有声のままラグが伸びる窓と、電力ゲートを通っても閾値を通らずF0を失う窓がそれぞれ生じる。倍音付きの既知409.35 Hzは全窓で0.25 Hz以内に収まる。200 Hzの基本音が弱い区間には400 Hz付近を選ぶ窓が残る。",
+  "criteria": {
+    "inputs": "調整曲en001aとen012a、確認曲en005aとen035aで録音・固定上流・再実装の保存済みPCMと音符内5 ms格子を使う。探索範囲±7半音・窓幅・電力ゲートと全前処理を保持し、同じCMND列を閾値0.2と0.15に渡す。",
+    "replay": "486音符88,344窓の時刻、状態、Hz、ラグ、CMNDと平均二乗電力を保存済み通常条件に照合する。通常の有声85,940窓を再現する。調整曲・確認曲の焦点および通常格子前の補助窓計3点を保存済みの結果に照合する。",
+    "independent": "状態・Hz・ラグ・CMNDが変わった全窓と固定間隔の窓をラグ別に二乗和を計算する既存の別計算と照合する。合成・録音それぞれで差が最初に出る例の閾値通過点と全探索範囲の最小CMNDを保存する。両方で有声の採択ラグは短縮せず、閾値変更だけで有声が増えないことを検証する。",
+    "derived": "H1−H2は同じ時刻のHann窓の電力スペクトルを共有し、通常条件を保存済み値と照合する。ビブラートは各閾値の有声が連続する区間で計算し、通常条件を固定上流の報告・保存済み結果と照合する。F0を失った窓とラグが伸びた窓を区別し、条件別の高音側の外れ・H1−H2とビブラートの欠測・検出の数を曲と波形ごとに保存する。",
+    "bounds": "合格は入力・再現・独立照合で判定する。短いラグが減ることや有声を失う数の予測は別に判定する。録音に真のF0の参照がなく、譜面からのセント差は比較指標として扱う。"
+  }
+}

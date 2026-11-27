@@ -1,0 +1,158 @@
+{
+  "id": "worklet-midi-seal-call",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-zap.json",
+  "input": {
+    "creature": "seal",
+    "key_mode": "call",
+    "call_id": "zap",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [
+      40,
+      6000
+    ],
+    "capture_seconds": 0.9,
+    "events": [
+      {
+        "seconds": 0.14,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.185,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 0.275,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.33,
+        "type": "note-off",
+        "note": 67
+      }
+    ]
+  },
+  "hypothesis": "Laser chirpを選ぶと、押下で音高の基準6000 Hzを音域割り当て後の523.25 Hzまたは783.99 Hzへ移し、150 msの下降を同じ比で移調する。キー解放後も呼気包絡が続き、次の押下は進行中のコールを置き換える。",
+  "criteria": {
+    "routing": "固定上流と候補の通常画面でLaser chirpを選び、押下時に送る音高と識別子、解放後の包絡を比較する。",
+    "physics": "再発音前後と自然終了後の目標・平滑音高、呼気、声門面積、放射とPCMを比較し、固定上流の制御点から下降の参照を独立計算する。",
+    "replay": "手動コール経路と持続音を回帰させ、保存したMIDIイベントをCLIで再実行する。"
+  },
+  "measurement": {
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "control_frames": 64,
+    "octave_shift": 1,
+    "maximum_relative_input_error_seconds": 0.045,
+    "browser_release_window_seconds": [
+      0.015,
+      0.058
+    ],
+    "browser_release_gate_minimum_peak": 0.12,
+    "release_window_seconds": [
+      0.013,
+      0.037
+    ],
+    "minimum_release_pcm_rms": 0.005,
+    "minimum_open_glottis_peak_cm2": 0.03,
+    "maximum_tail_pcm_rms": 0.002,
+    "tail_window_seconds": 0.033,
+    "minimum_restart_previous_gate": 0.05,
+    "maximum_restart_previous_gate": 0.6,
+    "native_pcm_tolerance": 1e-06,
+    "native_state_absolute_tolerance": 1e-08,
+    "native_state_relative_tolerance": 1e-07,
+    "independent_tolerances": {
+      "gate": 1e-12,
+      "gate_target": 1e-10,
+      "target_pitch_hz": 1e-08,
+      "pitch_hz": 1e-08,
+      "lung_pressure_dyn_cm2": 1e-07,
+      "control_clock_seconds": 1e-11,
+      "target_pulse_depth": 1e-12,
+      "call_id": 0.0
+    },
+    "reference_definition_run": "seal-zap-before-worklet-1",
+    "reference_regression_run": "worklet-midi-seal-20261121-zap-regression"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz_0",
+        "glottis_phase_0",
+        "glottis_area_cm2_0",
+        "wall_0",
+        "oral_0",
+        "nasal_0",
+        "radiation_0",
+        "pcm_f32",
+        "gate_target",
+        "target_pulse_depth"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          21760
+        ],
+        [
+          23040,
+          30592
+        ],
+        [
+          39936,
+          43200
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz_0",
+        "glottis_phase_0",
+        "glottis_area_cm2_0",
+        "wall_0",
+        "oral_0",
+        "nasal_0",
+        "radiation_0",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          21760
+        ],
+        [
+          23040,
+          30592
+        ],
+        [
+          39936,
+          43200
+        ]
+      ]
+    }
+  }
+}

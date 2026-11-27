@@ -1,0 +1,17 @@
+{
+  "id": "worklet-live-song-fast-zero-lead-pcm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "lead_study": "worklet-live-song-fast-context-lead.json",
+  "lead_reference_run": "worklet-live-song-fast-context-lead-20261121-repeat",
+  "condition_order": [["pattern", "zero"], ["zero", "pattern"], ["zero", "pattern"], ["pattern", "zero"]],
+  "marker_pcm_overrides": {
+    "pattern": {},
+    "zero": { "multiplier": 0, "offset": 32760 }
+  },
+  "hypothesis": "同じAudioContext、先行枝、待ち時間を使えば、先行PCMを全て0にしても開始待ちの飛びは増えず、最初の歌唱量子から3,072フレーム後に開始する。既知のPCMと全て0のPCMの両方で先行枝のWorklet入力に128フレームのチャンネルが届き、歌唱の49,200フレームは保存済みオフライン版とビット一致する。",
+  "criteria": {
+    "input": "Chromium、Pop Dee、48 kHz・128フレーム、歯の低域通過周波数下限1,200 Hz。前回と同じモノラルAudioBufferSourceNode、先行信号の読取ノードと接続、32量子の待ち時間を両条件に使う。違いは先行バッファに書く値だけ。",
+    "acquisition": "先行枝のPCMを絶対フレームから独立計算し、記録した各量子の入力量と出力PCMを確認する。前回と同様に、歌唱枝から採取した全PCMおよび予定フレーム、状態、再実行ケースを照合する。",
+    "prediction": "各実行4組について、両条件の開始前に欠けたフレーム数と最初の量子からの開始間隔を対応比較する。両条件で飛びが0、開始間隔が3,072フレームなら予測成立。開始待ちの飛びや先行入力が届かない場合も測定値を保存する。"
+  }
+}

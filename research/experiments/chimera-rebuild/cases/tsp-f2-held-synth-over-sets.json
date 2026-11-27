@@ -1,0 +1,30 @@
+{
+  "id": "tsp-f2-held-synth-over-sets",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fk": {
+    "run": "tsp-f2-pooled-reference-sweep-20261123-repeat",
+    "case": "tsp-f2-pooled-reference-sweep",
+    "manifest_sha256": "f9affd88f2b214163b537c1649c68a44a7c4c92844f593c6949f276a642e9d35"
+  },
+  "fl": {
+    "run": "tsp-f2-pooled-reference-held-fl-20261123-repeat",
+    "case": "tsp-f2-pooled-reference-held-fl",
+    "manifest_sha256": "7794b62ae872509352be1f41354767dd29c75f10719475a6906f160fc5152c44"
+  },
+  "measurement": {
+    "held_support": {"FK": 5, "FL": 10},
+    "cohorts": ["female", "mixed"],
+    "pairs": 78,
+    "short_count": 2,
+    "intervals": "第57・58版の確認用の合成音から、対応した音素の有限な強勢付き /ɛ/ のF2を固定する。元の時刻・窓・音素対応と学習側の78条件を引き継ぎ、values直後からover_setsとcostsを観測する。",
+    "controls": "15件を直接valuesに通す対照、FLを保存順の先頭2件にする対照、両話者を先頭2件にする対照を置く。学習参照と費用式は全対照で共通。",
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "mixed_aggregate_zero_in_all_conditions": "男女参照では、上流の文集合集約後も全78条件で合成側の費用が0。",
+    "female_aggregate_partly_positive_with_more_zero_costs_than_fk": "女性参照では、上流集約後に費用が正の条件が残り、費用0はFK単独の64条件より増える。",
+    "token_pool_changes_zero_classification": "15件の直接集約は、上流の文集合ごとの集約と比べて、少なくとも1条件で費用が0か正かの判定が変わる。"
+  },
+  "acceptance": "各集合のF2中央値、log2値と支持数が第57・58版の保存値に一致する。固定上流のvalues、over_sets、costs、foldを呼び、無介入と78条件で2参照への結果を独立式で1e-10以内に照合する。文集合2つの半数条件と、FLのみ不足した場合のFK採用、両集合不足の場合の欠測と費用nullを確認する。予測の判定は機構検証と分ける。"
+}

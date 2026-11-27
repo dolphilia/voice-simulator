@@ -1,0 +1,20 @@
+{
+  "id": "tract-area-buffer-reuse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "contact-sample-buffer-reuse-20261122-b",
+  "allocation_reference_case_id": "contact-sample-buffer-reuse",
+  "geometry_reference_run": "contact-sample-buffer-reuse-20261122-b",
+  "geometry_reference_case_id": "contact-sample-buffer-reuse",
+  "browser_reference_run": "worklet-live-song-contact-sample-buffer-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": "area_profile",
+  "removed_allocations_per_geometry_update": 1,
+  "allocations_per_geometry_update": 0,
+  "expected_removed_allocations": 1476,
+  "expected_allocations": 1,
+  "contact_grid_allocations_per_call": {"roof_cumulative": 0, "measurement_grid": 0, "contact_samples": 0},
+  "prediction": "確定済みと計算中の断面標本に最大49本分ずつ確保し、成功時だけ領域を交換する。48 kHzのPop Deeで面積プロファイルの1,476件がなくなり、全713量子で1,477件から初回の乱流源登録1件だけになる。出力フレーム[44672,47872)の語境界25量子は各4件から0件になる。",
+  "criteria": "測定の入力とタイミングはallocation_caseに従う。量子ごとの削減件数は面積プロファイルの基準件数に一致し、各工程の呼び出し回数と独立した工程の件数は一致すること。通常CLIの4条件の断面、歌唱PCM全91,200標本と64フレーム間隔の全ABI観測1,425点は基準と一致すること。断面計算に標本がない場合はエラーを返し、次の有効な計算で確保先を再利用すること。96 kHzの成人男性で口腔セル数を固定し、唇の後退でクーラン数が0.97を超える更新をapplyとreapplyから各1回試し、最後に確定した全断面標本の11値と確保先は変わらず、有効な姿勢への復帰で2つの領域が交代すること。"
+}

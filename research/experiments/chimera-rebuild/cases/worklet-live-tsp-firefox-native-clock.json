@@ -1,0 +1,17 @@
+{
+  "id": "worklet-live-tsp-firefox-native-clock",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_case": "worklet-live-tsp-source-defaults",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-repeat",
+  "gecko_profile_case": "worklet-realtime-firefox-native-clock-96000.json",
+  "measurement": {
+    "trials": 2,
+    "engine_marker": "WorkletNodeEngine::ProcessBlock",
+    "author_marker": "AudioWorkletNodeEngine::CallProcess",
+    "warmup_quanta": 32,
+    "callback_gap_max_mean_error_ms": 1.0
+  },
+  "hypothesis": "確認用07の実時間再生で、起動待ち・予定待ち・841採取量子の順序をFirefoxのネイティブ区間と一意に対応付けられる。冒頭32採取量子以降のネイティブp99は2.667 ms以内で、Date.nowが予算超過を示した量子の一部はネイティブ時計で予算内になる。",
+  "acceptance": "通常の読み込みと実時間発声を操作し、同一試行からGeckoプロファイルとWorklet記録を取得する。起動待ちと予定待ちを含む呼び出し件数から実時間スレッドを一意に選ぶ。各CallProcessが別のProcessBlockに包含されること、採取開始間隔の平均絶対差が1 ms以下で前後に1量子ずらした比較より小さいことを確認する。両マーカーとDate.nowの処理時間・しきい値超過・発話内位置を保存する。保存済みのWASM、ケース、PCM、発話内観測との一致を検査する。プロファイラー条件の結果と通常再生の保存結果を併記し、時刻対応の欠測と予測の不成立を保存する。"
+}

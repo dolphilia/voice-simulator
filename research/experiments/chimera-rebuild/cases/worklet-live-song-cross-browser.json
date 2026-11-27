@@ -1,0 +1,21 @@
+{
+  "id": "worklet-live-song-cross-browser",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "live_case": "worklet-live-song.json",
+  "archived_chromium_run": "worklet-live-song-20261120-b",
+  "firefox_profile_case": "worklet-realtime-firefox-native-clock-96000.json",
+  "hypothesis": "通常画面で同じPop Deeのスコアを48 kHzで歌わせると、FirefoxとChromiumではContext上の開始フレームが変わっても、開始から24,000・48,000フレームの拍、加工前PCM、声門と唇の音響観測が揃う。Firefoxのネイティブ計時では、発話と同じく終了後にJavaScriptを呼ばない区間が残りうる。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"]],
+    "native_firefox_trials": 2,
+    "native_marker": "WorkletNodeEngine::ProcessBlock",
+    "unrenderable_lyrics": "...",
+    "rejection_contains": "音符に割り当てる歌詞の音節がありません"
+  },
+  "criteria": {
+    "ordinary": "通常の歌唱画面で歌詞に音節がない場合のエラーから復帰し、実時間とオフラインのWAV・JSONを出力する。実時間で再開し、接続後0.7秒からの停止でContextが閉じ、再び完了できることを確認する。辞書の内容とWASMが同じことを照合する。",
+    "audio": "内部96 kHz、出力48 kHz、128フレーム、加工前の出力91,200フレームと観測1,425行。両ブラウザ、オフライン、CLIのPCMはビット一致。音符・ジェスチャー・声門・唇の観測も両ブラウザで一致。固定上流、F0、ビブラート、語尾の開大・呼気・無音は既存の基準を継承する。",
+    "schedule": "8量子以上の起動時の連続を認めてから2,048フレーム先に予約する。全713量子が連続し、末尾64フレームをゼロで埋める。開始を原点にする予定拍をスコアから独立計算する。",
+    "timing": "通常のp99は始めの32量子を除いて2.667 ms以内。Firefoxのネイティブ診断は歌唱1回で内側のJS呼び出しと外側の区間を一対一に照合し、対応する区間と終了後の余分な外側区間を分ける。プロファイルでは停止の対照とオフラインを省く。物理出力は計測しない。"
+  }
+}

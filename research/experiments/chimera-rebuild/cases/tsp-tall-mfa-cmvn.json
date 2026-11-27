@@ -1,0 +1,46 @@
+{
+  "id": "tsp-tall-mfa-cmvn",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "parent": {
+    "run": "tsp-tall-mfa-preroll-20261123-repeat",
+    "case": "tsp-tall-mfa-preroll",
+    "manifest_sha256": "ab4deb9bae1b4c6e7558d0f02920e6702bc90310b75330f0db2bddbb6143fb72"
+  },
+  "environment_sources": {
+    "montreal_forced_aligner/corpus/acoustic_corpus.py": "05f8d773ff7f4b6568d2e104772d95cb4cb57f2dd2a376cf6d4af51b7562f178",
+    "montreal_forced_aligner/corpus/features.py": "273cfda558c221468ccf864c262616b37085c6ef1d3c81a38adbc75c0e617d40",
+    "montreal_forced_aligner/alignment/multiprocessing.py": "0d5afe9e4b1a888dd2346527127e6648da08958b47c20e3090fb2b6ecb9bbcbe",
+    "montreal_forced_aligner/db.py": "a7613c6f9f9d13277a93ea2661edbe9f76d3ea8c00d353b982901642972a7156",
+    "kalpy/feat/data.py": "fdce9525c9e0e34e5215ed485d9d0aeac156830813756c3f05e5afce098bd8bc",
+    "kalpy/feat/mfcc.py": "65b4c4e2e7254b5280fdad2be508f7796a448595aec427b3f88f45f7a82cdd2b",
+    "kalpy/feat/cmvn.py": "c14890468835f874c0c8e5468e052315f02557fb647c0db1857dd594b1868c99"
+  },
+  "measurement": {
+    "conditions": {
+      "control": {"audio": "control", "statistics": "control"},
+      "old_preroll": {"audio": "old_preroll", "statistics": "old_preroll"},
+      "preroll_control_stats": {"audio": "old_preroll", "statistics": "control"},
+      "control_preroll_stats": {"audio": "control", "statistics": "old_preroll"}
+    },
+    "model_features": {
+      "sample_frequency": 16000, "frame_length": 25, "frame_shift": 10,
+      "num_coefficients": 13, "uses_cmvn": true, "snip_edges": false
+    },
+    "coefficients": 13,
+    "feature_frames": 302,
+    "local_feature_frames": [145, 176],
+    "sample_rate_hz": 48000,
+    "local_pcm_frames": [72000, 84000],
+    "statistics_square_dtype": "float32",
+    "statistics_absolute_tolerance": 1e-7,
+    "normalized_absolute_tolerance": 5e-5,
+    "word": "tall",
+    "phones": ["AO1", "L"],
+    "control_end_seconds": 1.649999976158142,
+    "preroll_end_seconds": 1.6799999475479126,
+    "acceptance": "元の2条件の全語・音素区間が保存済み結果と一致する。各交換条件のPCM・MFCCは同じ音声を使う条件と完全一致し、実際のCMVN読込値は指定した供給元だけに変わる。非圧縮MFCC、MFAが保存した圧縮MFCCの読み戻し、CMVN後の値、最終特徴量の読み戻しを保存する。独立計算で圧縮MFCCからCMVNのフレーム数、列和、二乗和と平均除去を照合し、各区間を再集計する。",
+    "prediction": "冒頭の差から離れたtall周辺で非圧縮MFCCは一致する。各発話の平均を使うとtall周辺に特徴量差があり、対照平均を共用すると差は縮む。入れ替えた音声に対照統計を使うとAO1終端は1.650秒に戻り、対照音声に入れ替え条件の統計を使うと1.680秒に動く。発話単位の行列圧縮や整列経路の影響で残る差は段ごとに記録する。"
+  }
+}

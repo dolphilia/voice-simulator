@@ -1,0 +1,29 @@
+{
+  "id": "tsp-fk61-centerline-length-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "geometry": {"run": "tsp-fk61-lip-front-origin-20261123-repeat", "case": "tsp-fk61-lip-front-origin", "manifest_sha256": "8923a5d9a1d5c0b91191cc780ab8e0cb83ecfdf7b0e94eba451b151ff106f32a"},
+  "matched": {"run": "tsp-held-out-matched-speech-20261123-repeat", "case": "tsp-held-out-matched-speech", "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"},
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "completed_frames": [1985],
+    "focus_ray": 31,
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "trial_input": {
+      "previous_midpoint_cm": [2.2620678004991985, 8.66943414331396],
+      "standard_midpoint_cm": [2.6084115660443725, 8.694229196147017],
+      "upstream_y_cm": 8.694229196147019
+    },
+    "scope": "標準研究版と固定上流のフレーム1985を照合する。試験版は先行記録の2中心点に完全一致する測定線31で、距離計算に渡す中心のyのみを固定上流の値へ切り替える。測定線座標と測定線上の面積は元の値で計算する。観測は全測定線の距離と累積値、口腔起点・終点と末端セル長とする。"
+  },
+  "hypotheses": {
+    "local_midpoint_propagates_through_l2_and_rounding": "測定線30までの累積位置は一致する。31のyの差で区間距離が異なり、累積の正確な和が隣接するfloat64値の中点を挟む。",
+    "single_midpoint_swap_aligns_focus_accumulation": "距離計算で使う31のyだけを交換すると、30→31の距離と31の累積位置が固定上流と一致する。",
+    "single_midpoint_swap_aligns_oral_length": "31のyの交換だけで口腔端の累積位置とネットワークの口端セル長の目標も固定上流と一致する。"
+  },
+  "acceptance": "標準版の通常CLI・観測器・保存済みPCMと、試験版の通常CLI・観測器を全フレームでビット照合する。採取した区間距離と中心座標差を高精度計算で照合し、累積と末端セル長を独立にビット再現する。初差の距離と中点、試験版での交換位置・端までの伝わり方、PCMの初差と最大差を保存する。仮説は合否と個別に扱う。"
+}

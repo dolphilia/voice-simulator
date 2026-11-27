@@ -1,0 +1,38 @@
+{
+  "id": "fixed-lf-glottal-flow",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "vowel-voice-alpha",
+  "prior_run": "vowel-voice-alpha-20261119-f",
+  "duration_samples": 57600,
+  "internal_rate_hz": 96000,
+  "output_rate_hz": 48000,
+  "f0_hz": 110.0,
+  "host_block_frames": [128, 77],
+  "steady_window_samples": [38400, 57600],
+  "fade_samples": 4800,
+  "lf_shape": {"tp": 0.4, "te": 0.6, "ta": 0.05, "ee": 1.0},
+  "harmonics": 12,
+  "conditions": {
+    "coupled": "固定 /ɑ/、成人男性、閉じた軟口蓋、肺圧7.2 cmH₂O。既存ケースの肺・声門・声道の結合を使う。",
+    "replay": "各実装の通常条件で得た声門流量を、その実装の同じ初期状態から、同じ枝の節点収支に逐次入力する。",
+    "lf": "両実装に同じ流量列を入力する。有限戻り相のLF微分形を位相で積分し、位相端の流量を0とする。定常窓で候補の通常条件と標本平均をそろえ、0から50 msまでsin²で立ち上げる。位相は((n+1)×110 mod 96000)/96000。",
+    "comparison": "声門・口端・鼻端の体積流量、声門直前直後の圧力、壁寄与を含む総放射の流量微分、PCM。各波形の定常平均・交流RMSと最初の12倍音を記録する。流量に基づく口端と総放射の複素比も保存する。"
+  },
+  "predictions": [
+    "流量再入力では、通常時と圧力、口端・鼻端流量、放射、PCMが同一になり、声門抵抗を通じていた作用を流量の境界条件として再現できる。",
+    "固定LFは通常条件と平均流量と基本周波数が一致する一方、声門流量のH1−H2と口端および総放射の交流波形に差が出る。",
+    "最初の差は入力する声門流量と同一ステップの声門両側圧に現れ、口端流量の差は声道内を伝搬した後に現れる。総放射は壁の寄与を含むため、口端以前に変化しうる。"
+  ],
+  "criteria": {
+    "lf_reference_absolute_error_max_cm3_s": 1e-8,
+    "lf_min_flow_cm3_s": -1e-10,
+    "mean_match_relative_error_max": 1e-12,
+    "f0_absolute_error_max_hz": 0.05,
+    "upstream_pcm_absolute_error_max": 5e-7,
+    "upstream_signal_relative_peak_error_max": 1e-7,
+    "replay_same_backend_exact": true,
+    "min_glottal_h1_minus_h2_difference_db": 1.0,
+    "min_lip_and_radiation_relative_ac_rms_difference": 0.05,
+    "first_difference_relative_peak_threshold": 1e-9
+  }
+}

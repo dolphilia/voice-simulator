@@ -1,0 +1,18 @@
+{
+  "id": "csd-long-note-vibrato-f0-control",
+  "revision": 1,
+  "baseline_run": "csd-long-note-vibrato-20261121-theta",
+  "base_case": "csd-long-note-vibrato.json",
+  "pitch_case": "csd-acoustic-f0-en001a.json",
+  "periodicity_case": "csd-vibrato-aperiodicity.json",
+  "song": "en035a",
+  "note_index": 20,
+  "expected_grid_frames": 80,
+  "search_upper_semitones": 5,
+  "high_error_cents": 600,
+  "spectrum_window_seconds": 0.04,
+  "spectrum_fft_size": 65536,
+  "third_harmonic_tolerance_hz": 60,
+  "hypothesis": "確認曲第21音で両合成が返した700セント以上のF0は、強い第3倍音で候補の短い遅延が先に選ばれた結果と予測する。PCMや他の測定条件を保ち、探索上限だけを+7から+5半音へ狭めると、外れ値が除かれて両合成のビブラート推定値が近づく。録音のF0には同様の外れ値が見られない。",
+  "acceptance": "基準の80窓について通常のF0・有声状態・電力・ビブラート指標を再現する。探索下限、窓、ゲートを保った対照を保存し、両合成で最初に大きいF0が出た窓のFFTと競合する遅延を照合する。外れ値の除去数、ビブラート指標と録音への影響を観測値として残す。通常の報告は独立に保持する。"
+}

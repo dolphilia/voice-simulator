@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-registration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "app_study": "worklet-live-song-fast-app-silent-lead.json",
+  "app_reference_run": "worklet-live-song-fast-app-silent-lead-20261121-repeat",
+  "acquisition_revision": 2,
+  "previous_runs": ["worklet-live-song-fast-app-silent-lead-registration-20261121-a",
+    "worklet-live-song-fast-app-silent-lead-registration-20261121-repeat"],
+  "hold_output_probe_connections": true,
+  "condition_order": [["serial", "parallel"], ["parallel", "serial"], ["parallel", "serial"], ["serial", "parallel"]],
+  "hypothesis": {
+    "registration": "歌唱計画の完了後に2本のaddModuleを待ち合わせると、歌唱Worklet登録の要求から両方の準備完了までの組内差の中央値は、直列登録より短くなる。",
+    "click_time": "グラフの接続順と無音の8量子を保つので、クリックから歌唱先頭の描画までの時間も直接出力の組内差の中央値で短くなると予測する。",
+    "startup_and_pcm": "全試行で開始待ちの飛びは0。歌唱Workletの初回から3,072フレーム後に描画を始め、予約位置で揃えたPCM49,200フレーム、観測769点、歌唱計画はオフライン基準と一致する。"
+  },
+  "criteria": {
+    "input": "固定した前回ケースと同じChromium、短音Pop Dee、辞書とWASM、48 kHz、128フレーム量子、歯のフィルタ下限1,200 Hz。直接出力と並列観測でそれぞれ4組。各ページで新規Contextと辞書の初回読み込みを使う。全試行でsongSilentLead=8とし、並行側にだけsongSilentLeadRegistration=parallelを付ける。",
+    "registration": "歌唱計画の完了、個々のaddModuleの要求と解決、先行枝を接続する直前、8量子の通知受領、歌唱ノードの生成をperformance.nowで記録する。直列では歌唱Worklet登録の完了後に先行Worklet登録を開始し、並行では歌唱Worklet登録の完了前に先行Worklet登録を開始したことを照合する。両条件とも両登録の解決が先行枝の接続に先行する。歌唱Workletの登録要求から2本の遅い方が解決するまでの差を登録区間とし、直接出力の組内差の中央値が負なら短縮と判定する。ブラウザ内でモジュールの評価が同時に行われたかは推定しない。",
+    "clock": "trusted clickのDate.nowと予約フレームに達したWorkletコールバックのエポック時刻の差を計る。直接出力の組内差（並行から直列を引く）の中央値が負なら操作からの短縮と判定する。主判定と並列観測付きの計時は別に記録する。",
+    "audio": "先行枝の8量子と歌唱開始待ちのフレームを読み、前回と同じ予約式、保存WAVと状態、並列観測の前後256フレームの連続性と無音を照合する。固定上流との差は保存済みSHA-256照合済みPCMと比較する。",
+    "probe_revision": "初回方式の再実行で最終歌唱量子と次の無音が同じ絶対フレームを報告した。旧判定を保存し、並列観測時だけ歌唱・先行のWorkletNodeの接続を採取終了まで保持する。直接出力・歌唱内容・フレームの採否は同じ条件を用いる。"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "worklet-safari-song-output-position",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-safari-song-audio-client.json",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "condition_order": [["bulk", "split"]],
+  "trace": {
+    "instruments": ["System Call Trace"],
+    "capture_target": "webcontent",
+    "release_after_notification_ms": 20,
+    "output_wait_seconds": 90,
+    "export_syscall_xml": false
+  },
+  "output_clock_observation": {"interval_ms": 2, "max_samples": 4096},
+  "prior_wait_runs": ["worklet-safari-song-webcontent-waits-20261122-a", "worklet-safari-song-webcontent-waits-20261122-repeat"],
+  "sample_rate_hz": 48000,
+  "quantum_frames": 128,
+  "maximum_sampling_gap_ms": 20,
+  "minimum_baseline_readings": 8,
+  "minimum_baseline_unclamped_steps": 4,
+  "minimum_bulk_unchanged_ms": 80,
+  "minimum_bulk_jump_frames": 2048,
+  "minimum_bulk_to_split_jump_ratio": 4,
+  "maximum_clock_lock_call_ms": 4,
+  "criteria": {
+    "input": "同じ48 kHzのSafari歌唱、16,384フレームの予備描画、先行信号を使う。WebContentにSystem Call Traceを付けたまま、一括と67片の分割を比較し、順序を反転する。メインスレッドのタイマーで同じAudioContextのgetOutputTimestampとその前後のcurrentTimeを採取する。",
+    "validity": "先行PCM・歌唱PCM・488観測点を以前の基準に照合する。構築前90〜10 ms、準備中、準備完了後10〜90 msの各窓を観測点が覆い、取得間隔は20 ms以内、1回の取得は4 ms以下とする。基準窓で8件以上を採り、公開位置が直前と直後のcurrentTimeを下回る時点の間で4件以上、128フレームの倍数による進みを確認する。",
+    "prediction": "一括時は準備中に公開出力位置とperformanceTimeがともに80 ms以上据え置かれると予測する。準備開始から完了後90 msまでに、currentTimeによる切り詰めの影響を除いた連続観測点の出力位置差が2048フレーム以上かつペアの分割条件の最大差の4倍以上になると予測する。Web側のMach待機復帰と同じ時間軸で比較する。",
+    "scope": "getOutputTimestampは公開された時刻を指す。公開WebKitのリング書き込み位置に由来する量として解釈できる条件を確かめ、各書き込みやリング内のPCMの直接観測とは区別する。互いに異なるperformanceTimeかつ取得前後のグラフ位置を下回る出力位置の対を使い、その間に観測されなかった更新があり得ることを記録する。",
+    "publication_groups": "当初の取得点の比較で、同じperformanceTimeの中に切り詰められた取得値と、その後に公開された位置を直接読めた取得値が混在したため追加した。同じperformanceTimeが続く取得をまとめ、切り詰められていない値が得られ、それらがすべて一致したグループの位置を採用する。隣接する2グループの位置差と、同じ時刻区間に入るWorkletの量子数を求める。初回の較正判定を保存し、分割の位置差が欠測したときの倍率は未判定とする。"
+  }
+}

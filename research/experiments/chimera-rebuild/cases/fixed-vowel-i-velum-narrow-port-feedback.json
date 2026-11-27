@@ -1,0 +1,34 @@
+{
+  "id": "fixed-vowel-i-velum-narrow-port-feedback",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の肺圧7.2 cmH₂Oと声道輪郭を保ち、口蓋帆の音響ポートを0.30から0.15 cm²へ狭めると、ポートの慣性・粘性抵抗・二次係数が増え、観測平均流量が減る。固定した1,320 Hzと2,420 Hzへ予測二次損失を一度戻せば、2成分の複素流量誤差が50%以上減り、2,310 Hzの鼻端では同じ2成分の実測差し替えによる正の改善量の80%以上を回復する。再実装版と固定上流で個別に判定する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-selected-pair-feedback-20261124-repeat",
+      "manifest_sha256": "81cec298941e8a266cc006c6f4e01297b41849d8731da699a821d3478b41f33e"
+    },
+    "pressure_cm_h2o": 7.2,
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "feedback_frequencies_hz": [1320, 2420],
+    "port_nodes": [30, 49],
+    "reference_port_area_cm2": 0.30,
+    "port_area_cm2": 0.15,
+    "supraglottal_branch_count": 61,
+    "minimum_port_error_reduction_fraction": 0.50,
+    "minimum_recovered_nose_improvement_fraction": 0.80,
+    "measured_source_port_relative_error_lt": 1e-4,
+    "measured_source_nose_transfer_relative_error_lt": 1e-8,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "upstream_pcm_peak_relative_error_lt": 1e-7,
+    "input": "保存済み7.2 cmH₂Oの通常発声入力を使い、音響ポート面積の上書き値だけを0.15 cm²にする。固定上流と候補の生の節点・枝の系列を観測窓の前標本から収録し、両版の新しい開口の線形要素を別々に取得する。声門の観測流量と新しい形状を22倍音の予測に用い、補正周波数は先行実行と同じ1,320 Hzと2,420 Hzに固定する。",
+    "observation": "幾何、節点・枝、鼻端の流量とPCMを両版で照合する。平均と無補正の2成分、予測損失による一度の補正、観測損失対照を比較し、実測流量係数の差し替えを独立対照にする。2,310 Hzの鼻端はポートの2成分だけを差し替え、他60枝とポートの平均・残り20成分を固定する。",
+    "acceptance": "入力の差がポートの上書きだけであることを確認する。0.30 cm²の収録と輪郭・接続を比べ、ポート抵抗の面積比に対するAのマイナス3/2乗則を照合する。開口0.15 cm²の候補と上流の幾何・時系列・PCM、観測損失対照、FFT、独立節点解、各仮説の成否を記録する。"
+  }
+}

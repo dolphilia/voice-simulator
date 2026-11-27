@@ -1,0 +1,40 @@
+{
+  "id": "fixed-alpha-periodic-flow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ で平均流量を揃えても、保存した周期変動を与えると枝の二次損失により660 Hz・770 Hzの口端応答は定常点を線形化した予測から変化する。保存した全0.60秒の流量も同じ声道へ入れ直して、周期列の反復と初期状態が観測比に及ぼす差を確かめる。",
+  "references": {
+    "mean_flow": {
+      "run": "fixed-alpha-mean-flow-20261124-repeat",
+      "case": "fixed-alpha-mean-flow",
+      "sha256": "6edcf2dbe1e2e5ec101aa4b8be79f05f0c7c65c0890bbd29e8ba4997a063fe4c"
+    },
+    "voiced": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-repeat",
+      "case": "fixed-lf-radiation-harmonic-budget",
+      "sha256": "74bfec7e117a90f012e886530e6dd7fdbae6b43c8c6f315706ee8967d7ea2eaa"
+    }
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "f0_hz": 110,
+    "steady_window_samples": [38400, 57600],
+    "cycles_per_block": 22,
+    "frequencies_hz": [660, 770],
+    "steady_flow_cm3_s": 139.8857905134376,
+    "warmup_samples": 76800,
+    "periodic_blocks": 4,
+    "after_onset_samples_to_keep": 128,
+    "steady_mean_match_abs_lt_cm3_s": 1e-10,
+    "upstream_trace_peak_relative_error_lt": 1e-9,
+    "first_inlet_pressure_relative_error_lt": 1e-9,
+    "dft_relative_error_lt": 1e-9,
+    "settled_harmonic_complex_relative_change_lt": 1e-7,
+    "linear_model_previous_relative_error_lt": 1e-6,
+    "observable_periodic_vs_linear_complex_relative_gt": 1e-5,
+    "original_trace_first_difference_peak_relative_gt": 1e-9,
+    "hypothesized_max_relative_complex_lip_error_vs_voiced": 0.0025
+  },
+  "input": "保存した通常発声と固定LFの声門流量から、それぞれ同じ0.20秒の22周期を切り出す。共通平均流で0.80秒初期化し、定常流の対照と同じ咽頭入口に、各区間の標本を0.80秒間繰り返し与える。別に元の0.60秒全標本を標本0から再入力し、22周期の繰り返しと元の初期履歴を比べる。全条件で固定 /ɑ/ の形状と閉じた声門枝・軟口蓋を使う。",
+  "observation": "咽頭入口と口腔接続と口端の圧力、口腔接続・口端・壁の流量を観測する。対照の定常成分を引き、最後の2ブロックで複素振幅の収束を確認する。DFTで660 Hzと770 Hzの口端流量を入力流量で割り、定常点の離散線形予測と元の有声記録に照合する。全区間の再入力では入口圧・口端流量・総放射で元の有声記録との差が最初に相対閾値を超えた標本を求める。"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "worklet-song-parallel-registration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "startup_reference_run": "worklet-song-startup-phases-20261121-repeat",
+  "live_case": "worklet-live-song.json",
+  "hypothesis": "固定上流と同じくContextの再開を要求してから完了を待たずにWorkletを登録すると、Firefoxで二つの区間が重なり、同じ歌唱の接続までの待ちが短くなる。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"], ["firefox", "chromium"]],
+    "condition_order": [["serial", "parallel"], ["parallel", "serial"], ["parallel", "serial"], ["serial", "parallel"]],
+    "unrenderable_lyrics": "...",
+    "rejection_contains": "音符に割り当てる歌詞の音節がありません",
+    "minimum_firefox_paired_median_saving_ms": 20,
+    "maximum_chromium_paired_median_regression_ms": 10
+  },
+  "criteria": {
+    "setup": "各試行を別のブラウザ・ページから始め、両条件とも現行順の歌詞エラーで辞書を取得する。次の有効な歌唱で、現行順は計画後に登録を開始し、並行条件は再開要求の直後に登録を開始する。再開、WASM、計画、登録の完了を待ってからノードを作る。",
+    "timing": "ブラウザごとに各4対でContext作成から接続までを測る。再開・WASM取得とコンパイル・歌唱計画に登録が重なる時間と、計画後に登録だけを待つ時間を分ける。Firefoxの対ごとの差の中央値が20 ms以上の短縮、Chromiumでは10 msを超える遅延増がないことを改善の目安とし、値と判定を音響の判定と併記する。",
+    "audio": "48 kHzの91,200フレーム、1,425観測行、音節と調音スコアをCLIとオフラインに照合済みの基準へビット照合する。固定上流との差は既存の許容差を使う。開始位置の絶対値は観測し、予定フレームからの拍と全713量子の連続性を検査する。",
+    "cancel": "各ブラウザの並行条件で、計測器が登録のPromiseを保留したまま停止し、接続前にContextが閉じることを確認する。停止後にそのPromiseを失敗させ、未処理の拒否やUIエラーが無い状態で同じ歌唱を再実行する。接続後にも停止し、再開して完了する。"
+  }
+}

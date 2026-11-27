@@ -1,0 +1,44 @@
+{
+  "id": "upstream-safari-song-recording-pause",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_reference": {
+    "case": "worklet-live-song-fast-safari-recording-pause.json",
+    "run": "worklet-live-song-fast-safari-recording-pause-20261121-repeat-b"
+  },
+  "condition_order": [["continuous", "paused"], ["paused", "continuous"]],
+  "score": {
+    "id": "research-pop-dee",
+    "lyrics": "Pop Dee",
+    "notes": [[60, 0.25], [64, 0.25]],
+    "bpm": 240,
+    "vibrato_cents": 35,
+    "first_beat_seconds": 0.35,
+    "candidate_first_beat_seconds": 0.50
+  },
+  "measurement": {
+    "output_rate_hz": 48000,
+    "quantum_frames": 128,
+    "candidate_target_output_frames": 28672,
+    "target_tolerance_frames": 2048,
+    "hold_ms": 120,
+    "maximum_hold_error_ms": 25,
+    "capture_after_plan_seconds": 0.12,
+    "timeout_ms": 12000,
+    "audio_alignment_windows_seconds": [[0.32, 0.43], [0.50, 0.62]],
+    "audio_offset_search_seconds": [-0.06, 0.50],
+    "minimum_audio_correlation": 0.75,
+    "audio_pause_tolerance_seconds": 0.012,
+    "video_hold_margin_ms": 12,
+    "video_minimum_context_hold_frames": 2,
+    "video_maximum_retained_hold_seconds": 0.06
+  },
+  "hypothesis": {
+    "graph": "停止条件でContextのフレームは停止完了から再開要求まで同じ位置に留まり、停止をまたぐWorkletの出力は128フレーム刻みで続く。WASMが描画したPCMのサンプル順と状態の進行は壁時計の休止を含まない。",
+    "media": "固定上流の録画でも、連続条件に対するAACの二窓間の差は12 ms以内。停止中に描画された異なる壁時計値を持つ映像が2枚以上残り、停止を挟んだ固定Context値の映像のPTS幅は60 ms以下になる。"
+  },
+  "criteria": {
+    "entry": "固定上流を変更せずVite経由で配信し、テスト側が2音の譜面を上流の曲リストへ一時登録する。Safariの信頼済み操作で通常のRecord videoを押し、通常のSaveリンクのBlobを取得する。上流のt0は0.35秒で、研究版の0.50秒と同じ拍からの位置に停止を合わせる。乱流量などの上流の既定値は通常画面のまま。絶対PCMの一致は上流の停止の効果を比較する補助観測とする。",
+    "capture": "WASMからWorkletへの出力を読み取り専用で複写し、描画量子の絶対フレームとエンジン時刻を保存する。停止要求位置と実際に止まった位置を区別する。録画キャンバスの小さい領域に壁時計とContext時計を書き、フレームごとにログと照合する。",
+    "analysis": "録画の音声は当該試行の加工前PCMと停止前後の二窓で照合する。復号順のサンプル位置とAACフレームPTS換算を別々に比較する。映像では停止の両端12 msを除いたフレームを復号し、壁時計幅とPTS幅の両方を保存する。連続と停止を順序反転で2組取り、別ディレクトリから繰り返す。取得判定と挙動の予測は別に記録する。"
+  }
+}

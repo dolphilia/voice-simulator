@@ -1,0 +1,34 @@
+{
+  "id": "safari-process-tap-smooth-marker-44100",
+  "base_case": "safari-process-tap-calibration.json",
+  "revision": 1,
+  "comparison_case": "safari-process-tap-smooth-marker",
+  "comparison_run": "safari-process-tap-smooth-marker-20261122-repeat",
+  "sample_rate_hz": 44100,
+  "output_device": {
+    "name": "外部ヘッドフォン",
+    "uid": "BuiltInHeadphoneOutputDevice",
+    "sample_rate_hz": 44100,
+    "expected_frames": 256
+  },
+  "marker": {
+    "shape": "smooth-binary",
+    "chips": 4095,
+    "frames_per_chip": 16,
+    "seed": 1851936439,
+    "scale": 256
+  },
+  "window_frames": 1024,
+  "minimum_consecutive_windows": 16,
+  "minimum_correlation": 0.995,
+  "minimum_distinct_peak_margin": 0.1,
+  "maximum_relative_residual": 0.025,
+  "maximum_graph_zero_error": 1e-14,
+  "maximum_consecutive_delay_change_frames": 0.125,
+  "criteria": {
+    "input": "SafariのAudioContextと接続済み外部ヘッドフォンを44,100 Hzにそろえる。48 kHzで較正した同じアプリと逆相の試験信号を使い、グラフを20,480フレーム保存する。機器を選ぶ前後の既定出力を記録する。比較対象は同じ滑らかな試験信号を使った48 kHzの保存実行。",
+    "prediction": "Context、ヘッドフォン、タップの実測レートが44,100 Hzで一致する。Workletは128フレーム、機器とタップは256フレーム幅を予測する。タップでは少なくとも連続16窓で信号の位相が1フレームずつ進み、ホスト時計の間隔も44,100 Hzから計算したバッファ時間に近づく。",
+    "acceptance": "既定出力の名・機器の公称レート・Contextとタップのレートを確認する。既存の1024フレーム相関と対照のしきい値を維持する。タップの実測要求幅は機器のバッファ幅と比較し、予測の幅が外れても結果と判定を保存する。連続窓と時刻の検証、出力経路の復元を確認する。"
+  },
+  "maximum_median_host_period_error_us": 10
+}

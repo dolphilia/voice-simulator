@@ -1,0 +1,27 @@
+{
+  "id": "worklet-finalization-phases",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "dsp_case": "worklet-wasm-dsp-warmup.json",
+  "dsp_run": "worklet-wasm-dsp-warmup-20261121-repeat",
+  "hypothesis": "通常の末尾量子の処理時間には、PCMと観測を記録した後のメッセージ作成・送信、解放が加わる。同じメッセージを転送リストなしで複製すると送信の中央値が増える。事前に使い捨てハンドルを解放すると、解放に属するWASM関数48・41の遅延コンパイルが末尾から移る。",
+  "measurement": {
+    "warmup_calls": {"transfer": 1000, "copy": 1000, "transfer_warm_free": 1000},
+    "dsp_warmup_frames": {"transfer": null, "copy": null, "transfer_warm_free": 0},
+    "finalization_modes": {"transfer": "transfer", "copy": "copy", "transfer_warm_free": "transfer"},
+    "expected_zero_based_quantum": {"transfer": null, "copy": null, "transfer_warm_free": null},
+    "capture_order": [
+      ["transfer", "copy", "transfer_warm_free"],
+      ["transfer_warm_free", "transfer", "copy"],
+      ["copy", "transfer_warm_free", "transfer"]
+    ],
+    "finalization_lazy_event": "wasm.CompileLazy",
+    "result_function": 46,
+    "free_functions": [48, 41]
+  },
+  "criteria": {
+    "timing": "最後のprocessの内側で、描画、PCM・観測の記録、結果オブジェクトの作成、postMessage、ハンドルとポート解放を順に計る。フレーム番号とイベントの順序、各区間の和と末尾コールバック全体を照合し、1.333 ms超過と最大の区間を記録する。複製の送信時間の中央値が通常の転送を上回ることを予測する。",
+    "transfer": "送信の直後に、転送試行の送信元PCM・観測バッファが切り離され、複製試行では両方残る。全メッセージを保存でき、発声音と音響観測のビット列は通常の単独・共有Contextと一致する。",
+    "compilation": "前回と同じWASMバイナリを用いる。関数46を結果作成区間で照合し、事前解放なしでは関数48・41を末尾の解放区間、事前解放ありではコンストラクター区間に観測する。",
+    "comparison": "先行音と発声音は前回の96 kHz共有Contextと同じ条件を使い、先行音の記録区間内のPCMとフレーム列を独立計算に照合する。物理出力の判定は含めない。"
+  }
+}

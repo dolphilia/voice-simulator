@@ -1,0 +1,26 @@
+{
+  "id": "coreaudio-headphone-drift-44100-attach-timing",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "attach_reference_case": "coreaudio-headphone-drift-44100-late-attach.json",
+  "timing_comparison": {
+    "start_gap_change_ms_range": [180, 380],
+    "maximum_reference_error_ms": 15,
+    "minimum_tap_aligned_pairs": 2
+  },
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-attach-timing-short-1", "coreaudio-headphone-drift-44100-attach-timing-long-1"],
+    ["coreaudio-headphone-drift-44100-attach-timing-short-2", "coreaudio-headphone-drift-44100-attach-timing-long-2"],
+    ["coreaudio-headphone-drift-44100-attach-timing-short-3", "coreaudio-headphone-drift-44100-attach-timing-long-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-short-1", "leading_frames": 0, "tap_attach_after_release_seconds": 1.10},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-long-1", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-long-2", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-short-2", "leading_frames": 0, "tap_attach_after_release_seconds": 1.10},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-short-3", "leading_frames": 0, "tap_attach_after_release_seconds": 1.10},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-timing-long-3", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38}
+  ],
+  "prediction": "タップを接続して最初の予定ホスト時刻が遅れる分だけ帯域低下の出力フレームも後ろへ動き、最初のタップの予定時刻から測る帯域低下までの時間は同じ程度と予測する。3組のうち少なくとも2組でタップ開始に揃うことを予測する。出力開始で決まる場合には帯域低下の出力フレームが同じ程度に残り、タップ開始からの時間は早まる。",
+  "criteria": "先行ケースの拡張PCM、直接出力とタップの幅512、44.1 kHzの機器、観測が1秒以上続く条件を継承する。両試行でタップが従来の出力フレーム27,088より300 ms以上後から始まることを確認する。出力とタップの最初の予定ホスト時刻の差を長短で比較し、長い待機で180〜380 ms広がった組を使う。19,845 Hzの振幅比が0.40以上の窓が4つ続いた後、0.20未満の窓が4つ続く最初の窓中心を測る。400フレームの窓を200フレームずつ進める。出力基準で測る低下の時間差が開始時刻差の増分に15 ms以内で一致し、タップ基準の時間差が±15 ms以内ならタップ開始に揃ったと判定する。出力基準の時間差が±15 ms以内で、タップ基準の時間差が開始時刻差の増分の符号を反転した値と15 ms以内で一致すれば出力開始に揃ったと判定する。判定不能と欠測は別に記録する。"
+}

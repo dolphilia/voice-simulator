@@ -1,0 +1,51 @@
+{
+  "id": "worklet-midi-coremidi",
+  "revision": 3,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "previous": {
+    "worklet-midi-browser-prompt-20261122-final-repeat": "b89679ffba56b5759e566165c7d7058797cfd34d2ba63a074f1384b856822341",
+    "worklet-midi-voice-20261120-repeat": "257a047ca6f3fc5075ac62dd61eb567d1e0866f0ca3ff98ec4685b7770d9fa7c"
+  },
+  "browser": {
+    "mode": "headless-native-web-midi",
+    "timeout_ms": 12000,
+    "permission": {"name": "midi", "sysex": false},
+    "test_permission_sysex_variants": [false, true]
+  },
+  "input": {
+    "source_prefix": "CHIMERA CoreMIDI Probe",
+    "protocol": "MIDI 1.0 UMP",
+    "timestamp": "mach_absolute_time",
+    "group": 0,
+    "note_on": [144, 57, 93],
+    "note_off": [128, 57, 0]
+  },
+  "measurement": {
+    "silent_before_ms": 175,
+    "hold_after_observed_on_ms": 650,
+    "release_after_observed_off_ms": 850,
+    "upper_steady_window_seconds": [0.4, 0.6],
+    "upper_release_window_seconds": [0.65, 0.8],
+    "upper_drift": {
+      "drift_seed": 4242,
+      "update_interval_samples": 32,
+      "drift_cents": 5,
+      "vibrato_rate_hz": 6,
+      "vibrato_depth_cents": 0,
+      "minimum_internal_rate_hz": 60000,
+      "pre_note_absolute_tolerance_hz": 1e-6
+    },
+    "gate_sustain_min": 0.99,
+    "gate_release_max": 0.001,
+    "steady_pitch_absolute_tolerance_hz": 0.25,
+    "minimum_candidate_voiced_peak": 0.01,
+    "minimum_upper_voiced_rms": 0.001,
+    "candidate_tail_window_frames": 2400,
+    "candidate_silence_peak_max": 0.00001,
+    "candidate_glide_time_constant_seconds": 0.06,
+    "candidate_control_gate_absolute_tolerance": 1e-10,
+    "candidate_control_pitch_absolute_tolerance_hz": 1e-8
+  },
+  "hypothesis": "接続済みの画面にCoreMIDIの仮想送信元を追加すると、ブラウザが同名の入力を公開する。チャンネル1で音57の押鍵・離鍵を送ると、両画面の通常の購読に同じ信頼済みMIDIバイトが届く。保持状態は空から57、空へ移り、呼気目標が1から0へ動く。押鍵中の声門ピッチは均等律の220 Hzに近づく。研究版は採用した描画量子でCLIの再実行を作り、加工前PCMがビット一致する。",
+  "acceptance": "入力追加前にアプリの標準Web MIDI接続を完了する。CoreMIDIで登録、2送信、削除が成功し、ブラウザの試験ポートが開き、実際のアプリの購読で信頼済みイベント2件のバイト列と正の増加するイベント時刻を観測する。通常画面の保持状態、固定上流のソースF0・呼気目標・発声テレメトリ、研究版のWorklet採用時刻・ゲート・F0・PCMを照合する。固定上流の声門F0は内部サンプル番号で独立計算したドリフト係数を除き、押鍵前の110 Hzと押鍵中の220 Hzに照合する。生のF0範囲と旧0.25 Hz判定も残す。研究版の発声前後を静音、押鍵中を発声と判定し、制御系列を独立計算に、PCMをCLIに照合する。観測窓は受信を画面で確認した時点以後に取り、ホストとブラウザの時計は別々に記録する。物理鍵盤やスピーカー出力の計測は条件に含めない。"
+}

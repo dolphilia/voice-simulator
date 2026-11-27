@@ -1,0 +1,30 @@
+{
+  "id": "fixed-vowel-i-radiation-screen",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "hypothesis": "固定母音画面の観測スイッチは同じ肺圧7.2 cmH₂Oのレンダーに放射観測だけを足す。PCM・壁・口端・鼻端・合算・微分を同じ出力フレーム番号で取得し、表示範囲を切り替えてもカーソルの時刻と手元に保存する値は変化しない。",
+  "measurement": {
+    "revision": 1,
+    "input_sha256": "9e6a3befd846420789cbac2d3bb5a6845241091920af8a7747f5b36da5c2b4aa",
+    "upstream_reference": {
+      "run": "worklet-fixed-voice-20261119-tract-regression",
+      "case": "worklet-fixed-voice",
+      "sha256": "d8539eb9719d01e395c9977880d30458ed72c4d838c2d90a6cffcec6868fe71e"
+    },
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": 128,
+    "comparison_output_frames": [0, 32768],
+    "cursor_frames": [0, 1, 960, 19200, 32767],
+    "zoom_ms": 20,
+    "worklet_observation_stride": 128,
+    "viewports": {"desktop": [1200, 920], "mobile": [390, 844]},
+    "overview_canvas_max_pixel_error": 2,
+    "browsers": ["chromium", "firefox"],
+    "upstream_shared_trace_peak_relative_error_lt": 1e-8,
+    "upstream_pcm_absolute_error_lt": 5e-7,
+    "input": "既存の固定母音画面を使い、観測を未選択・選択・再び未選択としてレンダーする。選択時は全区間と20 ms区間で初期、定常、末尾のカーソルを照合する。",
+    "observation": "WAV、観測JSON、再実行ケース、表示フレーム・時刻、PCMと放射5値、各曲線の表示範囲とカーソル位置。画面に表示する単位はPCM振幅、流量 cm³/s、微分 cm³/s²とする。横軸は画面と出力フレームで共有し、全区間表示では各描画列の最小値と最大値を残す。",
+    "acceptance": "全32,768フレームのWAVと観測を通常CLIに照合し、流量の合算・差分・PCMを独立計算する。JSONの±0は数値の0として比較する。上流との共通列とPCMが指定許容差内に収まる。無効時のWAVと従来観測は有効時と一致し、放射欄とグラフは省略される。選択時の再実行ケースがCLIで同じ結果を出す。全区間と20 ms表示で同じカーソルのPCM・放射値は一致し、最終窓は末尾で止まる。ChromiumとFirefoxの保存データを照合し、狭い表示幅でも操作と数値が読めることを確認する。"
+  }
+}

@@ -1,0 +1,131 @@
+--- a/crates/vocal-core/src/airway/network.rs
++++ b/crates/vocal-core/src/airway/network.rs
+@@ -230,6 +230,8 @@
+     wall_motion: Vec<WallMotion>,
+     radiators: Vec<Option<RadiationLoad>>,
+     previous_radiation_flow: f64,
++    pub probe_lip_node: Option<usize>,
++    pub probe_lip_pair: [[f64; 14]; 2],
+ }
+ 
+ impl AirwayNetwork {
+@@ -376,6 +378,8 @@
+             fixed_pressure,
+             wall_motion: vec![WallMotion::default(); n],
+             previous_radiation_flow: 0.0,
++            probe_lip_node: None,
++            probe_lip_pair: [[0.0; 14]; 2],
+         };
+         network.update_compliance();
+         Ok(network)
+@@ -678,6 +682,7 @@
+         inlet_flow_cm3_s: f64,
+         prescribed: Option<(usize, f64)>,
+     ) -> NetworkSample {
++        self.probe_lip_pair = [self.probe_lip_pair[1], [0.0; 14]];
+         // 乱流が読むのは、断面を変更する前の枝面積と最後に解いた流量。
+         self.turbulence.step(&self.branches);
+         self.net_flow.fill(0.0);
+@@ -718,6 +723,7 @@
+             self.update_compliance();
+             self.port_areas_changed = false;
+         }
++        let probe_geometry_inflow = self.probe_lip_node.map_or(0.0, |node| self.net_flow[node]);
+         for (index, (branch, &noise)) in self
+             .branches
+             .iter_mut()
+@@ -744,6 +750,7 @@
+             self.net_flow[right] += flow;
+         }
+ 
++        let probe_before_wall = self.probe_lip_node.map_or(0.0, |node| self.net_flow[node]);
+         let mut wall_radiation = 0.0;
+         for (node, section) in self.sections.iter().enumerate() {
+             if let Some(wall) = section.wall {
+@@ -782,7 +789,15 @@
+                     }
+                 }
+             } else if let Some(load) = &mut self.radiators[node] {
+-                self.pressure[node] = load.step(self.dt, compliance, self.pressure[node], inflow);
++                let old_pressure = self.pressure[node];
++                let old_inertance_flow = load.inertance_flow;
++                self.pressure[node] = load.step(self.dt, compliance, old_pressure, inflow);
++                if self.probe_lip_node == Some(node) {
++                    self.probe_lip_pair[1] = [1.0, self.sections[node].area_cm2, self.sections[node].length_cm,
++                        compliance, load.resistance, load.inertance, old_pressure, old_inertance_flow,
++                        probe_geometry_inflow, probe_before_wall, inflow, self.pressure[node],
++                        load.inertance_flow, load.flow];
++                }
+                 radiation_flow += load.flow;
+             } else {
+                 self.pressure[node] += self.dt / compliance * inflow;
+--- a/crates/vocal-core/src/voice.rs
++++ b/crates/vocal-core/src/voice.rs
+@@ -568,6 +568,10 @@
+         self.tract.area_samples()
+     }
+ 
++    pub fn enable_lip_load_observation(&mut self) {
++        self.voice.airway.network.probe_lip_node = Some(self.voice.airway.lips);
++    }
++
+     pub fn airway(&self) -> &HumanAirway {
+         &self.voice.airway
+     }
+--- a/tools/candidate_duet_child_noise_probe.rs
++++ b/tools/candidate_duet_child_noise_probe.rs
+@@ -111,6 +111,9 @@
+     )?;
+     voice.set_base_pitch(plan.notes.first().ok_or("音符がありません")?.f0_hz)?;
+     voice.enable_turbulence(1.0)?;
++    if radiation_trace.is_some() {
++        voice.enable_lip_load_observation();
++    }
+     let mut trace = BufWriter::new(File::create_new(trace_path)?);
+     writeln!(trace, "{}", duet_child_noise_trace::HEADER)?;
+     serde_json::to_writer(std::io::stdout().lock(), &gestures)?;
+@@ -126,10 +127,9 @@
+         writeln!(out, "{}", duet_child_noise_trace::STARTUP_HEADER)?;
+         write_startup(out, &voice, 0, 0.0)?;
+     }
++    let first = case["probe_first_output_frame"].as_u64().unwrap_or(0) as usize;
+     for frame in 0..frames {
+         let mut radiation = [0.0; 2];
+-        let mut components = [[0.0; 6]; 2];
+-        let record_components = radiation_trace.is_some() && frame < count;
+         let (rendered, (sample, [area, flow])) = output.render_frame(|| {
+             let air = voice.airway();
+             let port = air.glottis_port;
+@@ -138,20 +138,6 @@
+             let next = sample.radiation.radiation_flow_derivative_cm3_s2;
+             if output_trace.is_some() {
+                 radiation = [radiation[1], next];
+-            }
+-            if record_components {
+-                let air = voice.airway();
+-                components = [
+-                    components[1],
+-                    [
+-                        sample.lip_flow_cm3_s,
+-                        sample.nose_flow_cm3_s,
+-                        sample.radiation.wall_radiation_flow_cm3_s,
+-                        sample.radiation.radiation_flow_cm3_s,
+-                        next,
+-                        air.network.branch_area(air.velum_port),
+-                    ],
+-                ];
+             }
+             Ok((next, (sample, drive)))
+         })?;
+@@ -169,9 +155,9 @@
+                 ],
+             )?;
+         }
+-        if frame < count {
++        if (first..count).contains(&frame) {
+             if let Some(out) = &mut radiation_trace {
+-                duet_child_noise_trace::write_radiation_pair(out, frame, components)?;
++                duet_child_noise_trace::write_radiation_pair(out, frame, voice.airway().network.probe_lip_pair)?;
+             }
+             if let Some(out) = &mut startup {
+                 write_startup(

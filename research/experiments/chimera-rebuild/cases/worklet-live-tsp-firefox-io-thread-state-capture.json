@@ -1,0 +1,30 @@
+{
+  "id": "worklet-live-tsp-firefox-io-thread-state-capture",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-device-tap-draw-control-early.json",
+  "initial_control_run": "worklet-live-tsp-firefox-device-tap-draw-control-early-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "tap_request_before_marker": true,
+    "marker_lead_quanta": 128,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.95,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "measurement": {
+    "condition_order": [["draw"], ["draw"], ["draw"], ["draw"], ["draw"], ["draw"]]
+  },
+  "system_io": {
+    "instruments": ["Audio Client", "Audio Server", "Thread State Trace"],
+    "time_limit": "9s",
+    "maximum_trace_origin_error_ms": 2.0,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1.0,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "hypothesis": "予算内で飛んだ周期でも、サーバー側の周期は続き、ブラウザ側のIOProcは現れないと予測する。FirefoxのI/Oスレッドが周期全体で待機していれば実行可能化の前に差があると判断する。実行可能の区間はあるが実行が無ければ、実行可能化から実行開始までを差の候補とする。実行区間がありIOProcが無ければ、実行開始からIOProcまでを調べる。",
+  "acceptance": "確認用07の同期描画と先行音前にタップを準備する設定を固定し、48 kHz・256フレームの6試行を採る。前後20要求で既存のcubeb、Audio Client、Audio Server、タップの照合を行い、通常再生と固定上流のPCMを検査する。Thread State Traceを同じトレースに加え、クライアントI/Oに対応したFirefox親PIDとスレッドを使う。発話開始を含む要求とその前後で、次のサーバー処理の開始から1周期のスレッド状態とIOProcを記録する。サーバー処理開始直前25 µsも別に残す。状態表に未観測区間がある場合は欠測とし、待機とは区別する。追加の計測による飛びの頻度の差は観測として保存する。"
+}

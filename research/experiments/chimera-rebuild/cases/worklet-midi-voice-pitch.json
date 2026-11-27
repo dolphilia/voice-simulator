@@ -1,0 +1,174 @@
+{
+  "id": "worklet-midi-voice-pitch",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "worklet-midi-voice.json",
+  "input": {
+    "mode": "manual",
+    "sample_rate_hz": 48000,
+    "initial_f0_hz": 110,
+    "events": [
+      {
+        "seconds": 0.14,
+        "type": "note-on",
+        "note": 45,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.46,
+        "type": "note-on",
+        "note": 57,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.78,
+        "type": "note-off",
+        "note": 57
+      },
+      {
+        "seconds": 1.1,
+        "type": "note-off",
+        "note": 45
+      }
+    ],
+    "stop_request_seconds": 1.6,
+    "port": "A"
+  },
+  "hypothesis": "手動発声でMIDI 45を保持したまま57を押して離すと、目標F0は110→220→110 Hzと移り、その間は呼気目標1を保つ。同じ採用フレームと初期条件の固定上流では、平滑F0と声門位相がどの制御境界で変わり、PCMの差がどの段から現れるかを確かめる。",
+  "measurement": {
+    "baseline_run": "worklet-midi-voice-20261120-repeat",
+    "render_quantum_frames": 128,
+    "control_frames": 64,
+    "f0_glide_seconds": 0.06,
+    "expected_held_notes": [
+      45,
+      57,
+      45,
+      null
+    ],
+    "observation_on_output_control_boundaries": [
+      "f0_target_hz",
+      "glottal_f0_hz",
+      "gate_target",
+      "gate",
+      "glottal_phase",
+      "glottal_area_cm2",
+      "glottal_flow_cm3_s",
+      "radiation_derivative_cm3_s2",
+      "pcm_f32"
+    ],
+    "fixed_voice_case": "vowel-voice-i.json",
+    "realtime_case": "worklet-realtime-voice.json",
+    "maximum_relative_input_error_seconds": 0.055,
+    "expected_pitch_goals_hz": [
+      110,
+      220,
+      110,
+      110
+    ],
+    "expected_gate_goals": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "pitch_absolute_tolerance_hz": 1e-08,
+    "gate_absolute_tolerance": 1e-10,
+    "phase_increment_absolute_tolerance_cycles": 1e-11,
+    "upstream_pcm_absolute_tolerance": 5e-07,
+    "upstream_state_peak_relative_tolerance": 1e-08,
+    "host_block_sizes": [
+      128,
+      77
+    ],
+    "minimum_voiced_pcm_peak": 0.01,
+    "pitch_only_pcm_threshold": 1e-06,
+    "maximum_pitch_only_pcm_delay_frames": 128,
+    "internal_sample_rate_hz": 96000,
+    "release_frames": 38400,
+    "final_silence_peak_max": 1e-05,
+    "final_silence_frames": 2400,
+    "output_state_peak_relative_error_lt": 1e-08,
+    "pcm_absolute_lt": 5e-07
+  },
+  "criteria": {
+    "routing": "候補と固定上流の通常画面で、仮想MIDI 45→57→45→全解放の選択と110→220→110 Hzの目標、呼気目標1→1→1→0を照合する。候補の採用フレームは128フレーム量子境界で、入力からの相対時刻のずれは55 ms以内。",
+    "trajectory": "採用フレームの64出力フレーム境界で、対数空間の時定数60 msの応答と呼気ゲートを独立計算する。両エンジンで音高誤差10⁻⁸ Hz以下、呼気誤差10⁻¹⁰以下。音高切り替え中に呼気目標を保ち、声門位相を初期化せず進める。位相展開の一更新差の許容差は10⁻¹¹周期。",
+    "waveform": "ブラウザからの再現ケースを候補CLIと固定Rustへ同じ時刻で適用する。候補のWAVはビット一致。固定版は既存の同じ母音でのPCM最大5×10⁻⁷と観測列ピーク比10⁻⁸を用いる。気道形状、肺境界、声門、放射、PCMそれぞれの最初の差を記録する。上流のホストブロックを変えたPCMもビット照合する。",
+    "controlled_pitch": "同じ候補CLIで音高目標のみ110 Hzに固定し、切り替え前のPCMと全区間の呼気・調音は一致する。切り替えのフレームから声門F0・位相が分岐し、PCM差10⁻⁶超が128フレーム以内に現れる。"
+  },
+  "retain_csv": {
+    "native-state.csv": {
+      "columns": [
+        "internal_sample",
+        "control_frame",
+        "oral_area_cm2",
+        "lip_aperture_cm",
+        "gate",
+        "lung_boundary_dyn_cm2",
+        "pressure_sub_dyn_cm2",
+        "pressure_supra_dyn_cm2",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "glottal_phase",
+        "glottal_f0_hz",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "internal_sample",
+      "sample_ranges": [
+        [
+          0,
+          1000000
+        ]
+      ]
+    },
+    "upstream-trace.csv": {
+      "columns": [
+        "internal_sample",
+        "control_frame",
+        "oral_area_cm2",
+        "lip_aperture_cm",
+        "gate",
+        "lung_boundary_dyn_cm2",
+        "pressure_sub_dyn_cm2",
+        "pressure_supra_dyn_cm2",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "glottal_phase",
+        "glottal_f0_hz",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "internal_sample",
+      "sample_ranges": [
+        [
+          0,
+          1000000
+        ]
+      ]
+    },
+    "constant-pitch-state.csv": {
+      "columns": [
+        "internal_sample",
+        "control_frame",
+        "oral_area_cm2",
+        "lip_aperture_cm",
+        "gate",
+        "lung_boundary_dyn_cm2",
+        "pressure_sub_dyn_cm2",
+        "pressure_supra_dyn_cm2",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "glottal_phase",
+        "glottal_f0_hz",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "internal_sample",
+      "sample_ranges": [
+        [
+          0,
+          1000000
+        ]
+      ]
+    }
+  }
+}

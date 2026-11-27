@@ -1,0 +1,56 @@
+{
+  "id": "worklet-live-tsp-firefox-trace-start-signals-56q",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-attached-trace-56q",
+  "initial_control_run": "worklet-live-tsp-firefox-attached-trace-56q-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "all-processes",
+        "attach-firefox"
+      ],
+      [
+        "attach-firefox",
+        "all-processes"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "compare_attach_target": true,
+    "observe_start_signals": true,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "minimum_stdout_lead_ns": 10000000,
+    "minimum_trials_with_lead": 3
+  },
+  "hypothesis": "標準出力の開始行がDarwin通知より少なくとも10 ms早く読める試行が4件中3件以上あれば、標準出力を使って再生を先行できる候補とする。先に読める試行でも、発話入口と機器Write末尾の差を埋められるかは別に検算する。",
+  "acceptance": "各収録で一つのselectorから標準出力パイプとDarwin通知FDを観察し、同じmach_absolute_timeのns換算で到着を記録する。同じselect返却の通知には同じ観測時刻を付ける。再生ゲートはDarwin通知を維持し、開いた時刻を記録する。先行音と3収録器、先行音56量子、1秒、保持窓なしを維持し、全プロセスとFirefoxアタッチを交互に収録する。Writeのホスト時刻を使い、最初のcubebデータ、発話入口、機器Write末尾を同じ時計に換算する。通常発話のWAVと状態が一致し、両通知が観測された4件で予測を判定する。標準出力の語句が受信された時刻と、改行を含む開始行が受信された時刻を別に記録する。"
+}

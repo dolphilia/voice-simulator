@@ -1,0 +1,32 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-register-before-resume",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "duration_study": "worklet-live-song-fast-app-silent-lead-four-quanta.json",
+  "chromium_reference_runs": ["worklet-live-song-fast-app-silent-lead-four-quanta-20261121-buffer-init"],
+  "input_trace_study": "worklet-live-song-fast-app-silent-lead-input-trace.json",
+  "input_trace_reference_run": "worklet-live-song-fast-app-silent-lead-input-trace-20261121-repeat",
+  "resume_order_reference_study": "worklet-live-song-fast-app-silent-lead-native-trace.json",
+  "resume_order_reference_run": "worklet-live-song-fast-app-silent-lead-native-trace-20261121-repeat",
+  "browser_engine": "chromium",
+  "trace_silent_lead_input": true,
+  "resume_order_lead_quanta": 4,
+  "condition_order": [["running", "suspended"], ["suspended", "running"], ["suspended", "running"], ["running", "suspended"]],
+  "native_trace": {
+    "categories": ["webaudio", "disabled-by-default-audio-worklet", "devtools.timeline", "blink.console"],
+    "marker_prefix": "chimera-lead-frame:",
+    "author_event": "AudioWorkletProcessor::Process (author script execution)",
+    "graph_event": "RealtimeAudioDestinationHandler::Render",
+    "request_event": "AudioDestination::RequestRender",
+    "device_event": "AudioDestination::Render"
+  },
+  "hypothesis": {
+    "clock": "明示的に停止したContextで最初の合成Workletを登録してから再開すると、先行Workletの初回のcurrentFrameから次の値までが全試行で128フレームとなる。従来の再開後登録では、連続したネイティブ描画の間の表示フレームの飛びを少なくとも1回再現すると予測する。",
+    "audio": "両経路で歌唱側の開始待ちは連続し、歌唱PCM49,200フレーム、観測769点、計画がオフライン基準と一致する。"
+  },
+  "criteria": {
+    "input": "Chromiumの短音Pop Dee、48 kHz、歯のフィルタ下限1,200 Hz、無音先行4量子。Contextは毎回新規。直接出力と並列観測の各4組を交互順で比較する。歌唱モジュールの登録順以外は、同じWASM・辞書・先行ノード・歌唱ノードを使う。",
+    "registration": "試験側はContext生成直後にsuspend()を待ち、停止中に最初の合成WorkletのaddModuleを開始・完了してからresume()を呼ぶ。従来側はresume完了、譜面準備、Worklet登録の順で確認する。両経路で、タイトルと順序はアプリのフェーズ時刻、Contextの状態とフレーム番号で検証する。",
+    "trace": "前回と同じCDPで先行枝のマーカー、ネイティブの作者コード、描画と要求を照合する。最初のマーカー2件が対応する各描画とその間の件数を記録し、表示フレームが1量子より進んだ回数を比べる。",
+    "time_and_pcm": "クリック／resume要求／resume完了から歌唱先頭までを保存する。登録とWASM取得の重なりや起動準備を含む経路全体の時間として扱う。従来のオフラインと固定上流、並列観測の無音・PCMを照合する。"
+  }
+}

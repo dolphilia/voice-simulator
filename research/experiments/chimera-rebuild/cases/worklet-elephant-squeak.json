@@ -1,0 +1,43 @@
+{
+  "id": "worklet-elephant-squeak",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-squeak.json",
+  "source_revision": 1,
+  "hypothesis": "公式順序でコールIDは333600、弁音高の目標は333632で変わり、弁の作動中も面積下限が実断面を決める。96 kHzで初期モードだけを0から1へ上げると、初回制御の実断面は4.4から約0.0094 cm²へ狭まり、呼気の目標が最大になる前に自由開口が実断面を決める。鼻先流量と加工前PCMにも差が現れる。",
+  "measurement": {
+    "variants": ["official-full-48000", "switch-stop-44100", "natural-end-96000", "initial-mode-one-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "official-full-48000": [[333599, 360065]],
+      "switch-stop-44100": [[19916, 19969], [25122, 25124], [35010, 35073]],
+      "natural-end-96000": [[0, 19265]],
+      "initial-mode-one-96000": [[0, 19265]]
+    },
+    "extra_output_frames": {
+      "official-full-48000": [],
+      "switch-stop-44100": [],
+      "natural-end-96000": [21664],
+      "initial-mode-one-96000": [21664]
+    },
+    "official_transition": {
+      "request_frame": 333600,
+      "first_control_frame": 333632,
+      "previous_lip_pitch_hz": 470,
+      "first_target_lip_pitch_hz": 820,
+      "expected_driven_frames": 25600,
+      "expected_free_opening_frames": 0
+    },
+    "initial_mode_control": {
+      "expected_early_free_opening_frames": [0, 754],
+      "expected_first_early_free_opening_frame": [null, 64],
+      "first_control_area_upper_bound_cm2": [4.5, 0.01]
+    },
+    "health": {"exclude_startup_blocks": 2, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "firefox-process-tap-headphone-response-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 44100,
+  "quantum_frames": 128,
+  "snapshot_blocks": 256,
+  "play_seconds": 1.1,
+  "output_device": {
+    "name": "外部ヘッドフォン",
+    "uid": "BuiltInHeadphoneOutputDevice",
+    "sample_rate_hz": 44100,
+    "expected_frames": 512
+  },
+  "capture": {
+    "tap_duration_seconds": 4,
+    "tap_ready_timeout_seconds": 3,
+    "construction_delay_seconds": 0,
+    "observe_start_signals": true,
+    "separate_priming_context": true
+  },
+  "reference_capture": "firefox-process-tap-cubeb-write-44100-separate-prime-20261122-repeat",
+  "safari_calibration_run": "safari-process-tap-smooth-marker-44100-20261122-repeat",
+  "prior_fir": {
+    "run": "worklet-live-tsp-44100-headphone-gap-edge-neighbor-fit-20261122-b",
+    "case_id": "worklet-live-tsp-44100-headphone-gap-edge-neighbor-fit",
+    "case_revision": 1,
+    "model": "filter_gated_pcm/32"
+  },
+  "anchor": {
+    "first": 4096,
+    "last_exclusive": 30720,
+    "maximum_endpoint_change_frames": 0.25,
+    "maximum_anchor_fraction_difference_frames": 0.25
+  },
+  "tone_probe": {
+    "first": 8192,
+    "last_exclusive": 26240,
+    "blend_frames": 128,
+    "amplitude": 0.001953125,
+    "frequencies_hz": [
+      2205,
+      17640,
+      19845,
+      20947.5
+    ],
+    "phases_radians": [
+      0.1,
+      0.6,
+      1.7,
+      2.3
+    ]
+  },
+  "analysis": {
+    "first_frames": [
+      9216,
+      17216
+    ],
+    "window_frames": 8000,
+    "maximum_graph_absolute_difference": 1e-7,
+    "maximum_cubeb_source_amplitude_error": 0.0001,
+    "maximum_tone_residual": 0.002,
+    "maximum_model_amplitude_errors": [
+      0.004,
+      0.004,
+      0.008,
+      0.004
+    ],
+    "maximum_model_phase_error_degrees": 3,
+    "maximum_repeated_amplitude_difference": 0.001,
+    "cubeb_expected_frames": 256,
+    "tap_expected_frames": 512
+  },
+  "trial_ids": [
+    "firefox-process-tap-headphone-response-44100-20261122-1",
+    "firefox-process-tap-headphone-response-44100-20261122-2"
+  ],
+  "prediction": "同じ44.1 kHz出力先で先行FIRの係数を凍結し、連続の試験音のタップ/cubeb振幅比が17,640 Hzで約1.00091、19,845 Hzで0.50041、20,947.5 Hzで0.01523になると予測する。相対位相はマーカーで決めた時刻を基準にFIRの位相と3°以内で一致すると予測する。2205 Hzを低域対照とする。",
+  "criteria": "独立生成した信号とWorkletのPCMを照合し、試験音の前後それぞれ1024フレームの滑らかな逆相マーカーでcubebとタップの窓を別々に定める。試験音に入る2区間は各8000フレーム。cubebとタップの各コールバックの予定サンプル番号の連続性を確認し、4周波数の複素振幅を正弦と余弦への射影で求める。前後のマーカーで確認した分数位相の平均だけを使い、cubebに対するタップの位相を補正する。振幅、位相、再構成残差、窓間の振幅比の差を周波数別に残す。収録を2回行い、同一のFIR係数で判定する。原出力は試行ごとに復元する。"
+}

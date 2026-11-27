@@ -1,0 +1,14 @@
+{
+  "id": "worklet-live-tsp-firefox-device-onset",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-preparation-v2.json",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-preparation-regression",
+  "reference_onset_run": "worklet-live-tsp-firefox-device-preparation-20261122-v2-repeat",
+  "measurement": {
+    "condition_order": [["split", "split-late"], ["split-late", "split"], ["split", "split-late"], ["split-late", "split"]],
+    "onset_quanta": 3
+  },
+  "hypothesis": "事前描画の8片を固定し、採取開始だけを128フレーム遅らせると、発話の先頭3量子が1つの機器要求に集まる試行が減る。先頭3量子のいずれかを含む要求のうち、最も予算との差が大きい要求を試行ごとに選ぶ。その時間差の中央値は1量子遅らせた条件で小さくなると予測する。予定サンプル時刻の飛びは頻度が低いため、採取結果を件数とフレーム数で報告する。",
+  "acceptance": "44.1 kHzの出力先と試験用Firefoxは第2版の条件を使う。先行PCMを流す同じ48 kHzのContextで、採取開始をA+2048とA+2176にする条件を順番を交互にして4組採る。8片のContextフレームと累計描画フレーム、先頭3発話量子のContextフレームとWorklet処理区間を機器要求へ対応付ける。第2版と同じ方法で要求長、先行PCM、時計を検査する。発話内の最初の非ゼロ位置、出力PCM、ジェスチャー、観測値は通常再生と一致させる。各要求に含まれる先頭の発話量子数、発話Worklet区間の合計、コールバック時間、予算との差、時計の飛びを個別に記録する。時間と配置の予測の当否は対応付け・PCMの判定と別に保存する。"
+}

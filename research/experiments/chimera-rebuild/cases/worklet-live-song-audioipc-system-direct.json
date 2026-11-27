@@ -1,0 +1,16 @@
+{
+  "id": "worklet-live-song-audioipc-system-direct",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "previous_capture": "worklet-live-song-audioipc-20261121-system-pilot-b",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {"template": "System Trace", "time_limit": "15s", "direct_launch": true}
+  },
+  "criteria": {
+    "input": "Audio System Traceの子プロセス起動試行は採取窓がFirefoxの起動より前だった。既知の送受信を含むローカルソケットの対照でイベントを確認したSystem Traceを使用し、Nodeの実行ファイルを直接起動する。同じ48 kHzの共有Contextで未準備と192フレームの1組を採取する。",
+    "events": "Firefoxの親と子の音声IPCスレッドをPIDとTIDで同定し、送受信のシステムコールとDataCallbackを対応づける。接続の組が複数ある時は、同じスレッド、ファイル記述子、要求と応答の順序、バイト数、時刻が同時に一致した候補を使う。取得できない範囲は欠測として記録する。"
+  }
+}

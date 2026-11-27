@@ -1,0 +1,197 @@
+{
+  "id": "worklet-midi-alligator",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-fixed-voice-v2.json",
+  "input": {
+    "creature": "alligator",
+    "key_mode": "held_voice",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [
+      12,
+      120
+    ],
+    "capture_seconds": 3.0,
+    "events": [
+      {
+        "seconds": 0.12,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.59,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 1.06,
+        "type": "note-off",
+        "note": 67
+      },
+      {
+        "seconds": 1.48,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 1.95,
+        "type": "note-on",
+        "note": 0,
+        "velocity": 96
+      },
+      {
+        "seconds": 2.39,
+        "type": "note-off",
+        "note": 0
+      }
+    ]
+  },
+  "hypothesis": "12〜120 Hzのアメリカアリゲーターでは鍵盤を3オクターブ下げ、60 → 67 → 60の目標が約32.70 → 49.00 → 32.70 Hzになる。0は音域の下端で約16.35 Hzへ折り返す。音高の50 ms平滑化で持ち替えても呼気が続き、全解放から60 msの時定数で呼気が減衰する。",
+  "criteria": {
+    "routing": "候補と固定上流の通常画面でHeld voiceを選び、保持順、音域への割り当てと採用フレームを比較する。",
+    "physics": "呼気と平滑音高を独立計算し、低周波の声門と壁面・口端の放射、解放後のPCMを比較する。",
+    "replay": "候補の保存ケースを異なる描画分割のCLIで再実行し、既存の固定発声とコールの回帰を確認する。"
+  },
+  "measurement": {
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "control_frames": 64,
+    "expected_held_notes": [
+      60,
+      67,
+      60,
+      null,
+      0,
+      null
+    ],
+    "octave_shift": -3,
+    "pitch_smoothing_seconds": 0.05,
+    "steady_window_seconds": [
+      0.25,
+      0.37
+    ],
+    "release_window_seconds": [
+      0.33,
+      0.405
+    ],
+    "maximum_relative_input_error_seconds": 0.055,
+    "target_pitch_tolerance_hz": 1e-10,
+    "smoothed_pitch_tolerance_hz": 1e-08,
+    "browser_pitch_tolerance_hz": 0.3,
+    "gate_tolerance": 1e-12,
+    "pressure_tolerance_dyn_cm2": 1e-08,
+    "steady_gate_minimum": 0.999,
+    "release_gate_maximum": 0.0045,
+    "browser_release_gate_maximum": 0.0065,
+    "minimum_glottis_area_peak_cm2": 0.05,
+    "minimum_steady_pcm_rms": 0.002,
+    "maximum_release_pcm_ratio": 0.025,
+    "native_pcm_tolerance": 1e-06,
+    "baseline_run": "worklet-midi-alligator-20261121-baseline"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "sample",
+        "frame",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz",
+        "glottis_phase",
+        "glottis_voicing",
+        "glottis_area_cm2",
+        "wall_cm3_s",
+        "oral_cm3_s",
+        "nasal_cm3_s",
+        "radiation_cm3_s2",
+        "pcm_f32",
+        "gate_target"
+      ],
+      "sample_column": "sample",
+      "sample_ranges": [
+        [
+          0,
+          28160
+        ],
+        [
+          54272,
+          70272
+        ],
+        [
+          99840,
+          116736
+        ],
+        [
+          141824,
+          157696
+        ],
+        [
+          184320,
+          215040
+        ],
+        [
+          226304,
+          243712
+        ],
+        [
+          261120,
+          288000
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "sample",
+        "frame",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz",
+        "glottis_phase",
+        "glottis_voicing",
+        "glottis_area_cm2",
+        "wall_cm3_s",
+        "oral_cm3_s",
+        "nasal_cm3_s",
+        "radiation_cm3_s2",
+        "pcm_f32"
+      ],
+      "sample_column": "sample",
+      "sample_ranges": [
+        [
+          0,
+          28160
+        ],
+        [
+          54272,
+          70272
+        ],
+        [
+          99840,
+          116736
+        ],
+        [
+          141824,
+          157696
+        ],
+        [
+          184320,
+          215040
+        ],
+        [
+          226304,
+          243712
+        ],
+        [
+          261120,
+          288000
+        ]
+      ]
+    }
+  }
+}

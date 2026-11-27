@@ -1,0 +1,204 @@
+{
+  "id": "worklet-midi-seal",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-sustain-pcm.json",
+  "input": {
+    "creature": "seal",
+    "key_mode": "held_voice",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [
+      40,
+      6000
+    ],
+    "capture_seconds": 2.9,
+    "events": [
+      {
+        "seconds": 0.1,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.5,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.9,
+        "type": "note-off",
+        "note": 67
+      },
+      {
+        "seconds": 1.3,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 1.74,
+        "type": "note-on",
+        "note": 127,
+        "velocity": 96
+      },
+      {
+        "seconds": 2.24,
+        "type": "note-off",
+        "note": 127
+      }
+    ]
+  },
+  "hypothesis": "音域40〜6000 Hzでは鍵盤の中心を1オクターブ上へ移し、保持音60 → 67 → 60の目標は約523.25 → 783.99 → 523.25 Hzとなる。127は上限を超えるため3135.96 Hzへ折り返す。最新のキーを離して保持音へ戻る間は呼気が続き、最後の離鍵から30 msの時定数で減衰する。",
+  "criteria": {
+    "routing": "候補と固定上流の通常画面から持続音で仮想MIDIを送り、発声に採用したキー、出力フレーム、上流の設定値を比較する。",
+    "physics": "定常・持ち替え・解放ごとに、音高の目標と平滑値、呼気と声門開口、放射とPCMを照合する。音高と呼気は定義から独立に計算する。",
+    "replay": "ブラウザから書き出した入力をCLIで再実行し、WAVと主要な観測列を照合する。鳴禽の回帰を確認する。"
+  },
+  "measurement": {
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "control_frames": 64,
+    "expected_held_notes": [
+      60,
+      67,
+      60,
+      null,
+      127,
+      null
+    ],
+    "octave_shift": 1,
+    "steady_window_seconds": [
+      0.1,
+      0.24
+    ],
+    "release_window_seconds": [
+      0.25,
+      0.33
+    ],
+    "maximum_relative_input_error_seconds": 0.055,
+    "target_pitch_tolerance_hz": 1e-09,
+    "pitch_tolerance_hz": 1e-07,
+    "browser_pitch_tolerance_hz": 0.8,
+    "gate_tolerance": 1e-12,
+    "pressure_tolerance_dyn_cm2": 1e-08,
+    "steady_gate_minimum": 0.999,
+    "release_gate_maximum": 0.00035,
+    "minimum_glottis_area_peak_cm2": 0.03,
+    "minimum_steady_pcm_rms": 0.002,
+    "maximum_release_pcm_ratio": 0.006,
+    "native_pcm_tolerance": 1e-06,
+    "native_state_absolute_tolerance": 1e-08,
+    "native_state_relative_tolerance": 1e-07,
+    "baseline_run": "worklet-midi-seal-20261121-baseline",
+    "browser_release_gate_maximum": 0.0007
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz_0",
+        "glottis_phase_0",
+        "glottis_area_cm2_0",
+        "wall_0",
+        "oral_0",
+        "nasal_0",
+        "radiation_0",
+        "pcm_f32",
+        "gate_target"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          8192
+        ],
+        [
+          22272,
+          33280
+        ],
+        [
+          40960,
+          51200
+        ],
+        [
+          60416,
+          69632
+        ],
+        [
+          73472,
+          81664
+        ],
+        [
+          84992,
+          94208
+        ],
+        [
+          107520,
+          115712
+        ],
+        [
+          124928,
+          139200
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "lung_pressure_dyn_cm2",
+        "glottis_f0_hz_0",
+        "glottis_phase_0",
+        "glottis_area_cm2_0",
+        "wall_0",
+        "oral_0",
+        "nasal_0",
+        "radiation_0",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          8192
+        ],
+        [
+          22272,
+          33280
+        ],
+        [
+          40960,
+          51200
+        ],
+        [
+          60416,
+          69632
+        ],
+        [
+          73472,
+          81664
+        ],
+        [
+          84992,
+          94208
+        ],
+        [
+          107520,
+          115712
+        ],
+        [
+          124928,
+          139200
+        ]
+      ]
+    }
+  }
+}

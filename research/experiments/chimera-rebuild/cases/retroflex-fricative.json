@@ -1,0 +1,57 @@
+{
+  "id": "retroflex-fricative",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ成人男性の /ɑsɑ/ と /ɑʂɑ/ で /ʂ/ の舌先は後退して反り、気道が選ぶ正の最小断面は歯から遠くなる。/ʂ/ 中央で狭窄乱流が活動し、乱流倍率0では形状を維持したまま雑音の注入が消える。「是 shì」の /ʅ/ は /ʂ/ の舌先姿勢を引き継いで周期発声する。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"male-paired","body":"male","f0_hz":112,"rate":1,"text":"ˈɑsɑ / ˈɑʂɑ","symbols":["s","ʂ"]},
+    {"id":"male-muted","body":"male","f0_hz":112,"rate":1,"text":"ˈɑsɑ / ˈɑʂɑ","symbols":["s","ʂ"],"turbulence_scale":0},
+    {"id":"female-retroflex","body":"female","f0_hz":205,"rate":1,"text":"ˈɑʂɑ","symbols":["ʂ"]},
+    {"id":"mixed-fast-palatalized","body":{"female":0.4,"child":0.25},"f0_hz":150,"rate":1.35,
+     "text":"ˈiʂʲi","symbols":["ʂ"],"palatalized":true}
+  ],
+  "song": {
+    "id":"si-shi","body":"male","lyrics":"四 是","bpm":120,"start_seconds":0.5,
+    "midi":57,"beats_per_note":1,"characters":["四","是"],"symbols":["s","ʂ"],"nuclei":["ɿ","ʅ"]
+  },
+  "remaining_symbols": {"lyrics":"四是吃字人爱","syllables":6,"expected":["tʂ","ɻ","ʔ"]},
+  "tip_y_cm": {
+    "s":{"male":9.111,"female":9.117,"child":9.126},
+    "ʂ":{"male":9.730,"female":9.738,"child":9.750}
+  },
+  "durations_seconds": {"speech":{"s":0.09825,"ʂ":0.1128},"song":{"s":0.096,"ʂ":0.096}},
+  "measurement": {
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "gain_abs_tolerance":1e-12,
+    "independent_band_tolerance":1e-8,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "center_fraction":[0.30,0.70],
+    "minimum_posterior_position_difference_cm":0.4,
+    "minimum_distance_from_teeth_increase_cm":0.15,
+    "minimum_retroflex_curl":0.70,
+    "minimum_constriction_noise_active_fraction":0.25,
+    "apical_sample_offsets_seconds":[-0.025,0.25],
+    "apical_max_drift":{"tongue_tip_x_cm":0.15,"tongue_tip_y_cm":0.4,"tongue_tip_curl":0.2},
+    "periodicity_window_seconds":[0.15,0.33],
+    "periodicity_frame_seconds":0.06,
+    "periodicity_hop_seconds":0.02,
+    "periodicity_lag_seconds":[0.003,0.02],
+    "minimum_vowel_periodicity":0.8,
+    "browser_observed_fields":[
+      "gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz",
+      "radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2"
+    ],
+    "initial_state":"親ケースの姿勢、肺圧と出力段を継承。発話は各条件にF0と体型を指定し、通常の乱流倍率か0を使う。歌唱は同一音高と長さの2音でビブラート0。内部96 kHz、出力48 kHz、固定上流の既定乱流シード12345。",
+    "window":"各摩擦音の中央30〜70%で舌先座標、反り、歯までの距離、狭窄・歯・声門の乱流の登録と注入を測る。成人男性の /ʂ/ の狭窄源は中央の25%以上で活動し、舌先Xは /s/ より0.4 cm以上後方、正の最小断面は歯から0.15 cm以上遠いと予測する。列から独立に狭窄源の登録と利得を計算し、歯への音源が登録された場合は帯域上限と利得を照合する。乱流倍率0では姿勢と音源の登録を照合し、圧力の注入が全区間で0であることを判定する。歌唱では各拍の25 ms前と250 ms後の舌先変化を測り、拍150〜330 ms後の60 ms窓で周期性を測る。「四 是」は実ブラウザから実行し、保存ケースをCLIで再演する。"
+  }
+}

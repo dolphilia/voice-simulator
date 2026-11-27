@@ -1,0 +1,36 @@
+{
+  "id": "worklet-live-song-shared-context",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_case": "worklet-live-song-render-phases.json",
+  "preparation_case": "worklet-live-song-render-warmup-intermediate.json",
+  "preparation_reference_run": "worklet-live-song-render-warmup-intermediate-20261121-repeat",
+  "prior_shared_context_run": "worklet-wasm-wrapper-shared-context-20261121-repeat",
+  "measurement": {
+    "condition_order": [["control", "draw192"], ["draw192", "control"], ["control", "draw192"], ["draw192", "control"]],
+    "draw_frames": 192,
+    "draw_block_frames": 64,
+    "zero_frame_calls": 1000,
+    "minimum_paired_constructor_gap_increase_ms": 2.0,
+    "minimum_draw_trials_first_two_within_budget": 3,
+    "marker": {
+      "quantum": 128,
+      "initial_lead_quanta": 24,
+      "ready_quanta": 192,
+      "capture_quanta": 512,
+      "constructor_window_radius_quanta": 8,
+      "baseline_quanta": 96,
+      "multiplier": 421,
+      "offset": 173,
+      "modulus": 65521,
+      "center": 32760,
+      "scale": 524288
+    }
+  },
+  "hypothesis": "同じContextで先行音が鳴るとき、事前描画に時間をかける分、歌唱ノードの構築をまたぐ先行音のコールバック開始間隔が長くなる。同じ組で引いた増分の中央値は2 ms以上と予測する。先行音のグラフ内PCMと連続するフレーム番号は一致し、192フレーム条件では4回中3回以上で歌唱の先頭2量子が両方予算内だと予測する。",
+  "criteria": {
+    "input": "Firefoxの通常の歌唱画面を使い、48 kHzのPop Deeで未準備と192フレームを交互に4組比較する。別の先行音を同じContextの出力につなぎ、192量子の採取を待ってから歌唱ノードを構築する。直前の失敗歌詞からの復帰、登録順、資産本文の検証延期をそろえる。",
+    "alignment": "先行音のフレーム印を名前付きCallProcessの区間に結び、歌唱と同じGraphRunnerに載ることを確かめる。歌唱ノードのConstructProcessor区間全体が先行音の隣接コールバック開始の間にあり、事前描画完了の印もその区間内にあることを確認する。歌唱側の量子内に印は入れない。",
+    "pcm": "先行音の128フレーム×512量子とフレーム番号を独立計算し、波形をビット照合する。歌唱のPCM全91,200点、観測1,425行、拍、調音計画、辞書とWASMは保存済みのブラウザとCLIの基準に照合する。固定上流との差は従来の許容幅を使う。",
+    "timing": "先行音のコールバック開始の差をmsで測る。構築を含む1区間、前後8量子、構築周辺を除いた直前96区間の中央値・p99・最大値を保存する。歌唱の先頭2量子と全量子を128/48000秒の処理予算と比較する。タイミングの予測はPCMおよび区間の対応の判定と個別に保存する。機器へ送る音声は計測対象に含めない。"
+  }
+}

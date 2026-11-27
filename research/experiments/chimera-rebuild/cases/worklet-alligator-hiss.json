@@ -1,0 +1,39 @@
+{
+  "id": "worklet-alligator-hiss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-hiss.json",
+  "source_revision": 1,
+  "hypothesis": "口腔乱流源の登録は実断面より先に目標断面で切り替わる。96 kHzの連続系列では声門乱流のレベルと注入圧を前サンプルの流量・開口と登録数に応じた乱数列から再計算できる。口腔源を解除した後も乱数を2個ずつ消費すると仮定した対照ではレベルは同じで、注入圧だけが分かれる。",
+  "measurement": {
+    "variants": ["official-prefix-48000", "switch-44100", "standalone-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "official-prefix-48000": [[249983, 250048], [304319, 304384]],
+      "switch-44100": [[19008, 19136], [24000, 24065], [69311, 69376]],
+      "standalone-96000": [[0, 109568]]
+    },
+    "extra_output_frames": {
+      "official-prefix-48000": [249599, 252032, 288000, 309504, 313600, 314431],
+      "switch-44100": [10000, 10001, 54336, 74240, 78655],
+      "standalone-96000": [120064, 127232, 129727]
+    },
+    "oral_noise_switch_internal_samples": {
+      "official-prefix-48000": [499968, 608640],
+      "switch-44100": [38144, 138624],
+      "standalone-96000": [896, 109440]
+    },
+    "direct_noise": {
+      "variant": "standalone-96000",
+      "continuous_prefix_output_frames": 109568,
+      "fixed_draw_count": 2,
+      "recovered_voicing_threshold": 0.5
+    },
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

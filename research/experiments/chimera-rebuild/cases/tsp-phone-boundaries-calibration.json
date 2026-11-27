@@ -1,0 +1,31 @@
+{
+  "id": "tsp-phone-boundaries-calibration",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-original-20261121-repeat",
+  "baseline_case": "tsp-active-duration-pilot.json",
+  "recording_ids": ["FA01_02", "MA01_02"],
+  "words": ["glue", "the", "sheet", "to", "the", "dark", "blue", "background"],
+  "selection": "元の調整用2録音が同じ本文を読む。固定上流と再実装の通常CLIの保存済みfloat32を使う。確認用と歌唱は別の比較で扱う。",
+  "hypothesis": "同じ設定のMFAでは新たな録音の音素・語の境界は固定上流の収録済み境界と10 ms以内で一致する。録音と合成で文全体の区間長が異なるため、対応する語と音素の長さの差も記録する。合成のノイズ床は入力振幅の95パーセンタイル電力に対し約−47 dBになる。",
+  "aligner": {
+    "version": "3.4.3",
+    "environment_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa",
+    "model_version": "english_us_arpa v3.0.0",
+    "model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+    "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+    "configuration": "tools/tsp/mfa.yaml",
+    "seed_hex": "2545f491",
+    "noise_db": -47,
+    "noise_window_frames": 960,
+    "jobs": 1
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "saved_boundary_tolerance_seconds": 0.010001,
+    "noise_tolerance_db": 0.5,
+    "repeat_exact": true,
+    "observation": "語と音素はファイル先頭からの秒で保存する。録音は公開辞書、各合成は固定上流G2Pで作った同じ発音辞書を使う。上流の録音注釈とはsilなどを除いて比較し、合成では計画時刻と同一話者設定の音響時刻の差を計る。",
+    "acceptance": "全6波形で8語と音素区間を取得し、OOVがない。録音の元注釈と境界を照合し、同じ入力でMFAを再実行すると語・音素区間が一致する。候補と上流のG2P音素列と合成に用いる辞書の発音が対応し、独立に集計した語の長さと間の合計で発話区間を再構成できる。"
+  }
+}

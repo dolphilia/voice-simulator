@@ -1,0 +1,287 @@
+{
+  "id": "worklet-midi-songbird",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-sustain-pcm.json",
+  "input": {
+    "creature": "songbird",
+    "key_mode": "held_voice",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [
+      400,
+      9000
+    ],
+    "events": [
+      {
+        "seconds": 0.1,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.5,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.9,
+        "type": "note-off",
+        "note": 67
+      },
+      {
+        "seconds": 1.3,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 1.67,
+        "type": "note-on",
+        "note": 0,
+        "velocity": 96
+      },
+      {
+        "seconds": 1.95,
+        "type": "note-off",
+        "note": 0
+      },
+      {
+        "seconds": 2.22,
+        "type": "note-on",
+        "note": 127,
+        "velocity": 96
+      },
+      {
+        "seconds": 2.5,
+        "type": "note-off",
+        "note": 127
+      }
+    ]
+  },
+  "hypothesis": "鳴禽の左鳴管に渡す音高は鍵盤全体を3オクターブ上げ、音域外のキーだけをオクターブ単位で音域内へ折り返す。60 → 67 → 60は約2093.00 → 3135.96 → 2093.00 Hzとなる。途中の解放で呼気ゲートは維持され、最後の解放で閉じる。",
+  "criteria": {
+    "routing": "固定上流のBestiaryでHeld voiceを選び、仮想MIDIの操作を通常の画面から適用する。保持中の音番号、指定音高、Workletでの採用フレームを調べる。",
+    "observable_state": "音高を固定した対照と、押下・持ち替え・最後の解放のそれぞれで、左右の鳴管、気嚢圧と出力音を照合する。各キー採用フレームの前後と定常窓を観測する。音高一定の対照とはゲート・気嚢圧が同じで、音高を持ち替える区間ではPCMと鳴管の流量が変わると予測する。0と127で上下のオクターブ折り返しを検査する。",
+    "replay": "研究版の画面から出力したケースで、採用フレームからCLIで持ち替えを再現できることを確認する。"
+  },
+  "measurement": {
+    "capture_seconds": 3.0,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "control_frames": 64,
+    "expected_held_notes": [
+      60,
+      67,
+      60,
+      null,
+      0,
+      null,
+      127,
+      null
+    ],
+    "steady_window_seconds_after_event": [
+      0.08,
+      0.2
+    ],
+    "release_window_seconds_after_event": [
+      0.16,
+      0.24
+    ],
+    "relative_event_tolerance_seconds": 0.05,
+    "pitch_target_absolute_tolerance_hz": 1e-09,
+    "smoothed_pitch_absolute_tolerance_hz": 1e-08,
+    "steady_gate_min": 0.999,
+    "release_gate_max": 1e-05,
+    "release_rms_max_ratio": 1e-05,
+    "native_pcm_absolute_tolerance": 1e-06,
+    "native_state_absolute_floor": 1e-08,
+    "native_state_peak_relative_tolerance": 1e-07,
+    "minimum_held_both_flow_rms_cm3_s": 0.01,
+    "fixed_pitch_control_note": 60,
+    "reference_manifest": "worklet-midi-songbird-20261121-baseline",
+    "browser_steady_pitch_absolute_tolerance_hz": 0.5,
+    "same_frame_control": {
+      "note": 0,
+      "frame": 128,
+      "frames": 512,
+      "minimum_tracking_pcm_peak": 0.001,
+      "fixed_cavity_purity": 0.0,
+      "hypothesis": "同一フレームで押下し解放すると呼気と気嚢圧は0に留まり、音高目標だけは押下の値を保持する。口腔食道腔が音高に追従する既定条件ではその容積変化だけで短いPCMが生じ、追従を0にした対照は無音になる。",
+      "previous_check": "worklet-midi-songbird-20261121-final",
+      "previous_expected_pcm": "無音。実測のPCMピークは0.07390。"
+    }
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "gate_target",
+        "pitch_hz",
+        "target_pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          9000
+        ],
+        [
+          22800,
+          31100
+        ],
+        [
+          41984,
+          48640
+        ],
+        [
+          60000,
+          69632
+        ],
+        [
+          78336,
+          83840
+        ],
+        [
+          92288,
+          97280
+        ],
+        [
+          104960,
+          111616
+        ],
+        [
+          119808,
+          125952
+        ],
+        [
+          141312,
+          144000
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "gate_target",
+        "pitch_hz",
+        "target_pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          9000
+        ],
+        [
+          22800,
+          31100
+        ],
+        [
+          41984,
+          48640
+        ],
+        [
+          60000,
+          69632
+        ],
+        [
+          78336,
+          83840
+        ],
+        [
+          92288,
+          97280
+        ],
+        [
+          104960,
+          111616
+        ],
+        [
+          119808,
+          125952
+        ],
+        [
+          141312,
+          144000
+        ]
+      ]
+    },
+    "fixed-pitch.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "gate_target",
+        "pitch_hz",
+        "target_pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          9000
+        ],
+        [
+          22800,
+          31100
+        ],
+        [
+          41984,
+          48640
+        ],
+        [
+          60000,
+          69632
+        ],
+        [
+          78336,
+          83840
+        ],
+        [
+          92288,
+          97280
+        ],
+        [
+          104960,
+          111616
+        ],
+        [
+          119808,
+          125952
+        ],
+        [
+          141312,
+          144000
+        ]
+      ]
+    }
+  }
+}

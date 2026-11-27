@@ -1,0 +1,15 @@
+{
+  "id": "coreaudio-output-deadline-probe",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "observation_case": "worklet-live-song-audioipc-audio-client.json",
+  "sample_rate_hz": 48000,
+  "overrun_callback_index": 64,
+  "duration_seconds": 1.2,
+  "delay_ms": 8.4,
+  "window_radius_callbacks": 8,
+  "criteria": {
+    "input": "48 kHzの自作AudioUnit再生コールバックが番号付きの低音量PCMを出す。対照では待機せず、比較では65回目のコールバックのPCMを書き込む直前に一度だけ8.4 ms待機する。既定の音声機器を使う。",
+    "prediction": "待機がその回のフレーム予算を超えた場合、次のAudioUnitコールバックのホスト間隔が通常の約2要求分になると予想する。次のサンプル時刻が前回の開始に要求長を加えた位置と一致するかを別に判定する。",
+    "validity": "コールバック前後8件が記録され、すべてのフレームを生成し、ホスト時刻とサンプル時刻の有効フラグを確認する。フレームの予算は実際の要求長から計算する。この測定はアプリのAudioUnitに渡された要求と書き込んだPCMについて行い、実機が再生したPCMは別に扱う。"
+  }
+}

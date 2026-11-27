@@ -1,0 +1,36 @@
+--- a/crates/chimera/src/voice/human_voice.rs
++++ b/crates/chimera/src/voice/human_voice.rs
+@@ -164,6 +164,7 @@
+     dec: Decimator,
+     pub probe_radiation_pair: [f64; 2],
+     pub probe_output: [f64; 5],
++    pub probe_source_pair: [[f64; 13]; 2],
+     pub probe_radiation_components: [[f64; 6]; 2],
+     /// internal samples per control step
+     ctrl_every: usize,
+@@ -239,6 +240,7 @@
+             dec: Decimator::new(m),
+             probe_radiation_pair: [0.0; 2],
+             probe_output: [0.0; 5],
++            probe_source_pair: [[0.0; 13]; 2],
+             probe_radiation_components: [[0.0; 6]; 2],
+             ctrl_every: 64 * m,
+             ctrl_counter: 0,
+@@ -397,9 +399,16 @@
+                 // takes beyond the lower airways' own, a passive R_dc + R·s/(s + ωc)
+                 self.lung_flow += lung_coef * (net.u[lung_port] - self.lung_flow);
+                 net.set_fixed_pressure(lungs, self.p_lung_now + lung_excess * self.lung_flow);
+-                let a = self.glottis.next(net.p[sub_node] - net.p[supra]);
++                let pressure_drop = net.p[sub_node] - net.p[supra];
++                let a = self.glottis.next(pressure_drop);
+                 net.set_port_area(gp, a);
+                 let y = net.step();
++                self.probe_source_pair = [self.probe_source_pair[1], [
++                    self.artic.x.get(ArticKey::TtY), self.gate, pressure_drop, self.glottis.f0_now,
++                    self.glottis.cycle_phase(), a, self.glottis.voicing, net.u[gp],
++                    net.radiated_flow(self.airway.rad_lips), net.radiated_flow(self.airway.rad_nose),
++                    net.probe_wall_radiation, net.rad_prev_total, y,
++                ]];
+                 self.probe_radiation_pair = [self.probe_radiation_pair[1], y];
+                 self.probe_radiation_components = [self.probe_radiation_components[1], [
+                     net.radiated_flow(self.airway.rad_lips), net.radiated_flow(self.airway.rad_nose),

@@ -1,0 +1,143 @@
+{
+  "id": "tsp-held-out-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "reproductions": {
+    "FK61_02": {
+      "run": "tsp-fk61-02-full-pcm-rounding-20261124-repeat",
+      "case": "tsp-fk61-02-full-pcm-rounding",
+      "manifest_sha256": "8094c6d8124af421ebe679e71ef18e71daf27a74f6d8e67d75326050d082a601"
+    },
+    "MK61_02": {
+      "run": "tsp-mk61-02-full-pcm-rounding-20261124-repeat",
+      "case": "tsp-mk61-02-full-pcm-rounding",
+      "manifest_sha256": "a4505eaf840ded977387e8d432db3991d45e926a9845535273dc210d9a64ef2f"
+    }
+  },
+  "measurement": {
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110,
+    "quiet_pcm_threshold": 1e-06,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "minimum_separate_peak_utterances": 9,
+    "opening_frames": 16704,
+    "total_frames": 1487586,
+    "cases": [
+      {
+        "recording_id": "FK64_08",
+        "body": "female",
+        "frames": 107527,
+        "expected_pcm_first_difference": 53463,
+        "expected_pcm_peak_frame": 96435,
+        "expected_pcm_different_bits": 1273
+      },
+      {
+        "recording_id": "FK64_09",
+        "body": "female",
+        "frames": 114949,
+        "expected_pcm_first_difference": 25230,
+        "expected_pcm_peak_frame": 79672,
+        "expected_pcm_different_bits": 1127
+      },
+      {
+        "recording_id": "MK64_08",
+        "body": "male",
+        "frames": 107527,
+        "expected_pcm_first_difference": 97728,
+        "expected_pcm_peak_frame": 97728,
+        "expected_pcm_different_bits": 949
+      },
+      {
+        "recording_id": "MK64_09",
+        "body": "male",
+        "frames": 114949,
+        "expected_pcm_first_difference": 72109,
+        "expected_pcm_peak_frame": 72109,
+        "expected_pcm_different_bits": 1891
+      },
+      {
+        "recording_id": "FK62_02",
+        "body": "female",
+        "frames": 126702,
+        "expected_pcm_first_difference": 6929,
+        "expected_pcm_peak_frame": 116360,
+        "expected_pcm_different_bits": 1714
+      },
+      {
+        "recording_id": "MK62_02",
+        "body": "male",
+        "frames": 126702,
+        "expected_pcm_first_difference": 55854,
+        "expected_pcm_peak_frame": 55854,
+        "expected_pcm_different_bits": 1065
+      },
+      {
+        "recording_id": "FK62_04",
+        "body": "female",
+        "frames": 133756,
+        "expected_pcm_first_difference": 16055,
+        "expected_pcm_peak_frame": 126117,
+        "expected_pcm_different_bits": 733
+      },
+      {
+        "recording_id": "MK62_04",
+        "body": "male",
+        "frames": 133756,
+        "expected_pcm_first_difference": 31429,
+        "expected_pcm_peak_frame": 33646,
+        "expected_pcm_different_bits": 619
+      },
+      {
+        "recording_id": "FK61_01",
+        "body": "female",
+        "frames": 116132,
+        "expected_pcm_first_difference": 1989,
+        "expected_pcm_peak_frame": 16682,
+        "expected_pcm_different_bits": 2257
+      },
+      {
+        "recording_id": "MK61_01",
+        "body": "male",
+        "frames": 116132,
+        "expected_pcm_first_difference": 2953,
+        "expected_pcm_peak_frame": 33119,
+        "expected_pcm_different_bits": 1357
+      },
+      {
+        "recording_id": "FK61_02",
+        "body": "female",
+        "frames": 144727,
+        "expected_pcm_first_difference": 31350,
+        "expected_pcm_peak_frame": 129260,
+        "expected_pcm_different_bits": 1992
+      },
+      {
+        "recording_id": "MK61_02",
+        "body": "male",
+        "frames": 144727,
+        "expected_pcm_first_difference": 9333,
+        "expected_pcm_peak_frame": 82703,
+        "expected_pcm_different_bits": 1254
+      }
+    ],
+    "scope": "確認用の女性・男性各6発話の通常レンダーで、変換前f64とPCMの版間誤差を同じ方法で測る。全区間を独立再計算し、発話単位のRMS差と最大絶対差で降順順位を付け、同率は平均順位にする。同文の男女6対でRMS差の大小が丸め前後で逆になる対も数える。振幅10⁻⁶以下の複数ULP差は発話別と全標本の合算で残す。"
+  },
+  "hypotheses": {
+    "precast_and_pcm_rms_rankings_have_inversions": "全12発話の変換前RMS差とPCM RMS差で順位が逆になる発話対があり、同文の男女にも少なくとも1対ある。",
+    "most_utterances_have_separate_peak_frames": "12発話中9発話以上で変換前の最大差とPCMの最大差は別フレームにある。",
+    "multi_ulp_differences_are_mainly_quiet_in_aggregate": "複数ULP差を全発話で足すと、その95%以上は両版ともPCM振幅10⁻⁶以下にある。"
+  },
+  "acceptance": "全12発話で通常CLI・観測版・保存PCMが各版で同長かつビット一致し、登録済みの初差・最大差・差のあるフレーム数を再現する。全1,487,586出力フレームの放射と出力段は独立計算に一致し、リミッター非作動下でf64を丸めたPCMと一致する。1 ULPの差には対応する中点がある。FK61_02とMK61_02は保存済みの個別比較の測定値を再現する。順位・逆転・同率、最大差の位置、振幅別ULP数を報告する。全区間の検算に使う放射・声門流量・出力段・PCMの列を外部に圧縮保存する。"
+}

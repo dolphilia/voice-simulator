@@ -1,0 +1,17 @@
+{
+  "id": "worklet-live-tsp-firefox-render-phases",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "native_case": "worklet-live-tsp-firefox-native-clock",
+  "native_run": "worklet-live-tsp-firefox-native-clock-20261122-repeat",
+  "measurement": {
+    "condition_order": [["control", "phases"], ["phases", "control"]],
+    "quantum_indices": [0, 1, 32, 33],
+    "calibration_markers": 8,
+    "maximum_marker_calibration_step_ms": 0.3,
+    "maximum_median_first_author_shift_ms": 0.6,
+    "minimum_wasm_share_of_first_excess": 0.5
+  },
+  "hypothesis": "確認用07の先頭量子が定常量子より長くなる時間のうち、半分以上はWASMのvocal_render呼び出しの増分で説明できる。",
+  "acceptance": "同じFirefox、辞書、WASM、英語発話ケースで、マーカーなしとありを交互に採る。出力フレーム0、128、4096、4224から始まる量子の4つの32フレーム片について、WASM描画、PCMコピー、声門系列の転送、状態観測、実時間採取の時刻をJavaScript呼び出しの内側へ照合する。マーカーの並び、時刻校正、先頭量子に対する計測の影響を保存し、WASMの増分を先頭と定常の差に対する比率で評価する。音声、発話内状態、ケースは通常再生と照合する。欠測、時刻計測の予測不成立、計測の影響の基準超過も記録する。"
+}

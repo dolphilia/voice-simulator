@@ -1,0 +1,36 @@
+{
+  "id": "human-body-airway",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-geometry", "fixed-airway-velum-open", "vowel-transfer-alpha"],
+  "hypothesis": "体型補間を固定気道に反映すると、管長・断面・空洞体積と安定性に合わせたセル数が変わる。同一の /ɑ/ 姿勢で子どもの最初の共鳴は成人男性より高くなる。子どもの64 kHzでは梨状窩が2セルになり、短い口腔の条件では音響計算用の管長が下限まで延びる。",
+  "variants": [
+    {"id": "male", "body": "male", "weights": [1, 0, 0], "pose": "vowel-transfer-alpha.json", "rate_hz": 96000, "cells": [13, 18, 18, 22, 3]},
+    {"id": "female", "body": "female", "weights": [0, 1, 0], "pose": "vowel-transfer-alpha.json", "rate_hz": 96000, "cells": [13, 15, 16, 22, 3]},
+    {"id": "child", "body": "child", "weights": [0, 0, 1], "pose": "vowel-transfer-alpha.json", "rate_hz": 96000, "cells": [13, 11, 13, 21, 3]},
+    {"id": "child-mid", "body": {"child": 0.5}, "weights": [0.5, 0, 0.5], "pose": "vowel-transfer-alpha.json", "rate_hz": 96000, "cells": [13, 14, 16, 22, 3]},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3], "pose": "vowel-transfer-alpha.json", "rate_hz": 96000, "cells": [13, 15, 16, 22, 3]},
+    {"id": "child-open-64k", "body": "child", "weights": [0, 0, 1], "pose": "vowel-transfer-alpha.json", "velum_cm2": 0.3, "rate_hz": 64000, "cells": [13, 8, 9, 14, 2]},
+    {"id": "child-short-64k", "body": "child", "weights": [0, 0, 1], "pose": "fixed-airway-short-64k.json", "rate_hz": 64000, "cells": [13, 8, 9, 14, 2], "stretched_tubes": ["oral"]}
+  ],
+  "transfer": {"start_hz": 60.0, "end_hz": 8000.0, "points": 360, "peak_search_min_hz": 150.0},
+  "impulse": {"volume_cm3": 1e-6, "samples": 8192, "tail_start_sample": 7168},
+  "measurement": {
+    "sound_speed_cm_s": 35000.0,
+    "air_density_g_cm3": 0.00114,
+    "maximum_courant": 0.97,
+    "maximum_design_courant": 0.93,
+    "length_absolute_tolerance_cm": 1e-8,
+    "area_absolute_tolerance_cm2": 1e-8,
+    "courant_absolute_tolerance": 1e-12,
+    "linear_element_relative_tolerance": 1e-8,
+    "frequency_absolute_tolerance_hz": 1e-9,
+    "response_peak_relative_tolerance": 1e-8,
+    "pressure_db_absolute_tolerance": 1e-7,
+    "peak_frequency_absolute_tolerance_hz": 1e-5,
+    "impulse_peak_relative_tolerance": 1e-8,
+    "tail_peak_fraction_limit": 0.01,
+    "open_velum_minimum_nose_to_lips_peak": 0.01,
+    "child_fossa_three_cell_courant_above": 1.0,
+    "minimum_f1_change_child_vs_male_hz": 10.0
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "fixed-vowel-i-wasm-radiation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "fixed-vowel-i-cli-radiation.json",
+  "hypothesis": "既存の固定発声ケースで放射観測を有効にすると、Wasmのレンダーで各出力フレーム末尾の壁・口端・鼻端・合算と微分が取得できる。同じ設定のCLIにビット一致し、観測指定とホストのブロック長を変えてもPCMと既存の観測は同じになる。",
+  "measurement": {
+    "revision": 1,
+    "cli_reference": {
+      "run": "fixed-vowel-i-cli-radiation-20261124-schema-corrected-repeat",
+      "sha256": "2b6e9ef19ba485fd337ccdf0b3c8f0507ba3c3729bb8097cf684ad87770ccb50"
+    },
+    "upstream_reference": {
+      "run": "fixed-vowel-i-radiation-components-20261124-repeat",
+      "sha256": "2acd99e875c13da6aebd04493bd4ee3f273fd21dab3ca806c71a2a9d5cbd287e"
+    },
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "comparison_output_frames": [0, 32768],
+    "host_block_frames": [128, 77, 4096],
+    "worklet_quantum_frames": 128,
+    "worklet_observation_stride": 77,
+    "legacy_layout_version": 1,
+    "legacy_raw_observation_words": 23,
+    "observed_fields": [
+      "wall_radiation_flow_cm3_s", "lip_flow_cm3_s", "nose_flow_cm3_s",
+      "radiation_flow_cm3_s", "radiation_derivative_cm3_s2"
+    ],
+    "upstream_peak_relative_error_lt": 1e-8,
+    "upstream_pcm_absolute_error_lt": 5e-7,
+    "input": "通常の固定 /i/ に110 Hzと肺圧3.6 cmH₂Oを与える。Wasmでは通常のホストとオフラインAudioWorkletを通し、放射観測ありとなしを比較する。既存の観測間隔77でWorkletの128フレームを分ける。",
+    "observation": "全32,768出力フレームの体積流量4値（cm³/s）と合算の微分（cm³/s²）を採取する。フレームkは内部標本2k+1と照合する。従来の観測列とフレーム時計、PCM、Wasmメモリとネイティブレンダー中の割り当てを確認する。",
+    "acceptance": "CLIとの放射・PCM、同じWasmホストの分割とWorkletの放射・PCMは全フレームでビット一致する。固定上流の流量・微分・PCMは指定許容差に収まり、CLIの全内部流量から合算・微分・PCMを独立に再現する。旧ABIの配置と観測値は有効・無効で一致し、未指定または明示無効時は観測を作らない。有効時のレンダーでネイティブ割り当てと固定発声Wasmの線形メモリ拡張はゼロで、終了後の観測アクセスは失敗する。"
+  }
+}

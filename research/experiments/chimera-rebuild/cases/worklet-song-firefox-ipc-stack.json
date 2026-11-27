@@ -1,0 +1,32 @@
+{
+  "id": "worklet-song-firefox-ipc-stack",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "queue_comparison_run": "worklet-song-firefox-ipc-queue-20261121-verified",
+  "measurement": {
+    "condition_order": [["serial", "parallel"], ["parallel", "serial"], ["serial", "parallel"]],
+    "enable_features": ["js", "stackwalk"],
+    "disable_features": ["nostacksampling"],
+    "thread_filters": ["GeckoMain"],
+    "context_window_ms": 100,
+    "minimum_long_window_coverage": 0.9,
+    "minimum_browser_activity_fraction": 0.5,
+    "browser_activity_categories": ["Layout", "Graphics"],
+    "browser_js_origin_prefixes": ["chrome://", "resource://"],
+    "network_observer_origin": "chrome://juggler/content/NetworkObserver.js",
+    "body_read_control": {
+      "reference_run": "worklet-song-firefox-ipc-stack-20261121-a",
+      "minimum_serial_median_reduction_ms": 50,
+      "maximum_deferred_queue_ms": 20,
+      "cross_clock_tolerance_ms": 5
+    }
+  },
+  "hypothesis": "100 ms以上の現行順のIPC待ちでは、親メインスレッドのCPU記録の半分以上が、レイアウト・描画、またはFirefox自身のJavaScriptに対応するスタックで占められる。短い待ちの反復も保持し、100 msに達した条件だけで比率の予測を判定する。",
+  "criteria": {
+    "input": "通常画面の48 kHzのPop Deeを現行順と並行登録で交互に採る。先行のフロー採取の条件からスタック採取を有効にし、サンプルをGeckoMainに絞る。その他のスレッドのIPCとグラフのマーカーは維持する。歌唱のPCM・観測・拍・計画と固定上流との差を基準に照合する。",
+    "windows": "対象コンストラクタの投入と親の受信処理に挟まれ、前後の採取点が両方含まれる区間を集計する。同じプロセスの投入前100 ms、受信処理後100 msを比較用に記録する。通常のIPCフローで端点を得られない試行はスタックの帰属を保留する。",
+    "stack": "Geckoのスタック表を親から葉まで復元する。Geckoのカテゴリ、最も深い名前付きフレーム、ネイティブ命令アドレスとライブラリ、Firefox自身のJavaScript URLを別に保存する。各採取点の直前区間のthreadCPUDeltaで重みを付け、合計を従来のCPU集計と照合する。アドレスしか得られないフレームには関数名を推定しない。",
+    "evaluation": "100 ms以上かつ90%以上をスタック付きCPU区間で覆えた現行順を分布の判定対象にする。LayoutまたはGraphicsのフレームか、Firefoxのchrome://またはresource://のJavaScriptが含まれる区間のCPU時間の割合を出す。該当なしや記録不足は未判定として記録する。重みは採取点直前区間の近似であり、タスクの実行時間の厳密な計測とは区別する。",
+    "body_read_control": "初回のスタックでPlaywrightのNetworkObserverが見つかったため、対照を追加登録する。Playwrightが既に取得済みのWASM・英語辞書の応答本文を読む位置だけを歌唱完了後に移し、本文のハッシュは引き続き取得する。現行順の投入後待ちの中央値は初回から50 ms以上短くなり、延期した各試行は20 ms以内と予測する。Playwright側の取得要求時刻と同じ試行の登録時刻、音声・観測・拍・資産ハッシュを照合する。"
+  }
+}

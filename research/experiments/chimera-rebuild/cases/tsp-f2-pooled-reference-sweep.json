@@ -1,0 +1,36 @@
+{
+  "id": "tsp-f2-pooled-reference-sweep",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "pooled_source": {
+    "run": "tsp-f2-reference-pooled-sexes-20261123-repeat",
+    "case": "tsp-f2-reference-pooled-sexes",
+    "manifest_sha256": "cd6da8d9b63668393ecea88839d9bd3d14a655464fb71ecd83eb11f819ff1dd1"
+  },
+  "female_source": {
+    "run": "tsp-f2-training-reference-ten-speakers-20261123-repeat",
+    "case": "tsp-f2-training-reference-ten-speakers",
+    "manifest_sha256": "4907e1ef590f8fee1af6eedcd222222a112e5c82ae2b05e7e22a4104d0155b47"
+  },
+  "original_interventions": {
+    "run": "tsp-f2-training-reference-sensitivity-20261123-repeat",
+    "case": "tsp-f2-training-reference-sensitivity",
+    "manifest_sha256": "3b86086243d80dffe936e406dae82824d33b6ca43762b89a21abb2430399d6fe"
+  },
+  "measurement": {
+    "cohorts": ["female", "mixed"],
+    "replacement_keys": ["before", "after"],
+    "tokens": 39,
+    "pairs": 78,
+    "intervention_reports": 156,
+    "intervals": "第54版のFA〜FEの強勢付き /ɛ/ の同じ39音素を使う。録音・合成の対応、窓、F2値を保存記録から固定し、同じ数値介入を女性10名と男女19名に与える。各シナリオは無介入の学習入力から独立に作り、FKの録音・合成の中央値を固定する。",
+    "effect": "それぞれの参照の無介入費用を原点に、同じ介入での絶対変動を比較する。減少・増加・同値の件数と、符号反転、ゼロ費用、参照幅の下限適用件数を確認する。",
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "both_maximum_cost_deviations_decrease": "男女をまとめた条件では、FKの録音・合成の両側で費用の最大絶対変動が小さくなる。",
+    "width_floor_used_less_often": "男女をまとめた条件では0.07オクターブの下限を使う介入が減る。",
+    "some_cost_deviation_grows": "少なくとも片側で、男女をまとめると元の参照より費用の絶対変動が大きくなる介入がある。"
+  },
+  "acceptance": "第54版の全78条件の女性のみの参照と第56版の1音素の両参照を再現する。39位置の2値を一つずつ替え、2コホートの156条件で、男女の中心、残差、MAD、幅とFK費用の固定上流と独立計算を1e-10以内で照合する。先行入力の支持数、女性側の中心と女性内MAD、男女側の男性残差が同じ対応条件で一致することを確認する。予測の判定を機構の合否から分離する。"
+}

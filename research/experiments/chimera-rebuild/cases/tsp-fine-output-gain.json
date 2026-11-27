@@ -1,0 +1,38 @@
+{
+  "id": "tsp-fine-output-gain",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "tsp-active-duration-original-20261121-repeat",
+  "source_case": "tsp-active-duration-original",
+  "reference_run": "tsp-fine-source-variation-20261122-repeat",
+  "reference_case": "tsp-fine-source-variation",
+  "recording_id": "FK64_08",
+  "frames": 107527,
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "initial_f0_hz": 110.0,
+  "speaking_f0_hz": 205.0,
+  "attention_frames": [15360, 20016],
+  "base_gain": 5.5e-7,
+  "female_body_scale": 0.9,
+  "upstream_gain_factor": 0.875,
+  "matched_gain": 4.8125e-7,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerance": {
+    "independent_normalized": 1e-10,
+    "attention_pcm": 0.000001,
+    "significant_pcm": 0.000001
+  },
+  "hypothesis": "再実装の出力ゲインを上流女性体型と同じ4.8125×10⁻⁷にすると、ドリフト・ジッター・シマーを0にした上流と fine の二重母音のPCM最大差は1×10⁻⁶以下になる。再実装の二条件で内部状態と間引きは一致し、出力段では間引き後の乗算で最初に差が現れる。発話先頭の初期姿勢の差は別に残ると予測する。",
+  "observation": "同一本文・同一の発話設定で再実装の speech_voice.voice.output_gain だけを変え、通常CLIから全107,527フレームを描画する。内部215,054サンプルの呼気・声門・放射および間引き後の値、DC除去、包絡、PCMを照合する。上流の音源変動0の波形は検証済みの保存版を使う。",
+  "acceptance": "通常CLIと研究用観測器の全PCMが各条件でビット一致し、元の条件は保存済みPCMに一致する。観測した全内部列と間引き値が再実装の二条件でビット一致する。FIR、DC除去、包絡、リミッターを独立計算へ照合し、上流との二重母音・全発話・最初のPCMの差を保存する。波形差についての仮説は計測の合否と別に記録する。"
+}

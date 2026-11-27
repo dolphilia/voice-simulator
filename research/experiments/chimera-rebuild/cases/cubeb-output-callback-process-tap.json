@@ -1,0 +1,22 @@
+{
+  "id": "cubeb-output-callback-process-tap",
+  "base_case": "cubeb-output-callback-probe.json",
+  "calibration_case": "safari-process-tap-smooth-marker.json",
+  "condition_order": [["control", "overrun"], ["overrun", "control"]],
+  "tap_seconds": 1.2,
+  "tap_ready_timeout_seconds": 5,
+  "tap_lead_seconds": 0.1,
+  "quiet_marker_amplitude": 0.00001,
+  "maximum_anchor_displacement_frames": 1024,
+  "maximum_endpoint_offset_change_ms": 0.025,
+  "maximum_inserted_zero_model_residual": 0.025,
+  "expected_tap_zero_frames": 161,
+  "expected_leading_edge_frames": 47,
+  "hypothesis": "Firefoxで捉えた無音は、歌唱やWorkletを使わなくても、同じcubebで出力要求を1回遅らせれば現れる。未準備では予定要求とタップのPCMの両方が連続する。8.4 ms遅延では、cubebが返すPCMを変えずに予定要求が256フレーム飛び、タップの同じ出力区間が256フレーム延びる。その中央の161フレームが左右とも完全ゼロと予測する。",
+  "criteria": {
+    "input": "固定cubebの出力専用ストリーム、48 kHz、ステレオFloat32、256フレーム、滑らかな既知の逆相信号と既定の出力を使う。0・8.4 msの待機だけを0始まり65番目のデータコールバックで切り替える。各ペア内の順序は入れ替え、別ディレクトリからも実行する。",
+    "capture": "プロセスタップとcubebの採取対象PIDとホスト時計の単位を照合する。タップ開始から100 ms待ってストリームを始める。対象の前後8要求で、cubebが返した4,352フレームと出力の段階、予定・実行時刻を保存する。cubebのPCMは波形の参照とビット照合する。タップは両端の各1,024フレームを較正済みの手順で照合する。",
+    "predictions": "0 msの予定時刻の飛びは0で、タップの区間長は4,352フレーム。8.4 msでは対象回の直後の飛びが256で、タップでは4,608フレーム。ほかの予定時刻とタップの入力時計は連続し、タップとcubebの時刻差の両端での変化は0.025 ms以内と予測する。",
+    "zero_location": "8.4 msで4,608フレーム得られた場合、対象要求の前後1要求の範囲で、分数位相を補正した参照に256点のゼロを挿入する位置を1フレームずつ変える。最も近い位置は対象要求の先頭、全区間の相対RMS残差は0.025以下、完全ゼロの連続161フレームの開始はその位置から47フレーム後と予測する。観測の妥当性と予測の成否は分けて保存する。"
+  }
+}

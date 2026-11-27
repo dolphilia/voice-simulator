@@ -1,0 +1,51 @@
+{
+  "id": "duet-head-expression",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "各声部の口腔圧で頬が膨らみ、近頃より高い音で眉が上がる。高音の持続で瞼が閉じ、音高の揺れと拍に頭部が反応する。停止では音響入力が途絶えて減衰し、シーク後は以前のばねや音高の基準を受け継がない。",
+  "reference": {
+    "echo_run": "duet-head-echoes-20261120-repeat",
+    "echo_manifest_sha256": "7753f81749e482ae98e27501abbfa51042e0aa92646b8e191318eb527d543907",
+    "track_sha256": [
+      "0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+      "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"
+    ]
+  },
+  "seed": 1401,
+  "cg_per_cmh2o": 980.665,
+  "expression_step_limit_seconds": 0.5,
+  "state_tolerance": 0.000000000002,
+  "geometry_tolerance_cm": 0.000002,
+  "controls": [
+    {"name": "rest", "frames": 15, "elapsed": 0.01, "source": null},
+    {"name": "rising_pressure", "frames": 12, "elapsed": 0.01, "source": {"pressure_cmh2o": 4.25}},
+    {"name": "full_pressure_slow_frame", "frames": 4, "elapsed": 0.16, "source": {"pressure_cmh2o": 8}},
+    {"name": "release", "frames": 42, "elapsed": 0.01, "source": null},
+    {"name": "pitch_reference", "frames": 8, "elapsed": 0.25, "source": {"f0": 110}},
+    {"name": "weak_high_pitch", "frames": 4, "elapsed": 0.01, "source": {"f0": 220, "outRms": 0.002}},
+    {"name": "high_note", "frames": 7, "elapsed": 0.3333333333333333, "source": {"f0": 220}},
+    {"name": "detuned_vibrato", "frames": 14, "elapsed": 0.016, "source": {"f0": 212}},
+    {"name": "seek_reset", "frames": 1, "elapsed": 0.016, "reset": true, "source": {"f0": 220, "beatStep": 3}},
+    {"name": "skip_beat", "frames": 1, "elapsed": 0.01, "source": {"f0": 220, "beatStep": 5}},
+    {"name": "continue_beat", "frames": 20, "elapsed": 0.01, "source": {"f0": 220, "beatStep": 5}},
+    {"name": "wrap_bar", "frames": 1, "elapsed": 0.01, "source": {"f0": 220, "beatStep": 0}}
+  ],
+  "browser": {
+    "sample_rate_hz": 48000,
+    "viewports": [[960, 900], [390, 850]],
+    "start_sample": 18432,
+    "live_until_sample": 67584,
+    "live_seeks": [30720, 19968],
+    "pause_ms": 350,
+    "minimum_cheek_peak": 0.12,
+    "minimum_pitch_brow_peak": 0.2,
+    "minimum_enabled_picture_pixel_delta": 25,
+    "diagnostic_bpm": 120,
+    "diagnostic_downbeat_seconds": 0.1
+  },
+  "criteria": {
+    "controls": "固定上流のExpressionに同じ状態と乱数を与え、頬・眉・瞼・視線・首の角度と内部のばねを照合する。頬の差分式、音高の追従と拍を独立計算でも検査する。",
+    "browser": "通常の再生で各CHTL行から圧力と音高を読み、代表値を照合する。診断譜では既存の公演に拍と頭拍だけを加えて拍の動きを確認する。前後シーク直後の新しいばね、停止後の減衰を採取する。",
+    "geometry": "回転の支点を保持し、左右の反転と順序を含む行列を独立計算する。頬・眉・瞼の実頂点を比較し、同じ観測行で表情の描画を切り替えた画素も保存する。"
+  }
+}

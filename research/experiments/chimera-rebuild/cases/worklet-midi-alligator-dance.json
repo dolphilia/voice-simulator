@@ -1,0 +1,65 @@
+{
+  "id": "worklet-midi-alligator-dance",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-dance.json",
+  "input": {
+    "creature": "alligator",
+    "key_mode": "call",
+    "call_id": "dance",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [12, 120],
+    "capture_seconds": 3.25,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 36, "velocity": 96},
+      {"seconds": 0.49, "type": "note-off", "note": 36},
+      {"seconds": 0.99, "type": "note-on", "note": 41, "velocity": 96},
+      {"seconds": 1.38, "type": "note-off", "note": 41}
+    ]
+  },
+  "hypothesis": "Water danceでは音高の目標がMIDI 36で約16.35 Hz、41で約21.83 Hzになる。離鍵後も低い周期が続く。声門面積の周期と、気管端圧・壁面・口端・鼻端に伝わった低域を比較して、鍵盤で20 Hzの上下へ移したときに各系列のピークがどう動くかを調べる。再発音時は粗さの目標が0へ戻るが、声門と気道の状態は引き継ぐ。",
+  "criteria": {
+    "control": "両押下直後の音高目標を鍵盤の周波数と比較する。再発音直前の粗さの目標は0.33〜0.44、直後は0。平滑粗さは正の範囲で下がり、声門位相は連続し、呼気目標は1を保つ。",
+    "release": "両離鍵後25〜100 msに呼気0.95以上でコールが続き、声門開口の最大値は0.05 cm²以上、PCM RMSは0.001以上とする。最後の押下から約1.75秒でコールの制御が終わる。",
+    "frequency": "各押下後280〜780 msの連続内部列から位相の巻き戻り間隔とHann窓のスペクトルを別々に求める。実測周期周波数は目標の12%以内で20 Hzの上下に分かれ、声門面積ピークは第1音14〜18 Hz、第2音20〜24 Hz。気管端圧・咽頭入口圧と壁面・口端・鼻端の体積速度のピークは声門面積の1ビン以内、PCMピークは第2倍音の2ビン以内と予測する。各系列のピークビンを固定上流と照合する。",
+    "radiation": "壁面・口端・鼻端の流量を足した系列を内部レートで時間差分し、間引き・DC除去・振幅制限を独立計算して候補PCMに照合する。25〜80 Hzと12〜25 HzのRMS比は、総流量、時間差分後、DC除去後の順に増えると予測する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-alligator-dance-20261120-repeat",
+    "baseline_case_id": "worklet-alligator-dance",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": -3,
+    "maximum_relative_input_error_seconds": 0.055,
+    "release_window_seconds": [0.025, 0.10],
+    "spectral_window_seconds": [0.28, 0.78],
+    "spectral_peak_area_hz": [[14.0, 18.0], [20.0, 24.0]],
+    "frequency_boundary_hz": 20.0,
+    "minimum_complete_cycles": 6,
+    "maximum_cycle_frequency_relative_error": 0.12,
+    "propagation_peak_tolerance_bins": 1,
+    "pcm_second_harmonic_tolerance_bins": 2,
+    "retrigger_chaos_target_before": [0.33, 0.44],
+    "minimum_release_gate": 0.95,
+    "minimum_release_glottis_peak_cm2": 0.05,
+    "minimum_release_pcm_rms": 0.001,
+    "browser_target_tolerance_hz": 1e-10,
+    "control_tolerance": 1e-9,
+    "clock_tolerance_seconds": 1e-10,
+    "worklet_tolerance": 1e-12,
+    "native_tolerance_source": "alligator-fixed-voice-v2.json"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["sample", "frame", "call_id", "gate", "gate_target", "target_pitch_hz", "pitch_hz", "target_chaos", "chaos", "target_mouth", "oral_tip_area_cm2", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "trachea_inlet_pressure_dyn_cm2", "trachea_end_pressure_dyn_cm2", "pharynx_pressure_dyn_cm2", "glottis_flow_cm3_s", "glottis_area_cm2", "glottis_phase", "glottis_f0_hz", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "dc_removed", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 312000]]
+    },
+    "upstream.csv": {
+      "columns": ["sample", "frame", "call_id", "gate", "target_pitch_hz", "pitch_hz", "target_chaos", "chaos", "target_mouth", "oral_tip_area_cm2", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "trachea_inlet_pressure_dyn_cm2", "trachea_end_pressure_dyn_cm2", "pharynx_pressure_dyn_cm2", "glottis_flow_cm3_s", "glottis_area_cm2", "glottis_phase", "glottis_f0_hz", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 312000]]
+    }
+  }
+}

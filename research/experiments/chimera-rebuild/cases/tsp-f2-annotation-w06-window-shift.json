@@ -1,0 +1,38 @@
+{
+  "id": "tsp-f2-annotation-w06-window-shift",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "order_reference": {
+    "run": "tsp-lpc-order-recordings-20261122-repeat",
+    "case": "tsp-lpc-order-recordings",
+    "manifest_sha256": "0c4d9a97bb30045ba0f51a33d301e84cd0f9a0ff452847526368e4dc7e43bb27"
+  },
+  "annotation": {
+    "run": "tsp-f2-annotation-20261122-repeat",
+    "case": "tsp-f2-annotation",
+    "manifest_sha256": "c13f511eb39f56c90fa7174a8a8dd9b2949602b8163663021730a4d865af1f55",
+    "packet_id": "682ca00eb3af5edd630c47bcec7d71f98a9cafb68307e350822065dcec255af6",
+    "trial": "W06"
+  },
+  "target": {
+    "utterance": "FK61_01",
+    "word": "again",
+    "phone_index": 23,
+    "arpabet": "EH1",
+    "center": 0.5,
+    "start_sample": 24149,
+    "frame_samples": 300,
+    "order": 12
+  },
+  "offset_samples": [-60, 60],
+  "low_band_hz": [1900, 2200],
+  "high_band_hz": [2750, 3050],
+  "decimation_absolute_tolerance": 1e-13,
+  "hypotheses": {
+    "high_band_remains_eligible": "基準で候補だった2.9 kHz側は全121窓で周波数・帯域幅の条件を満たす。",
+    "low_band_stays_above_gap_while_public": "2.1 kHz側が公開極に含まれる窓ではF1と200 Hzを超えて離れる。",
+    "window_shift_changes_selection_at_bandwidth_filter": "2.1 kHz側が帯域幅600 Hzの上限で除外されて2.9 kHz側を採る窓は現れない。",
+    "low_band_remains_selected": "全121窓で基準と同じ2.1 kHz側が周波数順で最初のF2候補になる。"
+  },
+  "acceptance": "注釈資料ID・W06の区間・解析標本・WAVのPCM16を保存済み録音に照合する。解析は同じ48 kHz WAVを基準の95タップ低域通過と4分の1間引きに通し、元の300標本窓の開始を12 kHzで−60〜+60標本ずらす。全121窓で固定Rustと独立Pythonの生根、公開極、採択を先行の閾値で照合する。基準窓の上流極と採択は保存済みの次数比較と一致させる。各窓の候補、採択の相対位置、帯域幅、欠測および最初の差が出た処理を保存する。人手の判定は受領した同じ資料IDのCSVから取り込む。"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "duet-mixed-volume-difference",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "lip": ["duet-mixed-lip-load-origin-20261122-repeat", "duet-mixed-lip-load-origin", "90d2fdc109b7c6cfc9e5dba9bb49a7816eda36c163077847cc97b21e238c4829"],
+    "settings": ["duet-mixed-output-gain-20261122-repeat", "duet-mixed-output-gain", "33fd5009c344b885c7aedf973dda34950cd9b9a08400269e466b48a72193c031"],
+    "moving-aperture-release": ["moving-aperture-20261119-p", "moving-aperture-release", "f9283076f1271a69626519eb68faf0d8ced8efb56e6b7bf27ae8fffb0f7858b0"],
+    "sealed-cavity-compression": ["sealed-cavity-20261119-q", "sealed-cavity-compression", "99fbc1a23de9369b4ea7fcb8880f8fe0a12563c4b606786bce8d0c537f130d5e"]
+  },
+  "internal_sample_rate_hz": 96000,
+  "output_sample_rate_hz": 48000,
+  "pcm_frames": 97920,
+  "observation_internal_samples": [50033, 50304],
+  "prior_observation_internal_samples": [50033, 50080],
+  "first_observed_lip_difference": 50049,
+  "additional_interval": [50081, 50304],
+  "minimum_moving_open_steps_additional": 100,
+  "minimum_peak_error_reduction": 100.0,
+  "onset_source_absolute_tolerance_cm3_s": 1e-18,
+  "pcm_absolute_tolerance": 6e-8,
+  "hypothesis": "面積を0.02 cm²で下限処理した上で、二つの積の引き算を (A旧−A新)ℓ旧+A新(ℓ旧−ℓ新) に展開すると、同じ幾何での未平滑流量の高精度参照に対する最大絶対誤差が初出点と後続区間で各100分の1以下になる。最初の流入はこの式から独立に求められ、固定上流との差は基準と変更後の両方で測る。変えた箇所は可動壁の体積差だけで、発声計画と観測した口端の幾何は同じ、PCMと既存の閉鎖・再開口と密閉圧縮のケースは既存許容差内と予測する。",
+  "criteria": "休止舌先、音源の変動0、体型ゲイン一致の混合体型入力を固定する。両条件の通常CLI全97,920フレームを同条件の観測器にビット照合し、基準は先行のPCM・口端観測・ジェスチャーともビットまたはバイト照合する。上流は先行の保存列を比較に使う。内部96 kHzの50,033〜50,304で口端を観測する。初出点50,049および後続50,081〜50,304について、連続して口端負荷が解かれた隣接行の幾何を使い、面積の下限処理、倍精度の体積差と展開式からの未平滑流量を、同じ浮動小数点入力の積と差を厳密分数で計算した参照と照合する。後続区間は幾何の動く有効行を100以上必要とする。初出点では直前の流入が0であることを照合し、体積差を2段の60 Hz平滑化に通した予測を記録の流入と比較する。研究版変更時と保存上流のPCMの最初の差と最大差を別々に記録する。閉鎖と密閉圧縮の通常CLIを両条件で回し、既存の有限性・上流・独立計算・境界条件の判定を流用する。"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer",
+  "revision": 2,
+  "base_case": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer.json",
+  "original_run": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer-20261122-a",
+  "minimum_tap_signal_at_cubeb_zero": 0.000001,
+  "control_for_gap": {
+    "fit_292": "continuous_early",
+    "replay_308": "continuous_early",
+    "different_316": "continuous_late"
+  },
+  "reason": "初回の固定ゲインは異なる波形でも相対残差0.025以内だった。学習側の位置23では両成分の入力が正確にゼロでゲインは未同定。初回の不合格を保存し、相対残差に使った標本数を保持したまま、cubebがゼロの標本に限ってタップの値と対応する連続対照を直接比較する。前側窓は完全無音の内側なので、飛びのある事例はタップの完全ゼロを確認する。",
+  "prediction": "転用の判定に使った標本と相対残差は初回から変わらない。ゲインの推定ができなかった位置でも、少なくとも1件の対応するcubeb成分が正確にゼロでタップは絶対値10⁻⁶を超え、同じ入力の連続対照は10⁻⁶以内と予測する。完全無音の内側と、出口の後方65〜191の判定にはそれぞれゼロとゲイン1を使う。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "duet-head-turbulence",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じセル数のCHTLを読めても、生成側の気道グラフが違うと乱流源の枝番号がずれる。生成側の枝の位置を使えば声門と口腔の表示を区別でき、前後シーク直後も移動先の乱流源から描画できる。",
+  "reference": {
+    "airflow_run": "duet-head-airflow-20261120-repeat",
+    "airflow_manifest_sha256": "ed12f02d4edc694727c24e67877ad8164b3b15ee40f95b533c4c9474ac170b7c",
+    "upper_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da",
+    "track_sha256": ["0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+                     "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"]
+  },
+  "diagnostic": {
+    "levels": [0, 1, 1.4, 1.5, 40, 3000], "initial_seed": 7, "prng_multiplier": 16807,
+    "prng_modulus": 2147483647, "segments_per_frame": 40, "minimum_intensity": 0.05,
+    "glottal_origin_cm": 0.2, "segment_offset_cm": [0.2, 1.4], "half_length_cm": [0.02, 0.07],
+    "position_tolerance_cm": 0.000002
+  },
+  "browser": {
+    "sample_rate_hz": 48000, "viewports": [[960, 900], [390, 850]],
+    "samples": [0, 21504, 30720, 34560, 46080, 47616, 49920],
+    "live_seeks": [30720, 46080, 49920, 21504]
+  },
+  "criteria": {
+    "provenance": "候補のCLIと固定上流のWASMから咽頭・口腔の枝範囲と声門ポートを取得する。二声の記録は候補のグラフで読み、同じ数値を上流のグラフへ渡した負の対照も測る。",
+    "controlled": "同じ格子、乱流強度、生成位置、乱数列で上流のdrawTurbulenceが渡す線分と独立計算を照合する。範囲外の枝、対数強度の閾値、声門からの補間、口端の打ち切りを確かめる。",
+    "browser": "固定した二声の各行について表示の有無と枝の位置を測る。再生中の前後シーク直後に移動先の強度を読み、停止中と無音区間では線分を描かないことを確認する。"
+  }
+}

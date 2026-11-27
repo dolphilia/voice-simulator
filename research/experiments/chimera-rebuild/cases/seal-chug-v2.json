@@ -1,0 +1,63 @@
+{
+  "id": "seal-chug",
+  "revision": 2,
+  "revision_reason": "第1版の公式順序では独立計算の呼気パルス位相が最大2.88e-12周期ずれ、肺圧で最大2.455e-7 dyn/cm²となった。上流と候補の肺圧は一致した。第2版では独立位相と候補の円周差に、半正弦パルスの圧力の最大傾き Aπ/d（Aは圧力・ゲート・パルス深さの積、dはデューティ比）を乗じ、各フレームの位相差の寄与の上界とする。上界を超える残差は従来の2e-7 dyn/cm²以内、独立位相と候補の差は従来の1e-10周期以内とする。位相寄与を差し引く前の圧力誤差も保存する。",
+  "supersedes": {"case": "seal-chug.json", "result": "../runs/seal-chug-20261120-b/summary.json"},
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "chugは90 Hzの目標音高と11 Hzの呼気パルスを持つ。粗さはゲートが1の区間から直線で低下し、50 msで平滑化された値が声門の周期境界で次周期の長さに作用する。",
+  "seal_voice": {
+    "breath": {
+      "sample_rate_hz": 48000,
+      "frames": 461760,
+      "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+      "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0}]
+    },
+    "shape": {"pitch_hz": 900.0, "brightness": 0.6, "roughness": 0.05, "mouth": 0.35},
+    "level": 1.0,
+    "observe_call_id": true,
+    "observe_glottis": true,
+    "events": [
+      {"frame": 76800, "play_call": {"id": "trill"}},
+      {"frame": 288000, "play_call": {"id": "zap"}},
+      {"frame": 320160, "play_call": {"id": "whistle"}},
+      {"frame": 392160, "play_call": {"id": "chug"}}
+    ]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "breath": {}, "expected_start_control": 392192,
+       "expected_end": 440256, "roughness_sample": 414976, "fade_sample": 436608},
+      {"id": "manual-return-44100", "breath": {
+        "sample_rate_hz": 44100, "frames": 53000,
+        "events": [{"frame": 0, "gate": 0.25},
+          {"frame": 9891, "controls": {"pulse_rate_hz": 22.0, "pulse_depth": 0.35, "duty": 0.6, "pressure_cm_h2o": 12.0}}]
+      }, "events": [
+        {"frame": 73, "play_call": {"id": "chug", "pitch_hz": 120.0, "amplitude": 0.8}},
+        {"frame": 9891, "roughness": 0.5}
+      ], "expected_start_control": 128, "expected_end": 44288,
+        "roughness_sample": 21056, "fade_sample": 40896, "manual_edit_sample": 9891},
+      {"id": "steady-pitch-96000", "breath": {
+        "sample_rate_hz": 96000, "frames": 108000, "events": [],
+        "controls": {"pulse_rate_hz": 11.0, "pulse_depth": 1.0, "duty": 0.35, "pressure_cm_h2o": 10.0}
+      }, "shape": {"pitch_hz": 90.0}, "events": [{"frame": 17, "play_call": {"id": "chug"}}],
+         "expected_start_control": 64, "expected_end": 96064,
+         "roughness_sample": 45632, "fade_sample": 88896}
+    ],
+    "chug_keys": {"initial_pitch_hz": 90.0, "final_pitch_hz": 90.0,
+        "reference_pitch_hz": 90.0, "pulse_rate_hz": 11.0, "pulse_depth": 1.0, "duty": 0.35,
+        "initial_roughness": 0.3, "final_roughness": 0.05, "sweep_seconds": 0.9,
+        "release_seconds": 0.95, "ownership_tail_seconds": 0.05},
+    "roughness_smoothing_seconds": 0.05,
+    "glottal_cycle": {"cycle_seed": 777, "jitter": 0.002, "shimmer": 0.01,
+        "initial_map_state": 0.37, "map_rate_base": 2.9, "map_rate_gain": 1.1,
+        "period_gain": 0.45, "phase_jump_for_wrap": -0.5,
+        "period_scale_absolute_tolerance": 1e-9,
+        "early_window_seconds": [0.15, 0.45], "late_window_seconds": [0.77, 0.9]},
+    "glottis_phase_absolute_tolerance": 1e-9,
+    "glottis_f0_absolute_tolerance_hz": 1e-9,
+    "glottis_area_absolute_tolerance_cm2": 1e-9,
+    "upper_shadow_area_absolute_tolerance_cm2": 5e-15,
+    "independent_pressure_phase_error_budget": true,
+    "stage_observations": "全出力フレームの目標と平滑値、各有効内部サンプルの位相・瞬時F0・声門面積、肺圧・放射・PCMを固定上流と比較する。独立写像の計算はレンダー開始時からの全周期境界を使う。"
+  }
+}

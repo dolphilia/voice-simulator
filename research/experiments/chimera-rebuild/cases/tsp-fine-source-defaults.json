@@ -1,0 +1,48 @@
+{
+  "id": "tsp-fine-source-defaults",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "resting_run": "tsp-fine-initial-tip-20261122-repeat",
+  "resting_case": "tsp-fine-initial-tip",
+  "reference_run": "tsp-fine-source-variation-20261122-repeat",
+  "reference_case": "tsp-fine-source-variation",
+  "recording_id": "FK64_08",
+  "frames": 107527,
+  "trace_frames": 21120,
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "initial_f0_hz": 110.0,
+  "speaking_f0_hz": 205.0,
+  "attention_frames": [15360, 20016],
+  "base_gain": 4.8125e-7,
+  "source_variation": {
+    "pitch_drift_cents": 5.0,
+    "period_jitter": 0.00455,
+    "amplitude_shimmer": 0.042
+  },
+  "upstream_roughness": 0.1,
+  "drift_seed": 4242,
+  "cycle_seed": 777,
+  "update_interval_samples": 32,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerance": {
+    "significant_pcm": 1e-6,
+    "f0_hz": 1e-9,
+    "phase_cycles": 1e-10,
+    "cycle_amplitude_scale": 1e-10,
+    "independent_normalized": 1e-10,
+    "radiation_derivative_cm3_s2": 0.001
+  },
+  "hypothesis": "確認用07の休止位置と女性体型ゲインを固定して研究版に固定上流の既定の揺らぎ3値を指定すると、固定上流との声門位相差は観測区間で1×10⁻¹⁰周期以下になり、全発話のPCM最大差は1×10⁻⁶以下になる。研究版内で揺らぎなしとの差は呼気に先立つ最初のF0・位相から現れる。",
+  "observation": "同じ本文と調音計画で、研究版ケースの音源変動の指定だけを追加する。固定上流の既定・揺らぎなし、研究版の揺らぎなしは照合済みの保存結果を使う。全発話のPCMと、0〜440 ms未満の内部状態および320〜417 ms未満の二重母音を測る。差が出た系列と最初のサンプルを保存する。",
+  "acceptance": "通常CLIと観測器の全PCMが一致し、調音計画が元のケースと一致する。固定上流の揺らぎなしのF0を基準に、乱数と3本の低域フィルタから変調後F0を独立計算して両版と照合する。周期倍率の切り替えとシマーを独立計算し、両版の位相増分と研究版の振幅倍率を照合する。放射の時間差分と出力段も独立に照合する。仮説と計測手続きの合否を記録する。"
+}

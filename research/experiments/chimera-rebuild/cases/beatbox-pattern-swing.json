@@ -1,0 +1,54 @@
+{
+  "id": "beatbox-pattern-swing",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": "beatbox-kick-b-v2",
+  "hypothesis": "120 BPMでは16分音符が125 ms間隔になり、スウィング0.5は奇数番だけを31.25 ms遅らせる。先読み200 msの中で全ステップを一度ずつ処理し、休符は再生位置を進める。奥行きのある準備動作を含め、PCMはホストブロック幅に依存しない。",
+  "beatbox_pattern": {
+    "pattern": "B . | - b>",
+    "bpm": 120.0,
+    "swing": 0.5,
+    "render_end_seconds": 1.16,
+    "posture": {
+      "jaw_cm": 0.6,
+      "tongue_body_cm": [2.9, 6.85],
+      "tongue_tip_cm": [6.241412821929657, 6.810460479056529],
+      "tongue_root_cm": 0.0,
+      "tip_curl": 0.0,
+      "dorsum": 0.0,
+      "lip_aperture_cm": 0.7,
+      "lip_protrusion_cm": 0.2,
+      "lip_spread": 0.5,
+      "labiodental": 0.0,
+      "velum_cm2": -0.15,
+      "larynx_cm": 0.0
+    },
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110.0,
+    "voice": {
+      "pressure_cm_h2o": 8.0,
+      "gate": 0.0,
+      "f0_hz": 100.0,
+      "breathiness": 0.15,
+      "tension": 0.5,
+      "output_sample_rate_hz": 48000,
+      "output_gain": 5.5e-7
+    },
+    "noise_scale": 1.0
+  },
+  "measurement": {
+    "host_block_frames": [128, 77],
+    "scheduler_block_frames": 128,
+    "horizon_seconds": 0.2,
+    "seconds_absolute_tolerance": 1e-12,
+    "geometry_absolute_tolerance": 1e-9,
+    "audio_state_peak_relative_tolerance": 1e-7,
+    "pcm_absolute_tolerance": 1e-6,
+    "diagnostic_trace_columns": ["glottal_f0_hz"],
+    "expected_slot_accents": [1.0, null, null, 1.3],
+    "expected_scheduled_steps": 10,
+    "expected_audible_window_steps": 8,
+    "expected_hit_times_seconds_in_window": [0.2, 0.60625, 0.7, 1.10625],
+    "minimum_full_window_pcm_peak": 0.01,
+    "maximum_gate": 0.0
+  }
+}

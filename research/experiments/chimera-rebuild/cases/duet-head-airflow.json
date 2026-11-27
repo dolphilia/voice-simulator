@@ -1,0 +1,34 @@
+{
+  "id": "duet-head-airflow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "流量の符号が移動方向を決め、面積が小さい節点では面積下限まで速度が増える。面積ゼロの末端でも観測された流量があれば、粒子は狭い輪の中心へ進む。無音の停止とシークは軌跡の線分の有無で区別できる。",
+  "reference": {
+    "pressure_run": "duet-head-pressure-20261120-repeat",
+    "pressure_manifest_sha256": "86a305b5dfa21a230f0a060a3a98280b9f47b547473603bdb99da1225e729afd",
+    "upper_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da",
+    "track_sha256": ["0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+                     "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"]
+  },
+  "dynamics": {
+    "particle_count": 200, "area_floor_cm2": 0.05, "speed_scale_cm_s": 2.2,
+    "velocity_scale_cm_s": 30, "low_velocity_cm_s": 3, "life_decay_per_second": 0.25,
+    "display_step_limit_seconds": 0.05, "ring_inset": 0.82,
+    "initial_random_seed": 1709, "position_tolerance_cm": 0.000002, "clock_tolerance_seconds": 0.000000000002
+  },
+  "diagnostic": {
+    "n_pharynx": 2, "n_oral": 2, "lengths_cm": [2, 4],
+    "flow_cm3_s": [60, 60, -60, 2], "areas_cm2": [2, 0.025, 1, 1],
+    "start_distances_cm": [0.5, 1.5, 3, 5], "elapsed_seconds": [0, 0.016, 0.16]
+  },
+  "browser": {
+    "sample_rate_hz": 48000, "viewports": [[960, 900], [390, 850]],
+    "samples": [0, 21504, 30720, 34560, 43008, 46080, 47616],
+    "live_seeks": [30720, 34560, 46080, 21504], "hold_ms": 150
+  },
+  "criteria": {
+    "controlled": "固定上流のdrawParticlesに既知の粒子を入れ、正流、逆流、面積下限、低速域とdt上限で距離・寿命・投影座標・線分を独立計算に照合する。同じ姿勢と同じ乱数列でリセット後の初回と次回を比較する。",
+    "real_track": "女声の30,720と34,560で末端の面積・符号付き流量から速度を比較する。男声の46,080では逆流する節点があること、女声の21,504では記録された全節点が低速域にあることをCHTLの独立解析で確かめる。",
+    "browser": "実ブラウザで二声が個別のCHTL行・粒子状態を使い、再生中のシーク直後に旧位置を結ぶ線分が出ず、一時停止中は線分が描かれないことを確かめる。停止と再開の挙動は固定上流のresetMotionと比較し、差があれば記録する。"
+  }
+}

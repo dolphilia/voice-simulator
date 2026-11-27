@@ -1,0 +1,43 @@
+{
+  "id": "tsp-seems-spectrum-stages",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "transfer_reference": {
+    "run": "tsp-seems-tract-transfer-20261123-resolved",
+    "case": "tsp-seems-tract-transfer",
+    "manifest_sha256": "38d784ac0ce896124dea3a8ff70c60fbde40c24efce0b79300dc9d82b77c452a"
+  },
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "window_start_12khz": 13830,
+  "window_samples_12khz": 300,
+  "trace_frames": 56600,
+  "base_gain": 5.5e-7,
+  "base_f0_hz": 112,
+  "initial_f0_hz": 110,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "spectra": {"grid_step_hz": 5, "band_hz": [1950, 2600], "normalization_band_hz": [200, 4500]},
+  "limits": {
+    "relative_dft_agreement": 1e-12,
+    "independent_normalized": 1e-10,
+    "full_output_replay_absolute": 1e-7,
+    "radiation_identity_cm3_s2": 0.002,
+    "radiation_sum_cm3_s": 1e-10,
+    "same_lpc_shift_hz": 2,
+    "different_high_band_distribution": 0.1
+  },
+  "hypotheses": {
+    "high_band_distribution_differs_at_glottis": "声門流量を同じ窓で分析すると、1950〜2600 Hz内で正規化したパワー分布の全変動距離が0.1以上になる。",
+    "pcm_pole_shift_is_already_in_decimated_radiation": "間引き直後の放射の高域LPC極の版間差はPCMの版間差から2 Hz以内に収まる。"
+  },
+  "acceptance": "先行のseemsの同じ25 ms窓を使用する。両版の通常出力を再現し、録音済みの両合成WAVに全PCMで照合する。声門・口端・鼻端・壁・総放射の流量および放射流量差分を96 kHzで観測し、総放射の差分、FIR・ゲイン・DC除去・追従とソフトクリップを既存の独立計算で照合する。96 kHzと48 kHzの各区間は同じ物理時刻で揃え、Hann窓を掛けて5 Hz格子のFFTと直接フーリエ和を照合する。元のTSPと同じ処理で放射間引き直後・DC除去後・PCMの高域LPC極を測り、固定Rustと独立LPCを先行の0.05 Hzで照合する。同じ出力段へ二つの放射入力を再計算で通し、LPC差が再現するか確認する。スペクトル差が観測された最も早い観測段は示すが、発声中の相互作用の因果は別途確認する。仮説の結果と計測の合否を別に保存する。"
+}

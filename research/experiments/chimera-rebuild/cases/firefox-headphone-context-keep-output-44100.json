@@ -1,0 +1,42 @@
+{
+  "id": "firefox-headphone-context-keep-output-44100",
+  "revision": 1,
+  "base_case": "firefox-headphone-context-restart-44100.json",
+  "base_case_revision": 2,
+  "restart_reference_capture": "firefox-headphone-context-restart-44100-pause-1-retry",
+  "restart_reference_summary": "firefox-headphone-context-restart-44100-20261122-b",
+  "cubeb_front_search_end_frame": 65536,
+  "keep_output": {
+    "period_frames": 40,
+    "amplitude": 0.0009765625,
+    "maximum_mixed_stereo_error": 4e-8,
+    "maximum_keeper_sample_error": 1e-8,
+    "maximum_request_period_error_ms": 1.0,
+    "minimum_isolated_gap_frames": 40000,
+    "maximum_gap_duration_error_ms": 80,
+    "tap_gap_guard_frames": 1024,
+    "minimum_tap_pilot_ratio": 0.5,
+    "maximum_tap_side_during_gap": 0.00005
+  },
+  "trials": [
+    {"run_id": "firefox-headphone-context-keep-output-44100-control-1", "suspend": false},
+    {"run_id": "firefox-headphone-context-keep-output-44100-pause-1", "suspend": true},
+    {"run_id": "firefox-headphone-context-keep-output-44100-pause-2", "suspend": true},
+    {"run_id": "firefox-headphone-context-keep-output-44100-control-2", "suspend": false},
+    {"run_id": "firefox-headphone-context-keep-output-44100-control-3", "suspend": false},
+    {"run_id": "firefox-headphone-context-keep-output-44100-pause-3", "suspend": true}
+  ],
+  "pairs": [
+    ["firefox-headphone-context-keep-output-44100-control-1", "firefox-headphone-context-keep-output-44100-pause-1"],
+    ["firefox-headphone-context-keep-output-44100-control-2", "firefox-headphone-context-keep-output-44100-pause-2"],
+    ["firefox-headphone-context-keep-output-44100-control-3", "firefox-headphone-context-keep-output-44100-pause-3"]
+  ],
+  "capture_reviews": {
+    "firefox-headphone-context-keep-output-44100-control-1": "firefox-headphone-context-keep-output-44100-control-1-review",
+    "firefox-headphone-context-keep-output-44100-pause-1": "firefox-headphone-context-keep-output-44100-pause-1-review",
+    "firefox-headphone-context-keep-output-44100-pause-2": "firefox-headphone-context-keep-output-44100-pause-2-review"
+  },
+  "review_note": "初回2試行の判定値をJSONの真偽値として保存できるよう修正。停止第2試行では維持音だけが鳴った時間に合わせ、cubebの前マーカーの検索上限を32,768から65,536へ広げて保存済みPCMを再解析する。帯域の測定区間と閾値は初版と共通。",
+  "prediction": "単一Contextを止めた比較と同じ音、出力機器、停止時刻を使う。別のContextの同相の1,102.5 Hzを流し続けると、主Contextだけが約1.045秒止まり、同一cubebストリームの256フレーム要求と予定時刻が連続すると予測する。停止前のタップで19,845 Hzの比が0.20未満を44窓持続した組では、再開後も連続対照と同様に0.20未満が続くと予測する。",
+  "criteria": "同一Firefoxビルドと同じ外部ヘッドフォン44.1 kHzで、維持用Contextを動かしたまま主Contextの連続・停止再開を3組採取する。維持音は両チャンネル同相の周期40フレーム、ピーク1/1024の正弦波。主Contextのグラフは既知PCMとビット照合する。cubebでは前後マーカーで1ストリームを同定し、256フレームの予定サンプル番号とホスト間隔、左右の合成値、停止区間の左右差ゼロと維持音の連続位相を照合する。タップの停止区間は両端1,024フレームを除いた中心で左右差の上限と同相音の振幅比を測る。19,845 Hzは従来の400フレーム窓、200フレーム刻みと閾値を維持し、停止前の狭帯域とストリーム連続性が成立した組を予測判定に使う。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "fixed-vowel-i-velum-narrow-port-bandwidth",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "開口0.15 cm²の固定 /i/ では、第1〜22倍音に含まれない周波数が、2,310 Hzにおけるポート二次損失の複素残差の減少方向に50%以上寄与する。平均、22倍音内の係数、選択外の順で差し替えた場合と、3要因の差し替え順6通りの平均の両方で、再実装版・固定上流を照合する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-narrow-port-feedback-20261124-repeat",
+      "manifest_sha256": "13240077693e524966f03bd042462a4440af51914d6fe3fd0d222dec65c5cdad"
+    },
+    "pressure_cm_h2o": 7.2,
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.15,
+    "supraglottal_branch_count": 61,
+    "minimum_excluded_projection_fraction": 0.50,
+    "observed_full_network_nose_relative_error_lt": 1e-6,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "0.15 cm²の先行実行の保存済み系列と線形要素を使う。声門流量と固定形状から求めたポート予測の平均と第1〜22倍音を基準とし、平均、22倍音の複素係数、選択外成分の3要因を独立に実測へ置き換えた全8条件を作る。他60枝の鼻端への圧力源は先行実行の10周波数の予測に固定する。",
+    "observation": "各波形の流量と逆流、2,310 Hzの二次損失、鼻端誤差を記録する。基準から全実測までの圧力源差と鼻端残差に対する複素変化を求め、差し替え順6通りを平均した寄与も記録する。選択外については、実測の平均と第1〜22倍音に第23倍音以上の整数倍音だけを戻した対照を追加する。全観測損失の対照では窓端項を加える。",
+    "acceptance": "予測時の鼻端を先行実行と照合し、各要因による圧力源と鼻端の複素差を再構成する。波形と損失のFFT、ポート観測の2経路、枝の圧力差から得る損失と節点解を独立に照合する。全枝の観測損失対照が鼻端を許容差以内で再現することを確かめ、仮説の成否は閾値を変えずに保存する。"
+  }
+}

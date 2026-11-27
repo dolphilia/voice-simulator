@@ -1,0 +1,31 @@
+{
+  "id": "duet-child-initial-tip",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-child-glottal-noise-origin-20261122-phase-repeat",
+  "reference_manifest_sha256": "a8b5b424e9ce324acb4e64a9ea07b77b309096424300003f9d7ade540f65a375",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "control_output_samples": 64,
+  "trace_output_samples": 512,
+  "checkpoints_output_samples": [0, 1, 24, 25, 64, 65, 128, 512],
+  "resting_tip_formula": {
+    "rotation_center_cm": [-2.5, 10.5],
+    "unrotated_tip_cm": [6.45, 7.35],
+    "jaw_rotation_scale_cm": 9.84,
+    "reference_tongue_body_cm": [2.9, 6.85],
+    "tongue_body_coupling": [0.30, 0.35],
+    "tip_natural_frequency_hz": 13
+  },
+  "tolerances": {
+    "tip_cm": 1e-12,
+    "tip_velocity_cm_s": 1e-10,
+    "area_cm2": 1e-10,
+    "flow_cm3_s": 1e-10,
+    "pcm_absolute": 1e-10
+  },
+  "hypothesis": "研究版の子ども声部は、ケースに明記された初期舌先から最初の制御周期で休止位置へ動く。上流の歌唱は休止位置で声道を初期化する。この1点をそろえれば、開始時の唇端と咽頭先頭の断面積差、呼気ゲート0の声門流量とPCMの過渡が解消する。",
+  "criteria": "先行実行に照合した同一歌唱に対し、研究版の song_voice.posture.tongue_tip_cm だけを座標回転の独立計算結果へ変更する。上流はドリフト・ジッター・シマー0の先行対照と同じ条件を使う。描画前と最初の512出力サンプルの舌先位置・速度、唇端・咽頭先頭の面積、声門枝流量、放射とPCMを観測し、ゲートと乱流レベル0を確認する。自由舌先の更新を独立な半陰的オイラー法に、最初のブロックの作業中の断面積を端点間の線形補間に照合する。先行ケースと対照のPCMは保存結果に、各研究版の観測器のPCMは通常CLIにビット照合する。初期姿勢をそろえたときの差の減少は仮説判定として記録する。"
+}

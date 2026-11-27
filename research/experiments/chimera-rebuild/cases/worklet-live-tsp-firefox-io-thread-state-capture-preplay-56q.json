@@ -1,0 +1,53 @@
+{
+  "id": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-56q",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-io-thread-state-capture-preplay",
+  "initial_control_run": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "hypothesis": "先行音の開始からWorklet構築の許可までを80量子から56量子に変える。同じマーカー開始位置なら差は3,072フレーム、48 kHzで64 msなので、トレース末尾までの発話開始の余裕が増えると予測する。前回の最も早い打ち切りでは全窓が約107 ms不足したため、全窓を収録できない場合もある。音声や発声状態には差が出ないと予測する。",
+  "acceptance": "保存済みの80量子条件を参照する。同期事前描画、先行音8量子の開始予約、再生前のトレース開始、1秒、タップなし、同じFirefox、固定上流、48 kHz・256フレーム、構築前後20要求をそろえる。マーカー開始から構築許可までの距離、発話WAV、発声状態、先行音PCM、cubebと音声サーバーの予定時刻、Audio Client行の末尾を比較する。全窓の合否を保持し、発話の最初の3量子を含む各要求の収録可否は個別に記録する。発話開始の予算内の飛びは偶発事象として数え、観測された場合は新たなRunnable、Running、IOProcを同じトレースから確かめる。"
+}

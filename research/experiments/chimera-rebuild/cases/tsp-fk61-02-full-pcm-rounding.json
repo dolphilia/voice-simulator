@@ -1,0 +1,57 @@
+{
+  "id": "tsp-fk61-02-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "comparison": {
+    "run": "tsp-fk61-full-pcm-rounding-20261124-repeat",
+    "case": "tsp-fk61-full-pcm-rounding",
+    "manifest_sha256": "4bfdc7ed6c8f8a84075353197b9977431f4fa9e7b2e67648d0cd1a7fa0f226b2"
+  },
+  "measurement": {
+    "recording_id": "FK61_02",
+    "frames": 144727,
+    "prefix_frames": 144727,
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110,
+    "focus_frames": [
+      31350,
+      129260
+    ],
+    "pcm_outlier_to_exclude": 129260,
+    "expected_pcm_first_difference": 31350,
+    "expected_pcm_peak_frame": 129260,
+    "expected_pcm_different_bits": 1992,
+    "segments": {
+      "opening": [
+        0,
+        16704
+      ],
+      "later": [
+        16704,
+        144727
+      ]
+    },
+    "quiet_pcm_threshold": 1e-06,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "scope": "確認用FK61_02の保存済みmatchedケースを使い、固定上流のrender textと研究版のrender-pcmを通常の実装で実行する。内部96 kHzで289454標本、出力48 kHzで全144727フレームの放射・FIR・ゲイン・DC除去・包絡・PCMを採取する。版間のf64誤差、f32誤差、前後の差、隣接値の中点、PCM振幅とULP距離をFK61_01と同じ方法で計算する。"
+  },
+  "hypotheses": {
+    "precast_and_pcm_peak_differ": "変換前の最大絶対差とPCMの最大絶対差は異なるフレームに出る。",
+    "largest_pcm_difference_is_one_ulp": "PCMの最大絶対差を出す129260は隣接値への丸めで説明できる。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差のあるフレームの95%以上で、両版の絶対PCM振幅の大きい方も10⁻⁶以下に収まる。",
+    "radiation_and_precast_differ_before_pcm": "放射の時間差分と変換前の値は、最初のPCM不一致より早く差を示す。"
+  },
+  "acceptance": "通常CLI、観測版、確認用セットの全144727 PCMが各版でビット一致する。全内部系列は有限で、放射の和・差分、FIR、ゲイン、DC除去、リミッター状態とPCMを独立再計算できる。リミッター非作動を確認した上で、DC除去後のf64がPCMへ丸まること、隣接PCM値の全中点の両側に観測値が来ることを照合する。保存済み比較のPCM初差31350、最大差129260、差のある1992フレームを再現する。仮説の真偽と差の順序、振幅別集計を保存する。"
+}

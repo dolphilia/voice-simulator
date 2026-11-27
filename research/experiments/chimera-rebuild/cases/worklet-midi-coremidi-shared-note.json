@@ -1,0 +1,27 @@
+{
+  "id": "worklet-midi-coremidi-shared-note",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "case": "worklet-midi-coremidi-unplug.json",
+    "run": "worklet-midi-coremidi-unplug-20261122-notification-repeat",
+    "manifest_sha256": "f1e479445eb10654643785297162ff70e3d838bfdadaaf31ce587e3aac229106"
+  },
+  "release_action": "remove-two-sources",
+  "shared_note": {
+    "second_note_on": [144, 57, 67],
+    "hold_after_first_removal_ms": 350,
+    "upper_held_window_seconds": [0.05, 0.30],
+    "candidate_rms_window_seconds": 0.05,
+    "candidate_minimum_window_rms": 0.005
+  },
+  "replay": {
+    "candidate_elapsed_frames": [128, 768, 3456, 9600],
+    "normalized_gate_absolute_tolerance": 1e-10,
+    "upper_elapsed_seconds": [0.08, 0.30],
+    "upper_release_seconds": 0.07,
+    "upper_fit_absolute_tolerance_seconds": 0.001
+  },
+  "hypothesis": "別々のCoreMIDI入力A・Bから同じチャンネルのA3を1回ずつ押す。Bの押鍵後に先に押したAを除去してもBの所有によりA3が鳴り続ける。残るBを除去した時点で呼気が減衰し、単一入力の削除と同じ曲線になる。",
+  "acceptance": "通常画面から接続し、別IDの入力AとBを開く。送信元ごとの押鍵バイトが1件ずつ信頼済みイベントとして届き、順に削除したポートだけが消える。離鍵バイトは送らない。最初の除去から少なくとも登録した区間はA3を保持し、固定上流の目標1と音声の持続、研究版のWorkletで二重発音も中断もないことを照合する。研究版は押鍵から0.4秒以降の全量子のゲートと50 ms完全窓ごとのPCM RMSを検査する。最後の除去で保持音と呼気の解放が各1回だけ起こる。固定上流の `gate` は70 msの時定数、研究版の正規化ゲートは単一入力の削除対照と照合し、今回の加工前PCMをCLIとビット比較する。"
+}

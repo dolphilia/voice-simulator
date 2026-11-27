@@ -1,0 +1,46 @@
+{
+  "id": "songbird-chirps-left-sac-momentum-44100",
+  "revision": 1,
+  "sac_side": "left",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-bronchus-interior-momentum-44100-20261123-repeat",
+    "manifest_sha256": "9469df6ecfbf466eb6b3fada1e8667929597ff001e82703d17dad442be9185ab"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "predicted_first_port_effect": {
+    "matched_time": {"offset": 22, "flow_hex": "-0x1.f8e2586fd59a3p-25"},
+    "native_block": {"offset": 27, "flow_hex": "-0x1.74adf9bd042c8p-17"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_port_samples": {
+    "left_bronchus_0_pressure_dyn_cm2": 0,
+    "left_bronchus_0_outflow_cm3_s": 1,
+    "left_bronchus_1_inflow_cm3_s": 1,
+    "left_bronchus_1_pressure_dyn_cm2": 1,
+    "left_bronchus_end_inflow_cm3_s": 2,
+    "left_bronchus_pressure_dyn_cm2": 2,
+    "left_flow_cm3_s": 3,
+    "trachea_pressure_dyn_cm2": 3,
+    "trachea_1_inflow_cm3_s": 4,
+    "right_flow_cm3_s": 4,
+    "right_bronchus_pressure_dyn_cm2": 4,
+    "right_bronchus_1_outflow_cm3_s": 5,
+    "right_bronchus_0_outflow_cm3_s": 6,
+    "right_bronchus_0_inflow_cm3_s": 7
+  },
+  "hypothesis": "空気嚢から左気管支セル0へ入るポートだけで、持ち越し項を (L × Uprev) × fs に変更する。235点制御の押鍵22点後と256点制御の27点後のポート流量が予測値で固定上流とビット一致する。左セル0圧は同じ標本、セル1への流入は1標本後、左鳴管流量は3標本後から変わり得る。先行版の線形慣性項と抵抗・損失係数は対照と一致する。",
+  "observation": "先行の235点制御、256点制御、追従0を同じ初期化で通常render CLIに通し、内部176400 Hzの押鍵後0〜63点の左右の空気嚢ポート、気管支のセル0・1、鳴管、気管と放射を照合する。",
+  "acceptance": "対照バイナリとCSVを再現して固定上流CSVをハッシュ照合する。左右のポート流量とセル0圧、左セル1への流入と圧力を全点ビット再計算する。最初の流量差の解消、線形・損失係数、幾何、押鍵前、伝播の下限、追従0を確認し、残る差の最初の標本を項の置換で調べる。"
+}

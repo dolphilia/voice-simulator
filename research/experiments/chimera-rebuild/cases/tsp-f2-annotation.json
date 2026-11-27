@@ -1,0 +1,31 @@
+{
+  "id": "tsp-f2-annotation",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "windows": {"run": "tsp-lpc-pre-emphasis-recordings-20261122-repeat", "case": "tsp-lpc-pre-emphasis-recordings", "manifest_sha256": "128047223387416a2e75153d15b8371744da6d42d14d569b84f82cbc1169d8eb"},
+  "alignment": {"run": "tsp-phone-boundaries-held-out-20261121-a", "case": "tsp-phone-boundaries-held-out", "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"},
+  "control": {"run": "tsp-f2-bandwidth-known-poles-20261122-repeat", "case": "tsp-f2-bandwidth-known-poles", "manifest_sha256": "153fe95cba431d8b9b340e6c740968c10bb99bab2f0cf1deb648e5655289249f"},
+  "recording_windows": 6,
+  "analysis_rate_hz": 12000,
+  "analysis_window_samples": 300,
+  "wideband_window_ms": 8,
+  "hop_ms": 2,
+  "phone_context_ms": 45,
+  "synthetic_phone_seconds": [0.4, 0.6],
+  "synthetic_center_sample": 6000,
+  "synthetic_f2_hz": 2075,
+  "synthetic_peak_search_hz": [1500, 2500],
+  "synthetic_peak_tolerance_hz": 120,
+  "direct_dft_scaled_error": 1e-12,
+  "visible_range_hz": [0, 4000],
+  "f2_range_hz": [150, 4000],
+  "rater_agreement_hz": 100,
+  "shuffle_seed": 1122,
+  "human_intake_validation": {
+    "reference_packet": "tsp-f2-annotation-20261122-repeat",
+    "hypothesis": "同じ資料の試験用回答は、CSVの改行・BOM・行順を変えたり空欄の行を省いたりしても、人の注釈として登録できない。未記入の雛形を拒否し、周波数の測定、判断困難、音声・区間が不適という判断を実録音と既知対照で別々に数える。",
+    "acceptance": "元資料の2つの試験CSV、表記だけを変えた対照、未記入の雛形を人の注釈の入口で試し、拒否理由を保存する。試験データとしての通常取込は従来の窓別集計と一致する。部分回答と、録音について判断困難と理由を記した回答の形式を検証する。既知対照のみの判断から実録音の注釈件数は増えない。形式検証に使う対照は試験入力として扱う。"
+  },
+  "hypothesis": "保存済みの録音2語の各3窓の時刻を保ち、上流LPCの候補や採択値を出さずに試聴と手動F2注釈ができる。既知のF2を持つ合成対照では、中心前後のスペクトルで参照周波数付近にピークが現れる。",
+  "acceptance": "録音の6窓を保存済みMFA区間と12 kHz上の開始・長さに照合し、元の48 kHz WAVから同じ区間を切り出す。合成対照1窓を加え、周波数はFFTの表示から算出した値と直接DFTを照合し、合成対照の帯域ピークの誤差は120 Hz以内とする。ブラウザで波形・スペクトログラムと音声7件を読み、入力をCSVに出力して戻す。試験用の2判定者で100 Hz以内・超過、判断困難、音声不適、無回答を分ける。重複、別資料のID、非有限な周波数を拒否する。採択値と合成の答えは判定者向けフォルダに入れない。"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-pharynx-harmonic-pairs-low-pressure",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "肺圧だけを7.2から5.76 cmH₂Oにした新しい固定 /i/ 収録でも、前回と同じ3組と再構成した逆流補正を使うと、接線項だけの場合より2,310 Hzの鼻端の複素誤差が50%以上減る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-20261124-repeat",
+      "manifest_sha256": "d5bc611de39074f8e8bd774db57c76ba20a3369f147e595f995107952b6c8763"
+    },
+    "reference_pressure_cm_h2o": 7.2,
+    "pressure_cm_h2o": 5.76,
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "pairs_hz": [[110, 2200], [-110, 2420], [220, 2090]],
+    "pharynx_branch_count": 17,
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "upstream_pcm_peak_relative_error_lt": 2e-6,
+    "full_loss_nose_relative_error_lt": 1e-6,
+    "input": "前回の通常発声のケースから voice.pressure_cm_h2o だけを5.76へ変更して、通常CLIと固定上流の計測用ビルドからPCM、全節点圧、全枝流量を新しく保存する。声門の設定、姿勢、口蓋帆ポート0.30 cm²、96 kHzの内部時計、観測範囲は同じ条件を使う。",
+    "observation": "400〜500 msの平均声門流量、2,310 Hzの鼻端の複素比と枝圧力係数、逆流した枝と標本数を観測する。接線項、固定3組、3組と再構成逆流補正、3組と観測逆流補正、観測した全損失を比較する。逆流した枝の見落としと過検出を別々に記録する。",
+    "acceptance": "条件の差が肺圧の1値であること、全節点と枝を同じ向きで対応づけたときに両版の観測とPCMが登録許容差に入ることを確かめる。低い肺圧で平均声門流量が減ると予測する。観測した全損失を戻して鼻端の複素比を相対1e-6以内で再現する。固定3組と再構成逆流で鼻端誤差が50%以上減る仮説を登録したまま両版で判定する。"
+  }
+}

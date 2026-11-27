@@ -1,0 +1,37 @@
+{
+  "id": "coreaudio-headphone-drift-44100-long-recurrence",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "preserved_case": "coreaudio-headphone-drift-44100-attach-preserved.json",
+  "reference_run": "coreaudio-headphone-drift-44100-attach-preserved-20261122-a",
+  "attach_comparison": {
+    "native_seconds": 12.0,
+    "tap_seconds": 14.0,
+    "fixture_frames": 526336,
+    "identical_prefix_frames": 55216,
+    "period_start_frame": 9216,
+    "period_frames": 40,
+    "tone_end_frame": 514048,
+    "terminal_anchors": [517120, 520192],
+    "front_search_end_frame": 32768,
+    "analysis_end_frame": 511616,
+    "early_full_analysis": true,
+    "prior_event_output_frame": 27088,
+    "wide_band_lower_limit": 0.4
+  },
+  "recurrence": {
+    "reference_drop_frames": [27216, 56416, 85616, 114816],
+    "interval_frames": 29200,
+    "maximum_interval_error_frames": 400,
+    "after_seconds": 3,
+    "minimum_extra_qualified_drops": 3,
+    "minimum_terminal_observation_intervals": 2
+  },
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-long-recurrence-1", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-long-recurrence-2", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-long-recurrence-3", "leading_frames": 0}
+  ],
+  "prediction": "同じ44.1 kHzの出力を延長すると、先行接続で観測した最初の4つの低下が再現し、3秒以降にも29,200フレーム間隔の低下を少なくとも3つ続けて検出できると予測する。低下の間隔が変わる時刻、広帯域または狭帯域が続く時刻も保存する。",
+  "criteria": "先行接続と同じPCMを55,216フレームまで保ち、その後は既知の4周波数を同位相で反復して514,048フレームまで伸ばす。初期マーカーの照合は先頭32,768フレームに限り、末尾の2マーカーと両観測点の予定サンプル番号の連続性、PCMのビット、512フレーム幅、オーバーフローなし、機器の復元を確認する。出力は12秒、タップは14秒。9,216から511,616フレームまで400フレーム窓を200フレーム刻みで測る。19,845 Hzの比が0.40以上の窓が4つ続いた後に0.20未満の窓が4つ以上続く最初の窓中心を低下として数える。間隔が29,200から400フレーム以内なら同じ周期と扱う。最後の広帯域または狭帯域が2周期以上持続した場合は、その状態で観測を終えたと記録する。予測の成否と採取の有効性は別に記録する。"
+}

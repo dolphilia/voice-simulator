@@ -1,0 +1,29 @@
+{
+  "id": "worklet-safari-clock-at-creation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song_reference": {
+    "case": "worklet-live-song-fast-safari-node-after-registration.json",
+    "run": "worklet-live-song-fast-safari-node-after-registration-20261121-repeat"
+  },
+  "webkit_reference": "a0b5d79d7218",
+  "condition_order": [["fresh", "advanced"], ["advanced", "fresh"], ["advanced", "fresh"], ["fresh", "advanced"]],
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "quantum_frames": 128,
+    "advanced_minimum_frames": 4096,
+    "captured_blocks": 4,
+    "ramp_denominator": 1024,
+    "timeout_ms": 5000
+  },
+  "hypothesis": {
+    "creation": "Safari 18.6では、時計を先に進めて停止したContextでも、Workletのモジュール評価時とコンストラクターのcurrentFrameは0を返す。未描画で停止した対照の同じ2値も0になる。",
+    "resume": "停止位置をP、量子をQ=128とする。未描画の対照では再開後の番号は[0,Q,2Q,3Q]。時計を先に進めた条件では最初のprocessが0、次からはP+Q、P+2Q、P+3Qと予測する。最初からPを返す場合も保存する。",
+    "samples": "番号の飛びがWorklet側の時計だけなら、再開後の4量子の入力は両条件ともi=0から511までの(i+1)/1024となる。欠けた量子や入力が空の量子を計測から除かず、番号とは別にPCMを判定する。"
+  },
+  "criteria": {
+    "context": "試行ごとに新しいSafari WebDriverセッションとAudioContextを使用する。準備ボタンの操作後、freshは一度も描画せず停止し、advancedは0ゲインのオシレーターを接続して4096フレーム以上進めてから停止する。時計が停止した状態で同じWorkletを登録する。",
+    "observations": "停止完了、モジュール評価、登録完了、コンストラクター、再開要求、再開完了と最初の4回のprocessを保存する。再開は準備と別の信頼済みボタン操作で行う。時計の判定に用いるPは停止時のround(currentTime × sampleRate)とし、停止中の登録とコンストラクター完了まで値が維持されることを確認する。",
+    "comparison": "公開WebKit回帰テストのコンストラクター番号とContextの比較を別項目として評価する。両条件で最初の4回の描画量子を並べ、実際に入力された全512サンプルのビット列を独立計算と照合する。",
+    "coverage": "macOSに搭載されたSafari 18.6で4組を取り、別ディレクトリから同じ順序で再実行する。観測点の欠測は取得の失敗として保存し、事前予測の成立は取得の合否と分ける。"
+  }
+}

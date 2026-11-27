@@ -33,6 +33,8 @@
 
 旧 `synth-lab` で蓄積した音合成・音響解析・物理数理モデルの調査と探索 Notebook も、出典と適用範囲を分けて移管しています。現在の研究への接続方針は [`docs/note/synth-lab-research-integration.md`](docs/note/synth-lab-research-integration.md)、原資料の索引は [`docs/reference/imported-synth-lab/README.md`](docs/reference/imported-synth-lab/README.md) を参照してください。
 
+外部の物理発声合成器 CHIMERA は、[ソース調査ガイド](docs/reference/chimera-vocal-synth/README.md)から、分岐声道の FDTD、声門と気流の結合、調音制御の実装、音声の再現手順を参照できます。
+
 ## References
 
 - [Pink Trombone](https://dood.al/pinktrombone/)

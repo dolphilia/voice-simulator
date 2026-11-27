@@ -1,0 +1,49 @@
+{
+  "id": "csd-en005a-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "full_song": {
+    "run": "csd-acoustic-f0-en005a-20261121-final",
+    "case": "csd-acoustic-f0-en005a",
+    "manifest_sha256": "f9a0c0608411a81fcb70a55351e8e3a090cae43fd12e58128802ec8b42b1b122"
+  },
+  "startup": {
+    "run": "csd-acoustic-f0-en005a-startup-20261121-a",
+    "case": "csd-acoustic-f0-en005a-startup",
+    "manifest_sha256": "672d51c1029b2bfc134a7a6600e91dca25e158bea9e3feceaab9ee1bdcc5f004"
+  },
+  "adjustment": {
+    "run": "csd-en001a-two-phrase-pcm-rounding-20261124-repeat",
+    "case": "csd-en001a-two-phrase-pcm-rounding",
+    "manifest_sha256": "be31e8b89cc012982df2ffbfee87d75bf8f4efea251f038e9f5fbc284e29a05c"
+  },
+  "measurement": {
+    "song": "en005a",
+    "phrases": 36,
+    "notes": 106,
+    "frames": 3544616,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "block_frames": 128,
+    "archived_prefix_frames": 960,
+    "first_beat_frame": 177230,
+    "last_score_end_frame": 3345226,
+    "segments": {
+      "before_first_beat": [0, 177230],
+      "score": [177230, 3345226],
+      "after_last_score_end": [3345226, 3544616]
+    },
+    "focus_frames": [0, 959, 177230, 3345226, 3544615],
+    "initial_internal_samples": 8,
+    "quiet_pcm_threshold": 0.000001,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "same_settings_pcm_tolerance": 0.000001
+  },
+  "hypotheses": {
+    "radiation_differs_in_first_output_pair": "調整曲と同様に、固定上流と研究版の放射差分の差は最初の出力に対応する内部2標本のどちらかで現れる。",
+    "pcm_maximum_after_first_beat": "確認曲の全36句を比較したとき、PCMの最大差は第1拍以降に現れる。",
+    "same_precast_and_pcm_peak_position": "調整曲で成立したように、float32変換直前と変換後の最大誤差フレームが一致する。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULPの差の95%以上は両版のPCM絶対値が10⁻⁶以下のフレームにある。"
+  },
+  "acceptance": "同条件の未計装と計装の全PCM・計画を各版で比較し、固定上流の先頭960フレームと全句の計画を保存済みのmatched対照へ照合する。研究版の過去のPCMとの差は集計し、全句のジェスチャーを確認する。保存済みの調整曲の採取物でも独立計算の結果を照合する。確認曲の全7089232内部標本で放射流量の合算・差分、全3544616出力フレームでFIRからfloat32までの更新を独立に再計算する。両版のPCMの最大絶対差は10⁻⁶以下とし、1 ULPの差は対応する丸め中点をまたぐことを照合する。全曲、第1拍前、譜面の区間、終端以降で差を集計し、最大PCM差を除いたRMSと、最大差が現れた音符または無音域の位置を記録する。"
+}

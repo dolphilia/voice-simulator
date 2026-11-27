@@ -1,0 +1,22 @@
+{
+  "id": "worklet-live-tsp-allocation-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": "worklet-live-tsp-44100-20261122-a",
+  "baseline_case": "worklet-live-tsp-44100",
+  "recording_id": "FK64_08",
+  "measurement": {
+    "output_rate_hz": 44100,
+    "internal_rate_hz": 88200,
+    "output_frames": 98790,
+    "quantum_frames": 128,
+    "control_output_frames": 64,
+    "observation_stride_frames": 32,
+    "tract_stride_frames": 768,
+    "first_nonzero_frame": 2247,
+    "initial_silence_frames": 2205,
+    "upstream_pcm_absolute_tolerance": 0.000001
+  },
+  "prediction": "英語計画と発話コマンドの適用では辞書処理、スコア領域、合成器の初期化で割り当てが生じる。合成器初期化後は、48 kHz歌唱で検証済みの共通の声道更新と乱流源領域を使うため、44.1 kHzの発話も最初から全772量子の描画中の割り当てがゼロと予測する。",
+  "criteria": "保存済みの確認用07の入力・女性体型・音源揺らぎ・乱流設定を固定する。辞書の準備、英語計画、ハンドル、スコア領域、コマンド適用、観測領域を実際のABIで別々に計数し、発話開始から終了まで128フレーム量子ごとの描画・観測の件数と段階を保存する。診断の有無で全PCMと全ネイティブ観測、量子別計数が一致し、保存済みブラウザの全PCM、32フレーム間隔の観測、声門2系列、768フレーム間隔の声道断面・圧力・流量にビット一致すること。先頭2,205フレームは無音、最初の非ゼロは2,247。固定上流との差は全PCMで1×10⁻⁶以下。描画のゼロ割り当ては計測の成立と別に判定する。"
+}

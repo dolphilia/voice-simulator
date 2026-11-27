@@ -1,0 +1,75 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 44100,
+  "alignment": {
+    "run": "worklet-live-tsp-44100-headphone-gap-edges-20261122-joint",
+    "case_id": "worklet-live-tsp-44100-headphone-gap-edges",
+    "case_revision": 2
+  },
+  "selections": [
+    {
+      "id": "fit_292",
+      "capture_run": "worklet-live-tsp-44100-headphone-load-same-request-20261122-2",
+      "request_offset": 0,
+      "gap_frames": 292
+    },
+    {
+      "id": "replay_308",
+      "capture_run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-1",
+      "request_offset": 0,
+      "gap_frames": 308
+    },
+    {
+      "id": "different_316",
+      "capture_run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-1",
+      "request_offset": 6,
+      "gap_frames": 316
+    },
+    {
+      "id": "continuous_early",
+      "capture_run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-2",
+      "request_offset": 0,
+      "gap_frames": 0
+    },
+    {
+      "id": "continuous_late",
+      "capture_run": "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-2",
+      "request_offset": 6,
+      "gap_frames": 0
+    }
+  ],
+  "fit_selection": "fit_292",
+  "first_frame": -64,
+  "last_frame_exclusive": 192,
+  "fit_last_frame_exclusive": 65,
+  "windows": [
+    {
+      "id": "before",
+      "start_frame": -64,
+      "end_frame_exclusive": 0
+    },
+    {
+      "id": "edge",
+      "start_frame": 0,
+      "end_frame_exclusive": 65
+    },
+    {
+      "id": "after",
+      "start_frame": 65,
+      "end_frame_exclusive": 128
+    },
+    {
+      "id": "far",
+      "start_frame": 128,
+      "end_frame_exclusive": 192
+    }
+  ],
+  "minimum_reference_norm": 0.000244140625,
+  "absolute_difference_limit": 0.00001,
+  "maximum_relative_residual": 0.025,
+  "maximum_fit_replay_residual": 0.0001,
+  "criteria": "第2版の遠方アラインメントを固定する。完全ゼロの直後の最初の非ゼロ点を位置0とし、連続対照には保存済みの仮想境界を使う。292フレーム側だけで、標本ごとに同相・逆相の2成分を同時に合わせる一つの係数 g=(x・y)/(x・x) を求め、参照2成分のノルムが1/4096に達した点に適用する。0〜64以外はゲイン1。各比較で、生のcubeb、ゲイン適用後、タップ、および試験窓自身に同じ式を当てた場合の二成分共通ゲインの残差下限を保存する。0〜64の相対残差はタップのノルムで正規化し、同相・逆相の絶対差が10⁻⁵を最初・最後に超えるフレームを全窓で求める。係数を転用した結果は閾値0.025で判定する。308は以前に同一波形と判明した再現対照として扱う。",
+  "prediction": "292と308の端の両成分の相対残差は0.0001以下。異なる波形の316では転用後に少なくとも片方の端の相対残差が0.025を超えると予測する。同じ無音境界を仮定し、端の外側では生のcubebとタップが絶対差10⁻⁵以内に戻ると予測する。連続対照はどの窓もゲイン1の相対残差が0.025以下となり、端のゲインを強制適用すると0.025を超えると予測する。"
+}

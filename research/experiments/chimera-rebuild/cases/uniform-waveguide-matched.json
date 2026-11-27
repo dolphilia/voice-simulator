@@ -1,0 +1,46 @@
+{
+  "id": "uniform-waveguide-matched",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_case": "uniform-tube-rigid",
+  "baseline_run": "uniform-tube-20261119-b",
+  "hypothesis": "固定一様管で入口体積流量と並列R–L終端をそろえ、管内の粘性を除くと、FDTDと波動管の主到達、最初の4共鳴、代表周波数の複素応答は登録範囲に入る。FDTDの格子を細かくすると高域の差が縮む。",
+  "geometry": {"length_cm": 17.5, "area_cm2": 3.0, "density_g_cm3": 0.00114, "sound_speed_cm_s": 35000.0},
+  "grids": [
+    {"rate_hz": 96000, "fdtd_cells": 40, "waveguide_delay_samples": 48},
+    {"rate_hz": 192000, "fdtd_cells": 80, "waveguide_delay_samples": 96}
+  ],
+  "inlet": {"kind": "prescribed_volume_flow", "impulse_volume_cm3": 0.001, "sample": 0},
+  "outlet": {"kind": "parallel_radiation_rl", "time_update": "implicit_midpoint"},
+  "comparisons": {
+    "matched": "管壁の運動と管内の粘性抵抗をともに無効化する。口端の放射抵抗は両方式で有効とする。",
+    "viscous_control": "96 kHzのFDTDの通常の粘性抵抗だけを戻す。入口と放射端を維持し、共鳴の周波数差と高さの差を記録する。",
+    "legacy": "既存の一様波動管のC実装と、今回の波動管の双方向遅延を、48 kHz・24区間・圧力波反射0.75/−0.85で照合する。"
+  },
+  "measurement": {
+    "seconds": 0.5,
+    "fft_size": 262144,
+    "peak_range_hz": [100, 4000],
+    "required_resonances": 4,
+    "complex_frequencies_hz": [250, 750, 1250, 1750, 2250, 2750, 3250, 3750],
+    "arrival": {
+      "estimator": "出力流量を、時間幅をそろえた対称ガウス入力で畳み込む。予測到達の周辺で絶対値最大の時刻を決め、ガウス入力の中央時刻を引く。生の最初の非ゼロ位置は別に記録する。",
+      "gaussian_std_seconds": 0.0000625,
+      "gaussian_halfwidth_seconds": 0.00025,
+      "search_relative_seconds": [-0.000125, 0.00025]
+    },
+    "tail_seconds": 0.1,
+    "legacy": {"rate_hz": 48000, "sections": 24, "inlet_reflection": 0.75, "outlet_reflection": -0.85, "samples": 2048}
+  },
+  "criteria": {
+    "candidate_upstream_time_series_relative_peak_max": 1e-8,
+    "legacy_relative_peak_max": 1e-12,
+    "discrete_model_complex_relative_max": 1e-5,
+    "discrete_model_derivative_complex_relative_max": 1e-5,
+    "max_main_arrival_difference_seconds": 0.00003125,
+    "max_resonance_relative_difference": 0.015,
+    "max_complex_magnitude_difference_db": 0.9,
+    "max_complex_phase_difference_degrees": 9.0,
+    "max_tail_over_peak": 0.00001,
+    "refine_high_band_at_least": 0.15
+  }
+}

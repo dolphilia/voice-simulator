@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-pharynx-from-glottal-flow",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "観測した声門流量を入口にして平均流量で線形化した節点解は、固定 /i/ の両肺圧で咽頭17枝×10周波数の複素流量をL2相対誤差10%以内で再現し、逆流した枝を半数以上検出する。符号不一致は咽頭17枝の全標本の1%以下とする。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-reversal-low-harmonics-20261124-repeat",
+      "manifest_sha256": "56ca0dd007689cd29ae20c048869ed781aa19010ee4a67be432feb8017ea1cad"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "pharynx_branch_count": 17,
+    "maximum_pharynx_spectral_l2_error": 0.10,
+    "minimum_reversing_branch_recall": 0.50,
+    "maximum_sign_mismatch_fraction": 0.01,
+    "observed_loss_control_l2_error_lt": 1e-4,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "両肺圧・両版の保存収録の声門流量10周波数、声門上の固定形状、各枝の観測平均流量を使う。平均は接線抵抗と波形の直流値に使う。予測する節点解には咽頭を含む各枝の時変流量、圧力、損失を入れない。",
+    "observation": "粘性抵抗のみと、全声門上枝の二次損失を各平均流量で線形化した解を比較する。観測した10周波数、実測二次損失と枝の窓端項を入れた対照に照合する。各周波数の複素流量、全周波数の誤差、逆流した枝、符号不一致標本を記録する。",
+    "acceptance": "観測した圧力差と二次損失を使った枝式が全枝の複素流量に一致し、全損失を戻した対照が咽頭の流量に相対1e-4以内で一致する。10周波数の実測から再構成した波形が前回の逆流判定を再現する。両版の節点解を照合し、節点解だけから得た倍音と逆流に関する事前予測を両肺圧で判定する。"
+  }
+}

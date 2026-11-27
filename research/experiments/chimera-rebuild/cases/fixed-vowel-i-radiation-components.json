@@ -1,0 +1,71 @@
+{
+  "id": "fixed-vowel-i-radiation-components",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "radiation_reference": {
+    "run": "fixed-vowel-i-pressure-replay-20261124-repeat",
+    "case": "fixed-vowel-i-pressure-replay",
+    "sha256": "55e759ffef0390e4153279a782ab41c01c67d9f74077d0b00b8f64feaed56fec"
+  },
+  "pressure_replay_reference": {
+    "run": "fixed-vowel-i-low-pressure-smoothing-20261124-repeat",
+    "case": "fixed-vowel-i-low-pressure-smoothing",
+    "sha256": "6be228966d9e23b15171a13a91597a41aa5749dd4605026e1470056c89899ade"
+  },
+  "standard_reference": {
+    "run": "fixed-vowel-i-coupled-smoothing-20261124-repeat",
+    "case": "fixed-vowel-i-coupled-smoothing",
+    "sha256": "06f7924a8285ddf3851c645edc4bbb2b5b8a94130937be1fd43372d6ae1331b9"
+  },
+  "voice_reference": {
+    "run": "vowel-voice-i-20261119-j",
+    "case": "vowel-voice-i",
+    "sha256": "06a42253b072351ff3636dda70fd2ab224ac2c35cd81dc347ab247c663b38265"
+  },
+  "geometry_reference": {
+    "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+    "case": "fixed-vowel-i-lf-branch-loss",
+    "sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+  },
+  "smoothing_reference": {
+    "run": "fixed-vowel-i-lf-smoothed-branches-20261124-repeat",
+    "case": "fixed-vowel-i-lf-smoothed-branches",
+    "sha256": "865ecfbf317197fadd911e5e6792eaa9e7579244d5a4b7ea393388b131437b92"
+  },
+  "hypothesis": "既存の総放射の微分から口端・鼻端の微分を引いた推定では、壁の変化が口端より先に生じる。32ビットへ丸めたPCMで最初に残る差は、口端成分だけでも全成分と同じフレームに出る。窓全体のPCM差への口端の射影は、通常の平滑化で約95.73%、面積を固定した平滑化で約96.24%、面積経由で約88.18%と予測する。鼻端は介入によって変化しない。",
+  "measurement": {
+    "activation_sample": 38400,
+    "steady_window_samples": [38400, 65536],
+    "sample_count": 65536,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": 128,
+    "smoothing_width_cm3_s": 60,
+    "edges": [[34, 35], [35, 36]],
+    "component_peak_relative_error_lt": 1e-8,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "pcm_absolute_error_lt": 5e-7,
+    "pcm_delta_relative_error_lt": 0.01
+  },
+  "pressure_gate": {
+    "lung_pressure_cm_h2o": 3.6,
+    "pressure_bounds_dyn_cm2": [1961.33, 3922.66],
+    "pressure_smoothing_hz": 30,
+    "voicing_smoothing_hz": 25,
+    "static_opening_cm2": 0.01475,
+    "static_opening_time_s": 0.004,
+    "pressure_max_error_lt_dyn_cm2": 1e-8,
+    "voicing_max_error_lt": 1e-12,
+    "area_change_max_error_lt_cm2": 1e-12,
+    "hypothesis_minimum_transition_fraction": 0.95
+  },
+  "radiation_split": {
+    "component_output_sum_max_error_lt": 1e-12,
+    "predicted_lip_projection": {"full": 0.95733, "without_area": 0.96244, "area": 0.88184},
+    "hypothesis_lip_projection_absolute_error_lt": 0.001
+  },
+  "input": "前回と同じ固定 /i/、肺圧3.6 cmH₂O、110 Hz。無変更、口腔2枝の平滑化、平滑化を保った声門モデル入力の圧力差の置換を両版で再描画する。圧力列、切替時刻、出力処理も固定する。",
+  "observation": "内部96 kHzの各標本で合算前の重み付き壁・口端・鼻端の放射流量と、実装が微分に使った合算流量を採取する。成分をそれぞれ微分し、同じFIR、直流除去、ゲインの出力段を通す。切替後のPCM波形でRMS、合計への射影、各成分だけを基準に加えた場合に丸め後の最初の差が現れるフレームを比較する。",
+  "acceptance": "観測の追加後も前回の3条件の全波形、声門入力とPCMがビット一致する。成分を実装と同じ順で加えた流量は観測した合算流量と、各版の時間刻みの演算で微分した合算値は記録した放射微分と一致する。出力リミッターが作動しないことを確認し、成分別の出力和が独立に計算した総出力と登録許容差内で一致する。各成分の先行関係・射影の予測を照合する。"
+}

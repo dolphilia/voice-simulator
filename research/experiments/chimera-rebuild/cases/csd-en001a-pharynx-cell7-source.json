@@ -1,0 +1,35 @@
+{
+  "id": "csd-en001a-pharynx-cell7-source",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "centerline": {
+    "run": "csd-en001a-centerline-coordinate-swap-20261124-repeat",
+    "case": "csd-en001a-centerline-coordinate-swap",
+    "manifest_sha256": "0d8e67a50a9a32bd2b2a9ffb84e34f5588ca1d1b2a846ced617c89a8d512bc80"
+  },
+  "render": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "measurement": {
+    "pharynx_cells": 15,
+    "pharynx_cell_index": 7,
+    "coordinate_exchange_ray": 5,
+    "completed_frames": [0, 1, 65],
+    "control_internal_samples": 128,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "block_frames": 128,
+    "frames": 201600,
+    "maxima_frame": 134534,
+    "conditions": {"native": 0, "ray5": 0, "initial_only": 1, "target_only": 2, "initial_and_target": 3},
+    "scope": "各版でen001aの通常歌唱、測定線5のx座標を中心間距離へ渡す対照、その対照の咽頭セル7の初期面積だけ、最初の制御目標面積だけ、両方を渡す条件を描画する。面積の交換は各版自身の通常座標を用いたまま行う。最初の出力1フレームを境に実験入力を解除し、次の制御更新後の65フレームで解除を確認する。"
+  },
+  "hypotheses": {
+    "ray5_changes_only_pharynx_mean_area_7": "測定線5の交換は、初期化直後と最初の制御更新後の両方で咽頭セル7の代表面積だけを動かし、咽頭の最小断面は一致する。",
+    "target_only_does_not_affect_first_raw_volume_source": "セル7の目標面積だけの交換は、最初に加える面積の増分より小さな変化のため、内部標本0の丸め済み体積差を変えない。",
+    "both_area_endpoints_reproduce_ray5_pcm": "初期面積と最初の制御目標面積を共に交換した条件で、各版の測定線5交換の全PCMがビット一致する。"
+  },
+  "acceptance": "通常条件と測定線5交換の全PCM・歌唱計画・元の格子は先行実行に一致する。測定線5対照のセル7・8の代表面積と最小面積は採取格子から再標本化し、ビット照合する。独立計算の対象は初期化直後・最初の制御更新後の両方。面積交換の条件は指定した時点のセル7の代表面積だけが相手条件と一致し、格子、最小断面と他セルは通常条件に一致する。次の制御更新で咽頭目標と格子が通常へ戻ったことを確認する。最初の内部2標本について、セル長、面積、体積、絞り配分後の体積速度、二段平滑を実測から独立再計算し、PCM全条件の有限性・フレーム数・ハッシュ、対照に対する初差とフレーム134534を確認する。"
+}

@@ -1,0 +1,52 @@
+{
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "id": "tsp-fk61-pcm2937-lip-window",
+  "revision": 1,
+  "comparison": {
+    "run": "tsp-fk61-pcm2937-output-20261123-verified-repeat",
+    "case": "tsp-fk61-pcm2937-output",
+    "manifest_sha256": "265914e2ec6c4491d713dec7ca862fed9b9cc762bcb55dfca455576c85966999"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "focus_frame": 2937,
+    "comparison_frames": [
+      2934,
+      2941
+    ],
+    "onset_sample": 3968,
+    "scope": "固定上流と下唇内面の評価順を揃えた試験版の通常CLIで検証済みの採取データを使う。口端放射流量だけを上流へ交換し、内部5800〜5875に収まる全連続区間（各単一標本を含む）で、出力2937までの差と倍精度値を測る。直前のFIRとその前の履歴は、別の長い区間の交換で比べる。線形の寄与は全履歴について独立に求め、二段の丸めと区別する。",
+    "scan_internal_samples": [
+      5800,
+      5876
+    ],
+    "anchor_internal_sample": 5851,
+    "linear_residual_tolerance_pcm": 5e-17
+  },
+  "hypotheses": {
+    "anchor_alone_insufficient": "5851の口端流量だけの交換では、2937のPCM差が残る。",
+    "late_contiguous_window_suffices": "5800〜5875に全て含まれる、49内部標本以下の連続した口端流量の交換で、2937までのPCMが一致する。",
+    "history_before_late_window_alone_insufficient": "5800より前の口端放射だけの交換では、2937のPCMは揃わない。",
+    "strongest_lip_term_inside_fir_window": "試験版の口端流量を上流に揃えたとき、最も大きい単独標本の線形寄与は2937のFIRの範囲に入る。"
+  },
+  "acceptance": "入力元の通常CLIと観測ビルドのPCMの照合結果を読み、保存した放射と出力段を両版で再計算して一致させる。短区間の再計算を保存前状態から開始し、複数条件で冒頭からの独立計算とビット照合する。登録した範囲内の全連続区間を保存し、2937および2937までの一致の条件と範囲を区別する。線形近似の誤差を登録した上限に照合し、仮説の判定とは分ける。"
+}

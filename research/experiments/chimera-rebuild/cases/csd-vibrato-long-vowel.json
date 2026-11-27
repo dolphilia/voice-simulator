@@ -1,0 +1,32 @@
+{
+  "id": "csd-vibrato-long-vowel",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "analysis_case": "csd-vibrato-aperiodicity.json",
+  "pitch_case": "csd-acoustic-f0-en001a.json",
+  "base_run": "csd-continuous-song-20261121-repeat",
+  "score": {
+    "id": "long-vowel",
+    "bpm": 60,
+    "start_seconds": 0.35,
+    "syllables": [{"text": "a", "onset": [], "nucleus": {"ipa": "ɑ"}, "coda": [], "wordEnd": true, "phraseEnd": true}],
+    "notes": [{"midi": 64, "beats": 1.6}]
+  },
+  "render": {
+    "sample_rate_hz": 48000,
+    "frames": 105600,
+    "depths_cents": [35, 0],
+    "probe_mode": "matched"
+  },
+  "limits": {
+    "minimum_voiced_share": 0.9,
+    "expected_rate_hz": 6,
+    "depth_tolerance_cents": 8,
+    "rate_tolerance_hz": 0.3,
+    "maximum_flat_residual_rms_cents": 2,
+    "pcm_absolute_tolerance": 0.000001,
+    "matched_measure_tolerance": 0.0001
+  },
+  "hypothesis": "同じ母音、音高、固定初期状態でビブラート深さだけを35から0セントへ切り替える。通常の描画で得られる35セントの波形をCSDの安定区間で測ると、約6 Hz・35セントの周期を回収できる。0セント対照では残差が小さくなり、周期は検出されないと予測する。声門瞬時F0の時系列でも同じ変化を確認する。",
+  "acceptance": "同じ設定の母音を候補の通常render-pcmと固定上流プローブのmatchedで描画する。注釈の開始30%と終端20%を除く。両版と両深さで0.4秒以上連続し、有声率が0.9以上であることを確認する。35セントはPCMと固定上流の声門F0で許容差内の深さと周期を取得し、0セントは残差RMSが2セント以下である。0セント対照に小さな周期検出が残る場合は値を保存する。上流と候補のPCM差、検出状態と各指標の差、独立回帰との一致を確認する。得られた音声は合成条件の対照として扱う。"
+}

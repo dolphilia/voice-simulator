@@ -1,0 +1,15 @@
+diff --git a/crates/chimera/src/voice/human_voice.rs b/crates/chimera/src/voice/human_voice.rs
+--- a/crates/chimera/src/voice/human_voice.rs
++++ b/crates/chimera/src/voice/human_voice.rs
+@@ -307,6 +307,11 @@ impl HumanVoice {
+         self.apply_source();
+     }
+ 
++    /// 固定発声の比較で、音高グライドを除くために現在値を初期化する。
++    pub fn probe_set_initial_f0(&mut self, hz: f64) {
++        self.f0 = hz;
++    }
++
+     /// Add gestures (times on the voice clock).
+     pub fn schedule(&mut self, gestures: &[Gesture]) {
+         self.score.add_all(gestures);

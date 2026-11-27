@@ -1,0 +1,26 @@
+{
+  "id": "worklet-song-recording-vp8",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-song-recording-webm.json",
+  "hypothesis": "同じChromiumでMP4とVP9/Opusの対応判定を偽にすると、候補と固定上流のClipは両方ともVP8/Opusを選ぶ。二拍と三次元断面を使う加工前PCMはVP9の対照とバイト一致し、収録した音声の拍・無音・終端と復号した輪郭の精度は既存基準を満たす。",
+  "reference": {
+    "vp9_run": "worklet-song-webm-20261120-c",
+    "manifest_sha256": "50808ec393180c128d60fdf7c44815ad6246e6360adfc3567e163d9da8fb8c89"
+  },
+  "measurement": {
+    "suppressed_mime_types": [
+      "video/mp4;codecs=avc1.42E01E,mp4a.40.2",
+      "video/mp4",
+      "video/webm;codecs=vp9,opus"
+    ],
+    "requested_mime_type": "video/webm;codecs=vp8,opus",
+    "video_codec": "vp8",
+    "maximum_marker_error_change_from_vp9_seconds": 0.085
+  },
+  "criteria": {
+    "recording": "通常の歌唱画面と固定上流のClipで、形式の問い合わせ順、MediaRecorderへのMIME入力、WebMのDocTypeと復号コーデック、中止と再開、ブラウザでの再生を比較する。拒否する指定以外は実ブラウザの対応判定を使う。",
+    "sound": "候補CLIとVP9対照の加工前WAV、音声と映像のPTS、復号後の無音、二拍と終端の位置を照合する。Opus固有の時計の許容差は基準ケースを使う。",
+    "geometry": "識別欄から出力フレームを読み、既存ケースの閉鎖・母音の4区間でCLIによる独立投影と復号輪郭を照合する。映像の時間差が基準を超えた場合は作画時刻と復号PTSを保存して最初に差が表れた区間を記録する。"
+  }
+}

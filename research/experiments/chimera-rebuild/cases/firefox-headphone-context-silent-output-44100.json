@@ -1,0 +1,27 @@
+{
+  "id": "firefox-headphone-context-silent-output-44100",
+  "revision": 1,
+  "base_case": "firefox-headphone-context-keep-output-44100.json",
+  "base_case_revision": 1,
+  "sounding_reference_capture": "firefox-headphone-context-keep-output-44100-pause-3",
+  "sounding_reference_summary": "firefox-headphone-context-keep-output-44100-20261122-a",
+  "keep_output": {
+    "amplitude": 0.0
+  },
+  "capture_reviews": {},
+  "trials": [
+    {"run_id": "firefox-headphone-context-silent-output-44100-control-1", "suspend": false},
+    {"run_id": "firefox-headphone-context-silent-output-44100-pause-1", "suspend": true},
+    {"run_id": "firefox-headphone-context-silent-output-44100-pause-2", "suspend": true},
+    {"run_id": "firefox-headphone-context-silent-output-44100-control-2", "suspend": false},
+    {"run_id": "firefox-headphone-context-silent-output-44100-control-3", "suspend": false},
+    {"run_id": "firefox-headphone-context-silent-output-44100-pause-3", "suspend": true}
+  ],
+  "pairs": [
+    ["firefox-headphone-context-silent-output-44100-control-1", "firefox-headphone-context-silent-output-44100-pause-1"],
+    ["firefox-headphone-context-silent-output-44100-control-2", "firefox-headphone-context-silent-output-44100-pause-2"],
+    ["firefox-headphone-context-silent-output-44100-control-3", "firefox-headphone-context-silent-output-44100-pause-3"]
+  ],
+  "prediction": "前回の維持用Contextの40フレーム・2チャンネルのループを振幅ゼロにする。主Contextが約1.045秒止まっても別Contextのトラックが実時間グラフに残り、同じcubebストリームの予定番号とホスト時計が連続すると予測する。停止区間のcubeb左右と、両端を除いたタップ左右はデジタルゼロになる。停止前の19,845 Hzの比が0.20未満だった有効な組では、主Context再開後も約0.0154から始まり、測定末尾まで0.20未満と予測する。",
+  "criteria": "同じFirefoxビルド、ヘッドフォン、入力PCM、停止時刻で連続・停止再開を3組採取する。維持用Contextの状態と標本番号、先行の主信号のグラフPCM、cubebの前後マーカーと左右PCM、単一ストリームの256フレーム予定番号・ホスト時計を照合する。停止時のcubebの左右は全区間でゼロと照合する。タップは両端1,024フレームを除いた区間の左右のゼロと512フレームの予定時計を確認する。19,845 Hzの400フレーム窓、200フレーム刻み、停止前の最後44窓と狭帯域の閾値0.20は同相音の実験と共通。出力時計または停止前の狭帯域の前提が成立しない試行も保存する。前回の同相音の比較に対する再開直後の比の差は記述値として保存する。"
+}

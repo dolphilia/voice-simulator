@@ -1,0 +1,78 @@
+{
+  "id": "duet-transport",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "一つの混合音源を再生すると、可聴時刻を使う表示は音源サンプルに対応する。出力待ちの間と一時停止中は進まず、シークのたびに世代が進む。再生中のシークでは同じ音源を指定位置で新たに開始する。音源ノードの完了から音が聴こえ終わるまで表示は再生中のままになる。",
+  "source": {
+    "case": "song-voice-long.json",
+    "show_id": "duet-clock",
+    "sample_rate_hz": 48000,
+    "duration_seconds": 2.2,
+    "expected_frames": 105600,
+    "voices": [
+      {"name": "声部1", "body": "male", "midi": [60, 69], "start_seconds": 0.5, "gain": 0.35},
+      {"name": "声部2", "body": "female", "midi": [55, 64], "start_seconds": 0.64, "gain": 0.35}
+    ]
+  },
+  "virtual_clock": {
+    "maximum_time_error_seconds": 1e-9,
+    "output_latency_seconds": 0.2,
+    "base_latency_seconds": 0.06,
+    "scenarios": [
+      {"id": "output_and_seek", "steps": [
+        {"at": 5, "action": "seek", "offset": 0.64, "time": 0.64, "playing": false, "epoch": 1},
+        {"at": 5, "action": "play", "start": [5, 0.64], "time": 0.64, "playing": true, "epoch": 1},
+        {"at": 5.6, "action": "pause", "time": 1.04, "playing": false, "epoch": 1},
+        {"at": 6, "time": 1.04, "playing": false, "epoch": 1},
+        {"at": 6, "action": "seek", "offset": 0.3, "time": 0.3, "playing": false, "epoch": 2},
+        {"at": 6, "action": "play", "start": [6, 0.3], "time": 0.3, "playing": true, "epoch": 2},
+        {"at": 6.05, "action": "pause", "time": 0.3, "playing": false, "epoch": 2},
+        {"at": 6.05, "action": "play", "start": [6.05, 0.3], "time": 0.3, "playing": true, "epoch": 2},
+        {"at": 6.5, "action": "seek", "offset": 1.25, "start": [6.5, 1.25], "time": 1.25, "playing": true, "epoch": 3},
+        {"at": 7.45, "action": "old_end", "time": 2, "playing": true, "epoch": 3},
+        {"at": 7.45, "action": "end", "time": 2, "playing": true, "epoch": 3},
+        {"at": 7.67, "time": 2.2, "playing": false, "epoch": 3},
+        {"at": 7.67, "action": "play", "start": [7.67, 0], "time": 0, "playing": true, "epoch": 3}
+      ]},
+      {"id": "output_timestamp", "steps": [
+        {"at": 4, "action": "play", "stamp": [0, 0], "start": [4, 0], "time": 0, "playing": true, "epoch": 0},
+        {"at": 4.4, "stamp": [0, 0], "time": 0.2, "playing": true, "epoch": 0},
+        {"at": 4.7, "stamp": [4.5, 40], "time": 0.54, "playing": true, "epoch": 0},
+        {"at": 4.8, "stamp": [4.65, -10], "time": 0.65, "playing": true, "epoch": 0},
+        {"at": 4.9, "stamp": [4.88, 80], "time": 0.9, "playing": true, "epoch": 0}
+      ]},
+      {"id": "base_latency_and_interruption", "output_latency_seconds": 0, "steps": [
+        {"at": 2, "action": "play", "start": [2, 0], "time": 0, "playing": true, "epoch": 0},
+        {"at": 2.4, "action": "interrupt", "time": 0.34, "playing": false, "epoch": 0},
+        {"at": 2.4, "action": "reject_resume", "start": [2.4, 0.34], "time": 0.34, "playing": false, "epoch": 0},
+        {"at": 2.4, "action": "seek", "offset": 9, "time": 2.2, "playing": false, "epoch": 1},
+        {"at": 2.4, "action": "seek", "offset": -1, "time": 0, "playing": false, "epoch": 2}
+      ]},
+      {"id": "stale_source_end", "steps": [
+        {"at": 8, "action": "play", "start": [8, 0], "time": 0, "playing": true, "epoch": 0},
+        {"at": 9, "action": "seek", "offset": 1.12, "start": [9, 1.12], "time": 1.12, "playing": true, "epoch": 1},
+        {"at": 10.5, "action": "old_end", "time": 2.2, "playing": true, "epoch": 1},
+        {"at": 10.5, "action": "end", "time": 2.2, "playing": false, "epoch": 1}
+      ]},
+      {"id": "seek_during_pending_resume_then_rejected", "steps": [
+        {"at": 8, "action": "defer_resume", "start": [8, 0], "time": 0, "playing": true, "epoch": 0},
+        {"at": 8, "action": "seek", "offset": 1.12, "start": [8, 1.12], "time": 1.12, "playing": true, "epoch": 1},
+        {"at": 8, "action": "reject_pending", "time": 1.12, "playing": false, "epoch": 1, "upstream_playing": true}
+      ]}
+    ]
+  },
+  "browser": {
+    "first_audio_observation_seconds": 0.71,
+    "paused_seek_seconds": 0.64,
+    "playing_seek_seconds": 1.12,
+    "second_audio_observation_seconds": 1.31,
+    "end_seek_seconds": 1.97,
+    "rejected_resume_seek_seconds": 1.12,
+    "pause_check_milliseconds": 180,
+    "analyser_frames": 2048,
+    "maximum_ui_clock_error_seconds": 0.05,
+    "audio_alignment_search_seconds": 0.045,
+    "minimum_signal_correlation": 0.995,
+    "maximum_ui_offset_error_samples": 1
+  }
+}

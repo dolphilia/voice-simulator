@@ -1,0 +1,28 @@
+{
+  "id": "tsp-f2-bandwidth-envelope",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "utterance": "MK61_01",
+  "tokens": [{"word": "seems", "phone_index": 13}, {"word": "plea", "phone_index": 3}],
+  "centers": [0.35, 0.5, 0.65],
+  "measurement": {
+    "candidate_f2_bandwidth_limit_hz": 300,
+    "spectrum_grid_hz": 5,
+    "gaussian_sigma_hz": 100,
+    "low_peak_search_hz": [650, 1250],
+    "high_peak_search_hz": [1900, 2700],
+    "pole_tolerance_hz": 0.05,
+    "lpc_envelope_tolerance_db": 1e-8,
+    "periodogram_direct_dft_tolerance_db": 1e-8,
+    "hypothesis_peak_distance_hz": 120,
+    "hypothesis_minimum_peak_difference_db": 6,
+    "hypothesis_minimum_supported_windows": 2
+  },
+  "hypothesis": "F2の帯域幅を300 Hz未満に制限すると、seemsの基準3窓すべてで約1 kHzから2.2–2.4 kHzへ採用極が切り替わり、pleaでは採用極が保たれる。両語でF1と欠測数は変わらない。seemsの少なくとも2窓では平滑化した波形スペクトルの高域候補が新しいF2から120 Hz以内にあり、低域候補より6 dB以上高いと予測する。局所最大が一方に無い場合、その窓はこの予測を支持しない。",
+  "acceptance": "同一の録音、整列結果、窓標本を使用し、固定Rustの極とF1・F2を保存済み結果および独立LPCと照合する。F2の帯域幅条件だけを一つ加え、選び直した極・帯域幅・窓別欠測の理由を保存する。固定上流のLPC包絡と複素多項式を評価した包絡、FFTと直接DFTを使った平滑化ピリオドグラムを指定の誤差以内で照合する。境界値と欠測は既知の極の対照で確かめ、波形に対する予測の採否は実装の合否と分けて記録する。"
+}

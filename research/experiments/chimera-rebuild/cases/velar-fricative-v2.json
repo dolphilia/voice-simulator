@@ -1,0 +1,145 @@
+{
+  "id": "velar-fricative",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "前舌母音と口蓋化は /x/ の舌背を前進させる。狭窄源は断面が体型換算0.90 cm²未満で、狭窄・前方・後方の枝が咽頭と口腔の境界穴を避ける場合に登録される。/ɑxɑ/ の舌背狭窄では主に境界位置、/ixi/ では主に面積閾値で狭窄源が登録されない。通常条件の /x/ では中央半分以上で声門乱流が活動し、乱流倍率0の対照では形状と音源登録を保ち注入が消える。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {
+      "id": "male-back",
+      "body": "male",
+      "text": "ˈɑxɑ",
+      "f0_hz": 112,
+      "rate": 1
+    },
+    {
+      "id": "male-front",
+      "body": "male",
+      "text": "ˈixi",
+      "f0_hz": 112,
+      "rate": 1
+    },
+    {
+      "id": "male-palatalized",
+      "body": "male",
+      "text": "ˈɑxʲɑ",
+      "f0_hz": 112,
+      "rate": 1,
+      "palatalized": true
+    },
+    {
+      "id": "female-back",
+      "body": "female",
+      "text": "ˈɑxɑ",
+      "f0_hz": 205,
+      "rate": 1
+    },
+    {
+      "id": "child-front",
+      "body": "child",
+      "text": "ˈixi",
+      "f0_hz": 270,
+      "rate": 1
+    },
+    {
+      "id": "mixed-back-fast",
+      "body": {
+        "female": 0.4,
+        "child": 0.25
+      },
+      "text": "ˈɑxɑ",
+      "f0_hz": 150,
+      "rate": 1.3
+    },
+    {
+      "id": "muted-back",
+      "body": "male",
+      "text": "ˈɑxɑ",
+      "f0_hz": 112,
+      "rate": 1,
+      "turbulence_scale": 0
+    }
+  ],
+  "song": [
+    {
+      "id": "tikho",
+      "body": "male",
+      "lyrics": "ти́хо",
+      "midi": [
+        57,
+        64
+      ],
+      "onsets": [
+        [
+          "t",
+          "j"
+        ],
+        [
+          "x"
+        ]
+      ],
+      "nuclei": [
+        "i",
+        "o"
+      ],
+      "codas": [
+        [],
+        []
+      ]
+    }
+  ],
+  "calibrated_body_height_cm": {
+    "male": 7.365,
+    "female": 7.43,
+    "child": 7.499
+  },
+  "measurement": {
+    "seed": 12345,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": [
+      128,
+      77
+    ],
+    "gesture_abs_tolerance": 1e-12,
+    "geometry_abs_tolerance": 1e-09,
+    "selection_abs_tolerance": 1e-09,
+    "gain_abs_tolerance": 1e-12,
+    "state_peak_relative_tolerance": 1e-06,
+    "pcm_abs_tolerance": 1e-06,
+    "audio_state_peak_relative_tolerance": 1e-06,
+    "closed_area_cm2": 0.0002,
+    "center_fraction": [
+      0.25,
+      0.75
+    ],
+    "minimum_vowel_fronting_cm": 0.2,
+    "minimum_palatalized_fronting_cm": 0.2,
+    "teeth_distance_limit_normalized_cm": 4.0,
+    "base_duration_seconds": 0.12,
+    "sung_duration_factor": 0.8,
+    "browser_observed_fields": [
+      "gate",
+      "glottal_area_cm2",
+      "glottal_flow_cm3_s",
+      "glottal_voicing",
+      "glottal_f0_hz",
+      "radiation_derivative_cm3_s2",
+      "lip_aperture_cm",
+      "lip_minimum_cm2",
+      "smoothed_f0_hz",
+      "abduction_cm2",
+      "tongue_body_x_cm",
+      "tongue_body_y_cm"
+    ],
+    "initial_state": "発話と歌唱の初期姿勢・呼気・出力段は各親ケースから採用し、発話F0と体型だけを上書きする。通常ケースは入口の乱流既定値を使う。無効対照のみ倍率0とする。",
+    "window": "第1版の舌背と断面の観測点を維持する。全フレームで咽頭・口腔の解剖学的長さ、セル数、最小の正の目標断面から狭窄音源の登録とゲインを独立計算する。音素の中央25〜75%で消失理由と声門・狭窄・歯の各音源を確認し、音素全体の各音源の活動率も記録する。/ɑxɑ/ の中央半分以上で枝の境界、/ixi/ の中央半分以上で面積の上限を確認する。ブラウザの内部状態、PCMと保存ケースの再演も照合する。",
+    "klatt_minimum_fraction": 0.6,
+    "klatt_word_medial_factor": 0.85,
+    "minimum_central_glottal_active_fraction": 0.5,
+    "minimum_dominant_blocker_fraction": 0.5
+  },
+  "supersedes": "../runs/velar-fricative-20261120-a/summary.json",
+  "revision_reason": "第1版では発話と歌唱の /x/ 区間に狭窄乱流が観測されなかった。枝の対応と体型別閾値を独立計算し、登録の有無を予測する。観測された声門乱流と乱流倍率0の対照も検証する。発話時間は語中の Klatt 則を適用した値で判定し、歌唱の判定96 msは維持する。"
+}

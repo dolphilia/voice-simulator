@@ -1,0 +1,64 @@
+{
+  "id": "worklet-live-tsp-firefox-trace-instruments-56q",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-56q",
+  "initial_control_run": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-56q-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "thread-state",
+        "audio-only"
+      ],
+      [
+        "audio-only",
+        "thread-state"
+      ],
+      [
+        "thread-state",
+        "audio-only"
+      ],
+      [
+        "audio-only",
+        "thread-state"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "compare_thread_state": true,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "minimum_margin_gain_ns": 4000000,
+    "minimum_pairs_with_margin_gain": 3
+  },
+  "hypothesis": "Thread State Traceの併用が音声I/O表の残る期間を制限している場合、Audio ClientとAudio Serverだけの条件は、同じ組で発話開始までの余裕が4 msを超えて増える。4組中3組以上でこの向きがそろい、発話開始の窓を時刻で照合できる試行も増えると予測する。ここで4 msは2収録の時計起点の許容誤差を足した値。",
+  "acceptance": "確認用07、56量子、48 kHz・256フレーム、同期事前描画、通常の発話入力、タップなし、1秒、全プロセス、同じFirefoxを固定する。組ごとに実行順を反転する。トレースの収録器と先行音の位置、発話WAVと状態を照合する。3表の最終終了時刻、メタデータ上の収録期間、Firefoxの最終Audio Client行と先頭発話量子のcubeb入口の差、全窓と登録した局所窓の照合可否を両条件で保存する。発話開始は最初の3量子を含むオフセット12と13を対象にする。欠測を残し、時計で比較できる全4組がそろった場合に予測を判定する。"
+}

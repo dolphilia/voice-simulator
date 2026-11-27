@@ -1,0 +1,19 @@
+{
+  "id": "worklet-live-ipa-cross-browser",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "live_case": "worklet-live-ipa.json",
+  "archived_chromium_run": "worklet-live-ipa-20261119-d",
+  "firefox_profile_case": "worklet-realtime-firefox-native-clock-96000.json",
+  "hypothesis": "同じɑpɑのスコアを48 kHzで実時間再生すると、FirefoxとChromiumはそれぞれのContextの描画量子に同じ相対時刻を置き、CLIと同じPCMと音響状態を出す。壁時計に現れるコールバックのまとまりはブラウザによって異なりうる。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"]],
+    "native_firefox_trials": 2,
+    "native_marker": "WorkletNodeEngine::ProcessBlock",
+    "registration": "通常のIPA画面で未対応入力から復帰し、ɑpɑの実時間とオフラインを保存する。実時間で再開して停止ボタンも検査する。ネイティブ計測だけは、実時間の発話1回を特定するため保存後の再開とオフライン実行を省く。発話そのものは通常の操作と同じ。"
+  },
+  "criteria": {
+    "audio": "48 kHz・128フレーム・49,828出力フレーム。現在のChromium・Firefox・CLIと各ブラウザのオフラインのPCMがビット一致する。音響観測とスコアもブラウザ間でビット一致する。固定上流の計画・波形・状態は従来の許容差を継承する。過去Chromiumとの音源・WASMの差は別に記録する。",
+    "schedule": "開始は連続量子の確定位置から2,048フレーム。開始後のContextフレームと16フレーム間隔の内部観測を照合し、閾値0.0002 cm²の閉鎖・再開口は独立CLIの検出より0〜15フレーム遅れる範囲に収まる。",
+    "timing": "通常条件は最初の32量子以降のWorklet p99を従来の2.667 ms予算で判定する。Firefoxネイティブの独立診断では処理印が起動待ち・予定待ち・採取量子と一意に対応する場合、通常と同じ区間のp99と全区間の超過を併記する。物理出力は対象外。"
+  }
+}

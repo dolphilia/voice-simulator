@@ -1,0 +1,39 @@
+{
+  "id": "worklet-realtime-release-alignment",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_case": "worklet-realtime-voice-96000.json",
+  "historical_runs": [
+    "worklet-rate-96000-20261120-a",
+    "worklet-rate-96000-20261120-b",
+    "worklet-rate-96000-20261120-stage6-root"
+  ],
+  "hypothesis": "呼気停止をずらしても1,000量子目に外れ値が残れば、発声状態の減衰時刻より描画回数に対応する。停止後183量子に移るなら、減衰時刻への対応を支持する。",
+  "measurement": {
+    "output_rate_hz": 96000,
+    "quantum_frames": 128,
+    "pre_roll_quanta": 66,
+    "automatic_stop": true,
+    "profiles": {
+      "historical": {"stop_quantum_index": 816, "capture_quanta": 1416},
+      "early": {"stop_quantum_index": 624, "capture_quanta": 1728},
+      "reference": {"stop_quantum_index": 816, "capture_quanta": 1728},
+      "late": {"stop_quantum_index": 1072, "capture_quanta": 1728}
+    },
+    "capture_order": [
+      ["historical", "early", "reference", "late"],
+      ["late", "reference", "early", "historical"],
+      ["reference", "historical", "late", "early"]
+    ],
+    "historical_outlier_index": 999,
+    "release_relative_outlier_index": 183,
+    "window_radius_quanta": 1,
+    "minimum_shifted_hits_per_profile": 2,
+    "clock": "従来のWorklet時計を使う。描画時間の記録はDate.nowの場合に1 ms刻みで、観測時間が128/96 msの予算を超えた点を数える。Contextのフレーム、開始間隔、PCMを別系列で確認する。"
+  },
+  "criteria": {
+    "voicing_p99_budget_fraction_max": 1.0,
+    "upstream_pcm_absolute_error_max": 5e-7,
+    "gate_absolute_error_max": 1e-10,
+    "max_wasm_memory_growths": 0
+  }
+}

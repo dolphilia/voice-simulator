@@ -1,0 +1,39 @@
+{
+  "id": "glottal-pressure-feedback",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ有声の唇閉鎖で声門振動の圧差入力だけを開口中の平均値に固定すると、閉鎖中の声門面積パルスが保たれる。流れを駆動する実圧差は下がるので、口端の閉鎖は同時刻に成立し、声門の平均流量は開口時より小さい。通常時に実測した圧差を同じサンプルから再入力すれば通常条件を再現する。",
+  "trajectory_reference_run": "tract-grid-lip-closure-20261121-b",
+  "oral_cells": 18,
+  "start_sample": 17087,
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "open_reference_ms": [100, 130],
+    "closed_ms": [220, 300],
+    "reopening_ms": [326, 346],
+    "network_closed_lt_cm2": 0.0002,
+    "original_closed_voicing_lt": 0.03,
+    "fixed_closed_voicing_gt": 0.99,
+    "original_area_ac_over_open_lt": 0.05,
+    "fixed_area_ac_over_open_gt": 0.65,
+    "fixed_closed_flow_mean_over_open_lt": 0.50,
+    "closed_lip_flow_peak_lt_cm3_s": 1e-8,
+    "reference_geometry_abs_lt": 1e-9,
+    "reference_pcm_abs_lt": 1e-6,
+    "reference_states_peak_relative_lt": 1e-6,
+    "independent_source_peak_relative_lt": 1e-9,
+    "radiation_derivative_abs_lt": 1e-6,
+    "detection_floors": {
+      "glottal_input_pressure_dyn_cm2": 1e-8,
+      "glottal_filtered_pressure_dyn_cm2": 1e-8,
+      "glottal_voicing": 1e-9,
+      "glottal_area_cm2": 1e-10,
+      "glottal_flow_cm3_s": 1e-7,
+      "glottal_physical_pressure_dyn_cm2": 1e-8,
+      "radiation_derivative_cm3_s2": 1e-4
+    },
+    "pcm_detection_floor": 1e-8,
+    "host_block_frames": [128, 77]
+  },
+  "scope": "前回の18セル条件を使用し、口端の音響閉鎖が始まる内部サンプル17,087から描画の終端まで介入する。通常、直前の開口30 msの平均圧差、通常の圧差の逐次再入力の3条件を比較する。肺・音源設定・調音・形状補間・流量ソルバーは共通。観測列では気道更新前の実圧差、声門振動に渡す圧差、気道更新後の圧力を区別する。"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tsp-f2-training-reference-sensitivity",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "cohort": {
+    "run": "tsp-again-f2-term-effect-20261123-repeat",
+    "case": "tsp-again-f2-term-effect",
+    "manifest_sha256": "a6d479f704f89ea2f9e5d66b84b05a5712694fe6c4b5f1f0cb60a8a2709ca771"
+  },
+  "measurement": {
+    "ipa": "ɛ",
+    "term": "F2 ɛ",
+    "training_speakers": ["FA", "FB", "FC", "FD", "FE"],
+    "held_speaker": "FK",
+    "training_tokens": 39,
+    "replacement_keys": ["before", "after"],
+    "minimum_tokens": 3,
+    "minimum_training_speakers": 5,
+    "spread_floor_log2": 0.07,
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "finite_replacements_preserve_support": "2つの有限な代入値で、話者内と学習話者の有効数は維持される。",
+    "centre_is_monotone_with_replacement": "同じトークンで小さい代入値から大きい代入値に替えて参照中央値が下がる場合はない。",
+    "spread_changes_without_centre_movement": "両代入値の間で参照中央値が等しく、MADまたは費用単位に差が出るトークンがある。"
+  },
+  "acceptance": "第52版の同じ固定上流の対応音素と学習5話者の有限な強勢付き /ɛ/ 39件を用いる。各位置に先行の2つのF2値をそれぞれ代入し、毎回ほかの値を元に戻す。確認用FKの録音側・合成側は第52版の既定値を固定する。上流のvalues・reference・costsへ渡し、基準を含む全条件の話者内中央値、参照中心・MAD・下限適用後の幅、確認側のF2診断費用を独立Pythonで照合する。代入値の影響は元実測への数値対照として記録する。"
+}

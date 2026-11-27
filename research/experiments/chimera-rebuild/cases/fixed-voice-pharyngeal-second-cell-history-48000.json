@@ -1,0 +1,15 @@
+{
+  "id": "fixed-voice-pharyngeal-second-cell-history-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inertance_run": ["fixed-voice-pharyngeal-second-cell-inertance-48000-repeat", "2e2c06a9707b30eb746dd7f61af2b8c951d50902144d36c658326018094898bb"],
+  "upstream_wall_run": ["fixed-voice-radiation-balance-48000-repeat", "e6d209bdcbecd699ab5b974359efdbc678273bc57f265c133cf42e4f05c6486e"],
+  "changed_branch_nodes": [14, 15],
+  "first_outgoing_target": 8218,
+  "wall_target_node": 15,
+  "radiation_target": 8221,
+  "pressure_target": 8222,
+  "incoming_target": 8228,
+  "hypothesis": "現在慣性を先に揃えた枝14→15で、持ち越し圧も (L_carry×U_prev)×Fs にすると、8,218点目の流出が上流と一致すると予測する。8,221点目の節点15の壁速度と放射への影響を測る。壁面積には演算順の差が残るため、壁流量と放射微分の一致はそれぞれ記録する。",
+  "observation": "先行の現在慣性比較と同じ固定 /i/、48 kHz出力・96 kHz内部、ゲート開放4,096・停止54,656出力フレーム目。内部8,188〜8,239点目で節点14、枝13→14と14→15の更新を採る。先行と同じ64内部点で節点15の壁と放射を測る。PCMの生データは全93,056フレームをホスト分割128と77で比較する。",
+  "acceptance": "対照は先行の変更版の節点・枝・壁・放射・全PCMを再現する。変更版は8,218点目の流出が上流とビット一致し、両版の観測を独立再計算できる。8,221点目の節点15の壁と放射、8,222点目の節点圧、8,228点目の流入および最初の残差を観測する。PCMのホスト分割間のビット一致と、対照・固定上流との差が先行と同じ5e-7以内であることを確かめる。"
+}

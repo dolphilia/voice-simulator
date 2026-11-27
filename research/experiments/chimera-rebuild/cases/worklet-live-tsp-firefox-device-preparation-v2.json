@@ -1,0 +1,14 @@
+{
+  "id": "worklet-live-tsp-firefox-device-preparation-v2",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-preparation.json",
+  "pilot_run": "worklet-live-tsp-firefox-device-preparation-20261122-b",
+  "device": {
+    "variable_requests": true,
+    "minimum_request_frames": 278,
+    "maximum_request_frames": 279
+  },
+  "hypothesis": "44.1 kHz出力時に48 kHzのContextで観測される278・279フレーム要求で、各予算を実際の要求長から計算する。同期の構築は3試行中2試行以上で予算を超え、その直後には256フレームの時計上の飛びが生じると予測する。分割の3試行中2試行以上では、構築から第8片までの要求が各予算内で、採取窓内の予定時計と先行音PCMに欠落がないと予測する。",
+  "acceptance": "第1版の観測条件と判定を保存する。前後16要求ではグラフの前進量と機器からの要求長を個別に取得する。最初と最後の先行音の添字を機器向けPCMへ対応付ける。窓の先頭を含む機器要求を決め、その要求から連続する生バッファ長がプロファイラーの要求長とすべて一致することを検査する。すでに生成済みのPCMが要求先頭に何フレームあるかを、先行音の起点と前進量・要求長の差から求め、すべての境界で0〜127フレーム、最後のPCM境界も一致することを検査する。同じ要求に複数の作業片が入る場合はそのすべてを割り当てる。予算とサンプル時計の単位はPCMバッファの48 kHzにそろえ、Core Audioのホスト時計との差は既存の0.5 ms以内で照合する。発話と機器向けPCMの検証条件は第1版から継承する。第1版の採取は予備結果であり、第2版の判定は別の試行で行う。"
+}

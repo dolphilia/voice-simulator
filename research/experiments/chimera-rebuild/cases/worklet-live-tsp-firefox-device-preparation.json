@@ -1,0 +1,31 @@
+{
+  "id": "worklet-live-tsp-firefox-device-preparation",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_case": "worklet-live-tsp-source-defaults",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-split-preparation-regression",
+  "phase_case": "worklet-live-tsp-firefox-render-phases",
+  "phase_run": "worklet-live-tsp-firefox-render-phases-20261122-repeat",
+  "preparation_case": "worklet-live-tsp-firefox-split-preparation",
+  "preparation_run": "worklet-live-tsp-firefox-split-preparation-20261122-repeat",
+  "device": {
+    "browser_case": "worklet-live-song-split-preparation",
+    "browser_run": "worklet-live-song-split-preparation-20261121-repeat",
+    "backend_case": "worklet-live-song-cubeb-output.json",
+    "window_radius_requests": 16,
+    "minimum_draw_trials_exceeding_constructor_budget": 2,
+    "minimum_draw_trials_with_one_construction_clock_gap": 2,
+    "minimum_split_trials_with_continuous_pcm_and_within_budget": 2
+  },
+  "measurement": {
+    "condition_order": [["control", "draw", "split"], ["split", "control", "draw"], ["draw", "split", "control"]],
+    "zero_frame_calls": 1000,
+    "draw_frames": 256,
+    "draw_block_frames": 32,
+    "quantum_spacing": 2,
+    "minimum_constructor_median_saving_ms": 4.0,
+    "minimum_split_trials_within_wait_and_first_budget": 2
+  },
+  "hypothesis": "48 kHz・256フレームのCore Audio出力要求では、同期の事前描画を含む構築は3試行中2試行以上で5.333 msを超え、その直後の予定サンプル時刻が256フレーム飛ぶ。分割の3試行中2試行以上では、構築から第8片までの各出力要求が5.333 ms以内で、構築前後16要求の窓で予定時刻と先行音PCMの両方が連続する。同期条件で予定が飛んだ場合も、cubebが返したPCM上の先行音は連続すると予測する。",
+  "acceptance": "歌唱の機器側採取で使った試験用FirefoxとXULをSHA-256で照合し、既存の逆相の先行音を同じ48 kHz Contextに192量子以上流してから確認用07の発話ノードを追加する。準備なし、構築中の256フレーム同期描画、予定待機中の32フレームずつ8片の分割を順を変えて3組比べる。構築前後16要求のグラフ前進と256フレーム要求を照合し、先行音のフレーム印でグラフとcubebのPCMの両端を一意に対応付ける。分割は第8片まで各片のContextフレームを機器要求に対応付ける。両時計の予定時刻、コールバックの通知から返却までの長さ、PCMの欠落・反復・無音を個別に記録する。全試行でWorkletのPCM、発話計画、観測値、辞書とWASM、採取時計を通常再生に照合し、固定上流との差も調べる。予測が成立しない場合と機器の出力要求量が変わった場合は生データと判定を残す。"
+}

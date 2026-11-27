@@ -1,0 +1,212 @@
+{
+  "id": "glottal-oral-closure",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "肺圧を上げると声門上下の圧力差が増えて面積パルスが現れる。声帯の開大は圧力が残っていても周期成分を抑える。口端の閉鎖では声門上圧が上がって圧力差が減り、周期成分も弱まる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "wall": {
+          "mass_g_cm2": 0.6,
+          "resistance_dyn_s_cm3": 1000.0,
+          "stiffness_dyn_cm3": 1000000.0,
+          "radiation_fraction": 0.0
+        }
+      },
+      {
+        "length_cm": 17.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.0
+        }
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      52
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 7845.32,
+        "ramp_samples": 11520
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          53,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 2.5,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0
+      },
+      {
+        "nodes": [
+          12,
+          13
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "glottis": {
+    "port": [
+      12,
+      13
+    ],
+    "params": {
+      "f0_hz": 125.0,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      12,
+      13,
+      52,
+      53
+    ],
+    "branches": [
+      [
+        53,
+        0
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        51,
+        52
+      ]
+    ],
+    "area_nodes": [
+      52
+    ]
+  },
+  "measurement": {
+    "sample_count": 67200,
+    "condition": "oral-closure",
+    "quiet_window_samples": [
+      0,
+      1920
+    ],
+    "voiced_window_samples": [
+      25920,
+      33600
+    ],
+    "late_window_samples": [
+      58560,
+      66240
+    ],
+    "initial_voicing_max": 0.0,
+    "voiced_mean_gate_gt": 0.55,
+    "late_mean_gate_lt": 0.05,
+    "late_area_ac_over_voiced_lt": 0.03,
+    "late_flow_ac_over_voiced_lt": 0.1,
+    "abducted_mean_area_over_voiced_gt": 2.0,
+    "abducted_mean_flow_over_voiced_gt": 0.25,
+    "occluded_mean_abs_pressure_drop_over_voiced_lt": 0.25,
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "independent_area_and_gate_peak_relative_error_lt": 1e-09,
+    "momentum_pressure_peak_relative_error_lt": 1e-09
+  },
+  "area_ramps": [
+    {
+      "start_sample": 36480,
+      "sample_count": 2400,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 52,
+          "area_cm2": 0.0
+        }
+      ]
+    }
+  ]
+}

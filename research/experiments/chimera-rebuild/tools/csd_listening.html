@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSD 歌唱の比較試聴</title>
+  <style>
+    :root {
+      color-scheme: light;
+      background: #f3f5f2;
+      color: #172421;
+      font: 16px/1.6 system-ui, sans-serif;
+      accent-color: #235746;
+    }
+    body { margin: 0; }
+    main { max-width: 58rem; margin: auto; padding: 2.5rem 1rem 3rem; }
+    header { margin-bottom: 1.5rem; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+    header p { margin-top: 0.5rem; }
+    .muted { color: #435650; }
+    .trial { background: #fff; border: 1px solid #d9e2dc; border-radius: 1rem; padding: 1rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.15rem; }
+    .clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 0.8rem; margin: 0.75rem 0; }
+    .clip { display: grid; gap: 0.35rem; min-width: 0; }
+    .letter { font-weight: 700; }
+    audio { display: block; width: 100%; margin: 0.1rem 0 0.25rem; }
+    label { display: grid; gap: 0.25rem; }
+    .details { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 0.8rem; }
+    select, textarea { font: inherit; color: inherit; background: #fff; border: 1px solid #8da098; border-radius: 0.45rem; padding: 0.4rem; }
+    textarea { min-height: 3.1rem; resize: vertical; }
+    button { background: #235746; color: #fff; font: inherit; font-weight: 650; padding: 0.65rem 1rem; border: 0; border-radius: 0.55rem; }
+    button:hover { background: #173e31; }
+    :focus-visible { outline: 3px solid #397a65; outline-offset: 3px; }
+    footer { margin-top: 1.25rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>CSD 歌唱の比較試聴</h1>
+      <p>同じ区間のA・B・Cを聴き比べます。再生音量を一定に保ち、音高の揺れと自然さを記録してください。</p>
+      <p class="muted">周期的な揺れは0（感じない）、1（弱い）、2（はっきり）、3（強い）で記録します。判断に迷ったときは「判定不能」を選べます。</p>
+    </header>
+    <form id="observations" data-packet-id="{{PACKET_ID}}">
+      {{TRIALS}}
+      <button type="submit">試聴結果をCSVで保存</button>
+      <p id="export-status" class="muted" role="status"></p>
+    </form>
+    <footer class="muted">
+      出典 Children’s Song Dataset v1.1（Choi, Kim, Park, Yong, Nam, 2020）。
+      収録音声は CC BY-NC-SA 4.0。試聴用に切り出し、モノラル化、レートと音量の調整、端のフェードを適用しています。
+    </footer>
+  </main>
+  <script>
+    const columns = {{COLUMNS}};
+    const form = document.getElementById("observations");
+    const packetId = form.dataset.packetId;
+
+    form.addEventListener("play", (event) => {
+      for (const audio of form.querySelectorAll("audio")) {
+        if (audio !== event.target) audio.pause();
+      }
+    }, true);
+
+    const csvField = (value) => '"' + value.replaceAll('"', '""') + '"';
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const rows = Array.from(form.querySelectorAll(".trial"), (trial) => [
+        packetId,
+        trial.dataset.trial,
+        ...columns.slice(2).map((name) => trial.querySelector('[data-field="' + name + '"]').value)
+      ]);
+      const content = [columns, ...rows].map((row) => row.map(csvField).join(",")).join("\r\n");
+      const url = URL.createObjectURL(new Blob(["\uFEFF", content, "\r\n"], { type: "text/csv;charset=utf-8" }));
+      const download = document.createElement("a");
+      download.href = url;
+      download.download = "csd-listening-observations.csv";
+      download.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      document.getElementById("export-status").textContent = "CSVを書き出しました。未記入の欄は空欄です。";
+    });
+  </script>
+</body>
+</html>

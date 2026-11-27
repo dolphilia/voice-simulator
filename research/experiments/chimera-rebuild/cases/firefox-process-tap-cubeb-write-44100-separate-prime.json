@@ -1,0 +1,23 @@
+{
+  "id": "firefox-process-tap-cubeb-write-44100-separate-prime",
+  "revision": 2,
+  "base_case": "firefox-process-tap-cubeb-write-44100.json",
+  "capture": {
+    "tap_duration_seconds": 5,
+    "tap_ready_timeout_seconds": 3,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "wait_for_trace_before_release": true,
+    "observe_start_signals": true,
+    "separate_priming_context": true
+  },
+  "width_prediction": {
+    "device": 512,
+    "tap": 512,
+    "cubeb": 256,
+    "write": 256
+  },
+  "prediction": "採取準備の無音Contextを閉じ、44.1 kHzの発声用Contextを新たに開く。cubebの出力ストリームが2本保存され、試験音を含むストリームが一意に決まる。実測した256フレームのcubeb要求・機器Writeと512フレームのタップ・機器バッファを、それぞれの予定時刻とPCMで照合する。少なくとも12件の連続したWriteを照合する。",
+  "revision_note": "第1版の2試行では両方のcubebレートが44,100 Hzで、256フレームのコールバック256個を収録した。ブロックのすべてが無音で、タップには試験音が残った。試験音と無音のために使ったContextを分ける。試験音と判定窓は第1版と同じ。"
+}

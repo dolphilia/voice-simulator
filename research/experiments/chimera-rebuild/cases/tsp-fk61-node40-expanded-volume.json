@@ -1,0 +1,66 @@
+{
+  "id": "tsp-fk61-node40-expanded-volume",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "oral_inflow": {
+    "run": "tsp-fk61-oral-onset-inflow-20261123-repeat",
+    "case": "tsp-fk61-oral-onset-inflow",
+    "manifest_sha256": "053d724853f2d4cd95719070a20450c6950a784267c51c0ef32e17f5295c869e"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      3964,
+      3984
+    ],
+    "nodes": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "changed_node": 40,
+    "changed_internal_sample": 3968,
+    "previous_pcm_focus_frame": 2937,
+    "scope": "下唇内面の評価順を上流に揃えた基準版と、同じ版の節点40の内部標本3968だけで体積差を展開式に切り替えた試験版を比較する。全発話の通常CLIと観測版、全内部標本の口端流量、最初の3072出力フレームの放射・出力段を取得する。枝・壁・節点・体積源の観測窓は先行計測と同じ3964〜3983。固定上流は既に検証された同じ入力・同じ話者の記録を使う。"
+  },
+  "hypotheses": {
+    "expanded_reduces_local_exact_error": "節点40の3968で、展開式の体積速度は基準版の体積速度より、記録した幾何を入力にした厳密計算に近づく。",
+    "expanded_reduces_raw_difference_from_pinned_upstream": "節点40の3968で、展開式の体積速度は固定上流の観測値との差を減らす。",
+    "mouth_difference_follows_the_intervention": "基準版と展開式の版の口端流量は、節点40で式を変えた3968より後で初めて分かれる。",
+    "expanded_delays_first_pcm_difference_from_pinned_upstream": "固定上流とのPCMの初差は、基準版に比べて展開式の版で後ろへ移る。",
+    "expanded_does_not_increase_maximum_pcm_error": "固定上流との差は全発話のPCM最大絶対誤差で増加しない。"
+  },
+  "acceptance": "基準版と展開式の版の全発話PCMを、通常CLIと観測版でビット照合する。基準版は先行計測の観測と全PCMを照合する。選んだ節点と標本で展開式、平滑、節点圧力を検算し、他の標本・他の節点の幾何と平滑前の体積源が観測窓で一致することを確認する。全発話の口端流量とPCMで初差、最大絶対差と差が出るフレーム数を記録し、冒頭の出力段を独立に再計算する。仮説の成立・棄却は実行の合否と別に記録する。"
+}

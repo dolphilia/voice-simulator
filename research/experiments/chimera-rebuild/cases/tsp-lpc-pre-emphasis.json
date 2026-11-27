@@ -1,0 +1,38 @@
+{
+  "id": "tsp-lpc-pre-emphasis",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-lpc-lag-window-20261122-repeat",
+    "case": "tsp-lpc-lag-window",
+    "manifest_sha256": "6cc43f8bc9d6d83248543433acf8266c1a51228de05cdc2877f5a3d51f519a4f"
+  },
+  "input": {
+    "variant": "wide-f2",
+    "sample_rate_hz": 12000,
+    "first_sample": 5850,
+    "frame_samples": 300,
+    "center": 0.5,
+    "lpc_order": 12,
+    "known_f2_hz": 2075,
+    "known_f2_bandwidth_hz": 430
+  },
+  "measurement": {
+    "pre_emphasis_coefficients": [0.97, 0],
+    "lag_window_hz": 40,
+    "spectrum_grid_hz": 5,
+    "spectral_balance_frequencies_hz": [620, 2075],
+    "preprocessing_and_correlation_tolerance": 1e-12,
+    "coefficient_and_residual_tolerance": 1e-10,
+    "complex_root_tolerance": 1e-10,
+    "envelope_tolerance_db": 1e-8,
+    "periodogram_tolerance_db": 1e-8,
+    "predicted_minimum_bias_reduction_hz": 5
+  },
+  "method": "同じ12 kHzの300標本に、同じHamming窓、自己相関ラグ窓40 Hz、12次LPCおよび固定F1・F2規則を適用する。固定上流の公開FormantOptsでプリエンファシスの既定0.97と明示的な0を比べる。フィルタ出力と窓掛け後の標本、自己相関と予測係数、全根とF2を記録する。設計F1とF2の周波数でFIRの解析ゲインと平滑ピリオドグラムのレベル差を比べる。真のF2との周波数差と帯域幅の差は別々に読む。",
+  "hypotheses": {
+    "bias_reduces": "プリエンファシスを外すと、固定規則のF2が設計の2075 Hzに少なくとも5 Hz近づく。",
+    "relative_f2_band_level_drops": "プリエンファシスを外すと、平滑ピリオドグラムの2075 Hzと620 Hzのレベル差が小さくなる。"
+  },
+  "acceptance": "0.97の前処理・自己相関・係数・残差・極・F2・LPC包絡が先行40 Hz条件と許容差内で一致する。0.97と0の差は窓内の標本1のプリエンファシスから現れ、差分は遅延した元の標本に係数0.97を掛けた解析値と一致する。Rustと独立計算の前処理、自己相関、Toeplitz直接解法、全根、採用極、包絡を照合し、FFTと直接DFTを比較する。欠測と予測の採否は結果に残す。"
+}

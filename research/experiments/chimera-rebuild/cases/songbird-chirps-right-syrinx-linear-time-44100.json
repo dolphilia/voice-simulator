@@ -1,0 +1,45 @@
+{
+  "id": "songbird-chirps-right-syrinx-linear-time-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-cell10-wall-surface-44100-20261123-repeat",
+    "manifest_sha256": "0c23ba46cc51cd0b0da48cb3ca7ec9f3510b15aa8a61defebd3b240d36e183f6"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "control_first_offsets": {
+    "matched_time": {"right_flow_cm3_s": 39, "trachea_pressure_dyn_cm2": 37},
+    "native_block": {"right_flow_cm3_s": 46, "trachea_pressure_dyn_cm2": 47},
+    "no_tracking": {"right_flow_cm3_s": null, "trachea_pressure_dyn_cm2": null}
+  },
+  "predicted_first_flow_effect": {
+    "matched_time": {"offset": 45, "flow_hex": "-0x1.42017e48ad52bp-10"},
+    "native_block": {"offset": 46, "flow_hex": "-0x1.ce6c4b3c157c2p-10"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_right_port_samples": {
+    "right_bronchus_pressure_dyn_cm2": 0,
+    "trachea_pressure_dyn_cm2": 0,
+    "left_flow_cm3_s": 1,
+    "trachea_1_inflow_cm3_s": 1,
+    "trachea_wall_flow_cm3_s": 1,
+    "trachea_end_pressure_dyn_cm2": 15,
+    "oec_pressure_dyn_cm2": 16,
+    "radiation_flow_cm3_s": 22,
+    "radiation_derivative_cm3_s2": 22
+  },
+  "hypothesis": "右鳴管だけで現在の慣性を L / dt から L × fs で時間換算する。235点制御の押鍵45点後と256点制御の46点後の流量が予測した上流値になる。左鳴管は最短でも1標本後、気管入口圧は同じ標本以降に影響を受け得る。256点制御では47点後の入口圧に残る差と、その差を作る流量項を再計算する。",
+  "observation": "先行の235点制御、256点制御、追従0を同じ初期化、制御境界、通常render CLIで描画し、内部176400 Hzの押鍵後0〜63点の左右鳴管、気管入口圧と下流の観測列を比較する。",
+  "acceptance": "対照バイナリと全CSVを再現し、固定上流CSVをハッシュ照合する。両鳴管の流量と気管入口圧を全点ビット再計算する。最初に変化する右鳴管流量が事前予測および同標本の上流値と一致し、保存した対照の初差を再現する。伝播の下限、幾何、押鍵前、閉鎖、追従0を確認し、変更後も残る先頭の差を項ごとに記録する。"
+}

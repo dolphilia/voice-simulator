@@ -1,0 +1,23 @@
+{
+  "id": "native-cubeb-headphone-drift-44100",
+  "revision": 3,
+  "base_case": "native-cubeb-headphone-drift-44100-snapshot.json",
+  "anchor": {
+    "last_exclusive": 60416
+  },
+  "capture_reviews": [
+    {
+      "capture_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-1",
+      "review_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-1-tail-review"
+    },
+    {
+      "capture_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-2",
+      "review_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-2-tail-review"
+    },
+    {
+      "capture_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-3",
+      "review_run": "native-cubeb-headphone-drift-44100-20261122-snapshot-3-tail-review"
+    }
+  ],
+  "reason": "44.1 kHzの修正版でcubebとタップのPCMを採取した。タップの元の後マーカー窓は、61,440フレームで同じファイルを反復する境界まで含み、残差条件を外れた。事前の前後時計、全試験音、小窓の開始・終了位置を維持し、後マーカーを1,024フレーム前へ移して保存済みの生データを再解析する。旧型の記録器はformat.csvを出さない。44.1 kHz・ステレオFloat32のストリームと44.1 kHzのAudioUnitバッファだけを通す専用ビルドの同一性とstate.txtのreadyにより形式を照合する。第2版の不合格を保存する。"
+}

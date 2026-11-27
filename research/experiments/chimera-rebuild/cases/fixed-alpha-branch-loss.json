@@ -1,0 +1,43 @@
+{
+  "id": "fixed-alpha-branch-loss",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ で、各枝の二次損失から定常点での接線を引いた残差を圧力源として足すと、660 Hzと770 Hzにおける定常点の線形予測と周期入力の口端複素応答の差を再構成できる。口端までの経路が主に寄与し、行き止まりの梨状窩経路の寄与は小さいと予想する。",
+  "reference": {
+    "run": "fixed-alpha-periodic-flow-20261124-repeat",
+    "case": "fixed-alpha-periodic-flow",
+    "sha256": "aaef0948a73f3c9290b49f61544950ca7863b328bb047d1ba9600ffc5b6aae08"
+  },
+  "initial_alignment_failure": {
+    "run": "fixed-alpha-branch-loss-20261124-registered",
+    "sha256": "2108e3ffd6ae2a8ce93530c295afffac59d84b87df9d0ff135924ce1dad3e152",
+    "failed_checks": [
+      "coupled/candidate/660/reconstructed_lip_difference",
+      "coupled/candidate/770/reconstructed_lip_difference",
+      "coupled/candidate/branch_kinetic_pressure_balance",
+      "coupled/node_branch_and_radiation_series_match_upstream",
+      "lf/candidate/660/reconstructed_lip_difference",
+      "lf/candidate/770/reconstructed_lip_difference",
+      "lf/candidate/branch_kinetic_pressure_balance",
+      "lf/node_branch_and_radiation_series_match_upstream"
+    ]
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "window_samples": [134400, 153600],
+    "capture_previous_sample": true,
+    "expected_connected_branches": 38,
+    "expected_main_path_branches": 35,
+    "series_peak_relative_error_lt": 1e-9,
+    "topology_element_relative_error_lt": 1e-9,
+    "kinetic_balance_peak_relative_error_lt": 1e-9,
+    "dft_relative_error_lt": 1e-9,
+    "prior_linear_relative_error_lt": 1e-9,
+    "lip_complex_residual_reconstruction_error_lt": 1e-6,
+    "side_branch_relative_contribution_lt": 0.1
+  },
+  "input": "前回の通常発声・固定LFそれぞれの22周期の反復ケースを使う。初期化と周期数を揃え、最後の19,200標本と枝の更新式に必要な直前1標本を取得する。",
+  "observation": "全節点の圧力と全枝の向き付き流量を固定上流と研究版CLIで計測する。咽頭入口と連結した枝を、口端までの経路と梨状窩への枝に分ける。向き別の係数を断面から作り、K U |U| を前標本の圧力差から慣性・粘性を除いて得た圧力差と照合する。定常流Qでの値および微分2KQを差し引いた残差を、離散節点方程式の枝の圧力入力として、注入流量からの寄与に足す。口端の複素差の再現誤差と枝ごとの複素寄与を記録する。",
+  "revision_reason": "第1版では両版の枝番号をそのまま照合し、研究版側の咽頭口腔接続と梨状窩接続などで列がずれた。固定姿勢の線形構成を研究版CLIで取得し、枝の両端と向き、開閉、慣性・粘性抵抗を照合して列を揃える。計測窓と第1版の許容差を維持し、新しい生の観測列は最初の実行と照合する。"
+}

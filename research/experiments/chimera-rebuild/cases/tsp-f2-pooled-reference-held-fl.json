@@ -1,0 +1,33 @@
+{
+  "id": "tsp-f2-pooled-reference-held-fl",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sweep": {
+    "run": "tsp-f2-pooled-reference-sweep-20261123-repeat",
+    "case": "tsp-f2-pooled-reference-sweep",
+    "manifest_sha256": "f9affd88f2b214163b537c1649c68a44a7c4c92844f593c6949f276a642e9d35"
+  },
+  "alignment_reference": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "archive_case": "tsp-active-duration-pilot.json",
+  "cohort": {
+    "FL": ["FL67_03", "FL67_04", "FL68_03", "FL68_04", "FL68_07", "FL69_01"]
+  },
+  "measurement": {
+    "selection": "固定上流の録音注釈でEH1がある確認用女性FLの辞書順先頭6録音。音響値を選択に用いない。",
+    "intervals": "録音の秒区間は固定上流の注釈、対応する合成の秒区間は同じ版のG2PとMFAの出力。対応済み強勢付き /ɛ/ の各3窓を測定し、固定学習参照と既存の39箇所・2値に通す。",
+    "previous_held": "FK",
+    "held": "FL",
+    "pairs": 78,
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "fl_has_positive_pooled_synth_cost": "男女をまとめた参照で、FLの合成側は少なくとも1条件で診断費用が正になる。",
+    "pooled_has_at_least_as_many_zero_costs": "FLの録音側と合成側のいずれも、男女をまとめた参照は女性のみの参照と同数以上の費用0を示す。",
+    "pooled_reduces_maximum_recording_deviation": "各参照の無介入時を基準に、男女をまとめるとFL録音側の最大絶対変動が小さくなる。"
+  },
+  "acceptance": "同じ固定音素対応からFLの録音・合成で上流の最低支持数を満たすF2を得る。第57版の2コホートと同じ78条件をそのまま使い、学習側の中心・残差・MAD・幅が基準を含む全条件で前回と一致することを確認する。FKとFLはそれぞれ個別の確認話者として扱い、録音と合成の費用、幅を超えた距離、費用0の数と費用変動の最大を記録する。FLの基準と全156条件の診断費用を固定上流と独立Pythonで1e-10以内に照合する。予測の成否は機構の合否から分ける。"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "worklet-song-recording-webm",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "recording_case": "worklet-song-recording.json",
+  "tract_case": "worklet-song-tract-recording.json",
+  "hypothesis": "同じChromiumでMP4の対応判定だけを無効にすると、同じ二音の実時間歌唱を候補と固定上流がVP9/OpusのWebMで収録する。加工前PCMはMP4実行とバイト一致し、復号後も拍と三次元断面の既存基準を満たす。Opusの最初の圧縮パケットと最初の復号音声の時刻は一致しないことがあり、実サンプルの時刻を採れば前後の無音と音声終端を同じ基準で比較できる。",
+  "reference": {
+    "mp4_run": "worklet-song-tract-recording-20261120-final-retry",
+    "manifest_sha256": "8707c67e02b0de27306a4ad1d50db26fa20a11f874413822ec239a413926cfc6"
+  },
+  "measurement": {
+    "suppressed_mime_essence": "video/mp4",
+    "requested_mime_type": "video/webm;codecs=vp9,opus",
+    "file_mime_type": "video/webm",
+    "ebml_doc_type": "webm",
+    "video_codec": "vp9",
+    "audio_codec": "opus",
+    "maximum_track_start_difference_seconds": 0.085,
+    "audio_capture_quantum_samples": 128,
+    "expected_audio_timestamp_tick_seconds": 0.001,
+    "maximum_marker_error_change_from_mp4_seconds": 0.085,
+    "minimum_browser_playback_seconds": 0.3
+  }
+}

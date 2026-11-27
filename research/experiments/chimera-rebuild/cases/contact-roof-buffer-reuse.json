@@ -1,0 +1,20 @@
+{
+  "id": "contact-roof-buffer-reuse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "contact-grid-allocation-breakdown-20261122-a",
+  "allocation_reference_case_id": "contact-grid-allocation-breakdown",
+  "geometry_reference_run": "contact-grid-allocation-breakdown-20261122-a",
+  "geometry_reference_case_id": "contact-grid-allocation-breakdown",
+  "browser_reference_run": "worklet-live-song-resample-buffer-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": "roof_cumulative",
+  "removed_allocations_per_geometry_update": 1,
+  "allocations_per_geometry_update": 3,
+  "expected_removed_allocations": 1476,
+  "expected_allocations": 4429,
+  "contact_grid_allocations_per_call": {"roof_cumulative": 0, "measurement_grid": 1, "contact_samples": 1},
+  "prediction": "側断面の口蓋沿い位置の累積距離に、前の声道更新から保持した領域を使用する。声道更新1476回で各1件が減り、歌唱全体の5905件が4429件、語境界の25量子は各16件から12件になると予測する。",
+  "criteria": "通常CLIの4条件の制限前後の断面、歌唱PCM全91200標本、1425点の全ABI観測は内訳計測時と一致すること。全713量子で減った件数は変更前の累積距離の件数に一致すること。測定線・接触標本とほかの独立した工程の件数および呼び出し回数は一致すること。"
+}

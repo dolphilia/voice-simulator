@@ -1,0 +1,66 @@
+{
+  "id": "song-voice-schedule-shimmer",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "upstream_reference": {"case": "song-voice-schedule-drift.json", "run": "song-voice-schedule-drift-20261121-repeat"},
+  "candidate_reference": {"case": "song-voice-schedule-jitter.json", "run": "song-voice-schedule-jitter-20261121-repeat"},
+  "pitch_drift_cents": 0,
+  "period_jitter": 0.00455,
+  "amplitude_shimmer": 0.042,
+  "cycle_seed": 777,
+  "host_block_frames": [128, 77],
+  "cycle_amplitude_tolerance": 1e-12,
+  "voiced_window_frames": [21000, 21600],
+  "active_voicing_floor": 0.01,
+  "hypothesis": {
+    "source": "シマー係数だけを0から0.042へ変えると、位相とF0は上流・研究版の従来条件と引き続きビット一致し、各周期の振幅倍率はシード777から独立に求めた値に一致する。ゲートと口端の最小断面は研究版内で差が出ない。",
+    "transfer": "乱流注入量0でも、声帯振動の発生後に研究版の0と0.042の声門面積・流量と放射に差が現れ、閾値10⁻⁶を超えるPCM差に先行する。",
+    "comparison": "上流とシマーをそろえると、前回の有声窓のPCMのRMS誤差と、全区間の声門面積・声門流量・放射の最大差が各4条件で減る。残差は閾値を超えた初回位置、最大差、PCMのビット差を記録する。"
+  },
+  "criteria": {
+    "input": "これまでと同じ2音のPop Dee、男声中立姿勢、110 Hz、肺圧7.2 cmH₂O、予備描画16,384・16,512フレーム、乱流注入量0・1。保存した上流のシマー0.042と研究版のシマー0を読み、研究版の通常CLIでシマー0.042の条件を加える。",
+    "measurement": "48 kHz出力の末尾の31,200点を相対時刻でそろえる。予約前からの各周期境界は前回の96 kHz位相積分で数え、同じシードの別計算と出力時の振幅倍率を照合する。PCMは譜面時刻0以降29,760点、有声部は21,000から21,600の半開区間を使う。口端は固定上流の最小断面を研究版のlip_minimum_cm2と照合する。",
+    "verification": "入力の差が指定係数の追加だけであること、整数サンプルの音素計画、観測の有限性と位相・F0のビット一致、振幅倍率の最大誤差1e-12、各実装の波形の差の順序、128・77ブロックのPCMと出力段CSVの一致を検証する。物理量の初回閾値は直前の比較と同じ。別ディレクトリから再実行する。"
+  },
+  "retain_csv": {
+    "frame-16384-noise-0/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-0/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-1/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-1/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-0/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-0/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-1/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-1/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [15680, 15840], [22310, 23040]]
+    }
+  }
+}

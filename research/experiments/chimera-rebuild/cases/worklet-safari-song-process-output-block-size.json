@@ -1,0 +1,38 @@
+{
+  "id": "worklet-safari-song-process-output-block-size",
+  "base_case": "worklet-safari-song-process-output.json",
+  "block_comparison": {
+    "baseline": "split-128",
+    "candidate": "split-256-short-start",
+    "split_settings": {
+      "split-128": {"block_frames": 128, "initial_blocks": []},
+      "split-256-short-start": {"block_frames": 256, "initial_blocks": [64, 64, 64, 64]}
+    },
+    "minimum_median_startup_reduction_ms": 120,
+    "preparation_reduction_tolerance_ms": 25,
+    "maximum_median_quiet_increase_frames": 128,
+    "maximum_median_phase_magnitude_increase_frames": 128
+  },
+  "condition_order": [
+    ["split-128", "split-256-short-start"],
+    ["split-256-short-start", "split-128"],
+    ["split-128", "split-256-short-start"],
+    ["split-256-short-start", "split-128"]
+  ],
+  "song_onset": {
+    "rms_window_frames": 128,
+    "rms_threshold": 0.00005,
+    "template_frames": 4096,
+    "minimum_correlation": 0.98,
+    "maximum_threshold_anchor_error_frames": 32,
+    "search_before_ms": 20,
+    "search_after_ms": 180
+  },
+  "criteria": {
+    "conditions": "通常のSafari歌唱画面でPop Deeを48 kHz、31,200フレーム、乱流係数1で実行する。量子128、総予備描画16,384、先行音とタップ開始手順を固定する。均等128フレーム分割と、現行の64フレーム4片に続く256フレーム63片を4ペアで比較し、別ディレクトリから各ペア内の順序を反転する。既定の歌唱設定は変更しない。",
+    "timing": "128片対67片の名目の準備時間差は61量子の162.67 ms。第1片から最終片の時間差はペア中央値で名目差の25 ms以内、準備解放から予約出力の先頭、同じ位置からタップで捉えた歌唱立ち上がりまではいずれもペア中央値で120 ms以上短縮すると予測する。",
+    "tap_continuity": "先行音は左右の差で追う。既存の準備開始20 ms前から準備完了160 ms後を比較窓に使う。差チャンネルの絶対振幅1e-5以下の最長区間と、前後の窓の位相差を記録する。256フレーム条件による増加は、最長の低振幅区間と位相差の絶対量のペア中央値でそれぞれ128フレーム以内と予測する。完全ゼロの区間も別に集計する。",
+    "song_onset": "加工前の歌唱波形とタップの左右の平均を使う。128フレームの前向きRMSが5e-5を超える最初の窓を歌唱立ち上がりと定義する。加工前の立ち上がりから4,096フレームを参照し、タップの予想時刻の20 ms前から180 ms後の間で相関0.98以上、振幅の判定と相関位置の差32フレーム以内で歌唱と確認する。",
+    "identity": "予備描画の回数、最終片と予約の絶対フレーム、歌唱31,200点と各488観測点、先行信号、タップの時刻を既存基準に照合する。第1片から最終片の時間、解放から予約出力まで、タップの歌唱立ち上がりは別々に保存する。"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "duet-mixed-output-gain",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_case_id": "duet-mixed-initial-tip",
+  "reference_run": "duet-mixed-initial-tip-20261122-final",
+  "reference_manifest_sha256": "d880e8c8a32afdff3b3472f3e09bea6c9393b2cbcda98e6728834d5b45e38ed2",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "voice_index": 2,
+  "body": {"female": 0.4, "child": 0.3},
+  "body_scale_endpoints": [1.0, 0.9, 0.74],
+  "expected_body_scale": 0.894,
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "frames": 97920,
+  "base_gain": 5.5e-7,
+  "gain_factor": 0.875,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerances": {
+    "body_scale_absolute": 1e-12,
+    "radiation_cm3_s2": 0.001,
+    "independent_normalized": 1e-10,
+    "aligned_cross_normalized": 1e-10,
+    "pcm_absolute": 6e-8
+  },
+  "minimum_base_pcm_difference": 0.01,
+  "hypothesis": "混合体型でも初期舌先と音源をそろえれば、描画時に0.875を適用すると固定上流との差が全97,920フレームで6×10⁻⁸以内になり、既に丸めたPCMを0.875倍したときより最大差が小さくなる。研究版の二条件で内部放射・間引き出力はビット一致し、差は間引き後のゲイン適用から現れる。固定上流を含む三条件とも包絡は0.75以下になる。",
+  "criteria": "保存された混合体型の休止舌先のケースから song_voice.voice.output_gain だけを5.5×10⁻⁷から4.8125×10⁻⁷にする。上流のドリフト・ジッター・シマーは休止舌先の先行実行と同じく0にし、上流の体型ゲインは既定値を使う。上流は混合体型を受け付ける無変更ライブラリの観測器で既定音源のPCMとテレメトリも再取得し、追加観測を入れた版の同じ条件を照合する。研究版は通常CLIの両PCMと観測器、変更前と上流対照は先行実行のPCMにビット照合する。全97,920フレームを対象に各2内部サンプルの放射、FIR、ゲイン直後、DC除去、包絡と保持残数、PCMを採取する。独立計算との誤差、段別の最初の差と許容差超過、ピーク制限とソフトクリップの発動数を記録する。保存した基準PCMをf64で0.875倍した比較も残す。"
+}

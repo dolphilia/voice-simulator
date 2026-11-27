@@ -1,0 +1,27 @@
+{
+  "id": "worklet-safari-song-webcontent-waits",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-safari-song-audio-client.json",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "condition_order": [["bulk", "split"]],
+  "trace": {
+    "instruments": ["System Call Trace"],
+    "capture_target": "webcontent",
+    "release_after_notification_ms": 20,
+    "output_wait_seconds": 90,
+    "export_syscall_xml": false
+  },
+  "reference_capture": "worklet-safari-song-output-notification-20261122-syscalls",
+  "reference_analysis": "worklet-safari-song-output-notification-20261122-syscalls-analysis",
+  "minimum_waits_per_window": 12,
+  "minimum_graph_gap_reduction_ms": 70,
+  "maximum_proxy_wake_gap_ms": 25,
+  "criteria": {
+    "input": "同じ48 kHzのSafari歌唱と先行信号、同じ16,384フレームの予備描画を一括と67片で比較する。先行信号の開始前後でRemoteAudioDestinationProxyとAudioWorkletの両スレッドを持つWebContentを一意に特定し、そのPIDへSystem Call Traceを付ける。研究ワークスペースと別ディレクトリで順を反転する。",
+    "validity": "構築前90〜10 ms、準備開始から準備完了、完了後10〜90 msを同じWeb側描画スレッドの待機復帰時刻が覆い、各窓で12件以上を採る。歌唱PCM・先行PCM・観測点・準備系列は既存基準に照合する。AudioWorkletも同じPIDの別スレッドとして確認する。",
+    "prediction": "先行信号のグラフ内の最大間隔は分割で70 ms以上短縮する一方、一括でもWeb側の描画スレッドのMach待機復帰の最大間隔は25 ms以下と予測する。復帰間隔に重なる条件変数待ちの各区間、積算と最長間隔を比較する。分割で観測済みの7.143 msの待ちとも、スタックの呼び出し元または同じバイナリの相対アドレスで照合する。",
+    "scope": "通知と待機復帰の間隔を区別する。アドレスの照合にはイメージUUIDとロードアドレスを使う。呼び出し元のシンボルを得られない場合は、その範囲を明記する。FIFO残量や出力PCMは独立した観測とする。",
+    "interruption_rule": "呼び出し元の読解に基づき、計時値の解析前に補助判定を登録する。準備中の復帰が12件未満でも、基準・準備後の双方に12件以上の復帰があり、準備をまたぐ間隔の両端と、その間に終わった単一の条件変数待ちが採れているときは、元の件数不足を明記して待機の長さを判定する。25 msの予測は維持する。",
+    "completed_wait_check": "初回解析で件数と開始境界の条件が未達だった後に追加した。描画スレッドの1件の完了済み条件変数待ちと、待機中に同じPIDのWorkletが同一条件変数へ出した通知をスタックで確認する。ブラウザ時計の両端を各1 ms内側へ寄せた準備窓との重なりが25 msを超えれば、25 ms以下という予測に対する反証として記録する。従来の件数・境界条件の判定は保存する。準備後の100 µs以下の復帰間隔は追加の観測値とする。"
+  }
+}

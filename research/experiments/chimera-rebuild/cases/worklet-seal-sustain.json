@@ -1,0 +1,25 @@
+{
+  "id": "worklet-seal-sustain",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-sustain-pcm.json",
+  "source_revision": 1,
+  "hypothesis": "SealVoiceをWorkletから同じ出口フレームで呼べば、間引き倍率2と1の両方で加工前PCMはCLIとビット一致する。量子途中の呼気指示は次の64フレーム境界で目標と肺圧に反映される。壁面が口端より先に放射し、鼻端は無音で、停止後のPCMは減衰する。",
+  "measurement": {
+    "variants": ["official-prefix-48000", "delayed-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [18, 19, 46, 47, 57599],
+      "delayed-96000": [144, 145, 191, 230, 231, 286, 287, 16001, 16063]
+    },
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "cli_state_absolute_tolerance": 0.0,
+    "independent_pressure_absolute_tolerance_dyn_cm2": 1e-8,
+    "pressure_cmh2o_to_dyn_cm2": 980.665,
+    "startup_phase_control_steps": 1
+  }
+}

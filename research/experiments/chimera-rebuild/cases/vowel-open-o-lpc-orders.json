@@ -1,0 +1,72 @@
+{
+  "id": "vowel-open-o-lpc-orders",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "vowel-open-o-lpc-matched-20261124-repeat",
+    "case": "vowel-open-o-lpc-matched",
+    "manifest_sha256": "70bfab9813d49132c827c650a9c01e33177bd84022614314c5a7def94ee87f6a"
+  },
+  "measurement": {
+    "ipa": "ɔ",
+    "wave": "sequence",
+    "source_start_frame_from_vowel": 18000,
+    "source_frame_count": 4800,
+    "source_rate_hz": 48000,
+    "analysis_rate_hz": 16000,
+    "analysis_frame_count": 1600,
+    "decimator": "box",
+    "endpoint_window_indices": [
+      28,
+      29
+    ],
+    "orders": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "pre_emphasis": 0.97,
+    "lag_window_hz": 40,
+    "min_freq_hz": 90,
+    "max_bandwidth_hz": 600,
+    "diagnostic_max_bandwidth_hz": 1200,
+    "nyquist_guard_hz": 0.000001,
+    "real_axis_imag_tolerance": 1e-12,
+    "bands_hz": {
+      "first": [
+        450,
+        800
+      ],
+      "second": [
+        850,
+        1250
+      ],
+      "third": [
+        2050,
+        2675
+      ]
+    },
+    "envelope_grid_hz": [
+      400,
+      2700,
+      5
+    ],
+    "large_shift_hz": 30,
+    "absolute_sample_and_correlation_tolerance": 1e-10,
+    "coefficient_tolerance": 1e-9,
+    "complex_root_tolerance": 1e-8,
+    "formant_tolerance_hz": 0.02,
+    "envelope_tolerance_db": 0.000001
+  },
+  "hypotheses": {
+    "shared_lags_stay_equal": "同一入力を窓処理するので、12〜18次で共有する自己相関ラグと重み済みラグは一致する。差は係数に新しいラグを反映する段から現れる。",
+    "lowest_root_moves_with_or_without_bandwidth_cap": "12次と18次の最も低い公開ピークの差は30 Hz以上で、同じ低域の位置差は帯域幅上限を外しても残る。",
+    "mid_band_wide_root_at_low_order_is_excluded_by_bandwidth": "12次の2.05〜2.675 kHzの生の根は600 Hzで落ち、1200 Hzでは戻る。18次では同じ周波数帯に600 Hz以内の根が出る。",
+    "intermediate_order_can_recover_all_three_bands": "13〜17次のいずれかで、事前に指定した3帯域に600 Hz以内の根が揃う。"
+  },
+  "acceptance": "先行実行の保存PCMから窓を切り出し直し、保存済み12次・18次の分析入力とビット照合する。入力、プリエンファシス設定、窓関数、ラグ窓、分析レートを固定し、上流の公開推定器を12〜18次で実行する。全根は複素平面で一対一照合し、実軸上の根を区別して公開ピークと帯域幅を確認する。独立Toeplitz解、包絡、Levinson–Durbinの隣り合う次数の係数・残差の更新式と照合する。先行実行の12次・18次の根と公開ピークを再現し、すべての次数で600 Hzの選別と選別前の根を記録する。1200 Hzへの変更は同じ根に適用した診断として記録する。"
+}

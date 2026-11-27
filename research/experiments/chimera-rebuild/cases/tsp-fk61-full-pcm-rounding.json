@@ -1,0 +1,70 @@
+{
+  "id": "tsp-fk61-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "indexed_upstream": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-paired-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area-paired",
+    "manifest_sha256": "a7f055d404945af079ebd4d23e1abd52072667ed8063313a17adcd349e8db564"
+  },
+  "indexed_research": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area",
+    "manifest_sha256": "34404c8be2eea133f3004f1a2633f3d9fc47605eef84cdd432bfe01cf5f974f9"
+  },
+  "expanded": {
+    "run": "tsp-fk61-control4992-5120-expanded-volume-paired-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-expanded-volume-paired",
+    "manifest_sha256": "f2c945dadbe56d819e2ac2058fa77cb8d864698f339c67e3d12e1551a2285c6b"
+  },
+  "observed_prefix": {
+    "run": "tsp-fk61-pcm16682-rounding-20261123-repeat",
+    "case": "tsp-fk61-pcm16682-rounding",
+    "manifest_sha256": "04f85a572e584809e579bbb6f20a0d84c8de7f395a3eedac77cd71a63e76e40a"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110,
+    "prefix_frames": 116132,
+    "focus_frames": [
+      2937,
+      16682,
+      104883
+    ],
+    "segments": {
+      "opening": [
+        0,
+        16704
+      ],
+      "later": [
+        16704,
+        116132
+      ]
+    },
+    "pcm_outlier_to_exclude": 16682,
+    "registered_expanded_peak_frame": 104883,
+    "minimum_adjacent_fraction": 0.99,
+    "precast_rms_ratio_limits": [0.8, 1.2],
+    "scope": "同じ4隔離ビルドを入口から全116132フレーム描画する。放射からPCMまで全履歴を採取・再計算する。4通りの版間比較について変換直前f64、変換後f32、2つの誤差の差の全区間および2区間の最大、RMS、初差、最大の位置を採る。隣接f32の距離と中点への符号付き距離を測る。PCM差が出たフレームと一致したフレームで、変換前の誤差を集計する。16682を除く対照も残す。"
+  },
+  "hypotheses": {
+    "expanded_pair_focus_straddles_with_upstream_above": "展開式どうしの104883で、変換直前の上流が上側、研究版が下側で中点をまたぐ。",
+    "expanded_pair_at_least_99_percent_of_pcm_differences_are_one_ulp": "展開式どうしで値の異なるPCMフレームの99%以上が隣接値になる。",
+    "expanded_pair_precast_rms_ratio_between_0p8_and_1p2": "両版を通常式から展開式に変えても、全発話のf64 RMS比は0.8以上1.2以下に収まり、f32のRMS差の低下と同じ大きさの改善は生じない。"
+  },
+  "acceptance": "通常CLI、観測版、第91版の全PCMが4条件でビット一致する。第92版の冒頭観測と第91版の全口端流量に全条件を照合する。有限な全116132出力と内部232264標本を採取し、放射、FIR、ゲイン、DC除去、包絡、PCMを独立に再計算できる。全条件でリミッターが作動せず、観測したDC除去後の値のf32変換がPCMに一致する。104883の展開式どうしのPCMは保存済みの隣接値と一致する。全比較でPCMが1 ULP異なるフレームは観測f64が対応する中点に挟まれ、丸めでビットを再現できる。符号の異なるゼロ、複数ULPの差、中点と一致する値の個数を別々に保存する。"
+}

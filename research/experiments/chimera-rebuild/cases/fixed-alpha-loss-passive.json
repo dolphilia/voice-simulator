@@ -1,0 +1,31 @@
+{
+  "id": "fixed-alpha-loss-passive",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ の選択した1枝または3枝で、順方向は接線の負の圧力差をゼロにし、逆方向は元の二次損失を使う。定常点の圧力差と傾きを保ちつつ、低流量で流れに仕事をする区間が消える。660 Hzと770 Hzの口端応答はそのままの接線を用いたときから変わると予想し、線形予測との差がどの程度残るかを符号付きで測る。",
+  "reference": {
+    "run": "fixed-alpha-loss-tangent-20261124-repeat",
+    "case": "fixed-alpha-loss-tangent",
+    "sha256": "2e1eb2f9e010471648a34b2c5cc78c1d4536271435025812d01f6915cf6af8f4"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "variants": {"baseline": [], "one_branch": [[26, 27]], "three_branches": [[25, 26], [26, 27], [27, 28]]},
+    "input_mean_error_lt_cm3_s": 1e-10,
+    "series_peak_relative_error_lt": 1e-9,
+    "dc_stationarity_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "work_rate_negative_tolerance_relative_to_peak": 1e-9,
+    "complex_change_reconstruction_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10,
+    "observable_passivity_effect_relative_to_original_residual": 1e-4
+  },
+  "input": "固定上流と研究版の隔離ビルドで、前回と同じ固定 /ɑ/ と通常発声・固定LFの再入力を使う。標本76,800で選択した1枝または3枝を受動な圧力損失へ替える。定常流のみを維持した対照も再計測する。接線そのままの対照には前回のハッシュ照合済み観測を使う。",
+  "observation": "枝流量と慣性・粘性を除いた圧力差から、選択枝に負の仕事率が残らないことを数値丸めの許容差内で確認する。切替前後と最後の19,200標本で、接線のままと受動化後を比べる。接線の流量を受動式に入れた局所圧力差、選択枝の流量が変わった分、未選択枝の流量が変わった分の3成分を離散節点方程式で口端応答に換算し、再描画した複素差を再構成する。"
+}

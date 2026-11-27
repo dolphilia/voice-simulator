@@ -1,0 +1,31 @@
+{
+  "id": "songbird-chirps-oec-neck-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-terminal-numerator-44100-20261123-repeat",
+    "manifest_sha256": "995a1a48c57a6ca8902537c25b5a76e54d1d7ca9167e56f2d8b1a7f95160445c"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 16,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_first_flow_differences": {
+    "matched_time": 4,
+    "native_block": 5,
+    "no_tracking": null
+  },
+  "neck": {
+    "area_cm2": 0.03,
+    "length_cm": 0.25,
+    "entrance_loss": 0.3,
+    "expansion_loss": 0.8,
+    "viscosity_reference_hz": 700
+  },
+  "hypothesis": "235点制御の押鍵4点後では、前回の腔圧と首部流量は一致する。まだ到達差が小さいため、最初の流量差は首部慣性の時間換算、または持ち越し運動量の換算順で現れると予測する。気管端の前回圧力は新たに採取し、圧力の入力に先行差がある場合はそれも切り分ける。追従0は無励振と予測する。",
+  "observation": "前回の実験版の6差分を適用し、呼気ゲート0の235点制御、256点制御、追従0を押鍵後16内部点まで描画する。既存のCSVに加え、首部両側の圧力と断面、隣接セル長、首部の断面と流量を観測する。同じ標本の断面と一つ前の圧力・流量・慣性から符号別の二次損失まで再計算する。最初の差では入力と計算項を単独および組み合わせで置き換える。",
+  "acceptance": "既存の観測列は対照の保存CSVの窓とバイト一致する。固定上流と候補の首部流量は各条件16点をビット照合する。最初の差の入力と中間量、差の有無が変わる置換を保存する。追従0の流量はゼロ。仮説の成否はビット照合の判定と分けて記録する。"
+}

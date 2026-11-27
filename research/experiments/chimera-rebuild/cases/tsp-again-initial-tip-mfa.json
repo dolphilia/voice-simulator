@@ -1,0 +1,51 @@
+{
+  "id": "tsp-again-initial-tip-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_01",
+  "previous_render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "matched_render": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "previous_alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "matched_alignment": {
+    "run": "tsp-matched-speech-mfa-20261123-repeat",
+    "case": "tsp-matched-speech-mfa",
+    "manifest_sha256": "b24443ae55f3f7b1b0112fd712b450f742ae0711906ea104af6b33f14f38ac03"
+  },
+  "formants": {
+    "run": "tsp-matched-speech-formants-20261123-repeat",
+    "case": "tsp-matched-speech-formants",
+    "manifest_sha256": "63f63526f13c3e793b64c296953f82695c55f65462a4fe970593c921d0769562"
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "output_block_frames": 128,
+    "initial_frames": 2400,
+    "profile_frames": [0, 63, 127, 479, 2399, 92159, 97919],
+    "tip_coordinate_tolerance_cm": 1e-12,
+    "early_pcm_difference_minimum": 1e-6,
+    "maximum_late_tip_difference_cm": 1e-6,
+    "word": "again",
+    "phones": ["EH1", "N"],
+    "analysis_centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "analysis_rate_hz": 12000,
+    "frame_samples": 300,
+    "late_pcm_region": [91200, 100800],
+    "expected_matched_end_seconds": 2.0399999618530273,
+    "expected_previous_end_seconds": 2.059999942779541,
+    "expected_previous_90_percent_offset_samples": 216,
+    "acceptance": "本文、体型、音源、ゲイン、発話計画、MFA設定は固定し、初期舌先の2座標だけを旧値へ戻す。設定を揃えた対照は保存済みPCM、整列用PCM16、境界を再現する。固定Rustと独立LPC計算は同じ窓開始、欠測、F1・F2を既存の許容差で再現する。予測の採否とは別に初差と全窓を保存する。",
+    "prediction": "初期舌先が変わると50 ms以内のPCMに1e-6を超える差が生じる。約2秒の /ɛ/–/n/ 境界までに舌先座標差は1e-6 cm以内となり、旧比較にあった20 msの境界差と216標本の90%窓開始差は再現しない。"
+  }
+}

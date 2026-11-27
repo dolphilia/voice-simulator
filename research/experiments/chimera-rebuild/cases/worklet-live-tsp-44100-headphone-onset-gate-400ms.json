@@ -1,0 +1,17 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-onset-gate-400ms",
+  "revision": 2,
+  "base_case": "worklet-live-tsp-44100-headphone-onset.json",
+  "trace": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server"
+    ],
+    "time_limit": "2s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 400,
+    "maximum_server_host_error_us": 25
+  },
+  "revision_note": "250 ms条件の再収録では双方の波形に発話があったが、最初の非ゼロ点に対応するAudio ClientとAudio Serverが収録前端より早かった。再生許可を150 ms遅らせ、PCM比較の判定窓や閾値を維持する。"
+}

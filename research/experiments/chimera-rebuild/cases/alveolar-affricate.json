@@ -1,0 +1,69 @@
+{
+  "id": "alveolar-affricate",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "無声 /ts/ は舌先の閉鎖から歯茎摩擦音 /s/ の狭窄へ移る。成人の標準発話では口腔閉鎖と枝流量の停止のあと、歯への乱流、周期発声の順に観測できる。同じ拍と音高の単音譜で、词の声門開大目標は资より大きく、区間終端から開大指示が消えるまで80.2 ms長く、実測した周期復帰も遅れる。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"male-vcv","body":"male","f0_hz":112,"rate":1,"text":"ˈɑtsɑ","duration_seconds":0.1316,"check_events":true},
+    {"id":"female-vcv","body":"female","f0_hz":205,"rate":1,"text":"ˈɑtsɑ","duration_seconds":0.1316,"check_events":true},
+    {"id":"mixed-fast","body":{"female":0.4,"child":0.25},"f0_hz":150,"rate":1.35,"text":"ˈit͡si","duration_seconds":0.1316},
+    {"id":"short-palatalized","body":"male","f0_hz":112,"rate":1,"duration_seconds":0.023,"palatalized":true,
+     "segments":[{"ipa":"ɑ","dur":0.16,"stress":1},{"ipa":"ts","dur":0.023,"palatalized":true},{"ipa":"ɑ","dur":0.20}]}
+  ],
+  "syllables": {
+    "资":{"nucleus":"ɿ","aspirated":false,"vot_seconds":null,"explicit_duration_seconds":0.08,
+         "duration_seconds":0.08,"abduction_cm2":0.22,"plateau_past_end_seconds":0.0048,"ramp_out_seconds":0.02},
+    "词":{"nucleus":"ɿ","aspirated":true,"vot_seconds":0.09,"explicit_duration_seconds":null,
+         "duration_seconds":0.112,"abduction_cm2":0.36,"plateau_past_end_seconds":0.060,"ramp_out_seconds":0.045}
+  },
+  "song": [
+    {"id":"zi-solo","lyrics":"资","syllables":["资"]},
+    {"id":"ci-solo","lyrics":"词","syllables":["词"]},
+    {"id":"zi-ci","lyrics":"资 词","syllables":["资","词"],"browser":true}
+  ],
+  "remaining_symbols": {
+    "lyrics": "四是吃字人爱",
+    "syllables": 6,
+    "expected": ["tʂ","ɻ","ʂ","ʔ"]
+  },
+  "release_tip_cm": {"male":9.111,"female":9.117,"child":9.126},
+  "measurement": {
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "bpm":120,
+    "start_seconds":0.5,
+    "midi":57,
+    "beats_per_note":1,
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "independent_band_tolerance":1e-8,
+    "closed_area_cm2":0.0002,
+    "open_lip_minimum_cm2":0.1,
+    "closure_window_padding_seconds":0.05,
+    "minimum_closed_frames":64,
+    "closed_branch_flow_abs_tolerance_cm3_s":1e-8,
+    "release_window_padding_seconds":0.025,
+    "minimum_teeth_active_frames_after_release":120,
+    "glottal_voicing_minimum":0.55,
+    "glottal_area_peak_prominence_cm2":0.015,
+    "period_to_f0_ratio":[0.75,1.25],
+    "voicing_search_padding_seconds":0.18,
+    "early_closure_window_seconds":0.015,
+    "minimum_aspirated_pulse_delay_ms":20,
+    "expected_command_release_difference_ms":80.2,
+    "browser_observed_fields":[
+      "gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz",
+      "radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2"
+    ],
+    "initial_state":"各発話は親ケースの初期姿勢・肺圧・出力段を使い、F0と体型を変更する。歌唱は成人男性、同じMIDI番号・開始拍、親ケースの初期姿勢と呼気、ビブラート0。各譜例を独立に初期化する。乱流は通常入口で有効化する。",
+    "window":"標準発話では開始50 ms前から終端まで、唇が開き口腔内最小面積が閾値を下回る最長連続区間を閉鎖とし、両隣の流量を測る。解放後から終端25 ms後までに歯の乱流、終端180 ms後までに周期発声を探す。歌唱の単音対では音素中点の閉鎖計画位置または実測開口の遅い方から周期を探し、区間終端からの遅れを比較する。短縮と話速変更では計画・PCM・内部状態を照合する。標準発話では既存の独立式で歯の帯域上限と注入利得を照合する。連続した2音は実ブラウザの通常の歌唱入口で実行し、保存ケースをCLIで再演する。"
+  }
+}

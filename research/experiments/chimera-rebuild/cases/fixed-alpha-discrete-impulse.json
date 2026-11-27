@@ -1,0 +1,38 @@
+{
+  "id": "fixed-alpha-discrete-impulse",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ固定 /ɑ/ を零流量の初期状態から弱い体積インパルスで励振すると、660 Hz・770 Hzの口端応答は、枝と壁が前標本圧を読み、口端の負荷が両時刻の平均圧を使う離散節点方程式で再現できる。注入量を100倍にしても正規化した口端応答はほぼ同じで、有限流量で働く枝の二次損失による差は小さいと予測する。",
+  "reference": {
+    "run": "fixed-lf-harmonic-transfer-20261124-repeat",
+    "case": "fixed-lf-harmonic-transfer",
+    "manifest_sha256": "0eacdea44e6972053ee4ebbfd507e95b96fe3d8465df3fd28935a9e403de28e0"
+  },
+  "short_window_reference": {
+    "run": "fixed-alpha-discrete-impulse-20261124-registered",
+    "case": "fixed-alpha-discrete-impulse",
+    "manifest_sha256": "2c3374637cf03eb03f7b8c954e8d68bb8274791ce84bff6eb8473972a6d794c8",
+    "sample_count": 19200,
+    "expected_failed_checks": ["large/tail_convergence", "small/tail_convergence", "small_impulse_matches_discrete_node_equations"]
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "sample_count": 57600,
+    "tail_start_sample": 48000,
+    "frequencies_hz": [660, 770],
+    "impulse_volume_cm3": {"small": 1e-8, "large": 1e-6},
+    "first_lip_sample": 35,
+    "geometry_abs_error_lt": 1e-9,
+    "upstream_waveform_peak_relative_error_lt": 1e-9,
+    "relative_identity_error_lt": 1e-8,
+    "tail_to_peak_lt": 1e-8,
+    "tail_frequency_response_relative_change_lt": 1e-8,
+    "amplitude_scaling_complex_relative_change_lt": 1e-5,
+    "small_signal_discrete_complex_relative_error_lt": 1e-7,
+    "first_amplitude_difference_peak_relative_gt": 1e-10
+  },
+  "input": "前回の実行に保存した成人男性の固定 /ɑ/ の姿勢を使う。声門枝と軟口蓋ポートを閉じ、肺圧・節点圧・枝流量・壁変位がゼロの状態から開始する。咽頭入口で標本0だけ体積×96,000の流量を入れる。",
+  "revision_reason": "第1版は観測を0.20秒で終え、0.15秒以降の口端応答が最大振幅の7.64×10⁻⁶残った。0.125〜0.20秒で25 msごとに約3分の1へ減衰したため、収録を0.60秒、尾部の観測を0.50秒以降とする。許容差は第1版と同じ値を使い、冒頭19,200標本・元の不合格を直接照合する。",
+  "observation": "内部標本0〜57,599の節点圧・枝流量・口端と壁の放射流量を上流の既存プローブと研究版CLIで照合する。先頭圧力を体積/コンプライアンス、口端到達を咽頭入口からの枝数で検算する。口端と壁の流量を注入流量で割った複素応答をFFTと直接DFTで求め、最終9,600標本を除いた複素応答とも照合する。",
+  "analysis": "線形要素は前回の固定姿勢の節点と枝を使う。幾何コンプライアンスの連続時間解と離散時間解、離散時間解に分岐安定化の下限を適用した解を比較し、離散時間解と小入力での複素比を照合する。通常発声・固定LFの保存済み応答と零バイアスの線形化との差は振幅と位相を記録する。有限の平均流量を導入する対照は次の工程とする。"
+}

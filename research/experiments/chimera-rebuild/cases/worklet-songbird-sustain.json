@@ -1,0 +1,29 @@
+{
+  "id": "worklet-songbird-sustain",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-sustain-pcm.json",
+  "hypothesis": "持続音と停止のイベントを128フレームの描画量子内でも指定位置に適用すれば、CLIとWorkletのPCMはビット一致する。48 kHzでは停止、96 kHzでは開始が描画量子の境界より早い64フレームの制御境界に反映される。",
+  "measurement": {
+    "variants": ["sustain-48000", "sustain-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 61,
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_gate_absolute_tolerance": 1e-9,
+    "area_per_opening_cm2": 0.03,
+    "independent_area_absolute_tolerance_cm2": 1e-12,
+    "steady_window_before_release_seconds": [0.07, 0.02],
+    "minimum_steady_port_flow_rms_cm3_s": 0.01,
+    "tail_window_seconds": 0.02,
+    "maximum_tail_to_steady_pcm_rms_ratio": 1e-8,
+    "observed_fields": [
+      "gate", "sac_pressure_dyn_cm2", "left_opening", "right_opening",
+      "left_port_area_cm2", "right_port_area_cm2", "left_port_flow_cm3_s", "right_port_flow_cm3_s"
+    ]
+  }
+}

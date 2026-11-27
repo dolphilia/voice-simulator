@@ -1,0 +1,132 @@
+{
+  "id": "tsp-fk61-control5632-oral-geometry",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control5632-oral-inlet-20261123-repeat",
+    "case": "tsp-fk61-control5632-oral-inlet",
+    "manifest_sha256": "627168bc6cd764da7952a440d5c176ef5926965418246afff219c186369e04ca"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      5630,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "固定上流・研究版・下唇評価順の試験版で、5632・5760の最終形状目標と5630〜5875の更新前形状と増分を観測する。節点28〜43で面積と長さの逐次加算、積の丸め、体積源の二段平滑を照合する。節点34のみと節点28〜37の2範囲で断面積と長さの系列を独立に交換し、試験版の体積源を逐次再計算する。初期体積の比較は5631の組合せた形状、平滑器の初期値は試験版。枝・壁・コンプライアンスと乱流圧は試験版で固定し、咽頭の入力は試験版と上流の2条件を比較する。口端流量を5632〜5875について戻しPCM 2937まで検査する。",
+    "control_boundaries": [
+      5632,
+      5760
+    ],
+    "focus_node": 34
+  },
+  "hypotheses": {
+    "length_targets_differ_at_both_boundaries": "5632と5760の両方で、16節点に共通の長さ目標が固定上流と試験版で分かれる。",
+    "length_effect_larger_at_node34_raw": "両制御境界の節点34で、積を丸めない体積速度に対し、試験版断面積のまま長さを交換した変化の絶対値が、長さのまま断面積を交換した変化を上回る。",
+    "length_drives_edge37_more_than_area": "5863の枝37→38で、節点28〜37の体積源の長さのみを上流にした条件の流量変化が断面積のみより大きい。",
+    "paired_geometry_and_boundary_recover_pcm": "節点28〜37の体積源で断面積と長さをともに揃え、咽頭流入を上流にすると、PCMが冒頭から2937まで一致する。"
+  },
+  "acceptance": "全発話PCMと過去の採取系列17点が各版で一致し、実測した目標と開始形状から増分を再計算して、更新後の断面積・最小面積・長さをビット照合する。通常版の丸めた体積速度と二段平滑を全節点で検算する。面積・長さの交互作用を分数で厳密に求め、無交換と全形状交換の体積源を既出観測と照合する。上流との残差は積、逆刻みの演算、初期値、平滑係数のどの段で生じたか調べる。各範囲・咽頭条件ごとに4組の交換を比較し、最後のPCMと予測判定を保存する。"
+}

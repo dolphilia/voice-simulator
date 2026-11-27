@@ -1,0 +1,18 @@
+{
+  "id": "tsp-tall-gmm-frame-subsets",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "parent": {
+    "run": "tsp-tall-gmm-frame-swap-20261123-repeat",
+    "case": "tsp-tall-gmm-frame-swap",
+    "manifest_sha256": "10a228c7ca2a083703ab7f03e3e006cfa8ce29af926edd8637c4897ca7972eac"
+  },
+  "measurement": {
+    "frames": [164, 165, 166, 167, 168],
+    "subset_count": 32,
+    "predicted_minimum_frame_sets": [[165, 166], [165, 167]],
+    "margin_agreement": 1e-8
+  },
+  "acceptance": "空集合を含む32部分集合すべてを通常MFAの探索に渡す。PCM16・語列・辞書・探索FST・実効GMMと設定を固定する。指定フレームをfloat32開始の特徴に置換し、補集合を圧縮開始の特徴に保ったことを実際のデコーダ入力からビット照合する。空集合と5行全交換は第45版の境界と全遷移・語ID・全区間を再現する。各条件の境界、選択経路、固定2経路の得点差を保存し、最小行数と包含関係で極小の交換集合を全件から数える。前回のフレーム別得点からの予測と、実際の探索に差があれば条件を保存する。",
+  "prediction": "圧縮開始の1.680秒経路の得点差は−0.00015213。1行の交換ではこの差を覆せず、2行の組のうち165・166番と165・167番が1.680秒に切り替わる最小の組と予測する。32集合の各得点差の符号から予測した経路と通常MFAの経路を照合する。"
+}

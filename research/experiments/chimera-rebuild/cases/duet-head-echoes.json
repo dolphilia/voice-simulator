@@ -1,0 +1,59 @@
+{
+  "id": "duet-head-echoes",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "再生中、各声部の舌・下顎・上下唇と開いている口の輪郭を短く履歴に持ち、表示時計の30・60・90 ms前に近い形状を現在の姿勢と重ねて描く。一時停止は残像を隠し、シークした最初の表示では移動元の輪郭が残らない。",
+  "reference": {
+    "heads_run": "duet-heads-20261120-repeat",
+    "heads_manifest_sha256": "80f37d453e00954b677f08369db1af4dc5d33ddb3003b0e98ebfccaeb5378ef0",
+    "mouth_run": "duet-mouth-words-20261120-repeat",
+    "mouth_manifest_sha256": "c7c0bc4f87a35fc767dbcc7a5e887ccb8b0f62fe3ccf78493c3f11124f82b15c",
+    "upstream_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da",
+    "track_sha256": [
+      "0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+      "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"
+    ]
+  },
+  "display": {
+    "clock_step_limit_ms": 50,
+    "minimum_capture_interval_ms": 28,
+    "retention_ms": 120,
+    "target_ages_ms": [90, 60, 30],
+    "max_offset_ms_exclusive": 16,
+    "opacities": [0.10, 0.17, 0.24],
+    "open_gap_per_body_scale_cm": 0.02
+  },
+  "sample_rate_hz": 48000,
+  "coordinate_tolerance_cm": 0.000002,
+  "state_tolerance_seconds": 0.000000000001,
+  "controlled_clock_columns": ["実経過ms", "音源サンプル", "再生中", "世代"],
+  "controlled_clock": [
+    [0, 19968, true, 0], [16, 20736, true, 0], [16, 21504, true, 0], [16, 22272, true, 0],
+    [16, 23040, true, 0], [17, 23808, true, 0], [13, 24576, true, 0],
+    [34, 30720, true, 0], [20, 30720, false, 0], [34, 30720, false, 0],
+    [16, 31488, true, 0], [16, 32256, true, 0], [16, 33024, true, 0],
+    [160, 40608, true, 0], [16, 54720, true, 1], [16, 55488, true, 1],
+    [16, 56256, true, 1], [16, 57024, true, 1], [31, 58560, true, 1],
+    [13, 19968, true, 2], [17, 20736, true, 2], [19, 21504, true, 2],
+    [24, 21504, false, 2], [20, 43008, false, 3], [16, 43008, true, 3],
+    [34, 44544, true, 3]
+  ],
+  "browser": {
+    "viewports": [[960, 900], [390, 850]],
+    "start_sample": 15360,
+    "picture_range_samples": [19968, 43008],
+    "minimum_picture_lip_displacement_cm": 0.15,
+    "minimum_picture_changed_pixels": 15,
+    "minimum_complete_echo_frames_per_voice": 4,
+    "live_seek_samples": [54720, 19968],
+    "seek_advance_samples": 4608,
+    "pause_ms": 180,
+    "paused_seek_sample": 43008
+  },
+  "criteria": {
+    "reference": "同じ視覚時計と二声のCHTL入力で固定上流のAnatomy3Dから呼ばれた描画の数・採取時刻・不透明度・舌の頂点を照合する。独立した時刻の計算も使い、長いフレーム間隔の上限と休止中の時計を確認する。",
+    "browser": "通常入口の最初のシークフレーム、一時停止、再開、前後シークを両幅で採取する。同じ世代で採取した輪郭のみを描き、観測番号は声部ごとのファイルで照合する。",
+    "geometry": "ブラウザが実際に描いた過去の頂点が採取時の現役の舌・下顎・上下唇の頂点と一致し、開口時だけ左右の口角を結ぶ輪郭が加わる。",
+    "pixels": "音源の同じ時刻・同じ観測行で再生中と停止中のキャンバスを比べ、古い輪郭がある画像では15画素以上が変化する。唇の最大変位が0.15 cm以上のフレームで比較する。"
+  }
+}

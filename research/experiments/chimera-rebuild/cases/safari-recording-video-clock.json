@@ -1,0 +1,43 @@
+{
+  "id": "safari-recording-video-clock",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "clock_reference": {
+    "case": "safari-recording-pause-clock-split.json",
+    "run": "safari-recording-pause-clock-split-20261121-reanalysis"
+  },
+  "audio_track_comparison": true,
+  "condition_order": [["audiovisual", "video_only"], ["video_only", "audiovisual"]],
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "signal_seconds": 1.35,
+    "signal_initial_hz": 347,
+    "signal_sweep_hz_per_second": 3901,
+    "signal_gain": 0.12,
+    "start_lead_seconds": 0.12,
+    "drain_seconds": 0.23,
+    "hold_at_signal_seconds": 0.62,
+    "hold_ms": 240,
+    "timeout_ms": 10000,
+    "mime_type": "video/mp4; codecs=avc1.42000a,mp4a.40.2",
+    "video_only_mime_type": "video/mp4; codecs=avc1.42000a",
+    "audio_alignment_windows_seconds": [[0.30, 0.44], [0.95, 1.09]],
+    "audio_offset_search_seconds": [-0.30, 0.45],
+    "minimum_audio_correlation": 0.9,
+    "audio_pause_tolerance_seconds": 0.05,
+    "video_hold_margin_ms": 25,
+    "video_minimum_context_hold_frames": 3,
+    "video_minimum_measured_wall_span_seconds": 0.10,
+    "video_maximum_audio_hold_pts_span_seconds": 0.05,
+    "video_maximum_wall_pts_error_seconds": 0.035,
+    "video_minimum_paired_pts_span_difference_seconds": 0.09
+  },
+  "hypothesis": {
+    "graph": "両条件とも録画に使うかどうかにかかわらず同じ音声グラフを描画する。AudioContextの停止中に絶対フレームは進まず、異なる壁時計値を持つフレームが両条件の動画に残る。",
+    "video": "動画に音声を含めると停止中の映像PTS幅は50 ms以下。映像のみなら、同じ停止中に実際に動画に残った最初と最後の描画の壁時計差に映像PTS幅が35 ms以内で一致する。対応する組で、映像のみのPTS幅は音声付きより90 ms以上長い。"
+  },
+  "criteria": {
+    "input": "同じ48 kHzのチャープ、2行の時計、224×80 pxのキャンバス、30 fps、500 msのチャンク間隔を使う。MediaRecorderへの音声トラック追加だけを変える。1回の実行につき順序を反転して2組、別ディレクトリから繰り返す。",
+    "format": "共通のMP4 H.264/AACの形式指定を両条件に試す。映像のみのMediaRecorder作成時にNotSupportedErrorが出た場合は、同じH.264の形式を維持しAAC指定だけを除いて再試行する。復号時に実際のコーデックとトラック数を確認する。",
+    "measurement": "両方の動画に同じContext値と異なる壁時計値がある期間を復号する。停止完了・再開要求から各25 msを除いた期間で、映像に実際に残った最初・最後の同じ2枚から壁時計幅と映像PTS幅を求める。その壁時計幅が100 ms以上であることを取得判定に使う。停止を挟む最も近い2枚も記録する。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "csd-f0-third-harmonic-en001a",
+  "revision": 1,
+  "reference_run": "csd-acoustic-f0-en001a-20261121-a",
+  "source_run": "csd-song-planning-20261121-final",
+  "selection": "調整用en001aの初回計測で、固定上流と候補の双方が譜面より600セント以上高く推定した音符。0始まりの音符番号29・30・72・73。",
+  "notes": [29, 30, 72, 73],
+  "minimum_initial_cents": 600,
+  "search_upper_semitones": 5,
+  "maximum_median_abs_cents_from_score": 35,
+  "spectrum_note": 29,
+  "spectrum_center_seconds": 21.94,
+  "spectrum_window_seconds": 0.04,
+  "spectrum_fft_size": 65536,
+  "third_harmonic_tolerance_hz": 60,
+  "synthetic_harmonic_amplitudes": [0.18, 0.23, 1.0],
+  "hypothesis": "長さ・中心時刻・電力ゲート・探索下限を固定して、上限だけを譜面の+7半音から+5半音へ狭めると、両合成の4音符が譜面の35セント以内になる。21.94秒の合成は第3倍音が最強で、譜面付近の遅延の正規化差は+7半音付近で先に選ばれる短い遅延より小さいと予測する。",
+  "acceptance": "同じWAVで初回の推定値と欠測を再現し、上限を変える前後を保存する。録音は同じ条件で変化を測り、固定上流と候補では譜面と合成の音高の食い違いをFFTと既知周期の合成波で検査する。初回の通常条件の成績は保持する。"
+}

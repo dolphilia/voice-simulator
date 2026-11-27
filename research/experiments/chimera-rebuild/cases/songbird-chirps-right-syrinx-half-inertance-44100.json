@@ -1,0 +1,30 @@
+{
+  "id": "songbird-chirps-right-syrinx-half-inertance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-syrinx-linear-44100-20261123-repeat",
+    "manifest_sha256": "6c74d1106877f89c8d1b0f78c251d1f8b9efa24c7e36574e9df489a670ac1e98"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_right_flow_offsets": {
+    "matched_time": 28,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "predicted_first_right_flow_effect": {
+    "matched_time": {"offset": 30, "flow_hex": "-0x1.4a4d709dd05bbp-13"},
+    "native_block": {"offset": 19, "flow_hex": "-0x1.85f6d735ad593p-23"},
+    "no_tracking": null
+  },
+  "hypothesis": "右鳴管ポートの気管支側半セルだけで長さ÷面積を長さ×面積の逆数へ替える。保存した候補の直前状態にこの変更を適用すると、256点制御では押鍵19点後に線形慣性の時間換算値が上流に揃い、残る流量差は3 ULPから1 ULPへ縮むと予測する。235点制御では最初の上流との差が出た28点後の流量には影響せず、実験の影響は30点後からと予測する。気管入口と右気管支の末端は同じ標本、左ポートは早くてもその次の標本に影響を受ける。",
+  "observation": "左鳴管の線形慣性まで揃えた先行版を通常のrender CLIでバイト再現し、実験版と同条件の固定上流CSVを照合する。内部176400 Hzの押鍵後0〜63点で両ポートの面積・流量・気管支末端圧、気管入口と末端、首部、腔圧、くちばし、放射流量と差分を採る。右の上流との差と対照との差を記録し、最初の標本で半セル、線形慣性、持ち越し項、抵抗および両端圧の寄与を調べる。",
+  "acceptance": "対照CSVと固定版の入力を照合し、弁面積と押鍵前の状態の一致、全条件・全版で左右ポートと気管入口圧のビット再計算、閉鎖時の流量0、追従0の無励振、最短伝播時刻を確認する。右流量の予測標本と値を比較し、予測との差と上流との残差の起点を保存する。"
+}

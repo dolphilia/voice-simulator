@@ -1,0 +1,35 @@
+{
+  "id": "worklet-safari-song-prepared-shared-context",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "case": "worklet-safari-song-prepared-pause.json",
+    "run": "worklet-safari-song-prepared-pause-20261122-repeat"
+  },
+  "sample_rate_hz": 48000,
+  "output_frames": 31200,
+  "observation_stride_frames": 64,
+  "startup_timeout_seconds": 12,
+  "warm_up_frames": [0, 16384],
+  "condition_order": [[0, 16384], [16384, 0], [0, 16384], [16384, 0]],
+  "constructor_baseline_gaps": 24,
+  "minimum_paired_gap_increase_ms": 70,
+  "marker": {
+    "quantum": 128,
+    "initial_lead_quanta": 16,
+    "ready_quanta": 48,
+    "capture_quanta": 400,
+    "multiplier": 421,
+    "offset": 173,
+    "modulus": 65521,
+    "center": 32760,
+    "scale": 524288,
+    "observe_input": true,
+    "observe_timing": true,
+    "defer_close_until_marker": true
+  },
+  "hypothesis": {
+    "pcm": "同じContextの先行信号は、構築前後も出力フレームを128ずつ進め、独立に生成したPCMと全点でビット一致する。歌唱は予備描画量ごとに保存基準と同じ加工前PCMと観測系列になる。",
+    "timing": "16,384フレームの予備描画では、先行信号の隣接コールバックの一組がWorklet内部の歌唱構築を挟む。構築と重なる最大間隔の同じ組内での増加は中央値70 ms以上と予測する。構築区間の内部でも先行信号が描画された場合はその件数を記録する。"
+  },
+  "criteria": "Safariの通常の実時間歌唱画面を使う。歌唱音源、譜面、乱流係数1と出力長を固定し、予備描画だけを0または16,384フレームにする。同じAudioContextの別の枝で既知のPCMを鳴らし、最低48量子を観測した後に歌唱ノードを作る。各量子の絶対フレーム、入力長、PCM、コールバック開始のエポック時刻を保存する。歌唱構築の開始・終了はWorkletの同じ時計を使う。構築の前の隣接24間隔、構築と重なる最大間隔、構築中の先行コールバック数、歌唱予約と先頭PCMを比較する。試行をペアで4組、別ディレクトリから順序を反転して再実行する。"
+}

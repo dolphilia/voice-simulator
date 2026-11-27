@@ -1,0 +1,53 @@
+{
+  "id": "plan-evidence-audit",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "段階ごとの代表実行は固定上流版で記録され、既存の論理パスで判定と成果を再読できる。内蔵・外部の対照で決定的な成果は一致する。",
+  "observation": "登録した実行の全判定、全成果の格納先とサイズ・SHA-256。断面・PCMの比較区間と許容差は元の各ケース定義による。",
+  "acceptance": "通過とした実行は全判定が真で成果を再読できること。初期形式は4ケースの通過を確認する。変換・保管の前後対照は指定成果のみをバイト比較し、失敗対照は全CSVとエラー理由の保存を確認する。",
+  "groups": {
+    "0": ["upstream-20261119-a", "compare-upstream-pcm16-20261121-final"],
+    "1": ["uniform-tube-20261119-b"],
+    "2": [
+      "soft-wall-20261119-d", "symmetric-junction-20261119-b", "narrow-junction-20261119-b",
+      "sealed-cavity-20261119-h", "moving-aperture-20261119-b", "steady-full-20261119-g",
+      "steady-quarter-20261119-f", "sliding-closure-20261119-d", "turbulence-forward-20261119-b",
+      "turbulence-reverse-20261119-c", "turbulence-alternate-seed-20261119-b", "nasal-open-20261119-b"
+    ],
+    "3": ["glottal-abduction-20261119-i", "glottal-oral-closure-20261119-j", "lung-voiced-20261119-h", "pcm-voiced-20261119-g"],
+    "4": ["vowels-reference-20261119-b", "vowel-motion-voice-vowels-20261119-c"],
+    "5": ["bilabial-nasal-vcv-20261119-b", "english-frontend-20261119-g", "song-plan-20261119-c", "song-voice-stop-20261119-b"],
+    "6": [
+      "wasm-fixed-voice-20261119-realtime-regression", "worklet-fixed-voice-20261119-tract-regression",
+      "worklet-rate-16000-20261120-native-repeat", "worklet-rate-16000-20261120-b",
+      "worklet-rate-32000-20261120-native-repeat", "worklet-rate-32000-20261120-b",
+      "worklet-rate-44100-20261120-native-repeat", "worklet-rate-44100-20261120-c",
+      "worklet-rate-96000-20261120-48000-regression", "worklet-rate-96000-20261120-native-repeat",
+      "worklet-rate-96000-20261120-stage6-root", "worklet-english-voice-20261119-live-ipa-regression",
+      "worklet-live-ipa-20261119-d", "worklet-live-song-20261120-b",
+      "worklet-manual-case-export-20261119-live-ipa-regression", "worklet-tract-acoustics-20261119-glottal-regression",
+      "worklet-glottal-scope-20261119-spectrum-regression", "worklet-pcm-spectrum-20261119-live-ipa-regression"
+    ],
+    "7": [
+      "bodyvoice-20261120-repeat", "worklet-midi-beatbox-20261121-b", "korean-lyrics-20261120-repeat",
+      "russian-lyrics-20261120-repeat", "mandarin-lyrics-20261120-repeat", "worklet-midi-songbird-buzz-20261121-final",
+      "worklet-midi-seal-chug-20261121-final", "worklet-midi-alligator-dance-20261121-final", "worklet-midi-elephant-squeak-20261121-final",
+      "worklet-midi-voice-pitch-20261121-final", "worklet-tract-3d-live-20261120-repeat", "worklet-song-webm-20261120-final-repeat",
+      "worklet-song-firefox-20261120-repeat", "duet-head-expression-20261120-repeat"
+    ],
+    "storage": [
+      "storage-tube-local-20261120", "storage-tube-rtl-20261120", "storage-grid-local-20261120",
+      "storage-grid-rtl-20261120", "storage-upstream-rtl-20261120", "storage-retain-20261120", "storage-bad-column-20261120"
+    ]
+  },
+  "storage_pairs": [
+    {"local": "storage-tube-local-20261120", "external": "storage-tube-rtl-20261120", "files": ["summary.json", "artifacts/settings.json", "artifacts/trace.csv"]},
+    {"local": "storage-grid-local-20261120", "external": "storage-grid-rtl-20261120", "files": ["summary.json", "artifacts/trace.csv"]}
+  ],
+  "retention": {
+    "success": "storage-retain-20261120",
+    "failure": "storage-bad-column-20261120",
+    "expected_error": "指定した列をCSVから選択できません",
+    "expected_excerpt": [["frame", "pressure"], ["1", "11"], ["2", "21"], ["4", "41"]]
+  }
+}

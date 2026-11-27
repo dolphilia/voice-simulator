@@ -1,0 +1,81 @@
+{
+  "id": "csd-en001a-two-phrase-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "config": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "measurement": {
+    "song": "en001a",
+    "phrases": [
+      "en001a-01",
+      "en001a-02"
+    ],
+    "frames": 201600,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 201600,
+    "block_frames": 128,
+    "beats_frames": [
+      115200,
+      143102,
+      171902
+    ],
+    "focus_frames": [
+      0,
+      20363,
+      115200,
+      135600,
+      137760,
+      143102,
+      171902
+    ],
+    "pcm_outlier_to_exclude": 20363,
+    "segments": {
+      "before_first_beat": [
+        0,
+        115200
+      ],
+      "first_beat_to_gap": [
+        115200,
+        135600
+      ],
+      "between_phrases": [
+        135600,
+        137760
+      ],
+      "preparation_for_second": [
+        137760,
+        143102
+      ],
+      "second_phrase": [
+        143102,
+        201600
+      ]
+    },
+    "quiet_pcm_threshold": 1e-06,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "same_settings_pcm_tolerance": 1e-06,
+    "initial_internal_samples": 8,
+    "scope": "固定上流のmatched対照と研究版の通常render-pcmでen001aの先頭2句を描画する。出力48 kHzの201600フレーム、内部96 kHzの403200標本を冒頭から採取する。丸め前とPCMの誤差、初差の段、句間のRMS差、振幅別ULP数を発話の指標と同様に照合する。候補の既存PCMとの比較も記録する。"
+  },
+  "hypotheses": {
+    "radiation_differs_in_first_output_pair": "同設定の両版の放射差分に、出力フレーム0に対応する内部2標本のどちらかで差が現れる。",
+    "precast_and_pcm_peaks_are_at_different_frames": "丸め前とPCMの最大差の位置は異なる。",
+    "pcm_peak_is_before_first_beat": "保存済みの同設定対照で最大PCM差は初拍より前にあった。現行研究版とも初拍より前になる。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差の95%以上は両版のPCM振幅が10⁻⁶以下にある。"
+  },
+  "acceptance": "固定上流の未計装と計装のmatched対照を保存済みPCMにビット照合する。研究版の通常CLIと観測を有効にしたCLIでPCMと発話計画を照合する。現行研究版と過去の研究版のPCM比較を記録し、同設定上流との差が既存許容1e-6以内であることを確認する。全403200内部標本と201600出力で有限性と放射の合算・差分、FIR・DC除去・包絡・PCMを独立検算し、1 ULP差の全中点と初差を記録する。区間は事前登録の5区間で集計し、実録音の歌唱品質や試聴結果とは別の合成器比較として扱う。"
+}

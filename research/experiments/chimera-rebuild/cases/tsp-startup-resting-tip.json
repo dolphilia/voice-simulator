@@ -1,0 +1,18 @@
+{
+  "id": "tsp-startup-resting-tip",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-20261121-a",
+  "recording_ids": ["FA02_07", "MA02_07"],
+  "hypothesis": "候補は舌先を静止位置から外れた座標で初期化し、最初の制御更新で生じた断面と体積の変化を間引き前の放射として観測する。舌先の初期座標だけを上流の計算位置に置くと、発話前50 msの波形は固定上流の無音に揃う。",
+  "controlled_input": "保存済み候補ケースから舌先座標のXとYだけを変える。顎軸 (-2.5, 10.5) cm のまわりで歯裏の点 (6.45, 7.35) cm を -jaw_cm / 9.84 rad 回し、舌体の中立座標からの偏差に (0.30, 0.35) を掛けた値を加える。その他の設定は保存済みのまま。",
+  "observation": "出力レート48 kHz。出力フレーム[0, 2400)を対象に、間引き後・出力ゲイン前の値とPCMの最初の差、ピークを確認する。文章全体についてフレーム数、音響区間長、最大PCM差を併記する。",
+  "pre_roll_frames": 2400,
+  "maximum_pre_roll_pcm_peak": 1e-12,
+  "maximum_pre_roll_decimated_peak": 1e-12,
+  "acceptance": "固定上流の発話前PCMがゼロであることと、旧候補では先頭の間引き出力から非ゼロであることを確認する。舌先対照では発話前PCMと間引き出力の絶対ピークが各上限以内で、出力総フレーム数が旧候補と同じであること。",
+  "retain_csv": {
+    "FA02_07/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]},
+    "MA02_07/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2432]]}
+  }
+}

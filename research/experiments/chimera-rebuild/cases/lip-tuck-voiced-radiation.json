@@ -1,0 +1,71 @@
+{
+  "id": "lip-tuck-voiced-radiation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "hypothesis": "定常発声から下唇だけをわずかに引き込み、交差が変わると口腔セル13の目標平均・最小面積が跳ぶ。速度制限と内部サンプルの補間は最初の面積変化を抑える。肺圧と音源設定をそろえ、形状固定との差が声道圧、口端流量、PCMに現れるか測る。上流で面積速度制限を解除した対照では、最初の制御周期内の面積差が増え、前後20 msの放射・PCMも変わると予測する。放射差の大小は観測する。",
+  "posture": {
+    "jaw_cm": 0.3,
+    "tongue_body_cm": [2.9, 6.85],
+    "tongue_tip_cm": [6.45, 7.3],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.05,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.86117,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [{"frame": 96, "targets": {"labiodental": 0.863}}]
+  },
+  "area_control": {"project_contacts": true},
+  "voice": {
+    "pressure_cm_h2o": 7.2,
+    "gate": 1.0,
+    "f0_hz": 110.0,
+    "breathiness": 0.15,
+    "tension": 0.5,
+    "output_sample_rate_hz": 48000,
+    "output_gain": 5.5e-7
+  },
+  "measurement": {
+    "frames": 180,
+    "voiced_tract_oral_cells": [13, 15, 17],
+    "dynamic_lip_tuck": {
+      "static_reference_run": "lip-tuck-area-continuity-20261121-verified",
+      "static_reference_event": 0,
+      "affected_cell": 13,
+      "tube_cells": {"pharynx": 18, "oral": 18},
+      "host_block_sizes": [128, 77],
+      "controls": {
+        "hold": "引き込みの目標を変えない",
+        "upstream_unlimited_rate_cm2_s": 100000000
+      },
+      "first_crossing_control_frame": 96,
+      "raw_area_jump_cm2": [0.30, 0.34],
+      "raw_minimum_jump_cm2": [0.40, 0.44],
+      "maximum_limited_to_raw_step_ratio": 0.85,
+      "maximum_initial_sample_to_raw_step_ratio": 0.02,
+      "geometry_absolute_lt": 1e-9,
+      "component_peak_relative_error_lt": 1e-8,
+      "pcm_absolute_lt": 5e-7,
+      "output_state_peak_relative_error_lt": 1e-8,
+      "independent_radiation_max_absolute_error_lt_cm3_s2": 1e-6,
+      "minimum_voicing": 0.99,
+      "detection_floors": {
+        "pressure_dyn_cm2": 1e-6,
+        "lip_flow_cm3_s": 1e-8,
+        "radiation_derivative_cm3_s2": 1e-4,
+        "pcm": 1e-8
+      },
+      "windows_from_crossing_ms": [[-20, 0], [0, 1.3333333333333333], [0, 20], [20, 40]],
+      "spectral_split_hz": [2000, 8000]
+    }
+  }
+}

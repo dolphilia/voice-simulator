@@ -1,0 +1,26 @@
+{
+  "id": "tsp-f2-candidate-report",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "expected_windows": 185,
+  "example": {
+    "utterance": "MK61_01",
+    "source": "recording",
+    "phone_index": 13,
+    "word": "seems",
+    "center": 0.5,
+    "start_sample": 16350,
+    "candidate_frequencies_hz": [993.37, 2323.81, 2862.40],
+    "frequency_tolerance_hz": 0.05
+  },
+  "hypotheses": {
+    "keeps_all_eligible_poles_in_frequency_order": "seemsの基準窓でF2候補3つが周波数順に並び、最初の993.37 Hzが選ばれ、2323.81 Hzと2862.40 Hzは候補のまま残る。",
+    "report_option_keeps_evaluation_results": "診断を追加しても、既定の評価要約と固定上流出力は、従来のCLIと保存済み基準に一致する。"
+  },
+  "acceptance": "既存のTSP計測CLIのオプションから、固定上流が返した全185窓の公開極を読み出す。12 kHzの開始標本、25 ms窓の相対中心、語と音素番号、周波数と帯域幅、F1とF2、候補順、除外理由、中央値への寄与を記録する。固定上流の周波数ペア・欠測理由・中央値と、保存済みの独立LPC結果に照合する。波形外・F1なしを既存の試験窓で、F2なしと厳密な200 Hzおよび3500 Hz境界を既知の極で検証する。診断の有無で従来の要約と固定上流出力が変わらないことをバイト照合する。実録音のF2の正解はこの診断で決めない。"
+}

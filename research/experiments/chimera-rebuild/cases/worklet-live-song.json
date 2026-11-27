@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song_case": "worklet-song-voice.json",
+  "hypothesis": "同じ英語の歌唱スコアを量子境界で開始すると、CLIおよびオフラインWorkletと加工前PCMと音響観測が一致する。発話中の停止操作は実時間Contextを閉じ、次の歌唱を開始できる状態に戻す。",
+  "reference": {
+    "offline_run": "contour-buffer-reuse-20261119-song-regression",
+    "offline_manifest_sha256": "f6fb48307bc2e3ed06c90644d47600afafc10a329285855034625b6ed63bb87f"
+  },
+  "measurement": {
+    "lead_frames": 2048,
+    "startup_contiguous_callbacks": 8,
+    "timing_exclude_first_blocks": 32,
+    "minimum_timing_blocks": 650,
+    "p99_maximum_quantum_budget_fraction": 1,
+    "maximum_wasm_memory_growths": 0,
+    "expected_active_callbacks": 713,
+    "expected_last_quantum_padded_frames": 64,
+    "stop_after_connected_seconds": 0.7,
+    "require_first_difference_null_for_cli_and_offline": true,
+    "capture_native_allocations_by_quantum": true,
+    "turbulence_seed": 12345,
+    "turbulence_scale": 1.0
+  }
+}

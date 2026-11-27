@@ -1,0 +1,24 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap-draw",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap.json",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-tap-regression",
+  "reference_tap_run": "worklet-live-tsp-firefox-device-tap-20261122-repeat",
+  "device": {
+    "window_radius_requests": 20
+  },
+  "measurement": {
+    "condition_order": [["draw"], ["draw"], ["draw"], ["draw"], ["draw"], ["draw"], ["draw"], ["draw"]],
+    "onset_quanta": 3
+  },
+  "local_pcm": {
+    "flank_frames": 512,
+    "minimum_flank_frames": 128,
+    "maximum_relative_residual": 0.025,
+    "minimum_residual_difference": 0.03
+  },
+  "hypothesis": "以前に48 kHz・256フレームの機器要求で、同期事前描画の直後と発話開始の付近に同じ試行で飛びが出た。8回の同期事前描画を同じ発話開始と出力先で採り、構築の飛びを陽性対照とする。発話開始に飛びが再現する場合、予算内の事例でも、飛んだ直前の要求に対応するプロセスタップの位置へゼロを挿入したモデルが最も合い、中間のサーバーWriteに対応するタップ位置では先行音が復帰すると予測する。飛び方とPCMの対応は構築時と発話開始時で個別に判定する。",
+  "acceptance": "確認用07の通常画面で、使い捨て発声器の同期256フレーム描画と通常の採取開始を使う。発話計画・状態・WAVを既存の通常再生と、PCMを固定上流と照合する。48 kHz・256フレーム要求について、構築前後20要求のcubeb、Audio Client、Audio Serverと同じFirefoxのタップを対応させ、先頭3量子を両端の1024フレームの相関窓の外に置く。予算5.333 msは丸める前の要求長から計算する。先頭3量子のいずれかを含む要求でcubebとクライアントI/Oがともに予算内で、次のI/Oが飛んだ事象を目的の観測とする。採取の妥当性とこの事象の有無を別に記録する。",
+  "local_comparison": "全窓のタップの増分が全ての予定サンプル時刻の飛びの合計と一致するとき、各飛びを個別に比較する。直前の返却バッファの先頭と次の予定位置の二つのゼロ挿入候補の両側に最大512フレームを取り、隣接する飛びの候補を除いた区間のRMS残差を各候補に対して求める。両側128フレーム未満は欠測。残差0.025以下で、他方より0.03以上小さい候補を選ぶ。両候補とサーバーの中間Writeに対応する完全ゼロの数も残す。対照では人工の2個の256フレーム挿入を別々の候補位置へ置き、両方が独立に選べることを検査する。"
+}

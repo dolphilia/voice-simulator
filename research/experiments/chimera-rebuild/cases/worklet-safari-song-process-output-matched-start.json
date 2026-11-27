@@ -1,0 +1,44 @@
+{
+  "id": "worklet-safari-song-process-output-matched-start",
+  "base_case": "worklet-safari-song-process-output.json",
+  "block_comparison": {
+    "baseline": "split-128-short-start",
+    "candidate": "split-256-short-start",
+    "split_settings": {
+      "split-128-short-start": {"block_frames": 128, "initial_blocks": [64, 64, 64, 64]},
+      "split-256-short-start": {"block_frames": 256, "initial_blocks": [64, 64, 64, 64]}
+    },
+    "minimum_median_startup_reduction_ms": 120,
+    "preparation_reduction_tolerance_ms": 25,
+    "maximum_median_quiet_increase_frames": 128,
+    "maximum_median_phase_magnitude_increase_frames": 128,
+    "segment_analysis": {
+      "boundary_margin_ms": 8,
+      "tail_comparison_ms": 120,
+      "maximum_median_startup_quiet_difference_frames": 128,
+      "maximum_median_tail_quiet_increase_frames": 128
+    }
+  },
+  "condition_order": [
+    ["split-128-short-start", "split-256-short-start"],
+    ["split-256-short-start", "split-128-short-start"],
+    ["split-128-short-start", "split-256-short-start"],
+    ["split-256-short-start", "split-128-short-start"]
+  ],
+  "song_onset": {
+    "rms_window_frames": 128,
+    "rms_threshold": 0.00005,
+    "template_frames": 4096,
+    "minimum_correlation": 0.98,
+    "maximum_threshold_anchor_error_frames": 32,
+    "search_before_ms": 20,
+    "search_after_ms": 180
+  },
+  "criteria": {
+    "conditions": "通常のSafariでPop Deeを48 kHz、31,200フレーム、乱流係数1で実行する。音声量子は128フレームで、総予備描画16,384フレームの冒頭4片をどちらも64フレームとし、後続だけを128・256フレームに変える。先行信号、採取と保存基準は固定し、各4ペアを別ディレクトリと反転順で繰り返す。",
+    "timing": "4片＋126片と4片＋63片の差は63量子の168 ms。第1片から最終片までの時間差はペア中央値で名目差の25 ms以内、準備解放から予約出力の先頭およびタップの歌唱立ち上がりは各120 ms以上短縮すると予測する。先行音のグラフのコールバック開始間隔は、1量子前から第5片までと、第5片から準備完了の次の量子までを分け、各最大を記録する。",
+    "tap_continuity": "従来窓の先行音の最長低振幅区間と位相差の絶対量は、256フレーム条件による増加のペア中央値が各128フレーム以下と予測する。第5片のグラフ時刻に準備前のグラフ・タップ時刻差を加えてタップの区切りを推定し、前後8 msを境界として分ける。区切り前の窓は第1片の20 ms前からとし、後続の比較には境界後120 msを両条件で使う。後続の全区間も準備完了の推定タップ時刻まで参考に記録する。先行音の低振幅閾値は左右差の半分に対して絶対値1e-5。冒頭の最長区間のペア差の中央値は絶対値128フレーム以下、後続120 msのペア差の中央値は増加128フレーム以下と予測する。",
+    "song_onset": "加工前PCMとタップの左右平均で、128フレームの前向きRMSが5e-5を初めて超える窓を比較する。参照の立ち上がりから4,096フレームを用い、タップの予想時刻の20 ms前から180 ms後で相関0.98以上、振幅判定と相関位置の差32フレーム以内で歌唱と確認する。",
+    "identity": "冒頭4片と後続の分割を記録し、予備描画の回数、終端と歌唱予約の絶対フレーム、歌唱31,200点と各488観測点、グラフの先行信号とタップの時刻を保存基準に照合する。区間の時刻推定に使う準備前の較正点は一意であることを確認し、区間が採取範囲に収まらない試行は欠測として残す。"
+  }
+}

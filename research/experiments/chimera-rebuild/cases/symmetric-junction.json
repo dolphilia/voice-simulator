@@ -1,0 +1,75 @@
+{
+  "id": "symmetric-junction",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ幾何と放射負荷の出口では左右の流量が一致する。分岐セルでは有効コンプライアンスと圧力変化の積が正味流入に一致し、剛体一様の枝では離散回路の複素応答に一致する。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+      },
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+      },
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+      }
+    ],
+    "connections": [
+      [19, 20],
+      [19, 40]
+    ],
+    "radiators": [39, 59]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 0,
+    "volume_cm3": 0.001
+  },
+  "observe": {
+    "pressure_nodes": [
+      18,
+      19,
+      20,
+      40
+    ],
+    "branches": [
+      [18, 19],
+      [19, 20],
+      [19, 40]
+    ]
+  },
+  "measurement": {
+    "sample_count": 48000,
+    "tail_sample_count": 9600,
+    "junction_node": 19,
+    "junction_incoming_node": 18,
+    "junction_outgoing_nodes": [20, 40],
+    "expected_first_radiation_sample": 39,
+    "expect_junction_compliance_floor_active": true,
+    "expect_nonlinear_loss": false,
+    "symmetric_trace_peak_relative_error_lt": 1e-12,
+    "upstream_trace_peak_relative_error_lt": 1e-10,
+    "balance_peak_relative_error_lt": 1e-10,
+    "tail_over_peak_lt": 0.01,
+    "junction_pressure_peak_lt_dyn_cm2": 10000000.0,
+    "linear_frequency_points_hz": [
+      210,
+      430,
+      680,
+      950,
+      1280,
+      1675,
+      2320,
+      3300,
+      4400,
+      5100,
+      6250,
+      7150
+    ],
+    "linear_complex_peak_relative_error_lt": 1e-05
+  }
+}

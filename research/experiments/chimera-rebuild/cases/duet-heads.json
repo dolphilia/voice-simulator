@@ -1,0 +1,42 @@
+{
+  "id": "duet-heads",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "各声部の頭部は混合音源と同じ時計で自分の観測行を選ぶ。約16 msごとの境界で姿勢が切り替わり、前後シーク後の最初の描画も新しい位置の姿勢を使う。発音がずれた二声では、閉口から開口への輪郭変化も別の位置に現れる。",
+  "reference": {
+    "telemetry_run": "duet-telemetry-20261120-final",
+    "telemetry_manifest_sha256": "c2cdc723261de82bbce2210f4191ac9c746f2cafc49d464c82767db736c36626",
+    "words_run": "duet-words-20261120-final",
+    "words_manifest_sha256": "a2af2cec474c0fa40c8a24672f3843653284d299d13713538f0faaef51b2eb9d",
+    "upstream_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da",
+    "track_sha256": [
+      "0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+      "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"
+    ]
+  },
+  "sample_rate_hz": 48000,
+  "recording_hop_samples": 768,
+  "track_frames": [119, 128],
+  "paused_samples": [0, 767, 768, 19968, 30719, 30720, 43008, 54720, 78720, 105600, 30720, 19968, 0],
+  "live_seek_samples": [19968, 54720, 30720],
+  "live_advance_samples": 960,
+  "viewports": [[960, 900], [390, 850]],
+  "pixel_ratio_limit": 1.5,
+  "screenshot_samples": [19968, 30720, 43008],
+  "minimum_changed_pixels_per_head": 150,
+  "minimum_lower_lip_displacement_cm": 0.3,
+  "geometry_coordinate_tolerance_cm": 0.000002,
+  "cache_control": {
+    "discovery_run": "duet-heads-20261120-a",
+    "voice": 1,
+    "rows": [42, 45],
+    "hypothesis": "固定上流の3桁キーは両行で等しいが、軸値そのものは異なる。先に描いた行の輪郭がもう一方でも使われる。順序を反転すると保持される輪郭が反転する。キャッシュを通さない固定上流の形状は、候補CLIと描画の既定許容差内に収まる。"
+  },
+  "observations": {
+    "timing": "両声部の描画に採用した音源秒、観測行と採取サンプル、シーク世代、再生状態。実時間は操作直後に描画した最初の観測行と時計が進んだ後の行を取る。",
+    "posture": "体型混合係数と17軸をバイト列から独立に復号し、固定上流のTeleTrackとVoiceModel、候補の実描画に渡った値に完全一致すること。末尾で各声部自身の最後の行を保持すること。",
+    "geometry": "描画した矢状面の咽頭・口腔、舌、上下唇、上下歯列、下顎、軟口蓋、喉頭蓋、鼻腔の点列を同じ調音行から算出した候補CLIのgeometry出力と照合する。固定上流との点列差は部位と最初の固定サンプルを記録する。",
+    "drawing": "左右の視点を反転し、両画面幅でキャンバスを表示する。互いに異なる発音位置を撮影し、動く頭部が各声部で150画素以上あること。男声は19,968→30,720、女声は30,720→43,008で下唇の最大変位が0.3 cmを超えること。",
+    "pause": "一時停止後の時計・観測行・形状が保持され、開始位置へ戻すと最初の姿勢を再現すること。歌詞の行は既存試験で再確認する。"
+  }
+}

@@ -1,0 +1,300 @@
+diff --git a/src/backend/chimera_output_snapshot.rs b/src/backend/chimera_output_snapshot.rs
+new file mode 100644
+index 0000000..b88d727
+--- /dev/null
++++ b/src/backend/chimera_output_snapshot.rs
+@@ -0,0 +1,168 @@
++// Copyright © 2018 Mozilla Foundation
++//
++// This program is made available under an ISC-style license.  See the
++// accompanying file LICENSE for details.
++
++use super::{
++    ffi, mach_absolute_time, AudioBuffer, AudioStreamBasicDescription, AudioTimeStamp, StreamParams,
++};
++use std::env;
++use std::fs::{self, File};
++use std::io::{self, BufWriter, Write};
++use std::path::PathBuf;
++use std::process;
++use std::slice;
++use std::sync::atomic::{AtomicUsize, Ordering};
++
++const DEFAULT_BLOCKS: usize = 128;
++const MAX_BLOCKS: usize = 256;
++const MAX_PCM_BYTES: usize = 1024 * 1024;
++static NEXT_STREAM: AtomicUsize = AtomicUsize::new(0);
++
++#[derive(Debug)]
++struct Block {
++    pcm_byte_offset: usize,
++    frames: u32,
++    sample_time: f64,
++    host_time: u64,
++    timestamp_flags: u32,
++    entered: u64,
++    returned: u64,
++    stage: &'static str,
++}
++
++#[derive(Debug)]
++pub(super) struct OutputSnapshot {
++    directory: PathBuf,
++    block_limit: usize,
++    stream_rate_hz: u32,
++    buffer_rate_hz: Option<f64>,
++    blocks: Vec<Block>,
++    pcm: Vec<u8>,
++    invalid_buffer: bool,
++}
++
++impl OutputSnapshot {
++    pub(super) fn for_stream(input_rate: u32, output: &StreamParams) -> Option<Self> {
++        if input_rate != 0
++            || !matches!(output.rate(), 44100 | 48000)
++            || output.channels() != 2
++            || output.format() != ffi::CUBEB_SAMPLE_FLOAT32NE.into()
++            || cfg!(target_endian = "big")
++        {
++            return None;
++        }
++        let directory = PathBuf::from(env::var_os("CHIMERA_CUBEB_OUTPUT_DIR")?);
++        if !directory.is_absolute() {
++            return None;
++        }
++        let block_limit = env::var("CHIMERA_CUBEB_OUTPUT_BLOCKS")
++            .ok()
++            .and_then(|value| value.parse::<usize>().ok())
++            .filter(|count| (1..=MAX_BLOCKS).contains(count))
++            .unwrap_or(DEFAULT_BLOCKS);
++        let stream = NEXT_STREAM.fetch_add(1, Ordering::Relaxed);
++        Some(Self {
++            directory: directory.join(format!("cubeb-output-{}-{}", process::id(), stream)),
++            block_limit,
++            stream_rate_hz: output.rate(),
++            buffer_rate_hz: None,
++            blocks: Vec::with_capacity(block_limit),
++            pcm: Vec::with_capacity(MAX_PCM_BYTES),
++            invalid_buffer: false,
++        })
++    }
++
++    pub(super) fn record(
++        &mut self,
++        buffer: &AudioBuffer,
++        desc: &AudioStreamBasicDescription,
++        stamp: *const AudioTimeStamp,
++        frames: u32,
++        entered: u64,
++        stage: &'static str,
++    ) {
++        if self.blocks.len() == self.block_limit || self.invalid_buffer {
++            return;
++        }
++        let bytes = frames as usize * 8;
++        if stamp.is_null()
++            || buffer.mData.is_null()
++            || buffer.mNumberChannels != 2
++            || !matches!(desc.mSampleRate, 44100.0 | 48000.0)
++            || self.buffer_rate_hz.is_some_and(|rate| rate != desc.mSampleRate)
++            || desc.mBytesPerFrame != 8
++            || bytes > buffer.mDataByteSize as usize
++            || bytes > MAX_PCM_BYTES - self.pcm.len()
++        {
++            self.invalid_buffer = true;
++            return;
++        }
++        self.buffer_rate_hz = Some(desc.mSampleRate);
++        let pcm_byte_offset = self.pcm.len();
++        let stamp = unsafe { &*stamp };
++        let slice = unsafe { slice::from_raw_parts(buffer.mData.cast::<u8>(), bytes) };
++        // 実時間コールバックでは確保済みのメモリにコピーする。
++        self.pcm.extend_from_slice(slice);
++        self.blocks.push(Block {
++            pcm_byte_offset,
++            frames,
++            sample_time: stamp.mSampleTime,
++            host_time: stamp.mHostTime,
++            timestamp_flags: stamp.mFlags,
++            entered,
++            returned: unsafe { mach_absolute_time() },
++            stage,
++        });
++    }
++
++    fn save(&self) -> io::Result<()> {
++        fs::create_dir(&self.directory)?;
++        fs::write(self.directory.join("pcm.f32le"), &self.pcm)?;
++        fs::write(
++            self.directory.join("format.csv"),
++            format!(
++                "stream_rate_hz,buffer_rate_hz\n{},{}\n",
++                self.stream_rate_hz,
++                self.buffer_rate_hz.unwrap_or(0.0),
++            ),
++        )?;
++        let mut metadata = BufWriter::new(File::create(self.directory.join("blocks.csv"))?);
++        writeln!(
++            metadata,
++            "pcm_byte_offset,frames,sample_time,host_time,timestamp_flags,entered,returned,stage"
++        )?;
++        for block in &self.blocks {
++            writeln!(
++                metadata,
++                "{},{},{},{},{},{},{},{}",
++                block.pcm_byte_offset,
++                block.frames,
++                block.sample_time,
++                block.host_time,
++                block.timestamp_flags,
++                block.entered,
++                block.returned,
++                block.stage,
++            )?;
++        }
++        metadata.flush()?;
++        fs::write(
++            self.directory.join("state.txt"),
++            if self.invalid_buffer {
++                "invalid-buffer\n"
++            } else {
++                "ready\n"
++            },
++        )
++    }
++}
++
++impl Drop for OutputSnapshot {
++    fn drop(&mut self) {
++        // CoreStreamDataはAudioUnitの停止後にフィールドを解放する。
++        if let Err(error) = self.save() {
++            eprintln!("CHIMERA cubeb output snapshot: {}", error);
++        }
++    }
++}
+diff --git a/src/backend/mod.rs b/src/backend/mod.rs
+index 2d34bb6..65d6f4c 100644
+--- a/src/backend/mod.rs
++++ b/src/backend/mod.rs
+@@ -779,6 +779,8 @@ fn compute_input_latency(stm: &AudioUnitStream, audio_input_time: u64, now: u64)
+     (total_input_latency_ns * input_hw_rate / NS2S) as u32
+ }
+ 
++mod chimera_output_snapshot;
++
+ extern "C" fn audiounit_output_callback(
+     user_ptr: *mut c_void,
+     flags: *mut AudioUnitRenderActionFlags,
+@@ -809,6 +811,8 @@ extern "C" fn audiounit_output_callback(
+         slice::from_raw_parts_mut(ptr, len)
+     };
+ 
++    let snapshot_entered = stm.core_stream_data.output_snapshot.as_ref()
++        .map_or(0, |_| unsafe { mach_absolute_time() });
+     if stm.stopped.load(Ordering::SeqCst) {
+         cubeb_alog!("({:p}) output stopped.", stm as *const AudioUnitStream);
+         audiounit_make_silent(&buffers[0]);
+@@ -820,6 +824,9 @@ extern "C" fn audiounit_output_callback(
+                 output_frames * stm.core_stream_data.output_dev_desc.mChannelsPerFrame,
+             );
+         }
++        stm.core_stream_data.record_output(
++            &buffers[0], tstamp, output_frames, snapshot_entered, "stopped",
++        );
+         return NO_ERR;
+     }
+ 
+@@ -835,6 +842,9 @@ extern "C" fn audiounit_output_callback(
+                 output_frames * stm.core_stream_data.output_dev_desc.mChannelsPerFrame,
+             );
+         }
++        stm.core_stream_data.record_output(
++            &buffers[0], tstamp, output_frames, snapshot_entered, "draining",
++        );
+         if !stm.stopped.swap(true, Ordering::SeqCst) {
+             cubeb_alog!("({:p}) output drained.", stm as *const AudioUnitStream);
+             stm.notify_state_changed(State::Drained);
+@@ -974,6 +984,9 @@ extern "C" fn audiounit_output_callback(
+                 output_frames * stm.core_stream_data.output_dev_desc.mChannelsPerFrame,
+             );
+         }
++        stm.core_stream_data.record_output(
++            &buffers[0], tstamp, output_frames, snapshot_entered, "invalid-return",
++        );
+         if !stm.stopped.swap(true, Ordering::SeqCst) {
+             stm.notify_state_changed(State::Error);
+             // Use a new thread, through the queue, to avoid deadlock when calling
+@@ -1027,6 +1040,9 @@ extern "C" fn audiounit_output_callback(
+                 needed
+             );
+             audiounit_make_silent(&buffers[0]);
++            stm.core_stream_data.record_output(
++                &buffers[0], tstamp, output_frames, snapshot_entered, "small-buffer",
++            );
+             return NO_ERR;
+         }
+         mixer.mix(
+@@ -1045,6 +1061,9 @@ extern "C" fn audiounit_output_callback(
+         );
+     }
+ 
++    stm.core_stream_data.record_output(
++        &buffers[0], tstamp, output_frames, snapshot_entered, "data",
++    );
+     #[cfg(feature = "tsan-annotations")]
+     {
+         extern "C" {
+@@ -3314,6 +3333,7 @@ struct CoreStreamData<'ctx> {
+     output_alive_listener: Option<device_property_listener>,
+     output_source_listener: Option<device_property_listener>,
+     input_logging: Option<InputCallbackLogger>,
++    output_snapshot: Option<chimera_output_snapshot::OutputSnapshot>,
+     #[cfg(feature = "audio-dump")]
+     audio_dump_session: ffi::cubeb_audio_dump_session_t,
+     #[cfg(feature = "audio-dump")]
+@@ -3365,6 +3385,7 @@ impl Default for CoreStreamData<'_> {
+             output_alive_listener: None,
+             output_source_listener: None,
+             input_logging: None,
++            output_snapshot: None,
+             #[cfg(feature = "audio-dump")]
+             audio_dump_session: ptr::null_mut(),
+             #[cfg(feature = "audio-dump")]
+@@ -3397,6 +3418,9 @@ impl<'ctx> CoreStreamData<'ctx> {
+             input_stream_settings.unwrap_or((get_default_sttream_params(), device_info::default()));
+         let (out_stm_params, out_dev) = output_stream_settings
+             .unwrap_or((get_default_sttream_params(), device_info::default()));
++        let output_snapshot = chimera_output_snapshot::OutputSnapshot::for_stream(
++            in_stm_params.rate(), &out_stm_params,
++        );
+         Self {
+             stm_ptr: stm,
+             aggregate_device: None,
+@@ -3422,6 +3446,7 @@ impl<'ctx> CoreStreamData<'ctx> {
+             output_alive_listener: None,
+             output_source_listener: None,
+             input_logging: None,
++            output_snapshot,
+             #[cfg(feature = "audio-dump")]
+             audio_dump_session: ptr::null_mut(),
+             #[cfg(feature = "audio-dump")]
+@@ -3433,6 +3458,19 @@ impl<'ctx> CoreStreamData<'ctx> {
+         }
+     }
+ 
++    fn record_output(
++        &mut self,
++        buffer: &AudioBuffer,
++        stamp: *const AudioTimeStamp,
++        frames: u32,
++        entered: u64,
++        stage: &'static str,
++    ) {
++        if let Some(snapshot) = &mut self.output_snapshot {
++            snapshot.record(buffer, &self.output_dev_desc, stamp, frames, entered, stage);
++        }
++    }
++
+     fn debug_assert_is_on_stream_queue(&self) {
+         if self.stm_ptr.is_null() {
+             return;

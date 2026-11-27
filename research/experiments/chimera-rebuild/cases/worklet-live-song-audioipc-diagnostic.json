@@ -1,0 +1,18 @@
+{
+  "id": "worklet-live-song-audioipc-diagnostic",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "first_pilot_run": "worklet-live-song-audioipc-20261121-pilot",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:5"],
+    "rust_log": "audioipc2_server::server=trace,audioipc2_client::stream=trace,audioipc2::rpccore=trace,audioipc2::ipccore=trace"
+  },
+  "hypothesis": "最初の予備採取でAudioIPCのMOZ_LOG出力が空だったため、Rustの標準ログとcubebの診断出力から異なる観測点が得られるかを確認する。cubebの非同期ログを使う時は、ログを書き出した時刻と発生時刻を区別できる記録を探す。",
+  "criteria": {
+    "input": "保存済みの最初の予備採取を残し、同じ48 kHzの共有Contextの未準備と192フレーム条件を1組採る。通常通り先行音と歌唱を固定基準に照合する。",
+    "availability": "出力ファイルの件数、空ファイル数、サーバーの開始、送信と応答、クライアントに対応するイベントの有無を記録する。実行時点のタイムスタンプがない事象から要求間隔は推定しない。",
+    "system_trace": "必要なら端末のAudio System Traceを、対象を指定した短いテストプロセスで起動し、現環境で実行できるか確かめる。環境にない観測点は取得できなかった理由を残す。"
+  }
+}

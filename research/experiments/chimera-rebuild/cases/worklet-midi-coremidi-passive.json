@@ -1,0 +1,17 @@
+{
+  "id": "worklet-midi-coremidi-passive",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "worklet-midi-coremidi-20261122-repeat",
+  "baseline_case": "worklet-midi-coremidi",
+  "passive_capture": true,
+  "operator_timeout_ms": 60000,
+  "measurement": {
+    "midi_note": 57,
+    "midi_channel": 1,
+    "expected_pitch_hz": 220,
+    "minimum_hold_ms": 400
+  },
+  "hypothesis": "選んだ既存CoreMIDI入力を受動的に観測すると、同じ1組の押鍵・離鍵をCoreMIDI受信と通常画面の信頼済みWeb MIDIイベントで確認できる。音57ではWorkletの目標F0が220 Hzになり、停止後は無音に戻る。ブラウザが保存したケースをCLIに通すと加工前PCMが一致する。",
+  "acceptance": "先行の仮想送信元の検証を対照に、既存入力の選択と受動受信を使う比較を追加する。MIDI 1.0のチャンネル1で音57を1回押し、400 ms以上保持して1回離す。ノートオンのベロシティは正、離鍵は明示的なノートオフとベロシティ0のノートオンの両方を受理する。CoreMIDIの受信データ、Web MIDIのバイトと相対時刻、通常画面の保持状態、Worklet採用フレームとPCM・CLIの判定を記録する。実機入力を選べない場合は未観測。仮想入力を使う対照の成功と物理鍵盤の観測を区別する。"
+}

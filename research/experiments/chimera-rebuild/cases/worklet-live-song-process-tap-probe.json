@@ -1,0 +1,21 @@
+{
+  "id": "worklet-live-song-process-tap-probe",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 48000,
+  "marker": {
+    "multiplier": 421,
+    "offset": 173,
+    "modulus": 65521,
+    "center": 32760,
+    "scale": 8388608
+  },
+  "fixture_duration_seconds": 8,
+  "capture_duration_seconds": 2,
+  "minimum_contiguous_frames": 16384,
+  "maximum_error_marker_units": 0.1,
+  "criteria": {
+    "input": "afplayだけを対象に、左に番号付きフレーム列、右に符号を反転した同じ48 kHzのPCMを再生する。既定の音声機器を使う。",
+    "hypothesis": "Core AudioのプロセスタップからステレオPCMと単調な入力時刻が得られ、左右の差分は単一のゲインを補正すると既知の連続フレーム列に一致する。成立すればFirefoxの構築前後で同様に比較できる。",
+    "missing": "権限エラー、無音、形式違い、ブロックの時刻の不連続と、PCMの照合不合格を個別に記録する。"
+  }
+}

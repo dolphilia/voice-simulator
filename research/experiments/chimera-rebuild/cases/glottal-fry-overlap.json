@@ -1,0 +1,113 @@
+{
+  "id": "glottal-fry-overlap",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "フライ0.6ではパルスの開口区間が重なり、位相0から第2パルスの終端まで開口が続く。第2ピークは補間されたゲインになる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 1.0,
+        "areas_cm2": [
+          1.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 7000.0,
+        "ramp_samples": 0
+      },
+      {
+        "pressure_dyn_cm2": 0.0,
+        "ramp_samples": 0
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          1,
+          2
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "glottis": {
+    "port": [
+      1,
+      2
+    ],
+    "params": {
+      "f0_hz": 125,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625,
+      "jitter": 0.0,
+      "shimmer": 0.0,
+      "cycle_seed": 777,
+      "drift_cents": 0.0,
+      "vibrato_depth_cents": 0.0,
+      "vibrato_rate_hz": 6.0,
+      "fry": 0.6
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  },
+  "observe": {
+    "pressure_nodes": [
+      1,
+      2
+    ],
+    "branches": [
+      [
+        1,
+        2
+      ]
+    ],
+    "glottal_f0": true
+  },
+  "measurement": {
+    "sample_count": 96000,
+    "analysis_window_samples": [
+      24000,
+      96000
+    ],
+    "minimum_complete_cycles": 24,
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "independent_area_peak_relative_error_lt": 1e-09,
+    "phase_turn_max_complex_error_lt": 1e-09,
+    "expected_f0_hz": 78.8,
+    "f0_max_absolute_error_hz": 1e-10,
+    "cycle_period_max_absolute_error_samples": 1.001,
+    "minimum_voicing": 0.99,
+    "area_open_threshold_cm2": 1e-08,
+    "expected_open_fraction": 0.70128,
+    "open_fraction_max_absolute_error": 0.003,
+    "peak_min_above_chink_cm2": 0.02,
+    "expected_peak_phases": [
+      0.248992,
+      0.5791936
+    ],
+    "peak_phase_max_absolute_error": 0.002,
+    "secondary_to_primary_peak_ratio_interval": [
+      0.3544,
+      0.3584
+    ]
+  }
+}

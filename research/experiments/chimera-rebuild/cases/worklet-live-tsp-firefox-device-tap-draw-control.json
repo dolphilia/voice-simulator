@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap-draw-control",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.95,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "measurement": {
+    "condition_order": [["no-tap", "tap"], ["tap", "no-tap"], ["no-tap", "tap"], ["tap", "no-tap"]]
+  },
+  "tap_control": {
+    "reference_center_marker_frame": 24576,
+    "maximum_center_error_frames": 256,
+    "minimum_matched_pairs": 3,
+    "minimum_effect_ms": 0.25
+  },
+  "hypothesis": "滑らかな先行音と構築を含む要求の先頭をそろえても、採取アプリを起動しタップを付けると、発話開始の最初の2量子のWASM合計時間はタップなしより短くなると予測する。過去の比較には先行音の形と採取条件の差があったため、今回はタップ付きからタップなしを引いた対応差を使う。WASM、Worklet外枠、グラフ反復、cubeb、Audio Clientの順に時間を記録し、最初に0.25 ms以上の差が同方向に現れる段を探す。",
+  "acceptance": "両条件で同じ確認用07、同期事前描画、48 kHz・256フレームの要求、WASM、滑らかな先行音、最初の192量子と解放後に続く通常の発話開始を使う。同じ起動依頼を受け、タップなしは採取アプリを起動せずにゲートを解放する。タップ付きは準備後に解放する。前後20要求で発話PCMと固定上流を照合し、プロファイルと同じFirefoxのcubeb、Audio Client、Audio Serverを両条件で記録する。構築を含む要求の先行音位置が両条件で同じであり、24576フレームから256フレーム以内、先頭の2量子が同じ相対位置の機器要求に入った組で比較する。採取の妥当性と組の比較可否を分けて記録する。",
+  "comparison": "一致した組は少なくとも3組を目安とする。各段の対応差の中央値を取り、絶対値0.25 ms以上かつ少なくとも3組が同方向のときに、今回の条件で繰り返した差と扱う。両条件の構築時と発話開始時の時計の飛び、予算内の飛び、タップ付きで飛んだ場合の局所PCMを別々に集計する。未成立の組は補完せず、比較から外れた理由を残す。"
+}

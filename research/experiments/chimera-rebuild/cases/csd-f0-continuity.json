@@ -1,0 +1,46 @@
+{
+  "id": "csd-f0-continuity",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sensitivity_case": "csd-f0-search-sensitivity.json",
+  "detuned_case": "csd-f0-search-detuned-tone.json",
+  "detuned_run": "csd-f0-search-detuned-tone-20261121-repeat",
+  "held_out_control_case": "csd-long-note-vibrato-f0-control.json",
+  "held_out_control_run": "csd-long-note-vibrato-f0-control-20261121-repeat",
+  "lag_cost_per_octave": 0.02,
+  "transition_cost_per_octave": 0.5,
+  "known_tone_tolerance_hz": 0.25,
+  "constant_interval_seconds": [0.05, 0.55],
+  "glide": {
+    "duration_seconds": 0.8,
+    "transition_seconds": [0.24, 0.40],
+    "early_plateau_seconds": [0.05, 0.20],
+    "late_plateau_seconds": [0.44, 0.75],
+    "maximum_transition_error_cents": 50,
+    "silence_seconds": [0.24, 0.40],
+    "silence_interior_seconds": [0.28, 0.36]
+  },
+  "fundamental_dip": {
+    "known_hz": 200,
+    "transition_in_seconds": [0.235, 0.25],
+    "transition_out_seconds": [0.31, 0.325],
+    "fundamental_relative_amplitude_at_dip": 0.01,
+    "second_harmonic_relative_amplitude": 0.5,
+    "octave_error_tolerance_hz": 8,
+    "minimum_local_octave_windows": 3,
+    "maximum_tracked_error_hz": 2
+  },
+  "held_out": {
+    "expected_original_high_windows_per_synthesis": 4,
+    "maximum_tracked_high_windows_per_synthesis": 0,
+    "maximum_recording_median_change_cents": 10,
+    "vibrato_depth_cents": [20, 55],
+    "vibrato_rate_hz": [5, 7]
+  },
+  "hypothesis": "上限+7半音を保って同じ窓の複数の周期候補を残し、連続有声区間で正規化差の低さと音高の連続性を合わせて選ぶ。上限+5半音で約204.68 Hzになった既知の409.35 Hzの倍音付き入力は真の周期を保持できる。en035a第21音の固定上流と候補に現れた短い高音側の外れ値は減り、両合成でビブラートの深さと周波数は通常報告のしきい値内で得られると予測する。",
+  "criteria": {
+    "method": "従来の±7半音、5 ms刻み、評価窓、電力ゲート、YIN閾値を保持する。各窓で閾値未満の局所最小を保存する。各候補の費用は正規化差と最短候補からの遅延のオクターブ差の重み付き和。経路ではさらに隣接候補間のF0の絶対オクターブ差に0.5を掛けて足す。音符または無声窓で分断して前後を結ぶ。時間費用を0にした条件も保存し、周期候補の費用変更だけの効果を分ける。",
+    "known": "既知の277.18 Hzと409.35 Hzの純音と倍音付き波形を既存の対照と同じ式で生成する。保持区間の全評価窓が0.25 Hz以内か、既知の音高への連続した上昇で途中の誤差が50セント以内か、無音区間の中央で候補が空になるかを確認する。短い候補列の最小費用は全経路の列挙でも検証する。第2版では、第1版で時間の費用の有無で確認曲の推定が同じだったため、別に200 Hzの基本音だけを短時間弱める既知波形を加える。時間費用なしでは400 Hzの前後8 Hzに入る窓が3つ以上あり、追跡では全評価窓で200 Hzから2 Hz以内と予測する。既存の判定と費用係数は第1版と同じ。",
+    "held_out": "元の確認曲en035a第21音の各80窓を録音、固定上流、再実装から読み、通常・上限変更の保存済み測定を比較に使う。音声、ゲートと有声・欠測の位置を保持する。+600セント以上の窓数、最初に選択が分かれる窓の遅延候補、最初の高F0の窓のFFT、ビブラートの判定を保存する。録音の中央値の変化も評価し、譜面を実際のF0の真値として扱わない。"
+  }
+}

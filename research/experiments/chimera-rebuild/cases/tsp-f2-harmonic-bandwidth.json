@@ -1,0 +1,17 @@
+{
+  "id": "tsp-f2-harmonic-bandwidth",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "spacing_reference": {"run": "tsp-f2-harmonic-spacing-20261122-final-repeat", "case": "tsp-f2-harmonic-spacing", "manifest_sha256": "175214891196d81aeb21703c7237cf1696eb3b5fc67069c336fbea9cb733dfb7"},
+  "filter_reference": {"run": "tsp-f2-bandwidth-known-poles-20261122-repeat", "case": "tsp-f2-bandwidth-known-poles", "manifest_sha256": "153fe95cba431d8b9b340e6c740968c10bb99bab2f0cf1deb648e5655289249f"},
+  "tsp_reference": {"run": "tsp-stressed-vowel-formants-held-out-20261122-repeat", "case": "tsp-stressed-vowel-formants-held-out", "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"},
+  "f2_bandwidths_hz": [180, 430],
+  "association_tolerance_hz": 120,
+  "comparison_f2_bandwidth_limit_hz": 300,
+  "hypotheses": {
+    "wide_f2_changes_default_results_at_multiple_f0": "幅430 Hzでは幅180 Hzに比べ、少なくとも2種類のF0で、固定上流のF2に欠測または設計極から120 Hzを超える採択が増える。",
+    "wide_f2_can_be_lost_before_tsp_selection": "幅430 Hzでは、推定直後または公開LPCの帯域幅上限を適用した時点で、設計F2から120 Hz以内の極が無い例が生じる。",
+    "additional_gate_loses_default_hits_at_multiple_f0": "幅430 Hzで固定上流が設計F2の120 Hz以内を採っていたもののうち、少なくとも2種類のF0で、追加の300 Hz未満条件によってその範囲を外れるか欠測になる。"
+  },
+  "acceptance": "前回と同じ7種類のF0・同じ周期インパルス振幅と位相、1秒、12 kHz、窓中心35・50・65%、12次と14次のLPCを使う。F1とF3の両極およびF2の周波数を保持し、F2の帯域幅だけ180 Hzから430 Hzに変える。幅180 Hzの全波形・42件の固定上流出力を保存基準に照合し、幅430 Hzの125 Hzを先行の全波形と6件の上流出力・2規則の採択結果に照合する。両幅で理論伝達応答と定常区間の全倍音を比較する。84件の生の上半平面の根から周波数・帯域幅を計算し、600 Hz上限の前後を分ける。公開LPCの極を独立計算に、両採択規則の値と欠測理由を独立計算に照合する。採択が設計F2から120 Hz以内なら対応と数え、固定規則で対応しない最初の段と追加規則での対応の変化を保存する。予測と実装検証の合否は分ける。"
+}

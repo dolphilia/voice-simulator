@@ -1,0 +1,39 @@
+{
+  "id": "safari-headphone-context-restart-44100",
+  "revision": 1,
+  "calibration_run": "safari-process-tap-smooth-marker-44100-20261122-repeat",
+  "fixture_run": "coreaudio-headphone-drift-44100-long-recurrence-1",
+  "native_reference_run": "coreaudio-headphone-drift-44100-output-restart-20261122-a",
+  "reference_windows_case": "coreaudio-headphone-drift-44100-long-recurrence.json",
+  "capture_duration_seconds": 16,
+  "context_study": {
+    "target_frame": 384000,
+    "maximum_stop_offset_frames": 2048,
+    "hold_seconds": 1.0448979591836736,
+    "maximum_hold_error_ms": 50,
+    "minimum_callback_gap_ms": 900,
+    "graph_capture_quanta": 4112
+  },
+  "analysis": {
+    "pre_last_exclusive": 383416,
+    "post_guard_frames": 512,
+    "pre_window_count": 44,
+    "maximum_post_drop_frame_error": 2048,
+    "native_reference_drop_frame": 27136
+  },
+  "trials": [
+    {"run_id": "safari-headphone-context-restart-44100-control-1", "suspend": false},
+    {"run_id": "safari-headphone-context-restart-44100-pause-1", "suspend": true},
+    {"run_id": "safari-headphone-context-restart-44100-pause-2", "suspend": true},
+    {"run_id": "safari-headphone-context-restart-44100-control-2", "suspend": false},
+    {"run_id": "safari-headphone-context-restart-44100-control-3", "suspend": false},
+    {"run_id": "safari-headphone-context-restart-44100-pause-3", "suspend": true}
+  ],
+  "pairs": [
+    ["safari-headphone-context-restart-44100-control-1", "safari-headphone-context-restart-44100-pause-1"],
+    ["safari-headphone-context-restart-44100-control-2", "safari-headphone-context-restart-44100-pause-2"],
+    ["safari-headphone-context-restart-44100-control-3", "safari-headphone-context-restart-44100-pause-3"]
+  ],
+  "prediction": "同じ44.1 kHz・同じ既知PCMでSafariを停止して再開する。停止中のContextの標本位置は保たれ、グラフ内のPCMは連続すると予測する。タップの帯域が停止前に狭くなっている場合は、停止なしでは狭帯域が続き、停止・再開条件では19,845 Hzの振幅比が一度広帯域へ戻って、再開後27,136フレーム付近で低下すると予測する。",
+  "criteria": "同じSafariの実行と外部ヘッドフォン44.1 kHzで連続・停止再開を3組採取する。既知PCMは直接出力の12秒ケースから取り、双方のグラフで同じモノラル信号から逆相ステレオを出力する。タップを特定したWebKitの出力プロセスに試験音を再生する前から取り付け、復元した既定出力を確認する。停止条件は出力フレーム384,000付近から約1.045秒suspendし、停止の完了と再開要求時のContext位置、再開前後のグラフの要求フレーム番号、ホスト側のタップ時刻を保存する。前後で各マーカーからタップ位置を決め、400フレーム窓・200フレーム刻みの4周波数の複素比を測る。停止前の44連続窓で19,845 Hzの比が0.20未満の組を、狭帯域からの広帯域復帰を判定できる組とする。再開後0.40以上が4窓、その後0.20未満が4窓続く位置と、グラフ内PCMが元のビットと一致するかを記録する。前提が成立しない場合も採取と予測を別に評価する。"
+}

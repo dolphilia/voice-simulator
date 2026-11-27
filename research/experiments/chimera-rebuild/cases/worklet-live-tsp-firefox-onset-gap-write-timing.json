@@ -1,0 +1,31 @@
+{
+  "id": "worklet-live-tsp-firefox-onset-gap-write-timing",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "request_offset": 12,
+  "request_frames": 256,
+  "sample_rate_hz": 48000,
+  "maximum_write_clock_origin_spread_ns": 25000,
+  "minimum_joined_trials": 17,
+  "conditions": [
+    {
+      "capture_run": "worklet-live-tsp-firefox-onset-load-288-tap-prime-20261122-a",
+      "io_analysis": "worklet-live-tsp-firefox-onset-load-288-tap-prime-20261122-coverage",
+      "pcm_analysis": "worklet-live-tsp-firefox-onset-load-288-tap-prime-20261122-repetition",
+      "pcm_result": "repetition_fit"
+    },
+    {
+      "capture_run": "worklet-live-tsp-firefox-onset-load-288-tap-prime-common-20261122-a",
+      "io_analysis": "worklet-live-tsp-firefox-onset-load-288-tap-prime-common-20261122-coverage",
+      "pcm_analysis": "worklet-live-tsp-firefox-onset-load-288-tap-prime-common-20261122-repetition-trim",
+      "pcm_result": "repetition_fit"
+    },
+    {
+      "capture_run": "worklet-live-tsp-firefox-onset-load-320-tap-prime-20261122-a",
+      "io_analysis": "worklet-live-tsp-firefox-onset-load-320-tap-prime-20261122-coverage",
+      "pcm_analysis": "worklet-live-tsp-firefox-onset-load-320-tap-prime-20261122-coverage-pcm-review",
+      "pcm_result": "zero_fit"
+    }
+  ],
+  "prediction": "直前のAudio Client終了から欠落周期の機器Write開始までの時間が長ければ、当該要求の出力が再び読まれる機会が増えると仮定する。288フレームの各条件と全条件を通じて、すべての反復の差がすべての無音挿入の差を上回ると予測する。比較は各群に両方の波形がある場合に行う。Audio Server実測開始と予定ホスト時刻を終点とした場合も同じ順序を確認する。"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "csd-en001a-pharynx-cell7-branch-history",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "pulse": {
+    "run": "csd-en001a-pharynx-cell7-compliance-pulse-20261124-repeat",
+    "case": "csd-en001a-pharynx-cell7-compliance-pulse",
+    "manifest_sha256": "5f9e46cc522c192965f6a89e0cead05b0a8cfa1a8c2c2f649af7688a7a4197f3"
+  },
+  "measurement": {
+    "song": "en001a",
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "frames": 201600,
+    "focus_node": 20,
+    "comparison_internal_samples": [0, 8],
+    "reset_before_sample": 3,
+    "observed_nodes": [19, 20, 21, 22],
+    "reset_branch_left_nodes": [19, 20],
+    "reset_wall_nodes": [19, 20, 21],
+    "expected_branch_flow_difference_cm3_s": {"upstream": [0.0, 0.0], "candidate": [-1.0587911840678754e-22, 2.117582368135751e-22]},
+    "reset_masks": {"native": 0, "compliance_only": 0, "left_history": 1, "right_history": 2, "both_branches": 3, "wall_history": 4}
+  },
+  "hypotheses": {
+    "candidate_flows_persist": "研究版は標本2の全節点圧力が一致しても、枝19→20と20→21にそれぞれ−1.0587911840678754e-22と+2.117582368135751e-22 cm³/sの流量差が実測される。上流の同じ2枝は標本2の更新後に一致する。",
+    "both_histories_remove_candidate_pressure_return": "研究版で標本3に内側2枝の前回流量を戻すと節点19〜21の圧力は通常描画と一致する。壁履歴だけを戻す条件では節点20と21の圧力差が残る。",
+    "later_output_observed": "標本3の枝履歴を同時に戻すと、研究版の通常描画に対するPCM差のフレーム数が一値交換より減る。浅い領域の圧力一致と2句全体のPCM一致を個別に判定する。"
+  },
+  "acceptance": "固定上流と研究版でen001aの先頭2句を6条件で通常の入口から201600フレーム描画する。通常・一値交換は保存済みの圧力と全PCM、全条件の歌唱計画は通常と照合する。先頭8内部標本で全節点の圧力と体積源、節点19〜22の壁・流量収支、枝18→19から22→23の慣性係数・流量履歴と出力を採取する。全条件で枝・壁・4節点の圧力式を独立に再計算する。標本3より前は一値交換と一致し、差し替えは選択した履歴だけに施されたことを標本3の入力で照合する。局所の圧力差と全PCM差の位置・件数・最大差を記録し、仮説成立・不成立は実験の合否と別に扱う。"
+}

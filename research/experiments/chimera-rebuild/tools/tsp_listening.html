@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSP 発話の比較試聴</title>
+<style>
+  :root { color-scheme: light; font-family: system-ui, sans-serif; color: #182722; background: #f5f7f3; }
+  body { margin: 0; }
+  main { max-width: 51rem; margin: auto; padding: 1.4rem 1rem 4.5rem; }
+  h1 { font-size: 1.7rem; }
+  section { background: white; border: 1px solid #d4ded7; border-radius: .6rem; padding: 1rem; margin-block: 1rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 .8rem; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .65rem 1rem; }
+  .field { display: grid; gap: .25rem; align-content: start; }
+  audio, select, textarea { box-sizing: border-box; width: 100%; }
+  select, textarea, button { font: inherit; padding: .45rem; }
+  textarea { min-height: 4rem; margin-top: .25rem; }
+  section > label { display: block; margin-top: .7rem; }
+  footer { position: fixed; inset: auto 0 0; background: #e5eee7; padding: .55rem 1rem; text-align: center; }
+  button { background: #244638; color: white; border: 1px solid #244638; border-radius: .35rem; }
+</style>
+<main>
+  <h1>TSP 発話の比較試聴</h1>
+  <p>各組のAとBを聴き比べ、発話が速く聞こえた方と、文中の間が長く聞こえた方を選んでください。同程度、判定不能、未回答も選べます。</p>
+  <p>途中でも回答を保存できます。録音の出典は TSP Speech Database v2、Copyright (c) 2018 Peter Kabal。<a href="TSP-licence.txt">利用条件</a></p>
+  <form id="observations" data-packet="__PACKET_ID__">
+    <!--PAIRS-->
+    <footer><button type="button" id="save">回答をCSVで保存</button> <output id="feedback" aria-live="polite"></output></footer>
+  </form>
+</main>
+<script>
+  const form = document.querySelector("#observations");
+  const clips = Array.from(form.querySelectorAll("audio"));
+  for (const clip of clips) {
+    clip.addEventListener("play", () => {
+      for (const other of clips) {
+        if (clip !== other && !other.paused) other.pause();
+      }
+    });
+  }
+
+  function quoted(value) {
+    return '"' + value.replaceAll('"', '""') + '"';
+  }
+
+  document.querySelector("#save").addEventListener("click", () => {
+    const rows = Array.from(form.querySelectorAll("section"), (pair) => [
+      form.dataset.packet, pair.dataset.pair, pair.querySelector(".tempo").value,
+      pair.querySelector(".pauses").value, pair.querySelector("textarea").value,
+    ]);
+    const columns = ["packet_id", "pair", "tempo", "pauses", "observations"];
+    const csv = [columns, ...rows].map((row) => row.map(quoted).join(",")).join("\r\n") + "\r\n";
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "tsp-listening-observations.csv";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    document.querySelector("#feedback").textContent = "CSVを書き出しました";
+  });
+</script>
+</html>

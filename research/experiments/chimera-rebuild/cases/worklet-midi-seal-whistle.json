@@ -1,0 +1,80 @@
+{
+  "id": "worklet-midi-seal-whistle",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-whistle.json",
+  "input": {
+    "creature": "seal",
+    "key_mode": "call",
+    "call_id": "whistle",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [40, 6000],
+    "capture_seconds": 2.4,
+    "events": [
+      {"seconds": 0.14, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.30, "type": "note-off", "note": 60},
+      {"seconds": 0.88, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 1.05, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "U whistleはMIDI 60・67の周波数を始点に、0.45秒の谷と0.95秒の復帰を同じ倍率で移調する。対数空間の平滑化により実際の音高の谷は目標より遅れ、最低値もわずかに高くなる。離鍵後に谷を通過し、再発音では前の平滑音高から新しい目標へ移る。",
+  "criteria": {
+    "routing": "通常画面からMIDI 60・67でコールを押下・離鍵する。採用フレームでCLIと固定Rustを走らせ、ブラウザとCLIのPCMのビット一致と観測値の一致を求める。",
+    "valley": "48 kHzの各押下後0.38〜0.53秒で、目標の最小は開始から21,632フレーム、平滑音高の最小は21,952フレームと予測する。両コールで独立の対数IIRとフレーム・音高を照合し、平滑値の谷の時刻は連続近似から1制御区間以内とする。",
+    "envelope": "各離鍵後25〜100 msに呼気0.65以上、声門の最大開口0.03 cm²以上、PCM RMS 0.001以上で発声が続く。再発音で呼気目標は1に戻り、平滑呼気と音高は直前の値から追従する。",
+    "end": "第2音は0.95秒の移調後の目標を制御終了まで保ち、1.05秒付近で音高とパルス深さの目標が手動値へ戻る。パルス周波数とデューティは手動目標を保つ。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-seal-whistle-20261120-repeat",
+    "baseline_case_id": "worklet-seal-whistle",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": 1,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [0.025, 0.10],
+    "browser_release_gate_minimum_peak": 0.65,
+    "release_window_seconds": [0.025, 0.10],
+    "minimum_release_gate": 0.65,
+    "minimum_release_pcm_rms": 0.001,
+    "minimum_open_glottis_peak_cm2": 0.03,
+    "pitch_valley_window_seconds": [0.38, 0.53],
+    "expected_target_turn_offset_frames": 21632,
+    "expected_smoothed_turn_offset_frames": 21952,
+    "log_filter_comparison_tolerance_hz": 1e-8,
+    "maximum_continuous_delay_error_control_steps": 1,
+    "retrigger_gate_before": [0.21, 0.36],
+    "maximum_tail_pcm_rms": 0.002,
+    "tail_window_seconds": 0.10,
+    "native_pcm_tolerance": 1e-6,
+    "native_state_absolute_tolerance": 1e-8,
+    "native_state_relative_tolerance": 1e-7,
+    "independent_tolerances": {
+      "gate": 2e-12,
+      "gate_target": 1e-10,
+      "target_pitch_hz": 1e-8,
+      "pitch_hz": 1e-8,
+      "target_pulse_depth": 1e-8,
+      "pulse_depth": 1e-8,
+      "target_pulse_rate_hz": 1e-8,
+      "target_duty": 1e-8,
+      "pulse_phase": 1e-10,
+      "lung_pressure_dyn_cm2": 2e-7,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0
+    },
+    "reference_definition_run": "seal-whistle-before-worklet-1"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "gate_target", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "target_pulse_depth", "pulse_depth", "target_duty", "pulse_phase", "lung_pressure_dyn_cm2", "glottis_area_cm2_0", "glottis_area_cm2_1", "wall_0", "wall_1", "oral_0", "nasal_0", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 115200]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "target_pulse_depth", "pulse_depth", "target_duty", "lung_pressure_dyn_cm2", "glottis_area_cm2_0", "glottis_area_cm2_1", "wall_0", "wall_1", "oral_0", "nasal_0", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 115200]]
+    }
+  }
+}

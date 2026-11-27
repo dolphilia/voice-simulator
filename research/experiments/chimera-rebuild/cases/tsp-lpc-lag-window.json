@@ -1,0 +1,36 @@
+{
+  "id": "tsp-lpc-lag-window",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-f2-bandwidth-known-poles-20261122-repeat",
+    "case": "tsp-f2-bandwidth-known-poles",
+    "manifest_sha256": "153fe95cba431d8b9b340e6c740968c10bb99bab2f0cf1deb648e5655289249f"
+  },
+  "input": {
+    "variant": "wide-f2",
+    "sample_rate_hz": 12000,
+    "first_sample": 5850,
+    "frame_samples": 300,
+    "center": 0.5,
+    "lpc_order": 12,
+    "known_f2_hz": 2075,
+    "known_f2_bandwidth_hz": 430
+  },
+  "measurement": {
+    "lag_window_hz": [40, 0],
+    "spectrum_grid_hz": 5,
+    "preprocessing_and_correlation_tolerance": 1e-12,
+    "coefficient_and_residual_tolerance": 1e-10,
+    "complex_root_tolerance": 1e-10,
+    "envelope_tolerance_db": 1e-8,
+    "periodogram_tolerance_db": 1e-8,
+    "predicted_minimum_bias_reduction_hz": 5
+  },
+  "method": "先行実行の12 kHz波形の同じ300標本に、12次、プリエンファシス、Hamming窓、極・F1/F2の固定規則を適用する。ラグ窓の係数を40から0 Hzにだけ変更する。重み付け前後の自己相関、予測係数と残差、全極、固定F2、LPC包絡と共通の平滑化ピリオドグラムを保存する。ラグ0は共通、差が最初に生じる点はラグ1の重み付け後とする。",
+  "hypotheses": {
+    "bias_reduces": "ラグ窓を外すと固定規則のF2が設計の2075 Hzに少なくとも5 Hz近づく。",
+    "condition_number_rises": "ラグ窓を外すと正則化済みToeplitz行列の2ノルム条件数が増える。"
+  },
+  "acceptance": "元の窓、40 Hzでの係数・残差・極・F2を先行固定上流出力へ照合する。0 Hz版はコミットから取得した推定器の40.0の定数だけを変える。両条件で自己相関、Toeplitzの直接解法、複素多項式、独立の根計算をRustと対照する。前処理とラグ0の一致、および重み付け直後の最初の差を確認する。観測の予測が外れた場合も結果を保存する。"
+}

@@ -1,0 +1,109 @@
+--- a/crates/vocal-core/src/airway/network/geometry.rs
++++ b/crates/vocal-core/src/airway/network/geometry.rs
+@@ -1,6 +1,6 @@
+ //! セルの面積補間と移動壁の体積速度源。
+ 
+-use super::{SOUND_SPEED, Section, trim_tiny};
++use super::{MIN_CELL_AREA_CM2, SOUND_SPEED, Section, trim_tiny};
+ use std::f64::consts::TAU;
+ 
+ const SQUEEZE_AREA_CM2: f64 = 0.12;
+@@ -22,7 +22,16 @@
+     spill: Vec<f64>,
+     remaining: usize,
+     coefficient: f64,
++    pub(super) volume_increment_node: Option<usize>,
+     enabled: bool,
++}
++
++// 前後のセル体積を別々に丸めず、面積と長さの変化を使って体積減少量を求める。
++fn volume_decrease(before: Section, after: Section) -> f64 {
++    let before_area = before.area_cm2.max(MIN_CELL_AREA_CM2);
++    let after_area = after.area_cm2.max(MIN_CELL_AREA_CM2);
++    (before_area - after_area) * before.length_cm
++        + after_area * (before.length_cm - after.length_cm)
+ }
+ 
+ impl MovingAreas {
+@@ -43,6 +52,7 @@
+             spill: vec![0.0; sections.len()],
+             remaining: 0,
+             coefficient: 1.0 - libm::exp(-TAU * VOLUME_SOURCE_CUTOFF_HZ * dt),
++            volume_increment_node: None,
+             enabled: false,
+         }
+     }
+@@ -123,6 +133,7 @@
+             self.remaining -= 1;
+             for i in 0..sections.len() {
+                 let section = &mut sections[i];
++                let before = *section;
+                 let cell = &mut self.cells[i];
+                 section.area_cm2 = (section.area_cm2 + cell.area_increment_cm2).max(0.0);
+                 section.minimum_area_cm2 = (section.minimum_area_cm2
+@@ -131,7 +142,14 @@
+                 section.length_cm += cell.length_increment_cm;
+                 let area = section.minimum_area_cm2;
+                 let next_volume = section.volume();
+-                let raw = (cell.volume_cm3 - next_volume) / dt;
++                let decrease = if self.volume_increment_node == Some(i)
++                    && cell.volume_cm3 == before.volume()
++                {
++                    volume_decrease(before, *section)
++                } else {
++                    cell.volume_cm3 - next_volume
++                };
++                let raw = decrease / dt;
+                 cell.volume_cm3 = next_volume;
+                 if raw == 0.0 || area >= SQUEEZE_AREA_CM2 {
+                     self.spill[i] += raw;
+@@ -163,3 +181,26 @@
+         changing
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn volume_decrease_combines_area_and_length_with_the_cell_floor() {
++        let before = Section {
++            area_cm2: 1.5,
++            length_cm: 0.5,
++            minimum_area_cm2: 0.0,
++            perimeter_factor: 1.0,
++            viscous_factor: 1.0,
++            wall: None,
++        };
++        let after = Section { area_cm2: 0.75, length_cm: 0.75, ..before };
++        assert_eq!(volume_decrease(before, after), 0.1875);
++        assert_eq!(volume_decrease(after, before), -0.1875);
++        let narrow_before = Section { area_cm2: 0.01, ..before };
++        let narrow_after = Section { area_cm2: 0.0, length_cm: 0.25, ..before };
++        assert_eq!(volume_decrease(narrow_before, narrow_after), MIN_CELL_AREA_CM2 / 4.0);
++    }
++}
+--- a/crates/vocal-core/src/airway/network.rs
++++ b/crates/vocal-core/src/airway/network.rs
+@@ -667,6 +667,10 @@
+         trim_tiny(&mut self.previous_radiation_flow);
+     }
+ 
++    pub(super) fn use_volume_increment_for_mouth(&mut self, node: usize) {
++        self.moving_areas.volume_increment_node = Some(node);
++    }
++
+     /// 有効な入口の節点番号と一ステップ分の注入流量を受け取る。更新中にメモリ確保しない。
+     pub fn step(&mut self, inlet: usize, inlet_flow_cm3_s: f64) -> NetworkSample {
+         self.step_with_prescribed_flow(inlet, inlet_flow_cm3_s, None)
+--- a/crates/vocal-core/src/airway/human.rs
++++ b/crates/vocal-core/src/airway/human.rs
+@@ -269,6 +269,7 @@
+                 ports: &ports,
+             },
+         )?;
++        network.use_volume_increment_for_mouth(lips);
+         network.reserve_noise_sources(frication::MAX_TURBULENCE_SOURCES);
+         let subglottal = trachea.nodes.end - 1;
+         Ok(Self {

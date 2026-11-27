@@ -1,0 +1,35 @@
+{
+  "id": "coreaudio-headphone-drift-44100-late-attach",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "attach_comparison": {
+    "native_seconds": 2.99,
+    "fixture_frames": 129024,
+    "identical_prefix_frames": 55216,
+    "period_start_frame": 9216,
+    "period_frames": 40,
+    "tone_end_frame": 119808,
+    "terminal_anchors": [122880, 125952],
+    "analysis_end_frame": 118816,
+    "minimum_late_observation_seconds": 1.0,
+    "minimum_late_after_prior_event_ms": 300,
+    "prior_event_output_frame": 27088,
+    "pilot_amplitude_ratio_bounds": [0.5, 1.5],
+    "wide_band_lower_limit": 0.4
+  },
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-attach-before-1", "coreaudio-headphone-drift-44100-attach-late-1"],
+    ["coreaudio-headphone-drift-44100-attach-before-2", "coreaudio-headphone-drift-44100-attach-late-2"],
+    ["coreaudio-headphone-drift-44100-attach-before-3", "coreaudio-headphone-drift-44100-attach-late-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-attach-before-1", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-late-1", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-late-2", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-before-2", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-before-3", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-attach-late-3", "leading_frames": 0, "tap_attach_after_release_seconds": 1.38}
+  ],
+  "prediction": "先にタップを接続する場合、初期19,845 Hzの比は約0.5で、従来の出力フレーム27,088付近の波形差と、振幅比0.20未満・正の位相傾斜が再現すると予測する。既に出力が動いているプロセスへ接続した場合は、少なくとも2組で新たな持続的な帯域低下がないと予測する。接続後に帯域低下と正の位相傾斜が再び現れた場合も、その時刻を出力とタップの両方から測る。",
+  "criteria": "44.1 kHzの同じ外部ヘッドフォン、音量、幅512の直接出力とタップを使用する。両条件のPCMを共通にし、ブラウザの先頭55,216フレームをビットで保持する。その後は試験音の40フレームを同じ位相で反復し、末尾だけ先行校正のマーカーに戻す。早い接続は初期マーカーで、後から接続した試行は末尾の二つのマーカーで整数位置を固定する。後から接続した最初のタップの予定ホスト時刻が直接出力フレーム27,088の予定時刻を300 ms以上過ぎたことを確認する。2,205 Hzの振幅比が0.5〜1.5の窓が4つ続く最初から1秒以上測れるものを有効とする。400窓・200ホップで4周波数を測り、19,845 Hzの比が0.20未満と2,205 Hzの位相が+20 ppmより大きい状態を4小窓の連続で検出する。早い接続と後からの接続とも、出力の生PCM、両方の時計、初期値、帯域変化、元のデバイスの復元を保存する。"
+}

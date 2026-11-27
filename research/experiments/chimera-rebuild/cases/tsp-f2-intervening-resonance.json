@@ -1,0 +1,42 @@
+{
+  "id": "tsp-f2-intervening-resonance",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "harmonic_reference": {
+    "run": "tsp-f2-harmonic-bandwidth-20261122-repeat",
+    "case": "tsp-f2-harmonic-bandwidth",
+    "manifest_sha256": "e3676c985a413316fe70c3149fbe1ce17cb046ef15e5512b1f51ae2d05efbb4c"
+  },
+  "tsp_reference": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "signal": {
+    "sample_rate_hz": 12000,
+    "duration_seconds": 1,
+    "f0_hz": 125,
+    "pulse_amplitude": 0.015,
+    "fixed_poles_hz": [[620, 100], [2075, 180], [2915, 155]],
+    "added_pole_frequencies_hz": [700, 760, 800, 820, 840, 880, 940, 1020],
+    "added_pole_bandwidth_hz": 140
+  },
+  "measurement": {
+    "orders": [12, 14],
+    "centers": [0.35, 0.50, 0.65],
+    "pre_emphasis_coefficient": 0.97,
+    "association_tolerance_hz": 120,
+    "comparison_gap_hz": 200,
+    "harmonic_error_limit": 1e-10,
+    "design_wave_relative_error_limit": 1e-10,
+    "design_pole_error_limit_hz": 1e-8,
+    "design_response_error_limit_db": 1e-9,
+    "raw_root_distance_limit": 1e-7
+  },
+  "hypotheses": {
+    "some_windows_switch_to_added_mode_with_f2_still_eligible": "追加共鳴が設計F1から200 Hzより離れた条件の少なくとも1窓で、設計F2近傍の公開極がF2の周波数条件を満たすまま、上流の規則は先に現れる追加共鳴近傍の極を採る。",
+    "some_close_modes_do_not_replace_f2": "設計F1から200 Hz以内の追加共鳴を入れた条件の少なくとも1窓で、採択は設計F2の120 Hz以内に残る。",
+    "model_gap_does_not_predict_every_window": "設計上の間隔だけを200 Hzと比較して採択を予測すると、追加した条件のうち少なくとも1窓で実測の採択と異なる。"
+  },
+  "acceptance": "追加なしの周期インパルスと全PCM、3窓×2次数の固定上流結果を既存の幅180 Hz・F0 125 Hzと照合する。追加する共鳴は帯域幅140 Hzに固定し、中心周波数だけを変更する。全9波形で共役極、フィルターの直接計算、定常1周期の倍音を照合する。上流Rustから生根・公開極を取得し、独立したToeplitz直接解法と複素根を照合する。全54窓で公開フィルター、選択したF1からの間隔、設計F2近傍の有資格候補の有無、採択・欠測の理由を記録する。仮説の判定と計算の合否を個別に保存する。"
+}

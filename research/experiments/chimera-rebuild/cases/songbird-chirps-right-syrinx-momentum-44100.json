@@ -1,0 +1,31 @@
+{
+  "id": "songbird-chirps-right-syrinx-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-syrinx-half-inertance-44100-20261123-repeat",
+    "manifest_sha256": "a59ec1f4e0360db512c4467b3987f8765b839020c225b9a1aaf98e6364aa3082"
+  },
+  "right_port_term": "momentum",
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_right_flow_offsets": {
+    "matched_time": 28,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "predicted_first_right_flow_effect": {
+    "matched_time": {"offset": 28, "flow_hex": "-0x1.809991b477961p-14"},
+    "native_block": {"offset": 19, "flow_hex": "-0x1.85f6d735ad592p-23"},
+    "no_tracking": null
+  },
+  "hypothesis": "右鳴管の持ち越し項の時間換算だけを (Lcarry × Uprev) × fs に替える。保存した対照の局所状態から、235点制御の押鍵28点後と256点制御の19点後で最初に対照との差が現れ、その点では右流量が固定上流に一致すると予測する。235点制御の最初の標本は今回の慣性、256点制御は前回慣性を持ち越しに使う。右気管支末端と気管入口圧には同じ標本から、左の流量には次の標本から影響が出うる。",
+  "observation": "右気管支側半セルまでの先行版を通常render CLIで再描画し、実験版と固定上流の保存CSVを比較する。押鍵後0〜63点の左右ポートの面積、流量、気管支末端圧、気管入口と末端、口腔食道腔の首部と腔、くちばし、放射流量と差分を観測する。左右の流量と入口圧を局所状態から再計算し、最初に残る差を端点圧と係数の置換で照合する。",
+  "acceptance": "対照CSVと使用した固定上流の出力を照合する。3条件・3版で左右の流量と気管入口圧をビット照合し、弁面積、押鍵前、閉鎖時、追従0、伝播の最短時刻を確認する。事前登録した28点後と19点後で上流と一致し、右流量の初差が遅れることを確認する。変更による最初の差を予測値と照らし、残差と予測が外れた場合の判定を記録する。"
+}

@@ -1,0 +1,149 @@
+{
+  "id": "tsp-fk61-control4992-5120-indexed-area",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control4992-5120-area-targets-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-area-targets",
+    "manifest_sha256": "9b940356f3762206b58f2dc766614e606aacfcba57a5e313f3707b79b429d12b"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      4990,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "下唇の評価式を上流に揃えた研究版を基準とし、4992〜5119・5120〜5247の節点29・34でのみ代表面積を保存した開始値と標本番号から計算する。増分・目標・最小面積・セル長・体積差・枝と放射の式は既存の計算を使う。4990〜5875の断面・体積速度・圧力と口端負荷、0〜6143の放射内訳と変換前出力、全発話の口端流量とPCMを採る。丸め差を基準・改変・固定上流で比較する。",
+    "control_boundaries": [
+      4992,
+      5120,
+      5248,
+      5376,
+      5504,
+      5632,
+      5760
+    ],
+    "area_focus_blocks": [
+      4992,
+      5120
+    ],
+    "area_focus_nodes": [
+      29,
+      34
+    ],
+    "previous_comparison_internal_samples": [
+      3966,
+      5876
+    ]
+  },
+  "hypotheses": {
+    "indexed_reaches_targets_without_accumulated_error": "直接計算では4箇所の最終面積が目標面積に一致する。反復加算で生じた終端誤差がなくなる。",
+    "indexed_reduces_upstream_5120_start_discrepancy": "5120の補間開始時に節点29・34の両方で上流との面積差の絶対値が基準より小さくなる。",
+    "mouth_change_follows_area_intervention": "基準と改変の口端流量の最初の差は4992以降に現れる。",
+    "indexed_delays_first_pcm_difference_from_upstream": "改変と上流の全発話PCMの最初の差は、基準と上流の最初の差より後になる。",
+    "indexed_does_not_increase_peak_pcm_error": "上流との全発話PCMの絶対差の最大値は、基準の値以下になる。"
+  },
+  "acceptance": "通常CLIでの波形と観測付き波形を各ビルドで全発話ビット照合する。基準のPCMは保存済みの試験版、基準の採取系列と上流PCMを前回の観測と照合する。対象ブロックの面積は開始面積と目標からの有理数による線形補間で独立に再現し、全標本でビット照合する。最小面積とセル長、体積差から二段平滑、局所圧力更新、口端放射の入力と出力段を照合する。4992より前の口端流量とPCMが基準と一致することを確認し、最初に異なる幾何・体積速度・枝・口端流量・PCMを記録する。上流との最大・RMS・最初のフレーム・差のあるフレーム数を記録する。"
+}

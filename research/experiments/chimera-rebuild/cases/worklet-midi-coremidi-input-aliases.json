@@ -1,0 +1,9 @@
+{
+  "id": "worklet-midi-coremidi-input-aliases",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-midi-coremidi-passive",
+  "comparison": "仮想入力1端子を、端子名と表示名を模した2候補で検索する。Chromeには端子名側だけを公開する。",
+  "hypothesis": "候補名の数を接続端子数として待つと、実際に1端子が開いていても発声開始前にタイムアウトする。端子数を1として待てば、同じWeb MIDI経路で押鍵と離鍵を受信できる。",
+  "observation": "通常の --passive-fixture で候補名、Chromeの入力IDと接続状態、CoreMIDIとブラウザで受け取ったバイト列、48 kHzのWorklet採用点、全PCMを照合する。共有ノートの2端子条件は従来の入口で比較する。",
+  "acceptance": "修正前は候補名2件、接続済み端子1件で発声前に停止し、失敗記録を残す。修正後は仮想入力として1端子が開き、同じ入力のチャンネル1の音57押鍵と離鍵を両方の受信記録で照合する。通常画面、220 Hzの出力目標、保持と無音復帰、CLIと全PCMの一致を既存判定で確認する。2端子条件の最後の離鍵も従来判定を通過する。"
+}

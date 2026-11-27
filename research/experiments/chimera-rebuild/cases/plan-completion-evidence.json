@@ -1,0 +1,899 @@
+{
+  "id": "plan-completion-evidence",
+  "revision": 59,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "第2版の機構、入力範囲、閾値の照合を再現できる。直近の英語発話・歌唱の全量子の描画中のネイティブ割り当てはゼロで、WASMの共有・中止・再開を経たPCMと観測は保存済みの基準に一致する。現行ソースのRust試験とWebのビルドは通過する。人と実機による観測の要否は証拠から確認する。",
+  "observation": "第2版の全入力、判定と出力、英語と歌唱の量子別CSV、同条件の全PCM、ブラウザの報告と計画、WASM取得保留中の停止状態、再開後のContext、WASMとWeb実行時ソースのハッシュ、現在のCoreMIDIの入力・出力数。",
+  "acceptance": "指定した機構の判定が真で出力と入力を再読できること。一様管の閾値は計画書どおりとし、他の許容差と観測窓は各実行の事前登録に従う。既知の不合格は指定判定だけが偽であること。英語は44.1 kHzの全98,790フレーム、歌唱は48 kHzの全91,200フレームを照合し、ネイティブ描画で128フレームごとの割り当てがゼロであること。現在の通常ビルドのWASMと、最新のブラウザ比較が使ったWASMおよびランタイムソースを照合する。人による回答、物理入力イベントの取得状況は未観測のまま伝播するか、対応する一次記録で更新する。",
+  "previous_audit": "plan-completion-current-web-20261122",
+  "fixed_vowel_i_velum_wide_port_upper_harmonics_followup": {
+    "previous_run": "plan-completion-v58-fixed-vowel-i-velum-narrow-port-upper-harmonics-20261124",
+    "previous_manifest_sha256": "e2ae76221f00349d70c7648f9a234bf5387f36038d9235bf2c74e75d58ebdef5",
+    "first": {
+      "run": "fixed-vowel-i-velum-wide-port-upper-harmonics-20261124-registered",
+      "manifest_sha256": "0b451fa75695d3ae2a022ee72b3b43934a8469b387cae16da828762f56aa7486"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-wide-port-upper-harmonics-20261124-repeat",
+      "manifest_sha256": "4ab252184f9c12c762d220fcc71b160a05e1338e0421d5a489c45d6bbdd5c635"
+    }
+  },
+  "fixed_vowel_i_velum_narrow_port_upper_harmonics_followup": {
+    "previous_run": "plan-completion-v57-fixed-vowel-i-velum-narrow-port-all-harmonic-feedback-20261124",
+    "previous_manifest_sha256": "70936d029ea38bd39c81df4b180ded9a1e7dba95fae7fcda2f1335fce3a57ced",
+    "first": {
+      "run": "fixed-vowel-i-velum-narrow-port-upper-harmonics-20261124-registered",
+      "manifest_sha256": "a0821ce292278aadd913c521236d3e78b5b7a1d8820777c771edf4697b8b32ff"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-narrow-port-upper-harmonics-20261124-repeat",
+      "manifest_sha256": "2c0e51c0a567c6b0c5c05842c0d0b67c1bdee27d558da486f6467fe2a8f5ce0f"
+    }
+  },
+  "fixed_vowel_i_velum_narrow_port_all_harmonic_feedback_followup": {
+    "previous_run": "plan-completion-v56-fixed-vowel-i-velum-narrow-port-bandwidth-20261124",
+    "previous_manifest_sha256": "f7f51a18b113fac1ca555478944f93c1cdc395cdc037bf89b40bdc4794d64f0f",
+    "first": {
+      "run": "fixed-vowel-i-velum-narrow-port-all-harmonic-feedback-20261124-registered",
+      "manifest_sha256": "f1df8308a09e5d000ce7d8de9dc31d2b6bb71ffb4dc4c8606b8b7b9deaaa55f7"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-narrow-port-all-harmonic-feedback-20261124-repeat",
+      "manifest_sha256": "ca2db02a8ff532d3e55865d062251b59cb515cf91054081199782b7cc8a38aaf"
+    }
+  },
+  "fixed_vowel_i_velum_narrow_port_bandwidth_followup": {
+    "previous_run": "plan-completion-v55-fixed-vowel-i-velum-narrow-port-feedback-20261124",
+    "previous_manifest_sha256": "5af76648389e294598b4fa34c3f7a0efb87d2f919758b4b5dddf775dd86fac1c",
+    "first": {
+      "run": "fixed-vowel-i-velum-narrow-port-bandwidth-20261124-registered",
+      "manifest_sha256": "6d5f76e0e1ff3cfc306467ff398203b160fbc21e84b094927688874c58309c54"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-narrow-port-bandwidth-20261124-repeat",
+      "manifest_sha256": "24430e03a72dabb678ad2c2da1c9237b77d0b1aca56f02c7ef831607630eb2c4"
+    }
+  },
+  "fixed_vowel_i_velum_narrow_port_feedback_followup": {
+    "previous_run": "plan-completion-v54-fixed-vowel-i-velum-port-selected-pair-feedback-20261124",
+    "previous_manifest_sha256": "43426b8ca067cbf71aa6c1febb4d6c3b40a2a4017fe9f14a2a91a97f4a1393cc",
+    "first": {
+      "run": "fixed-vowel-i-velum-narrow-port-feedback-20261124-registered",
+      "manifest_sha256": "18a45dddc27a6169b928b6ba87fd9dbdb845c4e9ce3455589306efc4bdc39817"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-narrow-port-feedback-20261124-repeat",
+      "manifest_sha256": "13240077693e524966f03bd042462a4440af51914d6fe3fd0d222dec65c5cdad"
+    }
+  },
+  "fixed_vowel_i_velum_port_selected_pair_feedback_followup": {
+    "previous_run": "plan-completion-v53-fixed-vowel-i-velum-port-complex-pair-20261124",
+    "previous_manifest_sha256": "3303ce2784294878b6146e304f16117ba6649f52a74865afeeefa8e5f6a776ea",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-selected-pair-feedback-20261124-registered",
+      "manifest_sha256": "b00c952e8716d58e10f59fcdc66f63c2b81e547d3884d60207ea9ccedaac336b"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-selected-pair-feedback-20261124-repeat",
+      "manifest_sha256": "81cec298941e8a266cc006c6f4e01297b41849d8731da699a821d3478b41f33e"
+    }
+  },
+  "fixed_vowel_i_velum_port_complex_pair_followup": {
+    "previous_run": "plan-completion-v52-fixed-vowel-i-velum-port-loss-sensitivity-20261124",
+    "previous_manifest_sha256": "0f7f04fc2f63ac2b26fe705a3bf76688858fb816b1cd794a7d8b066ce0032db6",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-complex-pair-20261124-registered",
+      "manifest_sha256": "a9209407bd7cfbfb21f07bdcc9b4dd24ac3900a2dd371d8f51e295919b252189"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-complex-pair-20261124-repeat",
+      "manifest_sha256": "1385daa1f9d38ec5d37657cd7864936a324e5cfd9a7c6bedc7401849be714637"
+    }
+  },
+  "fixed_vowel_i_velum_port_loss_sensitivity_followup": {
+    "previous_run": "plan-completion-v51-fixed-vowel-i-velum-port-loss-feedback-20261124",
+    "previous_manifest_sha256": "0a72125ca74cd6bef179b8b73100effe5e49e190941696317c27224917a15b2d",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-loss-sensitivity-20261124-registered",
+      "manifest_sha256": "62d40dc16a3a504760416a1affe89c11ce180ca314628d0dc544f4339a413946"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-loss-sensitivity-20261124-repeat",
+      "manifest_sha256": "f53b1b9701ef80207c8b9415d8b25312c339d47e1638b3a8a4d7514a1d12b14b"
+    }
+  },
+  "fixed_vowel_i_velum_port_loss_feedback_followup": {
+    "previous_run": "plan-completion-v50-fixed-vowel-i-velum-port-middle-harmonics-20261124",
+    "previous_manifest_sha256": "52919e97102fe7a92a5af1e1dafac9e1e86c6a0ea22bf2646f8a1221e09e3155",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-loss-feedback-20261124-registered",
+      "manifest_sha256": "4bca04f6a2e8ca26666c2f3461cd0be556f5b002c55d7f266015287f092a4ee2"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-loss-feedback-20261124-repeat",
+      "manifest_sha256": "390859874220946fe5efb1ed8d4f204ee67e4579f8e021ffe886ae832186631d"
+    }
+  },
+  "fixed_vowel_i_velum_port_middle_harmonics_followup": {
+    "previous_run": "plan-completion-v49-fixed-vowel-i-velum-port-bandwidth-20261124",
+    "previous_manifest_sha256": "9970411046a46eb25b1afd862dd9fceb3671bcc442f28cfd1c28362de0fe123e",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-middle-harmonics-20261124-registered",
+      "manifest_sha256": "0052a444e9661d2364fbd06a6346e9d9c804ae4e015d495eab8727053c1b4d00"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-middle-harmonics-20261124-repeat",
+      "manifest_sha256": "08471b32e6bb5a20ab9f95c281f99bb4e5eede2c5d2d0926b4d609892d34a198"
+    }
+  },
+  "fixed_vowel_i_velum_port_bandwidth_followup": {
+    "previous_run": "plan-completion-v48-fixed-vowel-i-pharynx-predicted-radiation-20261124",
+    "previous_manifest_sha256": "4fe0f8b7cab11d607de5bb71dd5888b0193df353cc795dc6b30105e91894a9ed",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-bandwidth-20261124-registered",
+      "manifest_sha256": "9128fdfb36ec5895f6f28689739a21ffe51c3c715729e8493c1c2d955e63a675"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-bandwidth-20261124-repeat",
+      "manifest_sha256": "5986eda0c0b0e5c3e8fcb5cc64bf0a535d81790420a19754f6e6d9ab76da330b"
+    }
+  },
+  "fixed_vowel_i_pharynx_predicted_radiation_followup": {
+    "previous_run": "plan-completion-v47-fixed-vowel-i-pharynx-averaged-loss-20261124",
+    "previous_manifest_sha256": "857fc557a62684802a26a4fc16931557e0db3dc4f7b12290895ce930c11f85fc",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-predicted-radiation-20261124-registered",
+      "manifest_sha256": "e5b1875939f921876b827cf6c83c97907dfc90b47eabe456e1e1d1610022fc1e"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-predicted-radiation-20261124-repeat",
+      "manifest_sha256": "319636232c5153f5e69035df522f3906635e2762c7c96ae1c45759081bd8073f"
+    }
+  },
+  "fixed_vowel_i_pharynx_averaged_loss_followup": {
+    "previous_run": "plan-completion-v46-fixed-vowel-i-pharynx-steady-flow-20261124",
+    "previous_manifest_sha256": "76f4052c9af6027a8d52cdc6dc2fe004e03dbf41f6e0e2326613702f01914fb1",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-averaged-loss-20261124-registered",
+      "manifest_sha256": "1b2c633a16fd6d1670de3e533af36c579bf228a8241b885e26ac5f4e8c08e0dc"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-averaged-loss-20261124-repeat",
+      "manifest_sha256": "8df0dd79e1230d63eb975486e21a587dce44d53a9dd6aace368013c2b7ac7e31"
+    }
+  },
+  "fixed_vowel_i_pharynx_steady_flow_followup": {
+    "previous_run": "plan-completion-v45-fixed-vowel-i-pharynx-from-glottal-flow-20261124",
+    "previous_manifest_sha256": "103447bfbee95398750563f6055f11391c01d3cc2ef0c5a2f292f035e014bbd0",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-steady-flow-20261124-registered",
+      "manifest_sha256": "ef8e4d33a4bcc0ef9aceaf8d54ace1747f424b82a00b81d46149eccaf2a84671"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-steady-flow-20261124-repeat",
+      "manifest_sha256": "3abc95eebb4b5ec8595ea7f15e3285b6ea8fdbe41010d6bf839b8ad70b8f8d9c"
+    }
+  },
+  "fixed_vowel_i_pharynx_from_glottal_flow_followup": {
+    "previous_run": "plan-completion-v44-fixed-vowel-i-pharynx-reversal-low-harmonics-20261124",
+    "previous_manifest_sha256": "1342813b6562bf937a86653f1e135992be6a6571c0de480ae95746e2b0cacd4c",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-from-glottal-flow-20261124-registered",
+      "manifest_sha256": "c8da60f646114a3fee6e423ccc6992239a82fa344ba6b2a1452166c7e25619fb"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-from-glottal-flow-20261124-repeat",
+      "manifest_sha256": "031f61841b0dd65d32f0a2d8e6d091a3aa192d188d63da8f19eb1844eb1d62b3"
+    }
+  },
+  "fixed_vowel_i_pharynx_reversal_low_harmonics_followup": {
+    "previous_run": "plan-completion-v43-fixed-vowel-i-pharynx-harmonic-pairs-low-pressure-20261124",
+    "previous_manifest_sha256": "a9e4f873af9946c28ca0e5b8c39fac97da5a64d469bca1f580480eb746e22a58",
+    "initial": {
+      "run": "fixed-vowel-i-pharynx-reversal-low-harmonics-20261124-registered",
+      "manifest_sha256": "94097c5f5e12909f72bf0df9aea47ccae83295f364ac3c18ddeb7f98266a5521",
+      "expected_error": "Object of type bool is not JSON serializable"
+    },
+    "first": {
+      "run": "fixed-vowel-i-pharynx-reversal-low-harmonics-20261124-serialized",
+      "manifest_sha256": "9f0ed490161b482b81b7261ac4ad1e114c90422fe317039b9fe10d9fa274aeef"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-reversal-low-harmonics-20261124-repeat",
+      "manifest_sha256": "56ca0dd007689cd29ae20c048869ed781aa19010ee4a67be432feb8017ea1cad"
+    }
+  },
+  "fixed_vowel_i_pharynx_harmonic_pairs_low_pressure_followup": {
+    "previous_run": "plan-completion-v42-fixed-vowel-i-pharynx-harmonic-pairs-20261124",
+    "previous_manifest_sha256": "61e6294eff40e37e37cc8671fc745a4d8f5baecea9f4a28e2ed46ed3d62c1f62",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-low-pressure-20261124-registered",
+      "manifest_sha256": "cd15d9c1fcdeed854fd4a04e44d37d24958b836b3fc509dfcf01238c489b91fd"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-low-pressure-20261124-repeat",
+      "manifest_sha256": "8926ad19a072ec73f5c924f25ef0d5d6ccd932f44b3329eece2a68ab84a8d853"
+    }
+  },
+  "fixed_vowel_i_pharynx_harmonic_pairs_followup": {
+    "previous_run": "plan-completion-v41-fixed-vowel-i-pharynx-mean-flow-tangent-20261124",
+    "previous_manifest_sha256": "f303d49105fe506f026db8a03ef9df42f438375018409eca9adf17c2137896ff",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-20261124-registered",
+      "manifest_sha256": "b1649072b2d63ca67b395f80631b451ce58ab5cdd0b42aba5d204a209ff13219"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-harmonic-pairs-20261124-repeat",
+      "manifest_sha256": "d5bc611de39074f8e8bd774db57c76ba20a3369f147e595f995107952b6c8763"
+    }
+  },
+  "fixed_vowel_i_pharynx_mean_flow_tangent_followup": {
+    "previous_run": "plan-completion-v40-fixed-vowel-i-velum-supraglottal-loss-20261124",
+    "previous_manifest_sha256": "70c29730a812653e033054717b48b57d1a88e3aa89152fc242c49f3917526afc",
+    "first": {
+      "run": "fixed-vowel-i-pharynx-mean-flow-tangent-20261124-registered",
+      "manifest_sha256": "94b9c08ccebd7e15a0553368a31dfac4af88db5dc9587c16a2f89ac4d22d47ec"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pharynx-mean-flow-tangent-20261124-repeat",
+      "manifest_sha256": "39d7a444bb953d075f5a3129858d495d2e83689c939baf0cc2a85cf945dd5cba"
+    }
+  },
+  "fixed_vowel_i_velum_supraglottal_loss_followup": {
+    "previous_run": "plan-completion-v39-fixed-vowel-i-velum-oral-nasal-loss-20261124",
+    "previous_manifest_sha256": "61851753412dc77ab8fe5e08c1af87278bbdaee34f7ece47efde7c4ba55e90a4",
+    "first": {
+      "run": "fixed-vowel-i-velum-supraglottal-loss-20261124-registered",
+      "manifest_sha256": "20119911307be5d5f2b75ac13afd837527b35ca4b0613d6b01fc3ebbd5b430df"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-supraglottal-loss-20261124-repeat",
+      "manifest_sha256": "ccb2c572d495284844e7a687390f09fb1e8cb23af9317295f9808d89dc2b34fb"
+    }
+  },
+  "fixed_vowel_i_velum_oral_nasal_loss_followup": {
+    "previous_run": "plan-completion-v38-fixed-vowel-i-velum-mean-flow-tangent-20261124",
+    "previous_manifest_sha256": "99b517edec80b0c8c9b4abed886a590cfaa1b6a1036096113032e0b463b58beb",
+    "initial": {
+      "run": "fixed-vowel-i-velum-oral-nasal-loss-20261124-registered",
+      "manifest_sha256": "d2b0676ccc252c13ac66a7ce6cde711e83b2b527de904dd1307e2cbb5d1742ca"
+    },
+    "first": {
+      "run": "fixed-vowel-i-velum-oral-nasal-loss-20261124-aligned",
+      "manifest_sha256": "482ec420a63dcb4de094f4816024405623a4349050955b1db2fb4c711c93b82c"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-oral-nasal-loss-20261124-repeat",
+      "manifest_sha256": "0737b434476af22602ac507987f9d430949206218ba20b8df26c07fc9fbd5203"
+    }
+  },
+  "fixed_vowel_i_velum_mean_flow_tangent_followup": {
+    "previous_run": "plan-completion-v37-fixed-vowel-i-velum-harmonic-transfer-20261124",
+    "previous_manifest_sha256": "d20cb72adcc0c414a49a45c8c8626cd529fe1e6b9b16516936b28781b3291418",
+    "first": {
+      "run": "fixed-vowel-i-velum-mean-flow-tangent-20261124-registered",
+      "manifest_sha256": "c3bd318d4040d84b3ed035d1e433edac601baef6720ed0ee893cfb9115343ef1"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-mean-flow-tangent-20261124-repeat",
+      "manifest_sha256": "453ddd23a60187015e93717836e786a17135e3cd7393119cad01918f2465fbe5"
+    }
+  },
+  "fixed_vowel_i_velum_harmonic_transfer_followup": {
+    "previous_run": "plan-completion-v36-fixed-vowel-i-velum-port-only-20261124",
+    "previous_manifest_sha256": "17ae698dce110263ee0aa5fca60736c2e34dddfd2af9e200a0914417c1b4e63a",
+    "first": {
+      "run": "fixed-vowel-i-velum-harmonic-transfer-20261124-registered",
+      "manifest_sha256": "a1c643210bd1671c015fc068fae6658491a4bde31b55cb1baf0a995f3cc50b6e"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-harmonic-transfer-20261124-repeat",
+      "manifest_sha256": "6d3fd1f72a81272da29298d23f2725bda665e6308854dcee611b9463393ced55"
+    }
+  },
+  "fixed_vowel_i_velum_port_only_followup": {
+    "previous_run": "plan-completion-v35-fixed-vowel-i-velum-radiation-20261124",
+    "previous_manifest_sha256": "ab755d4b91e5b57abc820f8954f6872bae8324ba5f382acccd2331643ebecf1e",
+    "first": {
+      "run": "fixed-vowel-i-velum-port-only-20261124-registered",
+      "manifest_sha256": "f64511adba52af57337786d991192b3268361ac549ff83e865f6321a534ae165"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-port-only-20261124-repeat",
+      "manifest_sha256": "9cc92d16611e72c0373f4a4dd95b2df991e73bc75efe569122d2a628e72d1f05"
+    }
+  },
+  "fixed_vowel_i_velum_radiation_followup": {
+    "previous_run": "plan-completion-v34-fixed-vowel-i-radiation-screen-20261124",
+    "previous_manifest_sha256": "19913ab801b471b8e794b7803070e4f4e4b8d940d42744efbc9be1729974a289",
+    "initial": {
+      "run": "fixed-vowel-i-velum-radiation-20261124-registered",
+      "manifest_sha256": "b195b5d8230a24d8b43a3e3132564fc2e74db0f7d6b04ae4ed5728f8c9bba532"
+    },
+    "first": {
+      "run": "fixed-vowel-i-velum-radiation-20261124-echo-corrected",
+      "manifest_sha256": "949ed40c166a4682e27f9d5f9c2f103ecd04a9710d7475f79f6e1911df8761c2"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-velum-radiation-20261124-repeat",
+      "manifest_sha256": "03b31198372dd0cefc73a3d9066e3f288e96d3079494d35aa704a7fe4509d05f"
+    }
+  },
+  "fixed_vowel_i_radiation_screen_followup": {
+    "previous_run": "plan-completion-v33-fixed-vowel-i-wasm-radiation-20261124",
+    "previous_manifest_sha256": "d6a59dacc91e3eb14b01b1811b635e635b2852923a68892a1b3e878e761d6be0",
+    "previous_web_run": "worklet-live-tsp-shared-wasm-abort-44100-20261124-radiation-final",
+    "first": {
+      "run": "fixed-vowel-i-radiation-screen-20261124-registered",
+      "manifest_sha256": "1f75c7a671e1edcfea1adcafd91c03670afae3bdbe91b72321f27691877392ee"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-radiation-screen-20261124-repeat",
+      "manifest_sha256": "4a779b03ec910f6c2a6872e1b20b8de3a5f2b5fa6f0ab3df090a38850ec82f90"
+    }
+  },
+  "fixed_vowel_i_wasm_radiation_followup": {
+    "previous_run": "plan-completion-v32-fixed-vowel-i-cli-radiation-20261124",
+    "previous_manifest_sha256": "3c415715c9af624bda86f0d0e1c20009de459ab886e8b74b7d856eb35e78a636",
+    "previous_web_runs": ["worklet-live-tsp-shared-wasm-abort-44100-20261123-v2", "worklet-rate-48000-memory-current"],
+    "runner_failure": {
+      "run": "fixed-vowel-i-wasm-radiation-20261124-registered",
+      "manifest_sha256": "802e25e49c9ce7c8e7304bc4c48d066f51fca54a0793b81ad2d4479b0ec2e34e"
+    },
+    "hash_failure": {
+      "run": "fixed-vowel-i-wasm-radiation-20261124-typescript-transform",
+      "manifest_sha256": "982c409beec55141353bead5f81fef55aeb38fba2accc73b032f78c2350c1378"
+    },
+    "first": {
+      "run": "fixed-vowel-i-wasm-radiation-20261124-fetch-filtered",
+      "manifest_sha256": "23cdcb978e11193aa7fe51bf0b7d6a83a884448f09d32e3e076a23202739133f"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-wasm-radiation-20261124-repeat",
+      "manifest_sha256": "8454ed3c93ecdff70d72f29a9a7f863eae572e78463d1be797e1a3cb8005390c"
+    }
+  },
+  "fixed_vowel_i_cli_radiation_followup": {
+    "previous_run": "plan-completion-v31-fixed-vowel-i-radiation-components-20261124",
+    "previous_manifest_sha256": "4a7e203914c1549e1219400cd8f7edbfaa920f4ed79106ca0236f86e580e21fa",
+    "initial": {
+      "run": "fixed-vowel-i-cli-radiation-20261124-registered",
+      "manifest_sha256": "c5bdca942a52cbf5b8204d1d8972dd829e39b138e4ae97cdc91bb4c2ddcbf981"
+    },
+    "first": {
+      "run": "fixed-vowel-i-cli-radiation-20261124-schema-corrected",
+      "manifest_sha256": "e92df86a5f5a0cb43bc0ae8ecdc78b42abde1060f3db6831db00e6e7146e27a4"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-cli-radiation-20261124-schema-corrected-repeat",
+      "manifest_sha256": "2b6e9ef19ba485fd337ccdf0b3c8f0507ba3c3729bb8097cf684ad87770ccb50"
+    }
+  },
+  "fixed_vowel_i_radiation_components_followup": {
+    "previous_run": "plan-completion-v30-fixed-vowel-i-pressure-replay-20261124",
+    "previous_manifest_sha256": "34318ddb8cac8282eb882959594500c177d0d0ebaacf0e69d2b50b04a77b7118",
+    "first": {
+      "run": "fixed-vowel-i-radiation-components-20261124-registered",
+      "manifest_sha256": "e7cbc4577711a233c861deb8a8fe0d97b006338a1c00064c2d0c68421117eb9c"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-radiation-components-20261124-repeat",
+      "manifest_sha256": "2acd99e875c13da6aebd04493bd4ee3f273fd21dab3ca806c71a2a9d5cbd287e"
+    }
+  },
+  "fixed_vowel_i_pressure_replay_followup": {
+    "previous_run": "plan-completion-v29-fixed-vowel-i-low-pressure-smoothing-20261124",
+    "previous_manifest_sha256": "ab955bb68b32cf91675a7e7fb8137b64d96361f28c857dd65fa228bf5f18ff00",
+    "first": {
+      "run": "fixed-vowel-i-pressure-replay-20261124-registered",
+      "manifest_sha256": "6ede88dab33af022f4f8f98c8a0d5d67dbd1876b43c956a291207a5cb42a7455"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-pressure-replay-20261124-repeat",
+      "manifest_sha256": "55e759ffef0390e4153279a782ab41c01c67d9f74077d0b00b8f64feaed56fec"
+    }
+  },
+  "fixed_vowel_i_low_pressure_smoothing_followup": {
+    "previous_run": "plan-completion-v28-fixed-vowel-i-coupled-smoothing-20261124",
+    "previous_manifest_sha256": "e546912233a70604d68a6d839e9560993484a82a39df997d68865acdcb276a86",
+    "first": {
+      "run": "fixed-vowel-i-low-pressure-smoothing-20261124-registered",
+      "manifest_sha256": "049b2ae15443f466b4ed509e6e333e9237fc7f0960ec159b55c05e5e4e439dcc"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-low-pressure-smoothing-20261124-repeat",
+      "manifest_sha256": "6be228966d9e23b15171a13a91597a41aa5749dd4605026e1470056c89899ade"
+    }
+  },
+  "fixed_vowel_i_coupled_smoothing_followup": {
+    "previous_run": "plan-completion-v27-fixed-vowel-i-lf-smoothing-20261124",
+    "previous_manifest_sha256": "90c131119fc1525faa0152e775eba88b3aa97c5a545c27a07f96f09bbe8d4c6c",
+    "first": {
+      "run": "fixed-vowel-i-coupled-smoothing-20261124-registered",
+      "manifest_sha256": "440a1412d25dc96a7411e608b22c69dd897e411a7f6fc0a05bc6d6e5afa40a23"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-coupled-smoothing-20261124-repeat",
+      "manifest_sha256": "06f7924a8285ddf3851c645edc4bbb2b5b8a94130937be1fd43372d6ae1331b9"
+    }
+  },
+  "fixed_vowel_i_lf_smoothing_followup": {
+    "previous_run": "plan-completion-v26-fixed-vowel-i-lf-20261124",
+    "previous_manifest_sha256": "c0a89324dee178a3c02108a881bcdc0d00dd78910122bac7d4ac96c277c7a606",
+    "first": {
+      "run": "fixed-vowel-i-lf-smoothed-branches-20261124-registered",
+      "manifest_sha256": "2d57ce4714d2f2ecc35cf29fb9fa73b228b1e2896c65a94846c93f7da337f7a9"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-lf-smoothed-branches-20261124-repeat",
+      "manifest_sha256": "865ecfbf317197fadd911e5e6792eaa9e7579244d5a4b7ea393388b131437b92"
+    }
+  },
+  "fixed_vowel_i_lf_followup": {
+    "previous_run": "plan-completion-v25-alpha-lf-smoothed-width-30-20261124",
+    "previous_manifest_sha256": "971fb18cfc4cb9a2d7ca943145f673a8db95ba7edb6acf5e1f2c432df6a9316a",
+    "first": {
+      "run": "fixed-vowel-i-lf-branch-loss-20261124-registered",
+      "manifest_sha256": "c1ff8579bc86ded32172d2aea8983ca7971706c65644a3ff307d3c376e4ec815"
+    },
+    "repeat": {
+      "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+      "manifest_sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+    }
+  },
+  "lf_fundamental_smoothed_width_30_followup": {
+    "previous_run": "plan-completion-v24-alpha-lf-smoothed-branches-20261124",
+    "previous_manifest_sha256": "804866ba2ffdfd3922de01542ca45e8e9610ce0f3c073935b5a8ba2f88ed775e",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-smoothed-width-30-20261124-registered",
+      "manifest_sha256": "39ce0771364fa5389ec4362f2a9b4dca714a77b40dd40d9db4f4af997ffdf6e2"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-smoothed-width-30-20261124-repeat",
+      "manifest_sha256": "d8e2fbd19691d33d4737a11358dfa952d59cc9bfa230cd934133a6412262f98a"
+    }
+  },
+  "lf_fundamental_smoothed_followup": {
+    "previous_run": "plan-completion-v23-alpha-lf-fundamental-amplitude-branches-20261124",
+    "previous_manifest_sha256": "b54806e2ed4f1e01e30647e1ea85b7357716e3fc94fb5ac2aef2f23b930ac5c7",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-smoothed-branches-20261124-registered",
+      "manifest_sha256": "07d5142306c880cb07a63cd6541f2572227392cab69afc03177edf34966b7cb5"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-smoothed-branches-20261124-repeat",
+      "manifest_sha256": "003ffdc9cb2fa707b67ed6bb3ca80a60a3254fbc8f66994289ae364eab9f2121"
+    }
+  },
+  "lf_fundamental_amplitude_branches_followup": {
+    "previous_run": "plan-completion-v22-alpha-lf-fundamental-amplitude-20261124",
+    "previous_manifest_sha256": "086807e25998424cf975e5291952a3e22a48ad50904221af14e98736639bc832",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-amplitude-branch-loss-20261124-registered",
+      "manifest_sha256": "9f6f7fbaf510b08cd9412c02ea4da56698f6a246657f7883fda984dc00e3923f"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-amplitude-branch-loss-20261124-repeat",
+      "manifest_sha256": "32208ee7515f9321632ec7fdef881664482ac7cc716489f76741b1aa8b919e2f"
+    }
+  },
+  "lf_fundamental_amplitude_followup": {
+    "previous_run": "plan-completion-v21-alpha-lf-fundamental-branches-20261124",
+    "previous_manifest_sha256": "b517e294299a39f456f4465112774ca78b1d1c3738892212cc1276f935d40629",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-amplitude-20261124-windowed",
+      "manifest_sha256": "f5f08da434b5f582f8e151260ac68baa9f5a463a295b8b07f99bffb03abd4027"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-amplitude-20261124-windowed-repeat",
+      "manifest_sha256": "27ce867f2d257476102cbe2e8bad36245da6940d1c60ac7c5cce82916cce0efb"
+    },
+    "failed_captures": [
+      {
+        "run": "fixed-alpha-lf-fundamental-amplitude-20261124-registered",
+        "sha256": "bb7bdbf51d1863efc77c9bf6569be82966a0d2366b2578f0a2e6fdd0df0340b0"
+      },
+      {
+        "run": "fixed-alpha-lf-fundamental-amplitude-20261124-repeat",
+        "sha256": "89750eb53ee23ac5e6a3a7cfd90d689235550151cc73db14ff6c4a83faa8fc8b"
+      }
+    ],
+    "window_regression": {
+      "first": {
+        "run": "fixed-alpha-periodic-flow-20261124-repeat",
+        "manifest_sha256": "aaef0948a73f3c9290b49f61544950ca7863b328bb047d1ba9600ffc5b6aae08"
+      },
+      "repeat": {
+        "run": "fixed-alpha-periodic-flow-20261124-explicit-windows-regression",
+        "manifest_sha256": "9ac990c2931bb0d2e60479488f0fd5326064459ed380728a34b606247f4c01b5"
+      }
+    }
+  },
+  "lf_fundamental_branches_followup": {
+    "previous_run": "plan-completion-v20-alpha-lf-fundamental-20261124",
+    "previous_manifest_sha256": "b8bceec7d7276246bef26717eb707338cb4a3adfd12d04b3eee614cd0c75e140",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-branch-loss-20261124-registered",
+      "manifest_sha256": "19ecd5d1fff7ee5e0d103d5fabe9e3bd4ab1f025340f4c3d8d46b8dfccbbb38e"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-branch-loss-20261124-repeat",
+      "manifest_sha256": "2c19798cdf876cb0a7ab5e4b187246e1ad18fa24c4380f4d0854e8ffe3d2cb06"
+    }
+  },
+  "lf_fundamental_followup": {
+    "previous_run": "plan-completion-v19-alpha-loss-low-flow-20261124",
+    "previous_manifest_sha256": "1de4db49594f48f677357499a0c399664666391d5a47b07a9611288a37636cfd",
+    "first": {
+      "run": "fixed-alpha-lf-fundamental-20261124-registered",
+      "manifest_sha256": "fa27e43a1306ca1b22e02f74c6ac3c67204068ae09b51531247beea7a3412d38"
+    },
+    "repeat": {
+      "run": "fixed-alpha-lf-fundamental-20261124-repeat",
+      "manifest_sha256": "d49a565017abe5af7414010e2a7e2faa36db85f73e9a096db3edd810e77a9b4f"
+    }
+  },
+  "low_flow_alpha_followup": {
+    "previous_run": "plan-completion-v18-alpha-loss-high-flow-20261124",
+    "previous_manifest_sha256": "e9b64b4ebc55810d84f920542099e3d0b4cb28a1e308f2e4b23a28651ee00b6f",
+    "first": {
+      "run": "fixed-alpha-loss-low-flow-20261124-registered",
+      "manifest_sha256": "edc2de69d15d19c376798b07080de2ed481f97f82ea2f85f711d3c98615afab8"
+    },
+    "repeat": {
+      "run": "fixed-alpha-loss-low-flow-20261124-repeat",
+      "manifest_sha256": "40401d7264cb029bb84de0f2424b5d60d4316e1841f7b017bb8e42ed88c534a1"
+    }
+  },
+  "high_flow_alpha_followup": {
+    "previous_run": "plan-completion-v17-alpha-loss-passive-20261124",
+    "previous_manifest_sha256": "b36a55d6be4aca2df5ea31a3e32255e507c36cb1f0149d12031e3b43e37c3a85",
+    "initial_manifests": {
+      "fixed-alpha-loss-high-flow-20261124-registered": "f18950e96cb80427257ee0f00a63bf3221912c4e7b1a8fc95e647aa8da40900f",
+      "fixed-alpha-loss-high-flow-20261124-repeat": "4e4beeb21e33d88b68cf9059a57120f21d2ba1654513b580bab101b7c95f4f40"
+    },
+    "first": {
+      "run": "fixed-alpha-loss-high-flow-20261124-residual",
+      "manifest_sha256": "a9b0aaa37d8b1f49f32f7ca7b126343282298d9df03f0506a4bdad7d5c991dde"
+    },
+    "repeat": {
+      "run": "fixed-alpha-loss-high-flow-20261124-residual-repeat",
+      "manifest_sha256": "c457c8422cc67942ca05f42be6b7c10f194661bf102179b5ff4915913ff6cf1b"
+    }
+  },
+  "passive_alpha_followup": {
+    "previous_run": "plan-completion-v16-alpha-loss-tangent-20261124",
+    "previous_manifest_sha256": "3fdbb0d9041f47d33d4df6cdcc3351614dd94a7acf1521bc049ab916ffb5edf7",
+    "first": {
+      "run": "fixed-alpha-loss-passive-20261124-registered",
+      "manifest_sha256": "a5d3d7f4b7b06276df4f2daa0d61c870d40ecdd1edb7f842cd75ddfa914c28fa"
+    },
+    "repeat": {
+      "run": "fixed-alpha-loss-passive-20261124-repeat",
+      "manifest_sha256": "5f6cb7f3ff633ad38d30b2b2f9e5f28454889b5730fde7dc5aa9271131684d16"
+    }
+  },
+  "tangent_alpha_followup": {
+    "previous_run": "plan-completion-v15-alpha-branch-loss-20261124",
+    "previous_manifest_sha256": "5b6fbb2c322d51d67f2faffc3e1ad9804f7019bab5a69107efaa1eede54bd0d0",
+    "first": {
+      "run": "fixed-alpha-loss-tangent-20261124-dc-scaled",
+      "manifest_sha256": "830b33fd66e7eb8ee43e3c50e55cf280b931eab5150648bcf74ca9a62236d3eb"
+    },
+    "repeat": {
+      "run": "fixed-alpha-loss-tangent-20261124-repeat",
+      "manifest_sha256": "2e1eb2f9e010471648a34b2c5cc78c1d4536271435025812d01f6915cf6af8f4"
+    }
+  },
+  "branch_alpha_followup": {
+    "previous_run": "plan-completion-v14-alpha-periodic-flow-20261124",
+    "previous_manifest_sha256": "d48404bfe161f07e9a2b5dbf688cb87860db5e55c19cdfb2bf812ca454da3428",
+    "first": {
+      "run": "fixed-alpha-branch-loss-20261124-aligned",
+      "manifest_sha256": "3bd6c63d4bef62c4fee8eb78a1c15613098bd7c929b8ed7a73533c4120e7ce4c"
+    },
+    "repeat": {
+      "run": "fixed-alpha-branch-loss-20261124-repeat",
+      "manifest_sha256": "0da750a9584047593fc0117d2eb94009b6b51e4afa6add98cd7035d48ae36d41"
+    }
+  },
+  "periodic_alpha_followup": {
+    "previous_run": "plan-completion-v13-alpha-mean-flow-20261124",
+    "previous_manifest_sha256": "60f68533eaf7f7e0e93dd738455e4507d106af821777b7ced9f8a23b5ac872bf",
+    "first": {
+      "run": "fixed-alpha-periodic-flow-20261124-verified",
+      "manifest_sha256": "8f0851c431d8c081f0cc628f81dfcf9694d199f99e386f0ecdddc6056b14867b"
+    },
+    "repeat": {
+      "run": "fixed-alpha-periodic-flow-20261124-repeat",
+      "manifest_sha256": "aaef0948a73f3c9290b49f61544950ca7863b328bb047d1ba9600ffc5b6aae08"
+    }
+  },
+  "mean_alpha_followup": {
+    "previous_run": "plan-completion-v12-discrete-alpha-20261124",
+    "previous_manifest_sha256": "fc96b4773695934b24aac2ddaee1ed02b654fdc9d1a028e3befdae4821c317ba",
+    "first": {
+      "run": "fixed-alpha-mean-flow-20261124-registered",
+      "manifest_sha256": "7f24a99a18610eb9443704c5c542a24ee2ea2402c7fe4dcab52910e0c274e658"
+    },
+    "repeat": {
+      "run": "fixed-alpha-mean-flow-20261124-repeat",
+      "manifest_sha256": "6edcf2dbe1e2e5ec101aa4b8be79f05f0c7c65c0890bbd29e8ba4997a063fe4c"
+    }
+  },
+  "discrete_alpha_followup": {
+    "previous_run": "plan-completion-v11-lf-harmonic-transfer-20261124",
+    "previous_manifest_sha256": "91868955b0c1fe16d2f572286571ab8fa843b4896986ba7f39e374e758261bef",
+    "first": {
+      "run": "fixed-alpha-discrete-impulse-20261124-extended",
+      "manifest_sha256": "513e57f1783e5c0d732ed875d22e40ebf9eaf06c3f72dce8607b232cb7280c08"
+    },
+    "repeat": {
+      "run": "fixed-alpha-discrete-impulse-20261124-repeat",
+      "manifest_sha256": "4e8bb68bc0ddc86d37ac1adba909b9aee36692d5b5e3cbe4cf456f4c398f2407"
+    }
+  },
+  "lf_harmonic_transfer_followup": {
+    "previous_run": "plan-completion-v10-lf-radiation-budget-20261124",
+    "previous_manifest_sha256": "458ad41013543bcac7f0db2174290aa9ce0b888aa3b05f9b452db3507035cbd7",
+    "first": {
+      "run": "fixed-lf-harmonic-transfer-20261124-registered",
+      "manifest_sha256": "2130f460fc7ddead066fe1987681911767ce723c70731dacf399c43d3204607f"
+    },
+    "repeat": {
+      "run": "fixed-lf-harmonic-transfer-20261124-repeat",
+      "manifest_sha256": "0eacdea44e6972053ee4ebbfd507e95b96fe3d8465df3fd28935a9e403de28e0"
+    }
+  },
+  "lf_radiation_budget_followup": {
+    "previous_run": "plan-completion-v9-open-o-lpc-orders-20261124",
+    "previous_manifest_sha256": "3404b74686a8d29e3e652a3e9a15de3ac139e18bbbc54a2094f4309fe74bb2cb",
+    "first": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-registered",
+      "manifest_sha256": "5dc5ec6fd70f524f3b277a0f874dd90c04c4349862f530d06c51fc6934a30416"
+    },
+    "repeat": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-repeat",
+      "manifest_sha256": "74bfec7e117a90f012e886530e6dd7fdbae6b43c8c6f315706ee8967d7ea2eaa"
+    }
+  },
+  "open_o_orders_followup": {
+    "previous_run": "plan-completion-v8-open-o-lpc-20261124",
+    "previous_manifest_sha256": "b43ead1c40c46e05d95855e15be7551c188f1cabfa3c9012f52bb7ee8cf7fbab",
+    "first": {
+      "run": "vowel-open-o-lpc-orders-20261124-registered",
+      "manifest_sha256": "c157a011b494ca05dad2339b0cc5131f207ed2427fb3efe3a68dd8d54bc6e3bb"
+    },
+    "repeat": {
+      "run": "vowel-open-o-lpc-orders-20261124-repeat",
+      "manifest_sha256": "870351eb3f9f99ace7bfc979399d208371bcc6a0bfdffc4cdc71301b26a2cea1"
+    },
+    "probe_compatibility": {
+      "first": {
+        "run": "tsp-lpc-pre-emphasis-20261122-repeat",
+        "manifest_sha256": "8fbb6c62f189b27ea52cef4916a17a155e21ae98c675d966e6b822e5ec93dee0"
+      },
+      "repeat": {
+        "run": "tsp-lpc-pre-emphasis-20261124-order-probe-regression",
+        "manifest_sha256": "3ca9ee568124fdf0ae9ec89322fc01b66e9ba351fd3bb5d2b3bee8ffa1f954cf"
+      }
+    }
+  },
+  "open_o_lpc_followup": {
+    "previous_run": "plan-completion-v7-open-o-bandwidth-20261124-verified",
+    "previous_manifest_sha256": "642f6f00a0ecf2e8d8115b00f465ab686b394af28bbded3cc306a05eb0509683",
+    "first": {
+      "run": "vowel-open-o-lpc-matched-20261124-verified",
+      "manifest_sha256": "a398e0fbacda4ae54c9371cf4e41351a7f3b1d6da3c714a1c0da5a9878e60e5e"
+    },
+    "repeat": {
+      "run": "vowel-open-o-lpc-matched-20261124-repeat",
+      "manifest_sha256": "70bfab9813d49132c827c650a9c01e33177bd84022614314c5a7def94ee87f6a"
+    }
+  },
+  "open_o_bandwidth_followup": {
+    "previous_run": "plan-completion-release-v6-csd-en001a-full-pcm-rounding",
+    "previous_manifest_sha256": "098866e550d5ba53cf806da37ff09a8c825d1d498c3c312a18003e59fa6d2b66",
+    "first": {
+      "run": "vowel-open-o-high-bandwidth-20261124-registered",
+      "manifest_sha256": "188be761a12c8c3a115b75ffe6200b3fc77b0c9d53fc4f77c7e37c3a07dafe67"
+    },
+    "repeat": {
+      "run": "vowel-open-o-high-bandwidth-20261124-repeat",
+      "manifest_sha256": "63164d0fe6dfe231eafc56e30481806d071954f710c0dd44481a41382a66dd7e"
+    }
+  },
+  "release_followup": {
+    "hypothesis": "停止後の計測を加えた5実行で分割128・77の全PCMは各条件内でビット一致する。枝47→48の換算順を揃えると、上流との停止後の差は13から11フレームへ変わり、初差と最大絶対差は同じになる。",
+    "observation": "固定 /i/ の48 kHz出力、96 kHz内部、全93,056フレーム。ゲート開放4,096と停止54,656で区切る。出力段・放射・口端負荷・枝・持ち越し圧の保存済み判定を確認し、上流の生PCM、各対照と変更版のWAV、初回の集計エラーを再照合する。",
+    "acceptance": "第5版の192判定を保持する。登録した実行のマニフェストを固定し、各保存出力とケースを照合する。全波形で16進数のPCMビットを比較し、先行する4つの採取と最新対照の全PCMを同一と確認する。変更版で7フレームが一致、5フレームが新たに分かれ、両版の差は停止後に限られ、合否は既存のケースの絶対許容差5e-7に従う。初回の例外と初差の1 ULPを保持する。",
+    "previous_run": "plan-completion-fixed-voice-memory-v5-repeat",
+    "previous_manifest_sha256": "2b0328c2a7d0a63fe001cd06312c9a9e602bc149ec28f3f445a4441ab5cd852f",
+    "reference_run": "worklet-rate-48000-memory-repeat",
+    "reference_manifest_sha256": "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b",
+    "captures": {
+      "fixed-voice-release-output-48000-repeat": "9ce4b9046fc503dee582d883a913b5b3e08e06bb35e0c34faffe0126f1712bbd",
+      "fixed-voice-release-radiation-48000-repeat": "af500e1352c86ee441e34c39c64ce81f6039dcf1744ad5b63c3865111f68387b",
+      "fixed-voice-release-lip-load-48000-repeat": "4f8a06c95a3495cb906293be1e8856f997e83f95adb4e67b5e45b8b197f1a571",
+      "fixed-voice-release-lip-branch-48000-repeat": "5b98522a13fb9b0ebd939a289ef39eb78a4735369865b873ff64ffde8651aeac",
+      "fixed-voice-release-lip-history-48000-repeat": "19e7baeb349d95172aa1b38257e182c081e45f864e076021714904aa437adadb"
+    },
+    "output_run": "fixed-voice-release-output-48000-repeat",
+    "variant_run": "fixed-voice-release-lip-history-48000-repeat",
+    "failed_run": "fixed-voice-release-output-48000-a",
+    "failed_manifest_sha256": "c250ea9c6e10e10b2bcd8b51507f7067d52d3dfd599e6ed1311353b1d3eb9abc",
+    "failed_error": "float() argument must be a string or a real number, not 'list'",
+    "expected_pcm": {
+      "first_bit_difference_frame": 55880,
+      "first_difference_ulps": 1,
+      "control_different_frames": 13,
+      "reordered_different_frames": 11,
+      "resolved_frames": 7,
+      "new_differences": 5
+    }
+  },
+  "render_memory_followup": {
+    "hypothesis": "48 kHzの旧要約で欠測とした欄は、保存したWorkletの一次記録にある。現行ビルドの48 kHz手動停止でもメモリ変化は0回で、旧版を含む固定発声5レートの一次記録で同じ結果を得る。",
+    "observation": "各実行の保存済みケースとWorkletのbrowser.jsonを読み、設定レート、制御周期、全量子のフレーム列、WASMメモリ変化回数と初回フレームを照合する。現行48 kHzでブラウザに配信したWASMを通常ビルドと照合する。",
+    "acceptance": "第4版の182判定を保持する。全5レートの保存結果と現行48 kHzで回数0、初回フレームの明示的なnull、有効な末尾バッファ、量子の連続性を確認する。現行48 kHzでは新版要約と一次記録が一致し、通常ビルドと配信WASMが同じである。",
+    "previous_run": "plan-completion-evidence-20261123-v4-repeat",
+    "previous_manifest_sha256": "fe80e06737c6762ebc2516cfed607e01f1310ae040bbe7c457ab33224f90cbee",
+    "current_48000": "worklet-rate-48000-radiation-memory-20261124-final"
+  },
+  "stage7_followup": {
+    "hypothesis": "第3版の169判定を保持し、第7段階の第10版の71実行と評価者用ZIPの準備状況を全体監査に接続できる。回答・実機の状態は登録した一次記録の再照合から更新できる。",
+    "observation": "第3版と第7段階第10版の要約・マニフェスト・スナップショットを読む。第7段階の監査が指定したTSP・CSD回答、実録音F2、物理MIDIは元の記録から再計算する。評価者用ZIP3種の保存結果を照合する。",
+    "acceptance": "第3版の169判定と第7段階第10版の16項目・71実行の登録を保持する。準備のみの資料と試験回答を一次記録に数えない。片方の試聴だけを取得した場合とF2または実機情報が一部の場合は対応する項目だけを部分取得とする。指定した一次記録の照合に失敗した場合は監査も失敗とし、未登録・部分取得・取得を区別して記録する。",
+    "previous_run": "plan-completion-current-web-20261122-v3-repeat",
+    "previous_manifest_sha256": "5ea5012613bbba9e04189abc9461054de5f2320ecb328daf98bd0ae35ff06cf6",
+    "baseline_run": "stage7-evidence-update-20261123-songbird-repeat",
+    "baseline_manifest_sha256": "79095ea38e7134f12e5ecbcb3518364cf4ef48a55103f92091485dba624d2cd1",
+    "minimum_audit_revision": 10,
+    "review_archives_run": "stage7-review-archives-20261123-repeat",
+    "review_archives_manifest_sha256": "a0846ea820be5b0b86a7d7483e2fab8c809f638a81d7bae6b534c6cf6dd204bb"
+  },
+  "web_followup": {
+    "english": "worklet-live-tsp-english-planner-reuse-44100-20261122-b",
+    "english_native": "worklet-live-tsp-planner-report-buffer-44100-20261122-c",
+    "english_cross_browser": "worklet-live-tsp-english-planner-reuse-48000-20261122",
+    "english_abort": "worklet-live-tsp-shared-wasm-abort-44100-20261122-b",
+    "english_abort_refresh": {
+      "run": "worklet-live-tsp-shared-wasm-abort-44100-20261124-radiation-screen",
+      "manifest_sha256": "81a33fed178b170c3e3afb1b731c09360cdd5904fec6f55f720fed735700e225"
+    },
+    "song": "worklet-live-song-report-buffer-final-20261122",
+    "song_native": "human-noise-source-reserve-20261122-b",
+    "quantum_frames": 128,
+    "english_frames": 98790,
+    "song_frames": 91200
+  },
+  "stages": {
+    "0": {
+      "upstream-20261119-a": ["airway", "vowels", "ipa-vcv", "melody"],
+      "compare-upstream-pcm16-20261121-final": ["legacy_case_provenance_and_encoding", "fresh_fixed_pcm16_matches_archive_bits", "relocated_report_is_byte_identical"]
+    },
+    "1": {
+      "uniform-tube-20261119-b": ["causal_support", "finite_samples", "decay", "quarter_wave", "fdtd_vs_linear"],
+      "soft-wall-20261119-d": ["decay", "fdtd_vs_linear", "upstream_time_series", "endpoint_volume_balance"]
+    },
+    "2": {
+      "soft-wall-20261119-d": ["first_mode_shift", "upstream_peaks", "wall_moves", "wall_radiation"],
+      "symmetric-junction-20261119-b": ["finite_samples", "volume_and_radiation_balance", "directional_branch_balance", "independent_discrete_frequency_response"],
+      "sealed-cavity-20261119-h": ["finite_samples", "volume_compression_reference", "independent_area_and_source"],
+      "steady-full-20261119-g": ["bernoulli", "steady_equilibrium", "local_pressure_balance"],
+      "sliding-closure-20261119-d": ["bounded_release", "closed_branches_block_flow", "areas_return_to_rest"],
+      "moving-aperture-20261119-b": ["independent_area_and_source", "closed_branch_zero", "reopened_branch_and_radiation", "squeeze_reaches_neighbor"],
+      "turbulence-forward-20261119-b": ["upstream_native_rng", "noise_law_and_filter", "closed_source_is_silent"],
+      "turbulence-alternate-seed-20261119-b": ["noise_law_and_filter"],
+      "nasal-open-20261119-b": ["volume_balance", "side_branch_flow", "closed_to_open_adds_nose_radiation"]
+    },
+    "3": {
+      "lung-voiced-20261119-h": ["upstream_time_series", "coupled_voice_starts", "independent_control_and_momentum"],
+      "glottal-abduction-20261119-i": ["pressure_ramp_starts_voicing", "area_pulse_is_suppressed", "flow_pulse_is_suppressed", "open_folds_keep_a_gap_and_mean_flow"],
+      "glottal-oral-closure-20261119-j": ["area_pulse_is_suppressed", "flow_pulse_is_suppressed", "oral_closure_reduces_pressure_drop"],
+      "pcm-voiced-20261119-g": ["independent_coefficients", "decimator_phase", "upstream_end_to_end_pcm", "host_block_continuity"]
+    },
+    "4": {
+      "vowels-reference-20261119-b": ["nine_observed_transitions", "native_reference_sequence", "minimum_boundary_probe"],
+      "vowel-motion-voice-vowels-20261119-c": ["registered_clock", "upstream_geometry", "upstream_audio_state", "upstream_pcm"]
+    },
+    "5": {
+      "bilabial-nasal-vcv-20261119-b": ["plan", "trace", "pcm", "frame_count", "independent_velum", "nasal_flow_and_tail", "measured_event_frames", "host_partition"],
+      "bilabial-p-20261119-c": ["phoneme_and_gesture_plans", "measured_closure_and_release", "same_event_frames"],
+      "bilabial-b-20261119-c": ["phoneme_and_gesture_plans", "measured_closure_and_release", "same_event_frames"],
+      "sibilant-s-20261119-g": ["geometry_sources_and_acoustic_trace", "teeth_band_independent_expression", "expected_event"],
+      "sibilant-z-20261119-c": ["geometry_sources_and_acoustic_trace", "teeth_band_independent_expression", "expected_event"],
+      "english-frontend-20261119-g": ["all_upstream_word_and_arpabet_results", "standalone_english_cli", "audio"],
+      "song-plan-20261119-c": ["score_timing_and_targets", "lyrics_against_upstream_rust", "registered_lyrics"],
+      "song-voice-stop-20261119-b": ["measured_events", "same_host_partitions", "independent_f0_and_abduction"]
+    },
+    "6": {
+      "wasm-fixed-voice-20261119-realtime-regression": ["allocation_free_native_abi", "block_128_pcm", "block_128_states", "block_77_pcm", "block_1_pcm"],
+      "worklet-fixed-voice-20261119-tract-regression": ["cli_pcm_matches", "fixed_upstream_states_match", "quanta_are_contiguous", "stable_wasm_buffers"],
+      "worklet-manual-case-export-20261119-live-ipa-regression": ["positions_follow_targets", "lip_area_decreases", "export_downloaded_case", "export_matches_independent_settings", "export_used_without_modification"],
+      "worklet-ipa-timeline-20261119-b": ["timeline_observed_edges", "timeline_responsive", "timeline_coordinates_and_navigation"],
+      "worklet-tract-acoustics-20261119-glottal-regression": ["acoustic_clock_and_finiteness", "acoustic_state_cli", "acoustic_state_upstream", "acoustic_display_projection"],
+      "worklet-english-voice-20261119-live-ipa-regression": ["cli_pcm_bit_equality", "upstream_observed_states", "unsupported_then_retry"],
+      "worklet-live-tsp-english-planner-reuse-44100-20261122-b": ["cli_and_offline_pcm_bit_equal", "normal_page_module_and_planner_are_reused", "dictionary_error_leaves_previously_returned_score_and_plan_untouched", "failed_module_fetch_is_retried_in_the_same_page"],
+      "worklet-live-tsp-planner-report-buffer-44100-20261122-c": ["pcm_matches_live_browser", "pcm_matches_fixed_upstream", "original_report_and_score_are_restored", "transition_allocations_account_for_abi"],
+      "worklet-live-tsp-english-planner-reuse-48000-20261122": ["chromium/assets_and_stop", "firefox/assets_and_stop", "same_wave_in_all_browsers"],
+      "worklet-live-tsp-shared-wasm-abort-44100-20261122-b": ["chromium/stop_closes_only_realtime_context_before_response", "firefox/stop_closes_only_realtime_context_before_response", "chromium/restarted_plan_and_observations_match", "firefox/restarted_plan_and_observations_match"],
+      "worklet-live-song-report-buffer-final-20261122": ["live_offline_pcm_and_state", "browser_release_and_silence", "independent_controls_and_upstream_events", "live_wasm_memory"],
+      "human-noise-source-reserve-20261122-b": ["pcm_matches_live_browser", "all_native_observation_bits_match", "registered_totals_match"]
+    },
+    "7": {
+      "stage7-evidence-update-20261122-v4-repeat": ["upstream_tree", "candidate_workspace_tests_ran", "fixed_upstream_compare_tests_ran", "fixed_upstream_midi_tests_ran", "current_web_build", "tsp_calibration_and_held_out_sizes", "csd_note_and_window_coverage", "listening_fixture_is_labeled", "f2_fixture_recorded_as_synthetic"]
+    }
+  },
+  "investigations": {
+    "tract-grid-lip-closure-20261121-repeat": ["same_continuous_trajectory", "raw_closure_frames_identical", "oral_12/closure_and_average_vs_minimum", "oral_22/closure_and_average_vs_minimum"],
+    "uniform-axial-observation-20261121-repeat": ["96k-viscous-fdtd/original_derivative", "96k-viscous-fdtd/1.0/volume_conversion", "96k-viscous-fdtd/1.0/independent_time_filter", "192k/1.0/waveguide_ratio_retained"],
+    "glottal-pressure-feedback-20261121-repeat": ["only_drive_pressure_is_substituted", "flow_still_reduced_during_closure"],
+    "fixed-lf-glottal-flow-20261121-b": ["lf_input_applied_exactly", "registered_pitch", "upstream_pcm", "causal_order"],
+    "lip-tuck-voiced-radiation-20261121-repeat": ["registered_raw_jump_and_attenuation", "post_crossing_pressure_flow_and_pcm"],
+    "uniform-outlet-half-cell-20261121-b": ["direct_matches_pinned_upstream", "series_first_difference_is_at_radiation_boundary", "16_frequency_amplitude"]
+  },
+  "archived_failures": {
+    "fixed-vowel-i-velum-wide-port-upper-harmonics-20261124-registered": ["upper_feedback_recovers_eighty_percent_of_measured_nose_improvement"],
+    "fixed-vowel-i-velum-wide-port-upper-harmonics-20261124-repeat": ["upper_feedback_recovers_eighty_percent_of_measured_nose_improvement"],
+    "fixed-vowel-i-velum-narrow-port-bandwidth-20261124-registered": ["excluded_frequencies_explain_half_of_narrow_port_loss_residual"],
+    "fixed-vowel-i-velum-narrow-port-bandwidth-20261124-repeat": ["excluded_frequencies_explain_half_of_narrow_port_loss_residual"],
+    "fixed-vowel-i-velum-port-complex-pair-20261124-registered": ["fixed_pair_reduces_nose_error_by_quarter_and_beats_both_controls"],
+    "fixed-vowel-i-velum-port-complex-pair-20261124-repeat": ["fixed_pair_reduces_nose_error_by_quarter_and_beats_both_controls"],
+    "fixed-vowel-i-velum-port-loss-sensitivity-20261124-registered": ["reference_selected_pair_reduces_nose_error_by_quarter_and_beats_previous_pair"],
+    "fixed-vowel-i-velum-port-loss-sensitivity-20261124-repeat": ["reference_selected_pair_reduces_nose_error_by_quarter_and_beats_previous_pair"],
+    "fixed-vowel-i-velum-port-loss-feedback-20261124-registered": ["two_corrected_port_coefficients_reduce_nose_error_by_quarter"],
+    "fixed-vowel-i-velum-port-loss-feedback-20261124-repeat": ["two_corrected_port_coefficients_reduce_nose_error_by_quarter"],
+    "fixed-vowel-i-pharynx-mean-flow-tangent-20261124-registered": ["pharynx_mean_flow_tangent_removes_half_of_nose_error"],
+    "fixed-vowel-i-pharynx-mean-flow-tangent-20261124-repeat": ["pharynx_mean_flow_tangent_removes_half_of_nose_error"],
+    "fixed-vowel-i-velum-oral-nasal-loss-20261124-registered": ["branch_order_and_source_match_upstream", "observed_network_matches_upstream", "oral_and_nasal_losses_explain_half_of_nose_residual"],
+    "fixed-vowel-i-velum-oral-nasal-loss-20261124-aligned": ["oral_and_nasal_losses_explain_half_of_nose_residual"],
+    "fixed-vowel-i-velum-oral-nasal-loss-20261124-repeat": ["oral_and_nasal_losses_explain_half_of_nose_residual"],
+    "fixed-vowel-i-velum-harmonic-transfer-20261124-registered": ["measurable_finite_amplitude_remainder"],
+    "fixed-vowel-i-velum-harmonic-transfer-20261124-repeat": ["measurable_finite_amplitude_remainder"],
+    "fixed-vowel-i-velum-radiation-20261124-registered": ["closed/cli_observation_opt_in_and_clock", "open/cli_observation_opt_in_and_clock"],
+    "fixed-vowel-i-wasm-radiation-20261124-typescript-transform": ["browser_served_current_wasm"],
+    "fixed-vowel-i-cli-radiation-20261124-registered": ["only_two_explicit_columns_appended"],
+    "fixed-alpha-loss-high-flow-20261124-registered": ["coupled/one_branch/candidate/baseline_complex_change_reconstructed", "coupled/one_branch/candidate/passive_complex_change_reconstructed", "coupled/one_branch/upstream/baseline_complex_change_reconstructed", "coupled/one_branch/upstream/passive_complex_change_reconstructed", "coupled/three_branches/candidate/baseline_complex_change_reconstructed", "coupled/three_branches/candidate/passive_complex_change_reconstructed", "coupled/three_branches/upstream/baseline_complex_change_reconstructed", "coupled/three_branches/upstream/passive_complex_change_reconstructed", "lf/one_branch/candidate/baseline_complex_change_reconstructed", "lf/one_branch/candidate/passive_complex_change_reconstructed", "lf/one_branch/upstream/baseline_complex_change_reconstructed", "lf/one_branch/upstream/passive_complex_change_reconstructed", "lf/three_branches/candidate/baseline_complex_change_reconstructed", "lf/three_branches/candidate/passive_complex_change_reconstructed", "lf/three_branches/upstream/baseline_complex_change_reconstructed", "lf/three_branches/upstream/passive_complex_change_reconstructed"],
+    "fixed-alpha-loss-high-flow-20261124-repeat": ["coupled/one_branch/candidate/baseline_complex_change_reconstructed", "coupled/one_branch/candidate/passive_complex_change_reconstructed", "coupled/one_branch/upstream/baseline_complex_change_reconstructed", "coupled/one_branch/upstream/passive_complex_change_reconstructed", "coupled/three_branches/candidate/baseline_complex_change_reconstructed", "coupled/three_branches/candidate/passive_complex_change_reconstructed", "coupled/three_branches/upstream/baseline_complex_change_reconstructed", "coupled/three_branches/upstream/passive_complex_change_reconstructed", "lf/one_branch/candidate/baseline_complex_change_reconstructed", "lf/one_branch/candidate/passive_complex_change_reconstructed", "lf/one_branch/upstream/baseline_complex_change_reconstructed", "lf/one_branch/upstream/passive_complex_change_reconstructed", "lf/three_branches/candidate/baseline_complex_change_reconstructed", "lf/three_branches/candidate/passive_complex_change_reconstructed", "lf/three_branches/upstream/baseline_complex_change_reconstructed", "lf/three_branches/upstream/passive_complex_change_reconstructed"],
+    "fixed-alpha-loss-tangent-20261124-rebuilt": ["dc/candidate/stationary_at_the_tangent_point", "dc/upstream/stationary_at_the_tangent_point"],
+    "fixed-alpha-branch-loss-20261124-registered": ["coupled/candidate/660/reconstructed_lip_difference", "coupled/candidate/770/reconstructed_lip_difference", "coupled/candidate/branch_kinetic_pressure_balance", "coupled/node_branch_and_radiation_series_match_upstream", "lf/candidate/660/reconstructed_lip_difference", "lf/candidate/770/reconstructed_lip_difference", "lf/candidate/branch_kinetic_pressure_balance", "lf/node_branch_and_radiation_series_match_upstream"],
+    "fixed-alpha-discrete-impulse-20261124-registered": ["large/tail_convergence", "small/tail_convergence", "small_impulse_matches_discrete_node_equations"],
+    "uniform-waveguide-matched-20261121-bandlimited-repeat": ["96k/complex_amplitude_match"],
+    "worklet-realtime-cross-browser-96000-20261121-a": ["3-firefox/block_timing_budget"],
+    "fixed-lf-glottal-flow-20261121-b": ["lf_acoustic_level_difference"],
+    "worklet-live-song-cross-browser-20261121-repeat": ["1-firefox/live_block_timing_budget"],
+    "worklet-live-tsp-planner-report-buffer-44100-20261122-a": ["transition_allocations_account_for_abi"],
+    "plan-completion-evidence-20261123-v4-a": ["current_web/current_build_matches_browser_wasm", "revision_3_checks_reproduced"],
+    "plan-completion-v7-open-o-bandwidth-20261124": ["open_o_high_bandwidth/independent_runs_match"],
+    "vowel-open-o-lpc-matched-20261124-registered": ["windows_are_voiced_and_have_public_peaks"]
+  },
+  "tube": {
+    "settings": {"length_cm": 17.5, "area_cm2": 3.0, "cells": 40, "sample_rate_hz": 96000},
+    "samples": 48000,
+    "quarter_wave_relative_error_lt": 0.03,
+    "fdtd_vs_linear_relative_error_lt": 0.012
+  },
+  "vowels": ["i", "e", "ɛ", "æ", "ɑ", "ɔ", "o", "u", "ʌ", "ɝ"],
+  "vcv": ["ɑpɑ", "ɑbɑ", "ɑsɑ", "ɑzɑ", "ɑmɑ"],
+  "output_rates": {
+    "16000": ["worklet-rate-16000-20261120-native-repeat", "worklet-rate-16000-20261120-b"],
+    "32000": ["worklet-rate-32000-20261120-native-repeat", "worklet-rate-32000-20261120-b"],
+    "44100": ["worklet-rate-44100-20261120-native-repeat", "worklet-rate-44100-20261120-c"],
+    "48000": [null, "worklet-rate-96000-20261120-48000-regression"],
+    "96000": ["worklet-rate-96000-20261120-native-repeat", "worklet-rate-96000-20261120-stage6-root"]
+  },
+  "native_48000": "wasm-fixed-voice-20261119-realtime-regression",
+  "realtime": {
+    "worklet-live-ipa-cross-browser-20261121-repeat": ["cli_pcm", "upstream_observed_state", "live_block_timing_budget", "live_offline_pcm_and_state", "live_closure_release_and_silence"],
+    "worklet-live-song-cross-browser-20261121-a": ["cli_pcm_bit_equality", "upstream_observed_state", "live_block_timing_budget", "live_offline_pcm_and_state", "independent_absolute_beat_positions"],
+    "worklet-live-song-cross-browser-20261121-repeat": ["cli_pcm_bit_equality", "upstream_observed_state", "live_offline_pcm_and_state", "independent_absolute_beat_positions"],
+    "worklet-realtime-cross-browser-96000-20261121-repeat": ["no_dsp_frame_gaps", "cli_pcm_bit_equal", "registered_context_and_internal_rates", "block_timing_budget"]
+  },
+  "stage7_topics": ["beatbox", "body", "korean", "russian", "mandarin", "songbird", "seal", "alligator", "elephant", "midi", "tract_3d", "recording", "duet", "tsp", "csd", "listening"],
+  "stage7_unverified": {
+    "tsp_recorded_f2": "human_f2_annotation",
+    "tsp_csd_listening": "human_listening_responses",
+    "physical_midi": "physical_source_events_and_audio"
+  }
+}

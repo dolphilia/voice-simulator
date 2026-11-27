@@ -1,0 +1,18 @@
+{
+  "id": "song-voice-fast-constriction-source",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "song-voice-fast.json",
+  "zero_reference_run": "worklet-song-voice-fast-20261121-return-reference",
+  "glottis_only_muted_reference_run": "song-voice-fast-glottis-source-20261121-repeat",
+  "turbulence": { "scale": 1, "glottis_gain_multiplier": 0, "constriction_gain_multiplier": 0 },
+  "pcm_difference_floor": 0.000001,
+  "teeth_band_absolute_tolerance_hz": 0.0000001,
+  "teeth_gain_absolute_tolerance": 1e-12,
+  "hypothesis": "全体係数1で声門の乱流を抑えた既存の対照から、狭窄のゲインも0にする。狭窄の枝配置と更新を保てば歯の乱流源は活動し、全体係数0との放射とPCMの最初の差は既存の対照より遅くなる。狭窄の注入圧が流量に戻るため、歯の初回レベルが正になる位置には変化があり得る。歯の励起レベルが正なら、最初の注入はその枝の順方向か逆方向のどちらかに現れる。",
+  "criteria": {
+    "input": "Pop Dee、240 BPM、48 kHz出力、96 kHz内部、49,200フレームを全区間で計測する。候補と固定上流に同じ設定を渡し、全体係数0および声門源だけを抑えた既存の2条件と比較する。保存済みのケースと入出力はマニフェストのSHA-256で照合する。",
+    "acquisition": "歌唱ケースの既存の判定と128/77フレーム分割の一致を確認する。狭窄の枝番号と登録区間が既存の声門だけを抑えた対照と揃い、声門と狭窄のゲイン・レベルが全区間0になることを検査する。拍、調音計画、呼気ゲート、F0と開大は既存の対照と揃える。独立計算で歯の低域通過周波数とゲインを登録時の枝断面・流量・距離から照合する。",
+    "observations": "歯のレベル、順方向・逆方向の注入先の枝圧、気道の流量、声門上圧、放射流量の時間微分、PCMのビット差と10⁻⁶超の差を観測する。狭窄と歯は逆方向の枝を共有し得るので、枝圧の存在だけから狭窄源の活動を判定しない。出力フレームの末尾を観測し、同フレーム内の内部サンプルの順序は判定しない。",
+    "verdict": "歯のレベルが正になることと、全体係数0との最初の放射・PCM差が声門源だけを抑えた既存の対照より遅れることを両版で判定する。歯の活動、枝圧、放射、PCMの各初回位置を比較し、固定上流と候補で異なる場合は最初の差を記録する。予測の成否は取得の成否と独立に扱う。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "coreaudio-output-buffer-entry",
+  "base_case": "coreaudio-output-error-pcm.json",
+  "reference_case": "coreaudio-output-error-pcm.json",
+  "reference_run": "coreaudio-output-error-pcm-20261122-repeat",
+  "apple_webkit_revision": "e97539821b38379d82a51b6740d90191d5d0b7af",
+  "conditions": {"retain": -1, "zero": -1},
+  "observe_entry_neighbor_callbacks": 2,
+  "known_buffer_lookback_callbacks": 8,
+  "maximum_tap_quiet_amplitude": 0.00001,
+  "maximum_tap_known_relative_error": 0.05,
+  "criteria": {
+    "input": "前回と同じ既定出力、48 kHz、ステレオfloat32、滑らかな逆相の既知信号を使う。0起算80〜83番の4要求は両条件で-1を返す。保持条件ではバッファが全ゼロ、または直近8要求に自分が書いたPCMと同一の場合に書き換えず返す。比較条件では明示的にゼロを書く。",
+    "observation": "対象4要求と前後2要求について、書き込み前にゼロのサンプル数、既知PCMとの一致、直前と同じバッファかを記録する。未知の内容は保存せずゼロに置き換え、その件数を残す。返す直前のPCM、要求と採取の両方の時刻、タップの生PCMも保存する。各要求の中央半分を照合する。",
+    "prediction": "この既定出力で要求バッファがゼロで渡るなら、保持と明示的ゼロのタップはいずれも中央の最大振幅が1e-5以下になる。以前の既知PCMが残る場合、保持ではそれが出力候補となり、明示的ゼロでは無音になる。位相を合わせた既知PCMの相対RMS残差を記録し、0.05以下なら伝達を支持する。",
+    "validity": "要求長512フレーム、イベント前後の既知波形とPCM、-1の回数、タップと要求の連続時刻を独立照合する。保持の判定は未知のバッファを代替した要求を数え、該当区間での由来を未判定として残す。別ディレクトリから保持・ゼロの順序を反転して再実行する。",
+    "scope": "自作の単一DefaultOutput AudioUnitからプロセスタップまでを調べる。読み出し不足時にバッファを書き換えないApple公開版WebKitを参照する。Safariのバッファそのものと物理出力は別に観測する。"
+  }
+}

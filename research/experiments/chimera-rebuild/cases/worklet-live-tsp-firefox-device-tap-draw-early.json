@@ -1,0 +1,19 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap-draw-early",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.95,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "construction_timing": {
+    "reference_center_marker_frame": 24576,
+    "maximum_center_error_frames": 256
+  },
+  "hypothesis": "タップの開始依頼だけを先行音の第64量子から第1量子へ早める。先行音192量子の待機と、タップ準備から追加で100 ms待つ条件は保つ。8試行のうち少なくとも1試行で、従来のタップなしの同期描画時点24576フレームに対して、構築を含む要求の先頭が256フレーム以内に入ると予測する。従来の描画時点に近づいたときも、発話開始と予算内の飛びを前ケースと同じ手順で個別に数える。機器要求・タップの起動時刻が変わるため、飛びの頻度が変わっても準備待ちだけの効果とは帰属しない。",
+  "acceptance": "同期描画の親ケースと同じ8回を実行する。上流、発話PCM、窓、時間予算、タップの閾値は親ケースを使う。タップの準備が間に合ったか、構築の要求先頭が先行音の何フレーム目に当たるか、先頭3量子を含む各要求の時間を保存する。構築位置の近さは別の観測として保存し、窓が相関しない試行は他の試行で埋めない。"
+}

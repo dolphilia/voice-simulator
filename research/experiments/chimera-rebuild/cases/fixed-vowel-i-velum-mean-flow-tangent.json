@@ -1,0 +1,23 @@
+{
+  "id": "fixed-vowel-i-velum-mean-flow-tangent",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ でポートだけを0.30 cm²開いたとき、定常平均流量を動作点とするポートの二次損失の接線抵抗を加えると、2,310 Hzの鼻端の複素誤差がゼロ流量での線形化から10%以上縮む。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-harmonic-transfer-20261124-repeat",
+      "case": "fixed-vowel-i-velum-harmonic-transfer",
+      "sha256": "6d3fd1f72a81272da29298d23f2725bda665e6308854dcee611b9463393ced55"
+    },
+    "condition": "port_only",
+    "frequency_hz": 2310,
+    "internal_rate_hz": 96000,
+    "steady_window_internal_samples": [38400, 48000],
+    "minimum_nose_error_reduction_fraction": 0.10,
+    "complex_identity_relative_error_lt": 1e-9,
+    "remaining_series_relative_error_lt": 1e-8,
+    "input": "固定 /i/ の閉条件と同じ輪郭で口蓋帆ポートだけを0.30 cm²開いた通常発声を使う。研究版CLIで同じ発声と線形伝達を再描画する。固定上流の同条件の内部観測は前回の確定値を使う。",
+    "observation": "400〜500 msのポート流量の平均、RMS、流向別の標本数と二次損失の複素係数を記録する。2,310 Hzで鼻端・口端・壁・合算の伝達を、ゼロ流量と平均流量まわりの離散モデルで比較する。観測したポート二次損失を圧力源として戻した場合の伝達も求め、接線近似の差とポート以外に残る差を分ける。",
+    "acceptance": "通常CLIの再描画が保存した条件を再現する。二次損失の係数を幾何から求め、前標本と窓端を含むポートの圧力式と照合する。ポート抵抗だけを変える節点解と圧力源から求めた解を登録許容差内で照合する。固定上流と研究版の観測から同じ判定を出し、鼻端の複素誤差が10%以上縮む仮説の成否、振幅・位相・残差を保存する。"
+  }
+}

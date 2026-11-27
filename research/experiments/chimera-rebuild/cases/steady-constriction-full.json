@@ -1,0 +1,127 @@
+{
+  "id": "steady-constriction-full",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "最小断面積を0.08 cm²に保って狭窄を短くすると、平均断面積が増え、定常流量が増える。肺側ポートは境界の圧力を管へ伝え、全経路の線形損失と方向別の二次損失が定常圧力差を説明する。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      29
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 5883.99,
+        "ramp_samples": 1920
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          30,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 3.0,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0
+      }
+    ]
+  },
+  "area_ramps": [
+    {
+      "start_sample": 0,
+      "sample_count": 64,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 20,
+          "area_cm2": 0.08,
+          "minimum_area_cm2": 0.08
+        }
+      ]
+    }
+  ],
+  "observe": {
+    "pressure_nodes": [
+      30,
+      0,
+      19,
+      20,
+      21,
+      29
+    ],
+    "branches": [
+      [
+        30,
+        0
+      ],
+      [
+        19,
+        20
+      ],
+      [
+        20,
+        21
+      ],
+      [
+        28,
+        29
+      ]
+    ],
+    "area_nodes": [
+      20
+    ],
+    "minimum_area_nodes": [
+      20
+    ]
+  },
+  "measurement": {
+    "sample_count": 24000,
+    "tail_sample_count": 1920,
+    "constriction_node": 20,
+    "length_fraction": 1.0,
+    "bernoulli_relative_error_lt": 0.15,
+    "upstream_series_peak_relative_error_lt": 1e-10,
+    "steady_equilibrium_relative_error_lt": 0.001,
+    "steady_flow_spread_relative_lt": 0.001,
+    "steady_pressure_balance_relative_error_lt": 0.001,
+    "terminal_area_absolute_error_lt_cm2": 1e-12
+  }
+}

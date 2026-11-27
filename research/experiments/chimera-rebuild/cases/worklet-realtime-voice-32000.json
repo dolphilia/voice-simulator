@@ -1,0 +1,73 @@
+{
+  "id": "worklet-realtime-voice-32000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "fixed_voice_sha256": "9e6a3befd846420789cbac2d3bb5a6845241091920af8a7747f5b36da5c2b4aa",
+  "hypothesis": "32 kHz出力・64 kHz内部では成人男性の固定/i/の咽頭と口腔が各12セルとなり、全管のクーラン数は0.97以下となる。発声、減衰、PCMと内部観測は同条件のCLI・Workletで一致し、固定上流との差は登録した許容差に収まる。",
+  "measurement": {
+    "output_rate_hz": 32000,
+    "internal_rate_hz": 64000,
+    "expected_quantum_frames": 128,
+    "pre_roll_frames": 2816,
+    "maximum_voiced_frames": 32000,
+    "release_frames": 25600,
+    "automatic_stop": true,
+    "expected_output_frames": 60416,
+    "expected_stop_frame": 34816,
+    "timing_exclude_first_blocks": 32,
+    "minimum_steady_timing_blocks": 220,
+    "p99_maximum_quantum_budget_fraction": 1,
+    "onset_threshold": 1e-08,
+    "onset_offset_frames": [
+      0,
+      128
+    ],
+    "steady_window_relative_frames": [
+      8000,
+      13333
+    ],
+    "expected_f0_hz": [
+      109.9,
+      110.1
+    ],
+    "minimum_steady_rms": 0.025,
+    "final_silence_window_frames": 1600,
+    "final_silence_peak_max": 1e-05,
+    "upstream_pcm_absolute_tolerance": 5e-07,
+    "upstream_state_peak_relative_tolerance": 1e-08,
+    "independent_gate_absolute_tolerance": 1e-10,
+    "observed_fields": [
+      "gate",
+      "glottal_area_cm2",
+      "glottal_flow_cm3_s",
+      "glottal_phase",
+      "glottal_voicing",
+      "glottal_f0_hz",
+      "radiation_derivative_cm3_s2"
+    ],
+    "control_interval_output_frames": 64,
+    "attack_time_constant_seconds": 0.025,
+    "release_time_constant_seconds": 0.07,
+    "expected_decimation_factor": 2,
+    "expected_filter_taps": 49,
+    "filter_coefficients_absolute_tolerance": 1e-11,
+    "maximum_native_render_allocations": 0,
+    "maximum_wasm_memory_growths": 0,
+    "airway": {
+      "expected_cells": {
+        "trachea": 13,
+        "pharynx": 12,
+        "oral": 12,
+        "nasal": 19,
+        "piriform": 3,
+        "lungs": 1,
+        "sinus": 1
+      },
+      "expected_limiting_tube": "nasal",
+      "maximum_courant": 0.97,
+      "courant_absolute_tolerance": 1e-12,
+      "section_length_absolute_tolerance_cm": 1e-09,
+      "section_area_absolute_tolerance_cm2": 1e-09
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "worklet-live-tsp-firefox-device-io",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-preparation-v2.json",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-onset-regression",
+  "reference_onset_run": "worklet-live-tsp-firefox-device-onset-20261122-repeat",
+  "device": {
+    "minimum_request_frames": 256,
+    "maximum_request_frames": 279
+  },
+  "measurement": {
+    "condition_order": [["split", "draw"], ["draw", "split"]],
+    "onset_quanta": 3
+  },
+  "system_io": {
+    "instruments": ["Audio Client", "Audio Server"],
+    "time_limit": "9s",
+    "maximum_trace_origin_error_ms": 2.0,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1.0,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "hypothesis": "cubebの予定サンプル時計が飛ぶとき、Firefoxの親プロセスのAudio Client I/O開始にも同じ間隔が現れると予測する。Core Audioサーバーの出力時計と直接照合できる場合は、2つのクライアント要求の間にもサーバー側の出力時刻が存在するかを確認する。発話条件は同じとし、構築時の256フレーム同期描画を飛びの陽性対照、同じ描画を8片に分割したものを比較対象にする。",
+  "acceptance": "試験用Firefoxの通常画面で確認用07を再生し、発音・先行音・PCMを従来のケースと照合する。現在の機器設定を保ち、48 kHzのContextで256フレームまたは278〜279フレーム要求をグラフ反復へ対応付ける。前後16要求のcubebの入口・返却のMach時計を、採取時に記録した単調時計と実時間、トレースの開始時刻でAudio ClientのI/O区間に近づける。親PIDの単一スレッドで順序が一致し、全コールバックがI/O区間に入る共通時刻差を要求する。Audio Serverのクライアントごとの出力ホスト時刻はcubebの予定ホスト時刻と対応させ、対象の出力スレッドが一意のときだけ途中に存在するサーバー区間を数える。要求の処理時間、返却後から次の入口までの時間、時計の飛びを保存する。予算内の飛びが再現しない場合や、サーバー側の表が欠測の場合は別々に記録し、物理出力の連続とは区別する。"
+}

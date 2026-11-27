@@ -1,0 +1,47 @@
+{
+  "id": "tsp-stressed-vowel-formants-held-out",
+  "revision": 2,
+  "previous_attempt": "tsp-stressed-vowel-formants-held-out-20261122-a",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "recording_ids": ["FK61_01", "MK61_01", "FK61_02", "MK61_02"],
+  "matched_vowels_per_utterance": {"FK61_01": 5, "MK61_01": 5, "FK61_02": 1, "MK61_02": 1},
+  "arpabet_to_ipa": {
+    "IY1": "i", "IH1": "ɪ", "EH1": "ɛ", "AE1": "æ", "AA1": "ɑ",
+    "AO1": "ɔ", "AH1": "ʌ", "UH1": "ʊ", "UW1": "u", "ER1": "ɝ"
+  },
+  "selection": "既存MFAの録音・固定上流合成・研究版合成の三者で共通の対応。音素ラベルの主強勢判定は固定上流と同じく合成側の1を両側に適用する。波形は録音の元PCMと両CLIの整列ノイズ添加前のfloat32。音素境界は既存MFAの第1回を全波形で使い、MFAは再実行しない。",
+  "hypothesis": "窓中心を35・50・65%から10・90%へ移すと母音区間外に出る窓が増え、中心50%との比較でF1またはF2が100 Hzを超えて動く例が少なくとも1つある。窓別の欠測と、両窓で測れた場合の変化量を波形種別ごとに記録する。",
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "decimation": 4,
+    "low_pass_taps": 95,
+    "low_pass_hz": 5400,
+    "frame_seconds": 0.025,
+    "reference_centers": [0.35, 0.5, 0.65],
+    "boundary_centers": [0.1, 0.9],
+    "order": {"F": 12, "M": 14},
+    "pre_emphasis": 0.97,
+    "lag_window_hz": 40,
+    "pole_min_frequency_hz": 150,
+    "pole_max_bandwidth_hz": 600,
+    "f1_max_frequency_hz": 1300,
+    "f1_max_bandwidth_hz": 500,
+    "f2_min_gap_hz": 200,
+    "f2_max_frequency_hz": 3500,
+    "frequency_bandwidth_agreement_hz": 0.05,
+    "nyquist_axis_agreement_hz": 1e-8,
+    "boundary_large_shift_hz": 100
+  },
+  "acceptance": "固定上流の音素対応を保存済みの対応と照合し、4発話で事前に登録した計12か所を採る。全36母音の5窓で固定Rustと独立Pythonの窓位置・採否・採用極を照合し、Hzの差は0.05以下。35・50・65%から独立に集計した中央値は固定Sig::formantsの有限値・欠測の判定と一致し、有限値の差は0.05 Hz以下。既知の無音／波形先頭ケースの欠測を出力へ残す。境界仮説の結果と発話音の差は比較値として記録する。",
+  "revision_reason": "初回は極の全件一致を求め、MK61_01の8窓で不合格となった。固定上流が返す6000 Hzの極には、独立計算に同じ帯域幅の負の実根があった。固定結果がナイキストから1e-8 Hz以内で、独立計算の負の実根と帯域幅が0.05 Hz以内で1対1に対応するときだけ、開いた上半平面の極の照合では軸上の差として扱う。全件照合の結果と差が出た極は保存する。窓の採否・F1・F2・中央値の判定は従来どおり。"
+}

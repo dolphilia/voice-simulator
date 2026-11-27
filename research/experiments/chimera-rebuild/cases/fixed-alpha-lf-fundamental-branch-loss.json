@@ -1,0 +1,31 @@
+{
+  "id": "fixed-alpha-lf-fundamental-branch-loss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定LFの入力基本波110 Hzだけを変更したとき、660 Hz・770 Hzの口端差は枝の二次損失の変化で再構成できる。以前の固定LFの残差で寄与が大きかった節点25→28の咽頭3枝は、今回も各周波数の複素差に向かう成分の合計の25%以上を占めると予想する。入力切替の標本で咽頭入口圧、次の標本で咽頭入口につながる枝の流量に差が出ると予想する。",
+  "reference": {
+    "run": "fixed-alpha-lf-fundamental-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental",
+    "sha256": "d49a565017abe5af7414010e2a7e2faa36db85f73e9a096db3edd810e77a9b4f"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "window_samples": [134400, 153600],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "expected_connected_branches": 38,
+    "expected_main_path_branches": 35,
+    "pharyngeal_edges": [[25, 26], [26, 27], [27, 28]],
+    "series_peak_relative_error_lt": 1e-9,
+    "topology_element_relative_error_lt": 1e-9,
+    "kinetic_balance_peak_relative_error_lt": 1e-9,
+    "spectral_identity_relative_error_lt": 1e-9,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_difference_peak_relative_threshold": 1e-10,
+    "hypothesis_pharyngeal_projected_share_ge": 0.25
+  },
+  "input": "前回の固定LFと110 Hzを通常発声の複素係数に合わせた入力をハッシュで固定し、同じ固定 /ɑ/ と周期描画の経路を使う。上流と研究版で切替前1標本・切替後128標本と、末尾22周期およびその直前1標本の節点圧・枝流量を採取する。枝は向き付き端点で照合する。",
+  "observation": "枝の前標本の圧差と流量から慣性・粘性を除いた損失を求め、流量と固定断面から求めた二次損失と照合する。両条件で定常点まわりの残差を計算し、その差を660 Hz・770 Hzの枝圧力源として節点方程式に与える。入力流量の差の寄与も計算する。口端・壁の流量と各節点圧に対して閉包を確認する。二次損失の差を、元の流量と流量差の積、流量差の二乗、逆流の符号・係数補正の3成分に分け、枝と各成分の複素寄与を保存する。咽頭3枝の射影と最初の差の位置を予想と照合する。"
+}

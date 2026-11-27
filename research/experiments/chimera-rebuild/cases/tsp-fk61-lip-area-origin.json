@@ -1,0 +1,26 @@
+{
+  "id": "tsp-fk61-lip-area-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "lip": {"run": "tsp-fk61-lip-onset-20261123-repeat", "case": "tsp-fk61-lip-onset", "manifest_sha256": "958c4844526da6767ceaf065e99624678362904c703945f99fb5f4df6c09eaf5"},
+  "matched": {"run": "tsp-held-out-matched-speech-20261123-repeat", "case": "tsp-held-out-matched-speech", "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"},
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "completed_frames": [0, 1, 1921, 1984, 1985],
+    "onset_sample": 3968,
+    "control_samples": 128,
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "absolute_tolerance_cm2": 2e-15,
+    "observations": "体型と初期姿勢を固定し、完了出力フレーム0で初期化後・描画前、1984で内部標本3967直後、1985で3969直後を採取する。測定線の座標、光線の隙間、接触補正後の隙間、面積と軸上位置、口端セルの再標本化前後、開口速度制限後、登録目標と現在値を比較する。"
+  },
+  "hypotheses": {
+    "initial_raw_cell_already_differs": "初期化直後に口端セルの再標本化結果が異なり、差は気道への登録前に出る。",
+    "shared_grid_and_bounds_explain_cell_difference": "同じ測定線とセル境界を再標本化に使うと同じ口端セルになり、測定線または境界を片側から渡すことで初期の断面差を再現できる。",
+    "local_slew_does_not_change_raw_area_at_onset": "内部標本3968の制御更新で、両版の口端平均面積は開口速度制限の前後で等しい。"
+  },
+  "acceptance": "通常CLI、観測器、保存済みPCMを各版の全116132フレームでビット照合する。5時点の口端セル再標本化を、採取した8中点の元になる測定線から独立に再計算する。初期と制御境界直前直後の気道の現在値を先行実行と照合し、断面差の最初の観測箇所と測定線・境界の入れ替えを報告する。幅、補正前後の隙間、面積、軸座標を保存し、仮説と判定を個別に記録する。"
+}

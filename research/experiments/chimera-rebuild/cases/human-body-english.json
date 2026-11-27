@@ -1,0 +1,51 @@
+{
+  "id": "human-body-english",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-ipa", "human-body-song", "english-mom-pop", "english-frontend"],
+  "hypothesis": "同じ英語テキストの単語、語末マーク、強勢、音素、休止の時刻は体型間で一致する。平叙の最後の音高目標は基準F0の0.82倍、疑問の最後は1.35倍。体型によって変わる基準F0と較正目標が声門・声道に反映され、/m/ の鼻端流量、/p/ の閉鎖、句間の振幅低下が現れる。F0を明示すると同じ混合体型の音高目標だけが変わる。",
+  "initial_state": "中立姿勢、初期音高110 Hz。肺圧、流量、呼気ゲート、位相は0。上流の比較ではドリフト・ジッタ・シマーを0、共通のゲイン、乱流倍率1と乱流シード12345を指定する。",
+  "neutral_case": "sagittal-neutral.json",
+  "input": {"id": "mom-pop-question", "text": "Mom, pop. Is it so?", "rate": 1.0},
+  "text_f0_endpoints_hz": {"male": 112.0, "female": 205.0, "child": 250.0},
+  "variants": [
+    {"id": "male", "body": "male", "weights": [1, 0, 0]},
+    {"id": "female", "body": "female", "weights": [0, 1, 0]},
+    {"id": "child", "body": "child", "weights": [0, 0, 1]},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3]},
+    {"id": "three-way-explicit-180", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3], "f0_hz": 180.0}
+  ],
+  "internal_sample_rate_hz": 96000,
+  "voice": {
+    "pressure_cm_h2o": 7.2, "gate": 0.0, "breathiness": 0.15,
+    "tension": 0.5, "output_sample_rate_hz": 48000, "output_gain": 5.5e-7
+  },
+  "expected": {
+    "shown": "mˈɑm | pˈɑp | ɪzɪtsoʊ?",
+    "phrases": [
+      {"words": ["mom"], "intonation": "statement", "pause": 0.18, "ipa": ["m", "ɑ", "m"], "primary_indices": [1], "word_end_indices": [2]},
+      {"words": ["pop"], "intonation": "statement", "pause": 0.35, "ipa": ["p", "ɑ", "p"], "primary_indices": [1], "word_end_indices": [2]},
+      {"words": ["is", "it", "so"], "intonation": "question", "pause": 0.35, "ipa": ["ɪ", "z", "ɪ", "t", "s", "o", "u"], "primary_indices": [], "word_end_indices": [1, 3, 5]}
+    ],
+    "phrase_span_seconds": [[0.05, 0.5185], [0.6985, 1.18045], [1.53045, 2.173922]],
+    "last_pitch_multipliers": [0.82, 0.82, 1.35],
+    "tail_seconds": 0.30,
+    "output_frames": 118748
+  },
+  "measurement": {
+    "revision": 2,
+    "minimum_cell_comparison": "両実装が選んだセルがそれぞれの最小断面を持つこと、相手が選んだセルとの面積差が断面の許容差以下であること、全セルの開閉判定が一致することを確認する。",
+    "host_block_frames": [128, 77],
+    "gesture_absolute_tolerance": 1e-12,
+    "geometry_absolute_tolerance": 1e-9,
+    "audio_state_peak_relative_tolerance": 1e-6,
+    "pcm_absolute_tolerance": 1e-6,
+    "initial_f0_absolute_tolerance_hz": 1e-8,
+    "closed_area_cm2": 0.0002,
+    "pop_lip_closure_window_seconds": [0.71, 0.82],
+    "pop_lip_release_window_seconds": [0.80, 0.88],
+    "minimum_nasal_port_cm2": 0.02,
+    "minimum_nose_flow_cm3_s": 0.2,
+    "quiet_window_fractions": [0.75, 0.95],
+    "maximum_quiet_pcm_peak": 0.001
+  }
+}

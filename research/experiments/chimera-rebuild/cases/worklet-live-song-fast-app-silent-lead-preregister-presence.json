@@ -1,0 +1,24 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-preregister-presence",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "duration_study": "worklet-live-song-fast-app-silent-lead-four-quanta.json",
+  "chromium_reference_runs": ["worklet-live-song-fast-app-silent-lead-four-quanta-20261121-buffer-init"],
+  "resume_order_reference_study": "worklet-live-song-fast-app-silent-lead-register-before-resume.json",
+  "resume_order_reference_run": "worklet-live-song-fast-app-silent-lead-register-before-resume-20261121-repeat",
+  "browser_engine": "chromium",
+  "resume_order_lead_quanta": 4,
+  "compare_silent_lead_presence": true,
+  "hold_output_probe_connections": true,
+  "condition_order": [["ordinary", "silent"], ["silent", "ordinary"], ["silent", "ordinary"], ["ordinary", "silent"]],
+  "hypothesis": {
+    "clock": "停止中の合成Worklet登録を両条件でそろえると、無音先行を外しても歌唱ノードの初回から開始までは3,072フレームで、開始待ちの欠落は両条件とも0になる。",
+    "time": "先行用Workletの登録と4量子の連続入力待ちを省くと、直接出力でのクリックから歌唱先頭まで、および譜面準備完了から歌唱ノード生成開始までは、どちらも組内差の中央値で短くなる。",
+    "audio": "歌唱PCM49,200フレーム、観測769点、歌唱計画は両条件ともオフライン基準に一致する。"
+  },
+  "criteria": {
+    "input": "Chromiumの歌唱画面で短音Pop Dee、240 BPM、48 kHz、歯フィルタ下限1,200 Hzを使用する。WASM、辞書、録音条件を固定し、ページごとに新規Contextを作る。直接出力と並列観測で各4組を順序均衡化し、同じ設計で2回実行する。",
+    "control": "両条件で停止完了、合成Worklet登録完了、resume要求の順序とContextの状態を照合する。変更する歌唱画面の設定はsongSilentLeadの有無だけとする。先行枝ありでは4連続量子と通知時刻を、先行枝なしでは先行枝の計測項目と起動マーカーが現れないことを確認する。",
+    "clock_and_audio": "128フレームの連続8量子と2,048フレームを足す独立式で歌唱開始を照合する。並列観測で開始待ち、歌唱前後256フレームと末尾の補完を確認し、絶対フレームから取り出した歌唱PCMを比較する。既知の固定上流との差は保存PCMで再確認する。",
+    "latency": "直接出力の組ごとに、先行ありから先行なしを引く。クリックから歌唱先頭までと、譜面準備完了から歌唱ノード生成開始までの各中央値が正なら短縮の予測を支持する。並列観測の時刻も保存する。"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-four-quanta",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "app_study": "worklet-live-song-fast-app-silent-lead.json",
+  "app_reference_run": "worklet-live-song-fast-app-silent-lead-20261121-repeat",
+  "registration_study": "worklet-live-song-fast-app-silent-lead-registration.json",
+  "registration_reference_run": "worklet-live-song-fast-app-silent-lead-registration-20261121-repeat-v2",
+  "hold_output_probe_connections": true,
+  "lead_quanta_by_mode": { "eight": 8, "four": 4 },
+  "condition_order": [["eight", "four"], ["four", "eight"], ["four", "eight"], ["eight", "four"]],
+  "maximum_clock_error_quanta": 1,
+  "hypothesis": {
+    "lead_time": "全サンプル0の先行PCMが4量子で通知し、先行枝の連続区間先頭から歌唱開始までが、8量子の場合より512フレーム短くなる。組内差の誤差は1量子以内と予測する。",
+    "clock": "4量子でも歌唱の開始待ちの飛びは0で、歌唱Workletは最初の呼び出しから3,072フレーム後に描画を始める。クリックから歌唱先頭までは直接出力の組内差の中央値で短くなる。",
+    "pcm": "歌唱開始の予約で整列すると、PCM49,200フレーム、観測769点、歌唱計画は保存済みオフライン基準と両条件とも一致する。"
+  },
+  "criteria": {
+    "input": "固定した前回の直列条件と同じChromium、短音Pop Dee、辞書とWASM、48 kHz、128フレーム量子、歯フィルタ下限1,200 Hz。各ページで新規Context。直接出力・並列観測それぞれ順序を均衡化した4組で、歌唱画面URLのsongSilentLeadだけを8または4に設定する。",
+    "lead": "歌唱Workletと先行Workletの直列登録、接続順、ゼロPCMを維持する。通知までに観測した最初の有効な入力と連続区間の実測フレーム列を保存する。先行枝と歌唱ノードの量子を別々に数え、先行枝の通知位置から歌唱ノードの初回までの差と、初回から歌唱開始までの差を照合する。",
+    "clock": "同一Contextの先行枝の連続区間の先頭から歌唱開始の絶対フレームを引き出し、組内の短縮を独立式4×128と比較する。クリックから歌唱先頭までは前回と同じエポック時刻で計測し、直接出力の組内差の中央値が負なら短縮と判定する。",
+    "audio": "歌唱側の連続8量子と2,048フレームの待ちを使う。絶対フレームの採取で開始待ちと、歌唱の前後256フレームの連続性・無音を照合する。並列観測は既存の末尾まで接続を維持する方式。固定上流との差はSHA-256照合済みの保存PCMと比べる。"
+  }
+}

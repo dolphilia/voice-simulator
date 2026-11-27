@@ -1,0 +1,72 @@
+--- a/crates/chimera/src/voice/human_voice.rs
++++ b/crates/chimera/src/voice/human_voice.rs
+@@ -162,6 +162,9 @@
+     pub artic: ArticulatorBank,
+     pub source: VoiceSource,
+     dec: Decimator,
++    pub probe_radiation_pair: [f64; 2],
++    pub probe_output: [f64; 5],
++    pub probe_radiation_components: [[f64; 6]; 2],
+     /// internal samples per control step
+     ctrl_every: usize,
+     ctrl_counter: i64,
+@@ -234,6 +237,9 @@
+             artic: ArticulatorBank::new(),
+             source: DEFAULT_SOURCE,
+             dec: Decimator::new(m),
++            probe_radiation_pair: [0.0; 2],
++            probe_output: [0.0; 5],
++            probe_radiation_components: [[0.0; 6]; 2],
+             ctrl_every: 64 * m,
+             ctrl_counter: 0,
+             gate: 0.0,
+@@ -394,6 +400,11 @@
+                 let a = self.glottis.next(net.p[sub_node] - net.p[supra]);
+                 net.set_port_area(gp, a);
+                 let y = net.step();
++                self.probe_radiation_pair = [self.probe_radiation_pair[1], y];
++                self.probe_radiation_components = [self.probe_radiation_components[1], [
++                    net.radiated_flow(self.airway.rad_lips), net.radiated_flow(self.airway.rad_nose),
++                    net.probe_wall_radiation, net.rad_prev_total, y, net.branch_area[self.airway.velum_port],
++                ]];
+                 if self.dec.push(y) {
+                     // output sample
+                     let mut v = self.dec.value * self.output_gain;
+@@ -417,6 +428,9 @@
+                     if self.lim_env > 0.75 {
+                         v *= 0.75 / self.lim_env;
+                     }
++                    self.probe_output = [
++                        self.dec.value, self.dc_x, self.dc_y, self.lim_env, self.lim_hold as f64,
++                    ];
+                     let al = v.abs();
+                     if al > 0.85 {
+                         v = js_sign(v) * (0.85 + 0.15 * tanh((al - 0.85) / 0.15));
+--- a/crates/chimera/src/airway/network.rs
++++ b/crates/chimera/src/airway/network.rs
+@@ -322,7 +322,8 @@
+     rad_l_prev: Vec<f64>,
+     /// radiated volume velocity of each radiator (telemetry)
+     pub rad_u: Vec<f64>,
+-    rad_prev_total: f64,
++    pub rad_prev_total: f64,
++    pub probe_wall_radiation: f64,
+ 
+     // --- sources/boundaries ---
+     noise: Vec<NoiseSource>,
+@@ -424,6 +425,7 @@
+             rad_l_prev: Vec::new(),
+             rad_u: Vec::new(),
+             rad_prev_total: 0.0,
++            probe_wall_radiation: 0.0,
+             noise: Vec::with_capacity(16),
+             noise_next: Vec::with_capacity(16),
+             rng: Rng::new(12345),
+@@ -1070,6 +1072,7 @@
+ 
+         // 5) nodes (radiation loads handled semi-implicitly)
+         let t2 = t * t;
++        self.probe_wall_radiation = wall_rad_sum;
+         let mut rad_total = wall_rad_sum;
+         let cl = self.closed_area;
+         for k in 0..n {

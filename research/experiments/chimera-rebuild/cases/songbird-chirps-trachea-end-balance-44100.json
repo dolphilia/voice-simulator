@@ -1,0 +1,30 @@
+{
+  "id": "songbird-chirps-trachea-end-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-oec-neck-linear-44100-20261123-repeat",
+    "manifest_sha256": "0d012ef1582f0ed6348ef169f57c84190538d5705ab9944763196c724ab00366"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 16,
+  "beak_cells": 6,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_first_end_pressure_offsets": {
+    "matched_time": 12,
+    "native_block": 13,
+    "no_tracking": null
+  },
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000,
+    "stiffness_dyn_cm3": 1000000
+  },
+  "hypothesis": "235点制御の気管端圧が押鍵12点後に分かれるより前に、壁流量は表面積の計算順または慣性の時間換算で分かれると予測する。圧力差の起点が壁流量か手前の直列枝流量かは、両寄与を独立に置換して判定する。追従0は無励振を保つ。",
+  "observation": "首部の線形慣性まで揃えた8差分の隔離ビルドと固定上流で、235点制御、256点制御、追従0の押鍵後16点を保存する。気管端の前回圧、端への直列枝流入、首部から腔への流出、壁流量と変位を測る。気管端の断面は固定で、節点圧・壁の更新・手前の直列枝流量を別々に再計算する。圧力の最初の差で3流量と前回圧を個別に上流の値へ置換する。",
+  "acceptance": "新規観測列を除いたCSVが先行実験の同じ標本区間とバイト一致する。両版の気管端圧、壁流量と変位、直列枝流量の各16点を独立計算とビット照合する。235点と256点制御の最初の圧力差、説明できる項と境界条件を保存する。追従0で収支と圧力が0となり、予測と実測の違いは判定と別に記録する。"
+}

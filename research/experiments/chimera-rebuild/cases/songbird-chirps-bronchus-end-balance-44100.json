@@ -1,0 +1,30 @@
+{
+  "id": "songbird-chirps-bronchus-end-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-syrinx-momentum-44100-20261123-repeat",
+    "manifest_sha256": "791367ea7b6eb0aa75ab1a4c6d385b32916348aecbcfc458865f1dc5e2ac4ca3"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_right_pressure_offsets": {
+    "matched_time": 25,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02
+  },
+  "hypothesis": "右気管支末端の圧力が最初に分かれる押鍵25点後と19点後では、直前の末端圧と今回の右ポートへの流出が一致する。右気管支末端への直列枝流入だけを上流値に替えると同じ圧力を得ると予測する。左も同じ節点更新で計算できる。追従0では両側の末端圧と流量が0になる。",
+  "observation": "右の持ち越しまでを揃えた先行版に、左右気管支末端への直列枝の流量、手前のセル圧、末端の面積と長さを採る観測を追加する。通常render CLIと固定上流の観測プローブから、押鍵後0〜63点の末端圧、流入・流出と前回状態を収集する。末端の圧力収支と、手前から末端へ流れる枝の流量を独立に再計算する。",
+  "acceptance": "先行CSVの全列をバイト再現し、新しい観測を指定したときだけ列を追加する。左右末端の断面と長さを照合し、両版の流量と圧力を全点ビット再計算する。追従0を無音で確認する。右の事前登録時刻で直前の末端圧と今回のポート流量が一致し、直列枝流入の単独置換で末端圧を再現することを確認する。直列枝自身が分かれる最初の標本で圧力・持ち越し・線形項の置換結果を保存する。"
+}

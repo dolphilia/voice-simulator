@@ -1,0 +1,66 @@
+{
+  "id": "tsp-held-out-matched-speech",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "startup_reference": {
+    "run": "tsp-seems-initial-tip-20261123-repeat",
+    "case": "tsp-seems-initial-tip",
+    "manifest_sha256": "29d8c4d18dd046f350badb8acee333d07093d95bc2b952074a32a3bdeb22f04c"
+  },
+  "recording_ids": ["FK64_08", "FK64_09", "MK64_08", "MK64_09", "FK62_02", "MK62_02", "FK62_04", "MK62_04", "FK61_01", "MK61_01", "FK61_02", "MK61_02"],
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "body": {
+    "male": {"base_f0_hz": 112, "output_gain": 5.5e-7},
+    "female": {"base_f0_hz": 205, "output_gain": 4.8125e-7}
+  },
+  "source_variation": {"pitch_drift_cents": 5.0, "period_jitter": 0.00455, "amplitude_shimmer": 0.042},
+  "cycle": {"seed": 777, "period_scale_bounds": [0.55, 1.8], "amplitude_scale_min": 0.12},
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "windows": {"size_frames": 960, "hop_frames": 240, "threshold_db": -35, "initial_frames": 32},
+  "limits": {
+    "pcm_absolute": 1e-6,
+    "initial_pcm_absolute": 1e-10,
+    "tip_cm": 1e-12,
+    "phase_cycles": 1e-10,
+    "amplitude_coefficient": 1e-10,
+    "independent_normalized": 1e-10,
+    "radiation_derivative_cm3_s2": 0.002,
+    "window_mean_square": 1e-12,
+    "state": {
+      "tongue_tip_y_cm": 1e-10,
+      "gate": 1e-10,
+      "pressure_drop_dyn_cm2": 1e-8,
+      "f0_hz": 1e-9,
+      "phase": 1e-10,
+      "glottal_area_cm2": 1e-10,
+      "voicing": 1e-10,
+      "glottal_flow_cm3_s": 1e-8,
+      "lip_cm3_s": 1e-8,
+      "nose_cm3_s": 1e-8,
+      "wall_cm3_s": 1e-8,
+      "total_cm3_s": 1e-8,
+      "radiation_derivative_cm3_s2": 1e-6
+    }
+  },
+  "hypotheses": {
+    "initial_pcm_agrees_in_all_utterances": "同じ初期舌先・音源条件で、全12発話の先頭32フレームの最大PCM差が1e-10以下になる。",
+    "phone_boundaries_agree_in_all_utterances": "全12発話で、固定上流と研究版の音素列、強勢、半開フレーム区間、全フレーム数が一致する。",
+    "full_pcm_agrees_in_all_utterances": "全12発話で、設定を揃えた固定上流と研究版の全PCMの最大差が1e-6以下になり、20 ms窓を5 ms刻みで評価した−35 dBの発話区間が一致する。"
+  },
+  "acceptance": "調整用を除いた既存12実行を同じ順序で使う。同じ本文・辞書・体型で、固定上流の通常描画を再実行し、既存WAVと観測器の全PCMに照合する。研究版は元の通常描画の入力を基準とし、舌先の休止座標、体型別ゲイン、既定音源の揺らぎだけを上流に揃える。その入力を通常CLIと観測器で再描画し、元の研究版の発話計画に合うことを確認する。独立な周期・振幅計算、放射差分、間引き・DC除去と出力、RMS窓を照合する。出力長や音素計画に差がある場合も保存し、同じ標本番号で比べられる区間で差を算出する。最初の閾値超過と最大差に対応する両版の計画音素を記録し、音素別と発話全体の結果を保存する。仮説の成否と計測の合否を分け、人手の実録音F2注釈や試聴結果はこの比較に用いない。"
+}

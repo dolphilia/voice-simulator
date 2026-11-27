@@ -1,0 +1,62 @@
+{
+  "id": "narrow-junction",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "分岐セルだけを固定狭窄にすると方向別の二次損失が働く。対称な出口の流量は一致し、全時系列は有限で、駆動が終われば圧力が減衰する。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 0.002]
+      },
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+      },
+      {
+        "length_cm": 8.0,
+        "areas_cm2": [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+      }
+    ],
+    "connections": [
+      [19, 20],
+      [19, 40]
+    ],
+    "radiators": [39, 59]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 0,
+    "volume_cm3": 0.001
+  },
+  "observe": {
+    "pressure_nodes": [
+      18,
+      19,
+      20,
+      40
+    ],
+    "branches": [
+      [18, 19],
+      [19, 20],
+      [19, 40]
+    ]
+  },
+  "measurement": {
+    "sample_count": 105600,
+    "tail_sample_count": 9600,
+    "junction_node": 19,
+    "junction_incoming_node": 18,
+    "junction_outgoing_nodes": [20, 40],
+    "expected_first_radiation_sample": 39,
+    "expect_junction_compliance_floor_active": false,
+    "expect_nonlinear_loss": true,
+    "symmetric_trace_peak_relative_error_lt": 1e-12,
+    "upstream_trace_peak_relative_error_lt": 1e-10,
+    "balance_peak_relative_error_lt": 1e-10,
+    "tail_over_peak_lt": 0.1,
+    "junction_pressure_peak_lt_dyn_cm2": 10000000.0,
+    "linear_frequency_points_hz": [],
+    "linear_complex_peak_relative_error_lt": 1e-05
+  }
+}

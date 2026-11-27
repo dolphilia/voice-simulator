@@ -1,0 +1,167 @@
+{
+  "id": "turbulence-reverse",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "狭窄の前ステップの流れがレイノルズ数のしきい値を超えると帯域雑音が生じ、流れの向きで圧力を加える枝と符号が変わる。閉鎖が続くと乱流源は無効になる。同じシードは同じ乱数列を再生し、シードだけを変えると雑音波形が変わる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          0.08,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      29
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": -5883.99,
+        "ramp_samples": 5760
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          30,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 3.0,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0
+      }
+    ],
+    "turbulence": {
+      "seed": 12345,
+      "scale": 1.0,
+      "sources": [
+        {
+          "source": [
+            12,
+            13
+          ],
+          "forward": [
+            16,
+            17
+          ],
+          "reverse": [
+            8,
+            9
+          ],
+          "gain": 1.364e-06,
+          "lowpass_hz": 2600.0,
+          "highpass_hz": 350.0
+        }
+      ]
+    }
+  },
+  "area_ramps": [
+    {
+      "start_sample": 18000,
+      "sample_count": 64,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 12,
+          "area_cm2": 0.0
+        }
+      ]
+    }
+  ],
+  "observe": {
+    "pressure_nodes": [
+      8,
+      9,
+      12,
+      13,
+      16,
+      17,
+      29,
+      30
+    ],
+    "branches": [
+      [
+        8,
+        9
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        16,
+        17
+      ]
+    ],
+    "area_nodes": [
+      12
+    ],
+    "noise_sources": [
+      0
+    ],
+    "noise_branches": [
+      [
+        8,
+        9
+      ],
+      [
+        16,
+        17
+      ]
+    ]
+  },
+  "measurement": {
+    "sample_count": 24000,
+    "steady_window_samples": [
+      9600,
+      16000
+    ],
+    "closed_window_samples": [
+      18128,
+      24000
+    ],
+    "minimum_active_samples_in_window": 6000,
+    "minimum_open_subcritical_samples": 100,
+    "expected_flow_sign": -1,
+    "positive_reynolds_threshold": 1800.0,
+    "saturation_reynolds": 12000.0,
+    "closed_area_cm2": 0.0002,
+    "upstream_seed": 12345,
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "independent_noise_peak_relative_error_lt": 1e-10,
+    "pressure_balance_peak_relative_error_lt": 1e-07,
+    "alternate_seed_injection_relative_rms_gt": 0.25
+  }
+}

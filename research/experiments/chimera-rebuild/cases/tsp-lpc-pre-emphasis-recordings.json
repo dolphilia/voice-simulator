@@ -1,0 +1,38 @@
+{
+  "id": "tsp-lpc-pre-emphasis-recordings",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "synthetic_control": {
+    "run": "tsp-lpc-pre-emphasis-20261122-repeat",
+    "case": "tsp-lpc-pre-emphasis",
+    "manifest_sha256": "8fbb6c62f189b27ea52cef4916a17a155e21ae98c675d966e6b822e5ec93dee0"
+  },
+  "baseline": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "spectral_protocol": {
+    "run": "tsp-f2-bandwidth-envelope-20261122-repeat",
+    "case": "tsp-f2-bandwidth-envelope",
+    "manifest_sha256": "077d790f72e0760eb83434297ac9ccc874f415fb1991e547ebcca038e3b9054b"
+  },
+  "tokens": [
+    {"utterance": "MK61_01", "word": "seems", "phone_index": 13, "arpabet": "IY1", "spectral_balance_frequencies_hz": [330, 2320]},
+    {"utterance": "FK61_01", "word": "again", "phone_index": 23, "arpabet": "EH1", "spectral_balance_frequencies_hz": [620, 2075]}
+  ],
+  "centers": [0.35, 0.5, 0.65],
+  "measurement": {
+    "pre_emphasis_coefficients": [0.97, 0],
+    "lag_window_hz": 40,
+    "peak_half_width_hz": 150,
+    "large_f2_shift_hz": 100
+  },
+  "method": "保存済みの録音PCM16、MFAの母音区間、固定上流の極を先行マニフェストで照合する。先行ケースと同じ12 kHzの300標本と録音別のLPC次数で、固定上流の公開FormantOptsのプリエンファシスだけを既定値と0で切り替える。6窓について候補極、F1とF2の採否・欠測、条件数、窓内の最初の差を記録する。各条件の選択極付近のピークに加え、両条件のF2を同じ係数0のピリオドグラムでも参照する。帯域間レベル差を観測する周波数は先行実測の低域と高域から固定し、録音の正解F1・F2には用いない。",
+  "hypotheses": {
+    "median_condition_number_rises_in_both_words": "係数0では両語それぞれの3窓の条件数の中央値が既定条件より増える。",
+    "relative_high_band_level_drops_in_all_windows": "係数0では登録した高域と低域のレベル差が6窓すべてで小さくなる。",
+    "large_f2_effect_or_missing": "係数の切り替えにより、少なくとも1窓でF2が100 Hz以上動くか、新しい欠測が生じる。"
+  },
+  "acceptance": "両録音のMFA窓の開始標本・長さと、0.97条件の極・採否・中央値を先行の固定Rustと照合する。両条件の係数、残差、全根、候補極、包絡を先行合成対照と同じ許容差で独立計算と照合し、前処理の差分を0.97倍の遅延標本と比較する。欠測理由、仮説の成否、数値スペクトルを保存する。"
+}

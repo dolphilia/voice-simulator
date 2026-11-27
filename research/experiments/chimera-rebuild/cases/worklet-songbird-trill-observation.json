@@ -1,0 +1,28 @@
+{
+  "id": "worklet-songbird-trill-observation",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "source_revision": 2,
+  "inherits_measurement": "worklet-songbird-trill.json",
+  "hypothesis": "48 kHz・128フレーム量子で、従来の64フレーム制御先頭の観測は通常量子を3分割する。同じ頻度で64フレーム区間の末尾に移すと2分割になり、128フレーム量子の末尾だけでは分割がなくなる。入力・イベント・ブラウザをそろえると、呼び出し回数を減らしても加工前PCMと共通観測点は一致する。処理時間の分布は短くなる方向を予測するが、1 ms刻みの計時で差が分離できるかを実測する。",
+  "measurement": {
+    "variants": ["trill"],
+    "observation_profiles": [
+      {"id": "trill-control-start", "stride": 64, "offset": 0, "render_calls": 1802, "observations": 1204},
+      {"id": "trill-control-end", "stride": 64, "offset": 63, "render_calls": 1202, "observations": 1202},
+      {"id": "trill-quantum-end", "stride": 128, "offset": 127, "render_calls": 602, "observations": 602}
+    ],
+    "capture_order": [
+      ["trill-control-start", "trill-control-end", "trill-quantum-end"],
+      ["trill-control-end", "trill-quantum-end", "trill-control-start"],
+      ["trill-quantum-end", "trill-control-start", "trill-control-end"],
+      ["trill-quantum-end", "trill-control-end", "trill-control-start"],
+      ["trill-control-end", "trill-control-start", "trill-quantum-end"],
+      ["trill-control-start", "trill-quantum-end", "trill-control-end"]
+    ],
+    "expected_shared_observations": [4, 4, 602],
+    "cli_pcm_absolute_tolerance": 0,
+    "browser_state_absolute_tolerance": 0
+  }
+}

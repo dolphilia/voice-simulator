@@ -1,0 +1,92 @@
+{
+  "id": "tract-slew-lips",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "hypothesis": "口腔の最終セルでは幾何上の閉鎖から制限後の閉鎖まで数フレーム遅れる。再開口の初期には唇の開口制限が効く。",
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 8,
+        "targets": {
+          "lip_aperture_cm": -0.22
+        },
+        "speeds": {
+          "lip_aperture_cm": 2.0
+        }
+      },
+      {
+        "frame": 144,
+        "targets": {
+          "lip_aperture_cm": 0.7
+        }
+      }
+    ]
+  },
+  "area_control": {
+    "project_contacts": true
+  },
+  "measurement": {
+    "frames": 288,
+    "area_control": {
+      "area_absolute_lt_cm2": 1e-09,
+      "length_absolute_lt_cm": 1e-09,
+      "closed_below_cm2": 1e-05,
+      "tube_cells": {
+        "pharynx": 18,
+        "oral": 18
+      },
+      "reapply_frames": [],
+      "max_limit_effect_gt_cm2": 0.25,
+      "closure": {
+        "tube": "oral",
+        "cell": 17,
+        "release_command_frame": 144,
+        "raw_close_frame": [
+          21,
+          23
+        ],
+        "limited_close_frame": [
+          36,
+          38
+        ],
+        "raw_reopen_frame": [
+          147,
+          149
+        ],
+        "limited_reopen_frame": [
+          147,
+          149
+        ],
+        "check_frame": 150,
+        "limited_to_raw_minimum_ratio": [
+          0.18,
+          0.23
+        ]
+      }
+    }
+  }
+}

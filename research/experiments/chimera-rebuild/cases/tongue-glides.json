@@ -1,0 +1,42 @@
+{
+  "id":"tongue-glides",
+  "revision":1,
+  "upstream_revision":"c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis":"同じ /ɑ/ に挟まれた /j/ は /ɰ/ より舌背が前に出て、第2フォルマントが高くなる。/j/ の顎に弱い目標が付き、どちらも閉鎖を保つジェスチャーを要さない。韓国語歌唱では渡り音が後続母音の拍までに終わり、メリスマの2音目は渡り音を繰り返さない。",
+  "speech_case":"alveolar-t.json",
+  "song_case":"song-voice-flat.json",
+  "speech":[
+    {"id":"palatal","body":"male","text":"ɑjɑ","ipa":"j","rate":1},
+    {"id":"velar","body":"male","text":"ɑɰɑ","ipa":"ɰ","rate":1},
+    {"id":"fast-palatal","body":"male","text":"ɑjɑ","ipa":"j","rate":1.8},
+    {"id":"female-palatal","body":"female","text":"ɑjɑ","ipa":"j","rate":1},
+    {"id":"final-velar","body":"male","text":"ɑɰ","ipa":"ɰ","rate":1}
+  ],
+  "song":[
+    {"id":"ppangya","body":"male","lyrics":"빵야 ~","ipa":"j","note_index":1,"midi":[57,64,67],
+     "onsets":[["p"],["j"],[]],"nuclei":["a","a","a"],"codas":[["ŋ"],[],[]],"melisma":[false,false,true]},
+    {"id":"uisa","body":"male","lyrics":"의사","ipa":"ɰ","note_index":0,"midi":[57,64],
+     "onsets":[["ɰ"],["s"]],"nuclei":["i","a"],"codas":[[],[]],"melisma":[false,false]}
+  ],
+  "measurement":{
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "geometry_absolute_tolerance":1e-9,
+    "gesture_absolute_tolerance":1e-12,
+    "independent_jaw_tolerance_cm":1e-10,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "pcm_absolute_tolerance":1e-6,
+    "closed_area_cm2":0.0002,
+    "minimum_front_back_difference_cm":0.3,
+    "minimum_f2_difference_hz":150,
+    "formant_match_hz":2.0,
+    "center_fraction":[0.35,0.65],
+    "measure_lpc_at_fraction":0.55,
+    "window_duration_seconds":0.024,
+    "lpc":{"lpc_sample_rate_hz":16000,"lpc_order":18,"pre_emphasis":0.97,
+           "lpc_min_hz":90,"lpc_max_bandwidth_hz":600,"lpc_nyquist_guard_hz":0.000001},
+    "browser_observed_fields":["gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_f0_hz","lip_minimum_cm2",
+                               "tongue_body_x_cm","tongue_body_y_cm","smoothed_f0_hz"],
+    "window":"音素区間の35〜65%で舌背の座標と口腔の最小断面を観測する。まったく同じ母音で挟んだ2条件の波形は区間55%位置を中心とする24 ms窓でLPCの第2極対を求める。顎の位置は全フレームを独立再計算する。"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "worklet-midi-voice",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "realtime_case": "worklet-realtime-voice.json",
+  "hypothesis": "同じ音の所有が複数の入力・チャンネルにある間は発声を保持する。最後に押した音を離すと保持中の前の音に戻り、全音消音や入力切断で最後の所有を解放すると呼気目標が0になる。A2からA3では目標F0が110から220 Hzへ移り、入力時刻に続く描画量子で制御目標を適用する。適用済みイベントのCLI再生は加工前PCMと一致する。",
+  "measurement": {
+    "ports": ["A", "B"],
+    "wait_ms": 175,
+    "actions": [
+      {"port": "A", "bytes": [144, 45, 100], "note": 45},
+      {"port": "B", "bytes": [144, 45, 90], "note": 45},
+      {"port": "A", "bytes": [145, 45, 80], "note": 45},
+      {"port": "A", "bytes": [128, 45, 0], "note": 45},
+      {"port": "A", "bytes": [145, 45, 0], "note": 45},
+      {"port": "A", "bytes": [144, 57, 105], "note": 57},
+      {"port": "B", "bytes": [145, 57, 90], "note": 57},
+      {"port": "A", "bytes": [128, 57, 0], "note": 57},
+      {"port": "A", "bytes": [177, 123, 0], "note": 57},
+      {"port": "B", "bytes": [177, 120, 0], "note": 45},
+      {"port": "B", "change": "unplug", "note": null},
+      {"port": "B", "change": "replug", "note": null},
+      {"port": "B", "bytes": [144, 48, 90], "note": 48},
+      {"port": "B", "bytes": [176, 123, 0], "note": null}
+    ],
+    "expected_notes": [45, 57, 45, null, 48, null],
+    "expected_final_inputs": ["A", "B"],
+    "render_quantum_frames": 128,
+    "maximum_voiced_frames": 384000,
+    "minimum_note_frames": 2048,
+    "pitch_glide_time_constant_seconds": 0.06,
+    "pitch_absolute_tolerance_hz": 1e-8,
+    "gate_absolute_tolerance": 1e-10,
+    "pre_note_peak_max": 0.00001,
+    "minimum_voiced_pcm_peak": 0.01,
+    "cli_pcm_absolute_tolerance": 0
+  }
+}

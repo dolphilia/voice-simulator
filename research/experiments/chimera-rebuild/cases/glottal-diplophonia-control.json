@@ -1,0 +1,120 @@
+{
+  "id": "glottal-diplophonia-control",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "一定差圧・固定124 Hzで交互周期を無効にすると、奇数と偶数の周期長と声門面積ピークが等しく、62 Hzの成分は検出限界より小さい。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 1.0,
+        "areas_cm2": [
+          1.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 7000.0,
+        "ramp_samples": 0
+      },
+      {
+        "pressure_dyn_cm2": 0.0,
+        "ramp_samples": 0
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          1,
+          2
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "glottis": {
+    "port": [
+      1,
+      2
+    ],
+    "params": {
+      "f0_hz": 124.0,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625,
+      "jitter": 0.0,
+      "shimmer": 0.0,
+      "cycle_seed": 777,
+      "drift_cents": 0.0,
+      "vibrato_depth_cents": 0.0,
+      "vibrato_rate_hz": 6.0,
+      "fry": 0.0,
+      "diplophonia": 0.0
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  },
+  "observe": {
+    "pressure_nodes": [
+      1,
+      2
+    ],
+    "branches": [
+      [
+        1,
+        2
+      ]
+    ],
+    "glottal_f0": true
+  },
+  "measurement": {
+    "sample_count": 144000,
+    "analysis_window_samples": [
+      24000,
+      120000
+    ],
+    "phase_window_samples": [
+      0,
+      144000
+    ],
+    "minimum_complete_cycles": 115,
+    "minimum_analysis_voicing": 0.99,
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "phase_increment_max_absolute_error_lt": 2e-12,
+    "independent_area_peak_relative_error_lt": 1e-09,
+    "cycle_lengths_max_absolute_error_samples": 1.2,
+    "alternation": {
+      "nominal_f0_max_absolute_error_hz": 1e-10,
+      "expected_odd_minus_even_period_samples": 0.0,
+      "period_difference_max_error_samples": 2,
+      "peak_ratio_interval": [
+        0.999,
+        1.001
+      ],
+      "subharmonic_to_f0_ratio_interval": [
+        0.0,
+        0.001
+      ],
+      "first_wrap_sample_interval": [
+        774,
+        774
+      ]
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "worklet-midi-seal-chug",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-chug-v2.json",
+  "input": {
+    "creature": "seal",
+    "key_mode": "call",
+    "call_id": "chug",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [40, 6000],
+    "capture_seconds": 2.0,
+    "events": [
+      {"seconds": 0.14, "type": "note-on", "note": 24, "velocity": 96},
+      {"seconds": 0.33, "type": "note-off", "note": 24},
+      {"seconds": 0.62, "type": "note-on", "note": 31, "velocity": 96},
+      {"seconds": 0.85, "type": "note-off", "note": 31}
+    ]
+  },
+  "hypothesis": "Chugの鍵盤音高は約65.4 Hzと98.0 Hzに分かれる。呼気パルスの目標は11 Hz、深さ1、デューティ0.35で両音とも同じになり、離鍵後も呼気ゲートが高いまま肺圧はパルスによって大きく上下する。再発音で粗さの目標が0.3へ戻り、声門周期と呼気パルスの位相はそれぞれ継続する。",
+  "criteria": {
+    "cycle_rates": "各押下後150〜400 msを使い、位相の巻き戻りから呼気と声門の平均周期周波数を求める。呼気は両方とも11±0.25 Hz、声門は各鍵盤音高の12%以内で、第2音の周期周波数の方が高いと予測する。",
+    "release": "各離鍵後25〜200 msに呼気ゲート0.95以上、声門の最大開口0.03 cm²以上、PCM RMS 0.001以上を求める。肺圧はデューティ内で7,000 dyn/cm²以上に達し、デューティ外では5 dyn/cm²以下になると予測する。",
+    "retrigger": "再発音で粗さ目標は約0.17から0.3へ戻り、平滑粗さは直前値から増加する。呼気位相は直前値と平滑パルス周波数から次の位相に進み、声門位相の増分も旧周期の許容範囲に入る。",
+    "roughness": "第2音の150〜450 msと770〜900 msで、声門周期倍率からジッター項を除いたRMSが後半で小さくなると予測する。全区間の周期倍率を乱数と粗さの写像から独立評価する。",
+    "replay": "ブラウザの採用フレームを固定してCLIと上流を走らせる。ブラウザとCLIのPCM・観測値の一致、1秒付近の所有終了と手動値への復帰を確認する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-seal-chug-20261120-repeat",
+    "baseline_case_id": "worklet-seal-chug",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": 1,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [0.025, 0.20],
+    "browser_release_gate_minimum_peak": 0.95,
+    "release_window_seconds": [0.025, 0.20],
+    "minimum_release_gate": 0.95,
+    "minimum_release_pcm_rms": 0.001,
+    "minimum_open_glottis_peak_cm2": 0.03,
+    "minimum_pulse_on_pressure_dyn_cm2": 7000,
+    "maximum_pulse_off_pressure_dyn_cm2": 5,
+    "cycle_rate_window_seconds": [0.15, 0.40],
+    "breath_rate_absolute_tolerance_hz": 0.25,
+    "glottal_rate_relative_tolerance": 0.12,
+    "retrigger_roughness_target_before": [0.15, 0.20],
+    "glottal_period_scale_bounds": [0.55, 1.8],
+    "maximum_tail_pcm_rms": 0.002,
+    "tail_window_seconds": 0.10,
+    "native_pcm_tolerance": 1e-6,
+    "native_state_absolute_tolerance": 1e-8,
+    "native_state_relative_tolerance": 1e-7,
+    "independent_tolerances": {
+      "gate": 2e-12,
+      "gate_target": 1e-10,
+      "target_pitch_hz": 1e-8,
+      "pitch_hz": 1e-8,
+      "target_pulse_rate_hz": 1e-8,
+      "pulse_rate_hz": 1e-8,
+      "pulse_depth": 1e-8,
+      "target_pulse_depth": 1e-8,
+      "duty": 1e-8,
+      "target_duty": 1e-8,
+      "roughness": 1e-8,
+      "target_roughness": 1e-8,
+      "pulse_phase": 1e-10,
+      "lung_pressure_dyn_cm2": 2e-7,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0
+    },
+    "reference_definition_run": "seal-chug-before-worklet-1"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "gate_target", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "pulse_rate_hz", "pulse_depth", "duty", "pulse_phase", "target_roughness", "roughness", "lung_pressure_dyn_cm2", "glottis_phase_0", "glottis_phase_1", "glottis_f0_hz_0", "glottis_f0_hz_1", "glottis_area_cm2_0", "glottis_area_cm2_1", "wall_0", "wall_1", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 96000]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "target_pitch_hz", "pitch_hz", "target_pulse_rate_hz", "pulse_rate_hz", "pulse_depth", "duty", "target_roughness", "roughness", "lung_pressure_dyn_cm2", "glottis_phase_0", "glottis_phase_1", "glottis_f0_hz_0", "glottis_f0_hz_1", "glottis_area_cm2_0", "glottis_area_cm2_1", "wall_0", "wall_1", "radiation_0", "radiation_1", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 96000]]
+    }
+  }
+}

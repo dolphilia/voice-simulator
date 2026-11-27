@@ -1,0 +1,34 @@
+{
+  "id": "duet-child-output-gain",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-child-initial-tip-20261122-repeat",
+  "reference_manifest_sha256": "ddfd3fd879b4486491c6678aa94c245803429ebdcc761f27dc8077e68324a9e6",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "frames": 91200,
+  "base_gain": 5.5e-7,
+  "child_body_scale": 0.74,
+  "gain_factor": 0.875,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerances": {
+    "radiation_cm3_s2": 0.001,
+    "independent_normalized": 1e-10,
+    "aligned_cross_normalized": 1e-10,
+    "pcm_absolute": 6e-8
+  },
+  "minimum_base_pcm_difference": 0.01,
+  "hypothesis": "初期舌先と音源をそろえた子ども声部で、研究版の出力段に体型係数0.875を掛けると、上流とのPCM差は全91,200フレームで6×10⁻⁸以内になる。研究版の二条件で差が始まる段は間引き後のゲインで、内部放射と間引き値はビット一致する。リミッターには両条件とも0.75を超えるピークが入らない。",
+  "criteria": "先行実行と同じ休止舌先、同じ歌詞・音符・調音・音源で、研究版の song_voice.voice.output_gain だけを5.5×10⁻⁷から4.8125×10⁻⁷に変更する。固定上流は体型係数の既定値を使い、先行実行と同じくドリフト・ジッター・シマーを0にする。全91,200フレームで各2内部サンプルの放射、FIR出力、ゲイン適用後、DC除去、包絡・保持残数、PCMを観測する。独立の畳み込みとDCフィルタと包絡計算に照合し、同じ入力の研究版観測器と通常CLI、先行の両PCMをビット照合する。上流の計測差分は無変更の通常CLIの既定音源でも検証する。段別に最初の数値差と許容差超過を記録し、上流とのPCM差と制限の発動回数を判定する。"
+}

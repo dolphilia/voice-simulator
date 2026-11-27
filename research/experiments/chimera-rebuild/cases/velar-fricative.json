@@ -1,0 +1,53 @@
+{
+  "id": "velar-fricative",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "較正済みの舌背高を強く保ち、前後位置の弱い重みにより /ixi/ の舌背は /ɑxɑ/ より前に残る。/xʲ/ は /ɑxɑ/ と同じ高さの目標を保ちながら前進する。正の狭窄から乱流が生じ、歯から体型換算4 cm以上離れた狭窄では歯の衝突音源が生じない。乱流倍率0では形状と音源の登録を保ち、圧力注入が消える。「ти́хо」の /x/ は第2音節の拍の直前に96 msを使う。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id": "male-back", "body": "male", "text": "ˈɑxɑ", "f0_hz": 112, "rate": 1},
+    {"id": "male-front", "body": "male", "text": "ˈixi", "f0_hz": 112, "rate": 1},
+    {"id": "male-palatalized", "body": "male", "text": "ˈɑxʲɑ", "f0_hz": 112, "rate": 1, "palatalized": true},
+    {"id": "female-back", "body": "female", "text": "ˈɑxɑ", "f0_hz": 205, "rate": 1},
+    {"id": "child-front", "body": "child", "text": "ˈixi", "f0_hz": 270, "rate": 1},
+    {"id": "mixed-back-fast", "body": {"female": 0.4, "child": 0.25}, "text": "ˈɑxɑ", "f0_hz": 150, "rate": 1.3},
+    {"id": "muted-back", "body": "male", "text": "ˈɑxɑ", "f0_hz": 112, "rate": 1, "turbulence_scale": 0}
+  ],
+  "song": [
+    {
+      "id": "tikho", "body": "male", "lyrics": "ти́хо", "midi": [57, 64],
+      "onsets": [["t", "j"], ["x"]], "nuclei": ["i", "o"], "codas": [[], []]
+    }
+  ],
+  "calibrated_body_height_cm": {"male": 7.365, "female": 7.430, "child": 7.499},
+  "measurement": {
+    "seed": 12345,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": [128, 77],
+    "gesture_abs_tolerance": 1e-12,
+    "geometry_abs_tolerance": 1e-9,
+    "selection_abs_tolerance": 1e-9,
+    "gain_abs_tolerance": 1e-12,
+    "state_peak_relative_tolerance": 1e-6,
+    "pcm_abs_tolerance": 1e-6,
+    "audio_state_peak_relative_tolerance": 1e-6,
+    "closed_area_cm2": 0.0002,
+    "center_fraction": [0.25, 0.75],
+    "minimum_vowel_fronting_cm": 0.20,
+    "minimum_palatalized_fronting_cm": 0.20,
+    "minimum_central_active_fraction_male_contexts": 0.15,
+    "teeth_distance_limit_normalized_cm": 4.0,
+    "base_duration_seconds": 0.12,
+    "sung_duration_factor": 0.8,
+    "browser_observed_fields": [
+      "gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing",
+      "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm",
+      "lip_minimum_cm2", "smoothed_f0_hz", "abduction_cm2",
+      "tongue_body_x_cm", "tongue_body_y_cm"
+    ],
+    "initial_state": "発話と歌唱の初期姿勢・呼気・出力段は各親ケースから採用し、発話F0と体型だけを上書きする。通常ケースは入口の乱流既定値を使う。無効対照のみ倍率0とする。",
+    "window": "全フレームで幾何・声門・乱流配置・放射・PCMと、乱流を切った対照の幾何を比較する。音素中央25〜75%で舌背X/Y、咽頭・口腔の最小断面、歯までの規格化距離、狭窄源と歯の音源の登録、圧力および活動率を測る。男性の前後母音二条件は中央の狭窄源活動を15%以上とし、通常条件すべてで音素区間中に一度以上の狭窄音源活動を確認する。ブラウザではテレメトリの取れた時点で内部状態、全区間で加工前PCMと保存ケースの再実行を照合する。"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "songbird-chirps-trachea-cell13-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-interior-momentum-44100-20261123-repeat",
+    "manifest_sha256": "ef101eab425da713b67ae240241730682254e28c04c66a38ffe3ad29c831e94b",
+    "case_id": "songbird-chirps-trachea-interior-momentum-44100",
+    "candidate_label": "interior-momentum",
+    "patch": "trachea-interior-momentum.patch"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 16,
+  "trachea_cells": 16,
+  "trachea_cell_index": 13,
+  "trachea_observation_cells": [
+    14,
+    13
+  ],
+  "multiply_inlet_momentum_cells": [
+    14
+  ],
+  "beak_cells": 6,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_first_pressure_offsets": {
+    "matched_time": 11,
+    "native_block": 10,
+    "no_tracking": null
+  },
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000,
+    "stiffness_dyn_cm3": 1000000
+  },
+  "hypothesis": "セル13圧が235点制御で11点後、256点制御で10点後に分かれる場合、セル12からの流入を上流値に置換すると圧力差を復元できると予測する。セル14への流出にも先行差があれば、流入、流出、壁流量、前回圧の置換を独立に比較する。追従0では両セルが無励振を保つ。",
+  "observation": "セル13から14への枝まで揃えた10差分のRustビルドを復元し、通常CLIと固定上流で既存のセル14にセル13を追加する。235点制御、256点制御、追従0の押鍵後16点で、各セルの両側の枝の流量、壁流量・変位、前回圧、セル面積と長さを記録する。セル13から14への出入りに同じ流量が使われることを確認する。",
+  "acceptance": "新規列を除いたCSVは前回の64点の該当区間とバイト一致する。両版と両セルの流入、圧力、壁流量・変位を独立計算とビット照合する。セル13の最初の圧力差で同じ双方向の収支を使い、置換の成否を保存する。流入に差が残るときは初差の前回状態と係数の置換を記録する。"
+}

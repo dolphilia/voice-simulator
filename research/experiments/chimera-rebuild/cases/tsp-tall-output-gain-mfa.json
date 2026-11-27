@@ -1,0 +1,55 @@
+{
+  "id": "tsp-tall-output-gain-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "baseline": {
+    "run": "tsp-matched-source-variation-zero-mfa-20261123-repeat",
+    "case": "tsp-matched-source-variation-zero-mfa",
+    "manifest_sha256": "0080bc295d45e0e94053874fc853f2f60217bc34f275716645f79533313da5de"
+  },
+  "previous_render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "previous_alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "internal_sample_rate_hz": 96000,
+  "sample_rate_hz": 48000,
+  "initial_f0_hz": 110,
+  "base_f0_hz": 205,
+  "base_gain": 4.8125e-7,
+  "old_gain": 5.5e-7,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "measurement": {
+    "output_tolerance": 1e-11,
+    "linear_pcm_absolute_tolerance": 1e-7,
+    "fixed_window_f2_tolerance_hz": 0.05,
+    "analysis_centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "word": "tall",
+    "phones": ["AO1", "L"],
+    "baseline_end_seconds": 1.649999976158142,
+    "old_end_seconds": 1.6799999475479126,
+    "local_frames": [72000, 84000],
+    "acceptance": "同じFK61_02、初期姿勢、体型、辞書、ドリフト・周期長ジッター・振幅シマー0で、ゲインだけを旧値へ戻す。通常PCMと観測器を照合し、放射と間引き後の値が一致すること、独立したFIR・DC除去・包絡・制限からPCMを再現できることを確認する。基準のMFA入力・境界を保存結果へ照合し、両条件のtallのMFA区間・固定窓と再整列窓のF2、旧比較との残差を保存する。",
+    "prediction": "両ゲインでリミッターを使わず、PCMは8/7の比例関係になる。固定窓のF2差は0.05 Hz以内に収まる。ゲインを旧値に戻した波形がtall付近の旧波形に近づき、MFAの /ɔ/–/l/ 境界も旧位置の1.680秒を再現すると予測する。"
+  }
+}

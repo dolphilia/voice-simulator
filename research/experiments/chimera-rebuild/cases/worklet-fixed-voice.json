@@ -1,0 +1,25 @@
+{
+  "id": "worklet-fixed-voice",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定母音 /i/ のモノラルWorkletを48 kHzで直結すると、ブラウザとCLIのPCMがビット一致する。観測位置は128フレームごとの末尾で、先頭のずれや途中の欠落はない。",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 32768,
+    "output_channels": 1,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 128,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_phase", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2"],
+    "require_cli_pcm_bit_equality": true,
+    "require_stable_wasm_buffers": true,
+    "candidate_state_peak_relative_tolerance": 1e-10,
+    "upstream_state_peak_relative_tolerance": 1e-8,
+    "upstream_pcm_absolute_tolerance": 5e-7,
+    "onset_threshold": 1e-8,
+    "expected_onset_frame": 39,
+    "steady_window_frames": [19200, 24000],
+    "expected_f0_hz": [109.98, 110.02],
+    "check_retry_after_worklet_load_failure": true
+  }
+}

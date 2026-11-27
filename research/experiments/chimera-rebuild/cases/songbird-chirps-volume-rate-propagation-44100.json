@@ -1,0 +1,24 @@
+{
+  "id": "songbird-chirps-volume-rate-propagation-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-oec-pressure-44100-20261123-repeat",
+    "manifest_sha256": "47894188133fb531c32b1f0c6c857304c4a24c56bef8e18f2dc4d32ea7677084"
+  },
+  "sample_rate_hz": 176400,
+  "volume_source_cutoff_hz": 60,
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "observation_internal_samples": 16,
+  "local_pressure_difference_offset": 1,
+  "baseline_radiated_flow_difference_offset": 8,
+  "variant": {
+    "path": "crates/vocal-core/src/airway/network/geometry.rs",
+    "original": "let raw = (cell.volume_cm3 - next_volume) / dt;",
+    "replacement": "let raw = (cell.volume_cm3 - next_volume) * dt.recip();"
+  },
+  "hypothesis": "176.4 kHzの235点制御で体積速度換算だけを上流と同じ乗算に揃えると、押鍵1内部サンプル後の腔圧差が消える。くちばし端の初めの放射流量差は8内部サンプル後より遅れると予測する。256点制御と追従0では、この換算の差が生じないので通常版と実験版が一致すると見込む。",
+  "observation": "前回保存した3条件のケースと固定上流のCSVを使用する。Cargoの別作業ディレクトリに同じソースを複製し、通常版で採取した後、体積速度換算の1行だけを変更してvocal-cli renderを再実行する。押鍵から16点の腔圧・注入・両接続枝、6セルの断面・圧力・流入、終端放射流量とその時間差分を追う。",
+  "acceptance": "別作業ディレクトリの通常版CSVが保存済みの通常版と一致する。置換する逆数が176400に一致し、差分が1行だけである。全条件の入力と形状の観測値を維持し、実験版の注入と腔圧を独立計算で復元する。差が消えた区間と残った最初の観測点を記録する。予測を判定と分け、不成立の場合にも結果を保存する。"
+}

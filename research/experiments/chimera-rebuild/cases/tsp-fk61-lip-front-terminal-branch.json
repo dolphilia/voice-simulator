@@ -1,0 +1,67 @@
+{
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "front": {
+    "run": "tsp-fk61-lip-front-origin-20261123-repeat",
+    "case": "tsp-fk61-lip-front-origin",
+    "manifest_sha256": "8923a5d9a1d5c0b91191cc780ab8e0cb83ecfdf7b0e94eba451b151ff106f32a"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "id": "tsp-fk61-lip-front-terminal-branch",
+  "radiation": {
+    "run": "tsp-fk61-lip-front-radiation-20261123-repeat",
+    "case": "tsp-fk61-lip-front-radiation",
+    "manifest_sha256": "5c2f82f3c1f61cdab70575e8e11f9660356b28d6694402bc93c605b1b657fd5d"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "comparison_internal_samples": [
+      3952,
+      3980
+    ],
+    "prefix_frames": 2048,
+    "frames": 116132,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "onset_sample": 3968,
+    "trial_first_pcm_frame": 1987,
+    "scope": "通常音声入口で固定上流、標準版、唇前端だけを揃えた試験版の枝41→42と42→43、節点42と43の壁・圧力・体積収支を採取する。局所再計算は左境界の枝41→42の流量と節点42・43に加わる体積注入を入力とする。PCMは壁と鼻の放射を試験版に固定し、再計算した口端成分のみ入れ替えて出力段を再計算する。",
+    "local_internal_samples": [
+      3968,
+      3976
+    ],
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "mouth_witness_sample": 3972
+  },
+  "hypotheses": {
+    "onset_pressure_from_compliance": "3968の節点42は固定上流と試験版で流入が等しく、コンプライアンスの差だけで新圧力の差を再現できる。",
+    "next_branch_flow_from_left_pressure_alone": "3969の枝42→43の試験版に固定上流の左圧力だけを入れると、その流量が上流と一致する。",
+    "compliance_only_recovers_pcm": "節点42のコンプライアンス系列だけを交換した局所再計算で、出力フレーム1987を含む先頭PCMが固定上流と一致する。"
+  },
+  "exploratory_interventions": {
+    "observation": "初回採取で3969の枝流量差は10⁻²³ cm³/s台、節点42の体積注入差は10⁻¹⁶ cm³/s台だった。以下は採取後に追加し、事前仮説の判定を変えずに記録する。",
+    "expectation": "節点42の体積注入の交換は3972の口端流量を動かす。左境界の交換を併用すると、体積注入と左境界の相殺で結果が変わる。",
+    "terms": [
+      ["volume_injection_onset_plus_one"],
+      ["volume_injection"],
+      ["volume_injection", "boundary"],
+      ["volume_injection", "boundary", "compliance", "branch_coefficients"]
+    ]
+  },
+  "acceptance": "通常CLIと観測CLIは全フレームの保存済みPCMにビット一致し、前回の節点・口端・出力段の値を変更しない。枝と壁の独立再計算を観測値に一致させ、二節点の状態を3968の直前の採取値から再計算して3975までの両圧力と口端流量を一致させる。単独項・複数項を交換した場合の口端3972および先頭PCMの結果を保存する。仮説の判定は計測の合否と分ける。"
+}

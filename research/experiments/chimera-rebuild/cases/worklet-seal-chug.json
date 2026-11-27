@@ -1,0 +1,54 @@
+{
+  "id": "worklet-seal-chug",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-chug-v2.json",
+  "source_revision": 2,
+  "hypothesis": "90 Hzの音高と11 Hzの呼気パルスは別の状態として進む。固定音高の96 kHz条件で観測した声門位相から周期倍率を復元でき、50 msで平滑化された粗さが下がるにつれて周期倍率の揺らぎが小さくなる。CLIとのPCMは全フレームで一致する。",
+  "measurement": {
+    "variants": [
+      "official-prefix-48000",
+      "manual-return-44100",
+      "steady-pitch-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_stride_by_variant": {
+      "steady-pitch-96000": 1
+    },
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [
+        392159,
+        392160,
+        392191,
+        440255
+      ],
+      "manual-return-44100": [
+        72,
+        73,
+        127,
+        9890,
+        9891,
+        9919,
+        44287
+      ],
+      "steady-pitch-96000": []
+    },
+    "browser_cycle": {
+      "variant": "steady-pitch-96000",
+      "breath_wraps_during_call": 11,
+      "glottis_wraps_during_call_range": [
+        80,
+        100
+      ]
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

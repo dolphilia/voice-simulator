@@ -1,0 +1,58 @@
+{
+  "id": "duet-words",
+  "revision": 3,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "共通の再生秒から、開始を含み終了を含まない拍区間の音節を声部ごとに選ぶ。休符には音節がなく、メリスマでは直前の親音節の表示とキーを引き継ぐ。同じ表記を再度発音する音符には別のキーが付き、前後シークでもその位置の音節を選べる。",
+  "reference": {
+    "telemetry_run": "duet-telemetry-20261120-final",
+    "telemetry_manifest_sha256": "c2cdc723261de82bbce2210f4191ac9c746f2cafc49d464c82767db736c36626"
+  },
+  "sample_rate_hz": 48000,
+  "expected_upper_decimal_difference_samples": [54720, 78720],
+  "candidate_decimal_policy": "sample_boundary",
+  "roundoff_reference": {
+    "run": "duet-words-20261120-upstream-timing",
+    "manifest_sha256": "6d15e5f16f01abad806b2c95cabeb199ce745b9d06be2a1bf1b0847ce532a7ba",
+    "allowed_change": "整数サンプル時刻とのごく小さな丸め誤差だけを吸収し、54,720・78,720だけが変わる。全ての比較音源の内容を維持する。"
+  },
+  "demo": {
+    "paused_samples": [0, 23999, 24000, 30719, 30720, 47999, 48000, 54719, 54720, 54721, 71999, 72000, 78719, 78720, 78721, 105600]
+  },
+  "diagnostic": {
+    "frames": 120000,
+    "voices": [
+      {
+        "name": "声部1",
+        "body": "male",
+        "melody": {
+          "bpm": 120,
+          "t0": 0.375,
+          "notes": [[60, 0.5], [64, 0.5], [0, 1], [65, 0.5], [69, 0.5]],
+          "syllables": [
+            {"text": "lo", "onset": [{"ipa": "l"}], "nucleus": {"ipa": "oʊ"}, "coda": [], "wordEnd": false},
+            {"text": "~", "onset": [], "nucleus": {"ipa": "oʊ"}, "coda": [], "melisma": true},
+            {"text": "lo", "onset": [{"ipa": "l"}], "nucleus": {"ipa": "oʊ"}, "coda": [], "wordEnd": false},
+            {"text": "dee", "onset": [{"ipa": "d"}], "nucleus": {"ipa": "i"}, "coda": [], "wordEnd": true}
+          ]
+        }
+      },
+      {"name": "声部2", "body": "female", "melody": {
+        "bpm": 120, "t0": 0.625, "notes": [[55, 1], [64, 1]], "lyrics": "Pop Dee"
+      }}
+    ],
+    "spell": {"Lo": "Low"},
+    "paused_samples": [0, 17999, 18000, 29999, 30000, 30001, 41999, 42000, 42001, 54000, 61800, 65999, 66000, 66001, 77999, 78000, 89999, 90000, 120000],
+    "live_samples": [19200, 44400, 33000],
+    "live_settle_samples": 1200,
+    "first_voice_quiet_window": [55000, 55600],
+    "first_voice_maximum_quiet_rms": 1e-6,
+    "first_voice_next_phrase_preparation_window": [61800, 62400],
+    "first_voice_minimum_preparation_rms": 0.001
+  },
+  "controls": {
+    "default_start_fractional_bpm": {"bpm": 137, "notes": [[60, 0.625], [0, 0.375], [62, 0.75]], "syllables": [
+      {"text": "a", "wordEnd": true}, {"text": "a", "wordEnd": true}
+    ]},
+    "invalid_voice": "syllable_count"
+  }
+}

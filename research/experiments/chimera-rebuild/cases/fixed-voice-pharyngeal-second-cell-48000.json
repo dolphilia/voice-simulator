@@ -1,0 +1,18 @@
+{
+  "id": "fixed-voice-pharyngeal-second-cell-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_run": ["fixed-voice-pharyngeal-entry-momentum-48000-repeat", "202c693ce667fda7732f33c47a0645cb6d95f38f497ff24deeaa2d4dece56f84"],
+  "upstream_run": ["fixed-voice-pharyngeal-entry-branch-48000-repeat", "2d944be9b998a0d3a52a86cb963e876def92e965a6330272e827afee5d419e0d"],
+  "upstream_balance_run": ["fixed-voice-pharynx-onset-48000-repeat", "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d"],
+  "nodes": [13, 14, 15],
+  "first_internal_sample": 8188,
+  "end_internal_sample_exclusive": 8240,
+  "expected_first_pressure_difference": 8214,
+  "later_incoming_flow_difference": 8229,
+  "output_rate_hz": 48000,
+  "internal_rate_hz": 96000,
+  "prefix_output_frames": 4810,
+  "hypothesis": "固定 /i/ の8,214点目では直前の節点14圧と枝13→14の流入が一致する。節点14の流出、壁流量、体積変化またはコンプライアンスの違いを上流値で置き換えると最初の圧力差が復元できると予想する。流出と壁流量については、8,213点目までの状態および8,214点目に読む係数までさかのぼる。",
+  "observation": "ゲート開放4,096出力フレーム目の固定 /i/ を4,810フレーム描画する。内部8,188〜8,239点目で節点14の更新前後圧、枝13→14・14→15の流量、壁の前後の速度と変位、壁面積、体積変化、コンプライアンス、正味流量を両版で採る。区間内の最初の差と8,229点目に入口側の枝が読む圧力を照合する。",
+  "acceptance": "対象の節点と2本の直列枝を確認し、先行の通常CLIの内部状態とPCMの先頭4,810フレーム、固定上流の保存済みトレースとPCMが追加観測後も再現する。両版の全52点で壁流量、節点圧、2本の枝流量を独立再計算する。8,214点目の圧力の差と8,229点目の枝の入力を再現し、圧力差を復元できる最小の上流項の組を記録する。"
+}

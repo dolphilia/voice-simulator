@@ -1,0 +1,39 @@
+{
+  "id": "tsp-tall-f2-boundary-grid",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "boundary_runs": {
+    "run": "tsp-tall-gmm-frame-subsets-20261123-repeat",
+    "case": "tsp-tall-gmm-frame-subsets",
+    "manifest_sha256": "e6912d08da4b271c3b86f49f684a641427cd9b0ef3b5376527830c3c85593bc9"
+  },
+  "endpoint_formants": {
+    "run": "tsp-tall-mfa-preroll-20261123-repeat",
+    "case": "tsp-tall-mfa-preroll",
+    "manifest_sha256": "ab4deb9bae1b4c6e7558d0f02920e6702bc90310b75330f0db2bddbb6143fb72"
+  },
+  "clean_render": {
+    "run": "tsp-tall-initial-tip-mfa-20261123-repeat",
+    "case": "tsp-tall-initial-tip-mfa",
+    "manifest_sha256": "b49d0191dd109b3c07719d53c9f1dedc7811ddf6c0afab3232c1a21d9a7a844d"
+  },
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "measurement": {
+    "word": "tall",
+    "phones": ["AO1", "L"],
+    "start_ms": 1530,
+    "end_ms": [1650, 1660, 1670, 1680],
+    "observed_modes": {"1650": "compressed", "1680": "frames_165_166"},
+    "endpoint_routes": {"1650": "control", "1680": "old_tip"},
+    "centers": [0.35, 0.5, 0.65, 0.9],
+    "start_sample_step": [42, 60, 78, 108],
+    "sensitivity_threshold_hz": 100
+  },
+  "acceptance": "両端の通常MFAは同一の整列用PCM16を読み、AO1の開始を共有する。両端の保存時刻は登録したミリ秒をfloat32に変換した値に等しく、内側の2点も同じ方法で表現する。同一の48 kHz float32レンダーを読み、母音の終端だけを変える。16窓の開始標本・極・採択・欠測理由と中央3窓の集約をRustと独立Pythonで照合する。許容差は基準ケースの0.05 Hz。両端の窓と集約が保存済み観測と等しいことと、10 msごとの窓の移動量が登録値に一致することを確認する。欠測・範囲外量・予測からの差も保存する。",
+  "prediction": "中央3窓のF2中央値の4条件の幅は100 Hz未満に収まり、90%窓は100 Hz以上動く。90%窓のF2は終端を遅らせるごとに低下しないと予測する。10 msごとに0.35、0.5、0.65、0.9の窓はそれぞれ42、60、78、108標本遅くなる。"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "songbird-chirps-trachea-interior-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-end-momentum-44100-20261123-repeat",
+    "manifest_sha256": "a5da7372fcd166fc6171603b2c17da6dcf0cdf40e7696959fa20e32be24c5a8a"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 16,
+  "trachea_cell_index": 14,
+  "beak_cells": 6,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_first_pressure_offsets": {
+    "matched_time": 12,
+    "native_block": 13,
+    "no_tracking": null
+  },
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000,
+    "stiffness_dyn_cm3": 1000000
+  },
+  "hypothesis": "気管端の一つ手前のセルで235点制御の12点後に圧力が初めて分かれるとき、上流から入る気管内直列枝の流量を置換すると差が消えると予測する。直列枝の最初の流量差は、前回運動量の換算順に起因する可能性を調べる。壁流量には既知の壁面積の丸め差が含まれるため、壁流量と下流側へ出る流量の単独置換も比較する。追従0は無励振を保つ。",
+  "observation": "気管の最後の直列枝まで揃えた9差分のRustビルドと固定上流で、235点制御、256点制御、追従0の押鍵後16内部点を採る。気管の第14セルを0始まりで指定し、前回圧、直上のセル圧、両接続枝の流量、壁流量と変位、面積・長さを取得する。固定断面での節点の圧力更新と、壁および流入枝の更新を再計算する。",
+  "acceptance": "観測列の追加を除いて、候補と固定上流のCSVは前回の同区間にバイト一致する。各条件で両版の圧力、壁流量・変位、流入枝流量の16点を独立計算にビット照合する。流出は先行の気管端への流入と同じ値・符号であることを確認する。両制御の最初の圧力差について、流入、流出、壁流量を個別および組み合わせで置換した結果を残す。予測と異なる結果も判定と分けて保存する。"
+}

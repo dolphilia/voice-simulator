@@ -1,0 +1,37 @@
+{
+  "id": "duet-child-glottal-noise-origin",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-turbulence-body-20261122-repeat",
+  "reference_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "trace_output_samples": 26112,
+  "checkpoints_output_samples": [23808, 24576, 25344],
+  "attention_window_output_samples": [23808, 25345],
+  "phase_distance": "shortest_arc_in_cycles",
+  "gate_geometry_and_flow_tolerances": {
+    "lip_cm": 1e-9,
+    "lip_area_cm2": 1e-9,
+    "pharynx_area_cm2": 1e-9,
+    "gate": 1e-10,
+    "f0_hz": 1e-6,
+    "phase": 1e-8,
+    "glottal_area_cm2": 1e-9,
+    "drive_area_cm2": 1e-9,
+    "drive_flow_cm3_s": 1e-6,
+    "glottal_level_dyn_cm2": 1e-7
+  },
+  "formula": {
+    "density_g_cm3": 0.00114,
+    "dynamic_viscosity_poise": 0.000186,
+    "closed_area_cm2": 0.0002,
+    "critical_reynolds": 1800,
+    "saturation_reynolds": 12000,
+    "expected_glottis_gain": 0.0000032,
+    "absolute_tolerance_dyn_cm2": 1e-9
+  },
+  "upstream_variants": ["default", "without_drift", "without_jitter", "without_shimmer", "without_all_three"],
+  "hypothesis": "子ども声部の譜面と調音ジェスチャーを固定すると、先行観測の最初の振幅差は乱流レベル式の差より前の声門枝面積・流量に現れる。上流の既定のドリフト、ジッター、シマーを一つずつ0にし、全部を0に揃えると、声門の面積・流量と乱流レベルの差が縮まると予測する。",
+  "criteria": "通常入口のPCMとCHTLに各版内で照合する。47,616内部ステップ以降も含め、0から26,112出力サンプルまでゲート、唇・咽頭断面、声門F0・位相・面積、乱流計算が実際に読む枝面積と流量、レベルを記録する。各版でレイノルズ数の式からレベルを独立計算し、23,808、24,576、25,344で先行記録と照合する。差を面積と流量に分けるため、相手側の値に一つずつ置き換える二つの順序を平均する。ローカルで観測を加えた上流の標準出力は保存PCMとビット一致すること。音源設定を変更する上流の各対照は別に比較し、予測の合否を観測の成否と別に残す。"
+}

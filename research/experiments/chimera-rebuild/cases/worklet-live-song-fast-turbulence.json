@@ -1,0 +1,19 @@
+{
+  "id": "worklet-live-song-fast-turbulence",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "offline_case": "worklet-song-voice-fast.json",
+  "zero_reference_run": "worklet-song-voice-fast-20261121-return-reference",
+  "return_reference_run": "worklet-live-song-cubeb-return-time-20261121-repeat",
+  "condition_order": [[0, 1], [1, 0], [1, 0], [0, 1]],
+  "preparation": "split-192",
+  "expected_frames_before_song": 3072,
+  "noise_window_seconds": [0.42, 0.66],
+  "pcm_difference_floor": 0.000001,
+  "maximum_predicted_median_return_change_ms": 0.5,
+  "hypothesis": "乱流係数を0から1にすると、調音計画と拍を保ったまま、呼気の開始後から語尾の開大までの区間に分岐の乱流圧が現れ、放射とPCMに差が出る。無音中の事前描画では乱流源の配置とフィルタ更新を両条件で進めるため、構築を含む要求の返却時の残り時間の対応差は中央値で絶対値0.5 ms未満と予測する。",
+  "criteria": {
+    "input": "既存の短音 `Pop Dee`、240 BPM、48 kHz出力、同じ調音計画・体型・先行音を使う。変更は乱流係数だけ。両条件で分割事前描画を最初の無音量子から64フレームずつ3回実行する。",
+    "audio": "CLI、固定上流、オフラインWorkletで係数ごとに基準を作る。出力49,200フレームのPCM、拍、声門、放射と分岐の乱流圧を同一フレームで比較し、最初に差が出た位置を記録する。放射の差とPCMのビット差、PCM差が10⁻⁶を初めて超える位置を別に数える。",
+    "timing": "係数0と1を順序を入れ替えて4組採る。先行音の前後8要求を照合し、構築時の要求から最終準備片までの返却時刻・機器時刻・最大処理時間を記録する。機器時刻は既知PCMで固定した範囲で判別し、正答と保留を採取の判定とは別に保存する。"
+  }
+}

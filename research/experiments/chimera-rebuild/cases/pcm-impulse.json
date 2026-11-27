@@ -1,0 +1,107 @@
+{
+  "id": "pcm-impulse",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "96 kHzの一様管インパルス応答を49タップのFIRで処理して48 kHzに間引くと、入力サンプル1から逆向きに1サンプルおきの畳み込み出力に一致する。弱い励振ではリミッターは作動しない。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 17.5,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      39
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 0,
+    "volume_cm3": 1e-06
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      39
+    ],
+    "branches": [
+      [
+        0,
+        1
+      ],
+      [
+        38,
+        39
+      ]
+    ]
+  },
+  "pcm": {
+    "sample_rate_hz": 48000,
+    "gain": 5.5e-07
+  },
+  "measurement": {
+    "sample_count": 48000,
+    "expect_limiter": false,
+    "upstream_internal_peak_relative_error_lt": 1e-08,
+    "upstream_output_peak_relative_error_lt": 1e-06,
+    "convolution_peak_relative_error_lt": 1e-10,
+    "output_state_peak_relative_error_lt": 1e-09,
+    "coefficients_absolute_error_lt": 1e-12,
+    "passband_hz": [
+      0,
+      16000
+    ],
+    "passband_gain_diff_lt": 0.002,
+    "alias_probe_hz": 32000,
+    "alias_gain_lt": 0.0001,
+    "pcm_peak_limit": 0.75001,
+    "block_frames": [
+      128,
+      1,
+      77,
+      4096
+    ]
+  }
+}

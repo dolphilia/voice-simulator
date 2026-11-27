@@ -1,0 +1,60 @@
+{
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "front": {
+    "run": "tsp-fk61-lip-front-origin-20261123-repeat",
+    "case": "tsp-fk61-lip-front-origin",
+    "manifest_sha256": "8923a5d9a1d5c0b91191cc780ab8e0cb83ecfdf7b0e94eba451b151ff106f32a"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "id": "tsp-fk61-node42-volume-source",
+  "terminal": {
+    "run": "tsp-fk61-terminal-branch-20261123-repeat",
+    "case": "tsp-fk61-lip-front-terminal-branch",
+    "manifest_sha256": "efff5ec7bd3b6e6a72f3bc96a4c5316db4742893f2f35a7a51bf29ef1e728568"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "comparison_internal_samples": [
+      3952,
+      3980
+    ],
+    "prefix_frames": 2048,
+    "frames": 116132,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "onset_sample": 3968,
+    "trial_first_pcm_frame": 1987,
+    "scope": "比較の対象は固定上流、標準研究版、唇前端を揃えた試験版。内部3952〜3979で全節点の新旧面積、最小面積、長さ、丸めた体積、各節点から近隣への注入、2段平滑の状態を照合する。節点42の注入の介入は3968〜3975に限定し、採取済みの左境界、壁、口端負荷から局所応答と出力1987までのPCMを再計算する。",
+    "local_internal_samples": [
+      3968,
+      3976
+    ],
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "mouth_witness_sample": 3972,
+    "focus_node": 42,
+    "focus_sample": 3969
+  },
+  "hypotheses": {
+    "first_difference_is_local_volume_subtraction": "固定上流と試験版の節点42は3968では丸めた体積の差分が一致し、3969で初めて分かれる。同じ式と時間換算で比較しても差が残る。",
+    "no_incoming_spill_at_focus": "3968と3969では、節点42の平滑前流量は同節点の体積差分だけで決まる。近隣から加わる体積流量は0で、流量差は平滑処理の前に始まる。",
+    "exact_volume_math_reduces_focus_residual": "記録済みの面積・長さの積を途中で丸めずに引くと、3969の節点42の生の体積流量差が縮む。",
+    "raw_series_swap_recovers_pcm": "試験版の節点42の生の体積流量を3968〜3975で固定上流の値へ交換し、試験版の式で平滑と二節点の放射を再計算すると、1987までのPCMが固定上流と一致する。"
+  },
+  "acceptance": "通常CLIと観測器が保存済みPCMに全フレームで一致し、前回の節点、口端、出力段の観測と一致する。全節点の補間、差分流量、流量配分、2段平滑の独立計算が観測値と一致する。節点42の体積差・換算・配分・平滑の初差と、単独標本と連続標本の交換、体積積の精度を変えた局所出力を保存する。仮説と合否を分ける。"
+}

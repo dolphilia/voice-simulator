@@ -1,0 +1,22 @@
+{
+  "id": "tsp-f2-intervening-phase-midpoint",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_reference": {
+    "run": "tsp-f2-intervening-phase-20261123-repeat",
+    "case": "tsp-f2-intervening-phase",
+    "manifest_sha256": "1f986fd81224571598e79e686cbb4389563fc568b4af50f94c4692fb4596554c"
+  },
+  "endpoint_frequencies_hz": [760, 800],
+  "signal": {
+    "f0_hz": 125,
+    "added_pole_hz": 780,
+    "pulse_offsets": "all_integer_samples_in_one_period"
+  },
+  "hypotheses": {
+    "order_12_always_adds_mode": "次数12では、全96位相で追加共鳴近傍の公開極とF1との間隔が200 Hzを超え、その極がF2に選ばれる。",
+    "order_14_phase_switch_crosses_gap": "次数14では位相でF2が切り替わる。少なくとも1組の隣接位相では、追加共鳴近傍の公開極とF1との間隔が厳密な200 Hz境界をまたぐ。",
+    "model_f2_stays_eligible_when_displaced": "780 Hzで追加共鳴側へ採択が移る位相が存在し、その全窓で2075 Hzの設計F2近傍の極が採択条件を満たして残る。"
+  },
+  "acceptance": "760 Hzの位相対照から追加共鳴を780 Hzへ変更する。先行の760・800 Hz両端がF0 125 Hzで異なる採択を示したことを保存済みの遅延0・6窓で確認する。12 kHz、1秒、振幅0.015、幅140 Hz、他の3共鳴とLPC設定を固定する。周期の全96位相を0.35・0.50・0.65秒の25 ms窓で、次数12・14の計576窓で測る。先行の閾値による整数遅延、複素DFT、設計極、Rustの生根と公開極、独立計算、3中心の再現性を照合する。760 Hzの576窓と同じ次数・中心・相対位相を対応付ける。公開された低域の極とF1との差、設計F2の候補適格性、最初に採択が分かれる段階を記録する。採択を説明できない間隔の例と欠測も保存し、事前予測の成否は実装の合否と別に扱う。"
+}

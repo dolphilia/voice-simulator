@@ -1,0 +1,32 @@
+{
+  "id": "tsp-f2-reference-centre-width",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "five_speakers": {
+    "run": "tsp-f2-training-reference-sensitivity-20261123-repeat",
+    "case": "tsp-f2-training-reference-sensitivity",
+    "manifest_sha256": "3b86086243d80dffe936e406dae82824d33b6ca43762b89a21abb2430399d6fe"
+  },
+  "ten_speakers": {
+    "run": "tsp-f2-training-reference-ten-speakers-20261123-repeat",
+    "case": "tsp-f2-training-reference-ten-speakers",
+    "manifest_sha256": "4907e1ef590f8fee1af6eedcd222222a112e5c82ae2b05e7e22a4104d0155b47"
+  },
+  "measurement": {
+    "target": {"speaker": "FD", "utterance": "FD19_10", "slot": 15},
+    "replacement": "after",
+    "held_costs": ["held_recording", "held_synth"],
+    "centres": ["baseline", "intervened"],
+    "widths": ["baseline", "intervened", "raw_intervened_mad"],
+    "comparison_count": 24,
+    "interval": "第54版の対応音素列の0始まりで15番を使う。秒区間、元WAV、MFAの境界、F2の各窓、確認話者FKの録音・合成の中央値を固定し、保存済みF2集約の直後から観測する。",
+    "interaction": "各幅での中心効果と各中心での幅効果を保存し、両順序の平均と差を出す。幅の下限を外した条件は効果の分解と別に、同じ中心で下限適用後との差を測る。",
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "recording_width_effect_exceeds_centre": "5名と10名の両方で、元の中心に固定して幅を差し替えた録音側費用の増分が、元の幅に固定して中心を差し替えた増分を上回る。",
+    "ten_synth_width_crosses_zero_centre_offsets": "10名の合成側は無介入時と中心だけ差し替えた時に費用0。幅を差し替えると正になり、中心も替えると幅だけを替えた時より下がる。",
+    "width_floor_caps_recording_cost": "両方のコホートで、介入後の中心のまま幅を丸める前のMADへ戻すと、FK録音側費用が上がる。"
+  },
+  "acceptance": "固定保存した5名・10名の録音と合成で両端の参照と費用を独立に再集計する。2中心×3幅×2コホート×録音・合成の24点で、値、絶対距離、費用のゼロ境界、費用を固定上流のcostsと許容差1e-10以内で照合する。formantsの診断を確認し、両方の差し替え順で差の合計が元から介入後への変動に一致することを確認する。予測の判定は機構検証から分離する。"
+}

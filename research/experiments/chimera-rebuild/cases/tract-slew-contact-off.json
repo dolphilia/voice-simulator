@@ -1,0 +1,67 @@
+{
+  "id": "tract-slew-contact-off",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "hypothesis": "同じ舌先目標で接触補正を無効にすると再計算はなく、舌先は口蓋へ0.3 cm程度入り込む。面積の変化率制限は作動する。",
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 8,
+        "targets": {
+          "tongue_tip_y_cm": 9.55
+        }
+      },
+      {
+        "frame": 144,
+        "targets": {
+          "tongue_tip_y_cm": 7.3
+        }
+      }
+    ]
+  },
+  "area_control": {
+    "project_contacts": false
+  },
+  "measurement": {
+    "frames": 288,
+    "area_control": {
+      "area_absolute_lt_cm2": 1e-09,
+      "length_absolute_lt_cm": 1e-09,
+      "closed_below_cm2": 1e-05,
+      "tube_cells": {
+        "pharynx": 18,
+        "oral": 18
+      },
+      "reapply_frames": [],
+      "max_limit_effect_gt_cm2": 0.6,
+      "min_unprojected_tip_distance_cm": [
+        -0.34,
+        -0.3
+      ]
+    }
+  }
+}

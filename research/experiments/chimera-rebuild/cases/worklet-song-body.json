@@ -1,0 +1,25 @@
+{
+  "id": "worklet-song-body",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "native_case": "human-body-song.json",
+  "reference_run": "bodysong-20261120-repeat",
+  "hypothesis": "4体型で同じ明示MIDIと音節を使うと、拍・音高目標は同じで調音とPCMが変わる。新しい音高の中間点は対応する頭子音中に来る。オフラインと実時間で保存したケースのCLI出力はWorkletの加工前PCMと一致する。",
+  "initial_state": "先行CLIと同じ中立姿勢、声門110 Hz、音源設定とシード12345。体型ごとの移調をせず、先行譜例の明示MIDIを使用する。",
+  "measurement": {
+    "output_frames": 129600,
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "expected_live_schedule_lead_frames": 2048,
+    "maximum_sampled_event_delay_frames": 63,
+    "plan_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "geometry_absolute_tolerance": 1e-9,
+    "upper_state_peak_relative_tolerance": 1e-6,
+    "upper_pcm_absolute_tolerance": 1e-6,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "smoothed_f0_hz", "abduction_cm2"],
+    "windows": "MIDI 57、60、64の母音の拍は0.300、0.800、1.300秒。頭子音と先行するF0移行、最初の/p/、語尾2.160〜2.265秒、末尾20 msを測る。YINと語尾の閾値は先行CLIケースに従う。",
+    "pcm_against_saved_case": "全フレームのビット一致"
+  }
+}

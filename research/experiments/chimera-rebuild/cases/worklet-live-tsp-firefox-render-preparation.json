@@ -1,0 +1,20 @@
+{
+  "id": "worklet-live-tsp-firefox-render-preparation",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_case": "worklet-live-tsp-source-defaults",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-wasm-core-regression",
+  "phase_case": "worklet-live-tsp-firefox-render-phases",
+  "phase_run": "worklet-live-tsp-firefox-render-phases-20261122-repeat",
+  "measurement": {
+    "condition_order": [["control", "zero", "draw"], ["draw", "control", "zero"], ["zero", "draw", "control"]],
+    "zero_frame_calls": 1000,
+    "draw_frames": 256,
+    "draw_block_frames": 32,
+    "maximum_draw_to_control_first_wasm_ratio": 0.75,
+    "maximum_draw_to_zero_first_wasm_ratio": 0.85,
+    "minimum_draw_trials_within_first_quantum_budget": 2
+  },
+  "hypothesis": "0フレーム呼び出しはレンダー入口まで通る。0フレーム呼び出しと同じ設定の使い捨て状態で実際に事前描画すると、先頭量子のWASM描画の中央値が準備なしの75%以下、0フレームのみの85%以下になると予測する。また事前描画の3試行中2試行以上で先頭のProcessBlockが128/48000秒以内に収まると予測する。",
+  "acceptance": "同じ保存済みの確認用07をFirefoxの画面から実時間で再生する。各試行で新しいブラウザを起動し、順番をずらして3組採る。準備なし、同じWASMインスタンスで使い捨ての発声器を作成して0フレームを1,000回呼ぶ条件、それに加えて32フレームずつ合計256フレームを描画する条件を比較する。準備を終えて発声器を破棄してから、本番用の発声器と観測領域を初期化する。すべての条件でPCM全107,527フレーム、発話計画、観測系列と保存設定が通常再生と一致し、採取開始が準備完了から2,048 Contextフレーム後、最初の非ゼロが発話内2,439フレームであることを確かめる。固定上流との差を1×10⁻⁶以内で照合する。ネイティブの構築、準備全体と各段階、構築開始から先頭採取量子の完了まで、前後の待機量子の最大値・超過件数、先頭2量子と定常2量子の描画の内訳と定常p99を採取する。準備マーカーの順序とフレーム数は判定に、時間の予測と準備のコストは結果に記録する。"
+}

@@ -1,0 +1,87 @@
+{
+  "id": "worklet-live-tsp-firefox-onset-load-224",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-onset-load-64",
+  "initial_control_run": "worklet-live-tsp-firefox-onset-load-64-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "split-onset-load",
+        "split-onset-load-224"
+      ],
+      [
+        "split-onset-load-224",
+        "split-onset-load"
+      ],
+      [
+        "split-onset-load",
+        "split-onset-load-224"
+      ]
+    ],
+    "onset_load": {
+      "block_frames": 64,
+      "quantum_offsets": {
+        "split-onset-load": [
+          0,
+          2,
+          4,
+          16
+        ],
+        "split-onset-load-224": [
+          0,
+          2,
+          4,
+          16
+        ]
+      },
+      "final_block_frames": {
+        "split-onset-load": 64,
+        "split-onset-load-224": 224
+      }
+    }
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 500,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "maximum_release_overshoot_ns": 20000000,
+    "minimum_comparable_pairs": 2,
+    "minimum_change_ns": 1000000,
+    "maximum_near_budget_slack_ns": 500000
+  },
+  "hypothesis": "待機量子0・2・4の64フレーム片と、最後の片を待機量子16へ置くことを固定し、最後の片だけ64から224フレームへ増やす。64フレーム片の約0.84〜0.89 msを線形に外挿すると、最初の発話の機器要求は5.333 msの予算付近に達しうる。3組中2組以上で、要求12のAudio Client区間が1 ms以上伸び、次のサーバー周期までの余裕が1 ms以上縮むと予測する。予算内かつ次周期まで0〜0.5 msの試行を別に数える。予定サンプル時刻の飛びは発生を仮定せず、各事例の予算、機器Write、IOProc、状態を記録する。",
+  "acceptance": "確認用07、48 kHz・256フレーム要求、先行音56量子、同じWASM、同じ計測用Firefox、500 msゲート、1秒の3収録器、保持窓・タップなしを固定する。両条件で発話の予約は待機量子17、最初の片の0フレーム呼び出しは1000回。先頭3発話量子の配分が1＋2で、最後の片の累計256または416フレームが要求12に含まれることを検証する。発話WAVと発声状態は通常再生に一致させ、固定上流との差は既存の許容内とする。ゲート誤差0〜20 msと機器時計の起点を検算し、要求12・13の音声I/O、機器Write、状態を一意に照合した組を主比較に使う。2組未満なら主比較の判定を保留し、取得できた局所窓と欠測理由を残す。"
+}

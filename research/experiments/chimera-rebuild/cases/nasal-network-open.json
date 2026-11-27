@@ -1,0 +1,290 @@
+{
+  "id": "nasal-network-open",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "軟口蓋のポートを開くと鼻端も放射し、閉じると鼻腔と上顎洞への伝搬が途絶える。開いた状態では上顎洞の頸部に共鳴帯域が現れ、梨状窩と上顎洞を外すと放射の周波数応答が変わる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 8.8,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.25
+        },
+        "perimeter_factor": 1.25
+      },
+      {
+        "length_cm": 8.3,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.25
+        },
+        "perimeter_factor": 1.5
+      },
+      {
+        "length_cm": 11.4,
+        "areas_cm2": [
+          2.6,
+          2.6,
+          2.6,
+          2.6,
+          1.9852727272727273,
+          1.958,
+          1.9307272727272726,
+          1.9034545454545455,
+          1.8761818181818182,
+          1.8489090909090908,
+          1.8216363636363637,
+          1.7943636363636364,
+          1.767090909090909,
+          1.739818181818182,
+          1.7125454545454546,
+          1.6852727272727273,
+          1.4,
+          1.4,
+          1.4,
+          1.4,
+          1.0,
+          1.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.0,
+          "resistance_dyn_s_cm3": 3000.0,
+          "stiffness_dyn_cm3": 1000000.0,
+          "radiation_fraction": 0.0
+        },
+        "perimeter_factor": 3.2,
+        "viscous_factor": 2.5
+      },
+      {
+        "length_cm": 2.0,
+        "areas_cm2": [
+          0.9,
+          0.9,
+          0.9
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.0
+        },
+        "perimeter_factor": 1.3
+      },
+      {
+        "length_cm": 2.4101422641752297,
+        "areas_cm2": [
+          5.808785733563705
+        ],
+        "perimeter_factor": 1.2
+      }
+    ],
+    "connections": [
+      [
+        17,
+        18
+      ],
+      [
+        5,
+        58
+      ]
+    ],
+    "ports": [
+      {
+        "nodes": [
+          17,
+          36
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 0.3,
+        "entrance_loss": 0.3,
+        "expansion_loss": 0.8
+      },
+      {
+        "nodes": [
+          46,
+          61
+        ],
+        "length_cm": 0.5,
+        "area_cm2": 0.12,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0,
+        "include_half_sections": false
+      }
+    ],
+    "radiators": [
+      35,
+      57
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 0,
+    "volume_cm3": 1e-05
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      5,
+      17,
+      35,
+      36,
+      46,
+      57,
+      58,
+      61
+    ],
+    "branches": [
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        34,
+        35
+      ],
+      [
+        45,
+        46
+      ],
+      [
+        46,
+        47
+      ],
+      [
+        56,
+        57
+      ],
+      [
+        5,
+        58
+      ],
+      [
+        46,
+        61
+      ]
+    ],
+    "wall_nodes": [
+      5,
+      17,
+      35,
+      46,
+      57
+    ]
+  },
+  "measurement": {
+    "sample_count": 48000,
+    "frequencies_hz": [
+      120,
+      240,
+      360,
+      480,
+      600,
+      660,
+      700,
+      720,
+      730,
+      740,
+      760,
+      800,
+      880,
+      1000,
+      1200,
+      1600,
+      2000,
+      2800,
+      3600,
+      4200,
+      4600,
+      5000
+    ],
+    "volume_balance_nodes": [
+      5,
+      17,
+      35,
+      46,
+      57
+    ],
+    "mouth_node": 35,
+    "nose_node": 57,
+    "velum_branch": [
+      17,
+      36
+    ],
+    "upstream_series_peak_relative_error_lt": 1e-10,
+    "volume_balance_relative_error_lt": 1e-10,
+    "discrete_response_peak_relative_error_lt": 0.002,
+    "nose_over_mouth_peak_gt_when_open": 0.01,
+    "side_branch_flow_over_inlet_peak_gt": 1e-05,
+    "side_branch_spectral_difference_peak_relative_gt": 0.005,
+    "sinus_peak_search_hz": [
+      550,
+      920
+    ],
+    "sinus_peak_frequency_relative_error_lt": 0.05,
+    "control_cases": [
+      "nasal-network-closed",
+      "nasal-network-open-detached"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "songbird-chirps-right-sac-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "predicted_first_port_effect": {
+    "matched_time": {"offset": 22, "flow_hex": "-0x1.ef2a84d7b253dp-26"},
+    "native_block": {"offset": 30, "flow_hex": "-0x1.febc5eb4b8156p-16"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_port_samples": {
+    "right_bronchus_0_pressure_dyn_cm2": 0,
+    "right_bronchus_0_outflow_cm3_s": 1,
+    "right_bronchus_1_inflow_cm3_s": 1,
+    "right_bronchus_1_pressure_dyn_cm2": 1,
+    "right_bronchus_end_inflow_cm3_s": 2,
+    "right_bronchus_pressure_dyn_cm2": 2,
+    "right_flow_cm3_s": 3,
+    "trachea_pressure_dyn_cm2": 3,
+    "trachea_1_inflow_cm3_s": 4,
+    "left_flow_cm3_s": 4,
+    "left_bronchus_pressure_dyn_cm2": 4,
+    "left_bronchus_1_outflow_cm3_s": 5,
+    "left_bronchus_0_outflow_cm3_s": 6,
+    "left_bronchus_0_inflow_cm3_s": 7
+  },
+  "hypothesis": "空気嚢から右の気管支セル0へ至るポートの持ち越し項を (L × Uprev) × fs に変更する。235点制御の押鍵22点後と256点制御の30点後の流量が予測値で固定上流とビット一致する。固定圧の空気嚢を経由して左側へ直接は伝わらず、セル0圧には同じ標本、セル1への流入には次の標本、右鳴管流量には3標本後から影響し得る。追従0では無励振のままになる。",
+  "observation": "保存した3条件を同じ初期化と制御境界で通常render CLIに通し、内部176400 Hzの押鍵後0〜63点を観測する。右ポートとセル0から左右気管支、鳴管、気管、口腔食道腔、くちばし、放射まで固定上流と照合する。",
+  "acceptance": "対照バイナリとCSVを再現し、上流CSVの記録をハッシュ照合する。両側・3版の固定ポート流量とセル0圧を別計算で全点ビット照合する。予測した2条件の最初の流量差を解消し、伝播の下限、幾何、固定境界、押鍵前、追従0を確認する。残差の初標本でポート駆動項、セル0の圧力収支、セル1へ入る直列枝を調べる。"
+}

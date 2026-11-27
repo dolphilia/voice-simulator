@@ -1,0 +1,57 @@
+{
+  "id": "seal-trill",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "trillの音高とパルス周波数は3.6秒かけて指数補間する。移調は音高だけに適用し、呼気は手動とコールの大きい方を平滑化する。コールが所有する目標は演奏者の変更を保留し、終了した時点で復帰する。",
+  "seal_voice": {
+    "breath": {
+      "sample_rate_hz": 48000,
+      "frames": 288000,
+      "controls": {"pulse_rate_hz": 18.0, "pulse_depth": 0.6, "duty": 0.55, "pressure_cm_h2o": 10.0},
+      "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0}]
+    },
+    "shape": {"pitch_hz": 900.0, "brightness": 0.6, "roughness": 0.05, "mouth": 0.35},
+    "level": 1.0,
+    "events": [{"frame": 76800, "play_call": {"id": "trill"}}]
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "breath": {}, "events": null, "expected_first_control": 76800, "expected_end": 266432},
+      {"id": "manual-restore-44100", "breath": {
+        "sample_rate_hz": 44100, "frames": 50000,
+        "events": [
+          {"frame": 0, "gate": 0.35},
+          {"frame": 10731, "controls": {"pulse_rate_hz": 27.0, "pulse_depth": 0.2, "duty": 0.65, "pressure_cm_h2o": 14.0}},
+          {"frame": 11223, "gate": 0.8}, {"frame": 18327, "gate": 0.35}
+        ]
+      }, "events": [
+        {"frame": 73, "play_call": {"id": "trill", "pitch_hz": 1800.0, "amplitude": 0.6}},
+        {"frame": 8401, "pitch_hz": 1250.0}, {"frame": 23221, "stop_call": true}
+      ], "expected_first_control": 128, "expected_end": 23221},
+      {"id": "pitch-clamp-96000", "breath": {"sample_rate_hz": 96000, "frames": 12000, "events": []},
+        "events": [{"frame": 17, "play_call": {"id": "trill", "pitch_hz": 7200.0, "amplitude": 1.7}}],
+        "expected_first_control": 64, "expected_end": null}
+    ],
+    "host_block_frames": [128, 77],
+    "control_frames": 64,
+    "keys": {
+      "sweep_seconds": 3.6, "release_seconds": 3.9, "ownership_tail_seconds": 0.05,
+      "reference_pitch_hz": 3600.0, "initial_pitch_hz": 3600.0, "final_pitch_hz": 95.0,
+      "initial_pulse_rate_hz": 42.0, "final_pulse_rate_hz": 6.0, "pulse_depth": 0.9, "duty": 0.5
+    },
+    "pitch_limits_hz": [40.0, 6000.0],
+    "smoothing_seconds": {"pitch_hz": 0.01, "pulse_rate_hz": 0.02, "pulse_depth": 0.02, "duty": 0.02, "pressure_cm_h2o": 0.01, "gate_attack": 0.006, "gate_release": 0.03},
+    "cm_h2o_to_dyn_cm2": 980.665,
+    "stage_observations": "全出力フレームのコール状態、制御時計、各目標と平滑値、固定肺圧、内部放射、PCM。公式CLIの先頭6秒と比較する。",
+    "official_midpoint_frame": 163200,
+    "manual_samples": {"performer_pitch_edit": 8401, "performer_breath_edit": 10731, "higher_manual_gate": 11264, "lower_manual_gate": 18368, "after_stop_control": 23232},
+    "clock_absolute_tolerance_seconds": 1e-11,
+    "direct_control_absolute_tolerance": 1e-9,
+    "direct_pressure_absolute_tolerance_dyn_cm2": 1e-7,
+    "independent_control_absolute_tolerance": 1e-8,
+    "independent_phase_circular_tolerance": 1e-10,
+    "independent_pressure_absolute_tolerance_dyn_cm2": 2e-7,
+    "radiation_absolute_tolerance_cm3_s2": 0.001,
+    "pcm_absolute_tolerance": 1e-6
+  }
+}

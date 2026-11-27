@@ -1,0 +1,46 @@
+{
+  "id": "tsp-f2-reference-pooled-sexes",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "female_reference": {
+    "run": "tsp-f2-training-reference-ten-speakers-20261123-repeat",
+    "case": "tsp-f2-training-reference-ten-speakers",
+    "manifest_sha256": "4907e1ef590f8fee1af6eedcd222222a112e5c82ae2b05e7e22a4104d0155b47"
+  },
+  "centre_width": {
+    "run": "tsp-f2-reference-centre-width-20261123-repeat",
+    "case": "tsp-f2-reference-centre-width",
+    "manifest_sha256": "58bc52ea38e61d39348ced840b92c78d75b0709db71501b7f0bc63b4945f139a"
+  },
+  "alignment_reference": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "archive_case": "tsp-active-duration-pilot.json",
+  "cohort": {
+    "MA": ["MA01_03", "MA01_04", "MA01_06", "MA01_08", "MA01_09", "MA01_10"],
+    "MB": ["MB07_02", "MB07_07", "MB07_09", "MB08_02", "MB08_06", "MB09_02"],
+    "MC": ["MC13_02", "MC13_05", "MC14_02", "MC14_04", "MC14_07", "MC14_08"],
+    "MD": ["MD19_02", "MD19_08", "MD19_09", "MD19_10", "MD20_03", "MD20_05"],
+    "MF": ["MF31_01", "MF31_03", "MF31_08", "MF31_10", "MF32_02", "MF32_04"],
+    "MG": ["MG37_03", "MG37_06", "MG37_08", "MG37_09", "MG37_10", "MG38_01"],
+    "MH": ["MH43_02", "MH43_03", "MH43_06", "MH43_09", "MH44_02", "MH44_03"],
+    "MI": ["MI49_01", "MI49_06", "MI50_01", "MI50_03", "MI50_04", "MI50_05"],
+    "MJ": ["MJ55_06", "MJ55_09", "MJ56_01", "MJ56_04", "MJ56_05", "MJ56_07"]
+  },
+  "measurement": {
+    "selection": "固定上流の注釈に EH1 がある男性学習話者9名の辞書順先頭6録音ずつ。録音IDの選択時点では音響測定値を用いない。",
+    "intervals": "追加録音側は固定上流の秒区間、追加の合成側は既存のMFA設定の秒区間。上流の音素対応と同じ3窓でF2を計測する。既存女性データと確認用FKの録音・合成の区間およびF2は固定する。",
+    "male_threshold_control": ["MA", "MB", "MC", "MD"],
+    "expected_female_speakers": 10,
+    "expected_male_speakers": 9,
+    "comparison_count": 6
+  },
+  "hypotheses": {
+    "male_four_do_not_contribute_residuals": "男性4名対照では男性中心と男性内MADが欠測になり、プールに男性残差を加えず、評価幅とFK費用が女性のみと一致する。",
+    "mixed_width_changes_without_female_centre_change": "9名を加えても女性の中心と女性内MADは全条件で一致し、評価幅は無介入・介入の少なくとも片方で女性のみと変わる。",
+    "mixed_recording_sensitivity_is_smaller": "男女の残差を加えた場合、同じ1件の差し替えによるFK録音側費用の絶対変動は女性のみの場合を下回る。"
+  },
+  "acceptance": "第55版と同じFD19_10の1位置、同じ差し替え値とFKの固定入力を使う。女性10名、女性10名と男性4名、女性10名と男性9名の3条件で、無介入と介入後を比較する。各性別の中心と残差、性別内MAD、プールした補正MAD、0.07下限適用後の幅、録音と合成のF2診断費用を固定上流と独立Pythonで1e-10以内に照合する。男性4名の欠測状態を含め、予測の成否は機構検証の合否と分けて記録する。"
+}

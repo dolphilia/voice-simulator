@@ -1,0 +1,26 @@
+{
+  "id": "worklet-live-tsp-source-defaults",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "offline_case": "worklet-tsp-source-defaults",
+  "offline_run": "worklet-tsp-source-defaults-20261122-repeat",
+  "upstream_case": "tsp-fine-source-variation",
+  "upstream_run": "tsp-fine-source-variation-20261122-repeat",
+  "browser_order": ["chromium", "firefox"],
+  "measurement": {
+    "recording_id": "FK64_08",
+    "output_frames": 107527,
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "render_quantum_frames": 128,
+    "observation_stride_frames": 32,
+    "startup_contiguous_quanta": 8,
+    "lead_frames": 2048,
+    "initial_silence_frames": 2400,
+    "first_nonzero_pcm_frame": 2439,
+    "upper_pcm_absolute_tolerance": 1e-6,
+    "timing_skip_blocks": 32
+  },
+  "hypothesis": "確認用07の保存ケースをChromiumとFirefoxで実時間再生すると、安定した8量子を確認した位置から2,048フレーム後に採取が始まる。48 kHzの加工前PCMと発話内の観測は全長でオフライン版とビット一致する。最初の非ゼロPCMは発話内フレーム2,439になり、先頭50 msの無音は保存される。固定上流との全PCMの差は1×10⁻⁶以下になる。",
+  "acceptance": "初回の開始・完了と、再開して停止する通常操作を両ブラウザで採る。Context時計、出力フレーム、最終量子の有効長を算術式で照合する。保存されたケースを通常CLIで再演し、オフライン版・固定上流・WASMのPCMと比較し、最初の差を記録する。処理時間は量子予算と比較して併記する。物理機器の出力波形は測定対象に含めない。"
+}

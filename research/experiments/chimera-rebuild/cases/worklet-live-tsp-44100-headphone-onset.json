@@ -1,0 +1,60 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-onset",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "worklet-live-tsp-44100-20261122-a",
+  "baseline_case": "worklet-live-tsp-44100",
+  "calibration_run": "firefox-process-tap-cubeb-write-44100-separate-prime-20261122-a",
+  "calibration_case": "firefox-process-tap-cubeb-write-44100-separate-prime",
+  "sample_clock_review_run": "firefox-process-tap-sample-clock-44100-20261122-a",
+  "safari_calibration_run": "safari-process-tap-smooth-marker-44100-20261122-repeat",
+  "safari_calibration_case": "safari-process-tap-smooth-marker-44100",
+  "snapshot_blocks": 256,
+  "output_device": {
+    "name": "外部ヘッドフォン",
+    "uid": "BuiltInHeadphoneOutputDevice",
+    "sample_rate_hz": 44100,
+    "expected_frames": 512
+  },
+  "capture": {
+    "tap_duration_seconds": 6,
+    "tap_ready_timeout_seconds": 3,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "wait_for_trace_before_release": true,
+    "observe_start_signals": true
+  },
+  "trace": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server"
+    ],
+    "time_limit": "2s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 250,
+    "maximum_server_host_error_us": 25
+  },
+  "marker": {
+    "quantum": 128,
+    "initial_lead_quanta": 16,
+    "ready_quanta": 32,
+    "capture_quanta": 1024,
+    "chips": 8191
+  },
+  "comparison": {
+    "pre_onset_frames": 2048,
+    "post_onset_frames": 6144,
+    "verification_stride_frames": 2048,
+    "maximum_anchor_position_error_frames": 0.5,
+    "maximum_marker_relative_residual": 0.025,
+    "maximum_speech_relative_residual": 0.1,
+    "threshold_pcm": 0.0001,
+    "threshold_smoothing_frames": 64,
+    "measurable_onset_tolerance_frames": 128,
+    "expected_device_request_frames": 256,
+    "expected_tap_block_frames": 512
+  },
+  "criteria": "既知の逆相信号と左右共通の発話を同じContextで再生する。Worklet・CLIの発話PCMと状態は基準と一致させる。技術上の最初の非ゼロ点を含む前2,048・後6,144フレームの窓で、既知の逆相信号を用いてcubebとタップを対応させ、サンプル番号で機器Writeへ写す。左右平均から発話を取り出し、64サンプルのRMSが1×10⁻⁴を越える位置を独立に測る。CLIとのずれは128フレーム以内、ゲインを当てはめた波形残差は0.10以下を予測する。"
+}

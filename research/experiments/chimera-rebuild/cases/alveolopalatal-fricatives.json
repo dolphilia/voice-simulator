@@ -1,0 +1,49 @@
+{
+  "id": "alveolopalatal-fricatives",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "歯茎硬口蓋の狭窄で噴流を作り、歯に乱流圧力を注入する。同じ /ɑ/ に挟むと /ɕ/ の声門開大は /ʑ/ より大きい。乱流を無効にすると歯の幾何学的な登録を保ったまま圧力注入が消える。歌詞「시야」の初頭は /ɕ/ として計画され、同じ合成コアから音が出る。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id": "male-sh", "body": "male", "text": "ˈɑɕɑ", "ipa": "ɕ", "rate": 1},
+    {"id": "male-zh", "body": "male", "text": "ˈɑʑɑ", "ipa": "ʑ", "rate": 1},
+    {"id": "female-sh", "body": "female", "text": "ˈɑɕɑ", "ipa": "ɕ", "rate": 1.35},
+    {"id": "child-zh", "body": "child", "text": "ˈɑʑɑ", "ipa": "ʑ", "rate": 1},
+    {"id": "mixed-sh", "body": {"female": 0.4, "child": 0.25}, "text": "ˈɑɕɑ", "ipa": "ɕ", "rate": 1},
+    {"id": "male-sh-muted", "body": "male", "text": "ˈɑɕɑ", "ipa": "ɕ", "rate": 1, "turbulence_scale": 0}
+  ],
+  "song": [
+    {"id": "siya", "body": "male", "lyrics": "시야", "ipa": "ɕ", "midi": [57, 64],
+     "onsets": [["ɕ"], ["j"]], "nuclei": ["i", "a"], "codas": [[], []]}
+  ],
+  "calibrated_tip_cm": {
+    "ɕ": {"male": 9.435, "female": 9.447, "child": 9.464},
+    "ʑ": {"male": 9.420, "female": 9.434, "child": 9.452}
+  },
+  "measurement": {
+    "seed": 12345,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": [128, 77],
+    "gesture_abs_tolerance": 1e-12,
+    "geometry_abs_tolerance": 1e-9,
+    "selection_abs_tolerance": 1e-9,
+    "state_peak_relative_tolerance": 1e-6,
+    "pcm_abs_tolerance": 1e-6,
+    "closed_area_cm2": 0.0002,
+    "center_fraction": [0.25, 0.75],
+    "central_narrowing_interval_cm2": [0.01, 0.3],
+    "teeth_distance_interval_cm": [0.74, 4.0],
+    "minimum_teeth_active_fraction": 0.5,
+    "minimum_male_abduction_difference_cm2": 0.1,
+    "low_band_cutoff_hz": 1000,
+    "z_low_band_relative_max_db": null,
+    "high_band_interval_hz": [3000, 15000],
+    "audio_state_peak_relative_tolerance": 1e-6,
+    "browser_observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_f0_hz",
+                                "lip_minimum_cm2", "tongue_body_x_cm", "tongue_body_y_cm", "smoothed_f0_hz"],
+    "windows": "全フレームで波形・計画・状態・歯の乱流源の式を照合する。子音区間中央50%で狭窄・歯への距離・乱流が活動する割合・声門開大を測る。発話の低域は子音の中央50%と先行母音の前後30 msを除いた区間で比較する。歌唱では歯の圧力注入を子音区間全体で確認する。",
+    "initial_state": "各テイクの初期姿勢と声源条件は指定された親ケースから引き継ぐ。直前テイクからの状態の持ち越しなし。乱流の係数は通常の入力経路の既定値1、対照のみ0。"
+  }
+}

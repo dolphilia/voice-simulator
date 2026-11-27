@@ -1,0 +1,27 @@
+{
+  "id": "wasm-fixed-voice",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ固定姿勢・音源・出力レートを使うと、ホストの分割によらずPCMはビット一致し、状態は出力フレームに対応する最後の内部サンプルで一致する。",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 32768,
+    "host_block_frames": [128, 77, 1, 4096],
+    "observation_stride_frames": 257,
+    "additional_observation_frames": [0, 38, 39, 63, 64, 19200, 23999, 32767],
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_phase", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2"],
+    "require_identical_pcm_bits": true,
+    "candidate_state_peak_relative_tolerance": 1e-10,
+    "upstream_state_peak_relative_tolerance": 1e-8,
+    "upstream_pcm_absolute_tolerance": 5e-7,
+    "onset_threshold": 1e-8,
+    "expected_onset_frame": 39,
+    "steady_window_frames": [19200, 24000],
+    "expected_steady_f0_hz": [109.98, 110.02],
+    "maximum_pcm_peak": 0.75,
+    "require_no_wasm_imports": true,
+    "require_stable_buffers": true,
+    "maximum_native_render_allocations": 0
+  }
+}

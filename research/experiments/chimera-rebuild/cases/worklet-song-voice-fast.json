@@ -1,0 +1,25 @@
+{
+  "id": "worklet-song-voice-fast",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song_voice_case": "song-voice-fast.json",
+  "hypothesis": "240 BPM・各4分の1拍の歌唱は、同じ乱流係数と歌唱設定でCLIおよび固定上流と同じ位置で母音と語尾を計画する。WorkletのPCMはCLIとビット一致し、設定したビブラートが短音に現れない。",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 49200,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "expected_beat_seconds": [0.5, 0.5625],
+    "score_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "smoothed_f0_hz", "abduction_cm2"],
+    "expected_release_checks": {
+      "held_breath_at_seconds": 0.59,
+      "minimum_gate_during_opening": 0.98,
+      "minimum_abduction_cm2_during_opening": 0,
+      "released_breath_at_seconds": 0.85,
+      "maximum_released_gate": 0.02
+    },
+    "check_unrenderable_lyric_then_recover": true
+  }
+}

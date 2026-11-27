@@ -1,0 +1,27 @@
+{
+  "id": "worklet-tract-3d-body",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "子どもと三体型の混合でも、実時間の三次元断面は同じ出力フレームのCLIの接触補正済み格子と一致する。/p/の閉鎖では末端の描画断面がつぶれ、その前後では再び開く。音響セル数が変わっても描画用の格子と音響観測の対応を保つ。",
+  "references": {
+    "live_geometry": {"run": "worklet-tract-3d-live-20261120-repeat", "manifest_sha256": "d2ea9d33792f19c721f77e9768b5d5cf022b8462b1b889665c27c5c72407c7b6"},
+    "body_ipa": {"run": "worklet-bodyipa-20261120-a", "manifest_sha256": "1f46b7bf4653c96dd8fc9c066f3fcad3d7758324048a12abc1cd7f31ce9cc4f1"}
+  },
+  "input": {
+    "ipa": "ɑpɑ", "output_rate_hz": 48000, "internal_rate_hz": 96000,
+    "bodies": [
+      {"id": "child", "body": "child", "weights": [0, 0, 1], "expected_cells": [11, 13]},
+      {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3], "expected_cells": [15, 16]}
+    ]
+  },
+  "measurement": {
+    "profile_stride_output_frames": 768, "viewport_widths_css_px": [960, 390],
+    "grid_absolute_tolerance": 1e-9, "vertex_geometry_tolerance_cm": 0.000003,
+    "maximum_closed_gap_cm": 1e-12, "maximum_closed_acoustic_area_cm2": 0.0002, "minimum_open_area_cm2": 0.1
+  },
+  "criteria": {
+    "source": "体型指定を通常のIPA画面から行い、計画・保存ケース・CLIの体型とセル数を照合する。加工前PCMと採取時刻は、候補のCLIとブラウザの同じ体型の間で比較する。",
+    "geometry": "選択した体型の全採取行をCLIの格子と比較する。/p/の予定区間と前後の母音区間を別々に観測し、閉鎖と再開口を検査する。同じ調音姿勢を固定上流へ渡し、上流PCMに由来する姿勢の差と体型の形状モデルの差を区別する。",
+    "browser": "二つの画面幅で実際に描画した断面の頂点、選んだ出力フレーム、音響セルの採取時刻を比較する。体型を切り替えた次の発声に前回のセル数や頂点が残らないことを確かめる。"
+  }
+}

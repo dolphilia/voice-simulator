@@ -1,0 +1,22 @@
+{
+  "id": "worklet-midi-browser-prompt",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "previous": {
+    "run": "worklet-midi-permission-20261122-repeat",
+    "case": "worklet-midi-permission",
+    "manifest_sha256": "7eb2021e48eb695e875ea649187b8ef363f154ab84cb028cd806f8c98f3f737e"
+  },
+  "browser": {
+    "mode": "headed-persistent-test-profile",
+    "origin_binding": "127.0.0.1",
+    "timeout_ms": 12000,
+    "prompt_settle_ms": 650,
+    "viewport_css_px": [1100, 780],
+    "permission": {"name": "midi", "sysex": false}
+  },
+  "targets": ["candidate-voice", "upstream-play"],
+  "hypothesis": "各ループバックサイトを新しいChromeの試験プロファイルで開き、画面のボタンから通常MIDIを要求すると、ブラウザ標準のダイアログが出る。拒否を選ぶと拒否が返り、同じサイトでの直後の再試行も拒否される。Chromeのサイト設定からそのサイトの権限を初期状態へ戻すと再びダイアログが出る。許可を選ぶとSysExが無効の接続が得られ、利用できる入力が0件なら画面が機器待ちになる。切断で購読を解放する。",
+  "observation": "実際の要求の引数、Promiseの結果、Permissions API、アプリ画面、ブラウザのAXダイアログと押したボタンを順に記録する。別のローカルオリジンに建てた固定上流Playと研究版の手動発声を同じ条件で比較する。権限は専用プロファイルのブラウザ画面で操作する。ブラウザのウィンドウを同定できた場合だけ表示を保存する。",
+  "acceptance": "両実装で初回とリセット後に実際のブラウザ許可ダイアログが表示され、UI操作で拒否と許可が返る。拒否後の直後の再試行とリセット後の再試行を区別し、権限と画面状態が結果に対応することを確認する。許可後の実接続はSysExが無効で、切断後に購読を解放する。ダイアログを取得できない場合は版、権限状態、UIまたはAPIの欠測理由を保存する。"
+}

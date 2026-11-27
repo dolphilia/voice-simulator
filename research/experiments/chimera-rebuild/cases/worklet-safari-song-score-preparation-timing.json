@@ -1,0 +1,29 @@
+{
+  "id": "worklet-safari-song-score-preparation-timing",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "reference": {
+    "case": "worklet-safari-song-score-preparation-block-size.json",
+    "run": "worklet-safari-song-score-preparation-block-size-20261122-repeat",
+    "trial": "pair-1-split-256"
+  },
+  "warm_up_frames": 16384,
+  "block_frames_by_condition": {"split-128": 128, "split-256": 256},
+  "marker_capture_quanta": 640,
+  "condition_order": [["split-128", "split-256"], ["split-256", "split-128"], ["split-128", "split-256"], ["split-256", "split-128"]],
+  "minimum_median_startup_reduction_ms": 120,
+  "preparation_reduction_tolerance_ms": 25,
+  "maximum_median_interior_gap_increase_ms": 4,
+  "preparation_timing": {
+    "clock": "Date.now",
+    "clock_step_ms": 1,
+    "minimum_paired_later_mean_increase_ms": 0.45,
+    "minimum_first_at_least_later_median_fraction": 0.75,
+    "maximum_later_over_budget_lower_bound_fraction": {"split-128": 0.05, "split-256": 0.15}
+  },
+  "criteria": {
+    "settings": "通常のSafari 18.6でPop Deeを48 kHz、乱流係数1、出力31,200サンプル、観測刻み64で出す。予備描画は16,384フレーム、出力量子は128フレームとし、128・256フレームの分割の各準備片を計時する。4ペアを測り、別のディレクトリから順序を反転して再実行する。",
+    "identity": "準備片ごとに絶対Contextフレーム、量子長、内部で進めた出力フレーム数、Workletに入ってから無音を埋めるまでとWASM呼び出し前後の時刻を保存する。全128または64片を先行信号の同一フレームとその両隣に照合する。先行PCM81,920サンプルは独立計算、歌唱PCM31,200サンプルと488観測点は保存基準に一致する。",
+    "timing": "第1片と後続片を分け、WASM呼び出しと無音出力までの処理の中央値、p95、p99、最大および2.667 msの名目予算を越える記録数を測る。1 msの差分誤差を仮定し、下限も超過する件数と判別できない件数を別に数える。256フレーム分割で後続片のWASM時間の平均はペア中央値で0.45 ms以上増える、第1片のWASM時間は75%以上の試行で後続片の中央値以上になる、後続片の無音を埋めるまでの時間の下限が予算を超える割合は128・256フレームそれぞれ5%・15%以下と予測する。"
+  }
+}

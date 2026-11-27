@@ -1,0 +1,18 @@
+diff --git a/crates/chimera/src/airway/network.rs b/crates/chimera/src/airway/network.rs
+--- a/crates/chimera/src/airway/network.rs
++++ b/crates/chimera/src/airway/network.rs
+@@ -301,2 +301,4 @@
+     pub u: Vec<f64>,
++    /// 比較用に最初の乱流源が読んだ枝断面と流量を保持する。
++    pub probe_first_noise_drive: [f64; 2],
+     mom: Vec<f64>,
+@@ -408,2 +410,3 @@
+             u: Vec::new(),
++            probe_first_noise_drive: [0.0; 2],
+             mom: Vec::new(),
+@@ -1162,2 +1165,5 @@
+             let u = self.u[s.src];
++            if i == 0 {
++                self.probe_first_noise_drive = [a, u];
++            }
+             let mut amp = 0.0;

@@ -1,0 +1,26 @@
+{
+  "id": "tsp-seems-pressure-replay",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-seems-drift-only-20261123-repeat",
+    "case": "tsp-seems-drift-only",
+    "manifest_sha256": "2213ddf8f96fbd739c3640cd6a27153e476635fc931ee3911f75b5118d44187b"
+  },
+  "pressure": {
+    "smoothing_hz": 30,
+    "threshold_cmh2o": 2.5,
+    "dyn_cm2_per_cmh2o": 980.665,
+    "gate_threshold_multipliers": [0.8, 1.6]
+  },
+  "limits": {
+    "filter_absolute_dyn_cm2": 1e-7,
+    "meaningful_lpc_shift_hz": 2,
+    "meaningful_glottal_spectral_distance": 0.01
+  },
+  "hypotheses": {
+    "pressure_gate_saturated_in_window": "両方のドリフト停止条件で、30 Hz平滑化後の圧差が窓内の全標本で有声ゲートの上端以上になる。F0と位相は全観測区間で一致する。",
+    "small_effect_on_glottal_spectrum_and_lpc": "ドリフト停止のまま声門の振動器への圧差だけを差し替えると、25 ms窓で声門流量の1950〜2600 Hz内の全変動距離は0.01未満、PCMの高域LPC極の移動は2 Hz未満に収まる。"
+  },
+  "acceptance": "同一発話の通常条件、ドリフト停止、ドリフト停止と通常圧差の再入力、ドリフト停止と自己圧差の再入力を比較する。発話計画、辞書、体型、音源設定のうちドリフト以外の値、96 kHz内部レート、48 kHz出力、1.1525〜1.1775秒の25 ms窓を先行ケースから引き継ぐ。圧差は各標本の声門振動器への入力だけを置き換え、気道の圧力と流量の更新は各実行の値を使用する。通常CLIの未加工PCM、保存済みのPCM・窓、各条件の発話計画を照合する。自己圧差の再入力で全PCMと観測状態がビット単位で再現されること、通常圧差の再入力が供与側の系列に全標本で一致すること、平滑化の独立計算が両条件に一致することを確認する。最初に差が出る標本を圧差・有声度・面積・流量・PCMで調べ、独立な放射出力、直接フーリエ和、固定Rustと独立LPCを先行の許容差で照合する。仮説判定は計測の合否と併記する。"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "worklet-live-song-deferred-split-preparation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "split_case": "worklet-live-song-split-preparation.json",
+  "first_quantum_offset": 2,
+  "comparison_last_request_offset": 3,
+  "minimum_median_peak_reduction_ms": 0.8,
+  "condition_order": [["split192", "deferred192"], ["deferred192", "split192"]],
+  "hypothesis": "64フレーム3片の処理を同じ間隔で2量子遅らせると、48 kHz・256フレーム要求で第1片が構築の次の要求に移る。構築を含む要求から3つ後までで測った最大コールバック時間は、同組の従来条件より中央値で0.8 ms以上短くなる。歌唱開始までのグラフ上の時間、歌唱のPCMと観測、先行音の連続性は同じ値を保つ。",
+  "criteria": {
+    "input": "同じ試験用Firefox・共有Context・Pop Deeを使い、分割を第1・3・5無音量子で行う条件と、第3・5・7無音量子で行う条件を順序を入れ替えて各2回採る。双方とも0フレーム呼び出し1,000回と64フレーム3片を使う。",
+    "validity": "コンテキスト上の量子番号、描画累計、歌唱の予定開始、基準PCMと観測を照合する。グラフと機器の前後8要求を先行音から照合する。2条件とも構築の要求を相対0とし、相対0〜3の各要求のcubeb処理時間を記録する。",
+    "verdict": "従来の準備片は要求0・1・2、後ろへ移した準備片は要求1・2・3に現れることを検査する。同組でピークを引いた差の中央値が0.8 ms以上で、機器時刻とPCMが連続し、先頭2歌唱量子が予算内かを個別に検査する。従来条件で第1片がすでに構築の次の要求にある場合や、実行時刻の予測が外れた場合も、採取が有効ならそのまま記録する。"
+  }
+}

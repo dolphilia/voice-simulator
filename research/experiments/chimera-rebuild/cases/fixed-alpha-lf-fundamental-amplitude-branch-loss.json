@@ -1,0 +1,36 @@
+{
+  "id": "fixed-alpha-lf-fundamental-amplitude-branch-loss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定LFの110 Hzの入力差を振幅0、±0.5、±1で与えたとき、660 Hz・770 Hzの口端の奇成分と偶成分、および半振幅で比例・二次から外れた複素差を、枝の損失残差の変化から再構成できる。順流式を全流量に延長した場合の逆流補正は、660 Hz・770 Hzの比例・二次からのずれで、それぞれ差の方向への射影の50%以上を占めると予想する。振幅条件間で流向が変わる標本と全条件で逆流する標本に、その寄与を分ける。",
+  "reference": {
+    "run": "fixed-alpha-lf-fundamental-amplitude-20261124-windowed-repeat",
+    "case": "fixed-alpha-lf-fundamental-amplitude",
+    "sha256": "27ce867f2d257476102cbe2e8bad36245da6940d1c60ac7c5cce82916cce0efb"
+  },
+  "branch_reference": {
+    "run": "fixed-alpha-lf-fundamental-branch-loss-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental-branch-loss",
+    "sha256": "2c19798cdf876cb0a7ab5e4b187246e1ad18fa24c4380f4d0854e8ffe3d2cb06"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "window_samples": [134400, 153600],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "expected_connected_branches": 38,
+    "expected_main_path_branches": 35,
+    "series_peak_relative_error_lt": 1e-9,
+    "topology_element_relative_error_lt": 1e-9,
+    "kinetic_balance_peak_relative_error_lt": 1e-9,
+    "spectral_identity_relative_error_lt": 1e-8,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_difference_peak_relative_threshold": 1e-10,
+    "hypothesis_reverse_projected_share_ge": 0.5
+  },
+  "input": "固定 /ɑ/ の前回5入力を保存した設定・流量と同じ条件で再描画する。96 kHz・定常流0.80秒・22周期19,200標本を4回繰り返す。切替前1標本と直後128標本、および末尾22周期と直前1標本の節点圧と枝流量を固定上流と研究版で取得する。枝は向き付き端点で照合する。",
+  "observation": "枝圧差から慣性・粘性を引いた値を、流量と断面から計算した符号付き二次損失と照合する。660 Hz・770 Hzの複素係数から、全振幅・半振幅での奇成分と偶成分、2倍した半振幅の奇成分と全振幅の差、4倍した半振幅の偶成分と全振幅の差を求める。各差を入口流量と枝の損失残差から求めた口端・壁流量・節点圧に照合する。枝の圧力源を元の流量と流量差の積、流量差の二乗、逆流補正に分ける。逆流補正は5条件で流向が変わる標本と全条件で逆流する標本に分け、口端での複素寄与を保存する。"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "tsp-phone-boundaries-listening-07",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-original-20261121-repeat",
+  "baseline_case": "tsp-active-duration-pilot.json",
+  "baseline_scope": "tsp-active-duration-original",
+  "split": "held_out",
+  "transcripts": [
+    {
+      "id": "64_08",
+      "text": "Fine soap saves tender skin.",
+      "recording_ids": ["FK64_08"],
+      "words": ["fine", "soap", "saves", "tender", "skin"]
+    }
+  ],
+  "selection": "主しきい値で区間長の方向が反転した確認用07を取る。登録済みの録音と2実装による合成を全長で整列する。",
+  "hypothesis": "固定上流の保存注釈では録音の soap と saves の間が200 msある。この語間の低エネルギー時間の録音−再実装差が、全体の215 ms差の過半を説明すると予測する。残りは語内の音素・語内で音素外・語列外を測る。予測の成否は計測の合否と別に残す。",
+  "aligner": {
+    "version": "3.4.3",
+    "environment_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa",
+    "model_version": "english_us_arpa v3.0.0",
+    "model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+    "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+    "configuration": "tools/tsp/mfa.yaml",
+    "seed_hex": "2545f491",
+    "noise_db": -47,
+    "noise_window_frames": 960,
+    "jobs": 1
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "saved_boundary_tolerance_seconds": 0.010001,
+    "noise_tolerance_db": 0.5,
+    "repeat_exact": true,
+    "observation": "語と音素の時刻は元の波形先頭を零点とする秒。低エネルギー区間は保存済みの窓RMSの−35 dBと−45 dBの半開フレーム区間を使う。",
+    "acceptance": "3波形の整列を再現し、録音境界を保存注釈、合成音素を固定上流の辞書、発話計画を固定上流へ照合する。低エネルギー区間の全フレームを語内音素・語内音素外・語間・語列外に配分し、独立したフレーム計数と一致させる。"
+  },
+  "attribution": {
+    "timing_run": "tsp-listening-timing-20261122-acoustic",
+    "timing_case": "tsp-listening-timing",
+    "pair": "07",
+    "thresholds_db": [-35, -45],
+    "predicted_gap": ["soap", "saves"]
+  }
+}

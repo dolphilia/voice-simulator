@@ -1,0 +1,58 @@
+{
+  "id": "tsp-active-duration-after-dh",
+  "revision": 1,
+  "base_case": "tsp-active-duration-pilot.json",
+  "input_support_run": "tsp-active-duration-inspect-20261121-dental",
+  "comparison_run": "tsp-active-duration-20261121-repeat",
+  "hypothesis": "従来の6録音の境界と合成音は再現できる。追加6録音も両合成の発話区間長は主しきい値で10 ms以内と予測する。録音との差は長さの方向も含め、話者ごとに記録する。",
+  "selection_rule": "従来の6録音を保持し、/ð/ の追加で合成可能になった元の調整用FA01_01・MA01_01を足す。確認用には、従来と同じFK・MKから入力再検査で双方の合成が可能だった最初の2文（62_02、62_04）を加える。選定に使う情報は計画可否と録音ID。",
+  "calibration_ids": [
+    "FA02_07",
+    "MA02_07",
+    "FA01_01",
+    "MA01_01"
+  ],
+  "held_out_ids": [
+    "FK64_08",
+    "FK64_09",
+    "MK64_08",
+    "MK64_09",
+    "FK62_02",
+    "MK62_02",
+    "FK62_04",
+    "MK62_04"
+  ],
+  "acceptance": "既存の条件の窓、しきい値、無音対照と合成2版の10 ms許容差を維持する。全12録音を調整用4件・確認用8件に分け、3波形×2しきい値の計72区間を独立計算に照合する。従来6録音の測定値と両合成WAVのSHA-256を保存済みの実行と照合する。",
+  "scope": "合成可能な6文を4話者で測る。元の8録音は別枠の入力計画として保持し、この測定に入るのは調整用2件。確認用の決定に録音の測定値を用いない。",
+  "implementation": {
+    "settings_case": "human-body-english.json",
+    "block_frames": 128,
+    "zero_padding_control": {
+      "leading_frames": 2400,
+      "nonzero_frames": 4800,
+      "trailing_frames": 2400,
+      "amplitude": 0.25,
+      "extra_frames_at_either_end": 4800
+    },
+    "listening": {
+      "order_seed": 20261121,
+      "maximum_rms_dbfs": -26,
+      "peak_ceiling_dbfs": -1,
+      "interval": "主しきい値の半開区間"
+    }
+  },
+  "retain_csv": {
+    "FA02_07/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MA02_07/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "FA01_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MA01_01/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "FK64_08/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "FK64_09/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MK64_08/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MK64_09/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "FK62_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MK62_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "FK62_04/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]},
+    "MK62_04/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 32], [2400, 2432]]}
+  }
+}

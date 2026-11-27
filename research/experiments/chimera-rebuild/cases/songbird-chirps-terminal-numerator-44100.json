@@ -1,0 +1,26 @@
+{
+  "id": "songbird-chirps-terminal-numerator-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-oec-sum-order-44100-20261123-repeat",
+    "manifest_sha256": "867d307caecef25a8eb7119626be19467c7bd379d4a82dc2a6e836d1386b182b"
+  },
+  "sample_rate_hz": 176400,
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_baseline_matched_time_offsets": {
+    "tip_pressure": 18,
+    "tip_inflow": 23,
+    "radiation_flow": 18
+  },
+  "hypothesis": "235点制御では、押鍵18点後に表れる先端圧と放射流量の上流との差が解消し、最初の差は後続点へ移ると予測する。変更による流量の違いは先端圧の違いが現れた次の内部点以降に最後の直列枝で生じ、圧力と流量の差が入口へ向けて伝わると見込む。256点制御では既に入口側から差が届くため、放射差の開始時刻の改善は合否に含めない。追従0では両ビルドの圧力・流量がゼロのままと予測する。",
+  "observation": "呼気ゲート0のChirp cascadeの固定ケース3条件を使い、保存済みの5差分付きビルドを復元する。実験版で、開放されたくちばし先端の放射負荷の旧圧係数だけを C/dt - (g+h/2) から (C/dt - h/2) - g へ切り替える。分母、C/dt、ほかの開口、放射流量の時間差分式は対照と同じとする。押鍵時点を0とする64内部サンプルで、腔圧、気管側枝、くちばし6セルの圧力・流入、放射流量と微分を観測する。放射負荷の再計算では先端流入の実測差と式の差を個別に置き換える。",
+  "acceptance": "対照のCSVは前回の64点とバイト一致する。形状と注入が対照と実験版でビット一致する。全条件・両ビルドと固定上流で先端圧、放射流量、最後の直列枝流量を独立計算とビット照合する。変更差分の入力係数と作用点、先端圧から各枝へ戻る最短到達時刻、追従0の無励振を確認する。差の開始時刻が後ろへ動く予測は実測結果と別に記録し、予測が外れた場合も保存する。"
+}

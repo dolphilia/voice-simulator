@@ -1,0 +1,49 @@
+{
+  "id": "stage7-review-archives",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "packets": {
+    "tsp-listening": {
+      "run": "tsp-listening-responses-20261122-final",
+      "manifest_sha256": "c56c59082d30ee2e04c69681e62c087bd95a16949d62bd7aa45b01b5a6314346",
+      "case_id": "tsp-listening-responses",
+      "folder": "listening",
+      "packet_id": "0a9fd9d3cbb94ea24f4727fb20e74fc7458c79a7fe4306d45be138893f1e4dac",
+      "audio": 36,
+      "figures": 0,
+      "trials": 18,
+      "notices": ["TSP-licence.txt"],
+      "verifier": "verify-tsp-listening.mjs",
+      "original_browser_csv": "artifacts/browser-fixture.csv"
+    },
+    "csd-listening": {
+      "run": "csd-listening-packet-20261122-a",
+      "manifest_sha256": "11e719bb2b1d400f130df0e75d55dc304520e2fa907177aad42e2e300c76a4a5",
+      "case_id": "csd-listening",
+      "folder": "listening",
+      "packet_id": "15dfd465c134f98485d205d74620bc3a6745b4fa87436fba11f7c7040f71338c",
+      "audio": 18,
+      "figures": 0,
+      "trials": 6,
+      "notices": ["README.md"],
+      "verifier": "verify-csd-listening.mjs"
+    },
+    "tsp-f2": {
+      "run": "tsp-f2-annotation-20261122-repeat",
+      "manifest_sha256": "c13f511eb39f56c90fa7174a8a8dd9b2949602b8163663021730a4d865af1f55",
+      "case_id": "tsp-f2-annotation",
+      "folder": "review",
+      "packet_id": "682ca00eb3af5edd630c47bcec7d71f98a9cafb68307e350822065dcec255af6",
+      "audio": 7,
+      "figures": 7,
+      "trials": 7,
+      "notices": [],
+      "tsp_licence": true,
+      "verifier": "verify-tsp-f2-annotation.mjs",
+      "original_browser_csv": "artifacts/browser-fixture.csv"
+    }
+  },
+  "hypothesis": "評価者用のファイルだけを実体としてZIPに収めれば、外部ディスクのリンクを持たない展開先でも再生、図の表示、資料ID付きCSVの書き出しができる。",
+  "observation": "固定上流に対応する保存済みTSP試聴18対、CSD試聴6区間、F2注釈7窓の評価者用フォルダを対象にする。同じページを別作業ディレクトリに展開したZIPから開き、音源61件、図7枚、試験CSVを検証する。",
+  "acceptance": "元のマニフェストと全対象ファイルを照合する。ZIPは通常ファイルのみを持ち、各ファイルのSHA-256・資料ID・利用条件を保持する。音源対応表、採択値、試験回答はZIPに含めない。展開先のページから出力した試験CSVは元の資料ID・列・評価行と一致する。TSP試聴とF2注釈で保存済みのブラウザCSVがある場合はバイト単位で比較する。既存の照合器の全判定を通過し、ZIPを別の作業ディレクトリからバイト再現する。"
+}

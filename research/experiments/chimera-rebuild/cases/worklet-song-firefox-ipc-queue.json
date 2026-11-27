@@ -1,0 +1,27 @@
+{
+  "id": "worklet-song-firefox-ipc-queue",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "ipc_comparison_run": "worklet-song-firefox-http-channel-20261121-verified",
+  "profile_runs": [
+    "worklet-song-firefox-http-channel-20261121-ipc",
+    "worklet-song-firefox-http-channel-20261121-repeat"
+  ],
+  "hypothesis": "同じWorkletのコンストラクタIPCで100 ms以上の待ちを観測した試行では、親I/Oへの到達後5 ms以内にメインのキューへ投入され、待ちの75%以上は投入の後に生じる。親のメインスレッドの活動記録から、連続して処理していた時間とイベント待ちを区別できると予測する。",
+  "measurement": {
+    "condition_order": [["serial", "parallel"], ["parallel", "serial"], ["serial", "parallel"]],
+    "profiler_features": ["ipcmessages", "flows", "cpuallthreads"],
+    "log_modules": "nsHttp:4",
+    "long_wait_ms": 100,
+    "maximum_receive_to_dispatch_start_ms": 5,
+    "maximum_enqueue_delay_ms": 5,
+    "minimum_post_enqueue_wait_fraction": 0.75,
+    "maximum_send_flow_distance_ms": 0.25
+  },
+  "criteria": {
+    "input": "先行のIPC付き8試行を再解析し、通常画面から48 kHzの同じPop Deeを6試行追加する。現行順と並行登録を交互に行う。保存された親子プロセスのHTTPチャネルと時刻原点は前回と同じ条件で照合する。",
+    "flow": "同じPID・メッセージ名・シーケンス番号の送信と受信を求める。子側の送信の直前0.25 ms以内に一意なIPCフローがある場合に、そのフローIDと名前で親I/Oスレッド上のIPCDispatchを見つける。IPCDispatch内のTaskController::AddTaskまたはEventQueueInternal::PutEventが一意なら投入とする。Runnableの実行マーカーがあれば同じタスクフローIDで結ぶ。IPC受信処理の端点を実行側の境界として併記する。",
+    "activity": "親のメインスレッドでI/O到達からIPC受信処理までと重なるAwakeの時間を、境界で切って合計する。CPU時間はマーカーまたはプロファイラーのthreadCPUDeltaの計測区間がウィンドウ内に完全に収まる場合に限り加算し、それぞれの区間の合計時間を併記する。AwakeをOSがCPU上で実行した時間と区別する。同じ時間帯の別マーカーからIPCを遅らせた処理を推定しない。",
+    "evaluation": "合否は入力・参照・IPC端点の有効性で判定し、フローの欠測と待ちの分布は各試行に記録する。100 ms以上の試行が採れなければ仮説は未判定とする。音声のPCMと観測、計画、拍、固定上流との差を通常の比較に通す。"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "worklet-realtime-cross-browser-96000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_case": "worklet-realtime-voice-96000.json",
+  "chromium_run": "worklet-rate-96000-20261121-wrapper-regression",
+  "hypothesis": "同じWASMと/i/の通常実時間条件をFirefoxとChromiumで実行すると、グラフの96 kHz・128フレーム、声の開始と停止位置、PCMと音響観測が一致する。時計の精度やコールバックの壁時計の間隔には差が出うる。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"]],
+    "audio": "通常の発声開始から自動停止と減衰末尾まで、出力181,248フレーム。保存するWAVと、量子末尾の全1,416行の観測を使う。先行音やV8用の準備を指定しない。",
+    "clock": "実際のWorklet時計の名前と、正の記録値から推定した観測上の刻みを保存する。発声・減衰・全区間のp95・p99と、開始間隔、起動時および採取中のContextフレームの不連続を別々に照合する。"
+  },
+  "criteria": {
+    "audio": "固定上流、入力、WASMのハッシュを照合する。新規6試行と保存ChromiumでPCMと累計フレーム・音響観測の64ビット表現が一致する。通常ケースの操作位置、グラフとWAVのレート、候補CLIとのPCM一致、固定上流と独立ゲートの許容差を引き継ぐ。",
+    "timing": "各ブラウザで従来のWorklet時計に基づく発声p99が128/96000秒以内に入るか判定する。時計の刻みと全区間超過、起動時の飛びは診断値として保持する。Chromeのトレースでのみ得られる完了処理と物理出力の期限は比較しない。"
+  }
+}

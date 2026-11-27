@@ -1,0 +1,20 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-late-write-review",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_runs": [
+    "worklet-live-tsp-44100-headphone-load-same-request-20261122-2",
+    "worklet-live-tsp-44100-headphone-load-same-request-20261122-3"
+  ],
+  "expected_capture_case": "worklet-live-tsp-44100-headphone-load-same-request",
+  "request_frames": 256,
+  "sample_rate_hz": 44100,
+  "maximum_server_host_error_us": 25,
+  "maximum_write_delay_periods": 2,
+  "model": {
+    "maximum_relative_residual": 0.025,
+    "minimum_other_family_margin": 0.03,
+    "flank_frames": 768
+  },
+  "criteria": "第2版の高負荷2試行を保存済みの生ファイルから再解析する。両試行で要求をホスト時刻からAudio Serverへ結び、同じ出力スレッド・予定サンプル番号のヘッドフォンWriteを探す。Write候補の許容範囲はサーバー行の開始から2周期以内。機器Writeのホスト時計の原点でAudio Client区間を独立に確認する。飛びがあった試行は、その長さを使い、当該要求の先頭から次の予定位置まで1フレーム単位で挿入箇所を試す。無音か、挿入箇所の前後の波形を反復するモデルかを、同相・逆相に分けて比較する。他の種類との残差差を報告する。主判定と欠測理由を残す。"
+}

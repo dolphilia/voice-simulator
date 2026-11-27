@@ -1,0 +1,32 @@
+{
+  "id": "worklet-live-tsp-firefox-io-thread-state-preplay-56q",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-56q",
+  "capture_run": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-56q-20261122-a",
+  "previous_analysis_run": "worklet-live-tsp-firefox-io-thread-state-preplay-56q-20261122-a",
+  "reference_run": "worklet-live-tsp-firefox-io-client-start-20261122-a",
+  "reference_capture_case": "worklet-live-tsp-firefox-io-thread-state-capture-preplay",
+  "reference_capture_run": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-20261122-a",
+  "reference_analysis_run": "worklet-live-tsp-firefox-io-thread-state-20261122-continuations",
+  "sample_rate_hz": 48000,
+  "request_frames": 256,
+  "worklet_quantum_frames": 128,
+  "request_offsets": [
+    11,
+    12,
+    13
+  ],
+  "positive_control_offset": 0,
+  "pre_cycle_ns": 25000,
+  "maximum_server_interval_error_ms": 0.1,
+  "local_onset_offsets": [
+    10,
+    16
+  ],
+  "reference_ready_quanta": 80,
+  "candidate_ready_quanta": 56,
+  "revision_note": "各トレースの目次の期間と、プロセスを問わないAudio Client、Audio Server、機器Writeの各表の最終時刻を追加する。第1版で欠測した5試行がFirefox固有の欠落か、音声I/Oの記録範囲全体の打ち切りかを調べる。第1版の判定と許容差を保持する。",
+  "hypothesis": "構築に対する発話先頭3量子の要求位置は従来の11〜13を保つと予測する。トレース収録可能な時間の増加は直接測る。過去と同型の予算内の飛びがある場合、欠けたサーバー周期があってもFirefoxのIOProcが見つからないと予測する。",
+  "acceptance": "前後20要求がそろう試行では従来と同じ判定を行う。Audio ClientとAudio Serverの全窓の照合に失敗しても、生データがあれば先頭3量子を含む事前指定のオフセット10〜16と最後の次要求を独立に照合する。局所のcubeb、Audio Client、Audio Serverをすべて一意に同定できたときだけ発話開始の各要求を集計する。許容差、先行25 µs、欠測、実測サーバー間隔の判定を保持する。局所の判定で全窓の不合格を変更しない。Audio Clientの末尾と各予定要求の時刻差には同じトレースのMach時計の換算を使い、全窓か局所で対応した場合はオフセット範囲も残す。"
+}

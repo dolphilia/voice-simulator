@@ -1,0 +1,43 @@
+{
+  "id": "tsp-tall-recording-f2-boundary-grid",
+  "revision": 2,
+  "previous_attempt": {
+    "run": "tsp-tall-recording-f2-boundary-grid-20261123-a",
+    "manifest_sha256": "52a8b02c651440e4b23d8a37902e677c23a8f3740e3c1b065ecaba0ed3794c86",
+    "failed_checks": ["window_starts_step_as_registered"]
+  },
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "synth_grid": {
+    "run": "tsp-tall-f2-boundary-grid-20261123-repeat",
+    "case": "tsp-tall-f2-boundary-grid",
+    "manifest_sha256": "1655023048cba0d69d4907b259acfdab5f8f9604555da4f610fd5948e4e50078"
+  },
+  "measurement": {
+    "word": "tall",
+    "phones": ["AA1", "L"],
+    "start_ms": 1590,
+    "end_ms": [1670, 1680, 1690, 1700],
+    "observed_modes": {"1690": "mfa"},
+    "centers": [0.35, 0.5, 0.65, 0.9],
+    "start_samples_by_end": {
+      "1670": [19266, 19409, 19553, 19793],
+      "1680": [19308, 19469, 19631, 19901],
+      "1690": [19350, 19530, 19710, 20010],
+      "1700": [19392, 19590, 19788, 20118]
+    },
+    "sensitivity_threshold_hz": 100
+  },
+  "acceptance": "同じ48 kHzモノラルPCM16と2回分の保存済みMFAの語・音素区間をマニフェストから照合する。tallのAA1からLへの1.690秒境界を基準とし、開始1.590秒とラベルAA1を全条件で固定する。1.670・1.680・1.700秒は指定時刻とする。4条件16窓の窓開始標本、公開極、F1・F2、中央3窓の中央値、欠測理由を固定Rustと独立Pythonで照合する。閾値は先行ケースと同じ0.05 Hz。開始標本はfloat32の秒値と標本番号の切り捨てを反映した登録値で1点ずつ照合する。窓が指定区間の外に出る長さと、元のMFA境界後を含む長さを保存する。合成の変動幅は第47版を引用し、同じ語での窓感度を比較する。",
+  "prediction": "録音でも中央3窓のF2中央値の変動幅は100 Hz未満とする。90%窓は中央中央値より変動幅が大きく、100 Hz以上動くと予測する。開始標本は秒値をfloat32へ丸め、有理数で位置を計算して切り捨てた値を登録する。第1版の整数ステップ判定は初回結果に保存する。"
+}

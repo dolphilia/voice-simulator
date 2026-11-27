@@ -1,0 +1,30 @@
+{
+  "id": "fixed-alpha-loss-high-flow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ の選択枝で定常点を超える順流の損失だけを接線に替えると、定常点の圧力差と傾き、仕事率の符号を保てる。660 Hzと770 Hzでは、元の二次損失と比べて定常点の線形予測との差が減ると予想する。前回の受動化と比較し、定常点以下の損失を元に戻す影響も符号付きで測る。",
+  "reference": {
+    "run": "fixed-alpha-loss-passive-20261124-repeat",
+    "case": "fixed-alpha-loss-passive",
+    "sha256": "5f6cb7f3ff633ad38d30b2b2f9e5f28454889b5730fde7dc5aa9271131684d16"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "variants": {"baseline": [], "one_branch": [[26, 27]], "three_branches": [[25, 26], [26, 27], [27, 28]]},
+    "input_mean_error_lt_cm3_s": 1e-10,
+    "series_peak_relative_error_lt": 1e-9,
+    "dc_stationarity_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "work_rate_negative_tolerance_relative_to_peak": 1e-9,
+    "complex_change_reconstruction_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10
+  },
+  "input": "96 kHzの固定 /ɑ/ に、通常発声と固定LFの保存済み声門流量を再入力する。標本76,800から選択した1枝または3枝だけで、元の符号付き二次損失と順流側の接線を定常流量で切り替える。切替標本より前の状態、無変更対照と定常流のみの対照も照合する。",
+  "observation": "切替直前の1標本、切替直後128標本、末尾22周期とその直前の1標本を保存する。定常流対照は入口圧・基準流量・基準流量×標本周波数で正規化する。選択枝が定常点の上下を通ること、枝流量と圧力差から独立に求めた損失と仕事率、両版の時系列、口端流量の複素比を確認する。無変更対照からの差と前回の受動化からの差のそれぞれを、旧流量で評価した局所圧力差、選択枝と未選択枝の流量が変わった分の3項で再構成する。最初の差は登録した128標本に現れた場合に記録する。線形予測に近づく向きと大きさは仮説の結果として記録する。"
+}

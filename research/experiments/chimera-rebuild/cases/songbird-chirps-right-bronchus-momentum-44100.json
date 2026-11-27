@@ -1,0 +1,31 @@
+{
+  "id": "songbird-chirps-right-bronchus-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-bronchus-linear-44100-20261123-repeat",
+    "manifest_sha256": "a0b9bf58ae5608b354618ead5c200460c33b37b0f18e865bc75950e2ddb9b330"
+  },
+  "right_bronchus_term": "momentum",
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_inflow_offsets": {
+    "matched_time": 26,
+    "native_block": 25,
+    "no_tracking": null
+  },
+  "predicted_first_inflow_effect": {
+    "matched_time": {"offset": 26, "flow_hex": "-0x1.ba341b5384315p-16"},
+    "native_block": {"offset": 25, "flow_hex": "-0x1.3a3e91a02d9a8p-17"},
+    "no_tracking": null
+  },
+  "hypothesis": "断面が固定の右気管支の最後の直列枝で、持ち越し項を上流順の慣性で (L × Uprev) × fs と求める。保存した対照の局所状態では、235点制御の押鍵26点後と256点制御の25点後に右流入が対照から初めて変わり、その点の流量が上流と一致すると予測する。両端の圧力には同じ標本から、右鳴管の流量には早くても次の標本から影響が届く。",
+  "observation": "右の末端枝で線形慣性まで揃えた先行版を通常render CLIで再描画し、持ち越し項を揃えた実験版と固定上流を比較する。押鍵後0〜63点の左右の気管支末端と手前のセル圧、枝流量、鳴管流量、気管入口と末端、首部、腔、放射を観測する。枝の式と節点圧を独立に再計算し、残る最初の差から原因を調べる。",
+  "acceptance": "対照CSVと固定上流の保存CSVを照合する。3条件・3版で気管支末端の流量と圧力、左右鳴管流量、気管入口圧をビット照合し、押鍵前、閉鎖時、追従0、最短伝播時刻を確認する。右気管支流入の登録済みの初差が消えることと、予測時刻・流量および残差の置換判定を確認する。"
+}

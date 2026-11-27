@@ -1,0 +1,19 @@
+{
+  "id": "firefox-process-tap-sample-clock-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_run": "firefox-process-tap-cubeb-write-44100-separate-prime-20261122-a",
+  "verification_marker_frames": [
+    6144,
+    8192,
+    10240,
+    12288,
+    14336,
+    16384,
+    18432
+  ],
+  "maximum_anchor_position_error_frames": 0.5,
+  "maximum_relative_pcm_residual": 0.025,
+  "minimum_joint_writes": 12,
+  "acceptance": "cubebとタップの最初の相関窓を原点に、連続したタップのサンプル時刻と機器Writeのサンプル番号で位置を写す。最初の照合に使わない7か所で独立に試験波形から位置を復元し、サンプル番号からの予測との差が0.5フレーム以内になることを確かめる。個々のWriteに対応するPCMの相対残差は0.025以下とする。第2版のホスト時計による判定を保存する。"
+}

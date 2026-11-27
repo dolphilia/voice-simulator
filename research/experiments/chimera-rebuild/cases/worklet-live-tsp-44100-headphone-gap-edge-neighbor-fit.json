@@ -1,0 +1,64 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-gap-edge-neighbor-fit",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 44100,
+  "waveforms": {
+    "run": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer-20261122-zero-control",
+    "case_id": "worklet-live-tsp-44100-headphone-gap-edge-gain-transfer",
+    "case_revision": 2,
+    "file": "artifacts/edge-samples.csv"
+  },
+  "training": {
+    "selection": "fit_292",
+    "component": "in_phase",
+    "window": [
+      -16,
+      112
+    ],
+    "gate_search": [
+      16,
+      50
+    ],
+    "gate_minimum_amplitude": 0.000244140625,
+    "gate_ratio": 0.5
+  },
+  "evaluation": {
+    "edge_window": [
+      0,
+      65
+    ],
+    "before_window": [
+      -16,
+      0
+    ],
+    "after_window": [
+      65,
+      112
+    ],
+    "duplicate": "replay_308",
+    "held_out": "different_316",
+    "controls": {
+      "fit_292": "continuous_early",
+      "different_316": "continuous_late"
+    },
+    "zero_signal_floor": 0.000001,
+    "maximum_zero_absolute_error": 0.00001,
+    "maximum_relative_residual": 0.025
+  },
+  "families": [
+    "filter_gated_pcm",
+    "filter_removed_pcm_only"
+  ],
+  "half_widths": [
+    1,
+    4,
+    8,
+    16,
+    32
+  ],
+  "relative_singular_value_cutoff": 1e-8,
+  "maximum_condition_number": 1000000,
+  "criteria": "位置は前回照合したタップの無音終了と固定ラグから取り、先行のcubeb座標を動かさない。292の同相のみを使う。探索内でcubebの絶対値が下限以上かつタップとcubebの比が最初に0.5以上になる点をゲート位置に固定する。前方のPCMをゼロにし、ゲート後のPCM全体に対称FIRを適用する条件と、ゲートで除かれたPCMだけを対称FIRに通して元から引く条件を比較する。FIRは直流利得1、半幅1・4・8・16・32とする。各行列の階数、特異値比、条件数を記録する。階数が係数数と一致し条件数が100万以下の候補だけを採否の対象にする。292の逆相と316の両成分の位置0〜64の相対残差が0.025以下で、連続対照で絶対値10⁻⁶以下だった316のゼロ入力標本をすべて絶対差10⁻⁵以内で予測できた候補を採用する。連続対照はゲートなしで確認し、308の同一波形は独立な波形として数えない。",
+  "prediction": "単一標本の固定ゲインよりも、隣接標本を使う候補の少なくとも1つが316のゼロ入力位置39の絶対誤差を減らすと予測する。ゲートで除いた分だけを処理する場合は、遅い区間がゲイン1に戻ると予測する。292の同相と逆相の形が近いため、別波形の316と行列の階数を見て、未知条件での再現を判定する。"
+}

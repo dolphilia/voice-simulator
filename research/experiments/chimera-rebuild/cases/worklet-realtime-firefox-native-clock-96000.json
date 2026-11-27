@@ -1,0 +1,21 @@
+{
+  "id": "worklet-realtime-firefox-native-clock-96000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "cross_browser_case": "worklet-realtime-cross-browser-96000.json",
+  "cross_browser_runs": [
+    "worklet-realtime-cross-browser-96000-20261121-a",
+    "worklet-realtime-cross-browser-96000-20261121-repeat"
+  ],
+  "hypothesis": "1 ms刻みのWorklet時計では、2 msと報告された量子でも実際のブラウザ処理が1.333 ms内に収まる場合がある。FirefoxのネイティブなWorklet処理の開始・終了を同じ試行の観測と照合すると、この区別ができる。",
+  "measurement": {
+    "trials": 2,
+    "marker": "WorkletNodeEngine::ProcessBlock",
+    "profiler_features": ["audiocallbacktracing", "nostacksampling", "nomarkerstacks", "markersallthreads"],
+    "thread_filters": ["Audio", "GraphRunner", "MediaTrackGraph", "GeckoMain"]
+  },
+  "criteria": {
+    "audio": "通常画面で96 kHz・128フレームの固定発声を採取する。出力フレーム番号とPCM・音響観測が保存済みの通常条件とビット一致する。",
+    "alignment": "通常の固定発声だけを実行し、起動待ちコールバック数と観測行数で同一スレッドのWorklet処理を一意に対応づけられれば、発声中のp99、予算超過数と従来の1 ms刻みの計測を併記する。範囲が異なるため、ネイティブ区間が予算を超えても内部の計時区間が超えたとは推定しない。",
+    "diagnostic_only": "ネイティブな印が取れない、または対応が一意でない場合は欠測として記録する。プロファイラーが稼働する条件は通常の事前登録の判定と別に残す。"
+  }
+}

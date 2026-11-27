@@ -1,0 +1,36 @@
+{
+  "id": "worklet-english-voice",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "ブラウザがCLIと同じ辞書・句計画・発声条件を使うと、英語テキストからの計画とPCMは一致する。疑問句の音高は平叙句より高く、/m/ では軟口蓋のポートが開き、鼻端の流量が増える。",
+  "english_voice_case": "english-mom-pop.json",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 79222,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 32,
+    "plan_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "expected_words": ["mom", "pop"],
+    "expected_intonation": ["question", "statement"],
+    "inter_phrase_pause_seconds": 0.35,
+    "nasal_seconds": [0.135, 0.17],
+    "minimum_nasal_port_area_cm2": 0.3,
+    "minimum_nose_peak_cm3_s": 100,
+    "quiet_windows": [
+      {"seconds": [0.72, 0.79], "maximum_pcm": 1e-5},
+      {"seconds": [1.60, 1.65], "maximum_pcm": 1e-6}
+    ],
+    "pitch_windows": [
+      {"seconds": [0.30, 0.39], "bounds_hz": [145, 156]},
+      {"seconds": [1.19, 1.26], "bounds_hz": [87, 101]}
+    ],
+    "pitch_min_hz": 65,
+    "pitch_max_hz": 230,
+    "yin_threshold": 0.15,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "nose_flow_cm3_s", "velum_port_area_cm2"],
+    "unrenderable_text": "Measure.",
+    "unrenderable_symbol": "ʒ"
+  }
+}

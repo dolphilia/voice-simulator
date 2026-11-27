@@ -1,0 +1,64 @@
+{
+  "id": "tsp-fk61-pcm2937-branch-seed",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "branch_drive": {
+    "run": "tsp-fk61-pcm2937-branch-drive-20261123-repeat",
+    "case": "tsp-fk61-pcm2937-branch-drive",
+    "manifest_sha256": "801aab9b97ea2e0a2516a1fb2aa175ddb182d482daadae60a110356137548e8a"
+  },
+  "terminal_load": {
+    "run": "tsp-fk61-pcm2937-terminal-load-20261123-certified",
+    "case": "tsp-fk61-pcm2937-terminal-load",
+    "manifest_sha256": "c0849eaf8558bc064ce0f1589eb47f619814540071c03b1f33ee03b0668dfd4a"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "focus_frame": 2937,
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "comparison_internal_samples": [
+      5840,
+      5880
+    ],
+    "local_internal_samples": [
+      5840,
+      5872
+    ],
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "start_scan_internal_samples": [
+      5840,
+      5857
+    ],
+    "previous_control_start": 5856,
+    "linear_prediction_max_ulps": 64,
+    "scope": "通常CLIで全PCMを照合した固定上流・下唇評価順試験版の採取系列を使う。5840〜5856の各開始標本で枝42→43の旧流量と旧慣性を別々または同時に上流の値へ交換し、旧運動量は交換後の積で整合させる。試験版の観測圧力・現在慣性・抵抗・損失を使う。口端の負荷は全条件で5840の試験版状態から進め、口端圧を枝・壁に戻さない。5863・5864の放射だけを出力PCMへ戻す。時刻と節点番号は0始まり、範囲は半開区間。"
+  },
+  "hypotheses": {
+    "flow_only_suffices_at_every_start": "5840〜5856の全開始標本で、旧流量だけを交換すると冒頭からPCM 2937まで一致する。",
+    "inertance_only_insufficient_at_every_start": "5840〜5856のどの開始標本でも、旧慣性だけを交換した場合はPCM 2937の差が残る。",
+    "older_flow_seed_is_larger_at_witness": "5840における旧流量だけの交換は、5856における同じ交換より5863の枝流量を大きく動かす。",
+    "prior_flow_is_larger_at_every_start": "どの開始標本でも、旧流量のみの交換のPCM 2937のf32変換前の変化量は、旧慣性のみの交換より大きい。"
+  },
+  "acceptance": "入力ハッシュと通常CLI・観測版・保存PCMの照合を確認する。枝と口端の無交換系列を各版で再計算し、各開始点の無交換条件と、5856の旧流量・旧慣性同時交換および観測枝の直接交換で前回の出力を再現する。全17開始点で4条件の結果を登録し、観測値を固定した枝の感度を独立した線形化で逐次計算し、実測の置換結果との残差を64 ULP以下とする。未達の予測はそのまま保存する。"
+}

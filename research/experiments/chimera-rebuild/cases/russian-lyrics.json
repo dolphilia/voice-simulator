@@ -1,0 +1,54 @@
+{
+  "id":"russian-lyrics",
+  "revision":1,
+  "upstream_revision":"c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis":"ロシア語歌詞では母音を弱化せず、明示強勢、ё、既知語、先頭母音の優先順で強勢を決める。軟音の25 msの /j/ は核を増やさない。共鳴音が子音群の先頭にあると前の音節へ残る。母音のない前置詞は次のロシア語の語と同じ句なら音節頭へ結合する。",
+  "voice_case":"song-voice-flat.json",
+  "lyric_cases":[
+    {"id":"stress-override","text":"мо́локо молоко́ молоко","stress":[1,0,0,0,0,1,0,0,1],"nuclei":["o","o","o","o","o","o","o","o","o"]},
+    {"id":"yo-priority","text":"по́ёт поёт","stress":[1,0,0,1],"nuclei":["o","o","o","o"]},
+    {"id":"fallback","text":"мама","stress":[1,0],"nuclei":["a","a"]},
+    {"id":"softness","text":"лук люк","tokens":[["ɫ","u","k"],["l","j","u","k"]],"timed":[[],[["j",0.025]]]},
+    {"id":"double-yod","text":"чьи","tokens":[["tʃ","j","j","i"]],"timed":[[["j",0.025]]]},
+    {"id":"geminate","text":"ва́нна","labels":["ва́н","на"],"timed":[[],[["n",0.105]]]},
+    {"id":"reflexive","text":"купа́ться","timed":[[],[],[["ts",0.21]]]},
+    {"id":"open-cluster","text":"я́блоко","labels":["я́","бло","ко"],"tokens":[["j","a"],["b","ɫ","o"],["k","o"]]},
+    {"id":"sonorant-coda","text":"се́рдце","labels":["се́р","дце"],"tokens":[["s","j","e","ɾ"],["ts","e"]]},
+    {"id":"soft-coda","text":"бо́льно","labels":["бо́ль","но"],"tokens":[["b","o","l","j"],["n","o"]]},
+    {"id":"devoicing","text":"дуб ло́дка","tokens":[["d","u","p"],["ɫ","o"],["t","k","a"]]},
+    {"id":"genitive","text":"его́ мно́го","tokens":[["j","e"],["v","o"],["m","n","o"],["g","o"]]},
+    {"id":"keep-proclitic","text":"в лесу́","labels":["в ле","су́"],"tokens":[["v","l","j","e"],["s","u"]]},
+    {"id":"voice-proclitic","text":"с горы́","labels":["с го","ры́"],"tokens":[["z","g","o"],["ɾ","ɨ"]]},
+    {"id":"devoice-proclitic","text":"в ти́хом","labels":["в ти́","хом"],"tokens":[["f","t","j","i"],["x","o","m"]]},
+    {"id":"phrase-reset","text":"в, лесу́","labels":["ле","су́"],"tokens":[["l","j","e"],["s","u"]]},
+    {"id":"switch-front-end","text":"в mom лесу́ 빵","labels":["mom","ле","су́","빵"]},
+    {"id":"sung-hyphens","text":"мо-ло-ко́ ~","labels":["мо","ло","ко́","~"],"word_ends":[false,false,true,true],"melisma":[false,false,false,true]},
+    {"id":"cyrillic-case","text":"ЛЮК люк","labels":["ЛЮК","люк"],"tokens":[["l","j","u","k"],["l","j","u","k"]]},
+    {"id":"decomposed-yo","text":"поёт","labels":["по","е"],"tokens":[["p","o"],["j","e"]],"stress":[1,0]},
+    {"id":"demo","text":"Но́чью ве́тер ти́хо поёт. Лу́нный све́т над ле́сом плывёт.","count":16}
+  ],
+  "song":[
+    {"id":"moloko","lyrics":"мо-ло-ко́ ~ рыба","midi":[57,60,64,67,64,60],
+     "nuclei":["o","o","o","o","ɨ","a"],"melisma":[false,false,false,true,false,false]},
+    {"id":"luk","lyrics":"лук люк","midi":[57,64],"nuclei":["u","u"],"soft_glide_duration_seconds":0.025}
+  ],
+  "demo_score":{
+    "bpm":112,
+    "midi_beats":[[64,1],[62,0.5],[60,0.5],[59,1],[60,1],[62,1],[59,1],[57,2],
+                  [60,1],[62,0.5],[64,1.5],[65,1],[64,0.5],[62,0.5],[59,1],[57,2]]
+  },
+  "measurement":{
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "seed":12345,
+    "host_block_frames":[128,77],
+    "lexical_duration_tolerance":1e-12,
+    "gesture_abs_tolerance":1e-12,
+    "pcm_abs_tolerance":1e-6,
+    "geometry_absolute_tolerance":1e-9,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "demo_unavailable":["tʃ","v","x"],
+    "window":"音節の全体で綴り、頭子音、核、末子音と強勢、明示長、語末・句末・メリスマを取得する。歌唱の全フレームで固定上流の調音計画、声門、口端、放射、加工前PCMを照合する。独立計算は MIDIのF0と拍から核の開始を求め、люк の /j/ が25 msで拍に終わることを確認する。",
+    "initial_state":"各譜例は初期姿勢・呼気・出力段を親ケースから引き継ぐ。2例とも120 BPM、一音符1拍、開始0.5 s。ブラウザから保存したケースをCLIで再演する。"
+  }
+}

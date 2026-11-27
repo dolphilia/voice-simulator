@@ -1,0 +1,47 @@
+{
+  "id": "songbird-chirps-full-pcm-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "patch_reference": {
+    "run": "songbird-chirps-beak-inlet-half-inertance-44100-20261123-repeat",
+    "manifest_sha256": "6a086305efbc5070dd1d8a668e991d7567263bdaad194520030d7988ac82e027",
+    "patch_count": 30
+  },
+  "call_reference": {
+    "run": "songbird-calls-20261120-repeat",
+    "manifest_sha256": "9d6128896116ffb36a69774c72a7637506e88d4d5e96c34de2f7d564f9f4be7c",
+    "case_id": "songbird-calls",
+    "variant": "chirps-44100"
+  },
+  "output_rate_hz": 44100,
+  "sample_rate_hz": 176400,
+  "frames": 48510,
+  "control_frames": 64,
+  "host_block_frames": [128, 77],
+  "windows_frames": {
+    "before_control_change": [0, 256],
+    "tracking_without_breath": [256, 320],
+    "first_breath_to_end_of_call": [320, 32384],
+    "after_call": [32384, 48510]
+  },
+  "expected_call_transitions": [[211, 3], [32384, 0]],
+  "expected_breath_start_frame": 320,
+  "archived_first_upstream_radiation_difference": 1033,
+  "limits": {
+    "control_and_target_absolute_tolerance": 1e-9,
+    "clock_absolute_tolerance_seconds": 1e-12,
+    "acoustic_peak_relative_tolerance": 1e-7,
+    "acoustic_absolute_floor": 1e-8,
+    "fir_peak_relative_tolerance": 1e-9,
+    "fir_absolute_floor": 1e-9,
+    "dc_absolute_tolerance": 1e-9,
+    "pcm_absolute_tolerance": 1e-6,
+    "minimum_pcm_peak": 0.03
+  },
+  "hypotheses": {
+    "first_radiation_difference_delayed": "放射の最初のビット差は、標準版の内部1033点より後へ移ると予測する。追従だけの短区間とは音高目標が異なるため、初差の正確な位置は観測する。",
+    "pcm_bit_exact": "内部の差は主に倍精度の丸めに由来し、間引きとゲインを経た全コールの float32 PCM は固定上流とビット一致すると予測する。ビット差の有無と既存許容差の判定を両方記録する。"
+  },
+  "observation": "保存した入力と固定上流系列を照合し、標準版および先行の30差分を復元した実験版で、通常の render-pcm に同じ chirps を通す。全194040内部点の放射後退差分と、全48510出力点のFIR間引き、DC除去、PCMを比較する。ホストブロック128で時系列とWAV、77でWAVを採取する。",
+  "acceptance": "標準版の既存CSVとWAVをバイト再現し、実験バイナリを先行実行のハッシュと照合する。絶対時刻、入力、開口、呼気、コールの遷移、制御変更前の無音は保持する。ホストブロック分割で各版のWAVが一致し、WAVとCSVのPCMが一致する。全点で既存の絶対・相対許容差を満たし、保存した放射から独立したFIR・DC除去・PCM換算で出力を再計算する。ビット差の最初の標本、件数、最大差を区間別に保存する。"
+}

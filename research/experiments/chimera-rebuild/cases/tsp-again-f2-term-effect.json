@@ -1,0 +1,39 @@
+{
+  "id": "tsp-again-f2-term-effect",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sweep": {
+    "run": "tsp-f2-annotation-again-pre-emphasis-20261123-repeat",
+    "case": "tsp-f2-annotation-again-pre-emphasis",
+    "manifest_sha256": "e3dcfaf7eafae7b01bccccad6620c9ff383ab00baaf9c3e295781b4ed2f679e5"
+  },
+  "alignment_reference": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "archive_case": "tsp-active-duration-pilot.json",
+  "measurement": {
+    "ipa": "ɛ",
+    "term": "F2 ɛ",
+    "target": {"utterance": "FK61_01", "speaker": "FK", "phone_seconds": [1.970, 2.080]},
+    "coefficients": [0.111, 0.112],
+    "cohort": {
+      "FA": ["FA01_03", "FA01_04", "FA01_06", "FA01_08", "FA01_09", "FA01_10"],
+      "FB": ["FB07_02", "FB07_07", "FB07_09", "FB08_02", "FB08_06", "FB09_02"],
+      "FC": ["FC13_02", "FC13_05", "FC14_02", "FC14_04", "FC14_07", "FC14_08"],
+      "FD": ["FD19_02", "FD19_08", "FD19_09", "FD19_10", "FD20_03", "FD20_05"],
+      "FE": ["FE25_04", "FE25_07", "FE25_10", "FE26_01", "FE26_02", "FE26_03"],
+      "FK": ["FK61_01", "FK61_02", "FK61_03", "FK61_04", "FK61_05", "FK61_06"]
+    },
+    "minimum_tokens": 3,
+    "minimum_training_speakers": 5,
+    "tolerance": 1e-10
+  },
+  "hypotheses": {
+    "speaker_median_change_smaller_than_token_change": "同じ話者の実録音のF2中央値に表れる変動は1トークンの差より小さい。",
+    "training_reference_and_scored_groups_unchanged": "確認用FKの1件を差し替えても、学習参照、合成側の診断、および採点対象3群に差は出ない。",
+    "two_tokens_leave_f2_cost_missing": "既存資料の2録音の範囲と、同じ話者から2件だけ残す対照はF2費用が欠測となる。"
+  },
+  "acceptance": "上流の収録メタデータでEH1を含む辞書順先頭6本ずつを登録した学習用女性5名と確認用FKの36録音を用いる。上流CLIの発話生成、MFA整列、音素対応、計測、集約と費用の関数を実際に呼ぶ。初回の対応と学習参照を共用し、FK61_01のagainの録音側F2だけを既定、係数0.111、係数0.112、欠測の4条件にする。話者ごとの有限なF2の件数・Hz中央値、log2値、性別参照の中央値・MAD、費用、診断群と採点群を照合する。試験用の支持数2件・3件および学習話者4名の参照欠測対照を出す。先行計測と元WAVの同一性とターゲットの位置を照合し、固定上流と独立Pythonの一致を機構検証の合否とする。"
+}

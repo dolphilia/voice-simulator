@@ -1,0 +1,48 @@
+{
+  "id": "lingual-nasals",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "/n/ は舌先、/ŋ/ は舌背で口側を閉じ、鼻端に流量を生じる。/ŋ/ は閉鎖セルの両側の枝流量がゼロでも、閉鎖より口端側で口端の流量が生じる。有声破裂音の前では、無声破裂音の前に比べ鼻への通路を閉じる指示が音素末尾から見て15 ms遅い。",
+  "speech_case": "alveolar-t.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"tip","text":"ɑnɑ","body":"male","nasals":[["n",0.015,0.020]]},
+    {"id":"dorsum","text":"ɑŋɑ","body":"male","nasals":[["ŋ",0.020,0.020]]},
+    {"id":"before-d","text":"ɑndɑ","body":"male","nasals":[["n",0.015,0.005]]},
+    {"id":"before-t","text":"ɑntɑ","body":"male","nasals":[["n",0.015,0.020]]},
+    {"id":"female-dorsum","text":"ɑŋɑ","body":"female","nasals":[["ŋ",0.020,0.020]]}
+  ],
+  "song": [
+    {"id":"nasalized-coda","lyrics":"국물","body":"male","nasals":[["ŋ",0.020,0.020],["m",0.010,0.020]],
+     "onsets":[["k"],["m"]],"codas":[["ŋ"],["l"]],"word_ends":[false,true]},
+    {"id":"separated","lyrics":"국 물","body":"male","nasals":[["m",0.010,0.020]],
+     "onsets":[["k"],["m"]],"codas":[["k"],["l"]],"word_ends":[true,true]}
+  ],
+  "notes":[{"midi":57,"beats":1},{"midi":64,"beats":1}],
+  "measurement": {
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "body_linear_scale":{"male":1.0,"female":0.9},
+    "geometry_absolute_tolerance":1e-9,
+    "gesture_absolute_tolerance":1e-12,
+    "independent_velum_abs_tolerance":1e-10,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "pcm_absolute_tolerance":1e-6,
+    "acoustic_closure_area_cm2":0.05,
+    "sealed_area_cm2":0.0002,
+    "open_lip_minimum_cm2":0.10,
+    "audible_port_area_cm2":0.01,
+    "minimum_closed_and_open_port_frames":64,
+    "minimum_nasal_ratio":0.80,
+    "minimum_nose_rms_cm3_s":1.0,
+    "dorsal_flow_probe":{
+      "variants":["dorsum","female-dorsum"],
+      "stride_output_frames":64,
+      "minimum_lip_peak_cm3_s":1.0,
+      "nose_fraction_absolute_tolerance":1e-10
+    },
+    "center_fraction":[0.30,0.70],
+    "window":"各鼻音の予定区間内で閉鎖・鼻端を比較する。舌で閉じる音では唇を開いたまま口腔または咽頭の最小断面が0.0002 cm²未満で、鼻腔へのポート面積が0.01 cm²以上の最長連続区間を取り、その中央40%で鼻端・口端のRMS流量を求める。対照の/m/は同じ式で唇の閉鎖を判定する。鼻腔ポートの指示・実位置・面積は全フレームで独立計算する。",
+    "browser_observed_fields":["gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_f0_hz","lip_aperture_cm","lip_minimum_cm2","nose_flow_cm3_s","velum_port_area_cm2","smoothed_f0_hz"]
+  }
+}

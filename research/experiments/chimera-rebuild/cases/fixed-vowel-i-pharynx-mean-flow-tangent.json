@@ -1,0 +1,22 @@
+{
+  "id": "fixed-vowel-i-pharynx-mean-flow-tangent",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ のポートのみ開条件で、咽頭内17枝に定常平均流量で求めた接線抵抗を入れると、咽頭損失を省いた場合と比べ、2,310 Hzの鼻端の複素誤差が50%以上減る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-supraglottal-loss-20261124-repeat",
+      "manifest_sha256": "ccb2c572d495284844e7a687390f09fb1e8cb23af9317295f9808d89dc2b34fb"
+    },
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "steady_window_internal_samples": [38400, 48000],
+    "pharynx_branch_count": 17,
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "model_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "固定 /i/ の同じ声道で口蓋帆ポートだけを0.30 cm²にした通常発声の保存観測を使う。両版で声門流量、発声姿勢および咽頭内を除く声門上枝の観測した二次損失を共通の駆動条件に用いる。",
+    "observation": "400〜500 msの咽頭内各枝の平均流量、RMS、逆流標本数、追加抵抗、二次圧力損失の2,310 Hz複素係数を採る。咽頭内の損失だけを省いた条件、平均流量の接線抵抗に置換した条件、観測した二次損失を戻した条件を鼻端で比較する。観測流量の2,310 Hz成分に接線抵抗を掛けた診断も計算し、損失則の近似誤差と流量を解き直す影響を確認する。",
+    "acceptance": "幾何から求めた接線抵抗を平均流量近傍の差分で照合する。抵抗を直接変更した節点解と、元の枝への圧力源の帰還から求めた圧力・流量を登録許容差内で照合する。観測損失を戻した鼻端と咽頭の寄与は前回の要約に照合する。研究版と固定上流の両方で、鼻端の複素誤差が50%以上減る仮説の成否と数値を保存する。"
+  }
+}

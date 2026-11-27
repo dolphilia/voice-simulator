@@ -1,0 +1,32 @@
+{
+  "id": "fixed-alpha-loss-low-flow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ の選択枝で、定常点以下の順流だけを前回の受動式に替えると、定常点の圧力差と傾き、仕事率の符号は保たれる。口端の660 Hzと770 Hzでは、低流量側と高流量側を別々に変更した複素差の和が、両側を同時に変えた複素差に近づく。相互作用の大きさは両側を変えた複素差の1%未満と予想する。低流量側は通常発声の770 Hzで高流量側の線形予測に向かう成分を弱め、他の6条件では強めると予想する。",
+  "reference": {
+    "run": "fixed-alpha-loss-high-flow-20261124-residual-repeat",
+    "case": "fixed-alpha-loss-high-flow",
+    "sha256": "c457c8422cc67942ca05f42be6b7c10f194661bf102179b5ff4915913ff6cf1b"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "variants": {"baseline": [], "one_branch": [[26, 27]], "three_branches": [[25, 26], [26, 27], [27, 28]]},
+    "input_mean_error_lt_cm3_s": 1e-10,
+    "series_peak_relative_error_lt": 1e-9,
+    "dc_stationarity_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "work_rate_negative_tolerance_relative_to_peak": 1e-9,
+    "complex_change_reconstruction_error_lt": 1e-6,
+    "interaction_reconstruction_error_relative_to_joint_change_lt": 1e-8,
+    "first_response_peak_relative_threshold": 1e-10,
+    "hypothesis_interaction_relative_to_joint_change_lt": 0.01
+  },
+  "input": "固定 /ɑ/、96 kHz、通常発声・固定LFの保存声門流量、定常流だけの対照と対象枝は前回と同じ。標本76,800から新規の低流量側単独の介入を描画する。無変更、高流量側単独、両側の受動化は同じ条件のハッシュ照合済み観測を使う。",
+  "observation": "切替直前の1標本、切替直後128標本、末尾22周期とその直前の1標本を照合する。上流と研究版の時系列、定常流対照、選択枝が定常点の上下を通ること、圧力損失と仕事率、切替前の4条件の一致を確認する。低流量側の単独効果と4条件の相互作用を、離散節点計算で圧力源に換算してそれぞれ再構成する。相互作用の再構成誤差は両側を変えた複素差で正規化する。相互作用の大きさと各効果の符号は仮説の結果として報告する。"
+}

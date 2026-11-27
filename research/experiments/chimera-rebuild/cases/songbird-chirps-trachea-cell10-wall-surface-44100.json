@@ -1,0 +1,42 @@
+{
+  "id": "songbird-chirps-trachea-cell10-wall-surface-44100",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-sac-momentum-44100-20261123-b-repeat",
+    "manifest_sha256": "6dbaf8e2759665e5eb0e02ce1272845149af2aa44e46f50a36a0009e66367d31"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "trachea_cell_index": 10,
+  "trachea_cells": 16,
+  "trachea_length_cm": 3.6,
+  "trachea_area_cm2": 0.045,
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000.0,
+    "stiffness_dyn_cm3": 1000000.0
+  },
+  "predicted_first_wall_effect": {
+    "matched_time": {"offset": 7, "flow_hex": "0x1.dedb8677589d4p-33"},
+    "native_block": {"offset": 7, "flow_hex": "0x1.b791ad20e9e72p-33"},
+    "no_tracking": null
+  },
+  "native_pressure_offsets": {
+    "0": 39, "1": 38, "2": 37, "3": 35, "4": 34, "5": 33,
+    "6": 32, "7": 31, "8": 30, "9": 29, "10": 28
+  },
+  "hypothesis": "256点制御で気管セル1への流出と気管入口圧が押鍵39点後に分かれる過程を、セル1から2への流出を起点にセル10まで追う。セル10圧が分かれる28点後では直前圧と両方向の枝流量が一致し、壁流量の置換で圧力が一致する。セル10だけの壁面積を上流順に評価すると、両制御の押鍵7点後の壁流量が予測値で一致し、256点制御のセル10圧の28点後の差も解消する。",
+  "observation": "通常render CLIで先行の3条件・内部176400 Hz・押鍵後0〜63点を再現する。先行CSVにある気管全16セルと15枝、壁の流量と変位および放射を利用する。流量は入口から末端へ向かう向きを正とする。",
+  "acceptance": "対照と上流CSVをハッシュ照合し、気管内部の圧力・枝流量・壁流量と変位を別計算に照合する。セル10の最初の壁流量の差を予測値で解消する。壁流量の変更だけでセル10圧を変えられることを局所置換と連続描画で確認し、上流と最初に異なる点および壁面積の変更が伝わる時刻を保存する。追従0では無励振を確認する。"
+}

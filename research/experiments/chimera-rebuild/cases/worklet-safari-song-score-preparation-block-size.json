@@ -1,0 +1,22 @@
+{
+  "id": "worklet-safari-song-score-preparation-block-size",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "reference": {
+    "case": "worklet-safari-song-split-score-preparation.json",
+    "run": "worklet-safari-song-split-score-preparation-20261122-repeat",
+    "trial": "pair-1-split"
+  },
+  "warm_up_frames": 16384,
+  "block_frames_by_condition": {"split-128": 128, "split-256": 256},
+  "marker_capture_quanta": 640,
+  "condition_order": [["split-128", "split-256"], ["split-256", "split-128"], ["split-128", "split-256"], ["split-256", "split-128"]],
+  "minimum_median_startup_reduction_ms": 120,
+  "preparation_reduction_tolerance_ms": 25,
+  "maximum_median_interior_gap_increase_ms": 4,
+  "criteria": {
+    "settings": "Safariの通常歌唱からPop Deeを48 kHz、乱流係数1、出力31,200サンプル、観測刻み64で出す。合成器の予備描画総量16,384フレームとWeb Audioの量子128フレームを固定し、1回のコールバックで持続状態を進める量だけ128か256に変える。4ペアを測り、別のディレクトリからペア内の順序を反転して再実行する。",
+    "identity": "分割は128回または64回連続で進み、最終片の次の量子から従来の予約条件を適用する。先行信号81,920サンプルは独立計算、歌唱31,200サンプルと488観測点および調音計画は保存済みの128フレーム分割条件に一致する。",
+    "timing": "第1片と同じContextフレームの前後の間隔を別に記録し、第2片から最終片までに対応する先行信号の間隔の最大値を測る。クリックから歌唱開始までのペア中央値は256フレームで120 ms以上短くなると予測する。分割準備そのものは64量子分の約170.67 msだけ短くなり、ペア中央値のずれを25 ms以内と予測する。定常部の最大間隔は256フレームでやや増え得るが、ペア中央値での増加は4 ms以下と予測する。"
+  }
+}

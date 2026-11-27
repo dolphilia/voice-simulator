@@ -1,0 +1,56 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-load-416-repeat",
+  "revision": 1,
+  "base_case": "worklet-live-tsp-44100-headphone-load.json",
+  "load": {
+    "order": [
+      416,
+      416,
+      416,
+      416,
+      416,
+      416
+    ],
+    "first_draw_frames": 64,
+    "lead_offsets": [
+      0,
+      2,
+      4,
+      16
+    ],
+    "delay_one_quantum": true,
+    "preparation_window_before_frames": 3072,
+    "preparation_window_after_frames": 4096,
+    "in_phase_marker": {
+      "shape": "smooth-binary",
+      "chips": 8191,
+      "frames_per_chip": 16,
+      "seed": 305419896,
+      "scale": 512
+    }
+  },
+  "repeat_analysis": {
+    "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+    "capture_runs": [
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-1",
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-2",
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-3",
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-4",
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-5",
+      "worklet-live-tsp-44100-headphone-load-416-repeat-20261122-6"
+    ],
+    "request_frames": 256,
+    "sample_rate_hz": 44100,
+    "maximum_server_host_error_us": 25,
+    "maximum_write_delay_periods": 2,
+    "wide_write_frames": 512,
+    "minimum_stereo_zero_frames": 256,
+    "model": {
+      "maximum_relative_residual": 0.025,
+      "minimum_other_family_margin": 0.03,
+      "flank_frames": 768
+    }
+  },
+  "criteria": "通常発話とのWAV・状態の一致と、観測対象の256フレーム要求内の破棄描画位置0・発話位置128を全試行で照合する。破棄描画前3072フレームから発話開始後4096フレームまで、先行信号、予定サンプル番号、Audio Client、同じ機器・エンジン・ストリームのWriteを観測する。予算は256 / 44100秒。最終描画要求の直後の正の飛び、次の予定サンプル位置を含む512フレームWrite、タップの正味増加と観測窓内の予定番号の飛びの総和の一致、およびそのWriteのサンプル時計に対応づけた窓と256フレーム以上の完全なステレオ無音区間の重なりがあるときに再現と数える。Writeとタップの窓は最後の描画要求の位置と先行信号から換算し、重なりの長さも記録する。局所の挿入モデルは単一の飛びで窓が成立する場合だけ評価する。元の判定、欠測理由、飛びの長さを含む観測値は個別に記録する。",
+  "prediction": "416フレームの最後の片を最初の発話量子と同じ要求に置くと、6試行の全てでcubebとAudio Clientの区間が5.805 msを超え、同じ機器のWriteと照合できると予測する。そのうち1試行以上で正の飛びと512フレームWrite・両チャンネル無音の組合せが再現し、1試行以上では予定番号が連続すると予測する。直前の292フレームという飛びの長さは個別に照合する。"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "csd-vibrato-aperiodicity",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "csd-song-planning-20261121-final",
+  "songs": [
+    {
+      "id": "en001a",
+      "split": "calibration",
+      "wave_run": "csd-acoustic-f0-en001a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en001a.json",
+      "notes": 86,
+      "centers_per_signal": 4032
+    },
+    {
+      "id": "en005a",
+      "split": "held_out",
+      "wave_run": "csd-acoustic-f0-en005a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en005a.json",
+      "notes": 106,
+      "centers_per_signal": 4707
+    }
+  ],
+  "measurement": {
+    "hop_seconds": 0.005,
+    "minimum_run_seconds": 0.4,
+    "minimum_peak_correlation": 0.5,
+    "allowed_rate_hz": [4, 9],
+    "lag_min_frames": 2,
+    "published_tolerance": 0.005000001,
+    "published_score_term_tolerance": 0.000050001,
+    "raw_score_tolerance": 1e-8,
+    "independent_residual_tolerance_cents": 1e-9,
+    "independent_correlation_tolerance": 1e-9,
+    "first_cents_difference": 0.000001,
+    "first_aperiodicity_difference": 0.000001
+  },
+  "controls": {
+    "rates_hz": [4.5, 5.5, 8.5],
+    "fast_rates_hz": [10, 12, 40],
+    "peak_cents": 50,
+    "contour_frames": 400,
+    "rate_tolerance_hz": 0.3,
+    "depth_tolerance_cents": 8,
+    "min_frames": 80,
+    "trend_offset_cents": 40,
+    "trend_slope_cents_per_frame": 0.5,
+    "pcm_tone_hz": 330,
+    "pcm_loud_amplitude": 0.2,
+    "pcm_quiet_amplitude": 0.00001,
+    "maximum_periodic_aperiodicity": 0.03,
+    "pcm_rate_hz": 48000
+  },
+  "hypothesis": "5 ms刻みの連続区間で4.5、5.5、8.5 Hzの周期変調を入力すると周期と深さを回収でき、線形傾斜を加えても残差波形は一致する。10、12、40 Hzでは基本周期に対応する最初の山で範囲外になり、後の周期倍数では採用されない。79フレームは対象外、80は対象となり、159フレームの中央1点を欠測にすると79フレームの2区間に分かれて対象外になる。有声判定より先にYINを計算する上流では、規則的な弱い音がゲートで無声になっても非周期性は低い。欠測として省いた場合の音符中央値との差は観測値として残す。",
+  "measurement_description": "先行F0表の5 ms格子を音符ごとに再確認する。録音、固定上流、候補のF0と窓内の非周期性を使う。電力ゲートで省かれた非周期性は同じ波形と窓で補い、波形外は上流どおり1.0を入れる。ビブラートでは最長の連続有声区間（同長なら先頭）を取り、平均と線形傾斜を引き、残差の分散で重なり正規化した自己相関をとる。最初のしきい値を満たす局所最大を放物線で補間し、周期の逆数が4–9 Hzの範囲内なら残差RMSから深さを求める。全音符で有効区間、相関候補、欠測理由と非周期性の中央値を記録する。",
+  "acceptance": "両曲の192音符、3波形の全26,217フレームを使い、F0有声判定を保存値から変えず、補完したゲート窓と波形外窓を識別できること。既知周期、範囲外、線形傾斜、有声区間の長さ、弱い周期信号と無音の対照が通ること。線形回帰と自己相関を独立計算に照合する。録音と固定上流について各音符と曲全体の値を通常報告の丸め幅内で再現し、調整用はスコアの丸め前の区間採否・深さ・周期数・有声率・非周期性を、両区分はスコアの該当項目を照合する。候補での検出状況と値は観測として扱う。"
+}

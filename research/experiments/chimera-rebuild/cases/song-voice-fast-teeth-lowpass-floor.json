@@ -1,0 +1,25 @@
+{
+  "id": "song-voice-fast-teeth-lowpass-floor",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "song-voice-fast.json",
+  "reference_run": "song-voice-fast-constriction-source-20261121-repeat",
+  "zero_reference_run": "worklet-song-voice-fast-20261121-return-reference",
+  "turbulence": { "scale": 1, "glottis_gain_multiplier": 0, "constriction_gain_multiplier": 0, "teeth_lowpass_floor_hz": 1200 },
+  "noise_seed": 12345,
+  "pcm_difference_floor": 1e-6,
+  "filter_pressure_tolerance_dyn_cm2": 1e-9,
+  "teeth_band_absolute_tolerance_hz": 1e-7,
+  "teeth_gain_absolute_tolerance": 1e-12,
+  "windows": {
+    "before_reopening": [27840, 27904],
+    "first_opening": [27904, 27968],
+    "after_next_control": [27968, 28032]
+  },
+  "hypothesis": "固定上流の再現版を基準に、歯の低域通過周波数だけに1,200 Hzの下限を設ける。励起が初めて正になる出力フレームは揃い、基準では励起から枝圧の注入まで41フレーム空いた区間が短くなる。口腔の閉鎖中に係数0とのPCM差は生じず、開口中は枝圧、放射、PCMの差が基準より早く出る。",
+  "criteria": {
+    "input": "同じPop Dee、240 BPM、48 kHz出力、96 kHz内部、49,200フレーム。全体係数1、声門と狭窄のゲイン0。固定上流および候補の保存済み再現版と全体係数0から、ケースと出力のハッシュを照合して読む。",
+    "acquisition": "下限を省略した候補の調音計画、時系列、PCMを保存済み候補にバイト照合する。下限ありの候補を通常のCLIから実行し、128/77フレーム分割、出力数、全観測列の有限性、再現版と同じ計画・呼気・音高・開大・乱流源の枝を検査する。歯の有効周波数とゲインを独立計算し、枝変更後のフィルタと注入圧を保存した源の配置・励起とシードから照合する。",
+    "observations": "基準と候補の各条件を全体係数0とも比較し、歯の励起、順逆両方向の枝圧、放射、PCMのビット差と10⁻⁶超の初回位置を読む。3区間の差のピークとRMSを求める。区間の終端は含めない。閉鎖の判定は口腔最小断面が既存ケースの閾値以下かで確認する。",
+    "verdict": "励起開始、励起から注入までの間隔、放射とPCMの初回、および閉鎖中のPCM差について、取得判定と予測判定を独立に残す。変更後の固定上流とのPCM差は改善案の効果として記録する。"
+  }
+}

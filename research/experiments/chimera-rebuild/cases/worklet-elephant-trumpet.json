@@ -1,0 +1,35 @@
+{
+  "id": "worklet-elephant-trumpet",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-trumpet.json",
+  "source_revision": 1,
+  "hypothesis": "公式順序ではtrumpet開始から所有終了まで、弁が作動するすべてのサンプルで4.5(1−mode)が自由開口を上回り、実断面を決める。自由開口が変動する区間にも鼻先の放射が残る。96 kHzで700 Hzを指定しても、同じ初期状態からの先頭32,768フレームの加工前PCMと観測値は変わらない。44.1 kHzでは置き換え・編集・停止の要求と64フレームごとの平滑化がCLIと同じ出力サンプルで起きる。",
+  "measurement": {
+    "variants": ["official-trumpet-48000", "switch-stop-44100", "requested-pitch-96000", "default-pitch-96000-prefix"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "official-trumpet-48000": [[249599, 312065]],
+      "switch-stop-44100": [[48020, 48065], [62316, 62369], [86010, 86017]],
+      "requested-pitch-96000": [[0, 32768]],
+      "default-pitch-96000-prefix": [[0, 32768]]
+    },
+    "extra_output_frames": {
+      "official-trumpet-48000": [],
+      "switch-stop-44100": [],
+      "requested-pitch-96000": [],
+      "default-pitch-96000-prefix": []
+    },
+    "reed_reference_windows_output_frames": {
+      "official-trumpet-48000": [249599, 312065],
+      "requested-pitch-96000": [0, 32768],
+      "default-pitch-96000-prefix": [0, 32768]
+    },
+    "health": {"exclude_startup_blocks": 2, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

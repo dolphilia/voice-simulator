@@ -1,0 +1,42 @@
+{
+  "id": "elephant-rumble",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": "elephant-fixed-voice.json",
+  "hypothesis": "rumbleでは鼻側の目標を1に保持し、呼気ゲートが0.3秒で1に達して2.7秒まで保たれ、3.1秒で0へ戻る。音高は開始時の15 Hzから2.7秒の12 Hzまで下がる。時間の異なる二つの窓では瞬時F0の平均も下がる。演奏値の変更は圧と粗さの目標には直ちに現れ、所有中の音高と経路の目標には終了時に現れる。手動ゲートがコールより高ければ、次の制御から手動ゲートが採用される。",
+  "elephant_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 249600,
+    "shape": {"pitch_hz": 14.0, "pressure_cm_h2o": 16.0, "trunk": 1.0, "chaos": 0.2},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "rumble"}}],
+    "observe_call": true,
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-rumble-48000", "official_prefix": true, "first_control": 76800,
+       "end_frame": 228032, "curve_frames": [76800, 91200, 139200, 206400, 225600, 227968, 228032],
+       "decline_windows_seconds": [[0.6, 1.2], [2.0, 2.6]]},
+      {"id": "manual-stop-44100", "sample_rate_hz": 44100, "frames": 76000,
+       "shape": {"pitch_hz": 19.0, "trunk": 0.05},
+       "first_control": 192, "end_frame": 61913,
+       "curve_frames": [173, 191, 192, 13440, 30012, 30013, 30016, 40064, 54848, 61912, 61913, 61952],
+       "events": [{"frame": 173, "play_call": {"id": "rumble", "pitch_hz": 22.0, "amplitude": 0.8}},
+                  {"frame": 30013, "params": {"pitch_hz": 31.0, "trunk": 0.2, "pressure_cm_h2o": 22.0, "chaos": 0.6}},
+                  {"frame": 40019, "gate": 0.95}, {"frame": 54813, "gate": 0.0},
+                  {"frame": 61913, "stop_call": true}]},
+      {"id": "natural-end-96000", "sample_rate_hz": 96000, "frames": 332000, "first_control": 64,
+       "end_frame": 302528, "curve_frames": [17, 63, 64, 28864, 124864, 259264, 297664, 302464, 302528],
+       "events": [{"frame": 17, "play_call": {"id": "rumble"}}],
+       "decline_windows_seconds": [[0.6, 1.2], [2.0, 2.6]]}
+    ],
+    "rumble_keys": {"pitch_reference_hz": 14.0, "pitch_hz": [[0.0, 15.0], [2.7, 12.0]],
+                    "gate": [[0.0, 0.0], [0.3, 1.0], [2.7, 1.0], [3.1, 0.0]],
+                    "trunk": 1.0, "mode": 0.0, "ownership_tail_seconds": 0.05},
+    "smoothing_seconds": {"pitch_hz": 0.05, "pressure_cm_h2o": 0.02, "chaos": 0.05},
+    "pitch_hz_limits": [8.0, 45.0],
+    "independent_pitch_tolerance_hz": 2e-11,
+    "stage_observations": "全フレームでコールID、制御時計、音高・経路・呼気圧・粗さの目標と平滑値を固定上流および独立計算と照合する。ゲート目標、初回取り込み、所有の終了と鼻の弁の固定面積を照合する。既存の圧力、声門、断面、放射、出力段の系列と許容差は固定発声から引き継ぐ。公式CLIの先頭249,600フレームとrumbleだけの172,800フレームを、固定上流プローブと公式WAVで比較する。"
+  }
+}

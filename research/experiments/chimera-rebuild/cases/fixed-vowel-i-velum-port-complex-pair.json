@@ -1,0 +1,29 @@
+{
+  "id": "fixed-vowel-i-velum-port-complex-pair",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の7.2 cmH₂Oの再実装版で、第1〜22倍音のうち2成分の微分を足した予測から、2,310 Hzの鼻端の複素残差の絶対値が最小になる組を選ぶ。実測値の有限差し替えで選んだ組の改善率は、7.2 cmH₂Oの全231組で最良の改善率から5ポイント以内に入る。同じ組を5.76 cmH₂Oへ適用しても両版・両肺圧で25%以上改善し、2,420 Hz単独と前回の射影順位の組を上回る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-loss-sensitivity-20261124-repeat",
+      "manifest_sha256": "f53b1b9701ef80207c8b9415d8b25312c339d47e1638b3a8a4d7514a1d12b14b"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "harmonic_count": 22,
+    "single_control_frequency_hz": 2420,
+    "train_pair_maximum_reduction_gap": 0.05,
+    "minimum_selected_pair_nose_error_reduction_fraction": 0.25,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "固定 /i/ の第1〜22倍音、観測との差分、2,310 Hzのポート損失の微分は前回の保存結果を使う。候補は異なる2周波数の全231組。選択は7.2 cmH₂Oの再実装版で一度だけ行い、最小値が同率なら周波数の昇順で最初の組を使う。選んだ組は両版・両肺圧で固定する。",
+    "observation": "全候補で、成分2つの微分による鼻端変化の和から予測した誤差と、実測の流量係数を同時に差し替えて二次損失を再計算した誤差を保存する。固定した組、各肺圧で最良の有限差し替え、前回の射影順位の組、2,420 Hz単独を照合する。ポートの平均と他60枝の圧力源は基準のままとする。",
+    "acceptance": "保存済みの観測係数、ポート損失、鼻端へのゲインを時間系列・節点解から復元する。2成分だけを差し替えたことを周波数領域で検査し、損失のFFTと鼻端の直接求解を照合する。順位と誤差を両版で照合し、有限差し替えとの誤差および別肺圧への適用の成否をそれぞれ保存する。"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "duet-head-turbulence-body",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "turbulence_case": "duet-head-turbulence.json",
+    "turbulence_run": "duet-head-turbulence-20261120-repeat",
+    "transport_run": "duet-transport-20261120-clock-bracket-repeat",
+    "transport_manifest_sha256": "16ecaa5119de8d01a1a86224407a5d4487f9abc8bd81a530c0f0a846600272c2",
+    "upper_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da"
+  },
+  "voices": [
+    {"body": "child", "body_mix": {"female": 0, "child": 1}, "wall_cells": [11, 13], "gain": 0.35},
+    {"body": {"female": 0.4, "child": 0.3}, "body_mix": {"female": 0.4, "child": 0.3}, "wall_cells": [15, 16], "gain": 0.35}
+  ],
+  "sample_rate_hz": 48000,
+  "show_frames": 105600,
+  "hop_samples": 768,
+  "observation_window_seconds": [0.25, 1.65],
+  "hypothesis": "前回と同じ譜面と出力レートのまま体型を替えると、CHTLのセル数と内部枝の範囲が声部ごとに変わる。候補の各声部に実際に生成したグラフを併記すれば、各声部の声門源は0.2 cm、口腔源は咽頭の長さより先の位置に描かれる。固定上流も自身の枝配置で同じ分類を示す。候補の枝番号を固定上流の配置で解釈すると、少なくとも一つの観測点で位置が変わるか欠測する。",
+  "criteria": {
+    "input": "保存済み二声のケースの体型だけを子どもと混合に変更し、通常のrender-pcm-teleでPCMとCHTLを作る。48 kHz、768サンプル間隔、体型係数とセル数を照合する。固定上流の体型はHumanVoiceの正規の生成経路を使う。混合体型を指定できない上流CLIの代わりに小さい観測プログラムで同じ歌唱と乱流情報を出し、子どもについて通常の上流CLIに照合する。",
+    "selection": "各声部について、指定秒区間内の声門と口腔の有効な乱流の最大強度を持つ行を選ぶ。同点では早い行を採る。両声部が静かな行0を加え、観測したサンプル番号を保存する。再生中に口腔側から前の声門側へ戻るシークを含める。",
+    "geometry": "候補の各声部で、CLIの枝範囲から求めた位置と、960・390 CSS pxでの線分・不透明度・頂点バッファを独立計算と照合する。固定上流の枝位置は、その体型のRustで得た範囲とWASM上のVoiceModelを比較する。各生成元の枝を照合し、候補の記録を固定上流の配置で読む負の対照も保存する。",
+    "invariants": "CHTLの読出し、前後シーク、静かな行、一時停止と表示切り替え、左右の枝情報を取り違えたときの拒否を確認する。従来の男声と女声の公演は同じテレメトリ・音源を使い、従来ケースで回帰を確認する。"
+  }
+}

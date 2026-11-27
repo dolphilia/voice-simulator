@@ -1,0 +1,23 @@
+{
+  "id": "coreaudio-headphone-drift-44100-leading-silence",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "reference_waveform_departure_output_frame": 27088,
+  "maximum_departure_deviation_frames": 256,
+  "phase_clock_case": "coreaudio-headphone-drift-44100-clock-plateaus.json",
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-leading-control-1", "coreaudio-headphone-drift-44100-leading-silence-1"],
+    ["coreaudio-headphone-drift-44100-leading-control-2", "coreaudio-headphone-drift-44100-leading-silence-2"],
+    ["coreaudio-headphone-drift-44100-leading-control-3", "coreaudio-headphone-drift-44100-leading-silence-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-leading-control-1", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-leading-silence-1", "leading_frames": 1024},
+    {"run_id": "coreaudio-headphone-drift-44100-leading-silence-2", "leading_frames": 1024},
+    {"run_id": "coreaudio-headphone-drift-44100-leading-control-2", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-leading-control-3", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-leading-silence-3", "leading_frames": 1024}
+  ],
+  "prediction": "PCMの前に1,024フレームの無音を加えても、同じ出力の初期化後の時計に従うなら最初の波形差は出力フレーム27,088付近に残り、試験信号に相対な位置は1,024フレーム早まる。波形開始に従うなら出力で28,112付近に移り、信号に相対な位置は保たれる。既知の3回の再生から、前者が少なくとも2組で成立すると予測する。帯域の低下と位相の変化、既定出力の復元も記録する。",
+  "criteria": "各組で0と1,024フレームの無音以外を揃え、trialsに並ぶ順に採取する。出力規格と両時計を基準ケースに従って照合し、出力が書いた最初の1,024フレームのデジタルゼロと続く原PCMをビット検査する。前後マーカーと純音の窓は信号に相対な位置で固定し、試験音前後の切れ目を除く。波形差の出力開始からの位置が無音なしで基準27,088から256フレーム以内の場合、組の波形差の出力上の位置の差が0または1,024から256フレーム以内の方を採る。どちらにも入らない組、帯域低下や位相の開始が欠けた場合、採取条件の不成立は区別する。窓で検出した19,845 Hzと位相の変化の座標、各位置の出力とタップの要求内オフセット、ホスト時刻、回復前後の時計も残す。"
+}

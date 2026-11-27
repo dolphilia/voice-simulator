@@ -1,0 +1,36 @@
+{
+  "id": "worklet-live-song-fast-safari-recording-pause",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "safari",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "offline_condition": "floor1200",
+  "recording_study": "worklet-song-recording.json",
+  "pause_reference": {
+    "case": "worklet-live-song-fast-safari-mid-song-pause.json",
+    "run": "worklet-live-song-fast-safari-mid-song-pause-20261121-repeat"
+  },
+  "record_song": true,
+  "condition_order": [["continuous", "paused"], ["paused", "continuous"]],
+  "startup_timeout_seconds": 10,
+  "mid_song_pause": { "target_output_frame": 28672, "target_tolerance_frames": 2048, "hold_ms": 120 },
+  "recording_measurement": {
+    "audio_alignment_windows_seconds": [[0.47, 0.58], [0.65, 0.77]],
+    "audio_offset_search_seconds": [-0.035, 0.5],
+    "minimum_audio_correlation": 0.75,
+    "video_anchors_output_frames": [24000, 34000],
+    "video_steady_max_pixel_delta": 2,
+    "minimum_pause_signature_seconds": 0.06,
+    "maximum_hold_estimate_error_seconds": 0.07
+  },
+  "hypothesis": {
+    "graph": "歌唱録画中にも出力28,672フレーム付近で停止できる。約120 msの停止中はContextのフレームが進まず、停止前と再開後は128フレーム刻みの隣同士になる。加工前のPCMと観測値は既存のオフライン基準に一致する。",
+    "encoded_audio": "録画時刻で停止区間を保つなら、復号音声を加工前PCMに照合した停止後の時刻差は、停止前より約120 ms増える。音声PTSの飛び、復号サンプルの間隔、休止が時間軸から詰まる場合を独立に測る。",
+    "encoded_video": "停止中も録画の壁時計が進むなら、デコード映像の進捗バーが停止点付近に留まり、停止点を挟む2つのバー位置間のPTS差は連続条件より約120 ms長くなる。"
+  },
+  "criteria": {
+    "input": "Safari 18.6の通常の歌唱を録画ボタンを使い、Pop Dee、240 BPM、48 kHz出力、96 kHz内部、歯フィルタ下限1,200 Hz。三次元断面を含めず、通常の録画形式選択を使う。前回の非録画条件と同じ停止位置・保持時間を使い、各試行でページとContextを新設する。各回2組を順序反転で取得し、別ディレクトリから再実行する。",
+    "audio": "保存動画はffprobeで各音声フレームのPTSとサンプル数を取り、ffmpegでモノラルPCMへ復号する。停止の前後に置いた固定窓を加工前PCMと正規化相関で整列する。復号順のオフセットと、対応するフレームPTSに換算したオフセットを別々に保存する。合否は両窓の観測値と相関を取得できることとし、停止区間の算入は予測として別に扱う。",
+    "video": "動画PTSと進捗バーの幅を全フレームから採取する。既存のキャンバス上のバー寸法を使い、24,000・34,000出力フレームに相当する最初のPTSの差を求める。停止位置の前後2画素以内でバーが変わらないPTS区間と、動画PTSの最大間隔も保存する。",
+    "comparison": "音声の窓間オフセットの変化と映像のバー位置間のPTS差を、同じ組の連続条件から引く。その増加が60 ms以上であり、実測したContext保持時間から70 ms以内なら壁時計の停止を保つ予測を支持する。加工前PCMの一致は符号化メディアの予測の成否と分けて判定する。"
+  }
+}

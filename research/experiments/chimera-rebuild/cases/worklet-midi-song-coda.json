@@ -1,0 +1,159 @@
+{
+  "id": "worklet-midi-song-coda",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "worklet-midi-song.json",
+  "input": {
+    "body": "male",
+    "lyrics": "cap",
+    "output_rate_hz": 48000,
+    "events": [
+      {
+        "seconds": 0.14,
+        "type": "note-on",
+        "note": 45,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.65,
+        "type": "note-off",
+        "note": 45
+      }
+    ]
+  },
+  "hypothesis": "歌詞capの持続母音はキーを保持する間は開口を保ち、最後の離鍵を採用した後に語末の無声両唇閉鎖/p/へ移る。固定上流と候補で、実際の採用時刻から閉唇・開放と音の減衰を測る。",
+  "measurement": {
+    "baseline_run": "worklet-midi-song-20261120-final",
+    "render_end_seconds": 1.3,
+    "expected_note": 45,
+    "coda_ipa": "p",
+    "held_window_before_release_seconds": [
+      -0.2,
+      -0.05
+    ],
+    "coda_window_after_release_seconds": [
+      0,
+      0.2
+    ],
+    "decay_window_after_release_seconds": [
+      0.3,
+      0.5
+    ],
+    "observation": [
+      "lip_minimum_cm2",
+      "glottal_voicing",
+      "radiation_derivative_cm3_s2",
+      "pcm_f32"
+    ],
+    "render_quantum_frames": 128,
+    "control_frames": 64,
+    "maximum_relative_event_error_seconds": 0.055,
+    "maximum_cli_observation_error": 1e-11,
+    "open_lip_area_cm2": 0.2,
+    "closed_lip_area_cm2": 0.05,
+    "minimum_held_voicing": 0.5,
+    "maximum_closed_flow_ratio": 0.01,
+    "maximum_release_rms_ratio": 0.003,
+    "pcm_difference_threshold": 1e-06,
+    "maximum_pcm_difference_delay_seconds": 0.2,
+    "expected_p_plan": {
+      "upstream_intrinsic_seconds": 0.085,
+      "singing_scale": 0.7,
+      "relative_segment_start_seconds": 0.021,
+      "oral_onset_lead_seconds": 0.022,
+      "oral_release_lead_seconds": 0.019,
+      "activation_ramp_in_seconds": 0.03,
+      "activation_ramp_out_seconds": 0.018,
+      "maximum_timing_error_seconds": 0.0013333333333333333
+    },
+    "closed_flow_trim_fraction": 0.25
+  },
+  "criteria": {
+    "midi": "通常の鍵盤歌唱画面にcapを入力し、MIDI 45だけを押して離す。上流・候補で持続音節、保持音、/p/ を持つ1音節を確認する。比較用レンダーは候補が採用したフレームを共有する。",
+    "plan": "離鍵時に母音のタグを解放し、最終/p/を新しいタグで追加する。音素の開始は離鍵後21 ms、長さは85 msの0.7倍。唇の主ジェスチャーは22 ms先行して始まり、音素の終わりより19 ms早く下降を始める。開始・終了は独立計算から1制御区間以内。",
+    "acoustics": "離鍵200〜50 ms前の持続母音で唇断面は0.2 cm²超、有声度は0.5超。離鍵後0〜200 msで唇の最小断面が0.05 cm²未満になり、その後0.05 cm²以上へ戻る。閉鎖中の口端RMSは母音時の1%以下、離鍵後300〜500 msのPCM RMSは持続時の0.3%以下。上流と候補の最初の差と音響時刻差を記録する。",
+    "control": "語末/p/のみを除く対照では離鍵後の観測窓に閉鎖が生じない。各エンジン内で、離鍵より前のPCMは対照とビット一致し、離鍵以降に最初の姿勢・面積・流量・PCM差が現れる。候補ブラウザのPCMはCLIとビット一致し、両者の主要観測列も照合する。"
+  },
+  "retain_csv": {
+    "cli-voice.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "gate",
+        "voicing",
+        "lip_flow_cm3_s",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          384000
+        ]
+      ]
+    },
+    "upstream-voice.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "gate",
+        "voicing",
+        "lip_flow_cm3_s",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          384000
+        ]
+      ]
+    },
+    "no-coda-voice.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "gate",
+        "voicing",
+        "lip_flow_cm3_s",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          384000
+        ]
+      ]
+    },
+    "upstream-no-coda-voice.csv": {
+      "columns": [
+        "frame",
+        "lip_aperture_cm",
+        "lip_minimum_cm2",
+        "gate",
+        "voicing",
+        "lip_flow_cm3_s",
+        "glottal_area_cm2",
+        "glottal_flow_cm3_s",
+        "radiation_derivative_cm3_s2"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          384000
+        ]
+      ]
+    }
+  }
+}

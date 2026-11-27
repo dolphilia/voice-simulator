@@ -1,0 +1,20 @@
+{
+  "id": "worklet-live-song-cubeb-return-time",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "firefox_case": "worklet-live-song-cubeb-output.json",
+  "reference_case": "cubeb-output-callback-deadline-sweep.json",
+  "firefox_xul_sha256": "8c09c589616c3cdd11e89b1f5ced590cc344ec88944a8481a08c3a56f573664a",
+  "reference_runs": ["cubeb-output-deadline-sweep-20261121-a", "cubeb-output-deadline-sweep-20261121-repeat"],
+  "firefox_runs": {
+    "worklet-live-song-cubeb-output": ["worklet-live-song-cubeb-output-20261121-native-a", "worklet-live-song-cubeb-output-20261121-native-repeat", "worklet-live-song-paired-output-20261121-cubeb-regression", "worklet-live-song-cubeb-output-20261121-split-regression"],
+    "worklet-live-song-split-preparation": ["worklet-live-song-split-preparation-20261121-a", "worklet-live-song-split-preparation-20261121-repeat", "worklet-live-song-split-preparation-20261121-deferred-regression"],
+    "worklet-live-song-deferred-split-preparation": ["worklet-live-song-deferred-split-preparation-20261121-a", "worklet-live-song-deferred-split-preparation-20261121-repeat"]
+  },
+  "expected_valid_firefox_captures": 34,
+  "hypothesis": "48 kHz・256フレームの既知PCMの対照で得られる、予定ホスト時刻までの返却時の残り時間の範囲をFirefoxに適用すると、名目周期5.333 msとコールバック処理時間だけを比べる場合より、構築を含む要求の時刻の飛びを多く判別できる。",
+  "criteria": {
+    "input": "固定上流と同じ試験用Firefoxを記録した9実行の有効な採取を全て読む。対照の2実行の各40試行から返却時の残り時間を直接計算する。Firefoxでは前後8要求の生PCMとフレーム印で構築の要求を再照合し、予定サンプル時刻とホスト時刻の差を検査する。",
+    "decision": "既知PCMで飛んだ群の残り時間の最大値以下を飛び、連続した群の最小値以上を連続と予測する。間は保留にする。参照の2群が重なればこの方法の判定は保留にする。Firefoxのデータで境目を調整せず、構築要求の直後で観測した飛びと予測を照合する。名目周期だけの判定は、処理時間が周期より長いときに飛ぶと見なす。",
+    "verdict": "正答、誤判定、保留の件数を比較する。中心要求で残り時間による正答が多く、誤判定が少なければ仮説を支持する。前後の区間も同じ式で検査する。採取を無効にした試行は件数を残す。装置内部の締め切りの位置と実出力の連続性は別に扱う。"
+  }
+}

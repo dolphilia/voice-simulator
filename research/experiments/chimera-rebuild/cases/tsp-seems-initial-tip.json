@@ -1,0 +1,27 @@
+{
+  "id": "tsp-seems-initial-tip",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-seems-amplitude-shimmer-20261123-repeat",
+    "case": "tsp-seems-amplitude-shimmer",
+    "manifest_sha256": "36a5bd8c236b743b00da1892e59f19e4f7cdb8c477e02bd0aa62f36f6cdc8855"
+  },
+  "frames": 116132,
+  "pre_roll_frames": [0, 2400],
+  "observation": {"completed_pcm_frames": 0},
+  "transfer": {"start_hz": 200, "end_hz": 2400, "step_hz": 1100},
+  "limits": {
+    "tip_cm": 1e-12,
+    "geometry_cm": 1e-10,
+    "geometry_cm2": 1e-10,
+    "pre_roll_pcm": 1e-12,
+    "full_pcm": 1e-6
+  },
+  "hypotheses": {
+    "rest_tip_matches_initial_geometry": "研究版の舌先の初期位置だけを固定上流の休止位置へ置くと、最初の制御更新より前の咽頭・口腔のセル長、実効面積、最小面積が固定上流と許容差以内で一致する。元の研究版には口腔面積に1e-10 cm²を超える差がある。",
+    "rest_tip_removes_preroll": "休止位置をそろえると発話前50 msのPCMの版間差は1e-12以下になり、PCMの最初の非ゼロの位置も固定上流と一致する。補正前に発話前PCMの差が最大だったフレームでは、独立に変換した口端流量の寄与が壁・鼻端の各寄与より大きい。",
+    "rest_tip_matches_full_pcm_within_limit": "同じ音源設定と休止位置にした両版の全PCMで、最大の差が1e-6以下になる。"
+  },
+  "acceptance": "同じseemsの発話計画、辞書、男性体型、96 kHz内部レート、48 kHz PCMと、ドリフト・ジッター・シマー0を維持する。候補の舌先の初期X・Y座標だけを変更する。固定上流が第0フレームの描画前に保持する休止座標を独立式と照合し、両版の初期セルの長さ・実効面積・最小面積を保存する。研究版の通常CLIと観測器の全PCM、先行の固定上流と元の研究版の全PCMハッシュ、変更前後の発話計画を照合する。先頭50 msで口端、鼻端、声道壁、声門圧差、放射とPCMを観測し、放射の和と差分・間引き・DC除去・レベル調整を独立計算へ照合する。全発話の比較では最初の相違、許容差超過とピークを記録し、先行の母音中央窓も同じ時刻で照合する。仮説の成否と計測の合否は区別する。"
+}

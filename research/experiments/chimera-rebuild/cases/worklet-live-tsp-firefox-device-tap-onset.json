@@ -1,0 +1,19 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap-onset",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap.json",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-tap-regression",
+  "reference_tap_run": "worklet-live-tsp-firefox-device-tap-20261122-repeat",
+  "device": {
+    "window_radius_requests": 20
+  },
+  "measurement": {
+    "condition_order": [["split", "split-late"], ["split-late", "split"], ["split", "split-late"], ["split-late", "split"]],
+    "minimum_pairs_with_first_quantum_separated": 3,
+    "onset_quanta": 3
+  },
+  "hypothesis": "現在の48 kHz・256フレーム要求では最初の3量子は2要求にまたがる。通常開始では先頭の重い量子と次の量子が同じ要求に入る配置を以前の48 kHzの試行で観測した。開始を128フレーム遅らせると、4組中3組以上で最初の量子が単独の要求へ移り、後続の2量子が同じ要求に入ると予測する。先頭3量子を含む要求から選んだ最も大きい超過時間は、開始を遅らせた条件の中央値で小さくなると予測する。予定時刻の飛びは件数を報告する。飛びが観測され、両地点の波形と時計を対応できた場合、飛びの直前の要求位置にタップの挿入が現れ、中間Writeに対応するタップ区間で先行音が復帰するかを確認する。",
+  "acceptance": "同じ確認用07、同じWASM、分割事前描画8片、48 kHzのContextと同じヘッドフォンの256フレーム要求を使う。構築前後20要求を採り、先頭3量子を含む要求をタップの前後各1024フレームの相関窓から外す。比較する各試行で、構築時計、8片、先頭3量子、cubeb、Audio Client、Audio Server、同じ親PIDのタップを対応させる。採取開始は武装フレームから2048または2176フレーム後とし、WAV、計画、観測値は通常入口の保存済み出力と一致させ、固定上流PCMの許容差も維持する。比較に必要な採取の判定と予測の当否を別に保存する。",
+  "gap_analysis": "先頭3量子を含む要求とそれ以外の飛びを集計する。コールバックが実際の要求長から求めた予算以内か、その次の要求までの間隔と予定ホスト時刻からの返却余裕を保存する。対応するタップのゼロ挿入モデル、サーバーの書き込み位置、完全ゼロの長さと観測できなかった理由を前ケースと同じ手順で得る。予算内の飛びが得られない場合はその件数を報告する。"
+}

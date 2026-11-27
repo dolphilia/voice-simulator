@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-pharynx-predicted-radiation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "声門流量と固定形状から予測した全61枝の流向別二次損失を用いて2,310 Hzの節点解を一度補正すると、固定 /i/ の両肺圧で鼻端放射の複素相対誤差が接線モデルの半分以下かつ0.30%以下になる。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-averaged-loss-20261124-repeat",
+      "manifest_sha256": "8df0dd79e1230d63eb975486e21a587dce44d53a9dd6aace368013c2b7ac7e31"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "pharynx_branch_count": 17,
+    "supraglottal_branch_count": 61,
+    "maximum_nose_relative_error": 0.003,
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "observed_loss_nose_error_lt": 1e-6,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "保存済み固定 /i/ の声門流量の平均と10周波数、固定形状、先行する平均損失補正で得た枝平均を用いる。枝の観測された流量・圧力および放射は予測器の入力に使わず照合に用いる。",
+    "observation": "予測した61枝の10周波数の波形から符号付き二次損失の2,310 Hz成分を求める。接線モデル、接線抵抗を保った一回の圧力残差補正、元の粘性抵抗に予測した全損失を与える対照、窓端項を含めた観測損失による対照の鼻端複素流量を測る。鼻端の振幅差と位相差を記録し、圧力源の違いを口腔・鼻腔・咽頭などの枝群ごとに確認する。",
+    "acceptance": "予測波形から求める圧力源が直接の複素射影とFFTで一致する。接線抵抗を保った補正は一括節点解と圧力源ごとの鼻端応答で一致する。観測損失の対照は鼻端を相対1e-6以内で再現し、先行する咽頭流量を再現する。予測した補正の基準の成否を両肺圧・両版で保存する。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tsp-lpc-order-recordings",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "recording_reference": {"run": "tsp-lpc-pre-emphasis-recordings-20261122-repeat", "case": "tsp-lpc-pre-emphasis-recordings", "manifest_sha256": "128047223387416a2e75153d15b8371744da6d42d14d569b84f82cbc1169d8eb"},
+  "orders": [12, 14],
+  "pre_emphasis": 0.97,
+  "expected_recorded_windows": 6,
+  "large_difference_hz": 100,
+  "neighborhood_hz": 100,
+  "raw_root_comparison_hz": 0.05,
+  "raw_complex_distance_tolerance": 1e-10,
+  "revision_reason": "初回の保存実行 tsp-lpc-order-recordings-20261122-a では、seemsの12次の2窓で、実軸上の正の実根を上流計算が微小な正の虚部を持つ根として数えた。全複素根を一対一に対応させ、複素距離と偏角・半径由来の周波数・帯域幅を照合する。実軸近傍で上半平面の採否が異なる根の座標は保存する。公開LPCの極とF1/F2の判定基準、録音窓、予測はいずれも初版から変更しない。",
+  "hypotheses": {
+    "order_changes_f2_or_availability": "同じ録音・窓で次数だけを12と14の間で切り替えると、少なくとも1窓でF2が100 Hz以上動くか、欠測の状態が変わる。",
+    "large_change_has_preserved_candidate_in_some_window": "大きく変わる窓のうち少なくとも1窓では、既定次数で採ったF2の100 Hz近傍に、変更次数でも公開LPC極が存在する。"
+  },
+  "acceptance": "保存済みのMK61_01のseemsとFK61_01のagainで、それぞれ35・50・65%の同じ12 kHz・300標本を固定する。プリエンファシス0.97、窓、ラグ窓、極とF1/F2の採択条件を保持する。既定次数の録音6窓について上流係数、残差、根、公開極、採択および欠測を過去の保存記録に照合する。12件すべてで固定上流の極と採択値を独立Toeplitz解法に、選別前の上半平面の周波数・帯域幅を独立計算にも照合する。F2が100 Hz以上動くか欠測の状態が変わったとき、既定次数で採った極の100 Hz未満の近傍が次数変更後にも見つかるかを、生の根、公開LPC、F1による候補制約、周波数順の順に検査する。F1を既定値に固定して変更次数の候補から再選択する対照も保存する。仮説の成否と実装の検証結果は分ける。実録音の正解F2の判定には用いない。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "worklet-safari-song-prepared-pause",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {"case": "worklet-song-prepared-source.json", "run": "worklet-song-prepared-source-20261122-repeat"},
+  "sample_rate_hz": 48000,
+  "output_frames": 31200,
+  "quantum_frames": 128,
+  "observation_stride_frames": 64,
+  "noise_scale": 1,
+  "startup_timeout_seconds": 12,
+  "pause": {"target_output_frame": 22784, "target_tolerance_frames": 2048, "hold_ms": 120, "minimum_callback_gap_ms": 100},
+  "graph_probe": {"quantum": 128, "captureQuanta": 320, "holdConnectionsThroughTail": true},
+  "trials": [
+    {"id": "direct-zero-before", "warm_up_frames": 0, "mode": "continuous", "route": "direct"},
+    {"id": "direct-16384-continuous", "warm_up_frames": 16384, "mode": "continuous", "route": "direct"},
+    {"id": "direct-16384-paused", "warm_up_frames": 16384, "mode": "paused", "route": "direct"},
+    {"id": "direct-16512-paused", "warm_up_frames": 16512, "mode": "paused", "route": "direct"},
+    {"id": "direct-16512-continuous", "warm_up_frames": 16512, "mode": "continuous", "route": "direct"},
+    {"id": "direct-zero-after", "warm_up_frames": 0, "mode": "continuous", "route": "direct"},
+    {"id": "observed-16384-continuous", "warm_up_frames": 16384, "mode": "continuous", "route": "observed"},
+    {"id": "observed-16384-paused", "warm_up_frames": 16384, "mode": "paused", "route": "observed"}
+  ],
+  "hypothesis": {
+    "pcm": "Safariの既存歌唱入口でも、予備描画の終了時まで進んだ声門と気道の状態から歌唱が始まる。各31,200点の加工前PCM、および予備描画のある条件の488観測点は同じ設定で描画したCLIまたはChromiumと一致する。",
+    "pause": "Contextの停止完了位置Pは再開要求まで進まず、停止前後の描画の絶対フレームはP−128とPに並ぶ。隣接描画コールバックの壁時計間隔は100 ms以上でも、PCMと観測値は連続条件に一致し、並列ノードが読む歌唱PCMも同じ絶対位置にある。",
+    "construction": "ドリフト・ジッター・シマーを固定したまま予備描画を加えると、Worklet内部でWASM合成器を構築する区間は0フレームより長くなる。直接出力で予備描画あり4試行と0フレーム2試行の中央値を比較する。主スレッドのノード生成と最初の出力までの時間も別に記録する。"
+  },
+  "criteria": "上流音源の比較プリセットのPop Deeを48 kHzで描画する。0フレームの対照は同じケースをCLIで再生し、16,384・16,512フレームは保存済みChromiumとCLIを照合済みの基準に使う。Safariの直接出力と並列観測では同じ歌唱ノードを動かし、割込み試行は開始から22,784フレーム以降で停止し、停止完了後120 ms待って再開する。構築時間はWorkletでエンジン生成呼び出しを挟んで測り、Contextの時刻・加工前PCM・観測状態・ブラウザ保存ケースを記録する。再実行では直接・並列の順と各群内の順を反転する。"
+}

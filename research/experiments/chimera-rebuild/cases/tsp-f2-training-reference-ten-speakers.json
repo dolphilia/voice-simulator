@@ -1,0 +1,35 @@
+{
+  "id": "tsp-f2-training-reference-ten-speakers",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-f2-training-reference-sensitivity-20261123-repeat",
+    "case": "tsp-f2-training-reference-sensitivity",
+    "manifest_sha256": "3b86086243d80dffe936e406dae82824d33b6ca43762b89a21abb2430399d6fe"
+  },
+  "alignment_reference": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "archive_case": "tsp-active-duration-pilot.json",
+  "cohort": {
+    "FF": ["FF31_01", "FF31_03", "FF31_08", "FF31_10", "FF32_02", "FF32_04"],
+    "FG": ["FG37_03", "FG37_06", "FG37_08", "FG37_09", "FG37_10", "FG38_01"],
+    "FH": ["FH43_02", "FH43_03", "FH43_06", "FH43_09", "FH44_02", "FH44_03"],
+    "FI": ["FI49_01", "FI49_06", "FI50_01", "FI50_03", "FI50_04", "FI50_05"],
+    "FJ": ["FJ55_06", "FJ55_09", "FJ56_01", "FJ56_04", "FJ56_05", "FJ56_07"]
+  },
+  "measurement": {
+    "selection": "音響量を見る前に固定上流の注釈で EH1 を含むIDを選び、各話者で辞書順の先頭6録音を採る。音素対応後の強勢は合成側に揃える上流の規則に従う。",
+    "intervals": "録音側は固定上流の注釈の秒区間、合成側は同じ版の発話とMFAが返す秒区間。各側で上流のF2窓と中央値を用いる。39件に対する介入では区間、音素対応、FKのF2を固定する。",
+    "intervention_tokens": 39,
+    "scenarios": 78,
+    "training_speakers": 10
+  },
+  "hypotheses": {
+    "smaller_maximum_centre_deviation": "各コホートの無介入時からの参照中心の最大絶対差（オクターブ）が10人で5人より小さくなる。",
+    "smaller_maximum_held_cost_deviation": "各コホートの無介入時からのFKのF2診断費用の最大絶対差が録音側・合成側の両方で小さくなる。参照幅の下限や費用のゼロ境界が効けば逆方向もあり得る。"
+  },
+  "acceptance": "既定の5名の全入力とFKの両側、2つの差し替え値、介入の39位置を固定する。追加の30録音から全5名で上流の最低支持数3件を満たすことを確認する。各78条件の参照中心、MAD、下限適用後の幅、話者別の支持数と値、FKの録音側・合成側の費用を固定上流と独立Pythonで許容差1e-10以内で照合する。各コホートの無介入時からの最大絶対差、2値間で中心・幅が変わった件数、幅の下限を使った条件数を保存する。予測の成否は機構検証の合否と別に記録する。"
+}

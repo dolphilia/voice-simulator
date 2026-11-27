@@ -1,0 +1,37 @@
+{
+  "id": "worklet-midi-song",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "manual_midi_run": "worklet-midi-voice-20261120-repeat",
+    "manifest_sha256": "257a047ca6f3fc5075ac62dd61eb567d1e0866f0ca3ff98ec4685b7770d9fa7c"
+  },
+  "input": {
+    "body": "male",
+    "lyrics": "la ma -",
+    "output_rate_hz": 48000,
+    "events": [
+      {"seconds": 0.10, "type": "note-on", "note": 45, "velocity": 96},
+      {"seconds": 0.60, "type": "note-on", "note": 48, "velocity": 96},
+      {"seconds": 0.82, "type": "note-off", "note": 45},
+      {"seconds": 1.10, "type": "note-on", "note": 52, "velocity": 96},
+      {"seconds": 1.65, "type": "note-off", "note": 52},
+      {"seconds": 2.05, "type": "note-off", "note": 48}
+    ]
+  },
+  "hypothesis": "歌唱モードのWeb MIDI入力は、音符ごとにla、ma、母音継続を順に採用する。古い音45を解放しても48の発声は続き、52を解放すると保持中の48へ戻って同じ母音を保つ。最後のキーを離すと語尾が減衰する。",
+  "measurement": {
+    "render_end_seconds": 2.65,
+    "maximum_pitch_difference_cents": 30,
+    "minimum_held_voicing": 0.5,
+    "closed_lip_area_cm2": 0.05,
+    "open_lip_area_cm2": 0.2,
+    "release_check_offset_seconds": 0.3,
+    "maximum_release_ratio": 0.003
+  },
+  "criteria": {
+    "routing": "仮想MIDIから入り、上流の歌唱モードと操作の順、音節位置、可聴音高と開放の処理を比較する。",
+    "articulation": "maの閉唇と再開口を記録し、52への母音継続と48へ戻る区間で新しい閉唇が現れないことを確認する。最後の解放後の無音を上流のlive keysテストの閾値に照合する。",
+    "reproduction": "ブラウザの採用フレーム、音節、呼気、音高を保存し、同じイベント列を使ったCLIと加工前PCMを比較する。"
+  }
+}

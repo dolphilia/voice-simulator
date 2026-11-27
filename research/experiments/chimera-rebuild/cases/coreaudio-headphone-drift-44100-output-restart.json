@@ -1,0 +1,29 @@
+{
+  "id": "coreaudio-headphone-drift-44100-output-restart",
+  "revision": 1,
+  "capture_base": "coreaudio-headphone-drift-44100.json",
+  "attach_reference_case": "coreaudio-headphone-drift-44100-long-recurrence.json",
+  "silence_reference_case": "coreaudio-headphone-drift-44100-silence-resumption.json",
+  "reference_run": "coreaudio-headphone-drift-44100-silence-resumption-20261122-stereo-review",
+  "restart_comparison": {
+    "stop_after_source_frame": 384000,
+    "resume_source_frame": 430080,
+    "pause_frames_at_nominal_rate": 46080,
+    "maximum_stop_overshoot_frames": 1024,
+    "maximum_pause_error_ms": 30,
+    "expected_first_drop_frames_after_resume": 27216,
+    "maximum_drop_position_error_frames": 1024
+  },
+  "pairs": [
+    ["coreaudio-headphone-drift-44100-silence-gap-1", "coreaudio-headphone-drift-44100-output-restart-1"],
+    ["coreaudio-headphone-drift-44100-silence-gap-2", "coreaudio-headphone-drift-44100-output-restart-2"],
+    ["coreaudio-headphone-drift-44100-silence-gap-3", "coreaudio-headphone-drift-44100-output-restart-3"]
+  ],
+  "trials": [
+    {"run_id": "coreaudio-headphone-drift-44100-output-restart-1", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-output-restart-2", "leading_frames": 0},
+    {"run_id": "coreaudio-headphone-drift-44100-output-restart-3", "leading_frames": 0}
+  ],
+  "prediction": "試験音だけの無音では狭帯域が続いた。同じAudioUnitを約1.0449秒停止して再開すると広帯域が少なくとも4窓続き、その後に狭帯域が戻ると予測する。広帯域が戻る場合、最初の帯域低下は再開後約27,216フレームに現れると予測する。",
+  "criteria": "先行タップを稼働させ、同じ44.1 kHzの外部ヘッドフォンとPCMを使う。384,000フレームに達したコールバックからメインへ通知し、AudioOutputUnitStopを呼ぶ。停止復帰後から再開呼び出しまで46,080フレーム分の時間を待ち、初期化済みの同じAudioUnitでAudioOutputUnitStartを呼ぶ。再開の入力は元ファイルの430,080フレームから渡す。停止と再開の開始・終了のmachホスト時刻、停止時の記録済みフレーム数、前後の出力とタップの時計、PCMのビット、既定出力の復元を確認する。停止直前と再開後のタップは前マーカーと末尾マーカーでそれぞれのPCM上の位置を定める。計測前後の512フレーム幅と各区間内の時計の連続性を照合する。連続しているか分からない停止境界をまたいで同一の時計を仮定しない。旧対照と共通の窓で、停止前44窓が狭帯域の試行を比較し、再開後最初の400フレーム窓、広帯域4連続窓、後続の狭帯域4連続窓を記録する。採取の有効性、広帯域へ戻る予測、低下の時刻の予測は別に判定する。"
+}

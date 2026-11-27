@@ -1,0 +1,16 @@
+{
+  "id": "song-voice-fast-glottis-source",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "song-voice-fast.json",
+  "zero_reference_run": "worklet-song-voice-fast-20261121-return-reference",
+  "full_reference_run": "worklet-song-voice-fast-20261121-turbulence-one",
+  "turbulence": { "scale": 1, "glottis_gain_multiplier": 0 },
+  "pcm_difference_floor": 0.000001,
+  "hypothesis": "短音のスコアと全体の乱流係数1を固定し、声門乱流源の枝、乱数消費とフィルタ更新を保ってゲインだけを0にすると、声門源のレベルは0になる。全体の乱流係数0に対する最初の圧力・放射・PCM差は、全ての源を有効にした条件より後ろへ移る。狭窄または歯の乱流源の活動は残り、調音計画と拍は揃う。",
+  "criteria": {
+    "input": "同じPop Dee、240 BPM、48 kHzの出力と96 kHz内部レート、49,200フレームを使う。通常のCLIと、固定上流の声門乱流源のゲイン欄を設定する比較プローブに同じ入力を渡す。",
+    "acquisition": "固定上流とのPCM、音素・調音計画、呼気、声門と放射の既存判定を通す。CLIの128/77フレーム分割を照合する。全ての源を有効にしたCLI出力は、保存済みの係数1の基準と照合する。",
+    "diagnostics": "声門乱流源のゲイン、レベル、枝の番号と、狭窄・歯のレベルの発生を全フレームで読む。枝圧の配列は共有されるので、枝圧の値と声門乱流源自身のレベルは別に扱う。係数0の基準に対して、声門上圧、声門流量、放射、PCMビット列、PCM絶対差が10⁻⁶を超える最初の位置を両版で記録する。",
+    "verdict": "声門乱流源の枝が残り、ゲインとレベルが全区間0で、狭窄または歯のレベルが正になるフレームを確認する。係数0に対する最初のPCM差が全ての源を有効にした条件より後になったかは取得の成否と別に判定する。"
+  }
+}

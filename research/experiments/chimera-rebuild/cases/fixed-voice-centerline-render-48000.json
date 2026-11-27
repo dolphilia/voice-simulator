@@ -1,0 +1,30 @@
+{
+  "id": "fixed-voice-centerline-render-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "geometry": ["fixed-voice-centerline-i-v2-repeat", "48597458ac52675ec630837f4f415634b902a8ecec922f5d88aba5da9697c8b6"],
+    "pressure": ["fixed-voice-pharynx-onset-48000-repeat", "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d"],
+    "pcm": ["worklet-rate-48000-memory-repeat", "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b"]
+  },
+  "hypothesis": "固定/i/で喉頭蓋基部Yだけ、後壁補間だけ、両方を上流の演算順へ揃える。各単独変更では測定線7と咽頭全長に元の積算値が残り、両方では上流に一致する。新しいセル0のコンプライアンスによって内部8205点の声門上圧も上流に一致する見込み。",
+  "observation": "分離したソースで標準、基部Y、後壁、両変更の4通りをビルドし、同じ固定姿勢を通常CLIのgeometry・area・inspect・render・render-pcmで実行する。全49線の座標と距離、内部8188〜8239点、128・77点分割で先行と同じ全93,056 PCMフレームを比較する。",
+  "acceptance": "標準の幾何、内部圧力、全PCMが保存済みの実行を再現する。各実験が登録した演算だけを変え、内部圧力収支が独立計算に一致し、PCMは有限でホスト分割に依存せず先行の上流許容差内に収まる。積算と圧力の事前予測を別々に判定し、差が残った最初の観測点を保存する。",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "full_output_frames": 93056,
+    "prefix_output_frames": 4120,
+    "gate_frames": [4096, 54656],
+    "trace_first_sample": 8188,
+    "trace_end_sample_exclusive": 8240,
+    "first_baseline_pressure_difference": 8205,
+    "first_baseline_pcm_difference": 7868,
+    "accumulation_ray": 7,
+    "pharynx_boundary_ray": 19,
+    "pharynx_cells": 18,
+    "epiglottis_base_vertex": 0,
+    "posterior_wall_vertex": 11,
+    "pcm_block_sizes": [128, 77],
+    "pcm_upstream_absolute_tolerance": 5e-7
+  }
+}

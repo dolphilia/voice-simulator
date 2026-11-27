@@ -1,0 +1,47 @@
+{
+  "id": "labiodental-fricatives",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "唇歯の目標で下唇が上顎切歯に向かい、口端に近い正の狭窄が生じる。/s z/ のような離れた歯への衝突音源は中央区間で作られず、主に狭窄に伴う乱流が生じる。/v/ の声門開大は /f/ より小さく、周期が残りやすい。乱流倍率0では配置と狭窄を保ち、圧力注入が消える。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"male-f","body":"male","ipa":"f","text":"ˈɑfɑ","f0_hz":112,"rate":1},
+    {"id":"male-v","body":"male","ipa":"v","text":"ˈɑvɑ","f0_hz":112,"rate":1},
+    {"id":"female-v","body":"female","ipa":"v","text":"ˈɑvɑ","f0_hz":205,"rate":1},
+    {"id":"child-f","body":"child","ipa":"f","text":"ˈɑfɑ","f0_hz":270,"rate":1},
+    {"id":"mixed-v","body":{"female":0.4,"child":0.25},"ipa":"v","text":"ˈɑvɑ","f0_hz":150,"rate":1.3},
+    {"id":"muted-v","body":"male","ipa":"v","text":"ˈɑvɑ","f0_hz":112,"rate":1,"turbulence_scale":0}
+  ],
+  "song": [
+    {"id":"veter","body":"male","ipa":"v","lyrics":"ве́тер","midi":[57,64],
+     "onsets":[["v","j"],["t","j"]],"nuclei":["e","e"],"codas":[[],["ɾ"]]}
+  ],
+  "lip_aperture_targets_cm": {
+    "f":{"male":0.016,"female":0.013,"child":0.006},
+    "v":{"male":0.031,"female":0.028,"child":0.020}
+  },
+  "measurement":{
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "closed_area_cm2":0.0002,
+    "center_fraction":[0.25,0.75],
+    "minimum_labiodental":0.85,
+    "narrowing_interval_cm2":[0.0002,0.35],
+    "minimum_constriction_active_fraction":0.5,
+    "low_band_cutoff_hz":1000,
+    "maximum_voiced_low_band_db_relative_to_vowel":-6.5,
+    "browser_observed_fields":["gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz",
+                             "radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2"],
+    "window":"全フレームで調音・下唇端の矢状面座標・声門・幾何と乱流源・放射・PCMを照合する。発話は音素の25〜75%で狭窄、唇歯位置、乱流源の配置と活動を測り、先行母音の両端30 msを除いた窓と下唇位置・1 kHzの二段ローパス後の電力を比較する。/v/ の低域上限は上流試験と同じく男性・女性の既定話速の条件に適用する。歌唱は /v/ 全体で狭窄乱流の活動を調べる。",
+    "initial_state":"テイクごとの初期姿勢、呼気と出力段は親ケースから採用する。発話の声源周波数は条件に明記する。乱流は通常の入口の既定値1、無効対照のみ0。"
+  }
+}

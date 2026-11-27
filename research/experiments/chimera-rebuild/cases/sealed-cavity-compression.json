@@ -1,0 +1,106 @@
+{
+  "id": "sealed-cavity-compression",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "一様な密閉管を20 msで5%圧縮すると正の圧力が生じる。二段の体積流量フィルタが整定するとセル間の差は消え、連続近似の最終圧力に3%未満で一致する。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 4.0,
+        "areas_cm2": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": []
+  },
+  "area_ramps": [
+    {
+      "start_sample": 0,
+      "sample_count": 1920,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 0,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 1,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 2,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 3,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 4,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 5,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 6,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 7,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 8,
+          "area_cm2": 1.9
+        },
+        {
+          "node": 9,
+          "area_cm2": 1.9
+        }
+      ]
+    }
+  ],
+  "observe": {
+    "pressure_nodes": [
+      0,
+      8,
+      9
+    ],
+    "branches": [
+      [
+        8,
+        9
+      ]
+    ],
+    "area_nodes": [
+      0,
+      8,
+      9
+    ],
+    "volume_source_nodes": [
+      0,
+      8,
+      9
+    ]
+  },
+  "measurement": {
+    "sample_count": 3840,
+    "reference_pressure_relative_error_lt": 0.03,
+    "upstream_series_peak_relative_error_lt": 1e-10,
+    "independent_series_peak_relative_error_lt": 1e-10,
+    "terminal_area_absolute_error_lt_cm2": 1e-12
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "csd-song-planning",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "dataset": {
+    "doi": "10.5281/zenodo.4916302",
+    "version": "1.1",
+    "archive_url": "https://zenodo.org/api/records/4916302/files/CSD.zip/content",
+    "archive_bytes": 1851131390,
+    "archive_md5": "74d121dd8706fded26a15526a379f7a2",
+    "license": "CC BY-NC-SA 4.0",
+    "work_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-reference/csd-v1.1",
+    "recording_rate_hz": 44100
+  },
+  "songs": [
+    {"id": "en001a", "split": "calibration"},
+    {"id": "en005a", "split": "held_out"}
+  ],
+  "selection": "英語aキーの先頭の調整用と先頭の確認用を、固定上流の5曲ごとの分割で選ぶ。音響結果、未配置音符数と収録の長さは選定に使わない。",
+  "score": {
+    "body": "female",
+    "bpm": 60,
+    "phrase_gap_seconds": 0.08,
+    "melisma_gap_seconds": 0.02,
+    "a4_hz": 440,
+    "vibrato_cents": 35
+  },
+  "measurement": {
+    "output_rate_hz": 48000,
+    "alignment_tolerance_seconds": 0.03,
+    "independent_beat_tolerance_seconds": 1e-10,
+    "independent_pitch_tolerance_hz": 1e-10,
+    "upstream_plan_tolerance_seconds": 1e-10,
+    "rounded_reference_tolerance_seconds": 0.0050000001
+  },
+  "hypothesis": "CSVの音符時刻を60 BPMの拍へ変換し、各句を絶対時刻から別々に計画すると、両実装の母音開始、分節時刻と30 ms以内の判定が一致する。MIDI番号からのF0は独立式と一致する。通常の固定上流の報告には丸め前の時刻で判定した結果が残るため、候補の時刻を丸める前に比較する。30 msを超える音符がある場合も原データと計画時刻を保持する。",
+  "acceptance": "2曲のCSVとWAVの版を確認し、調整用と確認用を混ぜずに全音符を報告する。録音のサンプル数とレート、注釈の音素と時刻、メリスマと句境界、計画した母音の時刻とピッチ、上流と候補で最初に差が出る音符を記録する。上流は通常のcompare csdと丸め前の観測、候補は通常のinspectとrenderを照合する。録音で測った音高は計画上の目標音高と別に記録する。"
+}

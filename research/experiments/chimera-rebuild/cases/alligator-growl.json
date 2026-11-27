@@ -1,0 +1,40 @@
+{
+  "id": "alligator-growl",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": ["alligator-fixed-voice-v2.json", "alligator-bellow.json"],
+  "hypothesis": "growlでは目標音高45→38 Hzが0.5秒で補間され、ゲートは0.6秒でゼロになる。粗さ0.7と口0.15は終端の前後で保持される。bellowからの切り替えではhissの目標が直ちに手動値へ戻り、平滑値は次の制御境界で動く。growl中のhissと呼気圧の変更は目標に届き、音高・粗さ・口の変更は自然終了まで待つ。",
+  "alligator_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 249600,
+    "shape": {"pitch_hz": 28.0, "chaos": 0.75, "pressure_cm_h2o": 18.0, "mouth": 0.02, "nostrils": 0.8, "hiss": 0.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "bellow"}},
+               {"frame": 196800, "play_call": {"id": "growl"}}],
+    "observe_call": true,
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "first_control": 196800, "end": 228032,
+       "curve_frames": [196800, 201600, 223232, 226240, 228032]},
+      {"id": "switch-44100", "sample_rate_hz": 44100, "frames": 65000,
+       "first_control": 23680, "end": 52352, "curve_frames": [23616, 23617, 23679, 23680, 27137, 27199, 27200, 52352],
+       "before_switch_edit": 12001, "during_growl_edit": 27137,
+       "events": [
+         {"frame": 73, "play_call": {"id": "bellow"}},
+         {"frame": 12001, "params": {"pitch_hz": 31.0, "chaos": 0.22, "mouth": 0.34, "hiss": 0.62}},
+         {"frame": 23617, "play_call": {"id": "growl", "pitch_hz": 70.0, "amplitude": 0.6}},
+         {"frame": 27137, "params": {"pitch_hz": 32.0, "chaos": 0.27, "pressure_cm_h2o": 24.0,
+                                      "mouth": 0.26, "hiss": 0.05}}
+       ]},
+      {"id": "pitch-ceiling-96000", "sample_rate_hz": 96000, "frames": 81792, "first_control": 64, "end": 62464,
+       "curve_frames": [64, 9664, 52864, 58752, 62464],
+       "events": [{"frame": 29, "play_call": {"id": "growl", "pitch_hz": 150.0, "amplitude": 0.8}}]}
+    ],
+    "growl_keys": {"reference_pitch_hz": 45.0, "pitch_first_hz": 45.0, "pitch_last_hz": 38.0,
+                   "pitch_hold_seconds": 0.5, "release_seconds": 0.6, "ownership_tail_seconds": 0.05,
+                   "chaos": 0.7, "mouth": 0.15},
+    "stage_observations": "既登録の音響・周期照合と許容差を継承する。growl中の目標と平滑値を全出力フレームで比較し、引き継ぐ手動値と切り替え直後の63フレーム、音高の上限、0.6秒後に残る所有期間を検査する。公式先頭249,600フレームとgrowl区間52,800フレームを照合する。"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "csd-listening",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_case": "csd-long-note-vibrato.json",
+  "baseline_run": "csd-long-note-vibrato-20261121-theta",
+  "alias_control": "csd-long-note-vibrato-f0-control-20261121-a",
+  "selection": "調整用・確認用ごとに3件。録音と両合成で検出した最初の長音、録音で相関の山が見つからず両合成で検出した最初の長音、すでに調査した歯摩擦音または倍音誤推定の1件。音符番号は0始まり。",
+  "trials": [
+    {"song": "en012a", "split": "calibration", "note_index": 1, "category": "all_detected"},
+    {"song": "en012a", "split": "calibration", "note_index": 10, "category": "recording_without_peak"},
+    {"song": "en012a", "split": "calibration", "note_index": 4, "category": "dental_theta"},
+    {"song": "en035a", "split": "held_out", "note_index": 9, "category": "all_detected"},
+    {"song": "en035a", "split": "held_out", "note_index": 0, "category": "recording_without_peak"},
+    {"song": "en035a", "split": "held_out", "note_index": 20, "category": "f0_alias"}
+  ],
+  "audio": {
+    "output_rate_hz": 48000,
+    "clip_grid_ms": 10,
+    "before_note_ms": 350,
+    "after_note_ms": 450,
+    "fade_ms": 10,
+    "target_rms_dbfs": -26,
+    "peak_ceiling_dbfs": -1,
+    "maximum_rms_pair_difference_db": 0.05,
+    "quantization_error_16bit_lsb": 0.500001
+  },
+  "listening": {
+    "order_seed": 20261121,
+    "scores": ["0", "1", "2", "3", "判定不能"],
+    "observations_schema": ["packet_id", "trial", "a_periodic_pitch", "b_periodic_pitch", "c_periodic_pitch", "naturalness_preference", "observations"]
+  },
+  "hypothesis": "注釈で同じ開始・終了時刻を取り、安定区間だけのRMSを同じにすると、一定の増幅率で3波形の音量を指定差以内にそろえられる。サンプルレートをそろえても同じ秒位置にある既知パルスがずれない。人による音高の揺れと自然さの判断は別の観測として記録する。",
+  "acceptance": "6区間について保存済みPCMと音符を照合する。各区間の3波形は同じ秒座標と長さ、48 kHzモノラルPCM16で、音量合わせは一定ゲインと短い端のフェードを使う。安定区間のRMS差を0.05 dB以下に保ち、ピーク上限と量子化誤差を検査する。両区分で各音源がA・B・Cに各1度、全区間で6通りの順序を使う。音源の鍵を別に保存し、試聴と採点のHTML、CSVの記入欄、出典を用意する。第2版は固定上流、ケースIDと版、回答列、評点、18 WAVと音源の鍵のSHA-256から資料IDを決め、CSVの全行に付ける。第1版と同じ18 WAVと音源対応で、ブラウザが資料ID付きの回答を出力できること。人の試聴結果は未記入で開始する。"
+}

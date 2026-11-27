@@ -1,0 +1,69 @@
+{
+  "id": "tsp-phone-boundaries-held-out",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-original-20261121-repeat",
+  "baseline_case": "tsp-active-duration-pilot.json",
+  "split": "held_out",
+  "transcripts": [
+    {
+      "id": "61_01",
+      "text": "A plea for funds seems to come again.",
+      "recording_ids": [
+        "FK61_01",
+        "MK61_01"
+      ],
+      "words": [
+        "a",
+        "plea",
+        "for",
+        "funds",
+        "seems",
+        "to",
+        "come",
+        "again"
+      ]
+    },
+    {
+      "id": "61_02",
+      "text": "He lent his coat to the tall gaunt stranger.",
+      "recording_ids": [
+        "FK61_02",
+        "MK61_02"
+      ],
+      "words": [
+        "he",
+        "lent",
+        "his",
+        "coat",
+        "to",
+        "the",
+        "tall",
+        "gaunt",
+        "stranger"
+      ]
+    }
+  ],
+  "selection": "元のRMS比較の確認用4録音、2本文と各2話者。固定上流と再実装の通常CLIで保存したfloat32を使う。窓、閾値、話者ごとの入力、合成波形は元の比較で固定した版を使う。",
+  "hypothesis": "調整用で固定したMFA設定で、全4録音の語・音素境界は固定上流の保存注釈と10 ms以内で一致する。再実行の区間は全12波形で一致し、両合成の音素列と発話計画は一致する。RMS比較で観測された本文間の差の方向が、最初の語の開始から最後の語の終了までの区間でも保たれるかを観察する。後者の方向は合否条件に含めない。",
+  "aligner": {
+    "version": "3.4.3",
+    "environment_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-mfa",
+    "model_version": "english_us_arpa v3.0.0",
+    "model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+    "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+    "configuration": "tools/tsp/mfa.yaml",
+    "seed_hex": "2545f491",
+    "noise_db": -47,
+    "noise_window_frames": 960,
+    "jobs": 1
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "saved_boundary_tolerance_seconds": 0.010001,
+    "noise_tolerance_db": 0.5,
+    "repeat_exact": true,
+    "observation": "本文別の語・音素をファイル先頭からの秒で保存する。録音は公開辞書、各合成は固定上流G2Pの辞書形を使う。tall の音節末の /ɫ/ は辞書形の L に対応させ、合成計画のIPA比較は元の音素のまま行う。語区間の総和と語間区間の総和を測り、音響整列と発話計画を個別に比較する。",
+    "acceptance": "全12波形で登録した語列と音素区間を得る。録音の元注釈との境界差は固定閾値以下、再実行の区間は完全一致とする。合成の辞書音素列と発話計画も一致し、ノイズ床と語区間の分解は調整用と同じ基準を満たす。"
+  }
+}

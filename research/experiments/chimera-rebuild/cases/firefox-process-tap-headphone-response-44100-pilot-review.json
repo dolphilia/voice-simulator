@@ -1,0 +1,28 @@
+{
+  "id": "firefox-process-tap-headphone-response-44100",
+  "revision": 2,
+  "base_case": "firefox-process-tap-headphone-response-44100.json",
+  "capture_reviews": [
+    {
+      "capture_run": "firefox-process-tap-headphone-response-44100-20261122-1",
+      "review_run": "firefox-process-tap-headphone-response-44100-20261122-1-pilot-review"
+    },
+    {
+      "capture_run": "firefox-process-tap-headphone-response-44100-20261122-2",
+      "review_run": "firefox-process-tap-headphone-response-44100-20261122-2-pilot-review"
+    }
+  ],
+  "subwindow_frames": 1000,
+  "phase_reference_hz": 2205,
+  "maximum_pilot_phase_offset_frames": 0.25,
+  "minimum_stationary_windows": 8,
+  "trailing_marker_starts": [
+    26624,
+    27648,
+    28672,
+    29696,
+    30720
+  ],
+  "reason": "第1試行は後マーカーで−0.193フレームの分数位相があり、一律補正が定常な試験音へ加わった。第2試行は後マーカーの条件を外れた。元の判定を保持し、8000フレーム窓を同じ開始位置から各1000フレームに等分する。前後マーカーは整数位置と予定時計を確認するために使い、緩やかに変化する後マーカーの分数位相を試験音へ平均しない。各小窓内の2205 Hzの複素比から近傍の相対位相基準を求める。周波数・区間の境界・振幅と位相の許容差は変更しない。",
+  "criteria": "PCMと時計を照合した第1版の生データだけを使う。小窓の定常性はcubebとタップの正弦再構成残差0.002以下、先行マーカーで整数位置がそろい、2205 Hzの位相が絶対0.25フレーム以内であることから決める。FIRとの差は定常性の選別に使わない。16小窓の全数の残差と複素比を保存し、定常小窓が各試行8以上あれば既定の振幅・位相の閾値でFIRを照合する。外れた小窓と後マーカーの分数位相も報告する。"
+}

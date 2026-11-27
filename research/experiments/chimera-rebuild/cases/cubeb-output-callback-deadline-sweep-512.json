@@ -1,0 +1,21 @@
+{
+  "id": "cubeb-output-callback-deadline-sweep-512",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "cubeb-output-callback-probe.json",
+  "requested_frames": 512,
+  "overrun_control_us": 14000,
+  "delay_us": [0, 9900, 10080, 10150, 10240, 10320, 10390, 10450, 10670, 14000],
+  "round_order": ["ascending", "descending", "descending", "ascending"],
+  "maximum_early_return_ms": 0.01,
+  "comparison": {
+    "reference_case_id": "cubeb-output-callback-deadline-sweep",
+    "reference_runs": ["cubeb-output-deadline-sweep-20261121-a", "cubeb-output-deadline-sweep-20261121-repeat"],
+    "prediction_tolerance_ms": 0.075
+  },
+  "hypothesis": "48 kHz・512フレームでも名目周期10.667 msより短い処理で機器サンプル時刻が飛ぶ。256フレーム時に観測した名目周期との差が一定時間なら約10.385 ms、周期に比例するなら約10.103 msで飛び始めると予測する。いずれの場合も返却PCMは連続する。",
+  "criteria": {
+    "input": "256フレームの比較と同じ試験用バイナリ、同じ内蔵出力、同じ48 kHzの左右逆相信号を用い、512フレームを要求する。65番目のデータコールバックの待機だけを変え、各遅延を昇順・降順で計4回採る。無待機の時計は連続し、14 msでは1要求分飛ぶと予測する。",
+    "validity": "前後8要求の実際の要求長が512フレーム、2時計が有効で互いに符合し、左右8,704フレームの返却PCMが独立計算とビット一致することを検査する。取得の成否と予測の成否は別に保存する。",
+    "verdict": "512フレームで飛びのなかった最長時間と飛びのあった最短時間で挟む範囲を、保存済み256フレーム実行の同じ範囲から計算した2つの予測範囲と照合する。予測範囲は上下に0.075 msずつ広げ、片方だけが実測範囲と重なればその予測と整合すると判定する。連続と飛びの実測時間が重なる場合や、両方またはどちらの予測範囲とも交差しない場合は区別できない結果として保存する。"
+  }
+}

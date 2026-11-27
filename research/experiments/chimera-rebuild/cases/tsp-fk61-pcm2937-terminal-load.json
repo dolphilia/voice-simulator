@@ -1,0 +1,69 @@
+{
+  "id": "tsp-fk61-pcm2937-terminal-load",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "comparison": {
+    "run": "tsp-fk61-pcm2937-output-20261123-verified-repeat",
+    "case": "tsp-fk61-pcm2937-output",
+    "manifest_sha256": "265914e2ec6c4491d713dec7ca862fed9b9cc762bcb55dfca455576c85966999"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "window": {
+    "run": "tsp-fk61-pcm2937-lip-window-20261123-certified-repeat",
+    "case": "tsp-fk61-pcm2937-lip-window",
+    "manifest_sha256": "0504e0f43990afc761547a633467682dc495f58e252c7746476e42a8dc63f511"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "focus_frame": 2937,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "comparison_internal_samples": [
+      5840,
+      5880
+    ],
+    "local_internal_samples": [
+      5856,
+      5872
+    ],
+    "focus_internal_samples": [
+      5863,
+      5864,
+      5865
+    ],
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "scope": "固定上流、元の再実装、下唇内面の評価順を揃えた試験版の通常CLIと観測版を使用する。上流と試験版で口端に到達する枝流量、壁流量、形状の体積源、圧力、R–L負荷の各状態を取得する。測定は半開区間で、時刻と節点は0始まり。上流の値への単標本交換と、5856の状態から測定流入を使う負荷の逐次計算を別々に行う。PCMへ戻すのは5863と5864の口端放射だけとし、全壁放射・鼻端放射は試験版に固定する。"
+  },
+  "hypotheses": {
+    "history_exceeds_instantaneous_inflow": "5863〜5865では、現在の流入だけを交換した流量変化より、更新前の節点圧と慣性枝流量を同時に交換した流量変化の絶対値が大きい。",
+    "load_coefficients_smallest": "5863〜5865では、コンプライアンス・放射慣性・放射抵抗だけを交換した変化は、正味流入・旧圧・旧慣性流量の各単独交換より小さい。",
+    "branch_larger_than_other_inflow_terms": "5863〜5865の口端正味流入の差では、42→43の流量差の絶対値が、口端の体積源・壁流量のいずれの差より大きい。"
+  },
+  "acceptance": "全発話の通常CLI・観測版・既存記録のPCMをビット照合する。保存済みの上流と試験版の観測系列を冒頭3072フレームでビット照合する。採取全区間で枝・壁・節点・放射を観測入力から検算し、5856からの放射状態を逐次検算する。単標本で入力4群の全組合せを保存し、試験版の評価順の影響は上流入力のみを入れた対照で示す。放射の逐次対照を独立のPCM出力段に通し、前の実験で一致した2標本の交換を同じ結果へ再現する。仮説の棄却は採取の不合格と区別する。"
+}

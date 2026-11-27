@@ -1,0 +1,36 @@
+{
+  "id": "tsp-f2-bandwidth-known-poles",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "held_out": {
+    "run": "tsp-f2-bandwidth-held-out-20261122-repeat",
+    "case": "tsp-f2-bandwidth-held-out",
+    "manifest_sha256": "9299936abac9f1f65def1417d57fc82e8d6edd6644f6e29c4de8e5331f3dd3a2"
+  },
+  "signal": {
+    "sample_rate_hz": 12000,
+    "duration_seconds": 1,
+    "excitation": {"period_samples": 96, "pulse_amplitude": 0.015},
+    "pole_frequencies_hz": [620, 2075, 2915],
+    "variants": [
+      {"id": "narrow-f2", "bandwidths_hz": [100, 180, 155]},
+      {"id": "wide-f2", "bandwidths_hz": [100, 430, 155]}
+    ]
+  },
+  "measurement": {
+    "centers": [0.35, 0.5, 0.65],
+    "orders": [12, 14],
+    "candidate_f2_bandwidth_limit_hz": 300,
+    "known_pole_association_max_hz": 120,
+    "design_wave_tolerance": 1e-11,
+    "design_pole_tolerance_hz": 1e-8,
+    "design_response_tolerance_db": 1e-9
+  },
+  "method": "12 kHzの同じ周期インパルス列を同じ振幅で三つの全極二次節へ通す。真のF1、F2、F3は設計極の偏角に対応させ、帯域幅は半径から上流と同じ定義で計算する。F2の帯域幅だけを変える。固定TSPと同じ25 ms・300標本で、基準3窓ごとに12次と14次のLPCを推定する。真の極、全極フィルタの周波数応答、LPCが返す極、F2に採用した極を個別に記録する。",
+  "hypotheses": {
+    "narrow_f2_retained": "幅180 Hzの波形では両次数とも、固定規則と帯域幅条件のF2中央値が設計F2の120 Hz以内に入る。",
+    "wide_f2_retained_by_fixed": "幅430 Hzの波形でも両次数とも、固定規則のF2中央値が設計F2の120 Hz以内に入る。",
+    "wide_f2_skipped_by_limit": "幅430 Hzの波形では少なくとも一方の次数で、300 Hz未満の条件を加えたときのF2中央値が設計F3の120 Hz以内に入る。"
+  },
+  "acceptance": "二次節の波形と直接の差分方程式、設計式と多項式の根、設計式と複素多項式の周波数応答を許容差以内で照合する。固定上流の極・F1/F2選択・包絡を独立LPCと複素多項式で照合し、ピリオドグラムはFFTと直接DFTで検証する。12窓すべてで採用極と欠測理由を保存し、予測の成否は実装の合否と分ける。"
+}

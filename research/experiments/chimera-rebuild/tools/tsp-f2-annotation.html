@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第2フォルマントの注釈</title>
+<style>
+  :root { color: #17242c; background: #f4f6f7; font: 16px/1.55 system-ui, sans-serif; }
+  main { max-width: 62rem; padding: 1rem; margin: auto; }
+  section { background: white; border: 1px solid #d3dce2; border-radius: .5rem; padding: 1rem; margin: 1rem 0; }
+  h2 { font-size: 1.15rem; margin: 0 0 .5rem; }
+  img, audio { width: 100%; display: block; }
+  img { margin: .5rem 0; }
+  .fields { display: flex; gap: 1rem; flex-wrap: wrap; }
+  label { display: block; margin: .5rem 0; }
+  input, textarea, select, button { font: inherit; }
+  input { width: 9rem; }
+  textarea { display: block; width: 100%; box-sizing: border-box; min-height: 4rem; }
+  button { padding: .45rem .8rem; }
+</style>
+<main>
+  <h1>第2フォルマント（F2）の注釈</h1>
+  <p>音声全体を確認し、色付きの25 ms区間を判定してください。時刻は再生音声の先頭からの経過時間です。</p>
+  <p>スペクトログラムで母音に沿って続く帯を探し、右側のスペクトルで周波数を読み、低い方の共鳴F1との位置関係を確認します。細い倍音1本より周辺の帯全体を見ます。根拠欄に帯の連続性や競合する帯の位置を記録してください。</p>
+  <p>候補を絞れない場合は「判断困難」、雑音や境界の問題で判定できない場合は「音声・区間が不適」を選び、理由を記入します。</p>
+  <form id="review">
+    <!--TRIALS-->
+    <button type="submit">注釈をCSVで保存</button>
+  </form>
+</main>
+<script>
+  const form = document.querySelector("#review");
+  const packet = "__PACKET_ID__";
+  const groups = [...form.querySelectorAll("section")];
+  const clips = [...form.querySelectorAll("audio")];
+  for (const clip of clips) {
+    clip.addEventListener("play", () => {
+      for (const other of clips) if (other !== clip) other.pause();
+    });
+  }
+  for (const group of groups) {
+    const status = group.querySelector("select");
+    const f2 = group.querySelector("input");
+    const note = group.querySelector("textarea");
+    status.addEventListener("change", () => {
+      f2.disabled = status.value !== "measured";
+      f2.required = !f2.disabled;
+      if (f2.disabled) f2.value = "";
+      note.required = status.value !== "";
+    });
+  }
+  function quote(value) {
+    return '"' + value.replaceAll('"', '""') + '"';
+  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const rows = [["packet_id", "trial", "status", "f2_hz", "note"]];
+    for (const group of groups) {
+      const status = group.querySelector("select").value;
+      const note = group.querySelector("textarea");
+      if (status && !note.value.trim()) {
+        note.value = "";
+        note.reportValidity();
+        return;
+      }
+      rows.push([packet, group.dataset.trial, status, group.querySelector("input").value, note.value]);
+    }
+    const data = rows.map((row) => row.map(quote).join(",")).join("\r\n") + "\r\n";
+    const url = URL.createObjectURL(new Blob(["\uFEFF", data], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "tsp-f2-observations.csv";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+</script>
+</html>

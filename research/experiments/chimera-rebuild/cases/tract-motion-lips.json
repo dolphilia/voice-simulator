@@ -1,0 +1,98 @@
+{
+  "id": "tract-motion-lips",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "hypothesis": "閉鎖・再開口時の口端狭窄を内部サンプル単位で通過し、軟口蓋の閉鎖中は鼻端流量がゼロになる。口腔中央にも管長変化による体積源が生じる。",
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 8,
+        "targets": {
+          "lip_aperture_cm": -0.22
+        },
+        "speeds": {
+          "lip_aperture_cm": 2.0
+        }
+      },
+      {
+        "frame": 144,
+        "targets": {
+          "lip_aperture_cm": 0.7
+        }
+      }
+    ]
+  },
+  "area_control": {
+    "project_contacts": true,
+    "acoustics": true
+  },
+  "measurement": {
+    "frames": 288,
+    "sample_geometry": {
+      "control_reference_run": "tract-slew-lips-20261119-b",
+      "internal_samples": 36864,
+      "geometry_absolute_lt": 1e-09,
+      "acoustics_relative_to_upstream_peak_lt": 1e-07,
+      "center_volume_source_absolute_lt_cm3_s": 1e-07,
+      "closed_below_cm2": 0.0002,
+      "volume_source_cutoff_hz": 60,
+      "observed_tube_cells": {
+        "pharynx": 18,
+        "oral": 18
+      },
+      "center_volume_no_spill_minimum_cm2": 0.12,
+      "lip_closed_sample_span": [
+        4797,
+        4801,
+        18942,
+        18946
+      ],
+      "constriction_closed_sample_span": null,
+      "velum_open_sample_span": null,
+      "peak_nose_flow_cm3_s": [
+        0,
+        0
+      ],
+      "oral_cell_length_span_cm": [
+        0.0024,
+        0.0027
+      ],
+      "pharynx_cell_length_span_cm": [
+        0,
+        1e-12
+      ],
+      "peak_abs_center_volume_source_cm3_s": [
+        1.35,
+        1.55
+      ],
+      "peak_center_length_contribution_cm3_s": [
+        1.7,
+        1.9
+      ]
+    }
+  }
+}

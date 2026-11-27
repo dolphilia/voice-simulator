@@ -1,0 +1,139 @@
+{
+  "id": "tsp-fk61-control5504-oral-history",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control5632-oral-geometry-20261123-repeat",
+    "case": "tsp-fk61-control5632-oral-geometry",
+    "manifest_sha256": "25a3e91b10933aae5fb95de465e043629ca8f9bd84182eb670ff27facb6e077c"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      5502,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "3版の制御境界5504・5632・5760で口腔の弧長を最後の格子点と咽頭端に分け、格子中心・累積弧長・咽頭端インデックス・長さ目標を採る。5504〜5631の節点28〜37で、5503終了時の二段平滑状態、断面積系列、セル長の開始値、唇までの弧長目標、咽頭端までの弧長目標の5群を独立交換する。5632以降は前回の全形状・咽頭流入の交換条件を使い、初期体積を上流の5631の形状に固定して、再計算した二段平滑の開始値を5632へ渡す。32組で5631の各平滑状態とPCM 2937までを比較する。",
+    "control_boundaries": [
+      5504,
+      5632,
+      5760
+    ],
+    "focus_node": 34,
+    "history_internal_samples": [
+      5504,
+      5632
+    ],
+    "arc_length_tolerance_cm": 8e-15,
+    "linear_filter_tolerance_cm3_s": 4e-14
+  },
+  "hypotheses": {
+    "lip_arc_exceeds_split_arc_at_5504": "5504の口腔長目標では、唇までの弧長差の絶対値が咽頭端までの弧長差より大きい。",
+    "summation_amplifies_5504_endpoint_difference": "5504の128回の加算で、5631の上流と試験版のセル長差の絶対値が同ブロックの目標差の絶対値を上回る。",
+    "history_geometry_exceeds_seed_at_5631": "5631の第二極について、形状4群の交換の節点28〜37のL2ノルムが5503終了時の平滑状態だけの交換より大きい。",
+    "native_upstream_history_recovers_focus_pcm": "5群をすべて上流へ揃えた条件では、試験版の枝・壁・コンプライアンスを使い、上流の咽頭流入と5632以降の全形状交換を併用するとPCMが冒頭から2937まで一致する。"
+  },
+  "acceptance": "3版の通常CLIと観測版・保存PCMを全発話でビット照合し、前回の共通区間・制御形状目標・PCMの採取を照合する。格子点から隣接距離を独立計算し、観測弧長、咽頭端、唇位置の差、口腔長目標を検証する。格子数または咽頭端が異なる場合は位置の比較に欠測を記録し、各版の弧長は別々に検証する。5504で実際に使った形状の増分、全系列の丸めた体積と二段平滑を検算する。平滑状態だけを交換したときの残存量を二段の離散式でも照合する。無交換と全交換はそれぞれ試験版・上流の5631終了時の平滑状態に照合し、同じ条件で前回のPCM対照を再現する。"
+}

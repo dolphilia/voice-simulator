@@ -1,0 +1,23 @@
+{
+  "id": "worklet-live-tsp-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "worklet-live-tsp-source-defaults-20261122-device-tap-regression",
+  "source_case": "worklet-live-tsp-source-defaults",
+  "recording_id": "FK64_08",
+  "measurement": {
+    "output_rate_hz": 44100,
+    "internal_rate_hz": 88200,
+    "output_frames": 98790,
+    "render_quantum_frames": 128,
+    "observation_stride_frames": 32,
+    "startup_contiguous_quanta": 8,
+    "lead_frames": 2048,
+    "initial_silence_frames": 2205,
+    "predicted_first_nonzero_frame": 2241,
+    "first_nonzero_tolerance_frames": 16,
+    "upper_pcm_absolute_tolerance": 0.000001,
+    "timing_skip_blocks": 32
+  },
+  "criteria": "確認用07の保存済みブラウザケースから出力レートと内部レートだけを変更。発話計画の秒単位の時刻、通常CLI・オフラインと実時間Workletの全PCM、観測値を照合する。上流PCMとの差は全長で1×10⁻⁶以下を予測する。発話計画の2.2401362秒から98,790フレーム、48 kHzで観測した2,439フレームを時間換算して44.1 kHzの最初の非ゼロを2,241±16フレームと予測する。先頭2,205フレームは無音を維持する。"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "firefox-process-tap-headphone-drift-44100",
+  "revision": 1,
+  "base_case": "firefox-process-tap-headphone-response-44100.json",
+  "play_seconds": 1.43,
+  "anchor": {
+    "last_exclusive": 61440
+  },
+  "tone_probe": {
+    "last_exclusive": 57344
+  },
+  "analysis": {
+    "first_frames": [
+      9216
+    ],
+    "last_exclusive": 55216,
+    "window_frames": 400,
+    "hop_frames": 200,
+    "reference_tone_hz": 2205,
+    "band_tone_hz": 19845,
+    "stable_band": [
+      0.47,
+      0.53
+    ],
+    "reduced_band_upper_limit": 0.2,
+    "minimum_consecutive_windows": 4,
+    "phase_slope_threshold_ppm": 20,
+    "repeat_motion_absolute_limit": 0.00001,
+    "repeat_motion_check_frames": 80,
+    "repeat_motion_minimum_count": 8
+  },
+  "reference_waveform": {
+    "run": "firefox-process-tap-headphone-response-44100-20261122-1",
+    "review": "firefox-process-tap-headphone-response-44100-20261122-1-pilot-review",
+    "start_frame": 9216,
+    "length_frames": 1000,
+    "period_frames": 40
+  },
+  "trial_ids": [
+    "firefox-process-tap-headphone-drift-44100-20261122-1",
+    "firefox-process-tap-headphone-drift-44100-20261122-2",
+    "firefox-process-tap-headphone-drift-44100-20261122-3"
+  ],
+  "prediction": "先行の短い収録と同じ4周波数・出力機器で純音区間を約1.11秒に延ばす。各試行の最初は19,845 Hzの振幅比が0.5付近にあり、少なくとも2試行で比が0.20より小さい状態が持続すると予測する。変化する試行では低域の分数位相の傾きが20 ppmを超え、帯域と位相の変化が1タップブロック512標本以内に現れると予測する。要求の予定サンプル番号の連続性も観測する。",
+  "criteria": "前マーカーから両PCMの整数の先頭位置を固定する。後マーカーは整数・分数位相の変化を記録し、一律の補正に使わない。4周波数の複素比を400標本の窓で200標本ずつ送って測る。帯域の低下と、2,205 Hzの伝達位相をアンラップして求めた傾きの立ち上がりは、各閾値を4窓連続で満たした最初の窓中心として記録する。前の定常収録の40標本周期でも比較し、左右差の絶対値10⁻⁵を続く80標本内に8点以上超える最初の標本を求める。対応するcubeb・タップの各ブロック先頭と予定サンプル/ホスト時刻を保存する。時計・PCMの有効性は帯域低下の有無と別に判定する。"
+}

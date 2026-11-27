@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-preregister-firefox",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "duration_study": "worklet-live-song-fast-app-silent-lead-four-quanta.json",
+  "chromium_reference_runs": ["worklet-live-song-fast-app-silent-lead-four-quanta-20261121-buffer-init"],
+  "resume_order_reference_study": "worklet-live-song-fast-app-silent-lead-preregister-presence.json",
+  "resume_order_reference_run": "worklet-live-song-fast-app-silent-lead-preregister-presence-20261121-repeat",
+  "browser_engine": "firefox",
+  "resume_order_lead_quanta": 4,
+  "compare_silent_lead_presence": true,
+  "hold_output_probe_connections": true,
+  "condition_order": [["ordinary", "silent"], ["silent", "ordinary"], ["silent", "ordinary"], ["ordinary", "silent"]],
+  "hypothesis": {
+    "registration": "Firefoxでも停止中に合成用モジュールを登録でき、停止完了、登録開始、登録完了、resume要求、runningの確認の順序が全試行で成立する。",
+    "clock": "再開前登録をそろえると、先行なしと4量子の両条件で開始待ちの欠落は0で、歌唱Workletの初回から3,072フレーム後に描画を始める。",
+    "audio": "PCM49,200フレーム、観測769点、歌唱計画は両条件で共通のオフライン基準と保存済みのChromiumの結果に一致する。",
+    "time": "直接出力では、先行なしでクリックから歌唱先頭まで、および譜面準備完了から歌唱ノード生成開始までが、組内差の中央値で短くなる。"
+  },
+  "criteria": {
+    "input": "Playwright対応の保存済みFirefox 157.0で、短音Pop Dee、240 BPM、出力48 kHz、内部96 kHz、歯フィルタ下限1,200 Hz、同じWASMと辞書を使用する。各試行でページとContextを新設し、Chromiumと同じ順序で直接・並列観測を各4組取得する。同じ設計で2回実行する。",
+    "control": "停止完了から登録開始・完了、resume要求までの状態はsuspended、再開完了はrunningであることを確認する。両条件でsongRegisterBeforeResumeを指定し、songSilentLeadの有無だけを変える。無音先行ありでは連続4量子、なしでは先行枝の観測値とマーカーが出ないことを確認する。失敗した場合は最後に観測できたフェーズと実行ログを保存する。",
+    "clock_and_audio": "8×128＋2,048フレームで歌唱開始を照合する。並列観測で開始待ち、歌唱の絶対位置、PCM、歌唱前後256フレームと最終量子の補完を確認する。固定上流は共通の保存PCMに照合する。",
+    "latency": "クリックから歌唱先頭までと、譜面準備完了からノード生成開始までを、直接出力で先行ありから先行なしを引いた組内差の中央値で判定する。値が正なら短縮の予測を支持する。並列観測の計時も別に保存する。"
+  }
+}

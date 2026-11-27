@@ -1,0 +1,40 @@
+{
+  "id": "csd-acoustic-f0-en001a",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "song": "en001a",
+  "split": "calibration",
+  "source_run": "csd-song-planning-20261121-final",
+  "prefix_run": "csd-continuous-song-20261121-repeat",
+  "render": {
+    "phrases": 50,
+    "notes": 86,
+    "recording_rate_hz": 44100,
+    "recording_frames": 2857680,
+    "sample_rate_hz": 48000,
+    "output_frames": 3110400,
+    "same_prefix_frames": 192000,
+    "host_block_frames": [128, 77]
+  },
+  "measurement": {
+    "alignment_tolerance_seconds": 0.03,
+    "regular_window": [0.3, 0.2],
+    "melisma_window": [0.1, 0.1],
+    "hop_seconds": 0.005,
+    "search_half_width_semitones": 7,
+    "yin_threshold": 0.2,
+    "yin_minimum_periods": 2.5,
+    "envelope_seconds": 0.01,
+    "envelope_floor_db": -80,
+    "gate_percentile": 95,
+    "gate_drop_db": 35,
+    "published_cents_tolerance": 0.005000001,
+    "published_voiced_share_tolerance": 0.005000001,
+    "known_tone_hz": 330,
+    "known_tone_tolerance_hz": 0.15,
+    "minimum_candidate_notes_with_f0": 78,
+    "pcm_diagnostic_tolerance": 1e-6
+  },
+  "hypothesis": "全50句を録音と同じ出力時計に並べても、先頭4秒は先頭2句の描画と一致する。状態CSVを省略してもPCMを変えず、ホスト分割からも独立する。上流と同じ音符範囲・YIN条件を使うと固定上流の公開報告のF0と有声率を丸め誤差の内側で再現できる。候補では86音符の少なくとも78音符からF0が得られると予測する。録音への近さや、音符単位の両合成間の音高差の大きさには合格しきい値を置かない。",
+  "acceptance": "3波形の先頭時刻を共有し、注釈の全86音符と窓の時刻、3者の採用・欠測フレーム数と理由、F0の中央値とセント差を保存する。末端フレーム、空枠と既知周期の対照を検査する。候補は通常CLIで50句、86音符を処理し、短い既存基準の先頭、2ブロック分割、CSV出力の有無を照合する。通常の固定上流との差はPCM・音符・フレームで最初に現れる位置を記録する。"
+}

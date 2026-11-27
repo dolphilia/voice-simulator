@@ -1,0 +1,43 @@
+{
+  "id": "songbird-chirps-bronchus-inlet-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-bronchus-interior-momentum-44100-20261123-repeat",
+    "manifest_sha256": "7824e7042a679e8e352964463f7f28b1c33b7046ca80ccaa16bb207a420830f6"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-interior-balance-44100-20261123-repeat",
+    "manifest_sha256": "6c1aecd857355a9f65e370f0944c3ec297d6e4cabce682966cdcf8aa738014c4"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_right_pressure_offsets": {
+    "matched_time": 29,
+    "native_block": 30,
+    "no_tracking": null
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02,
+    "sac_length_cm": 1.0,
+    "sac_area_cm2": 100.0
+  },
+  "port": {
+    "area_cm2": 0.05,
+    "length_cm": 0.4,
+    "entrance_loss": 0.4,
+    "expansion_loss": 1.0,
+    "viscosity_reference_hz": 700
+  },
+  "hypothesis": "235点制御の押鍵29点後と256点制御の30点後の右セル0圧は、空気嚢ポートからの流入だけを上流値へ置換すれば復元できる。最初のポート流量差はセル0圧の初差と同時かそれ以前に現れる。追従0では圧力と流量は全点ゼロになる。",
+  "observation": "先行の持ち越し比較と同じ初期化・押鍵入力で、通常CLIと固定上流プローブに左右のセル0を追加する。内部176400 Hzの押鍵後0〜63点のセル0圧、空気嚢圧、流入ポート、セル1向き流量を照合する。",
+  "acceptance": "観測を指定しない先行CSVと既存列を再現する。全点で幾何と既存の空気嚢圧・セル1の流入に照合し、両版の圧力収支とポート流量を別計算でビット照合する。右セル0の初差で直前圧と流出の一致および流入の単独置換を確認する。ポート流量の初差の駆動圧、持ち越し、線形係数と損失の置換結果を保存する。"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tsp-fk61-pcm-first-difference",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "tsp-f2-full-held-candidate-20261123-repeat",
+    "case": "tsp-f2-full-held-candidate",
+    "manifest_sha256": "70c2847e49d75ba23b7a129acbc0cf15700d5ae53afcce53417f1ee2f42054a8"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frame_count": 2048,
+    "expected_first_pcm_frame": 1989,
+    "comparison_frames": [1987, 1992],
+    "block_frames": 128,
+    "initial_f0_hz": 110.0,
+    "alignment": "48 kHzの出力フレームnを96 kHzの内部標本2nと2n+1に対応させる。最初の2048フレームを観測し、PCM全体も通常CLIおよび保存済みの値と照合する。",
+    "observations": "口端・鼻端・壁面の流量、合計、1標本差分、間引き、ゲイン、DC除去、リミッター、float32の値を比較する。フレーム1989では隣接するfloat32値とその中点に対する変換直前の値を保存する。"
+  },
+  "hypotheses": {
+    "radiation_difference_precedes_pcm": "放射差分の最初の差は、最初の異なるPCMフレームより先に現れる。",
+    "same_output_parameters_transfer_radiation_difference": "FIR係数・DC極・ゲインが一致し、互いの出力段に放射入力を交換しても、渡した実装側のPCMを再現する。",
+    "first_pcm_difference_straddles_rounding_midpoint": "フレーム1989の両方の出力前の値は隣接float32値の中点を挟む。"
+  },
+  "acceptance": "同じFK61_01の通常CLI、観測器、保存済みPCMをビット単位で照合し、最初の差1989を再現する。FIRタップの順序とDC式を独立に再実行し、元の出力を再現する。放射・出力各段の差を0始まりの対応時刻で保存する。入力の交換、出力直前のfloat32中点、採否の根拠を記録し、仮説の判定を機構の合否から分ける。"
+}

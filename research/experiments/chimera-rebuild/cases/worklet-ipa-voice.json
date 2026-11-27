@@ -1,0 +1,26 @@
+{
+  "id": "worklet-ipa-voice",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "ブラウザのRust発話プランナーとCLIに同じIPA・初期姿勢・時刻を渡すと、音素区間、調音ジェスチャー、加工前PCMが一致する。/p/ は閉鎖と有気の開口を伴う。",
+  "speech_voice_case": "bilabial-p.json",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 49828,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 16,
+    "expected_ipa": "ɑpɑ",
+    "gesture_absolute_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "require_cli_pcm_bit_equality": true,
+    "observed_fields": [
+      "gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing",
+      "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2"
+    ],
+    "expected_cli_closure_frame": 11118,
+    "expected_cli_release_frame": 13888,
+    "maximum_sampled_event_delay_frames": 15,
+    "closed_area_cm2": 0.0002,
+    "check_unrenderable_ipa_then_recover": true
+  }
+}

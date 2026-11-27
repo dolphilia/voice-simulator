@@ -1,0 +1,243 @@
+{
+  "id": "lung-voiced",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "肺ポートは音響抵抗を保ち、低周波補償で定常圧力損失を減らす。呼気の立ち上がりと終了の速度は操作とスコアで異なり、負の息の指定は吸気になる。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "wall": {
+          "mass_g_cm2": 0.6,
+          "resistance_dyn_s_cm3": 1000.0,
+          "stiffness_dyn_cm3": 1000000.0,
+          "radiation_fraction": 0.0
+        }
+      },
+      {
+        "length_cm": 17.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.0
+        }
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      52
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 0.0,
+        "ramp_samples": 0
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          53,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 2.5,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0,
+        "extra_resistance": 7.9799999999999995
+      },
+      {
+        "nodes": [
+          12,
+          13
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "breath": {
+    "port": [
+      53,
+      0
+    ],
+    "pressure_cm_h2o": 8.0,
+    "body_scale": 1.0,
+    "control_block_samples": 128,
+    "compensate": true,
+    "steps": [
+      [
+        0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        65536,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        89600,
+        0.5,
+        -0.5,
+        0.8
+      ],
+      [
+        106496,
+        0.0,
+        0.6,
+        1.0
+      ],
+      [
+        133120,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 32768,
+    "volume_cm3": 0.002
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      12,
+      13,
+      52,
+      53
+    ],
+    "branches": [
+      [
+        53,
+        0
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        51,
+        52
+      ]
+    ]
+  },
+  "measurement": {
+    "sample_count": 240000,
+    "steady_window_samples": [
+      46080,
+      61440
+    ],
+    "ingressive_window_samples": [
+      100352,
+      105472
+    ],
+    "reference_series_peak_relative_error_lt": 1e-08,
+    "independent_series_peak_relative_error_lt": 1e-09,
+    "dc_resistance_relative_error_lt": 0.01,
+    "frequency_response_relative_error_lt": 0.001,
+    "frequencies_hz": [
+      2,
+      20,
+      200,
+      1000,
+      4000
+    ],
+    "high_frequency_real_resistance_over_ac_gt": 0.9,
+    "control_time_constant_relative_error_lt": 1e-09,
+    "compensated_subglottal_pressure_gt_cm_h2o": 5.8,
+    "compensation_subglottal_improvement_gt_cm_h2o": 1.0,
+    "ingressive_gate_mean_lt": -0.35,
+    "ingressive_flow_mean_lt_cm3_s": 0.0,
+    "final_gate_abs_lt": 1e-06,
+    "voiced_mean_gate_gt": 0.55
+  },
+  "glottis": {
+    "port": [
+      12,
+      13
+    ],
+    "params": {
+      "f0_hz": 125.0,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  }
+}

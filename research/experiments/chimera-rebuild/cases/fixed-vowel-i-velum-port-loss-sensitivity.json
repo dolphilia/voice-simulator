@@ -1,0 +1,32 @@
+{
+  "id": "fixed-vowel-i-velum-port-loss-sensitivity",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の口蓋帆ポートで個別に実測へ置き換えた第1〜22倍音の2,310 Hzの二次損失変化は、微分による予測とL2相対誤差10%以内で一致する。7.2 cmH₂Oの再実装版で鼻端残差の減少方向への射影が大きい2成分を選ぶ。その同じ2成分の実測差し替えで、鼻端の複素誤差が両肺圧・両版で25%以上減り、770 Hzと1,320 Hzの差し替えを上回る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-loss-feedback-20261124-repeat",
+      "manifest_sha256": "390859874220946fe5efb1ed8d4f204ee67e4579f8e021ffe886ae832186631d"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "feedback_frequencies_hz": [770, 1320],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "finite_difference_coefficient_step_cm3_s": 0.001,
+    "finite_difference_relative_error_lt": 1e-6,
+    "linearized_single_replacements_relative_error_lt": 0.10,
+    "minimum_selected_pair_nose_error_reduction_fraction": 0.25,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "前回の固定 /i/ の収録と補正前の22倍音の予測を使う。ポート30→49の第1〜22倍音で実部と虚部に対する2,310 Hzの損失感度を求め、各成分の観測と予測の複素差を掛ける。鼻端の複素残差に沿った符号付き寄与を7.2 cmH₂Oの再実装版だけで順位付けし、上位2成分を両肺圧・両版に共通で適用する。同率では低い周波数を優先する。",
+    "observation": "2,310 Hzの二次損失と鼻端伝達を、1成分ずつの差し替え、選んだ2成分、前回の2成分、全22成分と全帯域の実測で照合する。全22成分を差し替えた場合までポート平均と他60枝の圧力源を固定する。全帯域の実測を使う対照は実測平均を含む。実部・虚部の微分を中央差分に照合し、有限の差し替えによる複素変化の向きと大きさを記録する。",
+    "acceptance": "前回の基準、全帯域の対照、差し替えた係数の保持、損失のFFT、鼻端の一括解と枝の重ね合わせ、両版の対応を検証する。微分の精度と2成分の選び方を個別に判定し、失敗した仮説も閾値を変えずに保存する。"
+  }
+}

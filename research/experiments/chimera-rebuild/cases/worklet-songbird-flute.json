@@ -1,0 +1,40 @@
+{
+  "id": "worklet-songbird-flute",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-flute.json",
+  "hypothesis": "実時間Workletでも指定フレームにコールと手動制御を適用すれば、識別子と目標は指示フレーム、平滑値は次の64フレーム境界に変化する。fluteの停止では手動音高3000 Hzと呼気0.35を引き継ぎ、後続の手動呼気停止で減衰する。加工前PCMは同じケースのCLIとビット一致する。",
+  "measurement": {
+    "variants": ["stopped-48000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 61,
+    "extra_output_frames": [72, 73, 127, 128, 5370, 5371, 5375, 5376, 17290, 17291, 17343, 17344, 24030, 24031, 24063, 24064],
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_control_absolute_tolerance": 1e-9,
+    "independent_clock_absolute_tolerance_seconds": 1e-12,
+    "expected_transitions": {
+      "call_id": 1,
+      "start_command": 73,
+      "first_key": 128,
+      "first_pitch_target_hz": 2600.0,
+      "manual_change": 5371,
+      "manual_next_control": 5376,
+      "manual_pressure_kpa": 1.1,
+      "stop_command": 17291,
+      "stop_next_control": 17344,
+      "restored_pitch_hz": 3000.0,
+      "retained_gate_target": 0.35,
+      "breath_release": 24031,
+      "breath_release_next_control": 24064
+    },
+    "active_window_relative_seconds": [0.06, 0.16],
+    "tail_window_seconds": 0.02,
+    "minimum_active_pcm_rms": 0.03,
+    "maximum_tail_to_peak_rms_ratio": 1e-6
+  }
+}

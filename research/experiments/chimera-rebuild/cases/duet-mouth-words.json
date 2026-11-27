@@ -1,0 +1,48 @@
+{
+  "id": "duet-mouth-words",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "頭部と語の選択に同じ再生時計を使うと、再生・シーク後の文字はその行の唇の前に出る。前方に空きがなければ下に配置する。メリスマでは同じ表示が継続し、休符では現役の語がなくなる。過去の語は0.45秒で退場し、シーク時は前の時刻の文字を持ち越さない。",
+  "reference": {
+    "heads_run": "duet-heads-20261120-repeat",
+    "heads_manifest_sha256": "80f37d453e00954b677f08369db1af4dc5d33ddb3003b0e98ebfccaeb5378ef0",
+    "words_run": "duet-words-20261120-final",
+    "words_manifest_sha256": "a2af2cec474c0fa40c8a24672f3843653284d299d13713538f0faaef51b2eb9d"
+  },
+  "sample_rate_hz": 48000,
+  "viewports": [[960, 900], [300, 850]],
+  "demo_paused_samples": [0, 23999, 24000, 30719, 30720, 47999, 48000, 54719, 54720, 54721, 78719, 78720, 78721, 105600, 48000, 30720, 0],
+  "diagnostic_paused_samples": [17999, 18000, 29999, 30000, 41999, 42000, 61800, 65999, 66000, 77999, 78000, 89999, 90000, 18000],
+  "diagnostic_live": {
+    "start": 19200,
+    "melisma": 31200,
+    "rest": 43200,
+    "rest_faded": 64500,
+    "repeat": 67200,
+    "following": 79200,
+    "seek_samples": [44400, 69000, 33000]
+  },
+  "screenshot_samples": [23999, 24000],
+  "minimum_changed_pixels": 75,
+  "projection_tolerance_css_px": 0.02,
+  "layout_tolerance_css_px": 1.0,
+  "fade_seconds": 0.45,
+  "controlled_trail": [
+    {"time_ms": 0, "word": {"key": 0, "text": "low-"}},
+    {"time_ms": 50, "word": {"key": 0, "text": "low-"}},
+    {"time_ms": 100, "word": null},
+    {"time_ms": 125, "word": {"key": 0, "text": "low-"}},
+    {"time_ms": 150, "word": {"key": 2, "text": "low-"}},
+    {"time_ms": 375, "word": {"key": 2, "text": "low-"}},
+    {"time_ms": 625, "word": {"key": 2, "text": "low-"}},
+    {"time_ms": 650, "word": {"key": 0, "text": "low-"}, "seek": true},
+    {"time_ms": 675, "word": null},
+    {"time_ms": 1150, "word": null}
+  ],
+  "criteria": {
+    "words": "通常画面は既存の2つの丸め差を除いて固定上流の語と一致し、すべての停止位置で先行時刻の文字が残らない。診断譜では休符、メリスマ、同じ文字を使う別キーを検査する。",
+    "projection": "CSS座標へ独立に投影した口唇中心、前方の空き、文字先端を既定の許容差内で再現し、960 pxで左右の向きと前方配置、300 pxで下方配置を検査する。",
+    "visible": "通常画面で第1声部の同じ観測行の発音前後を撮影し、文字による変化が両画面幅で75画素以上になること。",
+    "history": "登録した人工時計で固定上流のadvanceTrailと一致し、シークから退場までの差を比較する。通常の再生操作では自然な音節切替に退場中の語が現れ、シークでは退場中の語が消えること。"
+  }
+}

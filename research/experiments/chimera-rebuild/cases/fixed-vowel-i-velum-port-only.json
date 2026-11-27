@@ -1,0 +1,31 @@
+{
+  "id": "fixed-vowel-i-velum-port-only",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "hypothesis": "口蓋帆の輪郭を固定してポートだけを開くと、最初の壁・口端の差はポート流量の発生より前には出ない。逆にポートを0 cm²に固定して輪郭を変えると、通常の開閉差と同じ初期の壁放射が出る一方、鼻端は全域で0になる。定常のPCMでは開口の効果は輪郭に依存すると予測する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-radiation-20261124-repeat",
+      "case": "fixed-vowel-i-velum-radiation",
+      "sha256": "03b31198372dd0cefc73a3d9066e3f288e96d3079494d35aa704a7fe4509d05f"
+    },
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "internal_samples": [0, 65536],
+    "steady_output_frames": [19200, 24000],
+    "geometry_cm2": {"closed": -0.15, "open": 0.3},
+    "port_area_cm2": {"closed": 0.0, "open": 0.3},
+    "host_block_frames": 128,
+    "expected_port_to_nose_internal_samples": 21,
+    "minimum_steady_nose_rms_cm3_s": 0.01,
+    "minimum_relative_pcm_interaction_rms": 0.001,
+    "upstream_series_peak_relative_error_lt": 1e-8,
+    "upstream_pcm_absolute_error_lt": 5e-7,
+    "port_pressure_residual_relative_lt": 1e-10,
+    "linear_pcm_interaction_sum_absolute_error_lt": 1e-12,
+    "input": "前回の固定 /i/ と同じ肺圧7.2 cmH₂Oと110 Hzを使う。輪郭の口蓋帆入力−0.15・0.30 cm²と、音響ポート面積0・0.30 cm²を交差した4条件で比較する。ポート面積の設定は静的とし、初期状態は無励振とする。",
+    "observation": "通常CLIの輪郭CSV、初期の気道断面とポート、ポートの両端圧・流量、声門と放射の内部観測、出力PCM。固定上流でも同じ4条件で内部観測とPCMを保存する。定常窓では開口の効果を2つの輪郭で計算し、その差を開閉差のRMSに対する比で評価する。",
+    "acceptance": "ポート面積を変えても、同じ輪郭の座標・全セルの断面と長さはビット一致する。面積設定なしと等しい2つの組は前回の全観測とPCMを再現する。輪郭固定で開口した条件は壁・口端・PCMにポート流量より先行する差がなく、鼻端はポート流量の21標本後に現れる。輪郭だけを変えた条件は初期の壁の差と初回PCM差を通常の開閉差と同じ標本で生じ、鼻端は全域0。両版で鼻端の定常RMSとPCMの交互作用を登録した閾値で検査し、放射の合算・微分・PCMとポートの二次式を独立計算に照合する。"
+  }
+}

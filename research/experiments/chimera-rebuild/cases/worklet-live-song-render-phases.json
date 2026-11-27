@@ -1,0 +1,24 @@
+{
+  "id": "worklet-live-song-render-phases",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "timing_reference_run": "worklet-live-song-cross-browser-20261121-deferred-default-repeat",
+  "measurement": {
+    "condition_order": [["control", "phases"], ["phases", "control"], ["control", "phases"]],
+    "traced_quantum_indices": [0, 1, 32, 33],
+    "calibration_markers": 8,
+    "engine_marker": "WorkletNodeEngine::ProcessBlock",
+    "profiler_case": "worklet-realtime-firefox-native-clock-96000.json",
+    "minimum_wasm_share_of_first_quantum_excess": 0.5,
+    "maximum_marker_calibration_step_ms": 0.3,
+    "maximum_median_outer_first_quantum_shift_ms": 0.6
+  },
+  "hypothesis": "冒頭の描画量子が定常部より長い主な部分は、JSが観測値をコピーする区間よりWASM描画関数の呼び出しにあり、先頭量子の超過の半分以上がその呼び出しで説明できる。",
+  "criteria": {
+    "input": "通常の歌唱画面から48 kHzのPop Deeを現行順で再生する。直前の失敗歌詞と資産検証の延期を両条件で共通にする。Firefoxのプロファイラーを両条件で使い、量子内部のマーカーの有無だけを変えて交互に3組を採る。",
+    "reference": "FirefoxのWorklet処理の開始順を起動待ち・先行無音・有音描画の報告と照合する。91,200点のPCM、1,425行の観測、拍と調音計画、辞書とWASMを保存済みの通常実行・CLIに照合し、固定上流との差を従来と同じ許容幅で確認する。",
+    "phases": "先頭2量子と出力4,096・4,224フレームから始まる2量子の同一GraphRunnerで、各64フレームのvocal_render前後、renderInto前後、JS観測値コピー前後を採る。マーカーには出力フレームと量子内オフセットを付け、該当するネイティブのCallProcess区間に閉じることを確かめる。",
+    "observer_effect": "先行無音中に連続した無処理のタイムスタンプを8件採る。隣接間隔の最大値0.3 ms、先頭量子のネイティブな長さの条件間中央値差0.6 msを計測の影響の目安にする。超過時も実測と音声の結果は保存する。",
+    "evaluation": "冒頭量子と定常サンプル2量子の中央値の差を、ネイティブ区間とWASM呼び出しの合計で取り、分母が正のときに割合を出す。JS観測コピーの差も記録する。WASM区間にはABI内部で観測値を作る処理が含まれるため、その内訳は別の段階として扱う。"
+  }
+}

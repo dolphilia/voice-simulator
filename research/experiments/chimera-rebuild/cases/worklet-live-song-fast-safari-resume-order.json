@@ -1,0 +1,20 @@
+{
+  "id": "worklet-live-song-fast-safari-resume-order",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "safari",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "offline_condition": "floor1200",
+  "condition_order": [["running", "suspended"], ["suspended", "running"]],
+  "routes": ["direct", "observed"],
+  "startup_timeout_seconds": 8,
+  "hypothesis": {
+    "registration": "macOSのSafariでは通常順と停止中の合成Worklet登録の双方で、同じ歌唱ボタンの1回の操作から登録と再開が完了すると予測する。遅い再開が保留される場合は、モジュール登録が済んでいるか、resume自体が未解決かを区別する。",
+    "audio": "開始できた試行では、歌唱開始は連続8量子の開始から3,072フレーム後になり、歌唱49,200フレーム、状態769点、計画が共通のオフライン基準に一致する。両順で開始待ちの初回からの欠落は0と予測する。"
+  },
+  "criteria": {
+    "input": "macOSのSafari本体で認証済みのsafaridriverを用い、通常の実時間歌唱ボタンをWebDriverの要素クリックで操作する。両経路で先行枝を省く。短音Pop Dee、240 BPM、出力48 kHz、内部96 kHz、歯フィルタ下限1,200 Hzを固定する。ページとContextを毎回新規にし、直接出力と並列観測ごとに順を逆転した2組を2回実行する。",
+    "startup": "再開要求、停止完了、合成Workletの登録開始・完了、再開完了、ノード生成を時刻とContext状態で採取する。通常順はクリック中のresume要求と再開完了後の登録を、試験順は停止完了後の登録開始と、登録完了後のresume要求を確認する。8秒までに取得できない場合は、要求・Promiseの完了状態、画面の状態、エラーを保存する。",
+    "clock_and_pcm": "初回からの欠落を別に判定し、歌唱開始を連続8量子と待ち2,048フレームで計算する。並列観測で保存する絶対フレームから開始位置とPCMを照合し、歌唱の前後256フレームと補完80フレームの無音も確認する。",
+    "latency": "クリックから歌唱の先頭までを同じ時計の計測差で保存し、条件ごとの順序とともに組内差を報告する。取得の合否は時刻差の符号から独立させる。"
+  }
+}

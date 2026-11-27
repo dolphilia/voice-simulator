@@ -1,0 +1,45 @@
+{
+  "id": "fixed-lf-radiation-harmonic-budget",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "fixed-lf-glottal-flow-20261121-b",
+    "case": "fixed-lf-glottal-flow",
+    "manifest_sha256": "59140e09bd42ccf7f064940264dd9cd1f7a93258226e84d7dca0577cebaa3dd2",
+    "expected_failed_checks": [
+      "lf_acoustic_level_difference"
+    ]
+  },
+  "measurement": {
+    "conditions": [
+      "coupled",
+      "lf"
+    ],
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "steady_window_samples": [
+      38400,
+      57600
+    ],
+    "f0_hz": 110,
+    "cycles": 22,
+    "reported_harmonics": 24,
+    "original_harmonics": 12,
+    "priority_harmonics": [
+      6,
+      7
+    ],
+    "legacy_relative_rms_threshold": 0.05,
+    "minimum_lip_fraction_of_radiation_loss": 0.9,
+    "minimum_priority_fraction_of_lip_derivative_loss": 0.5,
+    "relative_trace_tolerance": 1e-9,
+    "relative_identity_tolerance": 1e-11,
+    "relative_legacy_measurement_tolerance": 1e-9
+  },
+  "hypotheses": {
+    "increased_fundamental_offsets_lip_ac_loss": "固定LFでは口端流量の基本波の平均二乗が増え、残りの成分が減る。基本波だけを通常条件の電力に置換した対照では、口端流量の交流RMS低下が旧基準の5%に達する。",
+    "time_difference_weights_sixth_and_seventh_harmonics": "口端流量の差分に現れる平均二乗の減少の半分以上を第6・第7倍音が占める。",
+    "lip_derivative_explains_most_of_total_radiation_loss": "固定LFで総放射の交流平均二乗が減った量の90%以上が口端流量の差分の自己項に由来する。壁と口端の交差項、壁の自己項、鼻端と残りを別に記録する。"
+  },
+  "acceptance": "過去の合否のうち口端と総放射の5%判定だけが不合格であることを確認し、当時の姿勢・通常/LF流量・22周期の窓を保持する。通常入口の研究CLIと、固定上流の保存済み計測差分に壁・口端・鼻端を記録するだけの差分を追加したプローブで、両条件のPCMを保存波形に、流量・放射・圧力を保存系列に照合する。上流から直接採取した壁と開口の和・前回値・放射差分を相互に照合する。FFTによる全成分の交流平均二乗をParsevalで閉じ、複素交差項、窓の先頭の補正を含む差分の厳密な周波数応答、最初の12倍音と旧交流RMSを照合する。第1〜24倍音を出力し、残りの倍音と倍音以外のビンも合計に含める。"
+}

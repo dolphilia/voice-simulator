@@ -1,0 +1,36 @@
+{
+  "id": "worklet-live-beatbox",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "beatbox_pattern_case": "beatbox-pattern-transport.json",
+  "hypothesis": "画面操作を実際に適用した出力フレームに置けば、実時間AudioWorkletのPCMと再生位置をCLIと固定上流で再現できる。停止は先読み済みの打音を消し、同じ音源時計を進めた後の再開は0番から始まる。",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "output_frames": 192000,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "lead_frames": 512,
+    "commands": [
+      {"request_after_seconds": 0.32, "latest_apply_seconds": 0.55, "operation": {"type": "tempo", "bpm": 160}},
+      {"request_after_seconds": 0.57, "latest_apply_seconds": 0.85, "operation": {"type": "tempo", "swing": 0.4}},
+      {"request_after_seconds": 1.18, "latest_apply_seconds": 1.43, "operation": {"type": "playing", "playing": false}},
+      {"request_after_seconds": 1.60, "latest_apply_seconds": 1.90, "operation": {"type": "tempo", "bpm": 100}},
+      {"request_after_seconds": 2.04, "latest_apply_seconds": 2.34, "operation": {"type": "playing", "playing": true}}
+    ],
+    "minimum_canceled_hits": 1,
+    "early_stop_window_offsets_seconds": [0.001, 0.03],
+    "minimum_early_stop_pcm_peak": 0.0001,
+    "quiet_stop_window_offsets_seconds": [0.26, 0.48],
+    "maximum_quiet_stop_pcm_rms": 0.005,
+    "maximum_quiet_stop_gate": 0.03,
+    "restart_voice_window_offsets_seconds": [0.26, 0.34],
+    "minimum_restart_pcm_rms": 0.01,
+    "require_cli_pcm_bit_equality": true,
+    "max_wasm_memory_growths_in_render": 0,
+    "max_p99_process_budget_ratio": 1.0,
+    "pcm_absolute_tolerance": 1e-6,
+    "state_peak_relative_tolerance": 1e-7,
+    "state_absolute_floor": 1e-9,
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz",
+      "lip_minimum_cm2", "smoothed_f0_hz", "nose_flow_cm3_s"]
+  }
+}

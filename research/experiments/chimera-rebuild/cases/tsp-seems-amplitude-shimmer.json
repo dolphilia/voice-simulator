@@ -1,0 +1,23 @@
+{
+  "id": "tsp-seems-amplitude-shimmer",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-seems-period-jitter-20261123-repeat",
+    "case": "tsp-seems-period-jitter",
+    "manifest_sha256": "77700142e98eda3d8368fe254b559c08ac57f116d7951ed236145cfacfc2ce72"
+  },
+  "shimmer": {
+    "inactive": 0.0,
+    "active": 0.042
+  },
+  "limits": {
+    "matched_lpc_gap_hz": 0.5
+  },
+  "hypotheses": {
+    "first_amplitude_difference_at_first_boundary": "シマーを切り替えると両版で最初の周期境界そのものから振幅倍率が変わる。各版内の瞬時F0・位相・周期境界は一致する。",
+    "amplitudes_match_at_equal_settings": "同じシマーにそろえた両版で、ジッターとドリフトが0の全観測区間の振幅倍率はビット単位で一致する。",
+    "matched_settings_reduce_both_lpc_gaps": "シマーを0と0.042のいずれかに両版を揃えると、25 ms窓の高域LPC極の絶対差はいずれも0.5 Hz以内に収まる。"
+  },
+  "acceptance": "seemsの同じ発話計画、辞書、男性体型、96 kHz内部レート、48 kHzのPCM、1.1525〜1.1775秒の25 ms窓を引き継ぐ。両版のドリフトと周期ジッターを0に揃え、シマーだけを0と0.042で比較する。固定上流のジッター0・シマー0.042と、研究版のジッター0・シマー0は先行実行の全PCMのハッシュと保存窓に照合する。研究版は既存の設定と通常CLIで両方描画し、同じ発話計画、辞書、元のWAV、観測付きPCMを照合する。乱数列と振幅倍率を独立再計算し、シマーの違いが最初に現れる振幅、面積、流量、圧差、放射、PCMを追う。シマーを揃えた版間の残差は最初に分かれる出力と25 ms窓の効果量を記録する。独立放射出力、フーリエ和、固定Rustと独立LPCは既存許容差で照合し、仮説判定は計測の合否と区別する。"
+}

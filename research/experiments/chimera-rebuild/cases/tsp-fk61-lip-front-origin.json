@@ -1,0 +1,24 @@
+{
+  "id": "tsp-fk61-lip-front-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "geometry": {"run": "tsp-fk61-lip-area-origin-20261123-ray-repeat", "case": "tsp-fk61-lip-area-origin", "manifest_sha256": "ea9347f9a1c57f6580e5593ec4fa6590a0dd4a35672cd56dcc58556b874afbb8"},
+  "matched": {"run": "tsp-held-out-matched-speech-20261123-repeat", "case": "tsp-held-out-matched-speech", "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"},
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "completed_frames": [0, 1985],
+    "rays": [45, 46],
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "scope": "描画前と最初の体積流量差を含む制御境界の直後を採取する。研究版の試験ビルドは、唇前端のテンプレートx座標1箇所に適用する体型変換式だけを固定上流の演算順序へ切り替える。標準版、試験版、固定上流を照合する。"
+  },
+  "hypotheses": {
+    "first_coordinate_delta_comes_from_equivalent_body_transform": "初期姿勢と変換前の唇前端xは一致し、体型変換の等価な式の浮動小数点演算順序から差が生じる。",
+    "front_transform_trial_matches_initial_contact_and_cell": "試験版では初期の測定線45のx、46の補正後の隙間、両測定線の面積と口端セル平均面積が固定上流に一致する。",
+    "first_pcm_difference_moves_later": "固定上流との最初のfloat32のPCM差が、標準版の1989フレームより後ろに移る。"
+  },
+  "acceptance": "通常の発話入口から観測し、各版の標準PCMと保存済みPCM、試験版の通常CLIと観測器を全フレームでビット照合する。初期断面を前回の実測に合わせ、テンプレート座標、変換後座標、上下の唇端、測定線x、接触上限と隙間、面積、口端セルを独立計算で照合する。観測差とPCMの最初・最大の差を記録し、仮説は合否と分ける。"
+}

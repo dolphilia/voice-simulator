@@ -1,0 +1,62 @@
+{
+  "id": "tsp-tall-initial-tip-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "baseline": {
+    "run": "tsp-tall-output-gain-mfa-20261123-repeat",
+    "case": "tsp-tall-output-gain-mfa",
+    "manifest_sha256": "f0a75e7d5c026aedd087e18975bc0dba1880c67c28e99f1c7e410b53d3dadd25"
+  },
+  "matched_render": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "previous_render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "previous_alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "intervention": {
+    "old_gain": 5.5e-7,
+    "control_tip_cm": [6.241412821929657, 6.810460479056529],
+    "historical_tip_cm": [6.45, 7.3],
+    "source_variation": {
+      "pitch_drift_cents": 0.0,
+      "period_jitter": 0.0,
+      "amplitude_shimmer": 0.0
+    }
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "output_block_frames": 128,
+    "control_frames": 64,
+    "tip_frequency_hz": 13.0,
+    "preroll_frames": 2400,
+    "independent_profile_frames": [0, 63, 64, 127, 128, 191, 192, 479],
+    "profile_frames": [0, 63, 64, 127, 128, 191, 192, 479, 2399, 71999, 79199, 80639, 83999],
+    "tip_coordinate_tolerance_cm": 1e-12,
+    "maximum_late_tip_difference_cm": 1e-6,
+    "early_pcm_difference_minimum": 1e-6,
+    "word": "tall",
+    "phones": ["AO1", "L"],
+    "analysis_centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "baseline_end_seconds": 1.649999976158142,
+    "old_end_seconds": 1.6799999475479126,
+    "local_frames": [72000, 84000],
+    "acceptance": "旧ゲインと音源の3変動0を固定して初期舌先の2座標だけを旧値へ戻す。通常CLIの計画を両条件で保存値と照合し、対照の全PCM、整列用PCM16、全境界と固定上流PCMを照合する。冒頭の舌先の系列は独立した差分方程式に照合する。上流LPCと独立計算で固定窓と各境界からの窓を照合する。旧版との全標本および全語・音素区間の差を予測の採否にかかわらず記録する。",
+    "prediction": "初期舌先の介入で先頭50 msの無加工PCMに1e-6を超える差が生じ、tall付近の舌先座標差は1e-6 cm以内に戻る。ゲインと音源は旧版と同じ条件なので、介入後は旧版の整列用PCM16を全標本で再現し、/ɔ/–/l/の1.680秒境界と全語・音素区間も再現する。"
+  }
+}

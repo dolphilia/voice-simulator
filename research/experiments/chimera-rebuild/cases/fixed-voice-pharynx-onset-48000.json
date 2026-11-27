@@ -1,0 +1,22 @@
+{
+  "id": "fixed-voice-pharynx-onset-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-rate-48000-memory-repeat",
+  "reference_manifest_sha256": "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b",
+  "hypothesis": "48 kHz出力の固定/i/で最初に保存されていた声門上圧の差は、咽頭セル0の1内部サンプルの圧力収支から復元できる。前回の観測点8203と8205の間の8204または8205で差が現れ、声門流入、咽頭セル1への流出、壁流出、形状由来の体積源、コンプライアンスのどれが先行したかを比較できる。",
+  "measurement": {
+    "ipa": "i",
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "gate_open_frame": 4096,
+    "prefix_output_frames": 4120,
+    "window_first_sample": 8188,
+    "window_end_exclusive": 8240,
+    "predicted_first_pressure_samples": [8204, 8205],
+    "first_archived_pressure_sample": 8205,
+    "pcm_block_sizes": [128, 77],
+    "pcm_upstream_absolute_tolerance": 5e-7
+  },
+  "observation": "保存済み手動停止ケースの開始から出力4120点までを再生する。先行無音と発声直後の内部8188〜8239点で、咽頭セル0の圧力・体積・コンプライアンス、声門面積と流入、セル1への流出、壁流出、断面移動による流入を比較する。両方の圧力更新を独立の有理数計算と段ごとのf64丸めで復元する。",
+  "acceptance": "計測を追加した両エンジンの奇数内部点の既存列と全接頭PCMがそれぞれ保存済み採取に一致する。最初の声門上圧の差を内部点で特定し、監視区間で両実装の圧力更新をビット一致で復元する。初差で片方の入力群を置換してどの項が圧力差に十分か判定し、上流PCMは先行の許容差を満たす。"
+}

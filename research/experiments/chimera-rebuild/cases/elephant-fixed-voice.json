@@ -1,0 +1,46 @@
+{
+  "id": "elephant-fixed-voice",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定発声中にtrunkを0から1へ変えると、口先断面は10.05から0.05 cm²へ縮み、軟口蓋は0.1から6.1 cm²へ広がる。最初の制御境界から音響サンプル単位で断面が移り、中間では鼻の基部の流量と先端への放射が増え、口端の放射が減る。基部から先端へは伝搬時間があり、基部の圧力・弁を通る流量が先行する。固定発声では鼻の基部の弁は4.5 cm²を保つ。",
+  "elephant_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 76800,
+    "shape": {"pitch_hz": 14.0, "pressure_cm_h2o": 16.0, "trunk": 1.0, "chaos": 0.2},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0}],
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-sustain-48000", "windows": [[0.75, 1.1]], "official_prefix": true},
+      {"id": "route-switch-44100", "sample_rate_hz": 44100, "frames": 52000,
+       "shape": {"trunk": 0.0},
+       "events": [{"frame": 17, "gate": 1.0}, {"frame": 22051, "params": {"trunk": 1.0}}],
+       "windows": [[0.32, 0.48], [0.85, 1.05]], "route_switch": true},
+      {"id": "oral-sustain-96000", "sample_rate_hz": 96000, "frames": 57600,
+       "shape": {"trunk": 0.0}, "events": [{"frame": 0, "gate": 1.0}], "windows": [[0.32, 0.55]]},
+      {"id": "silent-48000", "frames": 1024, "events": [], "windows": []}
+    ],
+    "host_block_frames": [128, 77],
+    "control_frames": 64,
+    "gate_attack_seconds": 0.012,
+    "gate_release_seconds": 0.06,
+    "trunk_smoothing_seconds": 0.04,
+    "cm_h2o_to_dyn_cm2": 980.665,
+    "sound_speed_cm_s": 35000.0,
+    "cfl": 0.93,
+    "tubes": {"trachea": [45.0, 14.0, 1.6, 60], "pharynx": [32.0, 14.0, 1.2, 120],
+              "oral": [28.0, 10.0, 1.2, 120], "nasal": [14.0, 6.0, 1.2, 120],
+              "trunk": [185.0, null, 2.3, 110]},
+    "trunk_profile_cm2": [4.2, -3.0],
+    "trunk_valve_area_cm2": 4.5,
+    "oral_tip_area_affine_cm2": [10.05, -10.0],
+    "velum_area_affine_cm2": [0.1, 6.0],
+    "seeds": {"cycles": 777, "pitch_drift": 4242, "airway_noise": 12345},
+    "output": {"gain": 1.8e-6, "dc_cutoff_hz": 12.0, "limiter_threshold": 0.7,
+               "taps_per_phase": 24, "normalized_cutoff": 0.92, "kaiser_beta": 8.5},
+    "tolerances": {"pressure": 2e-5, "flow": 2e-7, "area": 2e-9, "phase": 1e-10,
+                   "f0": 1e-8, "radiation": 0.03, "pcm": 1e-6, "control": 1e-12, "dc": 1e-8},
+    "stage_observations": "全内部サンプルで声門上下の圧力・差圧・面積・流量、口先断面、軟口蓋の面積・流量、鼻の基部と入口・先端の圧力、入口の弁の面積・流量、壁・口端・鼻先の放射と放射流量の差分を比較する。静止断面、イベントの制御取り込み、断面の線形移行、固定肺圧、放射の時間差分と出力段を独立に取り直す。登録区間で口端と鼻先の流量RMSを比較し、壁・口端・鼻先の立ち上がり順と発声停止後の減衰を記録する。"
+  }
+}

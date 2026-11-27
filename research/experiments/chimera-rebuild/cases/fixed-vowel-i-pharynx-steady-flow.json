@@ -1,0 +1,30 @@
+{
+  "id": "fixed-vowel-i-pharynx-steady-flow",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の両肺圧で、声門の平均流量と固定形状から求めた定常流量は声門上61枝の実測平均にL2相対誤差5%以内、口端・鼻端の各流量に相対誤差10%以内で一致する。その枝平均を使うと、咽頭17枝×10周波数の複素流量はL2相対誤差1%以内になり、逆流枝をすべて検出し、符号不一致は全標本の1%以下になる。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-from-glottal-flow-20261124-repeat",
+      "manifest_sha256": "031f61841b0dd65d32f0a2d8e6d091a3aa192d188d63da8f19eb1844eb1d62b3"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "pharynx_branch_count": 17,
+    "supraglottal_branch_count": 61,
+    "maximum_mean_l2_error": 0.05,
+    "maximum_outlet_relative_error": 0.10,
+    "maximum_pharynx_spectral_l2_error": 0.01,
+    "maximum_sign_mismatch_fraction": 0.01,
+    "observed_loss_control_relative_error_lt": 1e-5,
+    "numerical_identity_relative_error_lt": 1e-8,
+    "edition_relative_error_lt": 1e-8,
+    "input": "固定 /i/ と口蓋帆ポート0.30 cm²の両肺圧・両版の保存収録を用いる。予測には観測声門流量の平均・10周波数と固定形状を使う。定常計算の口端・鼻端は並列R–Lの定常極限でゲージ圧0と置き、行き止まりの枝の定常流量を0とする。",
+    "observation": "400〜500 msの全枝平均、口端・鼻端への分流、定常解を使った接線抵抗と咽頭の複素流量、逆流符号を測る。観測平均を使った従来の応答に比べる。定常解は2経路の圧力損失を一致させた解と非線形節点方程式で照合し、観測二次損失の平均・慣性の窓端項・観測端圧を戻した対照も測る。",
+    "acceptance": "各自由節点の質量保存、枝の圧力式と境界を満たし、独立した2つの定常解が一致する。窓端項を含む平均二次損失の対照は観測枝流量に相対1e-5以内で一致する。観測平均を使う既存の10周波数と逆流判定を再現する。定常流量と10周波数・逆流の2つの仮説を分けて両版・両肺圧の成否を記録する。"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "fixed-alpha-lf-fundamental",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ の固定LF入力で110 Hzの複素係数だけを通常発声に合わせると、口端交流RMSは通常発声の再入力に比べ5%以上減る。低下率は口端の110 Hzを計算で直接置き換えた対照と0.5パーセントポイント以内で一致すると予想する。二次損失により、入力を変えていない660 Hzまたは770 Hzの口端複素係数にも、その周波数の固定LF値に対して相対1e-6を超える変化が現れると予想する。",
+  "references": {
+    "periodic": {
+      "run": "fixed-alpha-periodic-flow-20261124-repeat",
+      "case": "fixed-alpha-periodic-flow",
+      "sha256": "aaef0948a73f3c9290b49f61544950ca7863b328bb047d1ba9600ffc5b6aae08",
+      "status": "pass"
+    },
+    "voiced": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-repeat",
+      "case": "fixed-lf-radiation-harmonic-budget",
+      "sha256": "74bfec7e117a90f012e886530e6dd7fdbae6b43c8c6f315706ee8967d7ea2eaa",
+      "status": "pass"
+    },
+    "legacy": {
+      "run": "fixed-lf-glottal-flow-20261121-b",
+      "case": "fixed-lf-glottal-flow",
+      "sha256": "59140e09bd42ccf7f064940264dd9cd1f7a93258226e84d7dca0577cebaa3dd2",
+      "status": "fail"
+    }
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "f0_hz": 110,
+    "frequencies_hz": [110, 660, 770],
+    "steady_window_samples": [38400, 57600],
+    "cycles_per_block": 22,
+    "steady_flow_cm3_s": 139.8857905134376,
+    "warmup_samples": 76800,
+    "periodic_blocks": 4,
+    "after_onset_samples_to_keep": 128,
+    "upstream_trace_peak_relative_error_lt": 1e-9,
+    "spectral_identity_peak_relative_error_lt": 1e-10,
+    "first_inlet_pressure_relative_error_lt": 1e-9,
+    "late_block_peak_relative_error_lt": 1e-6,
+    "first_difference_peak_relative_threshold": 1e-10,
+    "hypothesis_lip_rms_reduction_ge": 0.05,
+    "hypothesis_rms_gap_to_output_replacement_lt": 0.005,
+    "hypothesis_nonfundamental_relative_change_gt": 1e-6
+  },
+  "input": "固定 /ɑ/、96 kHz。通常発声と固定LFの保存済み22周期19,200標本を対照とする。固定LFに110 Hzの正弦波を加えて通常発声の同ビンの複素係数に合わせる。平均と他のビン、初期定常流、姿勢、元の枝の二次損失を保つ。定常流の0.80秒の後に各ブロックを4回与え、固定上流と研究版CLIから描画する。",
+  "observation": "周期入力直後128標本と最後の2ブロックを保存し、最初の状態差と圧力差を独立式で照合する。最後の22周期で声門流量、口端流量、総放射の交流RMSと110 Hz・660 Hz・770 Hzの複素係数を求める。FFTと直接DFT、時系列の平均二乗とParsevalの等式を照合する。開口の放射流量の和と壁の寄与を差分し、総放射の観測を再構成する。定常点の線形モデルによる110 Hzだけの変化と、口端の110 Hzだけを置き換える対照を作り、再描画との差を基本波とそれ以外の差に分ける。旧5%判定は元の実測に対する不合格として保持する。仮説の結果は数値で記録し、照合の合否と区別する。"
+}

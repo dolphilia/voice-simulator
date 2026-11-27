@@ -1,0 +1,26 @@
+{
+  "id": "worklet-live-song-fast-safari-paused-registration",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "safari",
+  "realtime_study": "worklet-live-song-fast-teeth-lowpass-floor.json",
+  "offline_condition": "floor1200",
+  "creation_clock_reference": {
+    "case": "worklet-safari-clock-at-creation.json",
+    "run": "worklet-safari-clock-at-creation-20261121-repeat"
+  },
+  "paused_registration": { "minimum_advance_frames": 4096, "advance_after_resume_frames": 128 },
+  "condition_order": [["resume_before_node", "resume_after_connect"], ["resume_after_connect", "resume_before_node"]],
+  "routes": ["direct", "observed"],
+  "startup_timeout_seconds": 8,
+  "hypothesis": {
+    "resume_before_node": "停止中に登録したあとContextを再開し、時計が128フレーム以上進んでからノードを作れば、歌唱の最初の2量子の番号差は128、開始予約は歌唱初回から3,072フレーム後になる。",
+    "resume_after_connect": "停止位置をPとし、歌唱ノードを停止中に作ってつないでから再開すると、最初の番号は0、次はP+128になる。連続8量子を数え直すため開始待ちのコールバックは9回、歌唱予約はP+3,200フレーム。並列観測の最初の2値と開始位置も一致する。",
+    "audio": "どちらも連続区間先頭から3,072フレーム後に開始し、PCM49,200フレーム、観測769点、計画が共通のオフライン基準とビット一致する。並列観測のPCMには両条件で同じ歌唱サンプル列が現れる。"
+  },
+  "criteria": {
+    "input": "macOSのSafari 18.6の通常歌唱ボタンをWebDriverで操作し、短音Pop Dee、240 BPM、48 kHz出力・96 kHz内部、歯フィルタ下限1,200 Hz、無音先行なしを固定する。クリック時にContextを起動し、合成Worklet登録の直前に0ゲインのオシレーターを使って4,096フレーム以上まで進めて停止する。各試行でページとContextを作り直す。",
+    "conditions": "最後のモジュールが停止中に登録されるまでの操作をそろえる。生成前再開では、そのあとでContextを再開し、停止位置Pから128フレーム以上進めてから歌唱ノードを生成する。接続後再開では、歌唱ノードと並列観測を停止中に接続し、接続呼び出しを終えてからContextを再開する。",
+    "comparison": "登録、ノード生成、接続、再開の状態および停止位置Pを保存する。歌唱側の最初の2つのラベルと並列観測の2値を照合する。並列観測で絶対フレームと順次取得したPCMの両方から歌唱開始を確認し、開始前・終了後の無音と最後の80フレームの補完を比べる。予測の不成立は取得の成否から分ける。",
+    "repetition": "直接出力・並列観測それぞれ順序を反転した2組を取得し、別ディレクトリから同じ手順で再実行する。タイムアウトと欠測を保存する。クリックから歌唱先頭までの差は記録し、符号で合否を決めない。"
+  }
+}

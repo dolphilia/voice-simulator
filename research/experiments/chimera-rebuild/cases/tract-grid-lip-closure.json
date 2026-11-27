@@ -1,0 +1,37 @@
+{
+  "id": "tract-grid-lip-closure",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ唇閉鎖の輪郭では、閉鎖点を含む口端セルの幾何上の閉鎖・再開口は格子数に依存しない。セルが代表する区間で最小断面と調和平均が変わり、速度制限・補間後の閉鎖時刻や、声門直上の圧力と放射スペクトルが変わる。音響閉鎖は平均断面より小さい最小断面で先に始まり、平均断面が残る場合がある。",
+  "trajectory_case": "tract-slew-lips.json",
+  "trajectory_reference_run": "tract-slew-lips-20261119-b",
+  "preroll_control_frames": 96,
+  "pharynx_cells": 18,
+  "oral_cells": [12, 18, 22],
+  "default_oral_cells": 18,
+  "voice": {
+    "pressure_cm_h2o": 7.2,
+    "gate": 1.0,
+    "f0_hz": 110.0,
+    "breathiness": 0.15,
+    "tension": 0.5,
+    "output_sample_rate_hz": 48000,
+    "output_gain": 5.5e-7
+  },
+  "measurement": {
+    "closed_geometry_cm2": 1e-5,
+    "closed_network_cm2": 0.0002,
+    "maximum_courant": 0.97,
+    "sound_speed_cm_s": 35000,
+    "geometry_absolute_lt": 1e-9,
+    "audio_peak_relative_lt": 1e-6,
+    "pcm_absolute_lt": 1e-6,
+    "require_same_raw_closure_frames": true,
+    "profile_source_frames": [-1, 21, 22, 23, 37, 144, 147, 148, 149, 152],
+    "host_block_size": 128,
+    "reopen_windows_ms": [0, 20],
+    "command_windows_ms": [[-20, 0], [4, 24], [40, 80]],
+    "band_edges_hz": [500, 2000, 8000],
+    "stability_peak_pressure_lt_dyn_cm2": 40000
+  },
+  "scope": "成人男性。96 kHz内部クロックと128サンプルの制御周期、調音軌跡、声源、乱流なしの条件を共通にする。口腔以外の格子、体型、壁・放射、出力処理は共通。全周期で管長補正が入らないことを判定する。圧力は声門直上と補助的に口端で測り、音響閉鎖は最小断面を使う。"
+}

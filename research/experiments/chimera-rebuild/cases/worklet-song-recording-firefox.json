@@ -1,0 +1,30 @@
+{
+  "id": "worklet-song-recording-firefox",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "browser_engine": "firefox",
+  "recording_case": "worklet-song-recording.json",
+  "tract_case": "worklet-song-tract-recording.json",
+  "hypothesis": "Firefoxでブラウザ本来の対応結果を使うと、候補と固定上流のClipは共通の優先順で最初に対応する形式を選ぶ。二拍のPop Deeの加工前PCMと声道格子はChromiumの基準と一致し、復号音声の拍・無音と識別欄から読んだ断面は共通の録画基準を満たす。",
+  "reference": {
+    "chromium_run": "worklet-song-vp8-20261120-chrome-final",
+    "manifest_sha256": "f673ec08599aa5ef3ec825fd5d946417b5da442da67e45de23b97b359d7e9726"
+  },
+  "measurement": {
+    "format_priority": [
+      "video/mp4;codecs=avc1.42E01E,mp4a.40.2",
+      "video/mp4",
+      "video/webm;codecs=vp9,opus",
+      "video/webm;codecs=vp8,opus",
+      "video/webm"
+    ],
+    "minimum_browser_playback_seconds": 0.3,
+    "maximum_track_start_difference_seconds": 0.085,
+    "audio_capture_quantum_samples": 128
+  },
+  "criteria": {
+    "recording": "候補の通常の歌唱画面と固定上流のClipを実際に録画する。形式の問い合わせとMediaRecorderの入力を取得して、最初に真を返した形式、保存ファイルのMIME、実コンテナと復号後のストリームを比較する。",
+    "audio": "加工前PCMをCLIとChromiumに照合する。音声・映像のPTS、整列後の二拍、先頭・終端の無音、中止と再開を既存ケースの許容差で確認する。復号音声のPTSとサンプル数はコーデックとトラックの時刻単位を明示して比較する。",
+    "geometry": "映像から識別欄を復元し、閉鎖と再開口を含む4区間の輪郭をCLIの独立投影と比較する。ライブ観測、キャンバス作画、復号後の映像の順に差の生じた段を調べる。"
+  }
+}

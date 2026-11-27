@@ -1,0 +1,18 @@
+{
+  "id": "firefox-process-tap-headphone-drift-44100-clock-plateaus",
+  "revision": 1,
+  "source_case": "firefox-process-tap-headphone-drift-44100.json",
+  "source_case_id": "firefox-process-tap-headphone-drift-44100",
+  "source_case_revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "sample_rate_hz": 44100,
+  "band_tone_hz": 19845,
+  "reduced_band_upper_limit": 0.2,
+  "wide_band_lower_limit": 0.4,
+  "minimum_abs_pilot_slope_ppm": 5,
+  "minimum_consecutive_windows": 12,
+  "discard_end_windows": 3,
+  "maximum_slope_error_ppm": 0.5,
+  "prediction": "波形の傾きがほぼ一定の区間では、タップとcubebのホスト時計の1標本時間の差を比にしたppmが、2,205 Hzの位相から求めた信号の進み遅れの傾きに0.5 ppm以内で一致すると予測する。帯域の低い区間ではタップ側の1標本時間が長く、位相の傾きは正。帯域の広い区間で測定可能な傾きは負と予測する。",
+  "criteria": "先行の3試行の判定を保存し、振幅比が0.20未満または0.40以上で、位相の隣接窓の傾きの絶対値が5 ppm以上の区間を、帯域の群と傾きの符号で連結する。12小窓以上続く区間について各端の3窓を除き、窓中心と位相オフセットとの傾きを求める。同じ区間内のcubebとタップそれぞれで、PCM先頭位置とコールバックのホスト時刻から1フレームの時間を独立に求め、その差を公称1フレーム時間で割る。PCMや時刻の大きさを使って切替位置を調整しない。区間別の入力点数、残差、符号と予測の成否を保存する。"
+}

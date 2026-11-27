@@ -1,0 +1,44 @@
+{
+  "id": "fixed-lf-harmonic-transfer",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "成人男性の同一固定 /ɑ/ では、660 Hzと770 Hzの口端流量の変化は主に声門流量の変化で説明できる。各周波数の複素伝達比は通常発声と固定LFの間で1%未満しか動かず、伝達比の変化に対応する口端流量は全複素差の5%未満と予測する。",
+  "references": {
+    "radiation": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-repeat",
+      "case": "fixed-lf-radiation-harmonic-budget",
+      "status": "pass",
+      "manifest_sha256": "74bfec7e117a90f012e886530e6dd7fdbae6b43c8c6f315706ee8967d7ea2eaa"
+    },
+    "legacy": {
+      "run": "fixed-lf-glottal-flow-20261121-b",
+      "case": "fixed-lf-glottal-flow",
+      "status": "fail",
+      "manifest_sha256": "59140e09bd42ccf7f064940264dd9cd1f7a93258226e84d7dca0577cebaa3dd2"
+    },
+    "linear": {
+      "run": "vowels-reference-20261119-b-linear-alpha",
+      "case": "vowel-transfer-alpha",
+      "status": "pass",
+      "manifest_sha256": "0d8ef18ffb98f9a9f99ab258029740b884be3d15f02d32f5ed4cff7ab735d192"
+    }
+  },
+  "measurement": {
+    "conditions": ["coupled", "lf"],
+    "source_csv_columns": ["glottal_flow_cm3_s", "lip_flow_cm3_s"],
+    "internal_rate_hz": 96000,
+    "f0_hz": 110,
+    "steady_window_samples": [38400, 57600],
+    "cycles": 22,
+    "harmonics": [6, 7],
+    "frequencies_hz": [660, 770],
+    "complex_identity_relative_error_lt": 1e-8,
+    "linear_relative_error_lt": 1e-8,
+    "observed_transfer_relative_change_lt": 0.01,
+    "complex_transfer_term_fraction_lt": 0.05,
+    "legacy_failed_checks": ["lf_acoustic_level_difference"]
+  },
+  "observation": "同じ19,200標本の矩形窓で声門流量Qと口端流量Uを観測し、FFTと直接DFTを照合する。H=U/Qとして複素差をHの両条件平均×ΔQとQの両条件平均×ΔHに分ける。各項を同じ式で平均二乗の変化に写像し、口端流量を後退差分した第6・第7倍音の変化に照合する。",
+  "linear_boundary": "固定 /ɑ/ に対して声門枝を切り、咽頭入口に単位流量を入れる。上流の複素口端流量と全放射を観測し、研究版の通常CLIと保存した節点・枝から独立に解いた複素流量と比較する。時間領域で測った比との差と位相差も記録する。連続時間・零平均流まわりの線形比と有声の観測比の差には合否閾値を設けない。",
+  "legacy_boundary": "元の5% RMS判定と失敗判定はそのまま照合する。この比較は同一姿勢の2成分に限る。"
+}

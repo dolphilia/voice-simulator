@@ -1,0 +1,148 @@
+{
+  "id": "tsp-fk61-control4992-5120-indexed-area-paired",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area",
+    "manifest_sha256": "34404c8be2eea133f3004f1a2633f3d9fc47605eef84cdd432bfe01cf5f974f9"
+  },
+  "original_observation": {
+    "run": "tsp-fk61-control4992-5120-area-targets-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-area-targets",
+    "manifest_sha256": "9b940356f3762206b58f2dc766614e606aacfcba57a5e313f3707b79b429d12b"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      4990,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "固定上流の隔離ビルドで節点29・34の4992〜5119・5120〜5247の代表面積を開始値と標本番号から直接計算する。研究版は第89版の2つの全発話出力を使う。上流・研究版とも反復加算、研究版のみ直接、上流のみ直接、両方直接の4条件を比較する。4990〜5875の局所状態、0〜6143の放射内訳と出力段、全116132フレームの口端とPCMを照合し、対象512標本の代表面積と体積速度の最大差とRMSを比較する。",
+    "control_boundaries": [
+      4992,
+      5120,
+      5248,
+      5376,
+      5504,
+      5632,
+      5760
+    ],
+    "area_focus_blocks": [
+      4992,
+      5120
+    ],
+    "area_focus_nodes": [
+      29,
+      34
+    ],
+    "previous_comparison_internal_samples": [
+      3966,
+      5876
+    ]
+  },
+  "hypotheses": {
+    "upstream_indexed_reaches_its_targets": "上流の直接補間の4箇所すべてで終端代表面積は上流の目標に一致する。",
+    "paired_indexed_reduces_peak_area_difference": "2節点・2ブロックの代表面積の最大絶対差は両方直接の条件で両方反復加算より小さくなる。",
+    "paired_indexed_reduces_raw_volume_rms": "対象512標本での体積速度のRMS差は両方直接の条件で両方反復加算より小さくなる。",
+    "paired_indexed_pcm_first_remains_2937": "両方直接でも全発話PCMの初差は2937に残る。"
+  },
+  "acceptance": "上流の各ビルドで通常CLIと観測版の全PCMをビット照合する。上流基準の局所採取とPCMを保存済みの固定上流に照合する。研究版の採取・全PCMはマニフェストと第89版の結果を照合する。上流の直接補間を有理数の直線、最小面積・長さ・体積源と局所力学を独立計算で照合する。両上流ビルドで変更前の口端とPCMが一致し、放射の内訳から出力段を再現する。4条件で局所と全発話の初差・最大・RMS・差のあるフレーム数を記録する。"
+}

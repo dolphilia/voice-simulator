@@ -1,0 +1,23 @@
+{
+  "id": "fixed-voice-subglottal-balance-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "scaled": ["fixed-voice-glottal-branch-48000-v2-repeat", "5030dde094c8755c64d22993abdfc706a63e7c12b53dd1c116093341607bf100"],
+    "geometry": ["fixed-voice-centerline-render-48000-repeat", "54e21daca806a1511afe5d8789ccd7da3dc94433313f373c43cc479ccd132f07"],
+    "pressure": ["fixed-voice-pharynx-onset-48000-repeat", "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d"],
+    "momentum": ["fixed-voice-glottal-momentum-48000-repeat", "7e324e086fd56f91552119a65e333309afb76eb8bb898fffd25406aedf4bb7b4"]
+  },
+  "hypothesis": "固定 /i/ の8,216点目の更新前圧力と声門流出はビット一致する。気管終端セルの断面積と体積は静的なので、正味流量の差が更新後圧力の差を再現すると予想する。上流の項を一つずつ代入し、気管からの流入が差を説明するか、壁流出またはコンプライアンスまで必要かを区別する。",
+  "observation": "先行の隔離ソースを復元し、演算を変えずに気管末端の1セルの圧力収支を採取する。体積変化による流量、気管枝の流入、声門枝と壁の流出、体積、実効コンプライアンス、更新前後の圧力を測る。固定上流では保存済みのゲート列を使い、研究版では通常のrenderコマンドから描画する。",
+  "acceptance": "両版の観測を追加しても保存済みの枝と描画がバイト一致する。52内部点の収支と圧力を各演算で二進64ビットに丸める独立計算で復元する。更新後圧力の初差は8,216点目、次の声門更新が読む圧力の初差は8,217点目。対応する1点で記録した項を代入して、上流圧に一致する最小の組み合わせと内訳を記録する。",
+  "measurement": {
+    "ipa": "i",
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "prefix_output_frames": 4120,
+    "gate_open_frame": 4096,
+    "first_internal_sample": 8188,
+    "end_internal_sample_exclusive": 8240,
+    "expected_first_pressure_difference": 8216
+  }
+}

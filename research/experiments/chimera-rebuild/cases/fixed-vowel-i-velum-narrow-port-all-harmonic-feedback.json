@@ -1,0 +1,33 @@
+{
+  "id": "fixed-vowel-i-velum-narrow-port-all-harmonic-feedback",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "開口0.15 cm²で第1〜22倍音の接線解へ予測した二次圧力損失を一度戻すと、ポート流量の22係数のL2誤差が50%以上減る。2,310 Hzの鼻端誤差は、平均を固定した22成分の実測差し替えによる改善量の80%以上が回復し、先行する2成分の予測補正より小さくなる。再実装版と固定上流で別々に判定する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-narrow-port-bandwidth-20261124-repeat",
+      "manifest_sha256": "24430e03a72dabb678ad2c2da1c9237b77d0b1aca56f02c7ef831607630eb2c4"
+    },
+    "pressure_cm_h2o": 7.2,
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "feedback_harmonics": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+    "two_frequency_control_hz": [1320, 2420],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.15,
+    "supraglottal_branch_count": 61,
+    "minimum_port_error_reduction_fraction": 0.50,
+    "minimum_recovered_nose_improvement_fraction": 0.80,
+    "measured_source_port_relative_error_lt": 1e-4,
+    "measured_source_nose_transfer_relative_error_lt": 1e-8,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "狭開口の先行実行から時系列と線形要素を読み、声門流量と形状から前回と同じ22倍音の予測を作る。全61枝で予測した二次損失の複素成分から接線抵抗を引き、22周波数の節点方程式を一度だけ解き直す。先に固定した1,320 Hzと2,420 Hzだけを補正する場合を再計算する。",
+    "observation": "各倍音のポート流量と圧力源差を記録する。2,310 Hzの鼻端へはポートの補正波形から求めた圧力源だけを差し替え、ポート平均と他60枝の圧力源を基準に固定する。観測損失を使う対照と22倍音を実測係数へ置き換える対照を別に計算し、予測補正の改善と照合する。",
+    "acceptance": "先行する無補正、2成分補正、22成分の実測差し替えを照合する。FFT、元の粘性節点解での独立計算、枝源の重ね合わせ、基準平均と係数の再構成、上流と再実装の対応を検証する。事前仮説の閾値は変更しない。"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "worklet-songbird-switch",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "source_revision": 2,
+  "hypothesis": "buzzの途中で手動値を送ると、気嚢圧の目標は即時に更新され、コールが所有する張力・純度・音程差は旧目標を保つ。trillに切り替えたフレームでは識別子と目標が切り替わり、平滑値とPCMの差は次の64フレーム境界以降に現れる。切り替え指示を省いたCLI対照とのPCMは、その境界の直前までビット一致する。",
+  "measurement": {
+    "variants": ["switch"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": [72, 73, 127, 3600, 3601, 3647, 9601, 9632, 9663, 31212, 31213, 31231],
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_control_absolute_tolerance": 1e-9,
+    "independent_clock_absolute_tolerance_seconds": 1e-12,
+    "switch": {
+      "control_interval_frames": 64,
+      "expected_transitions": [[73, 4], [9601, 2], [31213, 0]],
+      "manual_frame": 3601,
+      "manual_control_frame": 3648,
+      "switch_frame": 9601,
+      "switch_control_frame": 9664,
+      "stop_frame": 31213,
+      "stop_control_frame": 31232,
+      "released_parameters": {"tension": 0.15, "purity": 0.1, "interval_semitones": 0.5},
+      "new_call_first_pitch_hz": 2475.0,
+      "counterfactual_pcm_difference_threshold": 1e-6,
+      "maximum_pcm_difference_delay_frames": 128,
+      "minimum_counterfactual_pcm_peak_difference": 0.01
+    }
+  }
+}

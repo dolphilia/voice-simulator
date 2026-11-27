@@ -1,0 +1,14 @@
+{
+  "id": "tract-limited-buffer-reuse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "song-render-allocation-phases-20261122-b",
+  "geometry_reference_run": "tract-limited-buffer-reuse-20261122-reference",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "allocations_per_geometry_update": 6,
+  "expected_removed_allocations": 2952,
+  "expected_allocations": 8857,
+  "prediction": "前周期の制限済み断面、現在の制限済み断面の2領域を使い回して初期化後のセル複製用の確保をなくす。48 kHzのPop Deeでは声道更新1476回につき各2件、全2952件が減る。語境界の25量子は各32件から24件になる。各段階の呼び出し数と複製以外の割り当て数は保たれる。",
+  "criteria": "4つの通常CLIケースで初期、apply、reapplyのraw・limitedの平均・最小断面、長さ、接触距離、軟口蓋を変更前の現行ビルドと照合し、全CSVのバイト一致を確認する。同じ入力の歌唱はPCM 91200標本、1425点のABI全23値を保存済みの変更前とビット照合する。全713量子でtraceの有無の総件数は一致し、除く件数は保存されたclone_cellsの件数に一致する。ほかの観測値・呼び出し数・親区間を除く割り当て内訳は保存済みの値に一致する。"
+}

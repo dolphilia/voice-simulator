@@ -1,0 +1,34 @@
+{
+  "id": "csd-en001a-initial-oral-geometry",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "lip_load": {
+    "run": "csd-en001a-first-lip-load-20261124-repeat",
+    "case": "csd-en001a-first-lip-load",
+    "manifest_sha256": "5131eb7478fe2839d0d923a92f08906eff4f3ccec79a04b296650b5765975e90"
+  },
+  "render": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "measurement": {
+    "completed_frames": [0, 1],
+    "control_internal_samples": 128,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "block_frames": 128,
+    "frames": 201600,
+    "max_segment_distance_error_ulp": 2.0,
+    "minimum_area_recovery_fraction": 0.5,
+    "geometry_fields": ["bounds", "axial_positions", "ray_areas"],
+    "first_volume_fields": ["cell_area", "cell_length"],
+    "scope": "en001aの同設定の初期化直後と最初の出力フレーム後を観測する。各時点で測定線の中心、区間距離、累積弧長、面積、咽頭端と口端、末端セルの再標本化直後・速度制限後・目標・気道の現在値を採る。"
+  },
+  "hypotheses": {
+    "cumulative_difference_reaches_terminal_cell": "初期姿勢の弧長の初差は末端セルへ寄与する最も手前の測定線までに現れ、咽頭端と口端の少なくとも一方に差が伝わる。",
+    "axial_inputs_dominate_terminal_initial_area_difference": "初期姿勢で口腔の両端と格子の累積距離だけを交換すると、両方向で面積差の50%以上が消える。測定線の面積だけの交換では両方向で50%未満。",
+    "lengths_are_above_the_stability_floor": "両版の2時点の口腔長は安定性の下限より長く、気道へ渡るセル長は口端と咽頭端の弧長差を口腔セル数で割った値となる。"
+  },
+  "acceptance": "計装あり・なしの全201600 PCMフレーム、歌唱計画、先行実行のハッシュを照合し、初期の口端と最初の目標および更新後の幾何を先行の負荷観測にビット照合する。中心間距離は90桁の独立計算で最大2 ULP以内、観測した距離の逐次累積と口腔両端・セル長、末端セルの8点の再標本化結果はビット一致を確認する。測定線の本数と領域順を揃え、口腔の両端、格子の累積距離、格子の面積を独立に往復交換し、全交換で末端セルを再現する。最初の制御更新で末端セルの面積・長さを個別に交換し、丸め済み体積の差と体積速度を再計算する。全交換で相手の両方を再現する。"
+}

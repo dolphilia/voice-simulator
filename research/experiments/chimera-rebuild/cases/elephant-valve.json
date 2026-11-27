@@ -1,0 +1,50 @@
+{
+  "id": "elephant-valve",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": "elephant-fixed-voice.json",
+  "hypothesis": "弁単体では正の差圧が静止開口を広げ、強い負・正差圧で変位が−0.05・0.8 cmの上下限に達して衝突方向の速度がゼロになる。気道内ではモードが0.02以下の間は入口が4.5 cm²で、上回ると前サンプルの差圧をモードで重み付けして弁を駆動する。中間モードでは弁の開口と並行する面積下限が実断面を決めうる。モード1では実断面が弁の開口に一致し、弁の開口変動と鼻先の放射が観測できる。",
+  "lip_reed": {
+    "sample_rate_hz": 48000,
+    "frames": 3200,
+    "parameters": {"pitch_hz": 470.0, "damping_ratio": 0.08, "rest_gap_cm": 0.003,
+                   "width_cm": 2.4, "surface_per_mass_cm2_g": 40.0},
+    "pressure_steps": [{"frame": 0, "dyn_cm2": 0.0}, {"frame": 1000, "dyn_cm2": 400.0},
+                       {"frame": 2400, "dyn_cm2": -30000.0}, {"frame": 2800, "dyn_cm2": 300000.0}]
+  },
+  "elephant_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 24576,
+    "shape": {"pitch_hz": 14.0, "pressure_cm_h2o": 26.0, "trunk": 1.0, "chaos": 0.2,
+              "mode": 1.0, "lip_pitch_hz": 470.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 20480, "gate": 0.0}],
+    "level": 1.0,
+    "observe_valve": true
+  },
+  "measurement": {
+    "variants": [
+      {"id": "held-valve-48000", "window": [7200, 19200]},
+      {"id": "mode-switch-44100", "sample_rate_hz": 44100, "frames": 46336,
+       "shape": {"mode": 0.0}, "window": [23424, 29568],
+       "switch": {"subthreshold": [4160, 5888], "intermediate": [12352, 16384], "returned": [44032, 46336]},
+       "events": [{"frame": 0, "gate": 1.0}, {"frame": 4103, "params": {"mode": 0.01}},
+                  {"frame": 5903, "params": {"mode": 0.55}}, {"frame": 13777, "params": {"lip_pitch_hz": 580.0}},
+                  {"frame": 18321, "params": {"mode": 1.0}}, {"frame": 30001, "params": {"mode": 0.0}}]},
+      {"id": "high-valve-96000", "sample_rate_hz": 96000, "frames": 32000,
+       "shape": {"lip_pitch_hz": 850.0, "pressure_cm_h2o": 20.0}, "window": [11520, 19712],
+       "events": [{"frame": 73, "gate": 1.0}, {"frame": 20065, "gate": 0.0}]}
+    ],
+    "mode_smoothing_seconds": 0.03,
+    "lip_pitch_smoothing_seconds": 0.02,
+    "threshold_mode": 0.02,
+    "height_bounds_cm": [-0.05, 0.8],
+    "rest_glottis_abduction_cm2": 0.05,
+    "added_glottis_abduction_cm2": 3.0,
+    "rumble_glottis_amplitude_cm2": 1.6,
+    "rumble_glottis_noise_gain": 4e-7,
+    "settled_window_frames": [1800, 2400],
+    "settled_height_tolerance_cm": 1e-6,
+    "reed_tolerances": {"height_cm": 5e-12, "speed_cm_s": 5e-8, "opening_cm2": 2e-11},
+    "stage_observations": "弁単体は差圧・変位・速度・開口を圧力ステップごとに記録し、上流の開口、独立行列計算、静的釣り合いを照合する。気道ケースは制御モード、弁の音高、声門の開大・振幅、弁の入力差圧、変位・速度・自由開口、面積下限込みの実断面、鼻の圧力・流量・放射、PCMを比較する。モード固定の観測窓で弁の開口と鼻先放射が非ゼロかつ弁の開口が変動すること、手動変更で閾値の上下と面積下限を踏むことを確認する。PCM、圧力、流量とホスト分割には固定発声の基準を引き継ぐ。"
+  }
+}

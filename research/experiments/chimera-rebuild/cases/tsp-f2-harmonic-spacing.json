@@ -1,0 +1,20 @@
+{
+  "id": "tsp-f2-harmonic-spacing",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "filter_reference": {"run": "tsp-f2-bandwidth-known-poles-20261122-repeat", "case": "tsp-f2-bandwidth-known-poles", "manifest_sha256": "153fe95cba431d8b9b340e6c740968c10bb99bab2f0cf1deb648e5655289249f"},
+  "annotation_reference": {"run": "tsp-f2-annotation-20261122-repeat", "case": "tsp-f2-annotation", "manifest_sha256": "c13f511eb39f56c90fa7174a8a8dd9b2949602b8163663021730a4d865af1f55"},
+  "tsp_reference": {"run": "tsp-stressed-vowel-formants-held-out-20261122-repeat", "case": "tsp-stressed-vowel-formants-held-out", "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"},
+  "f0_hz": [100, 125, 150, 200, 240, 300, 400],
+  "fixed_poles_hz": [[620, 100], [2075, 180], [2915, 155]],
+  "harmonic_response_relative_tolerance": 1e-10,
+  "display_peak_match_tolerance_hz": 30,
+  "minimum_display_peak_span_hz": 80,
+  "minimum_peak_matches": 6,
+  "lpc_known_f2_association_hz": 120,
+  "hypotheses": {
+    "display_peak_tracks_sampled_response": "25 ms Hann窓の平均スペクトルの帯域ピークが、理論伝達関数を整数倍音で評価したときの最大線から、7条件中6条件以上で30 Hz以内に入る。条件間の表示ピークの幅は80 Hzを超える。",
+    "lpc_occasionally_misses_known_pole": "固定上流のF2採択は、7条件・3窓・2次数のうち少なくとも1窓で欠測になるか既知の極から120 Hzより離れる。"
+  },
+  "acceptance": "12 kHz・1秒・振幅0.015の周期インパルスを使い、周期以外はnarrow-f2対照と同じにする。125 Hz条件の1秒波形、注釈素材の平均ピーク、先行上流の3窓×2次数の極を照合する。定常1周期のDFTを、固定伝達関数の複素応答と全倍音で照合する。表示ピークは注釈資料の0.4〜0.6秒、25 ms Hann窓、2 ms刻み、1,500〜2,500 Hz探索をそのまま使う。0.35・0.5・0.65秒の3窓で12次と14次の固定上流LPCを直接実行し、独立計算と極・F1/F2採択・欠測理由を照合する。仮説と実装の合否を個別に保存する。"
+}

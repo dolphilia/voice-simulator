@@ -1,0 +1,38 @@
+{
+  "id": "uniform-grid-rate-sensitivity",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "long_run": "uniform-waveguide-matched-20261121-long",
+  "bandlimited_run": "uniform-waveguide-matched-20261121-bandlimited-b",
+  "hypothesis": "共通R–L終端での3,250 Hzの振幅差は、時間刻みよりセル長に敏感で、セル中心から口端の面までの半セル慣性を補うと差の大半が消える。",
+  "fixed": "17.5 cm・3 cm²の剛体一様管、音速35,000 cm/s、密度0.00114 g/cm³、管内粘性なし、体積0.001 cm³の入口インパルス、同じ並列R–L終端と6 kHz帯域制限を継承する。",
+  "conditions": [
+    {"rate_hz": 96000, "cells": 20},
+    {"rate_hz": 192000, "cells": 20},
+    {"rate_hz": 96000, "cells": 40, "reuse": "96k"},
+    {"rate_hz": 192000, "cells": 40},
+    {"rate_hz": 192000, "cells": 80, "reuse": "192k"}
+  ],
+  "unstable_control": {"rate_hz": 96000, "cells": 80},
+  "measurement": {
+    "duration_seconds": 3.0,
+    "retained_prefix_seconds": 0.025,
+    "primary_hz": 3250,
+    "frequencies_hz": [250, 750, 1250, 1750, 2250, 2750, 3000, 3100, 3200, 3250, 3300, 3350, 3375, 3400, 3500, 3750],
+    "fourth_resonance_window_hz": [3050, 3650],
+    "factorial": "時間と空間の主効果・交互作用を20/40セル×96/192 kHzで計算する。40セル・96 kHzから、レートを倍にした後192 kHzのまま80セルとする比較を別に保存する。",
+    "boundary_model": "圧力を流量と同じ半時刻に置く伝達行列を立てる。波動管、対称なN段のFDTD回路、口端中点アドミタンス、口端と入口の半セルの慣性を順に除いた標準回路の複素差を記録する。半セル追加は周波数領域の対照としてのみ扱う。"
+  },
+  "criteria": {
+    "upstream_trace_relative_peak_max": 1e-8,
+    "bandlimited_samples_vs_nodal_complex_relative_max": 1e-5,
+    "waveguide_vs_formula_relative_max": 1e-7,
+    "abcd_vs_nodal_complex_relative_max": 1e-10,
+    "prior_complex_relative_max": 1e-8,
+    "old_amplitude_limit_db": 0.9,
+    "time_only_change_max_db_at_3250": 0.25,
+    "space_only_improvement_min_db_at_3250": 0.35,
+    "space_to_time_change_ratio_min_at_3250": 3.0,
+    "outlet_half_inertance_residual_reduction_min_at_3250": 0.75,
+    "inlet_half_inertance_fixed_flow_complex_relative_max": 1e-10
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "worklet-safari-song-output-notification",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-safari-song-audio-client.json",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "condition_order": [["bulk", "split"]],
+  "trace": {
+    "duration_seconds": 2,
+    "instruments": ["Audio Client", "System Call Trace"],
+    "capture_all_processes": true,
+    "output_wait_seconds": 90,
+    "minimum_window_intervals": 12
+  },
+  "notification": {
+    "baseline_minimum_events": 12,
+    "minimum_gpu_cycle_fraction": 0.8,
+    "maximum_gpu_signal_interval_ms": 10,
+    "minimum_marker_gap_reduction_ms": 70
+  },
+  "criteria": {
+    "input": "同じSafari歌唱、48 kHz、曲と声の設定、16,384フレームの予備描画と先行音を使う。一括と最初の64フレーム4片に続き256フレーム63片の分割を1組で比較する。別ディレクトリから順を反転する。",
+    "validity": "先行信号で出力が始まったWebKit GPUのPIDを特定し、Audio ClientとSystem Call Traceを同時採取する。歌唱・先行PCMと観測点が基準に一致し、構築前90〜10 msと準備窓を両計測が覆うことを確かめる。",
+    "prediction": "基準窓でGPUのI/Oスレッドからセマフォ通知を一意に照合できる場合に限り、一括の準備窓でもサイクルの80%以上に通知があり、通知の最大開始間隔は10 ms以内に収まると予測する。同時に先行音のグラフ間隔は分割で70 ms以上短くなると予測する。Web側の対応するスレッドと待機の時刻が採れた場合は同じ区間の観測値を記録する。",
+    "scope": "Syscall表がMachの待機・通知を公開するか、対象スレッドまで帰属できるかを先に判定する。帰属できない場合は欠測として残し、通知の有無や共有リングの読み出し結果を推定しない。書き込み側のFIFO不足と出力PCMの欠落は別に測る。",
+    "fallback": "同時計測の生のサイクルが準備窓に届かなかったため追記。準備前に取れた同時計測からGPUのI/O側スレッドの名前と通知を対応づける。System Call Traceだけで同じ比較を行い、3窓と全窓の通知を識別できた場合に限り、準備中も通知の最大間隔が10 ms以下という予測を判定する。通知後200 msの条件で準備前に終わった場合は20 msに短縮した条件を別の実行IDで計る。準備・基準・準備後の窓と判定条件は維持し、I/O区間は別の実行の観測として扱う。"
+  }
+}

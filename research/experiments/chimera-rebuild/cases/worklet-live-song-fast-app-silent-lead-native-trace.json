@@ -1,0 +1,28 @@
+{
+  "id": "worklet-live-song-fast-app-silent-lead-native-trace",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "duration_study": "worklet-live-song-fast-app-silent-lead-four-quanta.json",
+  "chromium_reference_runs": ["worklet-live-song-fast-app-silent-lead-four-quanta-20261121-buffer-init"],
+  "input_trace_study": "worklet-live-song-fast-app-silent-lead-input-trace.json",
+  "input_trace_reference_run": "worklet-live-song-fast-app-silent-lead-input-trace-20261121-repeat",
+  "browser_engine": "chromium",
+  "trace_silent_lead_input": true,
+  "native_trace": {
+    "categories": ["webaudio", "disabled-by-default-audio-worklet", "devtools.timeline", "blink.console"],
+    "marker_prefix": "chimera-lead-frame:",
+    "author_event": "AudioWorkletProcessor::Process (author script execution)",
+    "graph_event": "RealtimeAudioDestinationHandler::Render",
+    "request_event": "AudioDestination::RequestRender",
+    "device_event": "AudioDestination::Render"
+  },
+  "hypothesis": {
+    "graph": "Chromiumの先行Workletで最初の呼び出し直後に256フレーム欠ける。前後のマーカーに挟まれたNativeのグラフ描画は128フレームずつ2回進む一方、その範囲にWorkletの作者コード実行は記録されないと予測する。Nativeのグラフ描画も欠ける場合は別の結果として保存する。",
+    "audio": "歌唱側の開始待ちは連続し、49,200フレームのPCM、観測769点、計画が同じオフライン基準と一致する。"
+  },
+  "criteria": {
+    "input": "従来のChromiumの歌唱画面、48 kHz、短音Pop Dee、直列登録、先行4または8量子を使う。直接出力と並列観測それぞれを4組、前回の順序で採る。先行枝以外のグラフ構成を変えない。",
+    "trace": "先行Workletの通知までの全コールバックにcurrentFrameを含むトレースマーカーを付ける。CDPに欠落がなく、入力記録のフレーム列とマーカーが一対一に一致し、各マーカーが同じスレッド上の作者コード実行・128フレーム描画・描画要求に包含されることを確認する。描画要求と装置側Renderのイベント時刻も保存する。",
+    "classification": "隣接マーカーに挟まれた同一レンダラー内のグラフ描画と作者コード実行を数える。256フレームの欠測を1件以上採り、その区間の絶対フレーム差が384、間のグラフ描画が128フレームずつ2回、そこに作者コード実行が0回なら予測を支持する。時刻・スレッド・イベントが揃わない場合は未判定とする。",
+    "audio": "保存WAVを従来のオフラインと固定上流に照合する。歌唱側の連続8量子・予約2,048フレームと、並列観測で歌唱の前後の無音を照合する。トレース時のクリック時間は取得の影響を含む観測として保存する。"
+  }
+}

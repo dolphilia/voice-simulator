@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-pharynx-averaged-loss",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "声門入口の流量と固定形状から予測した10周波数の枝流量で二次損失を時間平均すると、固定 /i/ の両肺圧で鼻端の平均流量誤差と全61枝の平均流量のL2相対誤差が定常解から50%以上減る。補正後の咽頭流量は複素誤差1%以内で、逆流枝を全て検出し、符号不一致は全標本の1%以下となる。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-pharynx-steady-flow-20261124-repeat",
+      "manifest_sha256": "3abc95eebb4b5ec8595ea7f15e3285b6ea8fdbe41010d6bf839b8ad70b8f8d9c"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "pharynx_branch_count": 17,
+    "supraglottal_branch_count": 61,
+    "minimum_mean_error_reduction_fraction": 0.50,
+    "maximum_pharynx_spectral_l2_error": 0.01,
+    "maximum_sign_mismatch_fraction": 0.01,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "両肺圧と両版の保存済み固定 /i/ を使う。予測は声門流量の平均と固定10周波数と形状を入力とする。前回の定常流量を使った接線抵抗で、全61枝の10周波数を計算する。分流を求め直す間はその変動成分を保つ。",
+    "observation": "流向別の二次損失を時間平均し、口端と鼻端の圧力損失が一致するように分流を求める。定常、符号付き時間平均、逆流補正を省いた平均二乗の3条件で、鼻端と全枝の平均流量を測る。符号付き時間平均の解では、その枝平均で接線抵抗を計算し直して咽頭の10周波数と逆流を測る。",
+    "acceptance": "従来の定常分流と定常平均による倍音を保存値と照合し、周波数から求めた分散が再構成波形の二乗平均に一致する。符号付き損失の直接平均と分散・逆流項に展開した平均が一致する。両版で二つの仮説を判定し、全圧力の結果を保存する。"
+  }
+}

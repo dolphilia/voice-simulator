@@ -1,0 +1,52 @@
+{
+  "id": "worklet-seal-whistle",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-whistle.json",
+  "source_revision": 1,
+  "hypothesis": "whistleの目標音高の最小値は0.45秒の谷に近い制御境界で現れ、平滑値の谷は後に来る。対数領域の独立IIRは目標と平滑値の両方の谷を再現する。指数曲線から求めた連続時間の谷と実時間の平滑値の谷は1制御間隔以内に収まる。",
+  "measurement": {
+    "variants": [
+      "official-prefix-48000",
+      "half-pitch-44100",
+      "turnaround-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [
+        320159,
+        320160,
+        320191,
+        370623
+      ],
+      "half-pitch-44100": [
+        72,
+        73,
+        127,
+        20002,
+        20003,
+        20031,
+        46463
+      ],
+      "turnaround-96000": [
+        16,
+        17,
+        63,
+        100863
+      ]
+    },
+    "turnaround": {
+      "maximum_continuous_delay_error_control_steps": 1,
+      "log_filter_comparison_tolerance_hz": 1e-8
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

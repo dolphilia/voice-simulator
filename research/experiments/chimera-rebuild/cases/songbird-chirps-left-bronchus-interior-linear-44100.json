@@ -1,0 +1,51 @@
+{
+  "id": "songbird-chirps-left-bronchus-interior-linear-44100",
+  "revision": 1,
+  "left_bronchus_term": "interior_linear",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-bronchus-momentum-44100-20261123-b-repeat",
+    "manifest_sha256": "c9e9ec61ed6d4d005f11d10924e9be99bd7c6e6e8afc3229192d254efb9d2bd2"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-inlet-balance-44100-20261123-repeat",
+    "manifest_sha256": "35f05ab2dd5b3112469f68c3402fb64d702745ad191d6cde5125d0e6d9cd8647"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02
+  },
+  "predicted_first_inflow_effect": {
+    "matched_time": {"offset": 19, "flow_hex": "-0x1.f63d1d5fa7aa7p-31"},
+    "native_block": {"offset": 19, "flow_hex": "-0x1.c15c224ea00fap-31"},
+    "no_tracking": null
+  },
+  "minimum_delays_from_left_branch_samples": {
+    "left_bronchus_0_pressure_dyn_cm2": 0,
+    "left_bronchus_1_pressure_dyn_cm2": 0,
+    "left_bronchus_0_inflow_cm3_s": 1,
+    "left_bronchus_end_inflow_cm3_s": 1,
+    "left_bronchus_pressure_dyn_cm2": 1,
+    "left_flow_cm3_s": 2,
+    "trachea_pressure_dyn_cm2": 2,
+    "trachea_wall_flow_cm3_s": 3,
+    "right_flow_cm3_s": 3,
+    "right_bronchus_pressure_dyn_cm2": 3,
+    "trachea_end_pressure_dyn_cm2": 17,
+    "oec_pressure_dyn_cm2": 18,
+    "radiation_flow_cm3_s": 24,
+    "radiation_derivative_cm3_s2": 24
+  },
+  "hypothesis": "左気管支のセル0から1への枝だけで、線形係数の半セル慣性と時間換算を上流順に計算する。両制御の押鍵19点後の流量が事前予測の固定上流値とビット一致する。両端圧は同じ標本、末端への流入は1標本後、左鳴管流量と気管入口圧は2標本後から影響を受け得る。",
+  "observation": "押鍵後0〜63点を176400 Hzで描画する。235点制御、256点制御、追従0を通常render CLIから通し、セル0・1と末端への流量・圧力、鳴管、気管入口と放射を観測する。",
+  "acceptance": "対照バイナリとCSVを再現して固定上流CSVをハッシュ照合する。左セル1と両側の末端の流量・圧力、両鳴管流量と気管入口圧を独立計算にビット照合する。19点後の初差の解消、変更の伝播下限、励振前、閉鎖、追従0および幾何を確認する。残る差は最初の標本で演算項を置換して追う。"
+}

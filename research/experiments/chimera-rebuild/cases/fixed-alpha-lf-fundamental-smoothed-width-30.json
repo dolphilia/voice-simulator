@@ -1,0 +1,44 @@
+{
+  "id": "fixed-alpha-lf-fundamental-smoothed-width-30",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "幅だけを60から30 cm³/sに狭める。固定流量での予測では、770 Hzの偶成分の二次からのずれが、幅60の減少方向から幅30の増加方向に転じる。660 Hzの偶成分は逆向きに転じると予想する。同じ2枝・5入力で4比較の無変更比を再描画し、固定流量予測との差を各0.2パーセントポイント未満と予想する。定常流は両幅でビット一致し、損失仕事率は非負を保つ。",
+  "reference": {
+    "run": "fixed-alpha-lf-fundamental-amplitude-branch-loss-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental-amplitude-branch-loss",
+    "sha256": "32208ee7515f9321632ec7fdef881664482ac7cc716489f76741b1aa8b919e2f"
+  },
+  "width_reference": {
+    "run": "fixed-alpha-lf-fundamental-smoothed-branches-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental-smoothed-branches",
+    "sha256": "003ffdc9cb2fa707b67ed6bb3ca80a60a3254fbc8f66994289ae364eab9f2121",
+    "smoothing_width_cm3_s": 60
+  },
+  "fixed_flow_predicted_change": {
+    "660/odd_scaling_gap": 0.084752,
+    "660/even_scaling_gap": -0.007561,
+    "770/odd_scaling_gap": 0.160758,
+    "770/even_scaling_gap": 0.079113
+  },
+  "prediction_rounding_tolerance": 1e-6,
+  "hypothesis_prediction_error_lt": 0.002,
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "smoothing_width_cm3_s": 30,
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "steady_window_samples": [134400, 153600],
+    "dc_window_samples": [76799, 77824],
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "variants": {"baseline": [], "smoothed": [[26, 27], [25, 26]]},
+    "series_peak_relative_error_lt": 1e-9,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_response_peak_relative_threshold": 1e-10
+  },
+  "input": "固定 /ɑ/・96 kHzで固定LFの110 Hzの変更を倍率0、±1、±0.5で与える。標本76,800に同じ2枝を変更し、絶対流量30 cm³/s以下では元の損失に g(x)=1−(1−x)^3、x=|U|/30 を掛ける。無変更と定常流の対照を再描画し、幅60 cm³/sの保存観測と照合する。",
+  "observation": "切替前1標本・直後128標本と末尾22周期およびその直前1標本を保存する。各版の時系列、無変更の波形、両幅の定常流観測を照合する。圧力損失の式と仕事率を観測し、口端の奇成分・偶成分から比例・二次からの複素差を再構成する。元の流量に新旧の圧力損失を与えた予測値と、流量変化を含む再描画の差を比較する。予想の成否は計測手順の合否と分けて保存する。"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "worklet-midi-alligator-call",
+  "revision": 3,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-bellow.json",
+  "input": {
+    "creature": "alligator",
+    "key_mode": "call",
+    "call_id": "bellow",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [12, 120],
+    "capture_seconds": 3.40,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.34, "type": "note-off", "note": 60},
+      {"seconds": 0.76, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 0.95, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "Bellowの基準28 Hzに対して鍵盤から移調倍率を求めると、最初の30 Hzの目標は60で約35.04 Hz、67で約52.50 Hzになる。離鍵後もコールの呼気とchaosの変化が続く。67の押下で自動呼気の目標は先頭の0に戻り、実測の呼気・声門はそこから滑らかに追従する。",
+  "criteria": {
+    "routing": "固定版と候補の通常画面でBellowを選び、押下時のIDと割り当て周波数・離鍵後の継続・再発音を照合する。",
+    "physics": "制御点の間の音高、chaos、呼気、声門と放射を独立計算および固定版と比較し、自動終了後に演奏者の値に戻ることを確認する。",
+    "replay": "候補の採用フレームの再実行ケースからCLIのPCMを得て、固定版と比較する。"
+  },
+  "revision_reason": "初回の自然終了後120 msの閾値0.002は、400 msの呼気下降中に蓄積した平滑値を考慮していなかった。固定条件の独立式では終了120 ms後に約0.00862、220 ms後に約0.00163。120〜300 msの許容値を0.01とし、220〜300 msには元の0.002を適用する。初回はworklet-midi-alligator-call-20261121-aに全時系列と判定を保存した。",
+  "retention_revision_reason": "第2版の判定後、気管入口で最初に出る微差を保存する列と、ブラウザの採用時刻の違いを含めて2回の離鍵窓・終了窓を収める区間を追加した。数値判定は第2版と同じ。",
+  "measurement": {
+    "baseline_run": "worklet-midi-alligator-20261121-bellow-regression",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": -3,
+    "maximum_relative_input_error_seconds": 0.055,
+    "release_window_seconds": [0.025, 0.10],
+    "end_window_seconds": [0.12, 0.30],
+    "late_end_window_seconds": [0.22, 0.30],
+    "minimum_release_gate": 0.9,
+    "minimum_release_glottis_peak_cm2": 0.05,
+    "minimum_release_pcm_rms": 0.002,
+    "minimum_retrigger_gate_before": 0.98,
+    "minimum_retrigger_gate_after": 0.95,
+    "maximum_post_end_gate": 0.01,
+    "maximum_late_post_end_gate": 0.002,
+    "maximum_post_end_pcm_ratio": 0.01,
+    "browser_target_tolerance_hz": 1e-10,
+    "control_tolerance": 1e-9,
+    "clock_tolerance_seconds": 1e-10,
+    "worklet_tolerance": 1e-12,
+    "native_tolerance_source": "alligator-fixed-voice-v2.json"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["sample", "frame", "gate", "gate_target", "call_id", "pitch_hz", "target_pitch_hz", "chaos", "target_chaos", "lung_pressure_dyn_cm2", "trachea_inlet_pressure_dyn_cm2", "trachea_end_pressure_dyn_cm2", "glottis_drive_dyn_cm2", "glottis_flow_cm3_s", "glottis_f0_hz", "glottis_area_cm2", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 57344], [61440, 122880], [212992, 326400]]
+    },
+    "upstream.csv": {
+      "columns": ["sample", "frame", "gate", "call_id", "pitch_hz", "target_pitch_hz", "chaos", "target_chaos", "lung_pressure_dyn_cm2", "trachea_inlet_pressure_dyn_cm2", "trachea_end_pressure_dyn_cm2", "glottis_drive_dyn_cm2", "glottis_flow_cm3_s", "glottis_f0_hz", "glottis_area_cm2", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "sample",
+      "sample_ranges": [[0, 57344], [61440, 122880], [212992, 326400]]
+    }
+  }
+}

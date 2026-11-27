@@ -1,0 +1,42 @@
+{
+  "id": "uniform-axial-observation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "trace_run": "uniform-waveguide-matched-20261121-long",
+  "fir_run": "uniform-waveguide-matched-20261121-bandlimited-b",
+  "hypothesis": "同じ口端流量から軸上音圧を計算すると、有限円盤の軸上解はRayleigh積分と照合できる。後退差分を使う遠方近似には半サンプルの遅れがあり、それを補正すると有限円盤との位相差が縮む。",
+  "aperture": "面積3 cm²の固定円盤。一様な面速度で運動し、無限剛体バッフルの軸上だけを観測する。R–L終端は元の流量計算に用いる。音圧計算を気道へ帰還させない。",
+  "geometry": {
+    "aperture_area_cm2": 3.0,
+    "air_density_kg_m3": 1.14,
+    "sound_speed_m_s": 350.0,
+    "distances_m": [0.5, 1.0, 2.0]
+  },
+  "sources": [
+    {"grid": "96k-viscous", "sample_rate_hz": 96000, "methods": ["fdtd", "upstream"]},
+    {"grid": "192k", "sample_rate_hz": 192000, "methods": ["fdtd", "upstream", "waveguide"]}
+  ],
+  "measurement": {
+    "input_seconds": 0.25,
+    "end_taper_seconds": 0.02,
+    "retained_prefix_seconds": 0.02,
+    "frequencies_hz": [250, 750, 1250, 1750, 2250, 2750, 3250, 3750, 4000],
+    "quadrature_grid_hz": [50, 4000, 50],
+    "interpolation": {"method": "8点Lagrange", "causal_padding_samples": 5},
+    "differentiation": "後退差分。そのまま伝搬する条件と、伝搬遅延を0.5サンプル短くする条件を計測する。",
+    "input_preparation": "保存済みの口端体積流量の先頭0.25秒に前回と同じ6 kHz FIRを適用し、末尾20 msを半コサインで0まで落とす。無音を補って各観測器の遅延が出力し終わるまで計測する。"
+  },
+  "criteria": {
+    "volume_conversion_peak_relative_max": 1e-14,
+    "stored_derivative_peak_relative_max": 1e-12,
+    "independent_sample_filter_peak_relative_max": 1e-8,
+    "upstream_pressure_peak_relative_max": 2e-9,
+    "exact_vs_quadrature_relative_complex_max": 2e-11,
+    "native_disk_vs_continuous_relative_complex_max": 5e-6,
+    "far_raw_vs_discrete_relative_complex_max": 5e-6,
+    "far_corrected_vs_disk_relative_complex_max": 0.006,
+    "far_corrected_phase_residual_max_degrees_at_4000_hz": 0.25,
+    "raw_phase_error_min_degrees_at_4000_hz": 3.3,
+    "pressure_inverse_distance_all_ratios_relative_max": 0.001,
+    "waveguide_to_fdtd_ratio_recovered_relative_max": 1e-8
+  }
+}

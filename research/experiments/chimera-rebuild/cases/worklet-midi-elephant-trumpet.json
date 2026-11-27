@@ -1,0 +1,66 @@
+{
+  "id": "worklet-midi-elephant-trumpet",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-trumpet.json",
+  "input": {
+    "creature": "elephant",
+    "key_mode": "call",
+    "call_id": "trumpet",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [8, 45],
+    "capture_seconds": 2.65,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.30, "type": "note-off", "note": 60},
+      {"seconds": 0.88, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 1.10, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "鍵盤60と67は8〜45 Hzの声門音高域で約16.35 Hzと24.50 Hzへ割り当てられる。MIDIの倍率は音高ロールの付いた声門のpitchに適用される。TrumpetはlipPitchの制御点で弁を動かすため、両方の押下で弁の目標は380→520→470 Hzになる。採用時刻と初期状態をそろえ、音番号だけを交換した対照でPCMと弁の状態がビット一致する。",
+  "criteria": {
+    "routing": "固定版の通常画面からTrumpetを選び、MIDIキーが異なるHzとしてコールへ届くことを確認する。",
+    "physics": "弁の音高目標、平滑音高、声門開口、弁の圧力差・開口・流量、鼻先の放射を上流と独立補間に照合する。",
+    "counterfactual": "候補の再実行ケースの全イベントを同じフレームに保ち、60と67だけを交換して同じCLIで再計測する。PCMと弁の系列がビット単位で一致するか判定する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-elephant-trumpet-20261120-repeat",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "octave_shift": -4,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_target_tolerance_hz": 1e-10,
+    "worklet_tolerance": 1e-12,
+    "release_window_seconds": [0.025, 0.12],
+    "trumpet_curve_observation_seconds": [0.0, 0.25, 0.5, 1.1],
+    "minimum_release_gate": 0.7,
+    "minimum_release_pcm_rms": 0.002,
+    "minimum_release_reed_opening_range_cm2": 0.001,
+    "minimum_release_nasal_ac_rms_cm3_s": 1.0,
+    "lip_pitch_tolerance_hz": 1e-9,
+    "natural_end_tolerance_control_ticks": 1
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "gate_goal", "gate", "call_id", "pitch_hz", "target_pitch_hz", "mode", "target_mode", "lip_pitch_hz", "target_lip_pitch_hz", "pressure_cm_h2o", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "glottis_area_cm2", "reed_drive_dyn_cm2", "reed_height_cm", "reed_speed_cm_s", "reed_opening_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 35840], [40960, 77824], [92160, 127200]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "gate", "call_id", "pitch_hz", "target_pitch_hz", "mode", "target_mode", "lip_pitch_hz", "target_lip_pitch_hz", "pressure_cm_h2o", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "glottis_area_cm2", "reed_drive_dyn_cm2", "reed_opening_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 35840], [40960, 77824], [92160, 127200]]
+    },
+    "swapped-cli.csv": {
+      "columns": ["frame", "lip_pitch_hz", "target_lip_pitch_hz", "reed_drive_dyn_cm2", "reed_opening_cm2", "trunk_valve_area_cm2", "nasal_cm3_s", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 35840], [40960, 77824], [92160, 127200]]
+    },
+    "swapped-upstream.csv": {
+      "columns": ["frame", "lip_pitch_hz", "target_lip_pitch_hz", "reed_drive_dyn_cm2", "reed_opening_cm2", "trunk_valve_area_cm2", "nasal_cm3_s", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 35840], [40960, 77824], [92160, 127200]]
+    }
+  }
+}

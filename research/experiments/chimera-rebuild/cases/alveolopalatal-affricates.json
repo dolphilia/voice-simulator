@@ -1,0 +1,49 @@
+{
+  "id": "alveolopalatal-affricates",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": " /tɕ dʑ/ は口腔を一度閉じ、前回検証した /ɕ ʑ/ の狭窄目標への移行で歯に圧力を注入する。IPA既定の /dʑ/ は /tɕ/ より声門開大が遅く、閉鎖の初期に振動が残りやすい。韓国語の語頭 /tɕ/ はㅈ・ㅊ・ㅉで別の開大計画になり、母音間のㅈは /dʑ/ になる。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"ipa-tsh","text":"ˈɑtɕɑ","body":"male","ipa":"tɕ","rate":1},
+    {"id":"ipa-dzh","text":"ˈɑdʑɑ","body":"male","ipa":"dʑ","rate":1},
+    {"id":"female-tsh","text":"ˈɑtɕɑ","body":"female","ipa":"tɕ","rate":1},
+    {"id":"short-dzh","segments":[{"ipa":"ɑ","dur":0.16,"stress":1},{"ipa":"dʑ","dur":0.044},{"ipa":"ɑ","dur":0.20}],"body":"male","ipa":"dʑ","rate":1,"short_control":true}
+  ],
+  "song": [
+    {"id":"korean-affricates","lyrics":"아주 자 차 짜","body":"male","midi":[57,60,62,64,65],
+     "onsets":[[],["dʑ"],["tɕ"],["tɕ"],["tɕ"]],"nuclei":["a","u","a","a","a"],"codas":[[],[],[],[],[]],
+     "targets":[{"ipa":"dʑ"},{"ipa":"tɕ","aspirated":true,"vot":0.045},{"ipa":"tɕ","aspirated":true,"vot":0.09},{"ipa":"tɕ","aspirated":false}]}
+  ],
+  "release_tip_cm": {
+    "tɕ":{"male":9.435,"female":9.447,"child":9.464},
+    "dʑ":{"male":9.420,"female":9.434,"child":9.452}
+  },
+  "measurement": {
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "closed_area_cm2":0.0002,
+    "open_lip_minimum_cm2":0.1,
+    "closure_window_padding_seconds":0.05,
+    "minimum_closed_frames":64,
+    "closed_branch_flow_abs_tolerance_cm3_s":1e-8,
+    "release_window_padding_seconds":0.025,
+    "minimum_teeth_active_frames_after_release":120,
+    "glottal_voicing_minimum":0.55,
+    "glottal_area_peak_prominence_cm2":0.015,
+    "period_to_f0_ratio":[0.75,1.25],
+    "voicing_search_padding_seconds":0.18,
+    "early_closure_window_seconds":0.015,
+    "window":"開始50 ms前から区間終端までのうち、唇が0.1 cm²以上開き口腔内が0.0002 cm²未満の最長連続区間を閉鎖とする。閉鎖の内部セルに隣接する両枝の許容流量は1e-8 cm³/s。最初の開口から区間終端25 ms後までに歯の乱流が120フレーム以上活動する。開口から区間終端180 ms後の範囲で、声門面積の突出部とF0の周期が対応する連続二山を測る。短い制御対照は音響の通過条件から除外し、調音・声門の時刻、状態、PCMの上流比較で判定する。",
+    "initial_state":"各テイクの初期姿勢、呼気、声源、出力段は親ケースから採用し、テイクごとに初期化する。発話の乱流は入口の既定値を使う。"
+  }
+}

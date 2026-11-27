@@ -1,0 +1,47 @@
+{
+  "id": "worklet-live-tsp-firefox-io-thread-state-capture-preplay",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-io-thread-state-capture-gated",
+  "initial_control_run": "worklet-live-tsp-firefox-io-thread-state-capture-gated-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 80,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ],
+      [
+        "draw"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "hypothesis": "画面のケース読込みを済ませ、トレースの開始通知を受けた直後に実時間再生を開始すれば、発話開始とその前後20要求をcubebの256コールバックと音声I/O表の共通区間に収められる。欠けた周期と連続周期を同じスレッドで比較し、状態の欠測は明示する。",
+  "acceptance": "同期事前描画、固定上流、48 kHz・256フレームと前後20要求を維持する。トレースを待つ位置をAudioContextの生成前へ移し、先行音の準備を80量子に短縮し、プロセスタップの起動を省く。先行音のPCM、発話のPCMと状態、cubebとAudio Client・Audio Serverの時計を照合する。状態表を用いた判定は登録済みのオフセットで行う。元のタップあり条件の発生頻度との比較には使わない。"
+}

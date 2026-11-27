@@ -1,0 +1,20 @@
+{
+  "id": "tsp-tall-mfcc-final-compression",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "parent": {
+    "run": "tsp-tall-mfcc-input-compression-20261123-repeat",
+    "case": "tsp-tall-mfcc-input-compression",
+    "manifest_sha256": "d52862d2a13286749f7d90122fa39625373b8d463870124702d40f8a9fd87d04"
+  },
+  "archive_tokens": {
+    "float32": {"input": "FM", "final": "CM"},
+    "float32_both": {"input": "FM", "final": "FM"}
+  },
+  "measurement": {
+    "expected_preroll_difference_frames": 6,
+    "legacy_control_end_seconds": 1.649999976158142
+  },
+  "acceptance": "固定MFAの通常入口で、前回の4つのPCM・CMVN供給元条件を再実行する。両側とも最初のMFCCはfloat32とし、最終の保存形式だけを変える。SCPの参照先から全4発話のark種別を調べる。最終圧縮側の行列と全区間を前回に照合し、両側の入力MFCC、統計、平均除去後の行列がビット一致することを確認する。最終非圧縮側では平均除去直後と最終読み戻しが一致することを確認する。独立した平均除去の検算、対象周辺と全フレームの差、境界を記録する。",
+  "prediction": "最終保存もfloat32にすると対照統計を共用した2音声の差は最終読み戻しでも先頭6フレームだけに収まり、tall周辺の差が消える。2音声のtall終端は揃うと予測する。発話全体に広がっていた最後の量子化の影響が消えることで、対照の終端は旧基準の1.650秒へ戻ると予測する。"
+}

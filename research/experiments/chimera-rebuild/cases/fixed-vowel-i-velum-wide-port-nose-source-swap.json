@@ -1,0 +1,28 @@
+{
+  "id": "fixed-vowel-i-velum-wide-port-nose-source-swap",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "開口0.30 cm²の固定 /i/ で、第23〜44倍音を口蓋帆ポートに加えると、他60枝の圧力源を予測した条件では2,310 Hzの鼻端誤差が増える。他60枝を収録に基づく圧力源へ置き換えた条件では、同じ上位倍音を加えると鼻端誤差が減る。両版でそれぞれ判定する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-wide-port-upper-harmonics-20261124-repeat",
+      "manifest_sha256": "4ab252184f9c12c762d220fcc71b160a05e1338e0421d5a489c45d6bbdd5c635"
+    },
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "pressure_cm_h2o": 7.2,
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "minimum_nose_relative_error_change": 1e-8,
+    "full_measured_sources_nose_relative_error_lt": 1e-6,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "同じ保存収録の声門流量と線形要素を4条件に使う。口蓋帆ポートの平均と補正済み第1〜22倍音は前回と同じに保ち、第23〜44倍音の追加なしと収録係数の追加を比較する。他60枝は独立に10周波数の予測波形に基づく二次損失と、全帯域の収録波形の二次損失および窓端補正を使う圧力源を切り替える。ポートの窓端補正は全枝を収録に置き換える補助対照だけに使う。",
+    "observation": "4条件の2,310 Hzの鼻端複素伝達と収録に対する相対誤差を記録する。他60枝を切り替える複素変化、ポートの上位倍音による複素変化、二乗誤差の交差項を測る。枝の部位ごとに他60枝の圧力源の差を鼻端に伝え、交差項への寄与を記録する。",
+    "acceptance": "上位倍音の追加による鼻端相対誤差の増加・減少がそれぞれ1e-8を超えるかを判定する。予測圧力源の2条件とポート損失を先行実行に照合し、枝方程式から求めた観測圧力源、FFT、節点直接解、複素重ね合わせ、二乗誤差の交差項を独立に照合する。全61枝を観測圧力源へ置き換えた補助対照で鼻端伝達を相対1e-6以内に再現する。"
+  }
+}

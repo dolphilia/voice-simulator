@@ -1,0 +1,27 @@
+{
+  "id": "worklet-live-song-audioipc-audio-client",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "previous_gated_case": "worklet-live-song-audioipc-system-calls.json",
+  "previous_gated_run": "worklet-live-song-audioipc-20261121-gated-syscalls",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {
+      "instrument": "System Call Trace",
+      "additional_instruments": ["Audio Client"],
+      "time_limit": "2s",
+      "all_processes": true,
+      "use_darwin_notification": true,
+      "marker_ready_offset_ms": 80,
+      "marker_capture_quanta": 1536
+    }
+  },
+  "hypothesis": "Audio Clientを追加すると同じ収録でFirefoxの音声機器側I/O区間を取得できると予想する。対象PIDの区間が出力ソケットの要求を一意に包むなら、機器側の開始間隔とサーバー送信間隔を比較する。",
+  "criteria": {
+    "input": "システムコールの予備採取と同じ1組、通知時刻、採取順を使い、Audio Clientだけを追加する。4組のソケット比較とは独立した実行にする。",
+    "validity": "収録の範囲と対象PIDを確認する。対象PIDのI/O区間が構築前後17件のサーバー送信と応答受信を一意に包み、区間の順序とフレーム長を照合できたときだけ、機器側の開始間隔として報告する。",
+    "perturbation": "収録時間、歌唱と先行音の判定、ソケットの一致、構築時間と次の要求間隔の増分を予備採取に照合する。アプリのI/O区間が欠測なら機器時刻の予測は未判定とする。"
+  }
+}

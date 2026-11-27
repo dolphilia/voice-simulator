@@ -1,0 +1,24 @@
+{
+  "id": "worklet-live-song-audioipc-system-notified",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "previous_gated_case": "worklet-live-song-audioipc-system-centered.json",
+  "previous_gated_run": "worklet-live-song-audioipc-20261121-gated-centered",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {
+      "template": "Audio System Trace",
+      "time_limit": "2s",
+      "all_processes": true,
+      "use_darwin_notification": true,
+      "marker_ready_offset_ms": 80,
+      "marker_capture_quanta": 2304
+    }
+  },
+  "criteria": {
+    "alignment": "xctraceの端末行と実際の収録開始の差が674〜1057 msに変動したため、xctraceの --notify-tracing-started が送る個別のDarwin通知を起点に80 ms後に構築を解放する。通知時刻と収録開始の差が50 ms以内で、各試行の構築前後17要求を収録できると予測する。",
+    "capture": "収録の初期化が遅くても構築直後の量子を保持できるよう、先行音の採取を2304量子まで延ばす。先行音を流し始める時点、歌唱ノードの入力、開始条件は同じにする。送受信の対応と収録負荷は830 ms条件に登録した基準で判定する。"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "song-render-allocation-phases",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": "worklet-live-song-allocation-current-20261122-a",
+  "historical_baseline": "worklet-live-song-20261120-a",
+  "native_fixture": "worklet-song-voice.json",
+  "song_fixture": "song-voice-long.json",
+  "output_rate_hz": 48000,
+  "internal_rate_hz": 96000,
+  "output_frames": 91200,
+  "quantum_frames": 128,
+  "control_output_frames": 64,
+  "observation_stride_frames": 64,
+  "review_ranges": {
+    "before_boundary": [43520, 44672],
+    "word_boundary": [44672, 47872],
+    "after_boundary": [47872, 49024]
+  },
+  "prediction": "通常の128フレーム量子では64出力フレームごとのapplyが2回あり、割り当て・再割り当て計16回。語境界の25量子では同じ制御周期内の接触補正でreapplyが2回加わり、増分16回が声道形状の再計算に生じると予測する。等長セルの生成とrawの複製が声道形状更新1回当たりの割り当ての一部を占める。",
+  "criteria": "同じネイティブのC ABIを観測64フレーム、量子128フレームで呼ぶ。合計、apply、reapply、乱流登録、確定の計数を量子ごとに残す。applyとreapplyの内部の輪郭、接触グリッド、面積プロファイル、再標本化、複製も計数する。親の内数を合計へ二重加算しない。観測を有効・無効にした同じビルドのPCMと全ABI観測値、現行ブラウザのPCMと主要状態、既存の量子別総件数を照合する。計測の成立と語境界の予測を別々に判定し、出所の判明しない件数は残差として記録する。"
+}

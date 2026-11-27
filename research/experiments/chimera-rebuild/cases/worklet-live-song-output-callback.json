@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-output-callback",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "saved_runs": ["worklet-live-song-shared-context-20261121-b", "worklet-live-song-shared-context-20261121-repeat"],
+  "pilot_pair": "worklet-live-song-shared-context-20261121-repeat/1",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "worklet_quantum_frames": 128,
+    "window_radius_callbacks": 8,
+    "marker_start_tolerance_ms": 0.1,
+    "marker_duration_tolerance_us": 1.1,
+    "minimum_next_callback_delay_ms": 2.0,
+    "maximum_later_median_interval_error_ms": 0.25,
+    "minimum_eighth_callback_offset_ms": 2.0,
+    "minimum_trials_showing_prediction": 3
+  },
+  "hypothesis": "192フレームを事前描画した構築では、256フレームの出力要求の処理が予算を超える。次の要求の開始は、その1要求分の予定より2 ms以上遅くなる。以降の要求間隔は中央値で1要求分の長さに戻り、構築から8回先の開始には2 ms以上のずれが残る。要求フレームとグラフが進んだフレームの一致、先行音と歌唱の連続性を同時に確認する。",
+  "criteria": {
+    "input": "既存の48 kHz Pop Deeで、先行音を192量子以上再生したContextに歌唱ノードを追加する。未準備と192フレームの4組は既存の共有Contextケースの条件順で採る。保存2実行と追加の採取を個別に集計し、予備に読んだ1組も識別できるようにする。",
+    "alignment": "構築を含むDataCallbackを同じプロセスのAudioIPC Client Callbackから一意に決める。前後8要求のそれぞれで呼び出し側のGraphRunner::OneIterationと実行側のMTG::OneIterationImplを対応づける。要求予算とMTG graph advanceのマーカーは開始時刻が0.1 ms以内で対応するものを使う。予算と前進時間から求めた整数フレームは、元のマーカー長に戻したときの誤差が1.1 µs以内であることを確認する。",
+    "frames": "各グラフ反復内の先行音フレームを数え、観測したフレーム数がグラフ前進と一致すること、窓の前後でフレームが連続することを照合する。要求とグラフ前進の差は各回と累計を保存する。先行音・歌唱のPCM、観測、計画、拍は従来の基準と比較する。",
+    "timing": "各要求の開始・終了、グラフ実行、構築、処理予算を保存する。開始のずれは構築を含む要求の開始時刻に要求フレーム累計を秒換算して足した時刻で測る。事前描画の4回中3回以上で、構築を含む処理の予算超過、次の開始の2 ms以上の遅れ、後続の間隔の誤差の絶対値の中央値0.25 ms以内、8回先の開始の2 ms以上のずれがそろうと予測する。時間の予測はデータ照合の判定と個別に保存する。出力バッファのPCMや音響機器での出力は観測点に含めない。"
+  }
+}

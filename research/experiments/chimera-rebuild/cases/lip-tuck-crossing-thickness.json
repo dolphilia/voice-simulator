@@ -1,0 +1,44 @@
+{
+  "id": "lip-tuck-crossing-thickness",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "feature": "labial-crossing-thickness",
+  "hypothesis": "下唇端より後方の縦線で、下側の最初の退出点の上に下唇内面だけによる進入・退出の対が現れたとき、その高さの差だけを隙間から引けば、かすめた瞬間の段差が消える。上側の壁に達する組織では従来の閉鎖規則を使い、通常の調音と比較する。",
+  "static": {
+    "case": "lip-tuck-area-continuity.json",
+    "baseline": "lip-tuck-area-continuity-20261121-verified",
+    "maximum_step_at_known_brackets_cm2": 0.00001,
+    "maximum_new_detected_steps": 0,
+    "independent_cm_tolerance": 1e-8,
+    "independent_cm2_tolerance": 1e-8,
+    "ordinary_labiodental": {
+      "jaw_cm": [0.3, 0.5, 0.8, 1.2],
+      "lip_aperture_cm": [0.05, 0.3, 0.8],
+      "lip_protrusion_cm": 0.0,
+      "lip_spread": 0.5,
+      "maximum_detected_steps": 0
+    }
+  },
+  "dynamic": {
+    "case": "lip-tuck-voiced-radiation.json",
+    "baseline": "lip-tuck-voiced-radiation-20261121-a",
+    "maximum_raw_mean_step_cm2": 0.005,
+    "maximum_pcm_residual_rms_ratio_first_20ms": 0.2,
+    "maximum_pressure_and_flow_residual_rms_ratio_first_20ms": 0.2,
+    "check_hold_wave_and_precross_bitwise": true
+  },
+  "stops": {
+    "cases": ["bilabial-p.json", "bilabial-b.json"],
+    "maximum_shift_frames": 1,
+    "maximum_burst_peak_absolute_delta": 1e-6
+  },
+  "fricatives": {
+    "case": "labiodental-fricatives-v2.json",
+    "baseline": "labiodental-fricatives-20261120-c",
+    "variants": ["male-f", "male-v", "male-v-fast", "female-v", "child-f", "mixed-v", "mixed-v-slow", "muted-v", "veter"],
+    "maximum_oral_minimum_median_delta_cm2": 0.02,
+    "maximum_active_fraction_delta": 0.05,
+    "maximum_relative_low_band_delta_db": 1.0,
+    "maximum_2_to_8khz_level_delta_db": 1.0
+  },
+  "acceptance": "静止時の各段差、発声中の速度制限前後の面積、放射・PCM、既存の破裂音の閉鎖・再開口・破裂時刻、唇歯摩擦音の狭窄・活動率・帯域レベルを判定する。未達の閾値と新たな段差は記録し、実装の採否は基準版と区別して残す。"
+}

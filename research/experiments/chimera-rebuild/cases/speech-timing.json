@@ -1,0 +1,42 @@
+{
+  "id": "speech-timing",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "語末・強勢・隣接音が展開前の音素長を変える。二重母音の配分は発話倍率の適用前に行い、調音先がない音素も時間を占める。",
+  "measurement": {
+    "absolute_tolerance_seconds": 1e-12,
+    "native_cli_input": "vcv",
+    "native_marker_tolerance_seconds": 0.00050000001,
+    "native_sample_rate_hz": 48000,
+    "catalog_counts": {
+      "fallback_seconds": 71,
+      "expansions": 34,
+      "klatt_milliseconds": 52
+    },
+    "matrix_contexts": [
+      "alone",
+      "between_vowels",
+      "after_stop",
+      "before_voiced_fricative",
+      "explicit_and_rate"
+    ]
+  },
+  "speech_timing": {
+    "inputs": [
+      {"id": "vcv", "text": "ɑpɑ / ɑbɑ / ɑsɑ / ɑzɑ / ɑmɑ", "expected": {"duration_rows": {"0": [0.09938024, 0.07975, 0.19896], "4": [0.10182212, 0.0685, 0.19896]}}},
+      {"id": "word-final-cue", "text": "ˈbæt / ˈbæd / ˈbæs / ˈbæz / ˈbæn", "expected": {"duration_rows": {"0": [0.085, 0.227, 0.07125], "1": [0.085, 0.332, 0.07125], "2": [0.085, 0.29, 0.09825], "3": [0.085, 0.416, 0.06975], "4": [0.085, 0.2585, 0.0619]}}},
+      {"id": "boundaries", "text": "ɑpɑ / ɑp ɑ / ɑp\tɑ / ɑ,ɑ", "expected": {"duration_rows": {"1": [0.122618, 0.07975, 0.2362], "3": [0.1298, 0.16, 0.2362]}}},
+      {"id": "stress-context", "text": "pˈɑ / bˈɑ / pɑ / ˈɑɑ / ˈɑ ɑ / ˈɑˌɑ", "expected": {"duration_rows": {"0": [0.085, 0.316], "1": [0.085, 0.296], "2": [0.085, 0.2362], "4": [0.2008, 0.18034]}}},
+      {"id": "long-pause", "text": "ãː p | ɛː̃ / ɑʏːɑ / ɑʏɑ / ɛ:", "expected": {"duration_rows": {"0": [0.255, 0.0745, 0.16, 0.255], "1": [0.104264, 0.255, 0.19896], "2": [0.104264, 0.0752, 0.19896]}, "kind_rows": {"2": ["vowel", "?", "vowel"]}}},
+      {"id": "rhotics", "text": "pɑɹk / pɑlk / pɑɹ ɑ / pɑɹɑ / pɑlɑ / pɑːɹk / ɚ", "expected": {"duration_rows": {"0": [0.085, 0.16455, 0.07165, 0.0719], "2": [0.085, 0.0573, 0.0725, 0.2362], "3": [0.085, 0.104264, 0.0725, 0.19896], "5": [0.085, 0.255, 0.07165, 0.0719]}, "symbol_rows": {"6": ["ɝ"]}}},
+      {"id": "falling", "text": "ˈaɪ̃ː tʃ eɪ oʊ ɔɪ aʊ", "expected": {"symbol_rows": {"0": ["a", "ɪ", "tʃ", "e", "i", "o", "u", "ɔ", "ɪ", "a", "ʊ"]}}},
+      {"id": "fast", "text": "ˈaɪ̃ː tʃ eɪ oʊ ɔɪ aʊ", "rate": 1.6, "start_seconds": 0.2, "expected": {"first_start_seconds": 0.26}},
+      {"id": "rising-triple", "segments": [{"ipa": "iɑ", "dur": 0.2, "stress": 2, "breathy": true}, {"ipa": "uaɪ", "dur": 0.4, "stress": 1, "nasalized": true, "f0": 190.0}, {"ipa": "ɚ", "dur": 0.3}, {"ipa": "_"}, {"ipa": "dʑ", "vot": 0.08}], "expected": {"symbol_rows": {"0": ["i", "ɑ", "u", "a", "ɪ", "ɝ", "_", "dʑ"]}, "part_durations": {"0": [0.06, 0.14, 0.1, 0.18, 0.12, 0.3, 0.06704, 0.10056]}}},
+      {"id": "kinds", "text": "ðɑ / ɑðɑ / tðɑ / a|ðɑ / ɑ ðɑ / cɑ", "expected": {"kind_rows": {"0": ["stop", "vowel"], "1": ["vowel", "fricative", "vowel"], "2": ["stop", "stop", "vowel"], "3": ["vowel", "?", "stop", "vowel"], "4": ["vowel", "fricative", "vowel"], "5": ["stop", "vowel"]}}},
+      {"id": "clusters", "text": "spɑ / strɑ / ɑstr / ɑtrɑ / ɑpʰɑ / ɑp˭ɑ", "expected": {"duration_rows": {"0": [0.0915, 0.070825, 0.2362], "1": [0.0915, 0.060625, 0.09218, 0.2362], "4": [0.09938024, 0.07975, 0.19896], "5": [0.09938024, 0.07975, 0.19896]}}},
+      {"id": "only-unknown", "text": "🙂ʘ˥", "expected": {"utterances": 1, "symbol_rows": {"0": []}, "render_end_seconds": 0.66}},
+      {"id": "no-utterances", "text": " / / ", "expected": {"utterances": 0, "render_end_seconds": 0.25}},
+      {"id": "explicit-empty", "segments": [], "expected": {"utterances": 1, "symbol_rows": {"0": []}, "render_end_seconds": 0.66}},
+      {"id": "zero-duration", "segments": [{"ipa": "ɑ", "dur": 0.0}, {"ipa": "_"}, {"ipa": "ɹ", "dur": 0.0}, {"ipa": "ʌ", "dur": 0.2}], "expected": {"part_durations": {"0": [0, 0.06704, 0, 0.2]}}}
+    ]
+  }
+}

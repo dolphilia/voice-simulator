@@ -1,0 +1,16 @@
+{
+  "id": "tsp-tall-mfcc-input-compression",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "parent": {
+    "run": "tsp-tall-mfa-cmvn-20261123-repeat",
+    "case": "tsp-tall-mfa-cmvn",
+    "manifest_sha256": "31b726e2494b4cc4ec7bf9ae89146cde8300dba5f98d60f906a63ef14e94ef9a"
+  },
+  "archive_tokens": {
+    "compressed": {"input": "CM", "final": "CM"},
+    "float32": {"input": "FM", "final": "CM"}
+  },
+  "acceptance": "固定MFAの通常入口で、前回の音声とCMVN供給元4条件を再現する。比較側では最初のMFCC書き出しだけをfloat32とする。SCPの参照先から全4発話の最初と最終のark種別を検証する。非圧縮条件の最初のMFCCを保存前の値と完全一致させ、圧縮条件の特徴・全区間を前回に照合する。両条件の統計と平均除去を独立再計算し、対象周辺と全302フレームの差、境界、入力のSHA-256を記録する。",
+  "prediction": "最初をfloat32にすると正規化前の差は先頭6フレームだけになる。対照統計を共用した場合はtall周辺の正規化直後の差が消え、tall境界も同じ入力形式での対照境界に戻ると予測する。最終の圧縮段で再び非局所差が現れるかを観測し、境界が揃わない場合はこの段と整列経路を残る候補として扱う。"
+}

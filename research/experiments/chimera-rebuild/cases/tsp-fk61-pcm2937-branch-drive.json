@@ -1,0 +1,59 @@
+{
+  "id": "tsp-fk61-pcm2937-branch-drive",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "terminal_load": {
+    "run": "tsp-fk61-pcm2937-terminal-load-20261123-certified",
+    "case": "tsp-fk61-pcm2937-terminal-load",
+    "manifest_sha256": "c0849eaf8558bc064ce0f1589eb47f619814540071c03b1f33ee03b0668dfd4a"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "focus_frame": 2937,
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "comparison_internal_samples": [
+      5840,
+      5880
+    ],
+    "local_internal_samples": [
+      5856,
+      5872
+    ],
+    "focus_internal_samples": [
+      5863,
+      5864,
+      5865
+    ],
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "scope": "既に通常CLI・観測版の全発話PCMを照合した上流と下唇評価順の試験版を比較する。枝42→43の観測入力5群を1標本ずつ交換した結果と、5856から枝だけを進めて口端へ渡した結果を調べる。逐次計算の圧力は採取系列を使い、口端負荷の再計算で生じるフィードバックは枝・壁へ戻さない。PCMへ戻す口端放射は5863・5864だけとする。標本番号は0始まり、範囲は半開区間。",
+    "branch_residual_max_ulps": 10
+  },
+  "hypotheses": {
+    "old_flow_largest_at_focus": "5863・5864・5865とも、更新前の流量と運動量を交換した効果の絶対値が、他の単独入力群の交換より大きい。",
+    "pressure_exceeds_losses_at_focus": "5863・5864・5865とも、両節点の圧力を交換した効果の絶対値は、枝の粘性抵抗と正逆二次損失を交換した効果より大きい。",
+    "only_branch_flow_can_restore_pcm": "5856から枝42→43の流量だけを上流の観測列に交換し、試験版の初期放射状態と口端の体積源・壁流量から得た5863・5864の放射を出力段に戻すと、冒頭から2937までPCMが一致する。",
+    "pressure_series_exceeds_initial_branch_state": "5856から圧力系列を交換したときのPCM 2937のf32変換前の変化量の絶対値は、枝の初期状態だけを交換したときより大きい。"
+  },
+  "acceptance": "元の採取データのハッシュと通常CLIの照合記録を確認する。上流・試験版の採取40標本の枝・節点の局所検算と5856からの枝・口端の再計算を照合する。負向きの枝流を独立した差分式で分解し、残差を登録したULP上限に照合する。入力5群の全組合せ、枝の直接流量交換、前回の全正味流入交換、2標本の口端直接交換を同じPCM出力段で比較する。予測の判定は採取・再計算の合否とは別に保持する。"
+}

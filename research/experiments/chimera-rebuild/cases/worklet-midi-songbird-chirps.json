@@ -1,0 +1,238 @@
+{
+  "id": "worklet-midi-songbird-chirps",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "input": {
+    "creature": "songbird",
+    "key_mode": "call",
+    "call_id": "chirps",
+    "sample_rate_hz": 48000,
+    "capture_seconds": 2.2,
+    "events": [
+      {
+        "seconds": 0.14,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.3,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 0.84,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 1.03,
+        "type": "note-off",
+        "note": 67
+      }
+    ]
+  },
+  "hypothesis": "Chirp cascadeでは、末尾付近のキーが重なり、登録順で補間する固定上流のゲート目標は開始約0.61秒で1のまま進む。同じ採用時刻のキーを時刻順に並べ替えた独立対照では、音高と呼気の目標に差が現れると予測する。鍵盤による移調、離鍵後の発声、再発音と左右の鳴管を合わせて調べる。",
+  "criteria": {
+    "midi": "仮想Web MIDIを通常画面から入力し、MIDI 60・67の押下がそれぞれ2,093.00・3,135.96 Hzに対応することを確認する。両押下の先頭音高はそれぞれ7,000/4,500倍。再発音時、直前の平滑音高・呼気が各時定数で一更新分進むことを求める。",
+    "key_order": "同じ採用フレームで、固定上流の登録順とキーのみを安定ソートした時刻順を独立計算する。両音とも押下から23,680フレームで先に呼気が分岐し、音高目標は24,000または24,064フレームで分岐する。0.610〜0.616秒の最初の制御境界で呼気目標は登録順が1、時刻順が2/3、登録順の音高目標は時刻順より250 Hz以上低いと予測する。",
+    "acoustics": "二つの独立した目標系列を同じCLIの手動入力で再生する。登録順対照は通常経路のPCMと照合する。並べ替えのPCM差は最初の呼気目標差から128フレーム以内に10⁻⁶を超え、音高目標の分岐より先に現れる。差の最大値は0.01以上で、両対照を気嚢圧・開口・放射・出力段まで追う。",
+    "release_and_end": "離鍵後25〜200 msの各窓でコール識別子、左右の流量とPCMを照合する。再発音前も第1音のコールが有効で、第2音は最後の登録キーの50 ms後から1制御刻み以内に自然終了する。演奏者の目標へ戻り、末尾100 msは静まる。",
+    "reference": "採用時刻を固定し、WorkletとCLIのWAVをビット照合する。固定Rustと内部系列・PCMを照合し、開口から枝断面、放射からPCMまでを独立計算と比較する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-songbird-chirps-20261120-repeat",
+    "baseline_case_id": "worklet-songbird-chirps",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "pitch_range_hz": [
+      400,
+      9000
+    ],
+    "pitch_reference_hz": 4500.0,
+    "first_pitch_key_hz": 7000.0,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [
+      0.025,
+      0.2
+    ],
+    "browser_release_gate_minimum_peak": 0.5,
+    "browser_restart_window_seconds": [
+      0.02,
+      0.1
+    ],
+    "browser_restart_pitch_ratios": [
+      0.55,
+      1.57
+    ],
+    "post_release_pcm_window_seconds": [
+      0.025,
+      0.2
+    ],
+    "minimum_post_release_pcm_rms": 0.002,
+    "minimum_both_syrinx_rms_cm3_s": 0.01,
+    "independent_absolute_tolerances": {
+      "gate": 1e-10,
+      "gate_target": 1e-10,
+      "pitch_hz": 1e-07,
+      "target_pitch_hz": 1e-07,
+      "voices": 1e-10,
+      "drive": 1e-10,
+      "target_voices": 1e-10,
+      "target_drive": 1e-10,
+      "sac_pressure_dyn_cm2": 1e-05,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0
+    },
+    "port_area_absolute_tolerance_cm2": 1e-10,
+    "maximum_syrinx_port_area_cm2": 0.03,
+    "native_pcm_absolute_tolerance": 1e-06,
+    "native_state_absolute_floor": 1e-08,
+    "native_state_peak_relative_tolerance": 1e-07,
+    "tail_window_seconds": 0.1,
+    "maximum_tail_pcm_rms": 0.002,
+    "reference_definition_run": "songbird-chirps-before-worklet-1",
+    "reference_definition_file": "definitions.json",
+    "overlap_window_seconds": [
+      0.61,
+      0.616
+    ],
+    "order_control_absolute_tolerance": 1e-09,
+    "first_gate_order_delta_frames": 23680,
+    "first_pitch_order_delta_frames": [
+      24000,
+      24064
+    ],
+    "declared_overlap_gate": 1.0,
+    "chronological_overlap_gate": 0.6666666666666666,
+    "minimum_order_effect_on_pitch_hz": 250.0,
+    "declared_replay_pcm_tolerance": 1e-06,
+    "order_replay_pcm_difference_threshold": 1e-06,
+    "maximum_order_pcm_delay_frames": 128,
+    "minimum_order_pcm_peak_difference": 0.01
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "gate_target",
+        "pitch_hz",
+        "target_pitch_hz",
+        "voices",
+        "target_voices",
+        "drive",
+        "target_drive",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          105600
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "voices",
+        "target_voices",
+        "drive",
+        "target_drive",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          105600
+        ]
+      ]
+    },
+    "declared-targets.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "decimated",
+        "dc_removed",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          105600
+        ]
+      ]
+    },
+    "chronological-targets.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "gate",
+        "pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "decimated",
+        "dc_removed",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          105600
+        ]
+      ]
+    }
+  }
+}

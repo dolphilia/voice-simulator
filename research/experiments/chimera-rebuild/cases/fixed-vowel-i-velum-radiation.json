@@ -1,0 +1,30 @@
+{
+  "id": "fixed-vowel-i-velum-radiation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "fixed_voice_case": "vowel-voice-i.json",
+  "hypothesis": "固定 /i/ の口蓋帆の入力を−0.15から0.30 cm²へ変えると、有効ポート面積は0から0.30 cm²へ変わる。閉条件のポート流量と鼻端流量は全域で0。開条件は鼻端流量が定常窓にも残り、鼻端より先にポート流量が現れる。口蓋帆の回転は口側の輪郭にも入り、壁または口端の最初の差は鼻端の最初の差より早いと予測する。",
+  "measurement": {
+    "revision": 1,
+    "screen_reference": {
+      "run": "fixed-vowel-i-radiation-screen-20261124-repeat",
+      "case": "fixed-vowel-i-radiation-screen",
+      "sha256": "4a779b03ec910f6c2a6872e1b20b8de3a5f2b5fa6f0ab3df090a38850ec82f90"
+    },
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "comparison_internal_samples": [0, 65536],
+    "steady_output_frames": [19200, 24000],
+    "closed_input_cm2": -0.15,
+    "open_input_cm2": 0.3,
+    "host_block_frames": [128, 77],
+    "minimum_steady_nose_rms_cm3_s": 0.01,
+    "minimum_steady_pcm_delta_rms": 0.0001,
+    "upstream_series_peak_relative_error_lt": 1e-8,
+    "upstream_pcm_absolute_error_lt": 5e-7,
+    "independent_port_residual_relative_lt": 1e-10,
+    "part_sum_linear_pcm_absolute_error_lt": 1e-12,
+    "input": "肺圧7.2 cmH₂O、基本周波数110 Hzの固定 /i/ で、口蓋帆の入力だけを変える。各条件を通常CLI・Wasm・固定上流の声の描画に通す。",
+    "observation": "初期の各断面とポート面積、ポート流量と両端圧、声門流量、壁・口端・鼻端・合算と微分を65,536内部標本で保存する。Wasmの放射5値とPCMは32,768出力フレームを照合する。各観測の最初の差と定常窓のRMSを記録する。",
+    "acceptance": "両条件で通常CLIの内部観測・出力フレームとWasmを照合する。口蓋帆の観測を有効にした場合だけポートの4列を加え、既存列は同じ値とする。固定上流の追加観測は状態を読むだけとし、閉条件の通常PCMは保存済み上流および研究版に照合する。上流と研究版の観測とPCMは登録許容差内とする。圧力と流量を保存した開口ポートの二次式に代入して残差を調べる。合算流量・微分・PCMを独立計算して照合し、壁・口端・鼻端の出力段を介した差の内訳を求める。予測した時刻順と鼻端・PCMの変化を両版で検査する。"
+  }
+}

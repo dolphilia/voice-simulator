@@ -1,0 +1,73 @@
+{
+  "id": "song-voice-schedule-default-source",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "native": {"case": "upstream-song-schedule-state.json", "run": "upstream-song-schedule-state-20261121-repeat-b"},
+    "safari": {"case": "upstream-safari-song-fixed-schedule-frame.json", "run": "upstream-safari-song-fixed-schedule-frame-20261121-repeat"},
+    "candidate": {"case": "song-voice-schedule-shimmer.json", "run": "song-voice-schedule-shimmer-20261122-repeat"}
+  },
+  "pitch_drift_cents": 5,
+  "period_jitter": 0.00455,
+  "amplitude_shimmer": 0.042,
+  "cycle_seed": 777,
+  "pitch_drift_seed": 4242,
+  "pitch_update_internal_samples": 32,
+  "host_block_frames": [128, 77],
+  "pitch_tolerance_hz": 1e-9,
+  "phase_tolerance_cycles": 1e-9,
+  "amplitude_scale_tolerance": 1e-12,
+  "active_voicing_floor": 0.01,
+  "voiced_window_frames": [21000, 21600],
+  "hypothesis": {
+    "source": "研究版でドリフトを0から上流既定の5セントへ戻すと、周期ジッターとシマーをそろえた4条件で、声門位相・F0・物理量とPCMは登録済みの閾値内でネイティブ上流に一致する。予約時のF0、位相と振幅倍率を独立計算でも説明できる。",
+    "safari": "同じ予約フレームにそろえると、保存した固定上流Safariの連続・停止双方の加工前PCMは固定ネイティブ基準とビット一致し、研究版CLIとの差は振幅1e-6以下に収まる。全ビット一致の可否と最初の差も別に記録する。",
+    "reservation": "予約128フレーム差の最初のPCM閾値超過はネイティブ基準とCLIで通常乱流14,330、乱流注入量0で20,903サンプルに一致する。ブラウザの通常乱流も14,330となり、記録された停止より前に分かれる。"
+  },
+  "criteria": {
+    "source": "240 BPMのPop Dee、MIDI 60と64を各0.25拍。男声中立姿勢、基準110 Hz、肺圧7.2 cmH₂O、呼気ゲート0で予備描画16,384・16,512フレーム、乱流注入量0・1。前回の研究版にピッチドリフト5セントだけを指定し、同じ固定上流のネイティブ4条件とSafariの通常乱流の連続・途中停止各2試行を読み直す。",
+    "window": "48 kHzで予約直後から1,440先行サンプル、譜面時刻0から29,760サンプルを追う。ネイティブのPCMは譜面時刻0以降、SafariとCLIは予約時の先行区間から比較する。有声窓は21,000から21,600の半開区間。ブラウザのクロック・譜面・予約位置から切り出す。PCM照合に音声相関や音量調整は使わない。",
+    "verification": "保存入力のハッシュ、版、音源設定、整数サンプルの音素計画、時間窓、有限性を確認する。研究版の128・77フレームでPCMと出力段CSVのビット・バイト一致、F0と位相の独立計算、声門から放射までの初回閾値とPCMを記録し、別ディレクトリから再実行する。"
+  },
+  "retain_csv": {
+    "frame-16384-noise-0/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-0/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-1/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16384-noise-1/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-0/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-0/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-1/pcm-128.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    },
+    "frame-16512-noise-1/pcm-77.csv": {
+      "sample_column": "frame",
+      "columns": ["frame", "internal_sample", "decimated", "dc_removed", "limiter_envelope", "hold_frames", "pcm_f32"],
+      "sample_ranges": [[0, 1440], [12500, 13200], [15680, 15840], [22310, 23040]]
+    }
+  }
+}

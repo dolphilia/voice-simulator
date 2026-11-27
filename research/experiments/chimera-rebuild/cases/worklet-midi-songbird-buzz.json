@@ -1,0 +1,221 @@
+{
+  "id": "worklet-midi-songbird-buzz",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "input": {
+    "creature": "songbird",
+    "key_mode": "call",
+    "call_id": "buzz",
+    "sample_rate_hz": 48000,
+    "capture_seconds": 1.65,
+    "events": [
+      {
+        "seconds": 0.14,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.36,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 0.585,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.84,
+        "type": "note-off",
+        "note": 67
+      }
+    ]
+  },
+  "hypothesis": "呼気倍率1のFinch buzzで、呼気目標が0.75を上回るパルスは完全な第2音で8回。初回は0から上がり、後続は0.35から上がるため、最初の間隔は約63.46 ms、後続は70 msと予測する。離鍵後にもパルスと左右の流量が残り、再発音でコール時計が戻り、音高と左右の鳴管の状態は追従を続ける。",
+  "measurement": {
+    "baseline_run": "worklet-songbird-buzz-20261120-repeat",
+    "baseline_case_id": "worklet-songbird-buzz",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "pitch_range_hz": [
+      400,
+      9000
+    ],
+    "pitch_reference_hz": 1200.0,
+    "first_pitch_key_hz": 1200.0,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [
+      0.025,
+      0.16
+    ],
+    "browser_release_gate_minimum_peak": 0.5,
+    "browser_restart_window_seconds": [
+      0.035,
+      0.12
+    ],
+    "browser_restart_pitch_ratios": [
+      0.9,
+      1.02
+    ],
+    "post_release_pcm_window_seconds": [
+      0.025,
+      0.16
+    ],
+    "minimum_post_release_pcm_rms": 0.002,
+    "minimum_both_syrinx_rms_cm3_s": 0.01,
+    "independent_absolute_tolerances": {
+      "gate": 1e-10,
+      "gate_target": 1e-10,
+      "pitch_hz": 1e-07,
+      "target_pitch_hz": 1e-07,
+      "voices": 1e-10,
+      "drive": 1e-10,
+      "target_voices": 1e-10,
+      "target_drive": 1e-10,
+      "sac_pressure_dyn_cm2": 1e-05,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0,
+      "tension": 1e-10,
+      "target_tension": 1e-10,
+      "interval_semitones": 1e-10,
+      "target_interval_semitones": 1e-10,
+      "purity": 1e-10,
+      "target_purity": 1e-10
+    },
+    "port_area_absolute_tolerance_cm2": 1e-10,
+    "maximum_syrinx_port_area_cm2": 0.03,
+    "native_pcm_absolute_tolerance": 1e-06,
+    "native_state_absolute_floor": 1e-08,
+    "native_state_peak_relative_tolerance": 1e-07,
+    "tail_window_seconds": 0.1,
+    "maximum_tail_pcm_rms": 0.002,
+    "reference_definition_run": "songbird-buzz-before-worklet-1",
+    "reference_definition_file": "definitions.json",
+    "minimum_release_pulse_count": 1,
+    "smoothing_lag_frames": [
+      64,
+      320
+    ],
+    "labial_targets_at_onset": {
+      "voices": 0.5,
+      "drive": 0.95,
+      "tension": 0.15,
+      "interval_semitones": 0.5,
+      "purity": 0.1
+    },
+    "pulse": {
+      "first_rise_seconds": [
+        0.0,
+        0.02
+      ],
+      "first_rise_start_gate": 0.0,
+      "second_rise_seconds": [
+        0.06,
+        0.09
+      ],
+      "second_rise_start_gate": 0.35,
+      "period_seconds": 0.07,
+      "rise_end_gate": 1.0,
+      "maximum_timing_error_frames": 64,
+      "gate_threshold": 0.75,
+      "count": 8
+    }
+  },
+  "criteria": {
+    "pitch_and_controls": "MIDI 60・67は3オクターブ上に移り、先頭音高目標は約2,093・3,136 Hz。両押下の先頭で配分0.5、駆動0.95、張力0.15、左右の音程差0.5半音、口腔食道腔の音高追従の混合比0.1を確認する。再発音の音高と呼気は直前の平滑値から1回進めた値になる。",
+    "pulse_timing": "目標0.75の上向き交差を64出力フレームごとに測る。初回は押下から15 ms、次回は約78.46 ms、その後は70 ms周期になる。第1音は再発音前の全パルス、第2音は8回を照合する。理論格子との誤差は1制御更新以内。各間隔の誤差も1制御更新以内。",
+    "smoothing_and_release": "平滑呼気の同じ交差も記録する。第2音の8パルスで平滑呼気の遅れは64〜320フレーム、かつ独立計算の交差位置と一致する。両離鍵後25〜160 msの窓でコール識別子4、目標交差を1回以上、左右の流量とPCMのRMSを確認する。",
+    "replay_and_end": "ブラウザが採用した時刻をCLIと固定Rustで再生し、ブラウザとCLIのPCMのビット一致、固定上流の内部観測値とPCMの許容差、放射からPCMと開口から枝断面への独立計算を検証する。第2音の自然終了は0.65秒から1制御以内で、手動目標へ戻り、末尾100 msで静まる。"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "gate_target",
+        "pitch_hz",
+        "target_pitch_hz",
+        "voices",
+        "target_voices",
+        "drive",
+        "target_drive",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "tension",
+        "target_tension",
+        "interval_semitones",
+        "target_interval_semitones",
+        "purity",
+        "target_purity",
+        "decimated",
+        "dc_removed",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          79200
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "voices",
+        "target_voices",
+        "drive",
+        "target_drive",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "radiation_0",
+        "radiation_1",
+        "radiation_2",
+        "radiation_3",
+        "tension",
+        "target_tension",
+        "interval_semitones",
+        "target_interval_semitones",
+        "purity",
+        "target_purity",
+        "decimated",
+        "dc_removed",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          79200
+        ]
+      ]
+    }
+  }
+}

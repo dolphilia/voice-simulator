@@ -1,0 +1,37 @@
+{
+  "id": "tsp-tall-mfa-preroll",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_02",
+  "parent": {
+    "run": "tsp-tall-initial-tip-mfa-20261123-repeat",
+    "case": "tsp-tall-initial-tip-mfa",
+    "manifest_sha256": "b49d0191dd109b3c07719d53c9f1dedc7811ddf6c0afab3232c1a21d9a7a844d"
+  },
+  "alignment_settings": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "formants": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "frames": 144727,
+    "cut_frame": 2400,
+    "local_frames": [72000, 84000],
+    "parent_pcm16_differences": 4679,
+    "parent_pcm16_first_difference": 16,
+    "parent_pcm16_last_difference": 12071,
+    "word": "tall",
+    "phones": ["AO1", "L"],
+    "control_end_seconds": 1.649999976158142,
+    "old_tip_end_seconds": 1.6799999475479126,
+    "analysis_centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "acceptance": "雑音と量子化を済ませた48 kHz・PCM16を標本番号2400でつなぎ、冒頭だけ旧、50 ms以後だけ旧、両方対照、両方旧の4条件を同じMFAに渡す。WAVの生バイトで範囲を再構成し、全標本を照合する。両端の対照の全語・音素区間が保存済み結果と一致することを確認する。4条件のtall周辺PCM16を同一に保ち、LPCは全条件で同じ無加工float32を採用する。固定上流と独立計算で窓の開始、採択と欠測を照合し、結果は予測の採否にかかわらず残す。",
+    "prediction": "初期舌先による最大PCM差が発話計画の開始前に現れるため、旧舌先の先頭50 msだけでtallの境界は1.680秒へ動く。50 ms以後だけを旧舌先にすると、境界は1.650秒に留まると予測する。"
+  }
+}

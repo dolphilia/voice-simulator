@@ -1,0 +1,30 @@
+{
+  "id": "tsp-lpc-recording-window-shift",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "order_reference": {
+    "run": "tsp-lpc-order-recordings-20261122-repeat",
+    "case": "tsp-lpc-order-recordings",
+    "manifest_sha256": "0c4d9a97bb30045ba0f51a33d301e84cd0f9a0ff452847526368e4dc7e43bb27"
+  },
+  "target": {
+    "utterance": "MK61_01",
+    "word": "seems",
+    "phone_index": 13,
+    "arpabet": "IY1",
+    "center": 0.5,
+    "start_sample": 16350,
+    "frame_samples": 300,
+    "order": 14
+  },
+  "offset_samples": [-60, 60],
+  "low_band_hz": [850, 1150],
+  "high_band_hz": [2180, 2450],
+  "decimation_absolute_tolerance": 1e-13,
+  "hypotheses": {
+    "high_band_remains_eligible": "全121窓で、基準窓にあった2.3 kHz付近の公開極がF2の周波数条件を満たす。",
+    "low_band_stays_above_gap_while_public": "低域の公開極が得られる窓では、F1との間隔が200 Hzを超える。",
+    "window_shift_changes_selection_at_bandwidth_filter": "少なくとも1窓で高域がF2に選ばれる。その窓では低域に生の根が残るが、帯域幅が600 Hzを超えて公開されない。"
+  },
+  "acceptance": "同じ48 kHz・16 bitの録音WAVとMFA境界を使う。固定上流と同じ95タップのBlackman窓付き低域通過と4分の1の間引きを、畳み込みとタップごとの独立計算で照合する。12 kHzで基準窓の開始を-60〜+60標本まで1標本ずつ変え、音素区間内の300標本を次数14で測る。オフセット0の上流の係数・残差・生根・公開極と採択を保存済みの結果に照合する。全121窓で生根・公開極・採択を先行の独立計算の閾値で照合する。2帯域で生の根、公開極、F2の候補、採択F1との間隔、帯域幅、欠測と最初の差の段階を保存する。移動する窓では実録音の入力時刻と励振位相がともに動く。実録音の正解F2は判定せず、予測の成否は検証の合否と個別に記録する。"
+}

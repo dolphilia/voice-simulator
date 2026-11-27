@@ -1,0 +1,32 @@
+{
+  "id": "coreaudio-output-error-pcm",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "webkit_revision": "1392437bb060048807e94d171c0fdf45e7d27301",
+  "reference_case": "webkit-output-underrun.json",
+  "reference_run": "webkit-output-underrun-20261122-repeat",
+  "marker_case": "safari-process-tap-smooth-marker.json",
+  "calibration_run": "safari-process-tap-smooth-marker-20261122-repeat",
+  "sample_rate_hz": 48000,
+  "expected_callback_frames": 512,
+  "event_callback": 80,
+  "event_callbacks": 4,
+  "native_seconds": 2,
+  "tap_seconds": 2.4,
+  "tap_lead_seconds": 0.25,
+  "tap_ready_timeout_seconds": 8,
+  "conditions": {"success": 0, "error": -1},
+  "maximum_native_ramp_error": 1e-8,
+  "minimum_boundary_signal_amplitude": 0.001,
+  "maximum_pre_post_delay_change_frames": 1,
+  "maximum_absolute_path_delay_ms": 100,
+  "maximum_passed_ramp_relative_error": 0.05,
+  "maximum_muted_ramp_relative_amplitude": 0.05,
+  "maximum_tap_zero_tail_amplitude": 0.00001,
+  "criteria": {
+    "input": "既定出力のAudioUnitに48 kHzステレオfloat32の滑らかな逆相信号を書く。80番の要求で直前値から要求末尾まで線形に減衰し、続く3要求をゼロにする。コールバックは待たせない。両条件の書き込みPCMは同じとし、この4要求の戻り値だけを0または-1にする。",
+    "observation": "自作の出力プロセスだけを既存のタップで採り、コールバック内で書いたPCM、戻り値、デバイス・ホスト時刻も保存する。出力前後のステレオ差の連番を照合し、減衰の中央半分と後続の無音中央のRMSを求める。実行場所を変えてペアの順を反転する。",
+    "validity": "全要求512フレームと想定する。両条件の比較区間の原PCMはビット一致し、減衰は独立した閉形式に照合する。タップ時刻と出力要求時刻をそれぞれ確認し、前後の位相から得る遅延の差が1フレーム以内なら、その系列で減衰区間を同定できる。",
+    "prediction": "正常を返すと減衰の中央半分は参照と相対RMS残差0.05以下で一致すると予測する。-1のときに同じ区間の振幅が参照の0.05以下になるか、正常条件と同程度で通るかを測る。後続のゼロ区間と採取側の連続性は別に確認する。",
+    "scope": "自作AudioUnitからプロセスタップまでの比較とし、Safari内の戻り値やスピーカー・端子の波形を直接示す判定には使わない。"
+  }
+}

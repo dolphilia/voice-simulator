@@ -1,0 +1,62 @@
+{
+  "id": "tsp-mk61-02-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "comparison": {
+    "run": "tsp-fk61-02-full-pcm-rounding-20261124-repeat",
+    "case": "tsp-fk61-02-full-pcm-rounding",
+    "manifest_sha256": "8094c6d8124af421ebe679e71ef18e71daf27a74f6d8e67d75326050d082a601"
+  },
+  "measurement": {
+    "recording_id": "MK61_02",
+    "frames": 144727,
+    "prefix_frames": 144727,
+    "block_frames": 128,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "initial_f0_hz": 110,
+    "focus_frames": [
+      9333,
+      82703
+    ],
+    "pcm_outlier_to_exclude": 82703,
+    "expected_pcm_first_difference": 9333,
+    "expected_pcm_peak_frame": 82703,
+    "expected_pcm_different_bits": 1254,
+    "segments": {
+      "opening": [
+        0,
+        16704
+      ],
+      "later": [
+        16704,
+        144727
+      ]
+    },
+    "quiet_pcm_threshold": 1e-06,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "scope": "確認用MK61_02の保存済み男性体型ケースを使用する。固定上流のrender textと研究版のrender-pcmから、内部96 kHzの289454標本と出力48 kHzの144727フレームを採取する。同じ文の女性体型FK61_02を比較対象にして、変換前とPCMの誤差、隣接値の中点、振幅別のULP差を同じ指標で評価する。事前登録の振幅境界10⁻⁶を使用する。男性側の基準F0は112 Hz、出力ゲインは5.5×10⁻⁷。女性側は205 Hz、4.8125×10⁻⁷なので、体型と発声設定を合わせた条件として比較する。",
+    "precast_rms_ratio_limits": [
+      0.5,
+      2.0
+    ]
+  },
+  "hypotheses": {
+    "precast_and_pcm_peak_differ": "変換前の最大絶対差とPCMの最大絶対差は異なるフレームに出る。",
+    "largest_pcm_difference_is_one_ulp": "PCMの最大絶対差を出す82703は隣接値への丸めで説明できる。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差のあるフレームの95%以上で、両版の絶対PCM振幅の大きい方も10⁻⁶以下に収まる。",
+    "radiation_and_precast_differ_before_pcm": "放射の時間差分と変換前の値は、最初のPCM不一致より早く差を示す。",
+    "precast_rms_male_over_female_between_0p5_and_2": "通常レンダーの既存PCMでは最大絶対差の男性／女性比が1/8だった。変換前の版間RMS差の男性／女性比は0.5以上2以下と予測する。"
+  },
+  "acceptance": "通常CLI、観測版、保存済みPCMが両版で全144727フレーム一致する。全観測値が有限で、放射の合計と差分、FIR、ゲイン、DC除去、包絡、PCMを独立再計算できる。DC除去後の値から全PCMを再現し、隣接PCM値の中点と両版の変換前の値を照合する。PCM初差9333、最大差82703、差がある1254フレームを確認用セットで照合する。振幅別ULP数、丸め前後の最大差とRMS差の男性／女性比、仮説の真偽を記録する。"
+}

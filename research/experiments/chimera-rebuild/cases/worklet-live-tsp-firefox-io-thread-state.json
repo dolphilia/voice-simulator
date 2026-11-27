@@ -1,0 +1,18 @@
+{
+  "id": "worklet-live-tsp-firefox-io-thread-state",
+  "revision": 3,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-live-tsp-firefox-io-thread-state-capture-preplay",
+  "capture_run": "worklet-live-tsp-firefox-io-thread-state-capture-preplay-20261122-a",
+  "previous_analysis_run": "worklet-live-tsp-firefox-io-thread-state-20261122-preplay",
+  "reference_run": "worklet-live-tsp-firefox-io-client-start-20261122-a",
+  "sample_rate_hz": 48000,
+  "request_frames": 256,
+  "request_offsets": [11, 12, 13],
+  "positive_control_offset": 0,
+  "pre_cycle_ns": 25000,
+  "maximum_server_interval_error_ms": 0.10,
+  "revision_note": "第2版は前のAudio Clientの終了から2.542〜3.625 µs続いた同じRunning区間を集計した。この区間がAudio Clientの終了をまたぎ、以後の状態がBlockedのみで、欠測・重複・新たなIOProcがない場合は、直前の実行の末尾の後に待機したケースとして扱う。周期幅の許容差と前版の判定を保持する。",
+  "hypothesis": "収録条件をそろえて発話開始時の飛びが得られた場合、次のサーバー周期でもClient Startがあり、その周期のFirefox親プロセスのIOProcは無いと予測する。予算内で前のI/Oが終わった後、I/Oスレッドが待機のままか、実行可能になるがCPUで動かないか、CPUで動いてもIOProcに入らないかを順に分ける。連続する要求では同じ区間内のIOProcと実行状態を正の対照にする。",
+  "acceptance": "サーバーの次の二つの出力予定サンプル位置を256フレーム間隔で取得し、次のサーバー周期の実測開始からその次の実測開始までを切り出す。先行25 µsと前のFirefox I/Oの終了までの重なりは別に表示する。Firefox親PIDとAudio Clientとの照合で得たI/Oスレッドを使い、状態の開始と終了、IOProc、Client Startを同じトレースの時間で比較する。状態表が全区間を覆わないときは欠測部分を記録し、計測されていない区間から待機を推定しない。収録なしの場合は予算内の飛びの判定を保留する。"
+}

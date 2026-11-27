@@ -1,0 +1,91 @@
+{
+  "id": "moving-aperture-release",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "放射端を閉じると流路の流量が止まり、狭いセルから押し出された体積の一部は内側のセルに加わる。開き直すと流路と放射が復帰する。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 4.0,
+        "areas_cm2": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      9
+    ]
+  },
+  "area_ramps": [
+    {
+      "start_sample": 0,
+      "sample_count": 1920,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 9,
+          "area_cm2": 0.0
+        }
+      ]
+    },
+    {
+      "start_sample": 3840,
+      "sample_count": 1920,
+      "block_samples": 64,
+      "targets": [
+        {
+          "node": 9,
+          "area_cm2": 2.0
+        }
+      ]
+    }
+  ],
+  "observe": {
+    "pressure_nodes": [
+      0,
+      8,
+      9
+    ],
+    "branches": [
+      [
+        8,
+        9
+      ]
+    ],
+    "area_nodes": [
+      0,
+      8,
+      9
+    ],
+    "volume_source_nodes": [
+      0,
+      8,
+      9
+    ]
+  },
+  "measurement": {
+    "sample_count": 9600,
+    "upstream_series_peak_relative_error_lt": 1e-10,
+    "independent_series_peak_relative_error_lt": 1e-10,
+    "terminal_area_absolute_error_lt_cm2": 1e-12,
+    "closed_interval": [
+      1920,
+      3840
+    ],
+    "reopening_interval": [
+      3840,
+      5760
+    ],
+    "outlet_node": 9
+  }
+}

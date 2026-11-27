@@ -1,0 +1,78 @@
+{
+  "id": "worklet-midi-songbird-trill",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "input": {
+    "creature": "songbird",
+    "key_mode": "call",
+    "call_id": "trill",
+    "sample_rate_hz": 48000,
+    "capture_seconds": 2.4,
+    "events": [
+      {"seconds": 0.14, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.31, "type": "note-off", "note": 60},
+      {"seconds": 0.66, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 0.94, "type": "note-off", "note": 67}
+    ]
+  },
+  "hypothesis": "Canary trillの各パルスは、鍵盤で決まる基準音高の0.825倍から1.175倍に上昇する。キーを離した後も16 Hzの呼気パルスが続く。再発音で包絡が先頭に戻り、第2音は18パルスを出す。採用フレームを固定し、制御時刻と左右の鳴管の観測から確認する。",
+  "criteria": {
+    "transposition": "MIDI 60・67を3オクターブ上の2,093.00・3,135.96 Hzへ割り当てる。各押下の最初の1パルスで音高目標の最小・最大がそれぞれ基準の0.825・1.175倍になる。再発音直後の実測音高と呼気は直前の平滑値から1制御更新した値に一致する。",
+    "pulse_timing": "呼気目標が0.5に達する各立ち上がりのフレームを測る。理論的な交差時刻は各押下から62.5 msの整数倍＋2.5 ms、誤差は1制御区間まで。第1音は再発音までの交差を全て含み、第2音は18回、両離鍵後25〜200 msは各2回以上を観測する。",
+    "syrinx": "両離鍵窓で左右の鳴管ポートの流量RMSとPCM RMSを測る。両方で流量が残り、鳴管開口の右／左RMS比は0.18〜0.43と予測する。気嚢圧、開口と有効断面を独立式と固定上流に照合する。",
+    "replay": "採用フレームを固定してCLIと固定Rustを再生し、ブラウザとCLIは波形がビット一致することを求める。放射からPCMまでの出力段を独立に再構成し、最後のパルス後に演奏者の目標へ戻る時刻を記録する。"
+  },
+  "measurement": {
+    "baseline_run": "worklet-songbird-trill-20261120-repeat",
+    "baseline_case_id": "worklet-songbird-trill",
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "pitch_range_hz": [400, 9000],
+    "pitch_reference_hz": 3000.0,
+    "first_pitch_key_hz": 2475.0,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [0.025, 0.20],
+    "browser_release_gate_minimum_peak": 0.5,
+    "browser_restart_window_seconds": [0.06, 0.16],
+    "browser_restart_pitch_ratios": [0.80, 1.20],
+    "post_release_pcm_window_seconds": [0.025, 0.20],
+    "minimum_post_release_pcm_rms": 0.002,
+    "minimum_both_syrinx_rms_cm3_s": 0.01,
+    "minimum_release_pulse_count": 2,
+    "right_to_left_opening_rms_ratio": [0.18, 0.43],
+    "pulse_rate_hz": 16,
+    "pulse_count": 18,
+    "first_rise_offset_seconds": 0.0025,
+    "gate_crossing_threshold": 0.5,
+    "maximum_pulse_timing_error_frames": 64,
+    "pitch_key_ratios": [0.825, 1.175],
+    "independent_absolute_tolerances": {
+      "gate": 1e-10, "gate_target": 1e-10, "pitch_hz": 1e-7, "target_pitch_hz": 1e-7,
+      "voices": 1e-10, "drive": 1e-10, "target_voices": 1e-10, "target_drive": 1e-10,
+      "sac_pressure_dyn_cm2": 1e-5, "control_clock_seconds": 1e-11, "call_id": 0
+    },
+    "port_area_absolute_tolerance_cm2": 1e-10,
+    "maximum_syrinx_port_area_cm2": 0.03,
+    "native_pcm_absolute_tolerance": 1e-6,
+    "native_state_absolute_floor": 1e-8,
+    "native_state_peak_relative_tolerance": 1e-7,
+    "tail_window_seconds": 0.10,
+    "maximum_tail_pcm_rms": 0.002,
+    "reference_definition_run": "songbird-trill-before-worklet-1",
+    "reference_definition_file": "definitions.json"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "gate_target", "pitch_hz", "target_pitch_hz", "voices", "target_voices", "drive", "target_drive", "sac_pressure_dyn_cm2", "left_opening", "right_opening", "left_port_area_cm2", "right_port_area_cm2", "left_port_flow_cm3_s", "right_port_flow_cm3_s", "radiation_0", "radiation_1", "radiation_2", "radiation_3", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 115200]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "internal_sample", "control_clock_seconds", "call_id", "gate", "pitch_hz", "target_pitch_hz", "voices", "target_voices", "drive", "target_drive", "sac_pressure_dyn_cm2", "left_opening", "right_opening", "left_port_area_cm2", "right_port_area_cm2", "left_port_flow_cm3_s", "right_port_flow_cm3_s", "radiation_0", "radiation_1", "radiation_2", "radiation_3", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 115200]]
+    }
+  }
+}

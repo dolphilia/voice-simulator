@@ -1,0 +1,36 @@
+{
+  "id": "worklet-songbird-trill",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "source_revision": 2,
+  "hypothesis": "実時間Workletでtrillの呼気目標を各制御区間の先頭に観測すると、0.5の立ち上がりは18回で、理想周期3000フレームとの差は1制御刻み以内になる。開始指示と最初のキー評価は別フレームとなり、末尾キーから0.05秒を過ぎた最初の制御でコールが終了する。",
+  "measurement": {
+    "variants": ["trill"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": [72, 73, 127],
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_control_absolute_tolerance": 1e-9,
+    "independent_clock_absolute_tolerance_seconds": 1e-12,
+    "trill": {
+      "control_interval_frames": 64,
+      "call_id": 2,
+      "rate_hz": 16.0,
+      "count": 18,
+      "gate_threshold": 0.5,
+      "attack_key_fraction_of_period": 0.08,
+      "off_key_fraction_of_period": 0.75,
+      "natural_end_hold_seconds": 0.05,
+      "first_pitch_target_hz": 2475.0,
+      "maximum_crossing_delay_error_frames": 64,
+      "minimum_pcm_peak": 0.03
+    }
+  }
+}

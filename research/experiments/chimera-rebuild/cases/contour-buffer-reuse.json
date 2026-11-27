@@ -1,0 +1,44 @@
+{
+  "id": "contour-buffer-reuse",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "割り当ては輪郭生成に最も多い。制御器に輪郭の領域を持たせ、固定点数の補間を配列にすると、輪郭生成の割り当ては初期化後に0回となり、PCMと断面を変えずに扇状走査の改修前比で60%以上削減できる。",
+  "inputs": {
+    "speech_case": "bilabial-p.json",
+    "worklet_case": "worklet-ipa-voice.json",
+    "start_seconds": 0.05,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "control_internal_samples": 128,
+    "output_frames": 49828,
+    "profile_control_frames": [0, 75, 174, 195, 218, 330, 778],
+    "randomness": "乱流と声門の周期変動を無効にした既存の発話ケース"
+  },
+  "reference": {
+    "profile_run": "contour-buffer-reuse-20261119-a",
+    "after_fan": {
+      "run": "fan-crossing-allocations-20261119-b-live",
+      "sha256": "573fed9eee5536478870552c6cd2a1d856e4d1f9e79c684fd44bd375d00baee9"
+    },
+    "before_fan": {
+      "run": "worklet-live-ipa-20261119-d",
+      "sha256": "e7a733a019e70bbf9bbeb15eae743bd7ac6642a94834fea296b133414cf18c4c"
+    },
+    "geometry": {
+      "sagittal-neutral": {"run": "sagittal-neutral-20261119-g", "sha256": "ed061641439f5896a4d0d86474b552db2b8cb7d24b4a86fac3bed9fcba96e681"},
+      "sagittal-open-jaw": {"run": "sagittal-open-jaw-20261119-d", "sha256": "961bf44368c0f67cf3c9b25d620fc00e58faf756bd2d91a9817be2d63188d2d2"},
+      "tract-slew-vowels": {"run": "fan-crossing-allocations-20261119-b-vowels", "sha256": "dfe4ad45ee63119e91bc651491819b8048768ba4e1f2fc91224689ca93a87c8c"},
+      "tract-slew-lips": {"run": "fan-crossing-allocations-20261119-b-lips", "sha256": "e52f3b957c1cbe8de90ce5600b891762d88988fc1a16c40a5289d1312781b0f7"},
+      "tract-slew-contact": {"run": "fan-crossing-allocations-20261119-b-contact", "sha256": "41568c143f58e43fec6aed728f03345a027d52c2ddbd578145f8342f5c4d4e83"}
+    }
+  },
+  "measurement": {
+    "profile_fields": ["contour", "contact", "area", "resample", "copy_limited"],
+    "require_matching_profile_postures": true,
+    "expected_contour_allocations_per_call": 0,
+    "minimum_cumulative_native_reduction_fraction": 0.60,
+    "allocation_windows": ["all", "after_32_quanta"],
+    "maximum_different_pcm_samples": 0,
+    "maximum_different_observations": 0,
+    "maximum_different_geometry_lines": 0
+  }
+}

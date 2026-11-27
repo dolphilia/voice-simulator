@@ -1,0 +1,49 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-load",
+  "revision": 1,
+  "base_case": "worklet-live-tsp-44100-headphone-onset.json",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "control_run": "worklet-live-tsp-44100-headphone-onset-gate-400ms-20261122-a",
+  "trace": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server"
+    ],
+    "time_limit": "2s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 400,
+    "maximum_server_host_error_us": 25
+  },
+  "load": {
+    "order": [
+      288,
+      416,
+      416,
+      288
+    ],
+    "first_draw_frames": 64,
+    "lead_offsets": [
+      0,
+      2,
+      4,
+      15
+    ],
+    "preparation_window_before_frames": 3072,
+    "preparation_window_after_frames": 4096,
+    "in_phase_marker": {
+      "shape": "smooth-binary",
+      "chips": 8191,
+      "frames_per_chip": 16,
+      "seed": 305419896,
+      "scale": 512
+    }
+  },
+  "gap_comparison": {
+    "flank_frames": 768,
+    "maximum_relative_residual": 0.025,
+    "minimum_residual_difference": 0.03
+  },
+  "criteria": "確認用07と同じ出力先・採取時刻・ケースを使い、最後の破棄描画数を288と416に変える。最初の3片は各64フレームとし、最後の片を発話レンダー開始の直前の量子に置く。WAVと発声状態のビット一致と、4片のフレーム数・位置を検証する。最終片を含む機器要求と最初の発話量子の要求を同定し、256フレームの5.805 msの予算と時刻の飛びを照合する。タップが長くなった場合は前後の既知信号を先に照合し、無音・当該要求の反復・前後要求の波形を2位置で比べ、同相・逆相で別々に残差0.025以下・次点との差0.03以上のときだけ採用する。観測の成立と予算を前後する予測の成否は別に記録する。",
+  "prediction": "48 kHzで最後の288フレームは約5.3〜5.6 ms、320フレームは5.44〜5.71 msだった。44.1 kHzでは288が5.805 msをおおむね下回り、416を加えた要求は予算に達するか超えると予測する。両処理が予算を超える要求では、直後の予定サンプル番号が256フレーム飛ぶ事例を予測する。"
+}

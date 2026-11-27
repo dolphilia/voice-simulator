@@ -1,0 +1,38 @@
+{
+  "id": "uniform-outlet-half-cell",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "grid_run": "uniform-grid-rate-sensitivity-20261121-a",
+  "long_run": "uniform-waveguide-matched-20261121-long",
+  "bandlimited_run": "uniform-waveguide-matched-20261121-bandlimited-b",
+  "hypothesis": "口端セルと並列R–L負荷の間に、半セル長の慣性を追加し、端の状態を中点法で連立すると、96 kHz・40セルの3,250 Hzの差が75%以上縮む。入力停止後、管と終端の離散エネルギーは放射抵抗の散逸分だけ減る。",
+  "geometry": {"length_cm": 17.5, "area_cm2": 3.0, "rate_hz": 96000, "cells": 40, "viscous_scale": 0.0},
+  "stress_cells": 47,
+  "conditions": {
+    "direct": "同じセルと元の並列R–L終端。固定上流と保存済みの直接終端を照合する。",
+    "series": "口端セルの圧縮性とR–L負荷の間にL_s=ρΔx/(2A)を入れる。口端セル圧、直列流量、放射慣性流量を同じ時間中点で更新する。",
+    "courant_stress": "96 kHzのまま47セルに増やす。クーラン数47/48で、直列半セルを入れたときの停止後のエネルギー減衰を確認する。"
+  },
+  "measurement": {
+    "impulse_sample": 0,
+    "impulse_volume_cm3": 0.001,
+    "duration_seconds": 3.0,
+    "tail_seconds": 0.1,
+    "retained_prefix_seconds": 0.025,
+    "frequencies_hz": [250, 750, 1250, 1750, 2250, 2750, 3000, 3100, 3200, 3250, 3300, 3350, 3375, 3400, 3500, 3750],
+    "primary_hz": 3250,
+    "energy": "生のインパルスで、旧・新の圧力中央値による入力仕事、放射面圧の二乗をRで割った散逸、圧縮・管内枝・直列端・放射慣性の離散貯蔵エネルギーを各ステップで照合する。",
+    "spectrum": "前回と同じ6 kHz FIRを入力・出力へ適用する。最初の差の位置、3,250 Hz、16周波数の最大差を記録する。前回のスタガードな半セル式と、今回すべての終端状態を中点法で解く式との残差も保存する。"
+  },
+  "criteria": {
+    "direct_candidate_vs_upstream_relative_peak_max": 1e-8,
+    "boundary_equations_relative_peak_max": 1e-10,
+    "time_series_vs_midpoint_frequency_relative_max": 1e-5,
+    "midpoint_vs_prior_half_cell_prediction_db_max_at_3250": 0.1,
+    "max_abs_amplitude_difference_db_at_16_frequencies": 0.9,
+    "reduction_min_at_3250": 0.75,
+    "energy_step_relative_max": 1e-12,
+    "energy_cumulative_relative_max": 1e-10,
+    "zero_input_energy_increase_relative_max": 1e-12,
+    "last_tail_energy_over_peak_max": 0.001
+  }
+}

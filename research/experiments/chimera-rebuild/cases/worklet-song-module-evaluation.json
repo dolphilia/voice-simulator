@@ -1,0 +1,24 @@
+{
+  "id": "worklet-song-module-evaluation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "registration_reference_run": "worklet-song-parallel-registration-20261121-repeat",
+  "live_case": "worklet-live-song.json",
+  "hypothesis": "Firefoxで観測した長い登録待ちは、WorkletモジュールのJavaScriptが評価を始める前に集中する。現行順と並行登録の両方で、評価前の時間が登録の75%以上になると予測する。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"]],
+    "condition_order": [["serial-control", "serial-evaluation", "parallel-evaluation", "parallel-control"], ["parallel-control", "parallel-evaluation", "serial-evaluation", "serial-control"], ["serial-evaluation", "serial-control", "parallel-control", "parallel-evaluation"]],
+    "unrenderable_lyrics": "...",
+    "rejection_contains": "音符に割り当てる歌詞の音節がありません",
+    "cross_clock_tolerance_ms": 5,
+    "maximum_median_connected_shift_ms": 20,
+    "expected_firefox_before_evaluation_fraction": 0.75,
+    "expected_worklet_evaluation_ms": 5
+  },
+  "criteria": {
+    "setup": "各試行を新しいブラウザとページで始める。歌詞エラーは全条件で現行順・通常モジュールを使い、歌詞を直した後に実験条件を有効にする。計時なしと計時ありの両方で、現行順と並行登録を3対採る。",
+    "clocks": "addModule開始・解決、ローカルサーバーの処理開始・応答送出、Workletの最初の計測文とregisterProcessor前後、ready送信・受信を採る。ブラウザのDate.nowとサーバーのDate.nowを共通のエポックミリ秒として比較する。計測区間の順序と、メインの経過時間との差を5 ms以内で照合する。応答送出時刻をブラウザの受信時刻として扱わない。",
+    "comparison": "待ちを評価開始前、測れたモジュールの評価、登録完了通知までに分ける。Firefoxの各順序で評価前の比率の中央値が75%以上かを判定する。計測できたモジュール評価の中央値は各順序で5 ms以内と予測する。計測ありとなしのContext作成から接続までの対ごとの差の中央値の絶対値は20 ms以下を目安にする。",
+    "audio": "48 kHz、加工前PCM 91,200点、1,425観測行、音節・ジェスチャー・拍を保存済みのCLIとオフラインとの合格基準にビット照合する。既存の上流許容差、2,048フレームの開始予約と全713量子の連続性も検査する。物理出力は対象外とする。"
+  }
+}

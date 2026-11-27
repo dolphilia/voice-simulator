@@ -1,0 +1,57 @@
+{
+  "id": "tsp-fk61-branch-first-difference",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "terminal_load": {
+    "run": "tsp-fk61-pcm2937-terminal-load-20261123-certified",
+    "case": "tsp-fk61-pcm2937-terminal-load",
+    "manifest_sha256": "c0849eaf8558bc064ce0f1589eb47f619814540071c03b1f33ee03b0668dfd4a"
+  },
+  "branch_seed": {
+    "run": "tsp-fk61-pcm2937-branch-seed-20261123-repeat",
+    "case": "tsp-fk61-pcm2937-branch-seed",
+    "manifest_sha256": "26aea563ebb17a16e099e1d3ae36ac64a8b5eab8db08222e1a4f32fbe356800a"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "nodes": [
+      41,
+      42,
+      43
+    ],
+    "comparison_internal_samples": [
+      0,
+      5880
+    ],
+    "overlap_internal_samples": [
+      5840,
+      5880
+    ],
+    "earlier_sample_radius": 3,
+    "known_first_lip_difference": 3971,
+    "scope": "固定上流・通常の研究版・下唇内面の評価順を上流に揃えた試験版を、通常CLIと観測版で描画する。先頭から5879までの枝41→42・42→43、節点41〜43と節点42・43の壁を採る。枝流量の初差は数値の違いで定義し、正負ゼロの符号だけの差は記録しない。初差を含む前後3標本で圧力、乱流、旧流量、係数を個別に交換して枝の式を検算する。5840〜5879は登録済みの計測と照合する。標本番号は0始まり、範囲は半開区間。"
+  },
+  "hypotheses": {
+    "series_flow_diverges_by_first_mouth_difference": "試験版の枝42→43の流量差は、観測済みの口端放射の初差3971までに現れる。",
+    "prior_flow_agrees_at_first_series_difference": "試験版と上流で枝42→43が初めて分かれる標本の旧流量と旧運動量は一致する。",
+    "pressure_has_larger_local_effect_than_coefficients": "枝42→43の初差で、両端の圧力だけの交換による流量変化は、慣性・損失を合わせて交換した場合より大きい。",
+    "boundary_diverges_by_first_series_difference": "枝41→42の流量差は枝42→43と同じか早い標本に現れる。"
+  },
+  "acceptance": "全PCMの通常CLI、観測版、保存済み記録をビット照合する。枝・壁・節点・口端の入力と出力を検算する。5840〜5879の枝・壁・節点・負荷および冒頭3072フレームの系列が先行計測とビット一致することを確認する。先頭から両枝の最初の数値差を探し、その前後の観測値と入力交換、同じ入力に対する演算順の対照を保存する。仮説が成立しない場合も結果を保持する。"
+}

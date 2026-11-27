@@ -1,0 +1,95 @@
+{
+  "id": "csd-en001a-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "full_song": {
+    "run": "csd-acoustic-f0-en001a-20261121-final",
+    "case": "csd-acoustic-f0-en001a",
+    "manifest_sha256": "8f5b3def177bc5078f27e1c3d92b5464c2c1c7948b6ff719b8034fcdc6383140"
+  },
+  "standard_upstream": {
+    "run": "csd-song-planning-20261121-final",
+    "case": "csd-song-planning",
+    "manifest_sha256": "a320762ad5968d0d95ac94855f7329498e390b3aa0eadce5d7ddb5daa7e4359e"
+  },
+  "archive_outputs": {
+    "spec": "artifacts/candidate-case.json",
+    "research_pcm": "artifacts/candidate.wav",
+    "research_plan": "artifacts/candidate-inspect.json",
+    "upstream_pcm": "artifacts/csd/en001a-synth.wav"
+  },
+  "reference": {
+    "run": "csd-en005a-full-pcm-rounding-20261124-verified-repeat",
+    "case": "csd-en005a-full-pcm-rounding",
+    "manifest_sha256": "eaa709a63b850f87b2fa4dea11875e955f70c3eb1c79314b5af5c9723a4f5daf"
+  },
+  "comparisons": {
+    "en035a": {
+      "run": "csd-en035a-full-pcm-rounding-20261124-repeat",
+      "case": "csd-en035a-full-pcm-rounding",
+      "manifest_sha256": "4ea5ce5ce7d849a2d3946c0a7fe20c73fc7e07b940a7ceca513633bae372e946"
+    },
+    "en012a": {
+      "run": "csd-en012a-full-pcm-rounding-20261124-repeat",
+      "case": "csd-en012a-full-pcm-rounding",
+      "manifest_sha256": "8cebe48a333158eaf26e952cb99ef59694c0aa5e13cc6b51f4228b0c84084d93"
+    }
+  },
+  "short_reference": {
+    "run": "csd-en001a-two-phrase-pcm-rounding-20261124-repeat",
+    "case": "csd-en001a-two-phrase-pcm-rounding",
+    "manifest_sha256": "be31e8b89cc012982df2ffbfee87d75bf8f4efea251f038e9f5fbc284e29a05c"
+  },
+  "measurement": {
+    "song": "en001a",
+    "phrases": 50,
+    "notes": 86,
+    "frames": 3110400,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "block_frames": 128,
+    "first_beat_frame": 115200,
+    "last_score_end_frame": 3066302,
+    "common_prefix_witness_frame": 20363,
+    "short_frames": 201600,
+    "short_minimum_common_frames": 171902,
+    "segments": {
+      "before_first_beat": [
+        0,
+        115200
+      ],
+      "score": [
+        115200,
+        3066302
+      ],
+      "after_last_score_end": [
+        3066302,
+        3110400
+      ]
+    },
+    "focus_frames": [
+      0,
+      20363,
+      115200,
+      171902,
+      200702,
+      201599,
+      3066302,
+      3110399
+    ],
+    "quiet_pcm_threshold": 0.000001,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "same_settings_pcm_tolerance": 0.000001
+  },
+  "hypotheses": {
+    "startup_witness_is_shared": "同じ版の4曲のPCMは、短い対照でも丸め前の最大差が現れたフレーム20363まで一致する。",
+    "precast_maximum_is_startup_witness": "全曲でも丸め前の最大差はフレーム20363にある。",
+    "pcm_maximum_after_first_beat": "曲を末尾まで描画すると、PCM最大差は第1拍以降の譜面区間に出る。",
+    "precast_and_pcm_peaks_differ": "全曲の丸め前とfloat32変換後の最大差は別のフレームに現れる。",
+    "short_pcm_shared_through_second_phrase": "全曲と先頭2句の描画は、両版とも先行比較で固定した境界171902の手前までPCMがビット一致する。",
+    "short_pcm_changes_with_later_gestures": "第3句の準備が4.2秒の打ち切りより前に始まるため、両版とも先頭201600フレームの範囲内に全曲と先頭2句のPCM差が現れる。",
+    "same_limiter_active_frames": "同設定の両版で利得抑制の作動フレームの集合は一致する。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差の95%以上は両版のPCM絶対値が10⁻⁶以下のフレームにある。"
+  },
+  "acceptance": "別々の保存実行から公式の上流出力と研究版の全曲PCM・計画を照合する。同設定の両版で未計装と計装のPCMと計画が一致し、先頭2句の計画を先行採取に照合できることを確認する。全6220800内部標本の放射合算・差分と全3110400出力フレームのFIR、DC除去、包絡、利得抑制、float32の丸めを独立計算に照合し、非有限値がないことを確認する。最大PCM差は10⁻⁶以下とし、1 ULP差は対応する丸め中点をまたぐことを確認する。第1拍前、譜面区間、終端以降で最大差と振幅別ULP数を集計し、先行採取とは201600フレーム、他曲とは早い方の第1拍までのPCM一致数を記録する。"
+}

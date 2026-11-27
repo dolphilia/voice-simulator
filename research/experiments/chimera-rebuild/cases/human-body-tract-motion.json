@@ -1,0 +1,45 @@
+{
+  "id": "human-body-tract-motion",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-calibrated-vowels", "human-body-airway", "tract-slew-vowels", "tract-slew-contact", "tract-motion-vowels", "vowel-motion-voice-vowels"],
+  "hypothesis": "較正した /i a u/ の間を移動すると、体型に応じた咽頭・口腔のセル数を保ちながらセル長と断面が変化する。面積の固定速度項と面積閾値は体型長さ比の二乗で変わる。接触を補正して再計算するときは制御フレーム開始時の面積を使う。形状変化だけでも圧力と放射が生じる。",
+  "initial_state": "較正部分目標を中立姿勢に適用して初期位置と目標を一致させる。制御器の速度、圧力、流量、呼気ゲート、位相は0。形状変化のみの試験は声門を閉じ、乱流と外部入力を0とする。有声の試験では基準音高110 Hz、ピッチ変動と乱流を0とする。",
+  "neutral_case": "sagittal-neutral.json",
+  "articulators": {"control_block_samples": 128, "base_weight": 1.0, "frames": 240},
+  "vowels": {
+    "initial": "i",
+    "events": [
+      {"frame": 8, "vowel": "a"},
+      {"frame": 52, "targets": {"velum_cm2": 0.5}},
+      {"frame": 116, "vowel": "u", "targets": {"velum_cm2": -0.15}}
+    ]
+  },
+  "contact": {
+    "initial_case": "tract-motion-contact.json",
+    "events": [
+      {"frame": 8, "targets": {"tongue_tip_y_cm": 9.55}},
+      {"frame": 144, "targets": {"tongue_tip_y_cm": 7.3}}
+    ]
+  },
+  "variants": [
+    {"id": "male", "body": "male", "rate_hz": 96000, "cells": [18, 18], "trajectory": "vowels", "voice": true},
+    {"id": "female", "body": "female", "rate_hz": 96000, "cells": [15, 16], "trajectory": "vowels", "voice": true},
+    {"id": "child-64k", "body": "child", "rate_hz": 64000, "cells": [8, 9], "trajectory": "vowels", "voice": true},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "rate_hz": 96000, "cells": [15, 16], "trajectory": "vowels", "voice": true},
+    {"id": "child-contact", "body": "child", "rate_hz": 96000, "cells": [11, 13], "trajectory": "contact", "voice": false}
+  ],
+  "voice": {"pressure_cm_h2o": 7.2, "gate": 1.0, "f0_hz": 110.0, "breathiness": 0.15, "tension": 0.5, "output_gain": 5.5e-7},
+  "measurement": {
+    "length_absolute_lt_cm": 1e-8,
+    "area_absolute_lt_cm2": 1e-8,
+    "geometry_absolute_lt": 1e-8,
+    "acoustics_relative_to_upstream_peak_lt": 1e-7,
+    "voice_trace_relative_to_upstream_peak_lt": 1e-7,
+    "pcm_absolute_lt": 5e-7,
+    "volume_source_cutoff_hz": 60,
+    "minimum_cell_length_span_cm": 0.001,
+    "minimum_center_volume_source_cm3_s": 0.1,
+    "minimum_reapply_baseline_error_cm2": 1e-5,
+    "block_frames": [128, 77]
+  }
+}

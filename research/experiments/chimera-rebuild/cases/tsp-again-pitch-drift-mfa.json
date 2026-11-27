@@ -1,0 +1,73 @@
+{
+  "id": "tsp-again-pitch-drift-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "utterance": "FK61_01",
+  "previous_render": {
+    "run": "tsp-active-duration-original-20261121-repeat",
+    "case": "tsp-active-duration-original",
+    "manifest_sha256": "e930b49410ebc43be926de16668d0c0e08549c11be719b450d04d8ee22afae1d"
+  },
+  "matched_render": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "previous_alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "matched_alignment": {
+    "run": "tsp-matched-speech-mfa-20261123-repeat",
+    "case": "tsp-matched-speech-mfa",
+    "manifest_sha256": "b24443ae55f3f7b1b0112fd712b450f742ae0711906ea104af6b33f14f38ac03"
+  },
+  "formants": {
+    "run": "tsp-matched-speech-formants-20261123-repeat",
+    "case": "tsp-matched-speech-formants",
+    "manifest_sha256": "63f63526f13c3e793b64c296953f82695c55f65462a4fe970593c921d0769562"
+  },
+  "cycle": {
+    "seed": 777,
+    "period_scale_bounds": [0.55, 1.8],
+    "amplitude_scale_min": 0.12,
+    "jitter_active": 0.00455,
+    "amplitude_shimmer": 0.042,
+    "pitch_drift_cents": 5.0,
+    "initial_f0_hz": 110,
+    "base_f0_hz": 205,
+    "internal_sample_rate_hz": 96000
+  },
+  "drift": {
+    "seed": 4242,
+    "control_interval_samples": 32,
+    "filter_base_hz": 0.3,
+    "default_cents": 5,
+    "disabled_cents": 0
+  },
+  "limits": {
+    "pitch_ratio_agreement_cents": 1e-8,
+    "cycle_absolute": 1e-10,
+    "meaningful_fixed_window_f2_hz": 2,
+    "maximum_predicted_boundary_shift_s": 0.010001
+  },
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "output_block_frames": 128,
+    "initial_frames": 2400,
+    "profile_frames": [0, 63, 127, 479, 2399, 92159, 97919],
+    "tip_coordinate_tolerance_cm": 1e-12,
+    "word": "again",
+    "phones": ["EH1", "N"],
+    "analysis_centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+    "analysis_rate_hz": 12000,
+    "frame_samples": 300,
+    "late_pcm_region": [91200, 100800],
+    "expected_matched_end_seconds": 2.0399999618530273,
+    "expected_previous_end_seconds": 2.059999942779541,
+    "expected_previous_90_percent_offset_samples": 216,
+    "acceptance": "通常CLIで同じ本文、体型、初期姿勢、気道、ゲイン、ジッター、シマーを固定し、低速F0ドリフトのみを5セントから旧既定値0へ変更する。固定上流の通常PCM・保存済みの整列入力と境界を基準対照で再現する。両研究条件の通常PCMを内部観測器のPCMと全標本で一致させ、ドリフトの3つのフィルターから瞬時F0比を独立計算する。周期境界、MFA境界、初差と全25窓を仮説の採否を問わず保存する。",
+    "prediction": "瞬時F0と位相は最初の内部標本から変わる。周期番号で揃えた振幅倍率は一致する。again付近にPCM差が残り、境界を固定した5窓のうち少なくとも1つでF2が2 Hz以上変わる。再整列による /ɛ/–/n/ の移動は10 ms以内と予測する。"
+  }
+}

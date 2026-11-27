@@ -1,0 +1,39 @@
+{
+  "id": "csd-en001a-centerline-coordinate-swap",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "geometry": {
+    "run": "csd-en001a-initial-oral-geometry-20261124-repeat",
+    "case": "csd-en001a-initial-oral-geometry",
+    "manifest_sha256": "6ba2c5f185abe405990d85313e80d64a7410f0d507c385ac199b55af9dc4e12f"
+  },
+  "lip_load": {
+    "run": "csd-en001a-first-lip-load-20261124-repeat",
+    "case": "csd-en001a-first-lip-load",
+    "manifest_sha256": "5131eb7478fe2839d0d923a92f08906eff4f3ccec79a04b296650b5765975e90"
+  },
+  "render": {
+    "run": "csd-continuous-song-20261121-repeat",
+    "case": "csd-continuous-song",
+    "manifest_sha256": "64843b27c98a3e5fbc60e0f2bb0f300759f003b20cdd6d3f1569faa94ea2eeec"
+  },
+  "measurement": {
+    "completed_frames": [0, 1, 65],
+    "exchanges": {"native": [], "ray4": [4], "ray5": [5], "rays4_and_5": [4, 5]},
+    "first_distance_difference_ray": 4,
+    "first_accumulation_difference_ray": 6,
+    "control_internal_samples": 128,
+    "internal_sample_rate_hz": 96000,
+    "sample_rate_hz": 48000,
+    "block_frames": 128,
+    "frames": 201600,
+    "max_segment_distance_error_ulp": 2.0,
+    "scope": "通常のen001aの先頭2句の描画において、初期化と最初の制御更新に限り、測定線4・5から選んだ中心のx座標を中心間距離の計算へだけ渡す。両版で相手の実測値に交換する。出力フレーム1を完了した時点で交換を解除し、次の制御更新後の65フレームでも中心線の解除を観測する。"
+  },
+  "hypotheses": {
+    "ray4_matches_first_distance_without_moving_its_accumulation": "測定線4のx座標だけを交換すると、3→4の距離が相手と一致し、4での累積弧長は元の版と同じになる。",
+    "ray5_matches_first_differing_accumulation": "測定線5のx座標だけを交換すると、5→6の距離と測定線6の累積弧長が両方向で相手と一致する。",
+    "both_coordinates_leave_some_terminal_length_gap": "測定線4・5を共に交換しても、それより先の測定線の距離差が残るため、少なくとも一方向で初期の口端セル長は相手と一致しない。"
+  },
+  "acceptance": "交換なしの計装版の全201600 PCMと歌唱計画を先行の通常描画に照合する。初期化と初回制御後の交換座標は指定したものだけが変わり、測定線そのものの座標と断面積は保存された基準と一致する。次の制御更新で距離の座標が通常に戻ったことを確認する。区間距離の90桁計算は最大2 ULP、倍精度の累積距離、末端セルの再標本化、口腔長、初回の体積速度と口端の放射負荷の各計算は採取値とビット一致とする。全8描画のPCMの有限性、フレーム数、計画の一致、基準との差と最初に異なるフレームを記録する。"
+}

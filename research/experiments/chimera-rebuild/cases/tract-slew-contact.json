@@ -1,0 +1,71 @@
+{
+  "id": "tract-slew-contact",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "hypothesis": "舌先を口蓋に押すと、接触補正後の断面再計算にもフレーム開始時点の面積を使う。1回目の断面を基準にした計算とは観測値に差が出る。",
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 8,
+        "targets": {
+          "tongue_tip_y_cm": 9.55
+        }
+      },
+      {
+        "frame": 144,
+        "targets": {
+          "tongue_tip_y_cm": 7.3
+        }
+      }
+    ]
+  },
+  "area_control": {
+    "project_contacts": true
+  },
+  "measurement": {
+    "frames": 288,
+    "area_control": {
+      "area_absolute_lt_cm2": 1e-09,
+      "length_absolute_lt_cm": 1e-09,
+      "closed_below_cm2": 1e-05,
+      "tube_cells": {
+        "pharynx": 18,
+        "oral": 18
+      },
+      "reapply_frames": [
+        40,
+        143
+      ],
+      "max_limit_effect_gt_cm2": 0.6,
+      "min_unprojected_tip_distance_cm": [
+        -0.13,
+        -0.1
+      ],
+      "second_pass_wrong_baseline_effect_gt_cm2": 0.05
+    }
+  }
+}

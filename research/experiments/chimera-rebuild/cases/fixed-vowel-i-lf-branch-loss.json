@@ -1,0 +1,44 @@
+{
+  "id": "fixed-vowel-i-lf-branch-loss",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "alpha_reference": {
+    "run": "fixed-alpha-lf-fundamental-amplitude-branch-loss-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental-amplitude-branch-loss",
+    "manifest_sha256": "32208ee7515f9321632ec7fdef881664482ac7cc716489f76741b1aa8b919e2f"
+  },
+  "pose_reference": {
+    "run": "fixed-voice-centerline-i-v2-repeat",
+    "case": "fixed-voice-centerline-i",
+    "manifest_sha256": "48597458ac52675ec630837f4f415634b902a8ecec922f5d88aba5da9697c8b6"
+  },
+  "network_reference": {
+    "run": "vowel-transfer-i-20261119-f",
+    "case": "vowel-transfer-i",
+    "manifest_sha256": "0493ec651b2eeee9cb8e24ae0e10ba17fde46e73770648697da91ba837449864"
+  },
+  "hypothesis": "同じ声門流量を固定 /i/ の形状に通すと、/ɑ/ の後部咽頭拡大に比べ、節点37～41付近の狭い口腔の枝が振幅則からのずれに強く現れる。660 Hz・770 Hzの比例と二次からのずれの4比較のうち2比較以上で、寄与の大きさ上位3枝に口腔内の枝が含まれると予想する。節点ごとの線形応答にも依存するため、一次の面積や慣性の順位は寄与の順位と別に扱う。各比較で条件間の流向反転の補正が口端のずれの方向への射影で半分以上を占めると予想する。",
+  "input": "成人男性の保存済み /i/ の姿勢で、固定 /ɑ/ の記録にある5入力を再生する。定常流、サンプルレート、開始標本、声門流量の全係数、閉じた鼻咽腔、元の損失式を揃える。110 Hzの複素係数だけを倍率−1、−0.5、0、+0.5、+1で変えた保存列を使う。",
+  "observation": "標本76,799～76,927、134,399～153,599の節点圧、枝流量、口端・壁流量を観測する。最終22周期の奇・偶成分、比例・二次からの複素差、枝の寄与を求める。両版の枝は向き付き端点で照合する。上流の管名とセル長から咽頭・口腔および咽頭入口からの枝の距離を求め、/ɑ/ の上位枝と比較する。",
+  "acceptance": "保存した5入力を姿勢と観測窓以外は同じに保つ。96 kHzの /i/ の登録線形要素を新しい上流の節点幾何と照合し、向き付き端点、慣性、抵抗、節点コンプライアンスを研究版と照合する。両版の時系列、切替時の因果順、枝の圧力収支、独立した離散節点式による再構成を既存の /ɑ/ と同じ閾値で判定する。FFTと直接DFTを照合する。形状と流向の予想の成否は計測手順の合否と分ける。",
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "frequencies_hz": [660, 770],
+    "activation_sample": 76800,
+    "early_window_samples": [76799, 76928],
+    "window_samples": [134400, 153600],
+    "reference_flow_cm3_s": 139.8857905134376,
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "expected_connected_branches": 38,
+    "expected_main_path_branches": 35,
+    "series_peak_relative_error_lt": 1e-9,
+    "topology_element_relative_error_lt": 1e-9,
+    "kinetic_balance_peak_relative_error_lt": 1e-9,
+    "spectral_identity_relative_error_lt": 1e-8,
+    "complex_reconstruction_relative_error_lt": 1e-6,
+    "first_difference_peak_relative_threshold": 1e-10,
+    "top_ranked_branches": 3,
+    "hypothesis_contrasts_with_oral_branch_ge": 2,
+    "hypothesis_direction_change_projected_share_ge": 0.5
+  }
+}

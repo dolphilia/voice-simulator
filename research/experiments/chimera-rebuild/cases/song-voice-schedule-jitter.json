@@ -1,0 +1,245 @@
+{
+  "id": "song-voice-schedule-jitter",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "upstream_reference": {
+    "case": "song-voice-schedule-drift.json",
+    "run": "song-voice-schedule-drift-20261121-repeat"
+  },
+  "candidate_reference": {
+    "case": "song-voice-schedule-state.json",
+    "run": "song-voice-schedule-state-20261121-repeat"
+  },
+  "jitter": 0.00455,
+  "pitch_drift_cents": 0,
+  "cycle_seed": 777,
+  "host_block_frames": [
+    128,
+    77
+  ],
+  "phase_tolerance_cycles": 1e-9,
+  "voiced_window_frames": [
+    21000,
+    21600
+  ],
+  "active_voicing_floor": 0.01,
+  "hypothesis": {
+    "phase": "音源のピッチドリフト量0を固定し、研究版だけでジッターを0から0.00455へ変えると、予約直後の絶対位相は固定上流と1e-9周期以内で一致する。全描画区間で位相は記録F0とシード付き周期倍率の独立積分に一致する。F0と音素の区間は保つ。",
+    "transfer": "研究版のジッターだけの比較では、声門の位相が先に変わり、乱流注入量0でも有声化時から声門面積・流量、放射、PCMに差が届く。",
+    "remaining": "ジッターを合わせると有声区間の固定上流との差のRMSは4条件すべてで減ると予測する。上流のシマーが残るため、PCMには閾値を超える差が残る。減らない条件や最初に変わる観測値も報告する。"
+  },
+  "criteria": {
+    "input": "短い歌唱Pop Dee、男声中立姿勢、110 Hz、肺圧7.2 cmH₂O、予約前16,384または16,512フレーム、乱流注入量0・1。前回の固定上流のドリフト0と研究版の従来条件を保存マニフェストから照合する。シマーは研究版で0、固定上流で既定の0.042。",
+    "window": "予約直後からの48 kHz出力末尾で声門状態を観測する。初期位相は予約直後の最初の1,440サンプル、声門面積・流量・放射・PCMの比較は前回と同じ全区間、実装間のRMSは譜面時刻21,000から21,600の半開区間で測る。独立位相は描画開始の位相0から、予備描画中の110 Hzと予約後の観測F0を用いて96 kHzで積分する。",
+    "verification": "登録の4条件で整数サンプルの音素計画、観測時刻、有限性、PCMおよび出力段のCSVのブロック128・77での一致を検証する。位相の折り返しを考慮して独立計算に1e-9周期以内で一致すること、ジッターだけを変えた候補のF0・ゲート・唇が従来と一致することを合否条件にする。物理量とPCMの初回閾値は前回の基準値を使用する。別ディレクトリでも実行する。"
+  },
+  "retain_csv": {
+    "frame-16384-noise-0/pcm-128.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16384-noise-0/pcm-77.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16384-noise-1/pcm-128.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16384-noise-1/pcm-77.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16512-noise-0/pcm-128.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16512-noise-0/pcm-77.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16512-noise-1/pcm-128.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    },
+    "frame-16512-noise-1/pcm-77.csv": {
+      "columns": [
+        "frame",
+        "internal_sample",
+        "decimated",
+        "dc_removed",
+        "limiter_envelope",
+        "hold_frames",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          1440
+        ],
+        [
+          15680,
+          15840
+        ],
+        [
+          22310,
+          23040
+        ]
+      ]
+    }
+  }
+}

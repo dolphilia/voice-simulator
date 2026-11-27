@@ -1,0 +1,28 @@
+{
+  "id": "worklet-live-tsp-shared-wasm-abort-44100",
+  "revision": 3,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-tsp-english-planner-reuse-44100-20261122-b",
+  "reference_case": "worklet-live-tsp-english-planner-reuse-44100",
+  "recording_id": "FK64_08",
+  "wasm_refresh": {
+    "reference_sha256": "550b9b169189e9cfa5d7b5528186df26aa9af8765da605d868b778d4271ababc",
+    "expected_current_sha256": "acf248cda507615684e2243ebcb2d572df5328cf9963f1343ba9bc3698e651f6",
+    "prior_audit": "plan-completion-v32-fixed-vowel-i-cli-radiation-20261124",
+    "prior_manifest_sha256": "3c415715c9af624bda86f0d0e1c20009de459ab886e8b74b7d856eb35e78a636",
+    "hypothesis": "放射観測を追加したWASMでも、同じ英語発話入力の停止・再開、全PCM、計画・観測値が第1版と一致する。ブラウザが実際に読み込んだハッシュは現行ビルドと照合する。"
+  },
+  "measurement": {
+    "output_rate_hz": 44100,
+    "internal_rate_hz": 88200,
+    "render_quantum_frames": 128,
+    "output_frames": 98790,
+    "observation_stride_frames": 32,
+    "first_nonzero_frame": 2247,
+    "upstream_pcm_absolute_tolerance": 0.000001,
+    "browsers": ["firefox", "chromium"],
+    "phase_timeout_ms": 10000
+  },
+  "prediction": "WASMの初回取得を保留し、実時間発話の開始後に同じページでオフライン発話を開始する。応答を渡す前に実時間だけを停止すると、そのPromiseはAbortErrorで終了してAudioContextが閉じる。オフラインは同じ取得を待ち続け、応答の解放後に計画と描画が完了する。その後の実時間発話は同じモジュールと計画器を使い、WASMの取得・コンパイル・計画器生成はいずれもページ全体で1回になる。",
+  "criteria": "確認用07、女性体型、話速1を使う。両発話の開始から再生し直した実時間発話の完了までをページのperformance.nowで記録する。停止前に両方が待機中で、停止後に応答が保留されたまま停止側のContextが閉じ、停止側にAudioWorkletNodeが生成されていないこと。解放後のオフライン発話と再開した実時間発話が、保存済み基準と全PCM、句とジェスチャー、声門・声道の観測で一致すること。固定上流とのPCM差を閾値以内とし、停止中と再開後の取得・コンパイル・計画器の回数を区別して記録する。"
+}

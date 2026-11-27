@@ -1,0 +1,28 @@
+{
+  "id": "worklet-beatbox-pattern",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "beatbox_pattern_case": "beatbox-pattern-hum.json",
+  "hypothesis": "調音と先読みを同じRust経路で実行すると、観測のためにAudioWorkletの量子を途中で分けても、二つのMIDI音高を含むビートの加工前PCMと休符を含む再生位置はCLIと一致する。",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 62400,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": [64, 77],
+    "expected_slots_in_window": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+    "require_cli_pcm_bit_equality": true,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "state_peak_relative_tolerance": 1e-7,
+    "state_absolute_floor": 1e-9,
+    "minimum_pcm_peak": 0.01,
+    "observed_fields": [
+      "gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing",
+      "glottal_f0_hz", "lip_minimum_cm2", "smoothed_f0_hz", "nose_flow_cm3_s"
+    ],
+    "pitch_windows_seconds": [[0.35, 0.49], [0.81, 1.04]],
+    "expected_midi_notes": [43, 47],
+    "pitch_relative_tolerance": 0.08,
+    "minimum_pcm_pitch_correlation": 0.45,
+    "check_invalid_pattern_then_recover": "unrecognized"
+  }
+}

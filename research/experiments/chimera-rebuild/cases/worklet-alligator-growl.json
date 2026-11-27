@@ -1,0 +1,35 @@
+{
+  "id": "worklet-alligator-growl",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-growl.json",
+  "source_revision": 1,
+  "hypothesis": "23,617で旧コールの手動目標が戻り、23,680まで平滑値は変わらない。先行するhissの手動編集0.62を0にした対照との差は、切り替え時の目標、次の制御境界での平滑値と声門面積、放射・PCMの順に現れる。ゲート・音高・口先断面は同じ経過をたどる。",
+  "measurement": {
+    "variants": ["official-prefix-48000", "switch-44100", "pitch-ceiling-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_stride_by_variant": {"switch-44100": 1},
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [196799, 228031],
+      "switch-44100": [],
+      "pitch-ceiling-96000": [28, 29, 63, 62463]
+    },
+    "switch_control": {
+      "variant": "switch-44100",
+      "edit_frame": 12001,
+      "control_hiss": 0,
+      "first_target_difference_frame": 23617,
+      "first_smoothed_difference_frame": 23680,
+      "first_glottis_area_difference_internal_sample": 47360,
+      "unchanged_frame_fields": ["gate", "gate_target", "pitch_hz", "target_pitch_hz", "pressure_cm_h2o", "mouth", "target_mouth"],
+      "unchanged_sample_fields": ["lung_pressure_dyn_cm2", "oral_tip_area_cm2", "velum_area_cm2"],
+      "pcm_threshold": 0.000001
+    },
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

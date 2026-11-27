@@ -1,0 +1,34 @@
+{
+  "id": "fixed-voice-centerline-i",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "vowel-voice-i.json",
+  "source_case_sha256": "9e6a3befd846420789cbac2d3bb5a6845241091920af8a7747f5b36da5c2b4aa",
+  "pressure_reference_run": "fixed-voice-pharynx-onset-48000-repeat",
+  "pressure_reference_manifest_sha256": "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d",
+  "geometry_reference_run": "worklet-rate-96000-20261120-native-repeat",
+  "geometry_reference_manifest_sha256": "c50807f1a67b38f7b535af081fbfef73e99a2d6317d7176b053fd1444148472e",
+  "hypothesis": "固定/i/の咽頭全長の1 ULP差は、同じ区域分けと距離の計算順で再現できる。上流と研究版の計算はどちらも同じlibmのhypotを使うため、最初の積算距離の差に先行する測定線端点または中点の差を特定できる。",
+  "observation": "通常CLIのareaとinspect、固定上流のareaとarea-metricsで全測定線の内外端・中点・区域・積算距離を保存する。喉頭蓋部2.4 cmから口端まで、共通の点間距離と独立十進計算で両系列を復元する。咽頭境界までについて上流の中点を全部、Xのみ、Yのみ、または一点ずつ入れて境界の長さを確認する。",
+  "acceptance": "区間番号、区域、喉頭蓋部の開始距離、最初の口腔線が両版で一致する。共通の点間距離で各実装の累積値が全点ビット一致する。独立十進計算の累積誤差が許容値内で、咽頭全長と18分割したセル長が先行の幾何・圧力CSVに一致する。最初に分かれた端点・中点・区間距離・積算距離をそれぞれ記録する。",
+  "rear_ray_replay": {
+    "hypothesis": "測定線0の内側Xの差は、喉頭蓋基部Yを求める際に上流が成人男性にも適用する座標変換の丸めから来る。積算が初めて分かれる測定線7にはその手前の測定線6と測定線7の後壁交点が関わる。",
+    "acceptance": "保存した前後壁の輪郭から、最初の12水平線で両版の交点と中点をビット一致で復元する。喉頭蓋基部のYだけの置換で測定線0の上流内側Xが再現するか判定し、基部Y・後壁の単独置換と組合せが最初の積算差に与える影響を別に記録する。",
+    "prior_run": "fixed-voice-centerline-i-a",
+    "prior_manifest_sha256": "36eebb969dcad128a1f73c34b6f911886933c48cacd8f2cb3555f79d180ecb9d",
+    "count": 12,
+    "first_accumulated_difference": 7,
+    "origin_x_cm": 4.6,
+    "outer_limit_cm": 9.0,
+    "inner_limit_extra_cm": 1.5,
+    "template_epiglottis_base_y_cm": 2.4
+  },
+  "measurement": {
+    "initial_distance_cm": 2.4,
+    "pharynx_cells": 18,
+    "expected_first_oral_index": 19,
+    "maximum_midpoint_distance_cm": 1e-9,
+    "maximum_independent_arc_error_cm": 1e-13,
+    "expected_pharynx_length_ulp": 1
+  }
+}

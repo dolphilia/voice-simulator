@@ -1,0 +1,26 @@
+{
+  "id": "worklet-song-startup-phases",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "worklet-live-song-cross-browser-20261121-a",
+  "live_case": "worklet-live-song.json",
+  "hypothesis": "FirefoxとChromiumで最初のWorklet呼び出しまでに進むContext時計の差は、歌唱計画を呼び出す区間に大きく表れる。展開済みの辞書がある通常の歌詞入力でもRustは辞書を読み直す。同じ音節をJSONで渡す対照では辞書の読み直しがなくなり、計画のWASM呼び出しが短くなると予測する。",
+  "measurement": {
+    "browser_order": [["chromium", "firefox"], ["firefox", "chromium"], ["chromium", "firefox"]],
+    "condition_order": [
+      ["warm-control", "warm-traced", "cold-traced", "syllables-traced"],
+      ["syllables-traced", "cold-traced", "warm-traced", "warm-control"],
+      ["cold-traced", "warm-control", "syllables-traced", "warm-traced"]
+    ],
+    "unrenderable_lyrics": "...",
+    "rejection_contains": "音符に割り当てる歌詞の音節がありません",
+    "maximum_median_probe_shift_frames": 1024,
+    "expected_warm_planner_gap_fraction": 0.5,
+    "expected_cold_planner_reduction_fraction": 0.8
+  },
+  "criteria": {
+    "setup": "各試行を新しいページ・ブラウザで開始する。warmは以前の測定と同じく歌詞の音節がないエラーから復帰する。coldは有効な歌詞だけを入力する。syllablesは過去の合格実行から辞書で確定した音節をハッシュ確認後に入力する。",
+    "audio": "各条件の48 kHz・91,200サンプルのPCM、1,425行の観測、音節・ジェスチャー・予定拍が既存のCLI・オフライン・固定上流と照合済みの基準に一致する。歌詞または音節の入力内容は条件ごとに照合する。描画開始の予定と全713量子の連続性も確認する。",
+    "tracing": "メインスレッドのperformance.nowとContextの時刻を採る。Contextの生成、並行する再開とWASM準備、辞書、歌唱計画、Worklet登録、ノード生成、接続の境界を照合する。並行する時間は加算せず、開始から接続までを重複のない区間に分ける。計測ありとなしの予定開始・最初のコールバックの中央値差はそれぞれ1,024フレーム以内。",
+    "interpretation": "warmの接続までのブラウザ間の差に占める歌唱計画のWASM呼び出しの差を算出する。coldから同じ音節を渡す対照へのWASM呼び出しの減少率を算出する。予測と個別の値を保存する。測るのはグラフとメインスレッドの時計で、物理出力は対象外。"
+  }
+}

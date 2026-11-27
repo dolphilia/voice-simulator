@@ -1,0 +1,25 @@
+{
+  "id": "tsp-tall-gmm-frame-swap",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "parent": {
+    "run": "tsp-tall-gmm-paths-20261123-repeat",
+    "case": "tsp-tall-gmm-paths",
+    "manifest_sha256": "991e6c35a7e0b830cce5c0285c57a629a7362863cea6197baebe8b3c65511517"
+  },
+  "measurement": {
+    "rows_from_float32": {
+      "compressed": "none",
+      "float32": "all",
+      "float32_at_tall": "tall",
+      "float32_outside_tall": "outside_tall"
+    },
+    "tall_range": [164, 169],
+    "feature_shape": [302, 40],
+    "tall_both_phones": ["AO1", "L"],
+    "accepted_control_end_seconds": {"compressed": 1.649999976158142, "float32": 1.6799999475479126},
+    "margin_agreement": 1e-8,
+    "acceptance": "4条件に同じ保存済みPCM16・転記・辞書を渡す。通常のMFA特徴生成は圧縮開始で共通とし、GMM-HMMに渡す40列の行だけを選び直す。GMMを呼ぶ直前の行列で採用元をビット照合し、FST、実効モデル、探索設定を前回の記録と比較する。両端の対照では全語・音素区間と遷移・語ID列を再現する。前回のフレーム別GMM得点とグラフ費用から固定2経路の順位を再合成し、通常の探索で実際に選ばれた経路と比較する。",
+    "prediction": "PDFが異なる164〜168番の5行だけをfloat32開始の特徴へ交換するとtallの境界を1.680秒へ動かせる。補集合だけを交換すると1.650秒を保つ。固定2経路の再採点では、5行の供給元ごとに得点差が一致する。"
+  }
+}

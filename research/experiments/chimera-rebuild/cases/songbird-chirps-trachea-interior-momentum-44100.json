@@ -1,0 +1,41 @@
+{
+  "id": "songbird-chirps-trachea-interior-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-interior-balance-44100-20261123-repeat",
+    "manifest_sha256": "624490cee2ef0f94ac9b048f3676c10f5702babf0c3c8c0eb0c9438dc82a90c0"
+  },
+  "sample_rate_hz": 176400,
+  "reference_observation_internal_samples": 16,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "trachea_cell_index": 14,
+  "beak_cells": 6,
+  "beak_length_cm": 1.3,
+  "volume_source_cutoff_hz": 60,
+  "neck": {
+    "area_cm2": 0.03,
+    "length_cm": 0.25,
+    "entrance_loss": 0.3,
+    "expansion_loss": 0.8,
+    "viscosity_reference_hz": 700
+  },
+  "trachea_wall": {
+    "mass_g_cm2": 0.6,
+    "resistance_dyn_s_cm3": 1000,
+    "stiffness_dyn_cm3": 1000000
+  },
+  "expected_baseline_inlet_offsets": {
+    "matched_time": 9,
+    "native_block": 12,
+    "no_tracking": null
+  },
+  "hypothesis": "セル13から14へ入る最後から2本目の直列枝で前回運動量の換算順を上流と揃えると、235点制御の押鍵9点後に出た流入差が消えると予測する。まず両端セルの圧、次の標本以降に気管端と首部へ変化が伝わる。256点制御では前回のセル13圧の差が先行しているため、流入差が消えるかは未定とする。追従0は無励振を保つ。",
+  "observation": "先行9差分を適用したRustビルドを対照として復元し、セル13から14への直列枝だけ、持ち越し運動量の時間換算を (Lcarried/dt)×Uprev から (Lcarried×Uprev)×fs へ切り替える。固定入力の235点制御、256点制御、追従0の押鍵後64内部点で、セル13・14・15の圧、セル14と15への流入、壁流量、首部流量、腔圧、くちばしと放射を比較する。",
+  "acceptance": "対照と固定上流で先行16点をバイト再現し、両候補で入力形状と注入が一致する。差分をセル14へ入る枝の選択に限定する。セル14と15の圧力・壁流量・変位・流入量、首部流量と腔圧、先端圧・放射を独立計算にビット照合し、残った初差と局所置換を保存する。変化の最短到達時刻と無励振対照を確認する。"
+}

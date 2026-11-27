@@ -1,0 +1,32 @@
+{
+  "id": "worklet-live-tsp-44100-headphone-load-same-request",
+  "revision": 2,
+  "base_case": "worklet-live-tsp-44100-headphone-load.json",
+  "load": {
+    "order": [
+      288,
+      416,
+      416,
+      288
+    ],
+    "first_draw_frames": 64,
+    "lead_offsets": [
+      0,
+      2,
+      4,
+      16
+    ],
+    "delay_one_quantum": true,
+    "preparation_window_before_frames": 3072,
+    "preparation_window_after_frames": 4096,
+    "in_phase_marker": {
+      "shape": "smooth-binary",
+      "chips": 8191,
+      "frames_per_chip": 16,
+      "seed": 305419896,
+      "scale": 512
+    }
+  },
+  "comparison_note": "第1版では最後の破棄描画量子が256フレーム要求の後半で、最初の発話量子は次の要求先頭だった。既存の1量子遅延を使い、最後の破棄描画を要求の先頭、最初の発話量子を同じ要求の後半に置く。描画量、採取の条件、タップ比較基準は同じ。",
+  "prediction": "288フレームの合計処理を約5.7 ms、416を約6.6 msと見積もる。416の両試行で5.805 msを超え、直後に256フレームの予定時刻の飛びを観測すると予測する。288周辺で予算内・予算超過の違いとタップPCMを測る。"
+}

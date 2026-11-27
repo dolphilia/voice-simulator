@@ -1,0 +1,56 @@
+{
+  "id": "fixed-vowel-i-low-pressure-smoothing",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "standard_reference": {
+    "run": "fixed-vowel-i-coupled-smoothing-20261124-repeat",
+    "case": "fixed-vowel-i-coupled-smoothing",
+    "sha256": "06f7924a8285ddf3851c645edc4bbb2b5b8a94130937be1fd43372d6ae1331b9"
+  },
+  "voice_reference": {
+    "run": "vowel-voice-i-20261119-j",
+    "case": "vowel-voice-i",
+    "sha256": "06a42253b072351ff3636dda70fd2ab224ac2c35cd81dc347ab247c663b38265"
+  },
+  "geometry_reference": {
+    "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+    "case": "fixed-vowel-i-lf-branch-loss",
+    "sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+  },
+  "smoothing_reference": {
+    "run": "fixed-vowel-i-lf-smoothed-branches-20261124-repeat",
+    "case": "fixed-vowel-i-lf-smoothed-branches",
+    "sha256": "865ecfbf317197fadd911e5e6792eaa9e7579244d5a4b7ea393388b131437b92"
+  },
+  "hypothesis": "7.2 cmH₂Oの保存観測でフィルタ後の声門上下圧差は5,718〜7,326 dyn/cm²だった。一次の目安としてこれを半分にした範囲は圧力ゲートの遷移域内なので、肺圧を3.6 cmH₂Oにする。声門と気道を結合し直した場合も、測定窓の95%以上で圧力ゲートが遷移域に入ると予測する。口腔2枝の平滑化による咽頭入口圧の差が、30 Hzで平滑化した圧力差、圧力ゲートと有声度を経て声門面積に達する。入力圧の変化は前標本の節点圧に従い、声門面積は有声度の変化より先に変わらない。予想の成否は再現手順の合否と分ける。",
+  "measurement": {
+    "activation_sample": 38400,
+    "steady_window_samples": [38400, 65536],
+    "sample_count": 65536,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": 128,
+    "smoothing_width_cm3_s": 60,
+    "edges": [[34, 35], [35, 36]],
+    "component_peak_relative_error_lt": 1e-8,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "pcm_absolute_error_lt": 5e-7,
+    "pcm_delta_relative_error_lt": 0.01
+  },
+  "pressure_gate": {
+    "lung_pressure_cm_h2o": 3.6,
+    "pressure_bounds_dyn_cm2": [1961.33, 3922.66],
+    "pressure_smoothing_hz": 30,
+    "voicing_smoothing_hz": 25,
+    "static_opening_cm2": 0.01475,
+    "static_opening_time_s": 0.004,
+    "pressure_max_error_lt_dyn_cm2": 1e-8,
+    "voicing_max_error_lt": 1e-12,
+    "area_change_max_error_lt_cm2": 1e-12,
+    "hypothesis_minimum_transition_fraction": 0.95
+  },
+  "input": "通常の固定 /i/ の保存ケースから肺圧だけを3.6 cmH₂Oに変更する。110 Hz、固定形状、ブレス感、緊張、声門と気道の結合、内部96 kHz、出力48 kHz、標本38,400から切替、口腔の2枝と幅60 cm³/sを揃え、無変更と平滑化を両版で描画する。",
+  "observation": "65,536内部標本で、声門上下圧、フィルタ後の圧力差、有声度、面積、声門流量、口端流量、放射微分、平滑化対象の2枝の流量と節点圧、32,768 PCMフレームを保存する。前標本の圧力から独立に圧力ゲートと有声度を再計算する。固定声門位相の無変更観測から各標本の面積の有声度に対する係数を求め、面積差を再構成する。",
+  "acceptance": "保存ケースに対する変更が肺圧だけであり、切替前の無変更と平滑化の波形がビット一致する。従来と同じ許容差で両版の観測とPCM、放射からの独立PCM、対象枝の圧力収支と非負の仕事率を照合する。追加の圧力差・有声度・面積差を独立計算で登録許容差内に再現する。圧力ゲートの滞在率と有声度・面積の変化時刻に関する仮説の判定を保存する。"
+}

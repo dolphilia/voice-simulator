@@ -1,0 +1,61 @@
+{
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "output": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "id": "tsp-fk61-lower-lip-bernstein-render",
+  "intersection": {
+    "run": "tsp-fk61-ray43-intersection-20261123-repeat",
+    "case": "tsp-fk61-ray43-intersection",
+    "manifest_sha256": "57135f727a80ca0507b9c8e236ce9be2ec773f6da61c79bb76d76fdbb6de36ab"
+  },
+  "volume": {
+    "run": "tsp-fk61-node42-volume-source-20261123-repeat",
+    "case": "tsp-fk61-node42-volume-source",
+    "manifest_sha256": "5e68d7adb22640a88584f3500cd9edf015fef4f6176bda03fddbe84ec2c2761e"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "frames": 116132,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "prefix_frames": 3072,
+    "comparison_internal_samples": [
+      3952,
+      3980
+    ],
+    "focus_node": 42,
+    "focus_sample": 3969,
+    "onset_sample": 3968,
+    "local_internal_samples": [
+      3968,
+      3976
+    ],
+    "completed_frames": [
+      0,
+      1984,
+      1985,
+      2048
+    ],
+    "grid_index": 43,
+    "oral_cells_from_end": 2,
+    "scope": "唇前端の体型変換だけを揃えた保存済み試験版を比較元とし、そこから下唇内面を標本化する7点だけを固定上流と同じBernstein基底の評価順へ替える。通常CLIで全発話を生成し、観測ビルドで測定線43、節点42、口端、先頭3072出力フレームの放射と出力段を採る。固定上流・標準研究版・比較元の保存済みPCMおよび共通する冒頭2048フレームの観測に照合する。初回波形の再解析で初差が2937に移ったため、出力段の採取区間を2048から3072フレームに延ばした。"
+  },
+  "hypotheses": {
+    "initial_ray_and_cell_match_upstream": "描画前の下唇内面7点、測定線43の交点・隙間・面積、節点42の平均断面積が固定上流に一致する。",
+    "source_at_3969_matches_upstream": "内部3969の節点42の体積差分と平滑後の流量が固定上流に一致する。",
+    "first_pcm_difference_moves_later": "固定上流からの最初のPCM差が比較元の1987フレームより後に移るか、全フレームで一致する。",
+    "peak_pcm_error_does_not_increase": "全発話の最大PCM絶対差は比較元で観測した最大差以下に収まる。"
+  },
+  "acceptance": "通常CLIと観測ビルドの全PCMをビット照合し、既存の比較元はマニフェストと内容ハッシュで検証する。観測した7点をBernstein基底の独立計算、前方の光線とセルを既存の独立計算、全節点の体積源と先頭の出力段を観測値に照合する。保存した全PCMから初差・相違フレーム数・最大差を再計算する。仮説と実行の合否は分ける。"
+}

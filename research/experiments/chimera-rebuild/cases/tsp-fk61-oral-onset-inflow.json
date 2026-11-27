@@ -1,0 +1,60 @@
+{
+  "id": "tsp-fk61-oral-onset-inflow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "branch_first": {
+    "run": "tsp-fk61-branch-first-difference-20261123-repeat",
+    "case": "tsp-fk61-branch-first-difference",
+    "manifest_sha256": "f843981be4c14633d12bd24ba0e0f095317407bf6a444aaa34b88a155e4ca67e"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      3964,
+      3984
+    ],
+    "nodes": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "volume_sample": 3968,
+    "focus_sample": 3969,
+    "followup_sample": 3970,
+    "scope": "固定上流、通常の研究版、下唇の評価順を上流に揃えた試験版を通常CLIと観測版で描画する。3964〜3983で口腔の節点37〜43と、それをつなぐ6枝、節点38〜43の壁、節点38〜42のコンプライアンスを測る。3968の節点40の体積差・生の体積源・2段平滑・節点圧、3969の枝40→41の更新と節点41の圧力収支を独立に検算する。先行計測の節点41〜43、枝41→42と42→43、口端負荷と重なる範囲を照合する。時刻は0始まり、範囲は半開区間。"
+  },
+  "hypotheses": {
+    "incoming_branch_dominates_node41_net_at_focus": "3969の節点41の正味流入差は、枝40→41の流量差が、枝41→42・壁・体積源のいずれの差より大きい。",
+    "pressure_dominates_edge40_flow_at_focus": "3969の枝40→41で両端の旧圧を交換した流量変化は、慣性と粘性・二次損失を交換した変化より大きい。",
+    "node40_volume_source_dominates_pressure_at_onset": "3968の節点40で体積源だけを交換した圧力変化の絶対値は、コンプライアンスだけを交換したときより大きい。",
+    "rounded_product_dominates_node40_raw_flow_difference": "3968の節点40で旧新面積と長さの積を丸めないとき、体積速度差の絶対値は観測時の丸めた体積から計算した差より小さい。"
+  },
+  "acceptance": "通常CLI・観測版・保存済みPCMを全発話で照合し、冒頭3072フレームの系列と共通の節点・枝・壁・口端の観測が先行計測とビット一致することを確認する。枝、壁、節点、節点38〜42の体積源をそれぞれ独立に再計算する。測定した局所の生流量と配分後の流量が等しいかを照合してから平滑を検算する。固定上流・試験版の3968〜3970における入力差と交換対照を保存し、仮説を採取の合否とは別に判定する。"
+}

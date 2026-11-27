@@ -1,0 +1,42 @@
+{
+  "id": "worklet-songbird-buzz",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "source_revision": 2,
+  "hypothesis": "96 kHzのbuzzを呼気倍率0.8で再生すると、呼気目標0.6の上向き交差は8回になる。最初はキー値0から、次からは0.35から立ち上がるので、初回の間隔は定常時の6720フレームより短い。各交差は線形補間からの予測と1制御刻み以内で一致する。",
+  "measurement": {
+    "variants": ["buzz-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": [146, 147, 191],
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_control_absolute_tolerance": 1e-9,
+    "independent_clock_absolute_tolerance_seconds": 1e-12,
+    "buzz": {
+      "control_interval_frames": 64,
+      "call_id": 4,
+      "count": 8,
+      "gate_threshold": 0.6,
+      "expected_peak_gate_target": 0.8,
+      "expected_first_control_frame": 192,
+      "first_pitch_target_hz": 1500.0,
+      "first_rise_seconds": [0.0, 0.02],
+      "first_rise_start_gate": 0.0,
+      "second_rise_seconds": [0.06, 0.09],
+      "second_rise_start_gate": 0.35,
+      "rise_end_gate": 1.0,
+      "period_seconds": 0.07,
+      "maximum_timing_error_frames": 64,
+      "last_key_seconds": 0.6,
+      "natural_end_hold_seconds": 0.05,
+      "minimum_pcm_peak": 0.03
+    }
+  }
+}

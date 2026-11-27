@@ -1,0 +1,29 @@
+{
+  "id": "tsp-seems-period-jitter",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {
+    "run": "tsp-seems-pressure-replay-20261123-repeat",
+    "case": "tsp-seems-pressure-replay",
+    "manifest_sha256": "b8f2ea9a56f416481d3fcc8c1833444a1d5e14ef1e65f6aeff67376992771004"
+  },
+  "cycle": {
+    "seed": 777,
+    "jitter_active": 0.00455,
+    "jitter_inactive": 0.0,
+    "upstream_shimmer": 0.042,
+    "candidate_shimmer": 0.0,
+    "period_scale_bounds": [0.55, 1.8],
+    "amplitude_scale_min": 0.12
+  },
+  "limits": {
+    "cycle_absolute": 1e-10,
+    "meaningful_lpc_shift_hz": 2
+  },
+  "hypotheses": {
+    "jitter_changes_phase_after_first_wrap": "両版ともジッターによる最初の位相差は最初の周期境界の次の標本で生じる。各版内で瞬時F0は変わらず、同じ周期番号で比較した振幅倍率も一致する。",
+    "upstream_lpc_moves_at_least_two_hz": "上流でドリフト0のままジッターを止めると、25 ms窓の高域LPC極は絶対値で2 Hz以上動く。",
+    "within_engine_lpc_shifts_agree_in_sign": "0から0.00455へジッターを増やしたときの高域LPC極の移動方向は上流と研究版で一致する。"
+  },
+  "acceptance": "seemsの同じ発話計画、辞書、体型、96 kHz内部レート、48 kHzのPCM、1.1525〜1.1775秒の25 ms窓を引き継ぐ。ドリフト0の固定上流で周期長のジッター0.00455を0にし、研究版では通常のジッター0と設定を0.00455にした対照を通常CLIからレンダーする。振幅のシマーは各版内で固定し、上流0.042と研究版0を使用する。両版の既定CLI出力と保存済みWAV、対応する基準の窓と発話計画を照合する。独立した乱数・位相更新から周期境界と振幅を再計算し、上流は周期倍率も照合する。最初に差が生じたF0、位相、声門面積、流量、圧差、PCMを記録する。独立放射出力、直接フーリエ和、固定Rustと独立LPCを既存の許容差で照合する。研究版との高域LPC絶対差と、ジッター有無による各版内の変化を併記する。仮説の結果と計測の合否を別に記録する。"
+}

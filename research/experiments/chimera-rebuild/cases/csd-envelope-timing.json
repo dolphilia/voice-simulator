@@ -1,0 +1,61 @@
+{
+  "id": "csd-envelope-timing",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_run": "csd-song-planning-20261121-final",
+  "songs": [
+    {
+      "id": "en001a",
+      "split": "calibration",
+      "wave_run": "csd-acoustic-f0-en001a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en001a.json",
+      "envelope_frames": 6480,
+      "phrases": 50
+    },
+    {
+      "id": "en005a",
+      "split": "held_out",
+      "wave_run": "csd-acoustic-f0-en005a-20261121-final",
+      "wave_case": "csd-acoustic-f0-en005a.json",
+      "envelope_frames": 7385,
+      "phrases": 36
+    }
+  ],
+  "envelope": {
+    "frame_seconds": 0.01,
+    "floor_db": -80,
+    "power_epsilon": 1e-30,
+    "max_lag_frames": 30,
+    "independent_db_tolerance": 1e-9,
+    "independent_correlation_tolerance": 1e-10,
+    "first_difference_db": 0.000001,
+    "published_lag_tolerance_seconds": 1e-12,
+    "published_correlation_tolerance": 0.005000001
+  },
+  "onset": {
+    "phrase_gap_seconds": 0.08,
+    "lookback_seconds": 0.25,
+    "previous_note_margin_seconds": 0.03,
+    "max_lookahead_seconds": 0.3,
+    "note_lookahead_fraction": 0.5,
+    "hop_seconds": 0.005,
+    "published_note_tolerance_seconds": 0.005000001,
+    "published_group_tolerance_seconds": 0.000500001
+  },
+  "controls": {
+    "negative_shift_frames": -30,
+    "positive_shift_frames": 4,
+    "gain_factor": 2,
+    "tail_samples": 17
+  },
+  "hypothesis": "同じ長さの波形を各レートの10 ms区間で集約すると、44.1 kHz録音と48 kHz合成が共通の時間格子に載る。既知の遅延と進みの符号が復元され、全窓が床より上なら振幅の定数倍だけでは最大相関のラグが変わらない。無音同士は分散が0で相関とラグが欠測になる。同じ発声計画を使う合成同士は、各合成と録音の組より包絡の最大相関が高いと予測する。句の最初の有声時刻は最初の子音が有声の場合には子音も含み、音符の注釈より前を取り得る。",
+  "measurement": "入力はWAVの保存済みバイト列。録音の2チャンネルを平均してPCM16のスケールを直し、合成はfloat32をそのまま読み、リサンプリングしない。全長の隣り合う10 ms区間と残りのサンプルを使う。各ラグの重なりだけで平均とPearson相関を計算する。未整列の録音、固定上流、候補の包絡と全61ラグの相関を保存し、最初に差が出る窓をフレーム番号、平均二乗、床の適用前後で記す。句の先頭86音符では、前の音符終端+30 msと音符開始−250 msのうち遅い側から5 msずつ進め、音符長の半分または300 msのうち早い側まで、先行F0ケースと同じ電力ゲートとYINで最初の有声を測る。各波形で音符位置、開始窓、開始秒、なければ欠測理由を残す。",
+  "acceptance": "両曲の入力ハッシュと長さが先行実行と一致し、調整用と確認用で同一設定を用いる。物理サンプルの直接集計と独立した集約のdB、全ラグの相関と重なり数が指定の許容差内に入り、全曲の最良ラグと固定上流が通常報告した相関が丸め幅内に入ること。既知の遅延・進み、振幅倍率、床と末尾窓、無音を検証する。固定上流と録音の句別有声開始および開始種別ごとの中央値は通常報告の丸め幅内または両方欠測で一致すること。登録した全句を出力する。候補が録音にどれだけ近いかは観測値として扱う。",
+  "score_crosscheck": {
+    "previous_run": "csd-envelope-timing-20261121-a",
+    "raw_correlation_tolerance": 1e-12,
+    "raw_onset_tolerance_seconds": 1e-12,
+    "guard_correlation_tolerance": 0.000500001,
+    "purpose": "第1版の判定を保持し、固定上流のscore.jsonの各区分が1曲ずつであることを確認して、区分ごとの包絡相関の丸め値と照合する。調整用についてはscore.jsonに保存された丸め前の包絡相関と句ごとの有声開始も照合する。確認用の丸め前の値はscore.jsonに出力されない。"
+  }
+}

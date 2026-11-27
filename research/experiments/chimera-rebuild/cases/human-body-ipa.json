@@ -1,0 +1,36 @@
+{
+  "id": "human-body-ipa",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "depends_on": ["human-body-calibrated-vowels", "human-body-tract-motion", "bilabial-p", "sibilant-s", "sibilant-z"],
+  "hypothesis": "体型を選んでも同じ入力の音素区間と唇の閉鎖目標は変わらない。母音の較正済み部分目標と /s z/ の舌先高さは体型ごとに変わり、混合では体型の重み付き平均になる。/p/ の口端閉鎖と /s z/ の正の最小断面を伴う歯への乱流励起を検出できる。",
+  "initial_state": "共通の中立姿勢、初期音高110 Hz。肺圧・流量・呼気ゲート・声門位相を0で開始し、上流のエンジンと同じ体型別既定音高を目標に渡す。ピッチドリフト・ジッタ・シマーは0、乱流倍率は1、シードは固定の12345。",
+  "neutral_case": "sagittal-neutral.json",
+  "input": {"id": "stop-and-fricatives", "text": "ˈɑpɑ / ˈɑsɑ / ˈɑzɑ", "rate": 1.0},
+  "variants": [
+    {"id": "male", "body": "male", "weights": [1, 0, 0], "f0_hz": 110.0},
+    {"id": "female", "body": "female", "weights": [0, 1, 0], "f0_hz": 205.0},
+    {"id": "child", "body": "child", "weights": [0, 0, 1], "f0_hz": 260.0},
+    {"id": "three-way", "body": {"female": 0.4, "child": 0.3}, "weights": [0.42, 0.28, 0.3], "f0_hz": 169.4993406930173}
+  ],
+  "voice": {"pressure_cm_h2o": 7.2, "gate": 0, "breathiness": 0.15, "tension": 0.5, "output_gain": 5.5e-7},
+  "expected_sibilant_tip_y_cm": {"male": {"s": 9.111, "z": 9.097}, "female": {"s": 9.117, "z": 9.104}, "child": {"s": 9.126, "z": 9.114}},
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "block_frames": [128, 77],
+    "gesture_abs_tolerance": 1e-12,
+    "geometry_abs_tolerance": 1e-9,
+    "selection_abs_tolerance": 1e-8,
+    "state_peak_relative_tolerance": 1e-6,
+    "pcm_abs_tolerance": 1e-6,
+    "probe_first_f0_abs_tolerance_hz": 1e-8,
+    "closed_area_cm2": 0.0002,
+    "closure_offset_seconds": [-0.035, 0.03],
+    "release_offset_seconds": [-0.035, 0.035],
+    "center_fraction": [0.25, 0.75],
+    "minimum_teeth_active_fraction": 0.5,
+    "central_normalized_narrowing_interval_cm2": [0.01, 0.3],
+    "minimum_release_pcm": 0.0001,
+    "release_window_seconds": 0.04
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "worklet-alligator-bellow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-bellow.json",
+  "source_revision": 1,
+  "hypothesis": "観測のため描画を分けてもPCMと気道・制御の状態はCLIと一致する。途中停止でコールの所有項目が手動目標に戻り、平滑値は次の制御境界から追従する。声門位相から全周期の倍率を復元できる。口腔乱流は制御ブロックの目標で更新され、補間中の口先断面が閾値を通過するより先に登録が変わる。",
+  "measurement": {
+    "variants": [
+      "official-prefix-48000",
+      "manual-stop-44100",
+      "pitch-floor-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_stride_by_variant": {
+      "manual-stop-44100": 1
+    },
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [
+        76799,
+        175231
+      ],
+      "manual-stop-44100": [],
+      "pitch-floor-96000": [
+        16,
+        17,
+        63,
+        196927
+      ]
+    },
+    "dense_cycle_variant": "manual-stop-44100",
+    "manual_stop": {
+      "first_smoothing_frame": 53120,
+      "noise_switch_internal_samples": [
+        1664,
+        108672
+      ]
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

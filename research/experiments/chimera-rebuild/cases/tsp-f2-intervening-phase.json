@@ -1,0 +1,20 @@
+{
+  "id": "tsp-f2-intervening-phase",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "excitation_reference": {
+    "run": "tsp-f2-intervening-excitation-20261123-repeat",
+    "case": "tsp-f2-intervening-excitation",
+    "manifest_sha256": "a1f0a00b09601fce0c905e2276a9f919996fb052032d3593774faaba34108ebe"
+  },
+  "signal": {
+    "f0_hz": 125,
+    "added_pole_hz": 760,
+    "pulse_offsets": "all_integer_samples_in_one_period"
+  },
+  "hypotheses": {
+    "phase_changes_order_12_selection": "次数12では、励振の開始を1周期内でずらすと、設計F2近傍と追加共鳴近傍の両方がF2として選ばれる位相がある。",
+    "phase_switch_preserves_model_f2_and_crosses_gap": "次数12で隣接する位相の少なくとも1組では、設計F2近傍の公開極が両方で候補に残り、追加共鳴近傍の公開極と採択F1との間隔が200 Hzの境界をまたいで採択が切り替わる。"
+  },
+  "acceptance": "先行対照の12 kHz・1秒、励振振幅0.015、共鳴と帯域幅、前処理を固定する。パルス列の最初の標本を0〜95の整数標本でずらし、25 ms窓を0.35、0.50、0.65秒に固定して次数12と14の計576窓を測る。開始0の波形と6窓は先行対照の波形・上流の生根・公開極・採択に照合する。全96波形で初期ゼロ・整数標本の遅延関係と定常周期DFTの複素応答を照合する。全窓の根・公開極・採択を先行の独立計算の閾値で照合し、同じ相対位相が3窓で同じ標本になることを確認する。選択の差、設計F2の適格性と間隔の境界を記録する。仮説の判定は計算の合否と別に保存する。"
+}

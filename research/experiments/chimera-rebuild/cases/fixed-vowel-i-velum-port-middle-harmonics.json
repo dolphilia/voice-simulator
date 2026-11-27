@@ -1,0 +1,30 @@
+{
+  "id": "fixed-vowel-i-velum-port-middle-harmonics",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ の口蓋帆ポートで第7〜18倍音を戻すと、実測対照では省いた全周波数の影響の半分以上を回復する。声門流量から予測した成分だけを足すと、ポートの損失残差方向の半分以上を回復し、鼻端の複素相対誤差が半分以下になる。両肺圧・両版で判定する。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-port-bandwidth-20261124-repeat",
+      "manifest_sha256": "5986eda0c0b0e5c3e8fcb5cc64bf0a535d81790420a19754f6e6d9ab76da330b"
+    },
+    "pressure_cm_h2o": {"reference": 7.2, "lower": 5.76},
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "fundamental_hz": 110,
+    "steady_window_internal_samples": [38400, 48000],
+    "frequencies_hz": [110, 220, 330, 440, 550, 660, 2090, 2200, 2310, 2420],
+    "added_harmonics": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "port_nodes": [30, 49],
+    "port_area_cm2": 0.30,
+    "supraglottal_branch_count": 61,
+    "minimum_measured_projection_fraction": 0.50,
+    "minimum_predicted_projection_fraction": 0.50,
+    "minimum_nose_error_reduction_fraction": 0.50,
+    "numerical_identity_relative_error_lt": 1e-9,
+    "edition_relative_error_lt": 1e-8,
+    "input": "前回と同じ固定 /i/ の収録を用いる。10周波数の予測と実測を基準に、平均と既存の係数を固定して第7〜18倍音（770〜1,980 Hz）の流量成分を口蓋帆ポートだけに加える。追加分の予測は10周波数の実行で求めた枝平均まわりの接線抵抗を使い、既存の10周波数も他の60枝も再推定しない。比較のため、予測の10周波数へ追加分の実測だけを足す条件も置く。",
+    "observation": "各条件の2,310 Hz二次損失、鼻端放射流量比、ポート逆流符号、追加した流量係数を記録する。残差の回復率は、追加前後の損失差を、同じ基準と全帯域の実測の複素圧力差の方向に射影して求める。鼻端は前回同様に元の粘性モデルで損失源を差し替える。窓端項は比較から分ける。",
+    "acceptance": "前回の10周波数と全帯域の対照を再現し、係数の追加で平均・既存係数が変わらないことを確認する。追加波形の逆FFT、接線抵抗の独立な節点更新、損失のFFT、鼻端の枝源の重ね合わせを照合する。仮説の閾値と成否は条件ごとに保存する。"
+  }
+}

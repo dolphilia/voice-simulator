@@ -1,0 +1,137 @@
+{
+  "id": "alveolar-tap",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ母音区間に置いた /ɾ/ は /t d/ と同じ舌先の位置を短く要求し、一回の狭窄を作る。通常話速では完全閉鎖しても /t d/ より短く、短い接触をまたいで声門の周期は続く。口腔の枝が閉じても、声門流は残り得る。歌詞「싫어」では2音目の頭に /ɾ/ が一回現れる。",
+  "speech_case": "alveolar-t.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {
+      "id": "tap",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "ɾ",
+      "rate": 1,
+      "period_across_narrowing": true,
+      "period_across_closure": true
+    },
+    {
+      "id": "stop-t",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "t",
+      "rate": 1
+    },
+    {
+      "id": "stop-d",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "d",
+      "rate": 1
+    },
+    {
+      "id": "fast-tap",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "ɾ",
+      "rate": 1.8,
+      "narrowing": "above-threshold"
+    },
+    {
+      "id": "medium-tap",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "ɾ",
+      "rate": 1.35,
+      "narrowing": "intermediate"
+    },
+    {
+      "id": "front-tap",
+      "body": "female",
+      "vowel": "i",
+      "ipa": "ɾ",
+      "rate": 1
+    },
+    {
+      "id": "male-front-tap",
+      "body": "male",
+      "vowel": "i",
+      "ipa": "ɾ",
+      "rate": 1,
+      "narrowing": "front-context"
+    },
+    {
+      "id": "palatalized-tap",
+      "body": "male",
+      "vowel": "ɑ",
+      "ipa": "ɾ",
+      "rate": 1,
+      "palatalized": true
+    }
+  ],
+  "speech_vowels": [
+    0.16,
+    0.19
+  ],
+  "song": [
+    {
+      "id": "sireo",
+      "body": "male",
+      "lyrics": "싫어",
+      "ipa": "ɾ",
+      "midi": [
+        57,
+        64
+      ],
+      "onsets": [
+        [
+          "ɕ"
+        ],
+        [
+          "ɾ"
+        ]
+      ],
+      "nuclei": [
+        "i",
+        "ʌ"
+      ],
+      "codas": [
+        [],
+        []
+      ],
+      "tap_note_index": 1
+    }
+  ],
+  "measurement": {
+    "seed": 12345,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": [
+      128,
+      77
+    ],
+    "gesture_abs_tolerance": 1e-12,
+    "geometry_abs_tolerance": 1e-09,
+    "selection_abs_tolerance": 1e-09,
+    "state_peak_relative_tolerance": 1e-06,
+    "audio_state_peak_relative_tolerance": 1e-06,
+    "pcm_abs_tolerance": 1e-06,
+    "closed_area_cm2": 0.0002,
+    "narrow_area_cm2": 0.05,
+    "open_lip_minimum_cm2": 0.1,
+    "window_padding_seconds": 0.04,
+    "tap_maximum_closure_seconds": 0.045,
+    "closed_branch_flow_abs_tolerance_cm3_s": 1e-08,
+    "cycle_window_padding_seconds": 0.035,
+    "glottal_area_peak_prominence_cm2": 0.01,
+    "glottal_voicing_minimum": 0.55,
+    "period_to_f0_ratio": [
+      0.75,
+      1.25
+    ],
+    "window": "音素前後40 msで最小口腔断面が0.05 cm²未満かつ唇が0.1 cm²以上開く区間を連結し、/ɾ/ の狭窄が一回か調べる。同じ窓で口腔の閉鎖判定は0.0002 cm²未満。閉鎖が起きた /ɾ/ では閉鎖セルの前後の内部枝流量がゼロか確認する。狭窄中央の前後35 msで声門面積の山二つがモデルF0と合い、振動係数が0.55以上なら、中央をまたぐ周期が続いたと判定する。短い条件の完全閉鎖は必須としない。 第2版では通常話速の完全閉鎖の両端を挟む一周期も調べる。閾値に達しない話速1.8と中間話速1.35は、同じ窓の最小断面で順序を判定する。",
+    "initial_state": "テイクごとに親ケースの初期姿勢・呼気・声源・出力段を使う。発話は同じ母音と母音の予定長で三つの歯茎子音を比較する。歌唱は親ケースのテンポ・開始時刻と各1拍の音符を使う。"
+  },
+  "supersedes": "../runs/alveolar-tap-20261120-a/summary.json",
+  "revision_reason": "第1版では話速1.8の狭窄予測を上流・候補がともに反証した。0.05 cm²の閾値は固定し、話速1.8で閾値に達しないことを独立に判定する。話速1.35は新規の入力として両端の間の面積を予測する。通常話速の完全閉鎖をまたぐ周期を追加判定する。成人男性の /iɾi/ を新規に加え、体型をそろえた /ɑɾɑ/ より閉鎖が長いと予測する。"
+}

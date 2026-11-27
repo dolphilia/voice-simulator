@@ -1,0 +1,23 @@
+{
+  "id": "fixed-vowel-i-velum-supraglottal-loss",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /i/ のポートのみ開条件の2,310 Hzで、前回の鼻端の複素残差は、咽頭内、咽頭口腔接続、梨状窩の二次損失を加えると90%以上減る。",
+  "measurement": {
+    "revision": 1,
+    "reference": {
+      "run": "fixed-vowel-i-velum-oral-nasal-loss-20261124-repeat",
+      "manifest_sha256": "0737b434476af22602ac507987f9d430949206218ba20b8df26c07fc9fbd5203",
+      "known_failed_check": "oral_and_nasal_losses_explain_half_of_nose_residual"
+    },
+    "internal_rate_hz": 96000,
+    "frequency_hz": 2310,
+    "steady_window_internal_samples": [38400, 48000],
+    "minimum_nose_error_reduction_fraction": 0.90,
+    "branch_balance_relative_error_lt": 1e-9,
+    "parallel_calculation_relative_error_lt": 1e-9,
+    "edition_replay_relative_error_lt": 1e-8,
+    "input": "固定 /i/ の輪郭でポートを0.30 cm²にした前回の通常発声を用いる。研究版CLIと固定上流が保存した全節点圧と全枝流量の内部標本38,399〜47,999を再利用する。",
+    "observation": "口腔・鼻腔・口蓋帆ポートを含む前回の寄与を再現し、咽頭内、咽頭と口腔を結ぶ通常枝、梨状窩の入口と内側の枝の寄与を求める。上顎洞ポートは二次係数がゼロの対照として圧力収支を照合する。前回と同じ2,310 Hzの鼻端複素伝達誤差で低下率を求める。有限窓の端点項は別に集計する。",
+    "acceptance": "声門枝を切ったときに咽頭入口とつながる全枝を有向節点対で漏れなく照合する。固定枝の時間領域・複素圧力収支、圧力から逆算した損失、枝寄与と一括節点解、前回の鼻端伝達を登録許容差内で照合する。研究版と固定上流で90%低下の判定を再現し、前回の50%仮説の不成立を維持する。"
+  }
+}

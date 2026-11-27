@@ -1,0 +1,26 @@
+{
+  "id": "fixed-voice-glottal-momentum-48000",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "references": {
+    "scaled": ["fixed-voice-glottal-branch-48000-v2-repeat", "5030dde094c8755c64d22993abdfc706a63e7c12b53dd1c116093341607bf100"],
+    "geometry": ["fixed-voice-centerline-render-48000-repeat", "54e21daca806a1511afe5d8789ccd7da3dc94433313f373c43cc479ccd132f07"],
+    "pressure": ["fixed-voice-pharynx-onset-48000-repeat", "767e6798af7b2de3bb94114949737fd83f37d5ed1c685992f34b4b7a6ee02d9d"],
+    "pcm": ["worklet-rate-48000-memory-repeat", "112d3b92c5ed854fd24952f59ac6d503b3c39e7366934acd1281f2458f9b4b6b"]
+  },
+  "hypothesis": "慣性係数を上流順で換算した固定/i/の声門枝で、持ち越す圧力項を (L_carry×U_prev)×Fs の順にすると、旧版の8,188〜8,214点の流量を保ち、8,215点目の流量と声門上圧が上流値に一致する。検査した52点ではLが下がり続け、持ち越すべき流量は前回の値である。",
+  "observation": "先行実験の隔離ソースを入力ハッシュから復元し、声門枝1本の持ち越し圧だけを変更する。通常CLIで先行版と実験版の内部52点を採り、独立計算、上流の枝・圧力の保存系列、発声と停止を含む48 kHzの93,056 PCMフレームに照合する。圧力差または流量差が残る最初の内部点では、駆動圧・線形係数・損失のどの項の置換で流量が上流値になるかを記録する。",
+  "acceptance": "先行版の枝CSVと内部系列をビット単位で再現してから比較する。実験版の52点で枝方程式と圧力収支を独立に復元する。8,215点目の予測、二つのホスト分割の全区間PCMのビット一致、上流および先行版に対する既存の許容差を検証する。全区間と短区間の結果を両方残す。",
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "first_internal_sample": 8188,
+    "end_internal_sample_exclusive": 8240,
+    "prefix_output_frames": 4120,
+    "first_control_difference": 8215,
+    "gate_open_frame": 4096,
+    "gate_close_frame": 54656,
+    "full_output_frames": 93056,
+    "pcm_block_sizes": [128, 77],
+    "pcm_absolute_tolerance": 5e-7
+  }
+}

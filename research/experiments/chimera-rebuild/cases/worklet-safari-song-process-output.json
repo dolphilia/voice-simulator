@@ -1,0 +1,49 @@
+{
+  "id": "worklet-safari-song-process-output",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "calibration_case": "safari-process-tap-smooth-marker.json",
+  "calibration_run": "safari-process-tap-smooth-marker-20261122-repeat",
+  "references": {
+    "zero": {
+      "case": "worklet-safari-song-prepared-shared-context.json",
+      "run": "worklet-safari-song-prepared-shared-context-20261122-split-regression",
+      "trial": "pair-1-warm-0"
+    },
+    "prepared": {
+      "case": "worklet-safari-song-score-preparation-switch.json",
+      "run": "worklet-safari-song-score-preparation-switch-20261122-repeat",
+      "trial": "pair-1-initial-64x4"
+    }
+  },
+  "sample_rate_hz": 48000,
+  "quantum_frames": 128,
+  "warm_up_frames": 16384,
+  "split_block_frames": 256,
+  "split_initial_blocks": [64, 64, 64, 64],
+  "condition_order": ["zero", "bulk", "split"],
+  "marker_capture_quanta": 1792,
+  "startup_timeout_seconds": 25,
+  "capture": {"tap_duration_seconds": 2.4, "tap_ready_timeout_seconds": 8, "construction_delay_seconds": 0.6},
+  "windows": {
+    "baseline_from_ms": 380,
+    "baseline_to_ms": 20,
+    "post_from_ms": 10,
+    "post_to_ms": 220,
+    "quiet_margin_before_ms": 20,
+    "quiet_margin_after_ms": 160,
+    "minimum_baseline_consecutive_windows": 12,
+    "minimum_pre_anchor_graph_delay_ms": -4,
+    "maximum_pre_anchor_graph_delay_ms": 60
+  },
+  "quiet_marker_amplitude": 0.00001,
+  "minimum_bulk_quiet_frames": 2048,
+  "minimum_split_quiet_reduction_frames": 1024,
+  "minimum_split_graph_gap_reduction_ms": 70,
+  "criteria": {
+    "conditions": "通常のSafari実時間歌唱画面でPop Deeを48 kHz、31,200出力フレームで再生する。予備描画0を対照とし、16,384フレームの一括と64フレーム4片に続く256フレーム63片を比較する。別ディレクトリから逆順で再実行する。採取器、試験信号、楽譜、音源設定と出力デバイスをそろえる。",
+    "synchronization": "同じAudioContextの別枝で較正済みの滑らかな逆相信号を鳴らし、Safariの開始に対応して出力が有効になった唯一のプロセスへタップを付ける。起動通知から0.6秒後に歌唱準備を解放する。採取側の入力時刻をMach時刻のエポック基準から換算する。Worklet内の準備開始・完了を使い、準備前380〜20 msと完了後10〜220 msを照合する。",
+    "validity": "歌唱の加工前PCM・488観測点・予定を保存基準に照合する。先行信号のグラフPCMは較正と同じ基準で確認し、同じ絶対フレームを追う。採取サンプルとホスト時刻の連続性を確かめ、基準窓で少なくとも12個の連続する照合窓と、終了後に採用できる窓を確保する。位相の周期の整数分は、準備前のタップとグラフの時刻差で照合する。",
+    "prediction": "一括の準備と重なるグラフ間隔は分割より70 ms以上長いと予測する。タップの差チャンネルが振幅1e-5以下で続く最長区間は、準備開始20 ms前から終了160 ms後の窓で、一括2,048フレーム以上、分割で1,024フレーム以上短縮すると予測する。開始前後の位相差、低振幅の区間、両チャンネルの完全ゼロを記録する。予測が外れた結果も保存する。"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tsp-fk61-lip-onset",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "previous": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "comparison_internal_samples": [3952, 3980],
+    "expected_first_lip_sample": 3968,
+    "control_samples": 128,
+    "block_frames": 128,
+    "initial_f0_hz": 110,
+    "alignment": "内部標本は0始まり。出力フレームnの内部標本を2nと2n+1とし、比較区間は先頭を含み末尾を含まない。",
+    "observations": "口端セルの更新前後の面積、長さ、体積と補間増分、押し出し合計、60 Hzの二段の平滑化、管内枝と壁を加える前後の収支、放射負荷係数と状態、口端放射流量。"
+  },
+  "hypotheses": {
+    "equal_prior_load_state_and_zero_branch_wall_contribution": "最初の口端流量差が出る標本では口端の旧圧力と慣性流量が一致し、枝と壁により口端の流入量が変わらない。",
+    "different_local_volume_change_precedes_filter_and_lip": "口端セルの体積差分から求めた流量に差が先に現れ、押し出し合計、平滑化、口端負荷の順に伝わる。片側の幾何注入だけを交換すると、交換元の口端流量を相対誤差1e-12以内で再現する。"
+  },
+  "acceptance": "固定上流と研究版の通常CLI、観測器、保存済みPCMの全標本をビット照合する。比較区間の口端流量と先行計測を照合し、標本3968が最初の差であることを再確認する。二段の平滑化とR–L負荷を独立計算でビット一致させる。口端セルの体積、合流前後、平滑化、ソルバーの交換結果を保存し、仮説の判定を計測の合否から分ける。"
+}

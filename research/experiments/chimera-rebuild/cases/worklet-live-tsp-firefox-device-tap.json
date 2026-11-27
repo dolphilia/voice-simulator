@@ -1,0 +1,32 @@
+{
+  "id": "worklet-live-tsp-firefox-device-tap",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-io.json",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-io-regression",
+  "reference_io_run": "worklet-live-tsp-firefox-device-io-20261122-repeat",
+  "device": {
+    "minimum_request_frames": 256,
+    "maximum_request_frames": 256
+  },
+  "capture": {
+    "tap_attach_quanta": 64,
+    "marker_capture_quanta": 1536,
+    "tap_ready_timeout_seconds": 0.95,
+    "tap_duration_seconds": 1.1,
+    "construction_delay_seconds": 0.1
+  },
+  "tap": {
+    "calibration_case": "safari-process-tap-smooth-marker.json",
+    "calibration_run": "safari-process-tap-smooth-marker-20261122-repeat",
+    "sample_rate_hz": 48000,
+    "maximum_anchor_displacement_frames": 1024,
+    "maximum_host_offset_change_frames": 0.5,
+    "maximum_server_to_tap_rounding_frames": 0.5,
+    "quiet_marker_amplitude": 0.00001
+  },
+  "revision_note": "第1版の初回計測では1-splitの準備通知が0.65秒に間に合わず、左端の相関窓が不足した。初回の判定を保存し、準備の上限を0.95秒に変更する。準備完了後の100 ms待機、波形照合、観測区間は維持する。",
+  "hypothesis": "歌唱の同時採取と同様、同期描画でcubebの予定サンプル時刻が256フレーム飛ぶ場合、cubebの返すPCMは連続し、プロセスタップの時計も連続する。タップ側の同じ先行音の両端は256フレーム余分に離れ、その途中に左右とも完全にゼロの区間が現れると予測する。ゼロの挿入モデルでは、次の空き位置よりも飛びの直前のcubeb要求の先頭が合うと予測する。分割条件で飛びのない試行は両地点で波形が連続する。分割条件で構築や発話開始の飛びが出れば同じ手順で判定する。",
+  "acceptance": "既存の確認用07と同期・分割の順序を使い、通常画面の発話WAV、計画、状態、同一WASMと固定上流を照合する。同じ外部ヘッドフォンの48 kHz・256フレームで、cubeb、Audio Client、Audio Server、同一PIDのプロセスタップを同時に採る。構築前後16要求の窓を、校正済みの滑らかな逆相信号の両端1024サンプルで合わせる。グラフ・cubebの先行音が連続すること、タップの準備が構築前に完了し、採取時計と相対ホスト時刻が安定することを判定する。予定サンプル位置とサーバーの途中のWriteが対応する場合、両端のホスト時刻差を使い、同じ試行のタップで処理位置を求める。飛びの直前の要求と次の予定位置の二通りでゼロ挿入モデルの残差を測り、完全ゼロの範囲と両候補の重なりを保存する。",
+  "controls": "既知の滑らかなPCMに、連続、256フレームの反復、欠落と無音を独立に作って既存の端点照合を検証する。二つの候補の一方だけへ256フレームのゼロを挿入した対照で、サーバーの出力位置に対応する範囲とゼロ挿入の最良位置を確認する。飛び、該当するサーバー時刻、タップの有効範囲が欠けた場合はそれぞれ記録する。"
+}

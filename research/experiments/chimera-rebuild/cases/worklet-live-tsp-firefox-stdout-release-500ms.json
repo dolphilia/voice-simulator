@@ -1,0 +1,65 @@
+{
+  "id": "worklet-live-tsp-firefox-stdout-release-500ms",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-stdout-release-200ms",
+  "initial_control_run": "worklet-live-tsp-firefox-stdout-release-200ms-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "darwin",
+        "stdout-500ms"
+      ],
+      [
+        "stdout-500ms",
+        "darwin"
+      ],
+      [
+        "darwin",
+        "stdout-500ms"
+      ]
+    ]
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "wait_for_browser_ready": true,
+    "observe_start_signals": true,
+    "compare_stdout_release_delay_ms": 500,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      16
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "minimum_margin_gain_ns": 4000000,
+    "minimum_pairs_with_margin_gain": 2,
+    "maximum_release_overshoot_ns": 20000000
+  },
+  "hypothesis": "200 msの先行再生2試行で得た音声I/Oの前端・末尾と発話位置を固定して換算すると、開始行から約438〜632 msまでの待機で全窓が入る範囲が共通した。この範囲内の500 msで、両発話開始要求の音声I/O、機器Write、スレッド状態がそろう試行がDarwin通知の条件より増えると予測する。対応するAudio Client行が残った組について、同じ発話入口から最終行の終了までの余裕を比較する。3組中2組以上で余裕が4 msを超えて増え、同時照合の試行が増えれば予測を支持する。",
+  "acceptance": "両条件で計測用Firefoxへアタッチし、確認用07、48 kHz・256フレーム、先行音56量子、同期事前描画、1秒、保持窓なし、3収録器、タップなし、同じFirefoxを固定する。3組を交互の順序で採る。対照はDarwin通知、先行条件は標準出力の開始行を改行まで受け取ってから500 msで再生を許可する。指定時刻からゲートまで0〜20 msを許容する。発話WAVと状態、実際の構築位置、機器Writeから求めた時計起点、全窓と局所窓の前端および末尾、発話開始の要求12と13の同時照合を確認する。発生したI/Oの飛びは予算内・予算超過に分け、同じ周期の状態とIOProcを記録する。欠測と200 ms条件の判定を保持し、3組がそろえば予測を判定する。"
+}

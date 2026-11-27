@@ -1,0 +1,26 @@
+{
+  "id": "tsp-startup-original",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_run": "tsp-active-duration-original-20261121-a",
+  "recording_ids": ["FA01_02", "MA01_02", "FK61_02", "MK61_02"],
+  "hypothesis": "先行の静止舌先座標を使うと、初期調音に由来する発話前の放射がなくなる。男性2件の副しきい値の開始が固定上流に揃い、主しきい値の区間は4件とも同じになる。MA01_02の終端の差は別に観測する。",
+  "controlled_input": "同じバイナリ、本文、呼気、体型を使い、最初の舌先座標2値だけを静止位置に置き換える。",
+  "observation": "48 kHzのフレーム0〜2399の間引き出力とPCM、最初に非ゼロとなるPCM、−35 dBと−45 dBの発話区間。",
+  "guard_basis": "4件とも呼気ランプの始端は50 msで、先頭の /g/ または /h/ のランプより早い。50 msに対応する2400より手前を初期放射の観測に使う。正の呼気目標が最初に適用される64フレーム境界は2432。ファイルの非ゼロ開始2439は固定上流の保存済みWAVから取った照合値。",
+  "pre_roll_frames": 2400,
+  "maximum_pre_roll_pcm_peak": 1e-12,
+  "maximum_pre_roll_decimated_peak": 1e-12,
+  "sensitivity_threshold_db": -45,
+  "match_sensitivity_starts": ["MA01_02", "MK61_02"],
+  "match_sensitivity_intervals": ["MK61_02"],
+  "keep_primary_intervals": true,
+  "expected_first_nonzero_frames": {"FA01_02": 2439, "MA01_02": 2439, "FK61_02": 2439, "MK61_02": 2439},
+  "acceptance": "全4件で上流と舌先対照の先頭ピークが登録上限内、最初の非ゼロフレームが一致する。主しきい値で元の候補と対照の両端が一致し、副しきい値で男性2件の開始とMK61_02の終了が上流と一致すること。",
+  "retain_csv": {
+    "FA01_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2464]]},
+    "MA01_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2464], [122880, 124080]]},
+    "FK61_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2464]]},
+    "MK61_02/candidate.csv": {"sample_column": "frame", "columns": ["frame", "internal_sample", "decimated", "pcm_f32"], "sample_ranges": [[0, 2464]]}
+  }
+}

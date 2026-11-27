@@ -1,0 +1,17 @@
+{
+  "id": "worklet-live-tsp-firefox-wasm-core-phases",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase_case": "worklet-live-tsp-firefox-render-phases",
+  "phase_run": "worklet-live-tsp-firefox-render-phases-20261122-repeat",
+  "measurement": {
+    "condition_order": [["stock", "control", "core"], ["core", "control", "stock"]],
+    "output_frames_per_call": 32,
+    "internal_offsets_for_airway_step": [0, 32],
+    "quantum_indices": [0, 1, 32, 33],
+    "control_output_interval": 64,
+    "maximum_first_quantum_median_shift_ms": 0.6
+  },
+  "hypothesis": "定常の同じ位置に比べ、最初の量子では制御更新を含む32フレーム片が特に長くなる。調音・断面更新の合計だけで、先頭量子のWASM内ループの増分の半分以上を説明できるかを検査する。制御を含まない32フレーム片と、その中の気道伝搬ステップも比較する。",
+  "acceptance": "同じ確認用07をFirefoxで再生し、通常WASM、計測用WASMで内部印を無効にした条件、同じ計測用WASMで内部印を有効にした条件を順序を反転して採る。先頭2量子と定常2量子で、各32フレームのWASMループ、調音・断面更新、内部0・32サンプル目の声門ポート設定と気道伝搬を測る。各印を対応するvocal_renderの区間に照合し、更新が出力0・64フレームから始まる片にだけ現れることを確認する。全条件でPCMと発声状態を従来の保存結果にビット照合し、通常版と計測用版、計測用版の印の有無で先頭量子の中央値差を保存する。観測していない伝搬ステップの合計は推定しない。"
+}

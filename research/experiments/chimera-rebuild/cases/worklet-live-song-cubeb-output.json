@@ -1,0 +1,30 @@
+{
+  "id": "worklet-live-song-cubeb-output",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "frame_validation_case": "worklet-live-song-output-callback.json",
+  "probe_case": "cubeb-output-callback-probe.json",
+  "playwright_revision": "cfe490d941f992655948eee8fd4fd94e1c4234bf",
+  "gecko_revision": "fdd757a2e09c9471cddf383e64e631e4ce178499",
+  "cubeb_revision": "840f69c1b3f95accd582555e10abcef8ee67514b",
+  "sample_rate_hz": 48000,
+  "expected_request_frames": 256,
+  "window_radius_requests": 8,
+  "minimum_contiguous_anchor_frames": 256,
+  "maximum_error_marker_units": 0.15,
+  "maximum_anchor_displacement_frames": 1024,
+  "host_clock_tolerance_ms": 0.5,
+  "maximum_instrumentation_constructor_increase_ms": 2.0,
+  "capture": {
+    "condition_order": [["control", "draw192"], ["draw192", "control"]],
+    "capture_round": 2,
+    "ready_quanta": 192,
+    "snapshot_blocks": 256
+  },
+  "hypothesis": "48 kHzの共有Contextの同じ先行音を流す。未準備では構築後の機器要求時刻が連続し、192フレームの事前描画後には1要求分飛ぶと予想する。自作の対照と同じく機器要求時刻が飛んでも、cubebが返すPCM上では先行音の連番が連続すると予想する。",
+  "criteria": {
+    "input": "同じ試験用Firefoxで未準備と192フレーム事前描画を各2試行行う。第1組ではPCMの採取を無効にし、第2組で有効にする。Pop Deeの歌唱、先行音、レート、プロファイルは同じ条件にする。",
+    "validity": "全試行で通常の歌唱、先行音および固定上流のPCMと観測値の検証を通す。採取した両試行では構築前後8要求のグラフ前進が各256フレームで、両端を連続256フレームの印で一意に照合できる同じ出力ストリームを1つ確認する。予定サンプル時刻とホスト時刻を検証し、2試行とも採取による構築時間の増分が2 ms以内かを判定する。",
+    "diagnostics": "次の出力の時刻の飛びと、記録したPCMの印が飛ぶ、戻る、消える現象を別々に数える。両チャンネル0は無音として別に数える。予定サンプル時刻の飛びやPCMの不連続も、採取が有効なら観測結果として保存する。"
+  }
+}

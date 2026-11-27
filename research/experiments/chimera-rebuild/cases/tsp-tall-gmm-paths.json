@@ -1,0 +1,25 @@
+{
+  "id": "tsp-tall-gmm-paths",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "parent": {
+    "run": "tsp-tall-mfcc-input-compression-20261123-repeat",
+    "case": "tsp-tall-mfcc-input-compression",
+    "manifest_sha256": "d52862d2a13286749f7d90122fa39625373b8d463870124702d40f8a9fd87d04"
+  },
+  "environment_sources": {
+    "kalpy/gmm/align.py": "ddbb9afaf21f5341632ac34f2395064f11b04dbd168c4dfed95c7c90a7c3244a",
+    "kalpy/gmm/data.py": "51c42ea266fc36dd8dcca61c00ee9dae0f2e69b8a319c72441c654668eb3029f",
+    "kalpy/gmm/utils.py": "a138ab17d5c8b42763dd3c7879ef17f3ce109b7883a8ea1c21fa94bdc486e2cb"
+  },
+  "measurement": {
+    "modes": ["compressed", "float32"],
+    "expected_end_seconds": {"compressed": 1.649999976158142, "float32": 1.6799999475479126},
+    "local_feature_frames": [145, 176],
+    "expected_phone_difference_frames": [165, 166, 167],
+    "frame_likelihood_tolerance": 0.002,
+    "total_scaled_score_tolerance": 0.02,
+    "acceptance": "FK61_02の対照PCMを各保存形式で単独話者として通常MFAに通し、前回の全語・音素区間を再現する。Kaldiに渡る特徴行列、探索グラフ、実効モデル、各フレームの遷移IDと尤度を採る。2条件のグラフ・モデル・重みを照合する。それぞれで選ばれた2経路を両入力で再採点する。対角のフレーム尤度は独立GMM計算に、発話全体の得点は遷移確率を加えたFSTの経路費用と音響項の和に照合する。Kalpyの返す量は音響スケールの適用前後の2通りを照合して単位を判定し、許容差は同じ重み付きスコア単位に統一する。生の特徴、遷移ID、条件別の得点と判定を保存する。",
+    "prediction": "tallの境界差は10 ms刻みのフレーム165、166、167の音素IDの差に対応する。2経路を交差採点すると、各入力で通常MFAが選んだ経路の合計得点が高い。フレーム別の音響項から、tall周辺にある差が全発話の順位を説明できるかを測る。"
+  }
+}

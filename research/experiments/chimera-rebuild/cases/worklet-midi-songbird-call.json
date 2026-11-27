@@ -1,0 +1,205 @@
+{
+  "id": "worklet-midi-songbird-call",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-flute.json",
+  "input": {
+    "creature": "songbird",
+    "key_mode": "call",
+    "call_id": "flute",
+    "sample_rate_hz": 48000,
+    "capture_seconds": 2.45,
+    "events": [
+      {
+        "seconds": 0.13,
+        "type": "note-on",
+        "note": 60,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.3,
+        "type": "note-off",
+        "note": 60
+      },
+      {
+        "seconds": 0.76,
+        "type": "note-on",
+        "note": 67,
+        "velocity": 96
+      },
+      {
+        "seconds": 0.94,
+        "type": "note-off",
+        "note": 67
+      }
+    ]
+  },
+  "hypothesis": "Held voiceからFlute phraseに切り替えると、押下は音高を指定したコールを先頭から開始する。キーを解放した際にもコールの呼気包絡が進み、次の押下は進行中の同じコールを置き換える。コールの音高系列は、すべての音高指定点で折り返し済みの鍵盤周波数と基準2600 Hzの比だけ移調される。",
+  "criteria": {
+    "routing": "固定上流のWhat the keys playと、研究版の対応する画面でFlute phraseを選び、キーの押下・解放と再開始を確認する。",
+    "timing": "押下の採用フレーム、制御境界、2回のコールの相対時計、最後の自動終了を保存する。解放後にゲートが登録された包絡で進むことを照合する。",
+    "pitch_and_sound": "二つの音高指定で目標と平滑化後の音高、左右の鳴管、PCMを照合する。コール自体の開始・途中停止は既存の固定条件を回帰に使う。",
+    "replay": "画面から書き出した再実行ケースをCLIに渡し、採用後のPCMと状態を再現する。"
+  },
+  "measurement": {
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "control_frames": 64,
+    "pitch_range_hz": [
+      400,
+      9000
+    ],
+    "pitch_reference_hz": 2600.0,
+    "first_pitch_key_hz": 2000.0,
+    "maximum_relative_input_error_seconds": 0.055,
+    "browser_release_window_seconds": [
+      0.025,
+      0.063
+    ],
+    "browser_release_gate_minimum_peak": 0.08,
+    "browser_restart_window_seconds": [
+      0.06,
+      0.14
+    ],
+    "browser_maximum_restart_pitch_error_hz": 90.0,
+    "independent_absolute_tolerances": {
+      "gate": 1e-10,
+      "gate_target": 1e-10,
+      "pitch_hz": 1e-07,
+      "target_pitch_hz": 1e-07,
+      "control_clock_seconds": 1e-11,
+      "call_id": 0.0
+    },
+    "native_pcm_absolute_tolerance": 1e-06,
+    "native_state_absolute_floor": 1e-08,
+    "native_state_peak_relative_tolerance": 1e-07,
+    "minimum_both_syrinx_rms_cm3_s": 0.01,
+    "minimum_post_release_pcm_rms": 0.005,
+    "post_release_pcm_window_seconds": [
+      0.01,
+      0.05
+    ],
+    "minimum_active_gate_before_restart": 0.8,
+    "tail_window_seconds": 0.03,
+    "maximum_tail_pcm_rms": 0.002,
+    "reference_definition_run": "songbird-flute-before-worklet-1",
+    "reference_regression_run": "worklet-midi-songbird-20261121-flute-regression"
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": [
+        "frame",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "pcm_f32",
+        "gate_target"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          14336
+        ],
+        [
+          15872,
+          24576
+        ],
+        [
+          30208,
+          43008
+        ],
+        [
+          44928,
+          53120
+        ],
+        [
+          62592,
+          68864
+        ],
+        [
+          72576,
+          77824
+        ],
+        [
+          88832,
+          93696
+        ],
+        [
+          95616,
+          105728
+        ],
+        [
+          114432,
+          117600
+        ]
+      ]
+    },
+    "upstream.csv": {
+      "columns": [
+        "frame",
+        "control_clock_seconds",
+        "call_id",
+        "gate",
+        "pitch_hz",
+        "target_pitch_hz",
+        "sac_pressure_dyn_cm2",
+        "left_opening",
+        "right_opening",
+        "left_port_area_cm2",
+        "right_port_area_cm2",
+        "left_port_flow_cm3_s",
+        "right_port_flow_cm3_s",
+        "pcm_f32"
+      ],
+      "sample_column": "frame",
+      "sample_ranges": [
+        [
+          0,
+          14336
+        ],
+        [
+          15872,
+          24576
+        ],
+        [
+          30208,
+          43008
+        ],
+        [
+          44928,
+          53120
+        ],
+        [
+          62592,
+          68864
+        ],
+        [
+          72576,
+          77824
+        ],
+        [
+          88832,
+          93696
+        ],
+        [
+          95616,
+          105728
+        ],
+        [
+          114432,
+          117600
+        ]
+      ]
+    }
+  }
+}

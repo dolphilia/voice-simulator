@@ -1,0 +1,29 @@
+{
+  "id": "worklet-wasm-wrapper-shared-context",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "warmup_case": "worklet-wasm-wrapper-warmup.json",
+  "warmup_run": "worklet-wasm-wrapper-warmup-20261121-repeat",
+  "hypothesis": "別の音が出ている同じAudioContextに発声ノードを追加しても、1,000回の準備で同期コンパイルがコンストラクターへ移る。既存ノードのグラフ内PCMとフレーム番号は連続する。コンストラクターの負荷が既存ノードの呼び出し間隔に加わる可能性がある。",
+  "measurement": {
+    "warmup_calls": {"cold": 0, "prepared": 1000},
+    "expected_zero_based_quantum": {"cold": 999, "prepared": null},
+    "capture_order": [["cold", "prepared"], ["prepared", "cold"], ["cold", "prepared"]],
+    "marker": {
+      "initial_lead_quanta": 24,
+      "ready_quanta": 96,
+      "capture_quanta": 1536,
+      "constructor_window_radius_quanta": 8,
+      "multiplier": 421,
+      "offset": 173,
+      "modulus": 65521,
+      "center": 32760,
+      "scale": 524288
+    }
+  },
+  "criteria": {
+    "setup": "96 kHz・128フレームの参照条件を使う。先行する単声のAudioBufferSourceNodeを観測Worklet経由で出力へつなぎ、PCM採取96量子以上の後に同じContextで通常の発声ノードを起動する。",
+    "marker": "コンストラクターと採取1,000量子目を含む1,536量子について、先行音のContextフレームと全サンプルを独立の絶対フレーム式に照合する。先行音と発声が同じオーディオスレッドにあり、それぞれのprocessにトレースを対応づけられること。",
+    "voice": "前回の単独ノードとPCM・音響状態のハッシュが一致すること。準備0回では採取の1,000量子目、1,000回ではコンストラクター区間に同期コンパイルを1回測ること。",
+    "timing": "コンストラクター前後8量子と通常区間のコールバック間隔、コンストラクターの長さ、128/96000秒の予算超過を記録する。壁時計の間隔値は診断値とし、グラフ内のフレーム欠落とは独立に判定する。"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "songbird-chirps-left-syrinx-port-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-trachea-all-momentum-44100-20261123-repeat",
+    "manifest_sha256": "e97afac66332facecbb1b1e67b6b70ab7196a9240872dd45fe8ea443f3759e18"
+  },
+  "sample_rate_hz": 176400,
+  "observation_internal_samples": 32,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_first_flow_offsets": {
+    "matched_time": 19,
+    "native_block": 18,
+    "no_tracking": null
+  },
+  "geometry": {
+    "bronchus_length_cm": 0.8,
+    "bronchus_cells": 3,
+    "bronchus_area_cm2": 0.02,
+    "trachea_length_cm": 3.6,
+    "trachea_cells": 16,
+    "trachea_area_cm2": 0.045,
+    "closed_area_cm2": 0.0002
+  },
+  "port": {
+    "length_cm": 0.08,
+    "entrance_loss": 0.5,
+    "expansion_loss": 1,
+    "viscosity_reference_hz": 700
+  },
+  "hypothesis": "左鳴管から気管へ入る流量の最初の差では、弁面積と前回の両端圧・流量は一致し、前回運動量の時間換算、現在の慣性の時間換算、または開口に依存する抵抗と二次損失の丸めのいずれかが駆動圧または係数に現れると予測する。鳴管の閉鎖では流量が0となり、追従0は無励振を保つ。",
+  "observation": "気管内の全15直列枝の換算順まで揃えた先行描画の候補・固定上流CSVを、ハッシュ照合して使用する。押鍵前の一つの状態を初期条件とし、押鍵後32点の左鳴管ポートについて弁面積、気管入口と気管支末端の前回圧、前回流量、断面から再計算した慣性・抵抗・方向別損失、流量を照合する。初差では圧力と演算項の単独置換および組み合わせを比較する。",
+  "acceptance": "先行実行の弁面積と流量の列を両版・3条件で読み、押鍵後32点を独立計算とビット照合する。閉鎖時の流量が0で、追従0で圧力と流量が0であることを確認する。初差を前回の記録と照合し、同じ流量を再現する入力・演算項を保存する。予測が外れた場合は結果を記録する。"
+}

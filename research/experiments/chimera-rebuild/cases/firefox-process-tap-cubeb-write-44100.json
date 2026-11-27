@@ -1,0 +1,49 @@
+{
+  "id": "firefox-process-tap-cubeb-write-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "firefox_reference_run": "worklet-live-tsp-firefox-onset-load-288-tap-prime-common-20261122-a",
+  "safari_calibration_run": "safari-process-tap-smooth-marker-44100-20261122-repeat",
+  "safari_calibration_case": "safari-process-tap-smooth-marker-44100",
+  "sample_rate_hz": 44100,
+  "quantum_frames": 128,
+  "snapshot_blocks": 256,
+  "play_seconds": 1.2,
+  "capture": {
+    "tap_duration_seconds": 4,
+    "tap_ready_timeout_seconds": 3,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "wait_for_trace_before_release": true,
+    "observe_start_signals": true
+  },
+  "output_device": {
+    "name": "外部ヘッドフォン",
+    "uid": "BuiltInHeadphoneOutputDevice",
+    "sample_rate_hz": 44100,
+    "expected_frames": 512
+  },
+  "trace": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server"
+    ],
+    "time_limit": "1s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 250,
+    "maximum_server_host_error_us": 25,
+    "minimum_joint_writes": 12
+  },
+  "anchor": {
+    "first": 4096,
+    "last_exclusive": 20480,
+    "maximum_anchor_displacement_frames": 1024,
+    "maximum_relative_residual": 0.025,
+    "maximum_endpoint_change_frames": 0.5,
+    "maximum_write_position_error_frames": 0.5
+  },
+  "prediction": "44.1 kHzのContextと外部ヘッドフォンを使う。Workletは128フレーム、cubeb・タップ・機器WriteはSafari較正と同じ512フレーム幅を予測する。連続した試験音の中で、cubebと機器Writeの予定ホスト時刻・サンプル位置が対応し、タップの波形位置へ一意に対応する。最低12連続要求を観測する。",
+  "acceptance": "レート、観測幅、各時計とPCMを別々に保存する。入力とWorkletを独立生成した逆相系列へ照合し、cubebとタップでは登録窓の両端から同じ位相を復元する。幅の予測と時刻・PCMの結合判定は分ける。試験後は元の既定出力に戻す。"
+}

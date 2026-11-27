@@ -1,0 +1,71 @@
+{
+  "id": "retroflex-affricate",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phoneme": "tʂ",
+  "hypothesis": "/tʂ/ は反った舌先で口腔を閉じ、同じ舌先Xの /ʂ/ 目標へ移って狭窄乱流を発生させる。MIDI 57の「知」「吃」、および声母長を112 msにそろえた単音対でも、有気指定で音素終端から開大指示が消えるまで80.2 ms長くなり、実測の周期復帰は20 ms以上遅れる。",
+  "speech_case": "sibilant-s.json",
+  "song_case": "song-voice-flat.json",
+  "speech": [
+    {"id":"male-vcv","body":"male","f0_hz":112,"rate":1,"text":"ˈɑtʂɑ","duration_seconds":0.1316,"check_events":true},
+    {"id":"female-vcv","body":"female","f0_hz":205,"rate":1,"text":"ˈɑtʂɑ","duration_seconds":0.1316,"check_events":true},
+    {"id":"mixed-fast","body":{"female":0.4,"child":0.25},"f0_hz":150,"rate":1.35,"text":"ˈitʂi","duration_seconds":0.1316},
+    {"id":"short-palatalized","body":"male","f0_hz":112,"rate":1,"duration_seconds":0.023,"palatalized":true,
+     "segments":[{"ipa":"ɑ","dur":0.16,"stress":1},{"ipa":"tʂ","dur":0.023,"palatalized":true},{"ipa":"ɑ","dur":0.20}]}
+  ],
+  "syllables": {
+    "知":{"nucleus":"ʅ","aspirated":false,"vot_seconds":null,"explicit_duration_seconds":0.08,
+         "duration_seconds":0.08,"abduction_cm2":0.22,"plateau_past_end_seconds":0.0048,"ramp_out_seconds":0.02},
+    "吃":{"nucleus":"ʅ","aspirated":true,"vot_seconds":0.09,"explicit_duration_seconds":null,
+         "duration_seconds":0.112,"abduction_cm2":0.36,"plateau_past_end_seconds":0.060,"ramp_out_seconds":0.045}
+  },
+  "song": [
+    {"id":"zhi-solo","lyrics":"知","syllables":["知"]},
+    {"id":"chi-solo","lyrics":"吃","syllables":["吃"]},
+    {"id":"zhi-chi","lyrics":"知 吃","syllables":["知","吃"],"browser":true},
+    {"id":"zhi-equal","syllables":["知"],"onset_duration_seconds":0.112},
+    {"id":"chi-equal","syllables":["吃"],"onset_duration_seconds":0.112}
+  ],
+  "solo_pairs": {"natural":["zhi-solo","chi-solo"],"equal_duration":["zhi-equal","chi-equal"]},
+  "remaining_symbols": {"lyrics":"四是吃字人爱","syllables":6,"expected":["ɻ","ʔ"]},
+  "release_tip_cm": {"male":9.730,"female":9.738,"child":9.750},
+  "measurement": {
+    "seed":12345,
+    "internal_rate_hz":96000,
+    "output_rate_hz":48000,
+    "host_block_frames":[128,77],
+    "bpm":120,
+    "start_seconds":0.5,
+    "midi":57,
+    "beats_per_note":1,
+    "gesture_abs_tolerance":1e-12,
+    "geometry_abs_tolerance":1e-9,
+    "selection_abs_tolerance":1e-9,
+    "gain_abs_tolerance":1e-12,
+    "state_peak_relative_tolerance":1e-6,
+    "pcm_abs_tolerance":1e-6,
+    "audio_state_peak_relative_tolerance":1e-6,
+    "independent_band_tolerance":1e-8,
+    "closed_area_cm2":0.0002,
+    "open_lip_minimum_cm2":0.1,
+    "closure_window_padding_seconds":0.05,
+    "minimum_closed_frames":64,
+    "closed_branch_flow_abs_tolerance_cm3_s":1e-8,
+    "release_window_padding_seconds":0.025,
+    "release_noise_source":"constriction_noise",
+    "minimum_release_noise_frames":120,
+    "glottal_voicing_minimum":0.55,
+    "glottal_area_peak_prominence_cm2":0.015,
+    "period_to_f0_ratio":[0.75,1.25],
+    "voicing_search_padding_seconds":0.18,
+    "early_closure_window_seconds":0.015,
+    "minimum_aspirated_pulse_delay_ms":20,
+    "expected_command_release_difference_ms":80.2,
+    "browser_observed_fields":[
+      "gate","glottal_area_cm2","glottal_flow_cm3_s","glottal_voicing","glottal_f0_hz",
+      "radiation_derivative_cm3_s2","lip_aperture_cm","lip_minimum_cm2","smoothed_f0_hz","abduction_cm2"
+    ],
+    "initial_state":"発話と歌唱は親ケースの姿勢・肺圧・出力段を継承する。各譜例は独立に初期化し、ビブラート0。等長対は音符・声母の開始と終端・核・体型を同じにし、帯気指定と要求VOTだけを変える。",
+    "window":"標準発話では開始50 ms前から終端までに、唇が開き口腔最小面積が閾値を下回る最長連続区間を閉鎖とする。その両隣の枝流量が1e-8 cm³/s以下、開口から音素終端25 ms後までの狭窄乱流が120出力フレーム以上活動し、その後に周期パルスが現れることを判定する。同じ開口後の区間で歯の乱流と舌先の反りも保存する。歌唱の周期探索は計画切替点または実測開口の遅い方から音素終端180 ms後まで。自然な単音対と等長の単音対で、周期復帰の音素終端からの遅れを比較する。混合体型・高速、短い口蓋化は計画と内部状態・PCMを照合する。狭窄源の登録と利得、登録された歯の音源の帯域を独立計算し、二音の漢字歌唱は通常のブラウザ入口と保存ケースのCLI再演で照合する。"
+  }
+}

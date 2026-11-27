@@ -1,0 +1,10 @@
+{
+  "id": "worklet-live-tsp-firefox-io-client-start",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "timeline_case": "worklet-live-tsp-firefox-io-deadline",
+  "timeline_run": "worklet-live-tsp-firefox-io-deadline-20261122-a",
+  "maximum_start_time_error_ns": 25000,
+  "hypothesis": "音声サーバーのクライアント処理が続き、Firefox側のI/Oが欠けた周期にも、audio-hal-io-cycle-client-start表で同じ予定位置の行が得られると予測する。Firefox側のIOProc表では、実際にFirefoxのI/Oがある周期でそのI/Oスレッドの区間が記録され、欠けた周期には記録がないと予測する。両条件でClient Start表の記録時刻がクライアント処理区間の開始と一致する場合、その二つを独立した通知段の証拠としては数えない。",
+  "acceptance": "前の時刻軸比較と同じ8試行・24要求を使う。既存のトレースからaudio-hal-io-cycle-client-startとaudio-hal-client-io-cycle-ioprocを抽出する。前者はサーバーのスレッド、出力予定サンプル位置とホスト時計で結び、時刻の差を保存する。後者はFirefox親PIDとそのI/Oスレッドで絞り、現在と次に実際に起動したI/O区間と、間のIOProcを区別する。時刻差の比較は25 µs以内とする。別のスケジューラ記録の意味を推定せず、二つの表で確認できる処理位置を明示する。"
+}

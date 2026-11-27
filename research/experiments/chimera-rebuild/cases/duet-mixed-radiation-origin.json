@@ -1,0 +1,23 @@
+{
+  "id": "duet-mixed-radiation-origin",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-mixed-output-gain-20261122-repeat",
+  "reference_manifest_sha256": "33fd5009c344b885c7aedf973dda34950cd9b9a08400269e466b48a72193c031",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "body": {"female": 0.4, "child": 0.3},
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "expected_pcm_frames": 97920,
+  "trace_output_frames": 25152,
+  "expected_first_unequal_output_frame": 25025,
+  "expected_first_unequal_internal_sample": 50049,
+  "attention_output_frames": [25024, 25152],
+  "tolerances": {
+    "flow_sum_cm3_s": 1e-12,
+    "time_difference_cm3_s2": 1e-8
+  },
+  "hypothesis": "先行実行で観測した最初の放射差は25,025出力フレームの1点目の内部サンプルで再現する。先行区間と初出点では軟口蓋が閉じて鼻端の流量は0、差は口端または壁の流量に現れると予測する。各端と壁の流量を加えた総流量の時間差分から出力段に渡す放射が復元できる。",
+  "criteria": "先行実行の混合体型・休止舌先・音源変動0・一致ゲインの設定を固定する。通常CLIと両研究観測器のPCM全97,920フレームを前回結果と照合する。内部96 kHzの先頭50,304点で口端・鼻端・声道壁の放射流量、総流量、総流量の時間微分、軟口蓋枝面積を採取する。出力と内部サンプル番号は1起算で保存し、前回採取の入力放射2列にビット照合する。成分を独立に合算し、差分の和と実装の総流量・微分をそれぞれ許容差以内で照合する。正負を保った成分差と総和・時間差分に残る丸め差を、初出点、直前の内部サンプル、および25,024〜25,152出力フレームで記録する。数値の初出点は絶対差が0でない最初の行とし、閾値で検出した差と区別する。"
+}

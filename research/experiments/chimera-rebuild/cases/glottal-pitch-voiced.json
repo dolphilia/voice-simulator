@@ -1,0 +1,249 @@
+{
+  "id": "glottal-pitch-voiced",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "ドリフトとビブラートは32サンプル間隔でピッチを更新し、間の値は一定になる。セントで求めたピッチが位相増分と声門面積に反映される。",
+  "network": {
+    "sample_rate_hz": 96000,
+    "tubes": [
+      {
+        "length_cm": 12.0,
+        "areas_cm2": [
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        "wall": {
+          "mass_g_cm2": 0.6,
+          "resistance_dyn_s_cm3": 1000.0,
+          "stiffness_dyn_cm3": 1000000.0,
+          "radiation_fraction": 0.0
+        }
+      },
+      {
+        "length_cm": 17.0,
+        "areas_cm2": [
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "wall": {
+          "mass_g_cm2": 1.5,
+          "resistance_dyn_s_cm3": 1600.0,
+          "stiffness_dyn_cm3": 300000.0,
+          "radiation_fraction": 0.0
+        }
+      }
+    ],
+    "connections": [],
+    "radiators": [
+      52
+    ],
+    "pressure_nodes": [
+      {
+        "pressure_dyn_cm2": 0.0,
+        "ramp_samples": 0
+      }
+    ],
+    "ports": [
+      {
+        "nodes": [
+          53,
+          0
+        ],
+        "length_cm": 1.0,
+        "area_cm2": 2.5,
+        "entrance_loss": 0.0,
+        "expansion_loss": 0.0,
+        "extra_resistance": 7.9799999999999995
+      },
+      {
+        "nodes": [
+          12,
+          13
+        ],
+        "length_cm": 0.3,
+        "area_cm2": 0.0,
+        "entrance_loss": 0.37,
+        "expansion_loss": 1.0,
+        "slit_width_cm": 1.4
+      }
+    ]
+  },
+  "breath": {
+    "port": [
+      53,
+      0
+    ],
+    "pressure_cm_h2o": 8.0,
+    "body_scale": 1.0,
+    "control_block_samples": 128,
+    "compensate": true,
+    "steps": [
+      [
+        0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        65536,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        89600,
+        0.5,
+        -0.5,
+        0.8
+      ],
+      [
+        106496,
+        0.0,
+        0.6,
+        1.0
+      ],
+      [
+        133120,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "impulse": {
+    "node": 0,
+    "sample": 32768,
+    "volume_cm3": 0.002
+  },
+  "observe": {
+    "pressure_nodes": [
+      0,
+      12,
+      13,
+      52,
+      53
+    ],
+    "branches": [
+      [
+        53,
+        0
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        51,
+        52
+      ]
+    ],
+    "glottal_f0": true
+  },
+  "measurement": {
+    "sample_count": 192000,
+    "analysis_window_samples": [
+      19200,
+      192000
+    ],
+    "upstream_series_peak_relative_error_lt": 1e-08,
+    "independent_f0_relative_error_lt": 1e-10,
+    "independent_area_peak_relative_error_lt": 1e-09,
+    "phase_increment_max_absolute_error_lt": 2e-12,
+    "update_interval_samples": 32,
+    "drift_seed": 4242,
+    "minimum_wraps": 180,
+    "minimum_drift_std_cents": 0.25,
+    "minimum_vibrato_peak_to_peak_cents": 70.0,
+    "vibrato_rate_interval_hz": [
+      5.5,
+      6.5
+    ],
+    "minimum_error_from_regular_vibrato_rms_cents": 0.2,
+    "block_frames": [
+      128,
+      77
+    ]
+  },
+  "glottis": {
+    "port": [
+      12,
+      13
+    ],
+    "params": {
+      "f0_hz": 125.0,
+      "amplitude_cm2": 0.16,
+      "chink_cm2": 0.006,
+      "open_quotient": 0.62,
+      "open_with_abduction": 0.98,
+      "skew": 0.62,
+      "closure_sharpness": 0.6,
+      "effort": 0.7,
+      "closure": 0.0,
+      "threshold_dyn_cm2": 2451.6625,
+      "jitter": 0.004,
+      "shimmer": 0.03,
+      "cycle_seed": 777,
+      "drift_cents": 5.0,
+      "vibrato_depth_cents": 36.0,
+      "vibrato_rate_hz": 6.0
+    },
+    "abduction_steps": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  },
+  "pcm": {
+    "sample_rate_hz": 48000,
+    "gain": 8e-06
+  }
+}

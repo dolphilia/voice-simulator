@@ -1,0 +1,96 @@
+{
+  "id": "vowel-benchmark",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "hypothesis": "同じ固定姿勢と発声条件で基準10母音を測ると、線形共鳴と有声PCMのLPCの違いを母音ごとに再現できる。隣接9遷移では最小断面の変化率制限を観測できる。",
+  "vowels": [
+    {
+      "ipa": "i",
+      "slug": "i"
+    },
+    {
+      "ipa": "e",
+      "slug": "e"
+    },
+    {
+      "ipa": "ɛ",
+      "slug": "epsilon"
+    },
+    {
+      "ipa": "æ",
+      "slug": "ash"
+    },
+    {
+      "ipa": "ɑ",
+      "slug": "alpha"
+    },
+    {
+      "ipa": "ɔ",
+      "slug": "open-o"
+    },
+    {
+      "ipa": "o",
+      "slug": "o"
+    },
+    {
+      "ipa": "u",
+      "slug": "u"
+    },
+    {
+      "ipa": "ʌ",
+      "slug": "wedge"
+    },
+    {
+      "ipa": "ɝ",
+      "slug": "rhotic"
+    }
+  ],
+  "continuity_case": "tract-slew-ten-vowels",
+  "measurement": {
+    "fixed_pose": {
+      "sample_rate_hz": 96000,
+      "start_hz": 120.0,
+      "end_hz": 4600.0,
+      "points": 700,
+      "output_sample_rate_hz": 48000,
+      "start_frame": 19200,
+      "frame_count": 4800,
+      "lpc_sample_rate_hz": 16000,
+      "lpc_order": 18,
+      "voice": {
+        "pressure_cm_h2o": 7.2,
+        "gate": 1.0,
+        "f0_hz": 110.0,
+        "breathiness": 0.15,
+        "tension": 0.5,
+        "output_sample_rate_hz": 48000,
+        "output_gain": 5.5e-07
+      }
+    },
+    "native_vowel_sequence": {
+      "sample_rate_hz": 48000,
+      "frames": 288000,
+      "block_frames": 128,
+      "vowel_seconds": 0.6,
+      "gate_end_seconds": 0.48
+    },
+    "refine_minimum_boundary": {
+      "frame_before": 953,
+      "frame_after": 954,
+      "tube": "oral",
+      "cell": 11,
+      "grid_point": 38,
+      "bisection_steps": 28,
+      "boundary_fraction_interval": [
+        0.881,
+        0.884
+      ],
+      "minimum_step_cm2_interval": [
+        0.031,
+        0.038
+      ],
+      "smooth_area_change_lt_cm2": 2e-07,
+      "upstream_absolute_error_lt": 1e-09
+    }
+  }
+}

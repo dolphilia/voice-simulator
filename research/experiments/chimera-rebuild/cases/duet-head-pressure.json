@@ -1,0 +1,41 @@
+{
+  "id": "duet-head-pressure",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "声門からの距離で各測定線を最近傍の圧力節点へ対応させると、同じ再生位置でも二声の色が異なる。閉鎖の上流は強い圧力色になり、末端で閉鎖に対応する楕円は潰れる。一時停止中は測定線が中立色になり、再生中のシーク直後には移動先の圧力を描く。",
+  "reference": {
+    "expression_run": "duet-head-expression-20261120-repeat",
+    "expression_manifest_sha256": "2b4f2e49571d9c4cf9f269ac0b33f803a3f45bde43c54e4ee5b4a6351b03f09c",
+    "upper_wasm_sha256": "c496abcef36f2f017a502678a28b743f83e56a90e981b1fc4f580d66596898da",
+    "track_sha256": ["0c87613fb215c58449d1ce600df98101aa559b5a76bd8fbfc138e3b7dab5d961",
+                     "32a70ce940458c9879149edc67344ff4442e4260e288ecbbf1f49b637f7c209e"]
+  },
+  "render": {
+    "grid_stride": 2, "segments": 24, "minimum_gap_cm": 0.01, "width_limit_per_body_scale": 3.5,
+    "direction_threshold_cm": 0.0001,
+    "pressure_limits_dyn_cm2": [40, 4000], "intensity_exponent": 0.85,
+    "palette": [[0, "#3a2408"], [0.35, "#c9822a"], [0.6, "#ffb340"], [0.82, "#ffe39a"], [1, "#fff8ec"]],
+    "neutral_color": "#1f5f8c", "position_tolerance_cm": 0.000002,
+    "geometry_tolerance_cm": 0.000002, "level_and_opacity_tolerance": 0.000000000002
+  },
+  "samples": [0, 21504, 30720, 34560, 43008, 46080, 47616, 49920],
+  "diagnostic": {
+    "n_pharynx": 2, "n_oral": 2, "lengths_cm": [2, 4], "pressure_dyn_cm2": [40, 4000, 400, 15],
+    "distances_cm": [1, 1.5, 2.5, 3.1, 4.5, 5, 6],
+    "gaps_cm": [1, 1, 0.01, 0.06, 0, 0.5, 0.5],
+    "areas_cm2": [0.5, 0.6, 0.2, 0.8, 0.2, 8, 8],
+    "body_scale": 0.9, "eye": [13, 12.5, 30]
+  },
+  "browser": {
+    "sample_rate_hz": 48000, "viewports": [[960, 900], [390, 850]],
+    "live_seeks": [21504, 30720, 34560, 43008, 47616, 30720],
+    "photo_sample": 30720, "photo_voice": 2,
+    "minimum_picture_changed_pixels": 40,
+    "hold_ms": 150
+  },
+  "criteria": {
+    "geometry": "解析したCHTLの調音行を使い、WASMの全測定線と比較用CLIの断面を照合する。実ブラウザで描いた輪の中心・隙間・幅・座標は独立計算で確かめる。",
+    "reference": "固定上流のAnatomy3D.airwayへ同じテレメトリを渡し、節点位置と圧力色を照合する。その形状の対応を測り、同一格子を両方に渡す対照でも描画の色・不透明度を比較する。境界、不均等な節点間隔、強調色の上下限、閉鎖と幅上限を検査する。",
+    "browser": "通常画面の停止・前後シーク後の最初の描画で圧力元の観測行を照合する。二声の元列を区別する。女声の同じ姿勢を再生・停止で撮影し、圧力による色の違いと表示の切り替えを確認する。"
+  }
+}

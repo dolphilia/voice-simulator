@@ -1,0 +1,34 @@
+{
+  "id": "fixed-alpha-lf-fundamental-amplitude",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定LFの110 Hzの入力差を正負両向きに与える。660 Hzと770 Hzの口端の複素差は、符号反転で反転する成分が主で、正負の平均に残る成分の大きさは前者の10%未満と予想する。半振幅で反転する成分を2倍した複素差は全振幅の1%以内、平均に残る成分を4倍した複素差は全振幅の25%以内と予想する。全振幅と無変更から得る二次の補間式で半振幅の複素差をどこまで予測できるかも測る。",
+  "reference": {
+    "run": "fixed-alpha-lf-fundamental-20261124-repeat",
+    "case": "fixed-alpha-lf-fundamental",
+    "sha256": "d49a565017abe5af7414010e2a7e2faa36db85f73e9a096db3edd810e77a9b4f"
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "f0_hz": 110,
+    "frequencies_hz": [110, 660, 770],
+    "steady_window_samples": [38400, 57600],
+    "cycles_per_block": 22,
+    "steady_flow_cm3_s": 139.8857905134376,
+    "warmup_samples": 76800,
+    "periodic_blocks": 4,
+    "after_onset_samples_to_keep": 128,
+    "amplitude_scales": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "upstream_trace_peak_relative_error_lt": 1e-9,
+    "input_spectral_identity_relative_error_lt": 1e-10,
+    "component_dft_relative_error_lt": 1e-8,
+    "late_block_peak_relative_error_lt": 1e-6,
+    "late_component_error_relative_to_odd_lt": 1e-6,
+    "first_inlet_pressure_relative_error_lt": 1e-9,
+    "hypothesis_even_over_odd_lt": 0.1,
+    "hypothesis_odd_scaling_complex_error_lt": 0.01,
+    "hypothesis_even_scaling_complex_error_lt": 0.25
+  },
+  "input": "前回の固定LFと基本波を合わせた19,200標本の入力を基準とする。固定LFに両者の110 Hzの流量差分を倍率0、±0.5、±1で足す。固定姿勢 /ɑ/・96 kHz・定常流0.80秒・4周期ブロック・元の二次損失の設定を保存ケースと一致させる。",
+  "observation": "固定上流と研究版CLIの全時系列を比較し、入力後128標本と最後の2ブロックを保存する。平均と110 Hz以外の全入力ビンが固定LFの値を保つことを確認し、倍率0と+1の波形を前回とビット照合する。口端流量と壁流量・総放射について、最後の22周期から差の奇成分と偶成分を求める。差の時系列の直接DFTと各描画のFFTの係数から求めた成分を照合する。660 Hz・770 Hzの振幅依存性の予想は検証手順の合否から分けて報告する。切替最初の入口圧を流量収支から予測し、口端への初着と最終ブロックへの収束を確かめる。"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "worklet-midi-elephant",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "elephant-fixed-voice.json",
+  "input": {
+    "creature": "elephant",
+    "key_mode": "held_voice",
+    "sample_rate_hz": 48000,
+    "pitch_range_hz": [8, 45],
+    "capture_seconds": 3.55,
+    "events": [
+      {"seconds": 0.12, "type": "note-on", "note": 60, "velocity": 96},
+      {"seconds": 0.65, "type": "note-on", "note": 67, "velocity": 96},
+      {"seconds": 1.18, "type": "note-off", "note": 67},
+      {"seconds": 1.65, "type": "note-off", "note": 60},
+      {"seconds": 2.13, "type": "note-on", "note": 0, "velocity": 96},
+      {"seconds": 2.82, "type": "note-off", "note": 0}
+    ]
+  },
+  "hypothesis": "最も近い整数オクターブの移調は−4で、60と67は約16.35と24.50 Hz、0は下限8 Hzの上の約8.18 Hzへ折り返す。保持音を戻す間は呼気を保ち、全解放後は60 msの時定数で減衰する。既定のRumbleと鼻・鼻先への経路では、音高を変えても弁の開口は4.5 cm²のまま声門が周期的に開閉する。",
+  "criteria": {
+    "routing": "固定上流と研究版の通常画面でHeld voiceを選び、保持の順と音高、全解放、入力を採用したフレームを比較する。",
+    "physics": "持続音の目標と平滑音高、呼気と肺圧、声門面積・声門流量、鼻先と口の体積流量、鼻の弁の開口を比較する。",
+    "replay": "保存したケースの異なる描画分割を使うCLIとブラウザで、加工前PCMと観測を照合する。"
+  },
+  "revision_reason": "第1版で観測した最初の微差を調べるため、肺ポートの最初の2サンプルを独立に求める比較を追加する。第1版の観測・判定は変更しない。",
+  "measurement": {
+    "baseline_run": "worklet-elephant-fixed-20261120-repeat",
+    "expected_held_notes": [60, 67, 60, null, 0, null],
+    "octave_shift": -4,
+    "control_frames": 64,
+    "quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "pitch_smoothing_seconds": 0.05,
+    "steady_window_seconds": [0.25, 0.44],
+    "release_window_seconds": [0.33, 0.40],
+    "maximum_relative_input_error_seconds": 0.055,
+    "target_pitch_tolerance_hz": 1e-10,
+    "smoothed_pitch_tolerance_hz": 1e-9,
+    "browser_pitch_tolerance_hz": 0.3,
+    "gate_tolerance": 1e-12,
+    "pressure_tolerance_dyn_cm2": 1e-8,
+    "steady_gate_minimum": 0.999,
+    "release_gate_maximum": 0.0045,
+    "browser_release_gate_maximum": 0.0065,
+    "minimum_steady_pcm_rms": 0.002,
+    "minimum_steady_glottis_peak_cm2": 0.05,
+    "minimum_nasal_to_oral_rms_ratio": 1.0,
+    "maximum_release_pcm_ratio": 0.025,
+    "phase_wrap_threshold_cycles": -0.5,
+    "valve_area_cm2": 4.5,
+    "valve_area_tolerance_cm2": 1e-12,
+    "native_tolerance_source": "elephant-fixed-voice.json",
+    "worklet_tolerance": 1e-12,
+    "lung_onset": {
+      "air_density_g_cm3": 0.00114,
+      "dynamic_viscosity_poise": 0.000186,
+      "viscosity_reference_hz": 700,
+      "fixed_lung_cell_area_cm2": 100,
+      "fixed_lung_cell_length_cm": 1,
+      "port_length_cm": 1
+    }
+  },
+  "retain_csv": {
+    "cli.csv": {
+      "columns": ["frame", "gate_goal", "gate", "pitch_hz", "target_pitch_hz", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "trachea_end_pressure_dyn_cm2", "glottis_drive_dyn_cm2", "glottis_area_cm2", "glottis_flow_cm3_s", "glottis_phase", "glottis_f0_hz", "nasal_base_pressure_dyn_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "trunk_tip_pressure_dyn_cm2", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 37888], [43008, 63488], [68608, 90624], [93184, 110592], [113664, 141312], [146432, 170400]]
+    },
+    "upstream.csv": {
+      "columns": ["frame", "gate", "pitch_hz", "target_pitch_hz", "lung_pressure_dyn_cm2", "lung_flow_cm3_s", "trachea_end_pressure_dyn_cm2", "glottis_drive_dyn_cm2", "glottis_area_cm2", "glottis_flow_cm3_s", "glottis_phase", "glottis_f0_hz", "nasal_base_pressure_dyn_cm2", "trunk_valve_area_cm2", "trunk_valve_flow_cm3_s", "trunk_tip_pressure_dyn_cm2", "wall_cm3_s", "oral_cm3_s", "nasal_cm3_s", "radiation_cm3_s2", "pcm_f32"],
+      "sample_column": "frame",
+      "sample_ranges": [[0, 37888], [43008, 63488], [68608, 90624], [93184, 110592], [113664, 141312], [146432, 170400]]
+    }
+  }
+}

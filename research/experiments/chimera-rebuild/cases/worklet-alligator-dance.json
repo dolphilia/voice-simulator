@@ -1,0 +1,33 @@
+{
+  "id": "worklet-alligator-dance",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "alligator-dance.json",
+  "source_revision": 1,
+  "hypothesis": "実ブラウザで公式デモ全体のPCMを許容差内で再現する。声門面積と放射流量には設定音高付近のピークがあり、PCMではより高い周波数にピークが移る。96 kHzでは観測した流量の和の差分と12 HzのDC除去でPCMを再構成でき、25〜80 Hzと12〜25 HzのRMS比は差分後に増える。",
+  "measurement": {
+    "variants": ["official-full-48000", "switch-44100", "standalone-96000"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "observation_windows_output_frames": {
+      "official-full-48000": [[350400, 379200]],
+      "switch-44100": [[39000, 39041], [52270, 78730]],
+      "standalone-96000": [[0, 92160]]
+    },
+    "extra_output_frames": {
+      "official-full-48000": [335999, 420031],
+      "switch-44100": [22000, 22001, 116223],
+      "standalone-96000": [168127]
+    },
+    "decomposition": {
+      "variant": "standalone-96000",
+      "continuous_prefix_output_frames": 92160,
+      "linear_output_absolute_tolerance": 1e-8
+    },
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

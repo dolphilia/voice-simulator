@@ -1,0 +1,15 @@
+{
+  "id": "worklet-live-tsp-firefox-io-deadline",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "capture_case": "worklet-live-tsp-firefox-device-tap-draw-control-early",
+  "capture_run": "worklet-live-tsp-firefox-device-tap-draw-control-early-20261122-a",
+  "baseline_run": "worklet-live-tsp-source-defaults-20261122-device-tap-regression",
+  "sample_rate_hz": 48000,
+  "request_frames": 256,
+  "request_offsets": [11, 12, 13],
+  "maximum_server_interval_error_ms": 0.10,
+  "hypothesis": "発話開始でFirefoxのI/Oが飛んだときも、次の1周期に音声サーバー側のクライアント処理とWriteがあると予測する。時間予算内だった2件では、前のFirefox I/Oの終了が、実測した次のサーバー側クライアント処理の開始より後に来ると予測する。飛ばなかった同じ発話開始要求と前後の要求では、前のFirefox I/Oが先に終わると予測する。処理時間の予算はFirefoxの入口を起点とするため、サーバーとFirefoxの開始位相も測る。",
+  "acceptance": "同じ実行の8試行の要求相対位置11、12、13を対象にする。12は先頭2発話量子を含む。タイムスタンプのあるcubebの生バッファ、Audio Client、Audio Serverのクライアント表とWrite表、トレースの時計を使う。既存の照合設定を再利用し、42要求の対応を生データから再計算して元の実行に照合する。次の予定周期のサーバー行は、現在のサーバー行の出力サンプル位置に256を加え、ホスト時刻も1周期進む行を一意に選ぶ。Writeは同じサーバースレッド・エンジン・ストリームの連続する256フレームを選ぶ。サーバーの処理開始間隔が基準5.333 msから0.10 ms以内か検査する。時計が飛んだかどうかと対応付けの合否は別に記録する。",
+  "comparison": "前のFirefox I/Oの開始を相対時刻0とし、cubebの入口と返却はトレース原点の許容範囲を時刻区間として残す。Firefox I/Oの終了、サーバーの各周期の開始・終了とWrite、次の実際のFirefox I/Oを区別する。次の予定周期のサーバー側クライアント処理の開始から、現在のFirefox I/O終了を引いた符号を比較する。cubeb返却とサーバー開始の前後は原点区間全体で符号が決まる場合にだけ断定する。対象2件のタップの既存判定と、同じ収録の発話WAVの基準一致を検査する。トレースに記録された処理区間の順序を比較し、起動要求やスレッドのウェイク自体の有無は別の計測対象として残す。"
+}

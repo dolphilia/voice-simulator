@@ -1,0 +1,37 @@
+{
+  "id": "duet-mixed-initial-tip",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_case_id": "duet-mixed-glottal-noise-origin",
+  "reference_run": "duet-mixed-glottal-noise-origin-20261122-repeat",
+  "reference_manifest_sha256": "5b054061625dcf6edd7bd5c458023abec987f4d71f28594557f07c69bb14b7ab",
+  "reference_gesture_suffix": ".gestures.json",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "voice_index": 2,
+  "body": {"female": 0.4, "child": 0.3},
+  "expected_pcm_frames": 97920,
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "control_output_samples": 64,
+  "trace_output_samples": 512,
+  "checkpoints_output_samples": [0, 1, 24, 25, 64, 65, 128, 512],
+  "resting_tip_formula": {
+    "rotation_center_cm": [-2.5, 10.5],
+    "unrotated_tip_cm": [6.45, 7.35],
+    "jaw_rotation_scale_cm": 9.84,
+    "reference_tongue_body_cm": [2.9, 6.85],
+    "tongue_body_coupling": [0.30, 0.35],
+    "tip_natural_frequency_hz": 13
+  },
+  "tolerances": {
+    "tip_cm": 1e-12,
+    "tip_velocity_cm_s": 1e-10,
+    "area_cm2": 1e-10,
+    "flow_cm3_s": 1e-10,
+    "radiation_cm3_s2": 1e-7,
+    "pcm_absolute": 1e-10
+  },
+  "hypothesis": "舌先の休止座標は体型を適用する前の座標で、同じ中立の顎と舌体から子ども体型と同じ点を得る。混合体型でも研究版の明示された初期舌先だけをその位置にすると、先行計測で無発声時に見えた流量差が消える。描画前と最初の512出力サンプルで断面積差は許容範囲内、声門流量・放射・PCMは上流と同じく0になると予測する。",
+  "criteria": "固定上流は先行計測のドリフト・ジッター・シマー0の対照を使う。研究版は保存ケースの song_voice.posture.tongue_tip_cm だけを座標回転の独立計算結果へ変更する。描画前と出力サンプル1から512で舌先の位置・目標・速度、唇端と咽頭先頭の断面積、声門流量、放射の時間微分、PCMを観測する。舌先の8制御更新を半陰的オイラー法と照合し、8ブロックそれぞれの断面積を端点間の線形補間で照合する。変更前と上流対照の観測列・全97,920フレームのPCMを先行実行と照合する。研究版の両条件で通常のCLIと観測器のPCM、ゲートと乱流レベル0、休止姿勢での流量・放射・PCMが0を確認する。結果は計測判定と予測判定に分けて残す。"
+}

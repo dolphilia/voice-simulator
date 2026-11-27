@@ -1,0 +1,40 @@
+{
+  "id": "worklet-songbird-chirps",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "songbird-calls.json",
+  "source_revision": 2,
+  "hypothesis": "44.1 kHzの実時間Workletでchirpsの宣言順を保つと、加工前PCMと内部状態がCLI・固定上流と一致する。キーを時刻順にした対照では、初めに呼気目標、次に音高目標の差が生じる。二つの目標系列を同じ合成器で再生すると、最初の呼気目標の差から2制御刻み以内にPCMの差が現れる。",
+  "measurement": {
+    "variants": ["chirps-44100"],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": [210, 211, 255],
+    "health": {"exclude_startup_blocks": 8, "maximum_processing_p95_budget_ratio": 1.0},
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0.0,
+    "cli_state_peak_relative_tolerance": 1e-12,
+    "upstream_pcm_absolute_tolerance": 1e-6,
+    "upstream_state_peak_relative_tolerance": 1e-7,
+    "independent_control_absolute_tolerance": 1e-9,
+    "independent_clock_absolute_tolerance_seconds": 1e-12,
+    "chirps": {
+      "control_interval_frames": 64,
+      "call_id": 3,
+      "expected_first_control_frame": 256,
+      "expected_natural_end_frame": 32384,
+      "first_pitch_target_hz": 7000.0,
+      "overlap_window_seconds": [0.61, 0.616],
+      "gate_in_overlap": 1.0,
+      "minimum_order_effect_on_gate": 0.15,
+      "minimum_order_effect_on_pitch_hz": 300.0,
+      "expected_first_order_difference": {"gate_target": 22016, "target_pitch_hz": 22336},
+      "minimum_pcm_peak": 0.03,
+      "declared_replay_pcm_tolerance": 1e-6,
+      "order_replay_pcm_difference_threshold": 1e-6,
+      "maximum_order_pcm_delay_frames": 128,
+      "minimum_order_pcm_peak_difference": 0.01
+    }
+  }
+}

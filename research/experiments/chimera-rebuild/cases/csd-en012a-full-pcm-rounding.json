@@ -1,0 +1,49 @@
+{
+  "id": "csd-en012a-full-pcm-rounding",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "full_song": {
+    "run": "csd-long-note-vibrato-20261121-theta",
+    "case": "csd-long-note-vibrato",
+    "manifest_sha256": "3b96f5a27fcd5fb0f5e7c04d2a022156ca09ccccbd69dcb2bff69b02ca574a66"
+  },
+  "reference": {
+    "run": "csd-en005a-full-pcm-rounding-20261124-verified-repeat",
+    "case": "csd-en005a-full-pcm-rounding",
+    "manifest_sha256": "eaa709a63b850f87b2fa4dea11875e955f70c3eb1c79314b5af5c9723a4f5daf"
+  },
+  "comparison": {
+    "run": "csd-en035a-full-pcm-rounding-20261124-repeat",
+    "case": "csd-en035a-full-pcm-rounding",
+    "manifest_sha256": "4ea5ce5ce7d849a2d3946c0a7fe20c73fc7e07b940a7ceca513633bae372e946"
+  },
+  "measurement": {
+    "song": "en012a",
+    "phrases": 46,
+    "notes": 185,
+    "frames": 6613334,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "block_frames": 128,
+    "first_beat_frame": 80002,
+    "last_score_end_frame": 6503328,
+    "common_prefix_witness_frame": 20363,
+    "segments": {
+      "before_first_beat": [0, 80002],
+      "score": [80002, 6503328],
+      "after_last_score_end": [6503328, 6613334]
+    },
+    "focus_frames": [0, 20363, 80002, 6503328, 6613333],
+    "quiet_pcm_threshold": 0.000001,
+    "multi_ulp_minimum_quiet_share": 0.95,
+    "same_settings_pcm_tolerance": 0.000001
+  },
+  "hypotheses": {
+    "startup_witness_is_shared": "両確認曲の第1拍前の丸め前最大差が現れたフレーム20363までは、同じ版の3曲でPCMがビット一致する。",
+    "pcm_maximum_after_first_beat": "確認曲2曲と同様に、全曲のPCM最大差は第1拍以降に現れる。",
+    "precast_and_pcm_peaks_differ": "全曲の丸め前とfloat32変換後の最大誤差は別のフレームに現れる。",
+    "same_limiter_active_frames": "同設定の両版で利得抑制の作動フレームの集合は一致する。",
+    "multi_ulp_differences_are_mainly_quiet": "複数ULP差の95%以上は両版のPCM絶対値が10⁻⁶以下のフレームにある。"
+  },
+  "acceptance": "固定上流は通常設定のPCMを既存の公式全曲出力に照合する。同設定の固定上流と研究版それぞれで、未計装と計装の全PCM・歌唱計画を照合し、研究版は保存済み全曲の計画とPCMにも照合する。先行曲と同じ係数と独立計算で、全13226668内部標本の放射合算・差分および全6613334出力フレームのFIRからfloat32変換までを再計算する。同設定の最大PCM差は10⁻⁶以下とし、1 ULPの差は対応する丸め中点をまたぐことを確認する。比較区間ごとに丸め前・PCMの誤差、1 ULP・複数ULPの数、利得抑制の作動範囲を確認曲2件と照合する。確認曲それぞれとの冒頭PCM一致の長さ、最大PCM差の句、最大の1フレームを除いたRMSを記録する。"
+}

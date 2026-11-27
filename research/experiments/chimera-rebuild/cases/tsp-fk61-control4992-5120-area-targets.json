@@ -1,0 +1,155 @@
+{
+  "id": "tsp-fk61-control4992-5120-area-targets",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "bernstein": {
+    "run": "tsp-fk61-lower-lip-bernstein-render-20261123-full-repeat",
+    "case": "tsp-fk61-lower-lip-bernstein-render",
+    "manifest_sha256": "daa3c2b8ea84c106f21b3f4b3217ee3efc8b8e4aa71ee02c5a891d00cbadb89b"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "previous_focus": {
+    "run": "tsp-fk61-onset-to-control5504-volume-history-20261123-repeat",
+    "case": "tsp-fk61-onset-to-control5504-volume-history",
+    "manifest_sha256": "9284865c17db67c1de87034286d9e55946eb8983f85bbb521ce968afd57dff1b"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      3966,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "local_internal_samples": [
+      5632,
+      5876
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "witness_interval": [
+      5863,
+      5865
+    ],
+    "inner_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "terminal_nodes": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "comparison_samples": [
+      5632,
+      5675,
+      5723,
+      5753,
+      5760,
+      5781,
+      5840,
+      5863,
+      5864,
+      5875
+    ],
+    "late_incoming_nodes": [
+      28
+    ],
+    "scope": "内部標本4992・5120の断面積の差を追うため、口腔の断面積分布を格子弧長と面積で採取し、節点29・34で再標本化直後、速度制限の基準、速度制限後、補間開始値・増分を3版で照合する。格子の面積、弧長座標、口腔の区間両端を個別に交換して再標本化直後の値を比較する。2制御ブロックの節点29・34で開始面積、目標面積、両方を交換し、セル長と他節点の入力を試験版に保つ。5504〜5631を上流の体積速度、5632以降を前回の全形状・咽頭流入交換条件に置き、冒頭からPCM 2937までを調べる。",
+    "control_boundaries": [
+      4992,
+      5120,
+      5504,
+      5632,
+      5760
+    ],
+    "linear_filter_tolerance_cm3_s": 4e-14,
+    "attribution_internal_samples": [
+      3968,
+      5504
+    ],
+    "handoff_internal_samples": [
+      5504,
+      5632
+    ],
+    "focus_block_candidates": [
+      5120,
+      5248
+    ],
+    "area_focus_blocks": [
+      4992,
+      5120
+    ],
+    "area_focus_nodes": [
+      29,
+      34
+    ]
+  },
+  "hypotheses": {
+    "resampled_area_already_differs_at_focus": "4992・5120の節点29・34で、固定上流と下唇の数値計算を変更した試験版の代表面積の差は速度制限前に既に現れる。",
+    "slew_passes_through_focus_areas": "4992・5120の節点29・34の代表面積は3版とも速度制限前後で一致する。",
+    "grid_areas_exceed_coordinate_effects": "代表面積の再計算4箇所をまとめたL2ノルムでは、格子面積のみの交換の影響が弧長座標のみ、区間両端のみのいずれの影響よりも大きい。",
+    "both_focus_cells_recover_pcm_in_5120_block": "5120〜5247の節点29・34の開始面積と目標面積の両方を上流に揃えると、前回と同じ後続条件で冒頭からPCM 2937まで一致する。"
+  },
+  "acceptance": "3版の通常CLI・観測版と保存済みPCMを全発話でビット照合し、前回の共通観測を照合する。採取した断面積分布と弧長から速度制限前の代表面積・最小面積を独立に計算し、各版でビット照合する。速度制限の基準と dt から制限後を再計算して目標と一致させる。目標と開始面積から増分と各標本の面積を照合し、未交換と両方交換の局所体積速度を試験版と上流で検証する。全節点の5120ブロックの入力を上流にした対照と無交換のPCMを前回に照合する。"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "tsp-matched-speech-mfa",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "alignment": {
+    "run": "tsp-phone-boundaries-held-out-20261121-a",
+    "case": "tsp-phone-boundaries-held-out",
+    "manifest_sha256": "e0f3d579ec4dab71fbfeb5f4a7cf886e6e21b038e831b5407e70f7eedf6d73c3"
+  },
+  "matched_pcm": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "formants": {
+    "run": "tsp-matched-speech-formants-20261123-repeat",
+    "case": "tsp-matched-speech-formants",
+    "manifest_sha256": "63f63526f13c3e793b64c296953f82695c55f65462a4fe970593c921d0769562"
+  },
+  "utterances": ["FK61_01", "MK61_01", "FK61_02", "MK61_02"],
+  "measurement": {
+    "sample_rate_hz": 48000,
+    "analysis_sample_rate_hz": 12000,
+    "frame_samples": 300,
+    "centers": [0.1, 0.25, 0.5, 0.75, 0.9],
+    "vowels": 12,
+    "noise_tolerance_db": 0.5,
+    "minimum_equal_pcm_pairs": 3,
+    "maximum_pcm_step": 1,
+    "old_different_starts": 15,
+    "old_maximum_start_delta_samples": 216,
+    "observation": "合成4組の48 kHzモノラル全標本をPCM16で比較し、語・音素の両端を秒で比較する。以前と同じ母音12区間の各5中心で、12 kHzの25 ms窓の開始標本を保存時と再整列後で比較する。",
+    "acceptance": "固定Rust版と研究の準備処理は全入力でPCM16が一致し、固定上流は保存済み入力とラベル付き境界を再現する。ノイズ床は登録値の±0.5 dB以内、クリップ0とする。設定合わせ後の組は少なくとも3組で全PCM16標本が一致し、最大差は1刻み以下と予測する。4組の語・音素境界は完全一致し、旧差15窓・最大216標本の組に残る窓開始差は0と予測する。この予測と異なる場合も、測定が揃えば差を保存する。"
+  }
+}

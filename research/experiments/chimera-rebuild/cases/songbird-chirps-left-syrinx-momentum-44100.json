@@ -1,0 +1,25 @@
+{
+  "id": "songbird-chirps-left-syrinx-momentum-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-left-syrinx-half-inertance-44100-20261123-repeat",
+    "manifest_sha256": "d4d25d93e2988ed8cea0da8506d486dd5e1de300e02da141dd618bc39ba69a47"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "expected_control_flow_offsets": {
+    "matched_time": 23,
+    "native_block": 19,
+    "no_tracking": null
+  },
+  "hypothesis": "左ポートで持ち越し項の時間換算だけを (Lcarry × Uprev) × fs へ替える。235点制御の押鍵23点後の左流量の差は消え、256点制御では現在の線形慣性の時間換算が異なる押鍵19点後の差が残ると予測する。気管入口圧と左気管支末端圧は左流量と同じ標本、右ポート流量は早くても1標本後に影響を受ける。追従0では圧力と流量が0のままになる。",
+  "observation": "先行の左半セル実験版を通常のrender CLIでバイト再現し、変更版と同じ3条件で保存した固定上流へ照合する。押鍵後0〜63点で左右ポートの面積・流量・気管支末端圧、気管入口と末端の圧力、首部、くちばし、放射を採る。左右ポートの流量を直前の圧力と流量から、気管入口圧をこの標本の枝流量と直前の圧力から独立に再計算する。",
+  "acceptance": "先行描画を再現し、三者の弁面積と押鍵前の状態が一致すること、左右ポートと気管入口の全標本をビット照合できること、閉鎖時の流量が0であること、効果が最短伝播より前に現れないこと、追従0で無励振を保つことを確認する。235点制御で登録した初差が消えること、256点制御で線形項だけを置換した場合の判定と実測初差をそれぞれ保存する。"
+}

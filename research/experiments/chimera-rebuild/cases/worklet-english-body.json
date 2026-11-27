@@ -1,0 +1,32 @@
+{
+  "id": "worklet-english-body",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "同じ英語テキストを異なる体型でレンダーしても発音と句の時刻は一致する。体型の既定F0と較正目標は変わり、咽頭と口腔の計算セル数も体型によって変わる。同じ混合体型で180 Hzを指定してもセル数は変わらない。保存したケースをCLIで実行すると、加工前PCMと観測時点の内部状態が一致する。",
+  "native_case": "human-body-english.json",
+  "initial_state": "中立姿勢、声門110 Hz、位相・圧力と流量の音響状態は0。入力・音源・参照実行はネイティブの事前登録ケースと揃える。",
+  "browser_fixture": "english-mom-pop.json",
+  "reference_run": "bodyenglish-20261120-repeat",
+  "geometry_reference_run": "airbody-20261120-repeat",
+  "measurement": {
+    "output_rate_hz": 48000,
+    "internal_rate_hz": 96000,
+    "output_frames": 118748,
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 32,
+    "plan_numeric_tolerance": 1e-12,
+    "candidate_trace_peak_relative_tolerance": 1e-10,
+    "native_pcm_bit_equal": true,
+    "upper_pcm_absolute_tolerance": 1e-6,
+    "geometry_absolute_tolerance": 1e-9,
+    "upper_state_peak_relative_tolerance": 1e-6,
+    "expected_cells": {
+      "male": [18, 18],
+      "female": [15, 16],
+      "child": [11, 13],
+      "three-way": [15, 16],
+      "three-way-explicit-180": [15, 16]
+    },
+    "observed_fields": ["gate", "glottal_area_cm2", "glottal_flow_cm3_s", "glottal_voicing", "glottal_f0_hz", "radiation_derivative_cm3_s2", "lip_aperture_cm", "lip_minimum_cm2", "nose_flow_cm3_s", "velum_port_area_cm2"],
+    "event_windows": "先行ケースの最初の鼻音を含む句、popの閉鎖と開放、句間休止・末尾20 ms、各句最終母音の後半を使用する。観測時刻は32フレームごとで末尾にも1点置く。"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "worklet-seal-zap",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "source_case": "seal-zap.json",
+  "source_revision": 1,
+  "hypothesis": "切り替え指示のフレームでzapの識別子と手動目標が見え、平滑値と肺圧は次の制御境界まで継続する。zapを省いた対照と比べ、合成出力の差はその境界以降、次の制御までに現れる。公式デモのzap区間は固定上流水準のPCMに一致し、初期深さ0なら位相が進んでも肺圧にパルス変調は出ない。",
+  "measurement": {
+    "variants": [
+      "official-prefix-48000",
+      "switch-44100",
+      "zero-depth-96000"
+    ],
+    "expected_render_quantum_frames": 128,
+    "observation_stride_frames": 64,
+    "observation_offset_frames": 0,
+    "extra_output_frames": {
+      "official-prefix-48000": [
+        287999, 298623
+      ],
+      "switch-44100": [
+        72, 73, 127, 7100, 7101, 7116, 7117, 8300, 8301, 8319, 8321, 8322,
+        8323, 8324, 8325, 8326, 8327, 8328, 8329, 8330, 8331, 8332, 8333, 8334,
+        8335, 8336, 8337, 8338, 8339, 8340, 8341, 8342, 8343, 8344, 8345, 8346,
+        8347, 8348, 8349, 8350, 8351, 8352, 8353, 8354, 8355, 8356, 8357, 8358,
+        8359, 8360, 8361, 8362, 8363, 8364, 8365, 8366, 8367, 8368, 8369, 8370,
+        8371, 8372, 8373, 8374, 8375, 8376, 8377, 8378, 8379, 8380, 8381, 8382,
+        8383, 9436, 9437, 9471, 18047
+      ],
+      "zero-depth-96000": [
+        16, 17, 63, 21183
+      ]
+    },
+    "counterfactual": {
+      "variant": "switch-44100",
+      "omit_call": "zap",
+      "request_output_frame": 8301,
+      "first_control_output_frame": 8320,
+      "search_end_output_frame_exclusive": 8384,
+      "pcm_significance_absolute": 0.000001
+    },
+    "health": {
+      "exclude_startup_blocks": 8,
+      "maximum_processing_p95_budget_ratio": 1
+    },
+    "native_allocation_limit": 0,
+    "cli_pcm_absolute_tolerance": 0,
+    "cli_state_absolute_tolerance": 0
+  }
+}

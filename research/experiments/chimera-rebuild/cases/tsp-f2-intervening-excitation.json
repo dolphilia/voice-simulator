@@ -1,0 +1,27 @@
+{
+  "id": "tsp-f2-intervening-excitation",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "resonance_reference": {
+    "run": "tsp-f2-intervening-resonance-20261123-repeat",
+    "case": "tsp-f2-intervening-resonance",
+    "manifest_sha256": "b7300100caedb5a7796f911f67377c54895dc96cea4a81f8d72b2f45a95ad46e"
+  },
+  "spacing_reference": {
+    "run": "tsp-f2-harmonic-spacing-20261122-final-repeat",
+    "case": "tsp-f2-harmonic-spacing",
+    "manifest_sha256": "175214891196d81aeb21703c7237cf1696eb3b5fc67069c336fbea9cb733dfb7"
+  },
+  "signal": {
+    "f0_hz": [100, 125, 150, 200, 240, 300, 400],
+    "added_pole_frequencies_hz": [760, 800]
+  },
+  "measurement": {
+    "low_band_hz": [650, 1100]
+  },
+  "hypotheses": {
+    "f0_changes_selection_at_fixed_added_pole": "同じ追加共鳴・次数・窓でF0のみを変えると、少なくとも1窓で125 Hz時の設計F2採択と追加共鳴側の採択との間を移る。",
+    "some_switches_leave_model_f2_eligible_in_both_windows": "上記の切り替わりの少なくとも1件では、両方のF0で設計F2近傍の公開極が採択条件を満たしており、選ばれたF1と追加共鳴近傍の公開極の間隔が200 Hzの境界をまたぐ。"
+  },
+  "acceptance": "基準は先行ケースの12 kHz・1秒・1パルス振幅0.015、前処理と窓長は同じ値を使う。追加なし、760 Hz追加、800 Hz追加の各モデルの極と、追加極の帯域幅140 Hzを固定する。追加なしの7波形と42窓を既存の倍音比較に照合し、125 Hzの3条件を追加共鳴の先行実行に照合する。全21波形の理論伝達応答と定常1周期のDFT、126窓の公開極・生根・採択と独立計算を先行の閾値で照合する。固定した絶対時刻の窓における励振位相を記録する。低帯域の最強倍音、F1からの推定間隔、設計F2に近い極の適格性を保存し、採択の変化が極の推定、公開の選別、候補の適格性、採択のどこで生じたかを報告する。仮説の成否は実装検証の合否と別に扱う。"
+}

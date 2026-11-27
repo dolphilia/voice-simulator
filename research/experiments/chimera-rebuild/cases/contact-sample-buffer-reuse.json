@@ -1,0 +1,20 @@
+{
+  "id": "contact-sample-buffer-reuse",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "contact-measurement-grid-reuse-20261122-b",
+  "allocation_reference_case_id": "contact-measurement-grid-reuse",
+  "geometry_reference_run": "contact-measurement-grid-reuse-20261122-b",
+  "geometry_reference_case_id": "contact-measurement-grid-reuse",
+  "browser_reference_run": "worklet-live-song-contact-measurement-grid-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": "contact_samples",
+  "removed_allocations_per_geometry_update": 1,
+  "allocations_per_geometry_update": 1,
+  "expected_removed_allocations": 1476,
+  "expected_allocations": 1477,
+  "contact_grid_allocations_per_call": {"roof_cumulative": 0, "measurement_grid": 0, "contact_samples": 0},
+  "prediction": "接触標本を最大49本分の領域へ毎回書き込み、断面生成へ現在の標本のスライスを渡す。48 kHzのPop Deeは1,476回の声道更新につき各1件減り、描画全体で2,953件から1,477件、接触グリッド内は1,476件から0件になる。出力フレーム[44672,47872)の語境界25量子では各8件から4件になる。",
+  "criteria": "測定の入力とタイミングはallocation_caseに従う。全713量子で接触標本に当たる件数だけが減少し、工程の呼び出し回数と独立した工程の件数が一致すること。通常CLIの4条件の全断面、歌唱PCM全91,200標本と64フレーム間隔の全ABI観測1,425点は基準と一致すること。舌を遠ざけた平行壁で隙間1 cm、測定線0件、隙間1.25 cmの順に形状を変え、標本がないときは断面生成がエラーを返し、次の有効な形状では同じ確保先で隙間1.25 cmと先頭断面2×1.25^1.4 cm²が誤差10⁻¹²以内で得られること。"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "csd-f0-upper-bound-en005a",
+  "revision": 1,
+  "song": "en005a",
+  "split": "held_out",
+  "reference_run": "csd-acoustic-f0-en005a-20261121-final",
+  "reference_case": "csd-acoustic-f0-en005a.json",
+  "source_run": "csd-song-planning-20261121-final",
+  "calibration": "csd-f0-third-harmonic-en001a.json",
+  "minimum_initial_cents": 600,
+  "search_upper_semitones": 5,
+  "maximum_abs_cents_near_score": 35,
+  "spectrum_window_seconds": 0.04,
+  "spectrum_fft_size": 65536,
+  "third_harmonic_tolerance_hz": 60,
+  "hypothesis": "調整用で観測した短い遅延への偏りは、第3倍音が強い箇所で確認用にも現れ得る。探索上限を+5半音にすると、該当区間で譜面の近傍の解が選ばれると予測する。高い推定が発生する音符の有無は観測値とする。",
+  "selection": "確認用の全106音符・3波形に上限だけを変えた推定を適用し、通常条件と比較する。通常の両合成で譜面より600セント以上高い共通フレームがある音符では、該当するフレームの中央の時刻でスペクトルとYINの遅延を測る。該当が0件なら観測機会がなかったことを記録する。全音符の中央値の変化と欠測の増減を録音も含めて保存する。",
+  "acceptance": "長さ・中心時刻・探索下限−7半音・電力ゲートを維持し、既存の全フレームの集計と同じ比較元を用いる。全音符を通常と対照に含め、変更された推定値、欠測の増減、音符と波形ごとの支持数を記録する。倍音仮説の結果は比較の再現性と区別する。"
+}

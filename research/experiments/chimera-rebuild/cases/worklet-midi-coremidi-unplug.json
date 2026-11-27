@@ -1,0 +1,25 @@
+{
+  "id": "worklet-midi-coremidi-unplug",
+  "revision": 2,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "case": "worklet-midi-coremidi.json",
+    "run": "worklet-midi-coremidi-20261122-repeat",
+    "manifest_sha256": "427b896ae6a808a49ded768f52c081a5f557df3a64b7fe620986b4dfae508208"
+  },
+  "release_action": "remove-source",
+  "native_notification": {
+    "method": "separate-coremidi-client-run-loop",
+    "timing_partition_tolerance_ms": 20,
+    "hypothesis": "切断通知までの約250 msがCoreMIDIの通知前にあるなら、別のネイティブクライアントにも同程度の待ちが出る。削除からネイティブ通知までと削除からブラウザ通知までの推定間隔を比較する。"
+  },
+  "replay": {
+    "candidate_elapsed_frames": [128, 768, 3456, 9600],
+    "normalized_gate_absolute_tolerance": 1e-10,
+    "upper_elapsed_seconds": [0.08, 0.30],
+    "upper_release_seconds": 0.07,
+    "upper_fit_absolute_tolerance_seconds": 0.001
+  },
+  "hypothesis": "先行ケースのNote Offだけを、同じ音57を保持したままのCoreMIDI送信元削除に置き換える。Chromeで試験ポートが消え、通常画面の保持音と呼気目標が経路の違いを越えて解放される。研究版の内部ゲートの正規化減衰はNote Off対照に一致し、固定上流の呼気ゲートは同じ70 msの時定数で減衰する。",
+  "acceptance": "Note On 1件だけを送信し、押鍵中のCoreMIDI送信元削除とブラウザの信頼済み切断通知を確認する。アプリのMIDI接続を保ったまま入力が消え、保持状態が空になり、上流の呼気目標が0、研究版のWorkletが解放を採用する。音源は先行ケースと同じ持続・静音条件を通過する。研究版は解放直前の量子末尾でゲートを正規化し、指定した経過出力フレームでNote Off対照と比較する。固定上流は指定した解放窓の音声時計とゲートの対数から時定数を求める。加工前PCMを今回のCLI再生と照合する。消えたポートのコールバック設定は記録し、現在の入力一覧と区別する。"
+}

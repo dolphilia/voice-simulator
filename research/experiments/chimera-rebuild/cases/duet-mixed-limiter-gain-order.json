@@ -1,0 +1,37 @@
+{
+  "id": "duet-mixed-limiter-gain-order",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference_run": "duet-mixed-output-gain-20261122-repeat",
+  "reference_manifest_sha256": "33fd5009c344b885c7aedf973dda34950cd9b9a08400269e466b48a72193c031",
+  "posture_run": "duet-mixed-initial-tip-20261122-final",
+  "posture_manifest_sha256": "d880e8c8a32afdff3b3472f3e09bea6c9393b2cbcda98e6728834d5b45e38ed2",
+  "input_run": "duet-turbulence-body-20261122-repeat",
+  "input_manifest_sha256": "bc0343b3c72de44f1e7ad63b3d288d53c9d2950735a6e9528a7d215bc471c41b",
+  "reference_body": {"female": 0.4, "child": 0.3},
+  "sample_rate_hz": 48000,
+  "internal_sample_rate_hz": 96000,
+  "frames": 97920,
+  "block_frames": [128, 77],
+  "radiation_multiplier": 1.2,
+  "base_gain": 5.5e-7,
+  "body_gain_factor": 0.875,
+  "stage": {
+    "fir_taps_per_phase": 24,
+    "fir_cutoff_at_output_rate": 0.46,
+    "fir_kaiser_beta": 8.5,
+    "dc_hz": 25.0,
+    "hold_seconds": 0.025,
+    "release_seconds": 0.2,
+    "peak_threshold": 0.75,
+    "clip_threshold": 0.85
+  },
+  "tolerances": {
+    "radiation_cm3_s2": 0.001,
+    "normalized": 1e-10,
+    "pcm_absolute": 6e-8,
+    "peak_prediction_absolute": 1e-6
+  },
+  "hypothesis": "先行測定の包絡最大値0.67757178に対して放射を1.2倍にすると、基準ゲインで包絡は約0.81309、0.875を制限前に掛けた条件では約0.71145になる。基準ゲインだけがピーク制限に入り、制限後のPCMを0.875倍するとピークは約0.65625になる。2経路の最大PCM差は約0.05520で、包絡がまだ0.75を超えていれば瞬時の信号が0.75未満に戻った保持中と解放中にも残る。",
+  "criteria": "混合体型の休止舌先と音源変動0の条件を固定する。先行採取した研究版の全195,840点の内部放射を1.2倍し、同じ系列を上流の間引き器と出力式の観測器へ、基準ゲインと0.875倍のゲインで入力する。通常レンダーでは放射の定数倍を間引き後ゲインに移し、研究版は通常CLIの128・77分割と観測器、固定上流は実際の HumanVoice::render に同じ有効ゲインを設定した観測器で、両方を全97,920フレーム照合する。既存レンダーの放射、波形再生、独立畳み込み、DCの差分式、保持期限に基づく包絡計算を比較する。基準条件のf32 PCMに後から0.875を掛けた場合と、制限前に掛けた場合を比べ、差の最初と最大、制限が作動しない区間とする区間、保持・解放の件数を記録する。ソフトクリップは発動0、制限前と後の差がPCMの丸め許容差を超えるフレームは基準条件の制限区間に収まると予測する。"
+}

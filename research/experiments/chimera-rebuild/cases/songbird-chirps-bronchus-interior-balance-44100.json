@@ -1,0 +1,35 @@
+{
+  "id": "songbird-chirps-bronchus-interior-balance-44100",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline": {
+    "run": "songbird-chirps-right-bronchus-momentum-44100-20261123-repeat",
+    "manifest_sha256": "9523d33eadace3a35575a768deaa266cb3fcc2d48f67b3f09a97778c45dd1548"
+  },
+  "upstream_observation": {
+    "run": "songbird-chirps-bronchus-end-balance-44100-20261123-repeat",
+    "manifest_sha256": "e7e8f83139c7c4c0ca81b810cbfb3a780b570ed62a7352ce740dbdd95f1e5a10"
+  },
+  "sample_rate_hz": 176400,
+  "output_rate_hz": 44100,
+  "observation_internal_samples": 64,
+  "condition_control_samples": {
+    "matched_time": 235,
+    "native_block": 256,
+    "no_tracking": 235
+  },
+  "interior_cell": 1,
+  "expected_right_pressure_offsets": {
+    "matched_time": 23,
+    "native_block": 26,
+    "no_tracking": null
+  },
+  "geometry": {
+    "length_cm": 0.8,
+    "cells": 3,
+    "area_cm2": 0.02
+  },
+  "hypothesis": "右気管支のセル1圧の初差が出る押鍵23点後と26点後は、前回のセル1圧と現在のセル2向き流量が一致する。セル0から1への流入だけを上流値に替えると圧力差が消えると予測する。左右とも同じ流量収支で計算でき、追従0では無励振を保つ。",
+  "observation": "右気管支の最後の枝の持ち越し項まで揃えた先行版を通常render CLIで再描画し、左右の気管支セル1について先頭セル圧、流入、流出、セル圧と幾何を、固定上流のプローブと内部176400 Hzの押鍵後0〜63点で採取する。セル1の圧力収支とセル0から1への枝流量を直前の状態から独立に再計算する。",
+  "acceptance": "追加列を除いたCSVと観測設定を省略したCSVがそれぞれ先行実行に一致する。左右と両版で流入と圧力を全点ビット照合し、末端観測の手前セル圧・流入がセル1の圧力・流出と一致することを確認する。右の事前登録時刻の圧力差を流入の単独置換で復元し、枝流量が先に分かれる場合は、その標本の係数・圧力・持ち越しの単独置換を保存する。"
+}

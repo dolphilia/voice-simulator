@@ -1,0 +1,104 @@
+{
+  "id": "worklet-live-tsp-firefox-onset-load-256-tap-prime",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "base_case": "worklet-live-tsp-firefox-device-tap-draw.json",
+  "initial_control_case": "worklet-live-tsp-firefox-onset-load-224-tap-prime",
+  "initial_control_run": "worklet-live-tsp-firefox-onset-load-224-tap-prime-20261122-a",
+  "capture": {
+    "tap_attach_quanta": 1,
+    "marker_lead_quanta": 8,
+    "marker_ready_quanta": 56,
+    "marker_capture_quanta": 1536,
+    "construction_delay_seconds": 0,
+    "trace_before_playback": true,
+    "publish_trace_target": true,
+    "observe_start_signals": true,
+    "wait_for_trace_before_release": true,
+    "tap_ready_timeout_seconds": 1.2,
+    "tap_duration_seconds": 3.5,
+    "prime_tap_before_playback": true
+  },
+  "measurement": {
+    "condition_order": [
+      [
+        "split-onset-load-256"
+      ],
+      [
+        "split-onset-load-256"
+      ],
+      [
+        "split-onset-load-256"
+      ],
+      [
+        "split-onset-load-256"
+      ],
+      [
+        "split-onset-load-256"
+      ],
+      [
+        "split-onset-load-256"
+      ]
+    ],
+    "onset_load": {
+      "block_frames": 64,
+      "quantum_offsets": {
+        "split-onset-load-256": [
+          0,
+          2,
+          4,
+          16
+        ]
+      },
+      "final_block_frames": {
+        "split-onset-load-256": 256
+      }
+    }
+  },
+  "system_io": {
+    "instruments": [
+      "Audio Client",
+      "Audio Server",
+      "Thread State Trace"
+    ],
+    "time_limit": "1s",
+    "attach_firefox": true,
+    "observe_start_signals": true,
+    "stdout_release_delay_ms": 500,
+    "maximum_trace_origin_error_ms": 2,
+    "maximum_client_interval_error_ms": 0.1,
+    "maximum_client_padding_ms": 1,
+    "maximum_server_host_error_ms": 0.025
+  },
+  "comparison": {
+    "first_speech_offsets": [
+      12,
+      13
+    ],
+    "local_onset_offsets": [
+      10,
+      15
+    ],
+    "maximum_constructor_after_ready_frames": 256,
+    "maximum_release_overshoot_ns": 20000000,
+    "minimum_joint_windows": 3
+  },
+  "hypothesis": "前回のタップ併用で224フレームの最後の片は2.527〜2.676 ms、要求12のcubebは4.560〜4.852 msだった。最後の片だけを256フレームへ増やすと、32フレームの追加で0.36〜0.38 ms増え、少なくとも1試行で要求12のcubeb処理が5.333 msの予算まで0.5 ms以内に入ると予測する。予算内の予定時刻の飛びが出た場合、直前のFirefox要求の先頭に無音を挿入したモデルが合い、飛びの間の機器Writeに対応する区間には先行音があると予測する。飛びは仮定しない。",
+  "acceptance": "確認用07、256フレームの最後の破棄描画、48 kHz・256フレーム要求、先行音56量子、同じWASMとFirefox、500 msゲート、1秒の3収録器、保持窓なしを固定する。プロセスタップを3.5秒起動する。タップ準備、同じPIDをトレースへ渡す時点、開始行、ゲート、発話構築の順を確認する。発話WAVと発声状態は固定基準と照合し、タップPCMは機器時計と端の先行音で照合する。要求10〜15を局所窓に使い、要求12・13と対応する機器Write、スレッド状態、IOProcを確認する。タップ側の2つの候補位置の比較は前の512フレーム窓と残差の閾値を維持する。比較できた事例、飛びを起こした事例、欠測の理由と物理出力の未観測を記録する。",
+  "tap": {
+    "calibration_case": "safari-process-tap-smooth-marker.json",
+    "calibration_run": "safari-process-tap-smooth-marker-20261122-repeat",
+    "sample_rate_hz": 48000,
+    "maximum_anchor_displacement_frames": 1024,
+    "maximum_host_offset_change_frames": 0.5,
+    "maximum_server_to_tap_rounding_frames": 0.5,
+    "quiet_marker_amplitude": 0.00001
+  },
+  "local_pcm": {
+    "flank_frames": 512,
+    "minimum_flank_frames": 128,
+    "maximum_relative_residual": 0.025,
+    "minimum_residual_difference": 0.03
+  },
+  "revision_note": "224フレームの同時収録で成立した無音Context、タップ、収録の開始順を固定する。先行片を64フレームのまま維持し、最後の片だけ256フレームにする。前回の6試行は既存比較として保持する。"
+}

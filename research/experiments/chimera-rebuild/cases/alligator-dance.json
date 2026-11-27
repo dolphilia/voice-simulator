@@ -1,0 +1,47 @@
+{
+  "id": "alligator-dance",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": ["alligator-fixed-voice-v2.json", "alligator-bellow.json", "alligator-growl.json", "alligator-hiss.json"],
+  "hypothesis": "danceでは18 Hzと口0を保持し、粗さはゲート保持中から0→0.75へ上がる。出力0.3〜0.9秒の声門面積には設定音高付近のピークがあり、肺側・声門上の圧力と壁面・口端・鼻端にも低域が伝わる。96 kHzで粗さ0固定の手動対照と比べると、同じ音高・声道・肺圧でも粗さの曲線によって平均周期長倍率が増える。",
+  "alligator_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 441600,
+    "shape": {"pitch_hz": 28.0, "chaos": 0.75, "pressure_cm_h2o": 18.0, "mouth": 0.02, "nostrils": 0.8, "hiss": 0.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "bellow"}},
+               {"frame": 196800, "play_call": {"id": "growl"}},
+               {"frame": 249600, "play_call": {"id": "hiss"}},
+               {"frame": 336000, "play_call": {"id": "dance"}}],
+    "observe_call": true,
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-full-48000", "first_control": 336000, "end": 420032,
+       "curve_frames": [336000, 355200, 374400, 414720, 418240, 420032], "peak_area_hz": [15.0, 21.0]},
+      {"id": "switch-44100", "sample_rate_hz": 44100, "frames": 124000,
+       "first_control": 39040, "end": 116224, "before_switch_edit": 22001, "during_dance_edit": 53001,
+       "curve_frames": [39000, 39001, 39039, 39040, 53001, 53056, 74304, 112256, 116224],
+       "peak_area_hz": [20.0, 28.0],
+       "events": [
+         {"frame": 73, "play_call": {"id": "hiss"}},
+         {"frame": 22001, "params": {"mouth": 0.2, "hiss": 0.12}},
+         {"frame": 39001, "play_call": {"id": "dance", "pitch_hz": 24.0, "amplitude": 0.7}},
+         {"frame": 53001, "params": {"pitch_hz": 31.0, "chaos": 0.65, "pressure_cm_h2o": 22.0,
+                                      "mouth": 0.24, "hiss": 0.0}}
+       ]},
+      {"id": "standalone-96000", "sample_rate_hz": 96000, "frames": 181000,
+       "first_control": 64, "end": 168128, "curve_frames": [64, 38464, 76864, 158464, 164800, 168128],
+       "peak_area_hz": [15.0, 21.0], "shape": {"pitch_hz": 18.0, "chaos": 0.0, "mouth": 0.0},
+       "events": [{"frame": 17, "play_call": {"id": "dance"}}]}
+    ],
+    "dance_keys": {"reference_pitch_hz": 18.0, "pitch_hz": 18.0, "mouth": 0.0,
+                   "chaos_first": 0.0, "chaos_last": 0.75, "hold_seconds": 1.6,
+                   "release_seconds": 1.7, "ownership_tail_seconds": 0.05},
+    "spectral_window": {"seconds": [0.3, 0.9], "search_hz": [10.0, 80.0], "bands_hz": [[12.0, 25.0], [25.0, 80.0]]},
+    "fixed_chaos_control": {"variant": "standalone-96000", "frames": 92160, "chaos": 0.0,
+                             "minimum_cycles_in_window": 8},
+    "stage_observations": "既存の制御・声門・気道・出力の全系列を照合し、48 kHzでは公式全441,600フレームとdance区間105,600フレームを調べる。0.3〜0.9秒の平均除去とHann窓のスペクトルで、声門面積、気管端圧、咽頭入口圧、壁・口端・鼻端の放射流量およびPCMの低域を測る。96 kHzの手動対照では同じゲート時刻、音高と口・鼻の断面が一致することを検査し、粗さの曲線の有無で周期長倍率を比較する。"
+  }
+}

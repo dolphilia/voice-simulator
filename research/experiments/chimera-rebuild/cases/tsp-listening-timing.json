@@ -1,0 +1,27 @@
+{
+  "id": "tsp-listening-timing",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "listening_case": "tsp-listening-responses",
+  "packet_run": "tsp-listening-responses-20261122-final",
+  "fixture_run": "tsp-listening-responses-20261122-fixture",
+  "hypothesis": "試聴に使った区間長は保存済みRMS系列から再現できる。文中の低エネルギー区間の差を引くと、同じ本文の総区間長で見た速さの方向判定と異なる対があり得る。人の回答による一致率は回答取得後に判断する。",
+  "observation": "調整用6対と確認用12対の録音・固定上流・再実装。元の48 kHz・窓20 ms・ホップ5 msのRMS系列。−35 dBの試聴範囲と−45 dBの感度対照で、発話区間、内部の低エネルギー区間の合計、それを除いた区間長をフレームで保存する。",
+  "acceptance": "全108区間の両端を元の保存結果に照合し、−35 dBの録音・候補の標本数を36試聴音源と照合する。既知の窓系列では閾値を変えると3ホップだけ低エネルギー時間が変わり、2ホップの短い区間は対象外になる。元の試験回答のうち既知の7判定と欠回答の区別を再現する。",
+  "thresholds_db": [-35, -45],
+  "minimum_quiet_windows": 3,
+  "direction_tolerance_hops": 2,
+  "control": {
+    "window_frames": 4,
+    "hop_frames": 1,
+    "rms": [1, 1, 1, 0.01, 0.01, 0.01, 1, 0.001, 0.001, 1, 1, 1],
+    "span": [0, 15],
+    "quiet_intervals": {"-35": [[5, 8]], "-45": []}
+  },
+  "expected_fixture_tempo": [
+    ["browser", "01", "disagree"], ["manual", "01", "agree"],
+    ["browser", "02", "listener_same"],
+    ["browser", "07", "disagree"], ["manual", "07", "missing_row"],
+    ["manual", "10", "agree"], ["manual", "11", "unanswered"]
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "worklet-live-song-audioipc-system-calls",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-live-song-shared-context.json",
+  "audioipc_case": "worklet-live-song-audioipc.json",
+  "previous_gated_case": "worklet-live-song-audioipc-system-notified.json",
+  "previous_gated_run": "worklet-live-song-audioipc-20261121-gated-notified",
+  "capture": {
+    "pilot_rounds": 1,
+    "log_modules": ["timestamp", "cubeb:4"],
+    "system_trace": {
+      "instrument": "System Call Trace",
+      "time_limit": "2s",
+      "all_processes": true,
+      "use_darwin_notification": true,
+      "marker_ready_offset_ms": 80,
+      "marker_capture_quanta": 1536
+    }
+  },
+  "criteria": {
+    "input": "Audio System Traceは全プロセス記録の実データが短く、Darwin通知後の区間に届かなかった。System Call Trace単独を使い、全プロセスで通知後もシステムコールの有効範囲が続くと予測する。未準備と192フレーム事前描画の1組を計測する。",
+    "alignment": "先行音1,536量子の記録に戻す。準備192量子後に収録を起動し、通知後80 msに構築を解放する。構築前後17要求が全件実データに収まるか、それぞれの実行で判定する。",
+    "events": "AudioIPCの送受信を照合する閾値は830 msの比較と同じ。音声機器のHALコールバックはこの計測の対象外とし、サーバー実時間スレッドの入口とソケット送信を区別する。"
+  }
+}

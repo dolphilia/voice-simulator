@@ -1,0 +1,46 @@
+{
+  "id": "alligator-bellow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "inherits_measurement": "alligator-fixed-voice-v2.json",
+  "hypothesis": "bellowでは呼気が0.15秒で上昇し、0〜1.6秒で音高が30から24 Hz、粗さが0.55から0.95へ直線で変わる。平滑粗さは声門の周期境界でジッターと写像を通じ、次周期長に作用する。手動の呼気圧・鼻腔は再生中にも変更できる。音高・粗さ・口・hissの手動値は停止で復帰する。",
+  "alligator_voice": {
+    "sample_rate_hz": 48000,
+    "frames": 196800,
+    "shape": {"pitch_hz": 28.0, "chaos": 0.75, "pressure_cm_h2o": 18.0, "mouth": 0.02, "nostrils": 0.8, "hiss": 0.0},
+    "events": [{"frame": 0, "gate": 1.0}, {"frame": 57600, "gate": 0.0},
+               {"frame": 76800, "play_call": {"id": "bellow"}}],
+    "observe_call": true,
+    "level": 1.0
+  },
+  "measurement": {
+    "variants": [
+      {"id": "official-prefix-48000", "first_control": 76800, "end": 175232, "first_curve_check": 81600,
+       "cycle_windows": [[0.3, 0.7], [1.2, 1.6]]},
+      {"id": "manual-stop-44100", "sample_rate_hz": 44100, "frames": 65000, "first_control": 128,
+       "end": 53107, "first_curve_check": 4480, "manual_edit": 9901, "gate_override": 11009,
+       "shape": {"mouth": 0.22, "hiss": 0.35},
+       "events": [{"frame": 73, "play_call": {"id": "bellow", "pitch_hz": 42.0, "amplitude": 0.6}},
+                  {"frame": 9901, "params": {"pitch_hz": 34.0, "chaos": 0.2, "pressure_cm_h2o": 22.0,
+                                            "mouth": 0.35, "nostrils": 0.25, "hiss": 0.4}},
+                  {"frame": 11009, "gate": 0.72}, {"frame": 53107, "stop_call": true},
+                  {"frame": 54000, "gate": 0.0}]},
+      {"id": "pitch-floor-96000", "sample_rate_hz": 96000, "frames": 211200,
+       "first_control": 64, "end": 196928, "first_curve_check": 9664,
+       "events": [{"frame": 17, "play_call": {"id": "bellow", "pitch_hz": 10.0, "amplitude": 0.8}}]}
+    ],
+    "keys": {"reference_pitch_hz": 28.0, "pitch_first_hz": 30.0, "pitch_last_hz": 24.0,
+             "chaos_first": 0.55, "chaos_last": 0.95, "gate_rise_seconds": 0.15,
+             "hold_seconds": 1.6, "release_seconds": 2.0, "ownership_tail_seconds": 0.05,
+             "mouth": 0.02, "hiss": 0.0},
+    "smoothing_seconds": {"pitch_hz": 0.05, "chaos": 0.05, "pressure_cm_h2o": 0.03,
+                          "mouth": 0.05, "nostrils": 0.05, "hiss": 0.04},
+    "pitch_hz_limits": [12.0, 120.0],
+    "cycle_model": {"initial_state": 0.37, "rate_base": 2.9, "rate_per_chaos": 1.1, "period_per_chaos": 0.45,
+                    "jitter_base": 0.01, "jitter_per_chaos": 0.05, "phase_wrap_threshold": -0.5,
+                    "period_scale_limits": [0.55, 1.8], "period_scale_absolute_tolerance": 1e-9},
+    "control_absolute_tolerance": 1e-9,
+    "clock_absolute_tolerance_seconds": 1e-10,
+    "stage_observations": "全出力フレームの目標・平滑値・制御時刻と動作中のコール。各内部サンプルの口先・軟口蓋ポート・乱流源の登録と声門・放射。位相の折り返しを全周期で調べ、折り返し直後の瞬時F0と位相増分から周期長倍率を逆算する。48 kHzは公式先頭196,800フレームとbellow区間120,000フレームを照合する。"
+  }
+}

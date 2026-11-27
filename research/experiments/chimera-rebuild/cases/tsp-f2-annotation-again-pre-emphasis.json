@@ -1,0 +1,46 @@
+{
+  "id": "tsp-f2-annotation-again-pre-emphasis",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "center_reference": {
+    "run": "tsp-f2-annotation-w06-pre-emphasis-20261123-repeat",
+    "case": "tsp-f2-annotation-w06-pre-emphasis",
+    "manifest_sha256": "b7b4f3b88d104c49ec80d54337b53f64542b6240fa8c227794c20bbe08250157"
+  },
+  "annotation": {
+    "run": "tsp-f2-annotation-20261122-repeat",
+    "case": "tsp-f2-annotation",
+    "manifest_sha256": "c13f511eb39f56c90fa7174a8a8dd9b2949602b8163663021730a4d865af1f55",
+    "packet_id": "682ca00eb3af5edd630c47bcec7d71f98a9cafb68307e350822065dcec255af6"
+  },
+  "endpoints": {
+    "run": "tsp-lpc-pre-emphasis-recordings-20261122-repeat",
+    "case": "tsp-lpc-pre-emphasis-recordings",
+    "manifest_sha256": "128047223387416a2e75153d15b8371744da6d42d14d569b84f82cbc1169d8eb"
+  },
+  "baseline": {
+    "run": "tsp-stressed-vowel-formants-held-out-20261122-repeat",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "a6e68f6cc12a6a2637f93eaa215a85a825f22cf72f7b4f5197f56a2663978b26"
+  },
+  "measurement": {
+    "utterance": "FK61_01",
+    "word": "again",
+    "center_trial": "W06",
+    "target_trials": ["W07", "W02"],
+    "sample_rate_hz": 12000,
+    "frame_length": 300,
+    "order": 12,
+    "coefficient_steps": [0, 970],
+    "coefficient_divisor": 1000,
+    "low_f2_band_hz": [550, 1000],
+    "high_f2_band_hz": [1850, 2250]
+  },
+  "hypotheses": {
+    "w07_stays_high": "35%窓W07では全点で約2.1 kHzを選ぶ。",
+    "w02_switches_low_to_high": "65%窓W02では低域から約2 kHzへ切り替わる。",
+    "w02_low_pole_excluded_from_public_at_switch": "W02の低域が外れる最初の理由は従来のF2の公開上限600 Hzである。",
+    "token_f2_median_switches_once": "保存済みW06を含む3窓のF2中央値は、低域から高域へ一度切り替わる。"
+  },
+  "acceptance": "資料ID・注釈窓と元の48 kHz PCM16を照合する。W07とW02は所定時刻の12 kHzの各300標本を採り、同じ再構成から切り出したW06を保存済みの配列と照合する。新規971係数×2窓で固定Rustと独立Pythonの前処理・自己相関・係数・残差・根・公開極・採択を先行の許容差で照合する。係数0と既定0.97を先行の端点出力と照合する。各窓の切り替わり前後の生根とF1・F2の適格性、欠測、保存済みW06を含む3窓のF2中央値を記録する。"
+}

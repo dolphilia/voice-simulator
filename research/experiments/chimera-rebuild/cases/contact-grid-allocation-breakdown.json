@@ -1,0 +1,19 @@
+{
+  "id": "contact-grid-allocation-breakdown",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "allocation_case": "song-render-allocation-phases.json",
+  "allocation_reference_run": "tract-resample-buffer-reuse-20261122-b",
+  "allocation_reference_case_id": "tract-resample-buffer-reuse",
+  "geometry_reference_run": "tract-resample-buffer-reuse-20261122-b",
+  "geometry_reference_case_id": "tract-resample-buffer-reuse",
+  "browser_reference_run": "worklet-live-song-resample-buffer-reuse-20261122",
+  "geometry_cases": ["tract-slew-vowels", "tract-slew-lips", "tract-slew-contact", "tract-slew-contact-off"],
+  "removed_allocation_phase": null,
+  "allocations_per_geometry_update": 4,
+  "expected_removed_allocations": 0,
+  "expected_allocations": 5905,
+  "contact_grid_allocations_per_call": {"roof_cumulative": 1, "measurement_grid": 1, "contact_samples": 1},
+  "prediction": "接触グリッド1回の3件は口蓋沿い累積距離、測定線、接触付き標本の生成に1件ずつ生じる。内訳の和はすべての量子で接触グリッドの計数に一致する。",
+  "criteria": "処理境界を追加して通常CLIの4ケース、歌唱PCM全91200標本、ABI全1425点を変更前と照合する。既存の処理境界の件数・呼び出し回数と全713量子の総件数に一致を要求する。接触グリッドの3段階の呼び出し回数と件数の和を全量子で照合する。"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "worklet-song-prepared-source",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "reference": {"case": "song-voice-schedule-default-source.json", "run": "song-voice-schedule-default-source-20261122-repeat"},
+  "song_voice": {
+    "score": {"id": "fast", "lyrics": "Pop Dee", "bpm": 240, "start_seconds": 0.38,
+      "notes": [{"midi": 60, "beats": 0.25}, {"midi": 64, "beats": 0.25}]},
+    "posture": {
+      "jaw_cm": 0.6, "tongue_body_cm": [2.9, 6.85], "tongue_tip_cm": [6.241412821929657, 6.810460479056529],
+      "tongue_root_cm": 0, "tip_curl": 0, "dorsum": 0, "lip_aperture_cm": 0.7, "lip_protrusion_cm": 0.2,
+      "lip_spread": 0.5, "labiodental": 0, "velum_cm2": -0.15, "larynx_cm": 0
+    },
+    "voice": {
+      "pressure_cm_h2o": 7.2, "gate": 0, "breathiness": 0.15, "tension": 0.5,
+      "output_sample_rate_hz": 48000, "output_gain": 5.5e-7, "base_pitch_hz": 110,
+      "pitch_drift_cents": 5, "period_jitter": 0.00455, "amplitude_shimmer": 0.042
+    },
+    "internal_sample_rate_hz": 96000, "warm_up_frames": 16384, "render_end_seconds": 0.65,
+    "body": {"female": 0, "child": 0}, "vibrato_cents": 35, "turbulence": {"scale": 1}
+  },
+  "measurement": {
+    "warm_up_frames": [16384, 16512], "noise_scales": [0, 1],
+    "paths": ["offline", "realtime"], "quantum_frames": 128,
+    "lead_frames": 1440, "comparison_samples": 29760,
+    "pcm_threshold": 0.000001,
+    "expected_between_schedules_first": {"0": 20903, "1": 14330},
+    "state_tolerance": {
+      "gate": 1e-9, "glottal_area_cm2": 1e-9, "glottal_flow_cm3_s": 1e-9, "glottal_phase": 1e-9,
+      "glottal_voicing": 1e-9, "glottal_f0_hz": 1e-9, "radiation_derivative_cm3_s2": 1e-6,
+      "lip_aperture_cm": 1e-9, "lip_minimum_cm2": 1e-9, "smoothed_f0_hz": 1e-9, "abduction_cm2": 1e-9
+    }
+  },
+  "hypothesis": "予約前にドリフト・ジッター・シマーを有効にした音源を進めると、研究版Workletの保存開始後の声門位相と加工前PCMが、同じ予備描画量を使うCLIと閾値内で一致する。通常乱流と乱流注入量0で予約フレームの差がPCMに現れる位置はCLIと同じになる。ビット一致の可否も記録する。",
+  "criteria": "歌唱画面の既存のオフライン・実時間入口から、予備描画2位置と乱流係数2設定の4組を描画する。各組で予備描画を含まない31,200点のPCM、シード付き音源・音素計画・全観測行の座標、保存したCLI再実行ケースを照合する。先行区間1,440点を含めて状態とPCMを比較し、予約フレームの対照は譜面の時刻0から採る。固定上流のネイティブ基準とのPCM差も記録する。"
+}

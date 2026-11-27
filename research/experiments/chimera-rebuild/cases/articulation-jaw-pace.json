@@ -1,0 +1,98 @@
+{
+  "id": "articulation-jaw-pace",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "body": "male",
+  "hypothesis": "顎の目標を0.6から1.6 cmへ切り替え、戻すときだけ速度倍率を2にすると、95%到達時間は約77 msから40 msへ短くなる。",
+  "posture": {
+    "jaw_cm": 0.6,
+    "tongue_body_cm": [
+      2.9,
+      6.85
+    ],
+    "tongue_tip_cm": [
+      6.45,
+      7.3
+    ],
+    "tongue_root_cm": 0.0,
+    "tip_curl": 0.0,
+    "dorsum": 0.0,
+    "lip_aperture_cm": 0.7,
+    "lip_protrusion_cm": 0.2,
+    "lip_spread": 0.5,
+    "labiodental": 0.0,
+    "velum_cm2": -0.15,
+    "larynx_cm": 0.0
+  },
+  "articulators": {
+    "sample_rate_hz": 96000,
+    "control_block_samples": 128,
+    "base_weight": 1.0,
+    "tip_free": false,
+    "events": [
+      {
+        "frame": 8,
+        "targets": {
+          "jaw_cm": 1.6
+        }
+      },
+      {
+        "frame": 144,
+        "targets": {
+          "jaw_cm": 0.6
+        },
+        "speeds": {
+          "jaw_cm": 2.0
+        }
+      }
+    ]
+  },
+  "measurement": {
+    "frames": 240,
+    "articulators": {
+      "position_error_lt": 2e-12,
+      "velocity_error_lt": 2e-10,
+      "time_error_lt_seconds": 1e-13,
+      "checkpoints": [
+        {
+          "frame": 144,
+          "articulator": "jaw_cm",
+          "column": "applied_speed",
+          "interval": [
+            2,
+            2
+          ]
+        }
+      ],
+      "settling": [
+        {
+          "articulator": "jaw_cm",
+          "start_frame": 8,
+          "end_frame": 144,
+          "fraction": 0.95,
+          "time_interval_seconds": [
+            0.076,
+            0.079
+          ],
+          "peak_velocity_interval": [
+            23.4,
+            23.6
+          ]
+        },
+        {
+          "articulator": "jaw_cm",
+          "start_frame": 144,
+          "end_frame": 240,
+          "fraction": 0.95,
+          "time_interval_seconds": [
+            0.039,
+            0.041
+          ],
+          "peak_velocity_interval": [
+            47.8,
+            48.0
+          ]
+        }
+      ]
+    }
+  }
+}

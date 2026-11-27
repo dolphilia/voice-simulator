@@ -1,0 +1,38 @@
+{
+  "id": "fixed-alpha-mean-flow",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "固定 /ɑ/ の声門上に定常流を入れると、口端までの枝の二次損失が微小流量に対する抵抗を増やす。660 Hz・770 Hzの複素応答は零流量から変化する。差を声門上の流量だけで生じる成分として測り、有声時の観測比との差が残るか確認する。",
+  "references": {
+    "impulse": {
+      "run": "fixed-alpha-discrete-impulse-20261124-repeat",
+      "case": "fixed-alpha-discrete-impulse",
+      "sha256": "4e8bb68bc0ddc86d37ac1adba909b9aee36692d5b5e3cbe4cf456f4c398f2407"
+    },
+    "voice": {
+      "run": "fixed-lf-radiation-harmonic-budget-20261124-repeat",
+      "case": "fixed-lf-radiation-harmonic-budget",
+      "sha256": "74bfec7e117a90f012e886530e6dd7fdbae6b43c8c6f315706ee8967d7ea2eaa"
+    }
+  },
+  "measurement": {
+    "internal_rate_hz": 96000,
+    "voice_mean_window": [38400, 57600],
+    "mean_flow_cm3_s": {"zero": 0, "voiced_mean": 139.8857905134376},
+    "perturbation_sample": 76800,
+    "steady_sample_count": 960,
+    "perturbation_volume_cm3": 1e-6,
+    "response_sample_count": 57600,
+    "tail_start_offset": 48000,
+    "frequencies_hz": [660, 770],
+    "steady_flow_and_pressure_relative_error_lt": 1e-8,
+    "upstream_series_peak_relative_error_lt": 1e-8,
+    "dft_relative_error_lt": 1e-8,
+    "tail_complex_relative_error_lt": 1e-7,
+    "model_complex_relative_error_lt": 1e-6,
+    "observable_bias_effect_complex_relative_gt": 1e-6,
+    "initial_pressure_relative_error_lt": 1e-7
+  },
+  "input": "前回と同じ固定 /ɑ/ に、咽頭入口で一定流量0または保存した通常発声の22周期の平均声門流量を与える。声門枝と軟口蓋は閉じる。内部標本76,800の1点に、両条件で同じ体積インパルスを重ね、各条件の定常流だけを与えた実行を引く。",
+  "observation": "両版・両条件の摂動前960標本で定常流と入口圧を検算する。差波形の先頭57,600点のFFTと直接DFTを照合する。口端までの枝にKを用い、定常の圧力降下をΣ(RQ+KQ²)、微小応答をR+2KQで計算する。口端と壁の流量、咽頭入口と口端の圧力を照合し、口端の複素比の変化と保存済みの有声観測との差を記録する。"
+}

@@ -1,0 +1,103 @@
+{
+  "id": "tsp-fk61-control4992-5120-expanded-volume-paired",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "matched": {
+    "run": "tsp-held-out-matched-speech-20261123-repeat",
+    "case": "tsp-held-out-matched-speech",
+    "manifest_sha256": "23350f117b01c7a9429478628abfae3c33accc00c08719a1b34f1eb5c0010e51"
+  },
+  "coefficients": {
+    "run": "tsp-fk61-pcm-first-difference-20261123-repeat",
+    "case": "tsp-fk61-pcm-first-difference",
+    "manifest_sha256": "681cf6df3882f95be798993070d3868fc3690ff61a7842973f2fd653a2ca2c6e"
+  },
+  "indexed_upstream": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-paired-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area-paired",
+    "manifest_sha256": "a7f055d404945af079ebd4d23e1abd52072667ed8063313a17adcd349e8db564"
+  },
+  "indexed_research": {
+    "run": "tsp-fk61-control4992-5120-indexed-area-20261123-repeat",
+    "case": "tsp-fk61-control4992-5120-indexed-area",
+    "manifest_sha256": "34404c8be2eea133f3004f1a2633f3d9fc47605eef84cdd432bfe01cf5f974f9"
+  },
+  "measurement": {
+    "recording_id": "FK61_01",
+    "frames": 116132,
+    "sample_rate_hz": 48000,
+    "internal_sample_rate_hz": 96000,
+    "prefix_frames": 3072,
+    "initial_f0_hz": 110,
+    "block_frames": 128,
+    "comparison_internal_samples": [
+      4990,
+      5876
+    ],
+    "nodes": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "pressure_nodes": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "control_internal_samples": 128,
+    "focus_frame": 2937,
+    "late_incoming_nodes": [
+      28
+    ],
+    "control_boundaries": [
+      4992,
+      5120,
+      5248,
+      5376,
+      5504,
+      5632,
+      5760
+    ],
+    "area_focus_blocks": [
+      4992,
+      5120
+    ],
+    "area_focus_nodes": [
+      29,
+      34
+    ],
+    "scope": "FK61_01を内部96 kHz、出力48 kHzで描画する。固定上流と研究版とも直接補間を使い、節点29・34の4992〜5119、5120〜5247の体積速度にだけ展開式を適用する。各版の通常式／展開式の差、両版の2×2比較、局所4990〜5875、放射と出力段は冒頭3072フレーム、口端とPCMは全発話を測る。"
+  },
+  "hypotheses": {
+    "expanded_reduces_rms_error_of_each_volume_source_by_at_least_100": "各版の体積源を、その版の面積と長さを有理数で計算した体積速度に照合する。対象512標本の展開式のRMS誤差は両版とも通常式の100分の1以下になる。",
+    "paired_expanded_reduces_arithmetic_residual_rms_by_at_least_100": "両版の体積速度の差から、丸めずに求めた幾何由来の差を引いた残差のRMSは、両版が展開式のときに両版が通常式のときの100分の1以下になる。",
+    "paired_expanded_pcm_first_remains_2937": "対象区間以前の口端初差と、上流のPCMフレーム2937に入るまでに残った他の要因により、両版が展開式でもPCM初差は2937に残る。"
+  },
+  "acceptance": "各版の通常CLIと観測版の全PCMが一致し、全系列が有限かつ全116132フレームを持つ。前回の直接補間の対照をマニフェストで固定する。面積・最小面積・長さ・前後の体積と補間の採取は各版の対照と一致し、対象外の平滑前の流量は一致する。対象512標本で平滑前の流量を各版の展開式とビット照合する。局所の二段平滑・枝・壁・節点圧・口端と冒頭の放射・FIR・DC除去を独立に再計算できる。対象前の口端・放射・PCMは各版の対照に一致する。仮説の真偽と各段の初差・RMS・最大値・PCM差分フレーム数を保存する。"
+}

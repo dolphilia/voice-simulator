@@ -1,0 +1,20 @@
+{
+  "id": "worklet-safari-song-split-score-preparation",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "shared_context_case": "worklet-safari-song-prepared-shared-context.json",
+  "reference": {
+    "run": "worklet-safari-song-prepared-shared-context-20261122-repeat",
+    "trial": "pair-1-warm-16384"
+  },
+  "warm_up_frames": 16384,
+  "split_block_frames": 128,
+  "marker_capture_quanta": 640,
+  "condition_order": [["bulk", "split"], ["split", "bulk"], ["bulk", "split"], ["split", "bulk"]],
+  "minimum_median_gap_reduction_ms": 70,
+  "minimum_median_startup_increase_ms": 150,
+  "criteria": {
+    "settings": "通常のSafari歌唱画面、Pop Dee、48 kHz、乱流係数1、出力31,200サンプル、観測刻み64を固定する。予備描画16,384フレームをWorklet構築で一括描画する条件と、本番の発声ハンドルで128フレームずつ128量子に分割する条件を比べる。初回の分割はWorkletの最初の出力量子から始め、最終片を処理した量子まで無音にする。その後、既存の連続量子確認とリード時間を経て歌唱を開始する。",
+    "identity": "先行信号81,920サンプルを独立計算と、歌唱31,200サンプルと488観測点および調音計画を保存済みの一括条件と照合する。先行信号と歌唱中のContextフレームの連続、分割の128回・連続する量子、最終片から開始予定までの順序を確認する。",
+    "timing": "構築開始から予備描画完了までに重なる先行信号の隣接コールバック間隔の最大値を条件ごとに採る。分割による短縮のペア中央値を70 ms以上と予測する。128量子を進める名目時間は約341 msのため、クリックから歌唱最初の出力までの時間はペア中央値で150 ms以上延びると予測する。条件順を反転して別の作業ディレクトリから再度4ペア測る。"
+  }
+}

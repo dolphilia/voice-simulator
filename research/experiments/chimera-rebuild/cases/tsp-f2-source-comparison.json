@@ -1,0 +1,28 @@
+{
+  "id": "tsp-f2-source-comparison",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "diagnostic": {
+    "run": "tsp-f2-candidates-20261123-on",
+    "case": "tsp-stressed-vowel-formants-held-out",
+    "manifest_sha256": "7eea69934b5925a1bf9e051689a41a836ddf95c85f79b68120b1cb6953f8fb03"
+  },
+  "order_reference": {
+    "run": "tsp-lpc-order-recordings-20261122-repeat",
+    "case": "tsp-lpc-order-recordings",
+    "manifest_sha256": "0c4d9a97bb30045ba0f51a33d301e84cd0f9a0ff452847526368e4dc7e43bb27"
+  },
+  "target": {"utterance": "MK61_01", "word": "seems", "ipa": "i", "indexes": {"recording": 13, "upstream": 13, "candidate": 13}},
+  "centers": [0.1, 0.35, 0.5, 0.65, 0.9],
+  "low_band_hz": [850, 1150],
+  "shared_high_band_hz": [2050, 2500],
+  "high_band_delta_limit_hz": 150,
+  "large_selected_difference_hz": 800,
+  "decomposition_tolerance_hz": 1e-8,
+  "hypotheses": {
+    "large_reference_center_differences_follow_candidate_order": "35・50・65%の3窓すべてで、両合成のF2は録音より800 Hz以上高いが、高域の最初の適格な極同士の差は150 Hz以内に収まる。",
+    "low_candidate_difference_is_before_f1_gap": "35・50・65%の窓で、録音の低域極は適格であり、両合成では低域極が生根または公開極の段階で見つからない。合成波形側のF1を録音のF1に固定しても採択は低域へ移らない。",
+    "at_least_one_synth_window_has_no_low_raw_pole": "基準3窓の両合成のうち少なくとも1窓で、850〜1150 Hzの帯域の生根が得られない。"
+  },
+  "acceptance": "前回の候補レポートから共通の強勢付き母音1つを登録し、3音源で12 kHz・300標本・次数14、各音素の相対5時刻の計15窓を固定上流と独立計算で再分析する。音素位置と3波形のハッシュを保存済みの実行と照合し、公開極、周波数・帯域幅・採択・中央値を先行の許容差で照合する。ナイキスト実軸に近い根は、先行の上流・独立照合と同じ許容差で対応付ける。低域と高域の生根、公開極、適格性、選択順位を保存する。各窓で合成と録音の採択差を、高域の適格極同士の差と各音源の高域極から採択極までの差に分ける。音源ごとのF1を録音F1に固定した再選択を別に記録する。合成音と録音は同じ音素の相対時刻で照合する。高域の候補対応は登録帯域で定義し、実録音の正解F2や知覚差は判定しない。"
+}

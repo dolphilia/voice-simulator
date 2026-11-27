@@ -1,0 +1,231 @@
+{
+  "id": "vowel-gesture-score",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "hypothesis": "隣り合う母音の目標は子音区間でも重なり、目標ごとの有効度と強さで位置が決まる。速度の保持窓は活性化区間の終端より長い。",
+  "speech_timing": {
+    "observe_score": {
+      "sample_rate_hz": 96000,
+      "control_block_samples": 120,
+      "frames": 1000,
+      "base_weight": 0.05,
+      "tip_free": true,
+      "posture": {
+        "jaw_cm": 0.6,
+        "tongue_body_cm": [
+          2.9,
+          6.85
+        ],
+        "tongue_tip_cm": [
+          6.45,
+          7.3
+        ],
+        "tongue_root_cm": 0.0,
+        "tip_curl": 0.0,
+        "dorsum": 0.0,
+        "lip_aperture_cm": 0.7,
+        "lip_protrusion_cm": 0.2,
+        "lip_spread": 0.5,
+        "labiodental": 0.0,
+        "velum_cm2": -0.15,
+        "larynx_cm": 0.0
+      },
+      "keys": [
+        "jaw_cm",
+        "tongue_body_x_cm",
+        "tongue_body_y_cm",
+        "tongue_tip_x_cm",
+        "tongue_tip_y_cm",
+        "tip_curl",
+        "lip_aperture_cm",
+        "velum_cm2",
+        "f0_hz",
+        "breath"
+      ]
+    },
+    "inputs": [
+      {
+        "id": "vcv",
+        "text": "ɑpɑ",
+        "expected": {
+          "labels": [
+            "ɑ",
+            "ɑ"
+          ],
+          "first_release": 0.0419,
+          "second_attack": 0.0698125,
+          "overlap_seconds": 0.0319625
+        }
+      },
+      {
+        "id": "transition",
+        "text": "ipɑ / ɑpɝ",
+        "expected": {
+          "labels": [
+            "i",
+            "ɑ",
+            "ɑ",
+            "ɝ"
+          ],
+          "tongue_x": [
+            3.683,
+            2.022,
+            2.022,
+            2.727
+          ]
+        }
+      },
+      {
+        "id": "diphthong",
+        "text": "ˈaɪ",
+        "expected": {
+          "labels": [
+            "a",
+            "ɪ"
+          ],
+          "first_release": 0.04,
+          "second_attack": 0.04
+        }
+      },
+      {
+        "id": "glide",
+        "segments": [
+          {
+            "ipa": "ɑ",
+            "dur": 0.12
+          },
+          {
+            "ipa": "i",
+            "dur": 0.08,
+            "glide": 0.08
+          },
+          {
+            "ipa": "t",
+            "dur": 0.08
+          },
+          {
+            "ipa": "ɿ",
+            "dur": 0.06,
+            "glide": 0.08
+          }
+        ],
+        "rate": 1.6,
+        "expected": {
+          "labels": [
+            "ɑ",
+            "i",
+            "ɿ"
+          ],
+          "first_release": 0.03125,
+          "second_attack": 0.05,
+          "third_attack": 0.0296875,
+          "first_attack": 0.04375
+        }
+      },
+      {
+        "id": "slow-glide",
+        "segments": [
+          {
+            "ipa": "ɑ",
+            "dur": 0.12
+          },
+          {
+            "ipa": "i",
+            "dur": 0.08,
+            "glide": 0.08
+          },
+          {
+            "ipa": "t",
+            "dur": 0.08
+          },
+          {
+            "ipa": "ɿ",
+            "dur": 0.06,
+            "glide": 0.08
+          }
+        ],
+        "rate": 0.8,
+        "expected": {
+          "labels": [
+            "ɑ",
+            "i",
+            "ɿ"
+          ],
+          "first_release": 0.1,
+          "second_attack": 0.08,
+          "third_attack": 0.085,
+          "first_attack": 0.07
+        }
+      },
+      {
+        "id": "unknown",
+        "text": "ɑʏːɑ",
+        "expected": {
+          "labels": [
+            "ɑ",
+            "ɑ"
+          ],
+          "first_release": 0.112,
+          "second_attack": 0.20125
+        }
+      },
+      {
+        "id": "synthetic",
+        "text": "",
+        "additional_gestures": [
+          {
+            "label": "A",
+            "t0": 0.125,
+            "t1": 0.25,
+            "rampIn": 0.0625,
+            "rampOut": 0.0625,
+            "strength": 1.0,
+            "speed": 2.0,
+            "releaseHold": 0.0625,
+            "targets": {
+              "jaw_cm": 0.5,
+              "velum_cm2": 0.95,
+              "f0_hz": 120
+            }
+          },
+          {
+            "label": "B",
+            "t0": 0.1875,
+            "t1": 0.3125,
+            "rampIn": 0.0625,
+            "rampOut": 0.0625,
+            "strength": 3.0,
+            "speed": 1.5,
+            "targets": {
+              "jaw_cm": 1.0,
+              "breath": 1
+            }
+          }
+        ],
+        "expected": {
+          "labels": [
+            "A",
+            "B"
+          ],
+          "overlap_frame": 125,
+          "weighted_jaw": 0.8,
+          "weight": 2.5,
+          "hold_finish_frame": 300,
+          "hold_speed": 2.0,
+          "after_hold_speed": 1.0
+        }
+      },
+      {
+        "id": "empty",
+        "text": " / / ",
+        "expected": {
+          "labels": []
+        }
+      }
+    ]
+  },
+  "measurement": {
+    "gesture_absolute_tolerance": 1e-12,
+    "state_absolute_tolerance": 1e-10,
+    "vowel_catalog_count": 26
+  }
+}

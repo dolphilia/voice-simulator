@@ -1,0 +1,61 @@
+{
+  "id": "fixed-vowel-i-pressure-replay",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "pressure_replay_reference": {
+    "run": "fixed-vowel-i-low-pressure-smoothing-20261124-repeat",
+    "case": "fixed-vowel-i-low-pressure-smoothing",
+    "sha256": "6be228966d9e23b15171a13a91597a41aa5749dd4605026e1470056c89899ade"
+  },
+  "standard_reference": {
+    "run": "fixed-vowel-i-coupled-smoothing-20261124-repeat",
+    "case": "fixed-vowel-i-coupled-smoothing",
+    "sha256": "06f7924a8285ddf3851c645edc4bbb2b5b8a94130937be1fd43372d6ae1331b9"
+  },
+  "voice_reference": {
+    "run": "vowel-voice-i-20261119-j",
+    "case": "vowel-voice-i",
+    "sha256": "06a42253b072351ff3636dda70fd2ab224ac2c35cd81dc347ab247c663b38265"
+  },
+  "geometry_reference": {
+    "run": "fixed-vowel-i-lf-branch-loss-20261124-repeat",
+    "case": "fixed-vowel-i-lf-branch-loss",
+    "sha256": "32da546f8b26a0ffb23104e0c834aaa9142e15bb64a697c055f8bc09cf940315"
+  },
+  "smoothing_reference": {
+    "run": "fixed-vowel-i-lf-smoothed-branches-20261124-repeat",
+    "case": "fixed-vowel-i-lf-smoothed-branches",
+    "sha256": "865ecfbf317197fadd911e5e6792eaa9e7579244d5a4b7ea393388b131437b92"
+  },
+  "hypothesis": "平滑化した気道で声門モデルへの入力圧力差を無変更の値に置換すると、フィルタ後の圧力差、有声度、面積は無変更と全標本で一致する。気道が解く圧力差・声門流量・放射は無変更から変わる。通常の平滑化と置換した平滑化の最初の気道差は、保存観測で面積差が出る標本38,423以降になる。その結果として、声門面積の経路を除いたPCMにも平滑化の最初の差が残り、その後の一部のフレームで通常の平滑化との差を生じると予想する。",
+  "measurement": {
+    "activation_sample": 38400,
+    "steady_window_samples": [38400, 65536],
+    "sample_count": 65536,
+    "internal_rate_hz": 96000,
+    "output_rate_hz": 48000,
+    "host_block_frames": 128,
+    "smoothing_width_cm3_s": 60,
+    "edges": [[34, 35], [35, 36]],
+    "component_peak_relative_error_lt": 1e-8,
+    "branch_pressure_law_peak_relative_error_lt": 1e-9,
+    "negative_work_relative_tolerance": 1e-9,
+    "pcm_absolute_error_lt": 5e-7,
+    "pcm_delta_relative_error_lt": 0.01
+  },
+  "pressure_gate": {
+    "lung_pressure_cm_h2o": 3.6,
+    "pressure_bounds_dyn_cm2": [1961.33, 3922.66],
+    "pressure_smoothing_hz": 30,
+    "voicing_smoothing_hz": 25,
+    "static_opening_cm2": 0.01475,
+    "static_opening_time_s": 0.004,
+    "pressure_max_error_lt_dyn_cm2": 1e-8,
+    "voicing_max_error_lt": 1e-12,
+    "area_change_max_error_lt_cm2": 1e-12,
+    "hypothesis_minimum_transition_fraction": 0.95
+  },
+  "input": "3.6 cmH₂O、固定 /i/、110 Hzで、無変更、口腔2枝34→35・35→36を幅60 cm³/sで平滑化、同じ平滑化で声門モデルへの圧力差だけを置換、の3条件を両版で描画する。置換列は各版の無変更観測の声門下圧から咽頭入口圧を引き、1標本遅らせたf64。置換は標本38,400から65,535までとし、実際の節点圧と声門枝の流量は気道で更新する。",
+  "observation": "声門の実圧力差と実際のモデル入力を別々に保存し、無変更系列との差、面積、流量、放射微分、32,768 PCMフレームの変化を追う。Bを無変更、Sを通常の平滑化、Rを圧力差だけ置換した平滑化として、切替後のPCMのC=S−B、D=R−B、M=S−Rを比較する。各経路のRMS比、Cの方向への符号付き射影、交差項を測り、加算の関係C=D+Mを照合する。",
+  "acceptance": "無変更と通常の平滑化を保存した各版のPCM・観測とビット照合する。圧力入力列が登録した無変更系列とビット一致し、置換時のフィルタ後の圧力差・有声度・面積も無変更とビット一致する。気道成分とPCMの両版照合、枝の圧力収支、放射から独立再計算したPCMを従来の許容差で判定する。声門面積を介するPCM差の両版間誤差はそのピークの1%または出力ピーク近傍のf32の2 ULPの大きい方以内。変化の時刻と非零の効果の仮説は計測手順の合否と分ける。"
+}
