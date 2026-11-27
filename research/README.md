@@ -125,6 +125,20 @@ jupyter notebook
 
 移動一覧・処理段階・SHA-256と最終照合結果は `storage-migrations/2026-10-08-v1/` に保存します。包括サイクルの位置台帳も更新しますが、研究の回数・既存論理容量・科学的結果は引き継ぎます。今後の独立性試験は、外部専用領域全体も参照データの読取禁止対象に含めます。
 
+### CHIMERAの外部保存と作業領域
+
+- **CT2000X8の保存領域**。完了した実験で日常的には使わない波形、動画、計測CSVを `/Volumes/CT2000X8/voice-simulator/archive/` に置きます。従来の実験パスから参照できるよう、元の位置にはファイル単位のシンボリックリンクを置きます。移動前後のSHA-256、移動先、照合の結果は台帳で確認できます。[移動台帳](storage-migrations/2026-11-20-chimera-v1/)
+- **RTL9210B-CGの作業領域**。候補と固定上流のRustの `target/debug` を `/Volumes/RTL9210B-CG/voice-simulator/build/` に置き、通常のCargoコマンドで利用します。計測CLIから `/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/` に大容量成果を直接書き出せます。[出力先と容量の指定](experiments/chimera-rebuild/README.md#大容量計測とcsvの保存)
+- **内蔵の作業ツリー**。ソース、計画、ケース、実行の `manifest.json` と `summary.json`、進捗、開発画面が参照するリリース版WASMを置きます。現在のデュエットの検証用データもこの配置です。
+
+新しい大容量計測を実行する前に、作業用ディスクのマウント先と空き容量を確認します。実行後は、再現に使う入出力とSHA-256を記録してから、参照頻度の低い素材を保存用ディスクに移します。移動済みCSVとデバッグ生成物は、それぞれのディスクを接続すると元のパスで読めます。
+
+既存の計測CSVの重複統合と、追加のCT2000X8への移動は[照合記録](storage-migrations/2026-11-20-chimera-runs-v2/verification.json)に記録しています。
+
+11月27日の整理では、確定済みの成果を同一ボリューム内で共有し、依存関係を確認した旧CSVをCT2000X8へ移しました。APFSの透過圧縮を適用したCSVも既存のパスから通常どおり読めます。[移行と再読込の照合記録](storage-migrations/2026-11-27-chimera-runs-v3/verification.json)
+
+新規の共通計測では、ソースの写しを `runs/.source-objects/` にSHA-256ごとに保管し、各実行の `artifacts/source/` から読み取り専用のハードリンクで参照します。整列結果の確認が済んだTSPの通常境界計測では、MFAの展開モデルと中間特徴量を作業領域から解放します。失敗した計測の一時領域は調査用に残します。
+
 ## Gitで管理する研究成果
 
 コード・文書・実験契約・入力分割・集計結果・共有モデル係数・manifest・封印hash・回答はGitの追跡候補に残します。`control/state.json` と `control/jobs.jsonl` の予算・操作記録も保持します。
