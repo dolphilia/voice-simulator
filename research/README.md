@@ -103,16 +103,19 @@ experiments/<experiment-name>/
 
 ## 既存の Python 環境
 
+クリーンなmacOSでは、[セットアップ手順](../docs/setup/macos.md)に沿って `research/.venv` を用意してください。この節のコマンドは `research/` から実行します。
+
 既存の Python 実験を実行する場合は、必要に応じて次を使用します。
 
 ```bash
-pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements.txt
 ```
 
 Notebook を開く必要がある場合に限り、Jupyter を起動します。
 
 ```bash
-jupyter notebook
+.venv/bin/python -m pip install notebook
+.venv/bin/python -m notebook
 ```
 
 各音声ファイルの由来は、既存の `data/sample-index.csv` または各実験の `README.md` で管理します。

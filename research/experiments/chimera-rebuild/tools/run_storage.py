@@ -16,6 +16,8 @@ from uuid import UUID
 WORK_DISK = Path('/Volumes/RTL9210B-CG')
 WORK_UUID = '3D26C0E2-12EF-4613-A693-E21C0D51D2E7'
 WORK_RUNS = WORK_DISK / 'voice-simulator/scratch/chimera-runs'
+ARCHIVE_DISK = Path('/Volumes/CT2000X8')
+ARCHIVE_UUID = '9B51F3F1-8509-4272-B72B-ABA311912659'
 
 
 def _darwin_mount_matches(mount, expected_uuid):

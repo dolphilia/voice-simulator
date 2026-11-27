@@ -8,15 +8,13 @@ from pathlib import Path
 import subprocess
 
 from measure_uniform_tube import record_measurement
-from run_storage import WORK_DISK, WORK_UUID, mounted_volume
+from run_storage import ARCHIVE_DISK, ARCHIVE_UUID, WORK_DISK, WORK_UUID, mounted_volume
 from upstream_baseline import UPSTREAM, WORKSPACE, sha256
 
 
 CASE_PATH = WORKSPACE / 'cases/plan-evidence-audit.json'
 RUNS = WORKSPACE / 'runs'
 ROOT = WORKSPACE.parents[2]
-ARCHIVE_DISK = Path('/Volumes/CT2000X8')
-ARCHIVE_UUID = '9B51F3F1-8509-4272-B72B-ABA311912659'
 
 
 def read_json(path):
