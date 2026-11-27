@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "run_id": "sealed-cavity-20261119-f",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "sealed-cavity-compression",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/sealed-cavity-compression.json",
+      "bytes": 2004,
+      "sha256": "65a0f2ad03930f4e8e6f172609e10143a2272838a8b8a221c3345eba1b359af1"
+    },
+    {
+      "path": "tools/upstream_network_probe.rs",
+      "bytes": 11461,
+      "sha256": "cd74989530b6b3448d30e411872895421906b0cc4392285e375a9c53e4c58572"
+    },
+    {
+      "path": "tools/measure_moving_area.py",
+      "bytes": 8114,
+      "sha256": "135756dc25493622cf515b12bd7d789821f690dd502e633bc5b296e12910ad82"
+    },
+    {
+      "path": "tools/measure_junction.py",
+      "bytes": 14063,
+      "sha256": "0490ea11be1343a4d84dbbb77de623bb3078cd4f43b294abf354fe8c6e7d2a5e"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19422,
+      "sha256": "bdd3ad7dd25845ced7f838763bff3ee4cbd7d3192dc36e6605fcd13dce8e9397"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 9891,
+      "sha256": "96dc625084c8483f361d71553200013acc0e28e0ea2a1319f6caa0f363994b5c"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 14800,
+      "sha256": "452c1db0ce489cc8ecd4ff7fa43bcbd34f50fbe2ac2f433588310da320cb46f9"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 4850,
+      "sha256": "21d041a886a33f64aeee39ea070a6d96da56ad25549fe87362006fa7da270ff6"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 18236,
+      "sha256": "5c9cf42fd7beec90f5698ba3809edd41094394baaa3e47110b490892cfebed25"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11551,
+      "sha256": "c5332213c5a23fa6ba7813ec1bb6e06a7b9f7d50a6b0850715e0da24b1f184de"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 121,
+      "sha256": "be8a911ce3d15137e0d2165b7a391f5d2514be6d1ddf95f19b7b8bdeea78c825"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/sealed-cavity-compression.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/sealed-cavity-compression.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "airway_adversarial",
+        "sealed_cavity_compression_follows_the_linearised_adiabatic_law",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_network_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_network_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_network_probe.exe",
+        "$ARTIFACTS/upstream-input.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1334,
+      "sha256": "0071e7fb3f74806a49ff0019c3181f33c3a3435c59971c449ac6a7733fb936a2"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 2284,
+      "sha256": "2b71411ba290cc5ee013b7a82a731a6ddd1dfd3f351078818e5a3fe9895e4b52"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 697843,
+      "sha256": "09215973535a0fbd796d6d19f4561b2331d8e05000a1c76d423dc0424082116c"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "10ccb6176f8b25eff1abfdac54c9e0eebe249716daacc7fd830fe83f76100ca4"
+    },
+    {
+      "path": "artifacts/upstream-input.txt",
+      "bytes": 219,
+      "sha256": "09680fd5734547b6ab8c5aa0b166b1ddb6528844153fdd5b8ef4cbeff3841777"
+    },
+    {
+      "path": "artifacts/upstream-network-test.log",
+      "bytes": 235,
+      "sha256": "115f6b9686adc94cf882b28057136d00dcab516a1284052972b259a79a81e132"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 479758,
+      "sha256": "2a69612c9d6003e87ff6ab684a986e5a91aa21217881600bb7a955c91d707cdb"
+    },
+    {
+      "path": "artifacts/upstream_network_probe.exe",
+      "bytes": 481992,
+      "sha256": "86890d8589a331a14a9cf168740996e7a2f0fe1f3e1ea88ad260c77741fd9733"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 4544,
+      "sha256": "2b5dd627ce7ff4a5c355c9cdf74d67789abcb2784b80d93f0d33f7893e9d9d1e"
+    }
+  ]
+}

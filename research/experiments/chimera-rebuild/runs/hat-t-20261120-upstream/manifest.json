@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "hat-t-20261120-upstream",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "phase": "upstream-only",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/beatbox-hat-t.json",
+      "bytes": 2089,
+      "sha256": "98bfd6b9d3a809d6ff9242eec0082f38adf84f667d96c3891c2d2273cf4d5831"
+    },
+    {
+      "path": "tools/upstream_beatbox_single_probe.rs",
+      "bytes": 5846,
+      "sha256": "1cd738452d238eb094132979fbd5cf0feff5bbd7fe9a1adf24d2fecabd2cf7da"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 20298,
+      "sha256": "b3b3aa5234b0e98362ab334a647d6ce37dbae69bf57c92e636af042d4396d3c1"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "--extern",
+        "serde_json=$UPSTREAM/target/release/deps/libserde_json-f2e90e468d4ad724.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_beatbox_single_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_beatbox_single_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_beatbox_single_probe.exe",
+        "$WORKSPACE/cases/beatbox-hat-t.json",
+        "$ARTIFACTS/trace.csv",
+        "$ARTIFACTS/upper.f32",
+        "$ARTIFACTS/score.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02"
+    },
+    {
+      "path": "artifacts/score.json",
+      "bytes": 2245,
+      "sha256": "e0854d574690af2bf16c9a39a542b8d1957b9b8f4da327ddb3ff863e308fda03"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 9018185,
+      "sha256": "95f42ca8e28b553619b8bc723af3d78db10b3deb271624cc914b5b89e32e35d3"
+    },
+    {
+      "path": "artifacts/upper.f32",
+      "bytes": 96000,
+      "sha256": "6e2942355587691290b9b772eb2ad35a3d3a5187548b0a6ba8b7667c55fd41bb"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "e4163f13f34a6bd65d39a045c37f2640308d30a337f453e343f16336b9936505"
+    },
+    {
+      "path": "artifacts/upstream_beatbox_single_probe.exe",
+      "bytes": 772448,
+      "sha256": "76bac50dc3376d4750e7d6fca43eb360fbcb88d8fc48ac50f69fe919fca25d47"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 522,
+      "sha256": "effa2134ca3ded618343f12042fca3afd63454880d6126abf09357b398ddf0dc"
+    }
+  ]
+}

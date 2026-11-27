@@ -1,0 +1,4444 @@
+{
+  "schema_version": 1,
+  "run_id": "airbody-20261120-geometry-regression",
+  "case_id": "human-body-geometry",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "upstream_source_sha256": {
+    "crates/chimera/src/anatomy/human.rs": "9df76b032b617c4be389d7cc58c70d546ce83a8c75bac2ccc1e70edfbe00e564",
+    "crates/chimera/src/anatomy/geom.rs": "916cab35cd2345534b23b4e9aea7ba080a15e286fd6c3adaa7e636fb175c9c23",
+    "crates/chimera/src/engine.rs": "326f741f45a3068aa5f1643fa2efc50cbaa79fb30789fd5b2341c3a1222fe4f8",
+    "crates/chimera/src/math.rs": "f177e5170cc14a3f191886aba03441eee961cbf154975d64d8585346edee5ed5",
+    "crates/chimera/src/voice/human_airway.rs": "f92adb2f09015542e991dfb4f6684bf0c900dd5e1f75d166dcf1d790fceba044",
+    "crates/chimera-wasm/src/api.rs": "90f5741de1a11af94946d1b95645dcd657d9fae45d0e53dfd2de219ec455cb7d",
+    "crates/chimera/tests/body_mix.rs": "d7ab8d3328c3a8343d0078e486359561c43c6dcd6f448d3e0e6dcc153286e85b"
+  },
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/human-body-geometry.json",
+      "bytes": 2777,
+      "sha256": "6effd177c07cc13257e07025b66aea954d23d9592b1ba85f69e44ad32186975b"
+    },
+    {
+      "path": "tools/measure_body_geometry.py",
+      "bytes": 12967,
+      "sha256": "9a8e197d4346af59adeee68baf38df9e71ff7f4bbc9da8f514901799621efef1"
+    },
+    {
+      "path": "tools/upstream_sagittal_probe.rs",
+      "bytes": 12320,
+      "sha256": "5c01d1d7dcbd87b3750fdd3afa92e4a98e1ffd664bbba8bb2b226768860175be"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 156,
+      "sha256": "ac7cb09f7c04feac27f22b385771ddd88bb039f7046f15c214d0187c2f4b1b29"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 4591,
+      "sha256": "c8096d5c66ced4087ce9d860d34843a63ff0bc15e2170de0bdcd5b9c9d683ff1"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 280,
+      "sha256": "54736bfe58bc7360cbd02962b78b0709bd027b291c7761e1aa7b8facad270171"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 193,
+      "sha256": "e71047017e1444dd5f12619b2b6bd45f2835da1328d07618a23ec451eb69e743"
+    },
+    {
+      "path": "crates/vocal-wasm/Cargo.toml",
+      "bytes": 356,
+      "sha256": "56d9e6aac3cc84b5849413a374244cd13cb04347b1427c877089765deab05001"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6538,
+      "sha256": "f5248a5f54aae6845074adaf04108c25ccf99c251ac0c6b968e64016ea0ea02b"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 6315,
+      "sha256": "3799c956d619840dcbb4fa6ed0f0bd5aa1f4a7d41d2589105a67ec9671a1eeff"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 10475,
+      "sha256": "116f187cf3bf06c38130f5e1b4a06811660731bb5737fef3f123be12c1460260"
+    },
+    {
+      "path": "crates/vocal-cli/src/english_case.rs",
+      "bytes": 4199,
+      "sha256": "57e860dc82e317c35a750385a1c422c15b1e1dcfb788f646c6dfea1707be1df4"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 6046,
+      "sha256": "c4003720c317b9d9efbaf39ec21de32242be6264672bfb59bdf4365e6ea8734c"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 17694,
+      "sha256": "fbd36e726fd633270d9c059cb83303b02e8047e2aa2990af7d7a05d20c6249e8"
+    },
+    {
+      "path": "crates/vocal-cli/src/ipa_case.rs",
+      "bytes": 3451,
+      "sha256": "8345379856ae4591e78bbbbbe78441fa75e832397f578839245858fecb3a946d"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 14737,
+      "sha256": "8640e88c4c2dd1dcd366b73719795c9e0d8f0b46194db53aed35921d23e33546"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 3910,
+      "sha256": "c24039315571c642dab37042f30084b9b87bc130e74313e9f0d3c8f87498f2da"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 24003,
+      "sha256": "c247f2c45aafc52073ae02318843b32d584e330b337672c704c24f8dbc4d6e29"
+    },
+    {
+      "path": "crates/vocal-cli/src/song_case.rs",
+      "bytes": 3688,
+      "sha256": "668404841c971b0b98f31f24c4d742270cf37f55f640d1d51db6857aa38ffe5d"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case/observed_score.rs",
+      "bytes": 3500,
+      "sha256": "c0af9f0be6b5ce539e3045fd97dd623ca8bf770d49c1d7c30c1f75949658bd1f"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case/speech_voice/beat_pattern.rs",
+      "bytes": 8964,
+      "sha256": "c125a3d976d25532f5966db923a729e56bbdc1a84668e3f3f15039b8e5d348b1"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case/speech_voice.rs",
+      "bytes": 33110,
+      "sha256": "dc9677735a5f613db9a6deb303a508dc946f15b29248ca61dd2c77b74b424800"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case.rs",
+      "bytes": 4164,
+      "sha256": "a2814b781ec9a2e2e637b1bce72cc64e6f12aa095ac3eb4c148e9232ec304c90"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human/frication.rs",
+      "bytes": 5016,
+      "sha256": "4082e84c694801975088b0badbeeb36682b9b985eba755fbe9fc5887fb04feb8"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human.rs",
+      "bytes": 15004,
+      "sha256": "07cbeb699882c78355fc7bd0c7cf4d2a527fd140ff71415cb602c3ab7109cf63"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 5950,
+      "sha256": "a06f8153b461d388dd2284774314c16f1951fc7f2424527753baba8ef0deab12"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6931,
+      "sha256": "7856b410182aa15637a747e3d5369ecfa2fdd6919badbddd8fb701957e176c37"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 25949,
+      "sha256": "b60d54b610b941b963ba228a938d78cfdca40c4da4a29c6eb6c0c6d917746477"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control/allocation_tests.rs",
+      "bytes": 5201,
+      "sha256": "2f083bbac04a780dce6f4c4523b7b732aecbc907c1c827a464aae3a84ef3d32b"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 6907,
+      "sha256": "e26b3bbe63e3b6ac565090a022e46dba90102000c82fd0a1eef99bdc89d4437b"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11608,
+      "sha256": "15c0e42561e804ea859813dc1ca57f104381ae20ec9b822c60d75ff756078c8d"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 4137,
+      "sha256": "a10e96a4c00b58a593c6c0e0c333164fc159e28b7cf0876c03a1fcb150a5b312"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/body.rs",
+      "bytes": 4586,
+      "sha256": "82853f22912d73b7dc46de3e12c5aa1b997cc60c4ddc250e712d64a7755e8d62"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7410,
+      "sha256": "3f397be2c8c5667f8bc039b74e6e66d386c78c29cf25930bf78f3c3de54d47e9"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 10175,
+      "sha256": "e4faa8b52910676778a72a1740b15049b8e9281b6b2a8dafb823100e4663defa"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 5088,
+      "sha256": "208f772323689cc698f56c92a5888fc3a485d8a22048c8be83c7b6f53ff0bc79"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy.rs",
+      "bytes": 18418,
+      "sha256": "561ba299a2399a4dca094e8f933c03be34aa8041457bfbc112ef530f5dfa94ce"
+    },
+    {
+      "path": "crates/vocal-core/src/articulators.rs",
+      "bytes": 11733,
+      "sha256": "97da13fa0dbc1730e6b72fa564bfbebedb98445b9350f651ebb2314bf506d7fc"
+    },
+    {
+      "path": "crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 10927,
+      "sha256": "806ebca6acc18b3a1bf79e1e1a07f75acfe28a3ff48c59dbd66593041acf9343"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 270,
+      "sha256": "7e631b9af675cee1e46ea1d75f9b2aad7485e59479a330b6f83a5c0a1ebad8c7"
+    },
+    {
+      "path": "crates/vocal-core/src/output.rs",
+      "bytes": 7060,
+      "sha256": "645696288fe7326f96411f7de373b608943acf9646b14fd609c56c6fee084029"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/beatbox/player.rs",
+      "bytes": 7619,
+      "sha256": "318fbcfa464640271f254dd7be27f33d7bd2f68178fa125b4bd0afd8fbaa1f58"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/beatbox.rs",
+      "bytes": 17318,
+      "sha256": "e0e6def140c6b46893880c61fcdc36fa39901fc5ef0c38571484e96683297330"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/catalog.rs",
+      "bytes": 1878,
+      "sha256": "df3ab7d02fb7f68c155a1b081d6f02dfaabbe2c0b00a4e525f85ca65b72acb81"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english/spelling.rs",
+      "bytes": 4147,
+      "sha256": "c0f2d0bc6dfc9bc218c92c5502f20fec9a6137e80357018100759d4cc5f08e69"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english.rs",
+      "bytes": 11995,
+      "sha256": "2aaf053bfd4447389bf739a20e5302921bc5a9b32533dfbebd730726e4209da9"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/gestures.rs",
+      "bytes": 2327,
+      "sha256": "64f4723e253bbc726a6e7921552d47aba09143acffc2271fb94a25a6943ffc24"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/normalization.rs",
+      "bytes": 4279,
+      "sha256": "4b5a0ed2d6ba2a2c675c56332c8daeb843cbe41d50720660d8423bf4efb621b4"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa.rs",
+      "bytes": 10536,
+      "sha256": "a38e7ae2cf442463613d7600cf85e70d4f1e7795e45a131895f3f6b9d073c9f6"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa_plan.rs",
+      "bytes": 2427,
+      "sha256": "5931bba0cfcc4f4e25c52bbe9063d883423799854c2077a2c990db5f55ebf113"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/song.rs",
+      "bytes": 12970,
+      "sha256": "10432cf7391faa8c2257b7ff89b8331d065efcb3b3818c8ed4177888efc613d4"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/speech.rs",
+      "bytes": 17728,
+      "sha256": "fea7a8f68b8eb76dc3e31eab981891c689c2f2ee931f87d1bb2c2ce31c09bce5"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/syllables.rs",
+      "bytes": 7390,
+      "sha256": "4a57f232d9dd56be0c4568a8bd504af136758e92e4bc1b35303b66272a2dfe29"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing/durations.rs",
+      "bytes": 5395,
+      "sha256": "41853fd785eacefdbd1df39c08a9d08da4555f1c96d61ac323194a0d37dc21aa"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing.rs",
+      "bytes": 3979,
+      "sha256": "2c5b0e7e14d1ea78ab9f595545ab0c89b1d8d2e912b5520505d9a32656665ade"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics.rs",
+      "bytes": 1749,
+      "sha256": "c01694adbe91671d9eaa5aa15ccc540ce6b72ff5ee3daab0a317bdc2a0331380"
+    },
+    {
+      "path": "crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "crates/vocal-core/src/score.rs",
+      "bytes": 6652,
+      "sha256": "3697b9c1009b538684cf03e6a482b3d45d5997e6951088d90c845665645616fd"
+    },
+    {
+      "path": "crates/vocal-core/src/voice.rs",
+      "bytes": 14428,
+      "sha256": "fbb731d5b0c9b43975c876d856daf745afd137ed654dd3cb982b2fbed3bf29a9"
+    },
+    {
+      "path": "crates/vocal-wasm/src/lib.rs",
+      "bytes": 33380,
+      "sha256": "44e7cb429092a18c76560a0b07af02015768eaa454184d753faf83bebf2eb648"
+    },
+    {
+      "path": "crates/vocal-wasm/src/planning.rs",
+      "bytes": 8382,
+      "sha256": "0349074275947cdca74d9985ad58116d9334466b65fc4355d15f90b98a6e1787"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english/lts.generated.json",
+      "bytes": 2184,
+      "sha256": "9a2f07d25d87ef5e4cc2ae36025b1dea14305db2d9109cfce8a8da7797f3e154"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/catalog.generated.json",
+      "bytes": 5202,
+      "sha256": "69b3de13295a1c21cc859eda67e25d696176d8303049ae5b198e6cbc47977f6a"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/nfc.generated.json",
+      "bytes": 11335,
+      "sha256": "ce9003b078b588e9142a9d5b5896787d8efaa7432818c2612ccc7478d39e1b98"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing.generated.json",
+      "bytes": 6749,
+      "sha256": "0a0850aaddf3feb2b57687564c5f44742bb390c43ef50dae1b58a77f35953a3e"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/vowel-gesture-targets.generated.json",
+      "bytes": 6729,
+      "sha256": "5934175faeed19d9b98d458e16f43084b8d4b232768eb6e9627a3db20d81b999"
+    },
+    {
+      "path": "cases/sagittal-neutral.json",
+      "bytes": 1379,
+      "sha256": "6606fec624deb972ec19355c44bdb055d6b82538a46d7d9b3c714014b8f306b2"
+    },
+    {
+      "path": "tools/measure_grid.py",
+      "bytes": 9421,
+      "sha256": "cc6fc53be474cf63fcdf23f7d13a29c4cc5b04d5fd4c894161fab59b516fff63"
+    },
+    {
+      "path": "tools/measure_resample.py",
+      "bytes": 10622,
+      "sha256": "1ccecef0eff49afa3c0ec6c3f5e2f0551f5c8430cfe77e1da3b0a5fe5df8bed4"
+    },
+    {
+      "path": "tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 20298,
+      "sha256": "b3b3aa5234b0e98362ab334a647d6ce37dbae69bf57c92e636af042d4396d3c1"
+    },
+    {
+      "path": "tools/measure_speech_timing.py",
+      "bytes": 15992,
+      "sha256": "cb728ef827a71f6ee98e294c866eeb55c0c831418a2c1db9a0e91c9cbbff4ca2"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5501,
+      "sha256": "b46d996f3a8755fe7df848d6c7fcc45a8f9f836e45313d8b76abd35802a9ef57"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "body_mix"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_sagittal_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_sagittal_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-male/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-male/case.json",
+        "$ARTIFACTS/neutral-male/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-male/case.json",
+        "$ARTIFACTS/neutral-male/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-male/case.json",
+        "$ARTIFACTS/neutral-male/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-female/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-female/case.json",
+        "$ARTIFACTS/neutral-female/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-female/case.json",
+        "$ARTIFACTS/neutral-female/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-female/case.json",
+        "$ARTIFACTS/neutral-female/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-child/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-child/case.json",
+        "$ARTIFACTS/neutral-child/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-child/case.json",
+        "$ARTIFACTS/neutral-child/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-child/case.json",
+        "$ARTIFACTS/neutral-child/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-adult-mid/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-adult-mid/case.json",
+        "$ARTIFACTS/neutral-adult-mid/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-adult-mid/case.json",
+        "$ARTIFACTS/neutral-adult-mid/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-adult-mid/case.json",
+        "$ARTIFACTS/neutral-adult-mid/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-child-mid/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-child-mid/case.json",
+        "$ARTIFACTS/neutral-child-mid/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-child-mid/case.json",
+        "$ARTIFACTS/neutral-child-mid/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-child-mid/case.json",
+        "$ARTIFACTS/neutral-child-mid/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-three-way/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-three-way/case.json",
+        "$ARTIFACTS/neutral-three-way/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-three-way/case.json",
+        "$ARTIFACTS/neutral-three-way/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-three-way/case.json",
+        "$ARTIFACTS/neutral-three-way/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-child-axis/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-child-axis/case.json",
+        "$ARTIFACTS/neutral-child-axis/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-child-axis/case.json",
+        "$ARTIFACTS/neutral-child-axis/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-child-axis/case.json",
+        "$ARTIFACTS/neutral-child-axis/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/neutral-clamped-female/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/neutral-clamped-female/case.json",
+        "$ARTIFACTS/neutral-clamped-female/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/neutral-clamped-female/case.json",
+        "$ARTIFACTS/neutral-clamped-female/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/neutral-clamped-female/case.json",
+        "$ARTIFACTS/neutral-clamped-female/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--area",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--body-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--contact-metrics",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--resample",
+        "18",
+        "18",
+        "0.6",
+        "2.9",
+        "6.85",
+        "6.45",
+        "7.3",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.7",
+        "0.2",
+        "0.5",
+        "0.0",
+        "-0.15",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-male/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-male/case.json",
+        "$ARTIFACTS/open-male/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-male/case.json",
+        "$ARTIFACTS/open-male/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-male/case.json",
+        "$ARTIFACTS/open-male/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "male",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-female/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-female/case.json",
+        "$ARTIFACTS/open-female/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-female/case.json",
+        "$ARTIFACTS/open-female/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-female/case.json",
+        "$ARTIFACTS/open-female/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "female",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-child/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-child/case.json",
+        "$ARTIFACTS/open-child/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-child/case.json",
+        "$ARTIFACTS/open-child/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-child/case.json",
+        "$ARTIFACTS/open-child/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "child",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-adult-mid/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-adult-mid/case.json",
+        "$ARTIFACTS/open-adult-mid/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-adult-mid/case.json",
+        "$ARTIFACTS/open-adult-mid/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-adult-mid/case.json",
+        "$ARTIFACTS/open-adult-mid/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.5,0",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-child-mid/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-child-mid/case.json",
+        "$ARTIFACTS/open-child-mid/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-child-mid/case.json",
+        "$ARTIFACTS/open-child-mid/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-child-mid/case.json",
+        "$ARTIFACTS/open-child-mid/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0,0.5",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-three-way/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-three-way/case.json",
+        "$ARTIFACTS/open-three-way/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-three-way/case.json",
+        "$ARTIFACTS/open-three-way/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-three-way/case.json",
+        "$ARTIFACTS/open-three-way/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.4,0.3",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-child-axis/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-child-axis/case.json",
+        "$ARTIFACTS/open-child-axis/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-child-axis/case.json",
+        "$ARTIFACTS/open-child-axis/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-child-axis/case.json",
+        "$ARTIFACTS/open-child-axis/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "0.7,1.0",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/open-clamped-female/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "geometry",
+        "$ARTIFACTS/open-clamped-female/case.json",
+        "$ARTIFACTS/open-clamped-female/geometry.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "area",
+        "$ARTIFACTS/open-clamped-female/case.json",
+        "$ARTIFACTS/open-clamped-female/area.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "resample",
+        "$ARTIFACTS/open-clamped-female/case.json",
+        "$ARTIFACTS/open-clamped-female/resample.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--area",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--body-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--contact-metrics",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_sagittal_probe.exe",
+        "--body",
+        "1.2,-0.25",
+        "--resample",
+        "18",
+        "18",
+        "1.1",
+        "3.2",
+        "6.45",
+        "6.35",
+        "7.35",
+        "0.12",
+        "0.2",
+        "0.12",
+        "0.62",
+        "0.35",
+        "0.35",
+        "0.15",
+        "0.72",
+        "0.36",
+        "0.0",
+        "0.3",
+        "0.2"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 24646,
+      "sha256": "e98dfd27130f8e33eb8943e135913c1ead6a85ec4bff843516a9a798858a0f3e"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/area.csv",
+      "bytes": 9294,
+      "sha256": "6580d7b86afa9dbf1c900067eedbda67dd0079953dea6c51a190de5b6ea9026b"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/case.json",
+      "bytes": 1033,
+      "sha256": "6d93850e66d6bd0243a1f791f96439d9784c66998bed377b52fb3a24071fc60b"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/geometry.csv",
+      "bytes": 13249,
+      "sha256": "fba6b350f1ddc9ec96f8450c38dd9b7e31daf90d69c96dbf35a7e0b751c42ae2"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/independent-cells.csv",
+      "bytes": 4270,
+      "sha256": "870bdd4de364ead02425d1c93062061141d37a679da1b5ba1811624fe572cb69"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/inspect.json",
+      "bytes": 2738,
+      "sha256": "3f009499ec5ac097979595813c7d00d06d99c0a859b2abfbb745ef272f7614e1"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/resample.csv",
+      "bytes": 3028,
+      "sha256": "59a9f71e93415ccc79a63a14d801b65411e7cf070cc238c85b73493002f0e287"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/upstream-area.csv",
+      "bytes": 9239,
+      "sha256": "63e233ad86b60371f99036cd466802d1c8cd2658498ba6b64ec776f3729cc6d4"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/upstream-body.csv",
+      "bytes": 288,
+      "sha256": "82cd9fbde34d9ecafe64b2a8b329338b174024b9368528e9b4d0085f6ad522c2"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/upstream-contact.csv",
+      "bytes": 161,
+      "sha256": "ecfa6b59ea0d4a250c1019167e146eef26945f35b8dc69a3dc0b4f6c8f64429a"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/upstream-geometry.csv",
+      "bytes": 13235,
+      "sha256": "a6352cc51880222f11d0b3ad3452dafe619b9746170e130389e8709908bf6ee8"
+    },
+    {
+      "path": "artifacts/neutral-adult-mid/upstream-resample.csv",
+      "bytes": 3018,
+      "sha256": "14028ba6c3653dd34358d540470dea3c40df39e3b2cc94e5d2c1d3a3718df6af"
+    },
+    {
+      "path": "artifacts/neutral-child/area.csv",
+      "bytes": 9254,
+      "sha256": "97e6f9eaa5e710392211a2f1179c8e0357c084d204f6c67bc9951b393735c866"
+    },
+    {
+      "path": "artifacts/neutral-child/case.json",
+      "bytes": 1013,
+      "sha256": "276f5b8ec3036be212f898e6e7a6939a8379ed56ccfc2c303d0f72afe32c1282"
+    },
+    {
+      "path": "artifacts/neutral-child/geometry.csv",
+      "bytes": 13217,
+      "sha256": "a4b8a418a3b5eeccdca94238cb0454e35cb47e37224ef4cd578915f9606aa74c"
+    },
+    {
+      "path": "artifacts/neutral-child/independent-cells.csv",
+      "bytes": 4274,
+      "sha256": "4f657a7dfa4e433cdb3e30099703b585121fea9c416bd2f2f259e9f9effbb2f9"
+    },
+    {
+      "path": "artifacts/neutral-child/inspect.json",
+      "bytes": 2683,
+      "sha256": "4f81f8d0e5ba5afced9d2722280bb6752d7de3ae45278cab0407fadd22938dd4"
+    },
+    {
+      "path": "artifacts/neutral-child/resample.csv",
+      "bytes": 2984,
+      "sha256": "219613cef41784413567a75b0c848aef2c6d9d7b192c0baf54a11c1c34b0bbef"
+    },
+    {
+      "path": "artifacts/neutral-child/upstream-area.csv",
+      "bytes": 9189,
+      "sha256": "258c7c0a87e74f735ec1d263e8e572c0d6d0bbe9589204cd5ab1dbd19d77097c"
+    },
+    {
+      "path": "artifacts/neutral-child/upstream-body.csv",
+      "bytes": 255,
+      "sha256": "c9be5f01453538c5195cc0b8000298ca5138748ea8ed01d8536dfe5d6e1cd88b"
+    },
+    {
+      "path": "artifacts/neutral-child/upstream-contact.csv",
+      "bytes": 163,
+      "sha256": "10e30815203df1961fe2d6abd4948ffbfb84cfd025e90336e34d3a06e042744e"
+    },
+    {
+      "path": "artifacts/neutral-child/upstream-geometry.csv",
+      "bytes": 13277,
+      "sha256": "0f5afe0dabd471bf386d089b5f1701628cf814f05101f8c8ecb3ba3c26adbe3c"
+    },
+    {
+      "path": "artifacts/neutral-child/upstream-resample.csv",
+      "bytes": 2985,
+      "sha256": "e352ca61a6f62f51bdde31aa3237b5f9fdbc7bfa828e6a621251738102a99135"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/area.csv",
+      "bytes": 9254,
+      "sha256": "97e6f9eaa5e710392211a2f1179c8e0357c084d204f6c67bc9951b393735c866"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/case.json",
+      "bytes": 1052,
+      "sha256": "cc3afe92cbeb9f7133267aaecf8a949420221294f75713f9c4a379563a50bace"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/geometry.csv",
+      "bytes": 13217,
+      "sha256": "a4b8a418a3b5eeccdca94238cb0454e35cb47e37224ef4cd578915f9606aa74c"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/independent-cells.csv",
+      "bytes": 4274,
+      "sha256": "4f657a7dfa4e433cdb3e30099703b585121fea9c416bd2f2f259e9f9effbb2f9"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/inspect.json",
+      "bytes": 2728,
+      "sha256": "2627350b2b62efec2fc26055f2fbefb798b3e49d2de56d4037f4ef3185cd2fef"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/resample.csv",
+      "bytes": 2984,
+      "sha256": "219613cef41784413567a75b0c848aef2c6d9d7b192c0baf54a11c1c34b0bbef"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/upstream-area.csv",
+      "bytes": 9189,
+      "sha256": "258c7c0a87e74f735ec1d263e8e572c0d6d0bbe9589204cd5ab1dbd19d77097c"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/upstream-body.csv",
+      "bytes": 255,
+      "sha256": "c9be5f01453538c5195cc0b8000298ca5138748ea8ed01d8536dfe5d6e1cd88b"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/upstream-contact.csv",
+      "bytes": 163,
+      "sha256": "10e30815203df1961fe2d6abd4948ffbfb84cfd025e90336e34d3a06e042744e"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/upstream-geometry.csv",
+      "bytes": 13277,
+      "sha256": "0f5afe0dabd471bf386d089b5f1701628cf814f05101f8c8ecb3ba3c26adbe3c"
+    },
+    {
+      "path": "artifacts/neutral-child-axis/upstream-resample.csv",
+      "bytes": 2985,
+      "sha256": "e352ca61a6f62f51bdde31aa3237b5f9fdbc7bfa828e6a621251738102a99135"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/area.csv",
+      "bytes": 9146,
+      "sha256": "8c63f8d373488aa64d40266eb6ceb6b4e53b71db769546060d95717a9f198115"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/case.json",
+      "bytes": 1032,
+      "sha256": "dd4b9e2f615dccdf3117299f432fe1186fb0c369d4862c5cf1cfaab9e34396a3"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/geometry.csv",
+      "bytes": 13155,
+      "sha256": "bf32a25482f1511f13d9f8b491f2f3a971f3fc2212df848550b800634fc77b21"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/independent-cells.csv",
+      "bytes": 4218,
+      "sha256": "e889de5cccea475c0990173541fd30826f9dd1647233264f215ca6baa9be2d1a"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/inspect.json",
+      "bytes": 2729,
+      "sha256": "db615f3ca8eb43cd9451539e55221f96d08e503d74a9373b7e67aab1832c4d54"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/resample.csv",
+      "bytes": 2998,
+      "sha256": "a7c92d30b4766c168a3a7e05e91ae93e34484a9f77dc762e5dfedb03d55a269f"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/upstream-area.csv",
+      "bytes": 9104,
+      "sha256": "d318f3722e02d79c582b8c97fa8136ff22ae6bf8a1a6914505c4099158e6d562"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/upstream-body.csv",
+      "bytes": 283,
+      "sha256": "df7245b196db57b6455fef7e36d0ee01c5b887e58d17f82bc6465de62b2cb7a4"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/upstream-contact.csv",
+      "bytes": 163,
+      "sha256": "a7bc1b43ca5366d5824d896e60ccdaa5881240e960924e79cbe906106b0aadce"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/upstream-geometry.csv",
+      "bytes": 13165,
+      "sha256": "fdd155c2014dd910cf25cfee1f4436826a1547d29ab9c3c18019c8e3c1d2bb85"
+    },
+    {
+      "path": "artifacts/neutral-child-mid/upstream-resample.csv",
+      "bytes": 3007,
+      "sha256": "94edd5c85187a42ab168df694ca571a1cb94a81749989483b5191fc0183b1565"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/area.csv",
+      "bytes": 9208,
+      "sha256": "8c38bbe187767138cb96f87c9386241e3a491a87e2f5fa2225e6adef9ef36c87"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/case.json",
+      "bytes": 1058,
+      "sha256": "0f9854df5d2c60808423807e8db62f2d28c4f54badc028764df8a296f490c016"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/geometry.csv",
+      "bytes": 12835,
+      "sha256": "56ee0d1c8771898e50db845f6c42f114c6e4682ae3da0a75b419043f775e3843"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/independent-cells.csv",
+      "bytes": 4241,
+      "sha256": "88f5db3124c200164c456617e2e82d795a4e16a33530245b532af96f4bc0faaf"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/inspect.json",
+      "bytes": 2738,
+      "sha256": "67c24f8924a7cbe6a1d1716c222e30003b8cac0dfc9011faff0608ec771e2f89"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/resample.csv",
+      "bytes": 2994,
+      "sha256": "363fcaade083761c0270f29516e40a8c3e38c8f7ac5c8e3deb77de57c955cda5"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/upstream-area.csv",
+      "bytes": 9202,
+      "sha256": "61ba93eaf8fc093d3712504010e9f7fb68a4901f5e7c4220da7f9d8bf0da675a"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/upstream-body.csv",
+      "bytes": 258,
+      "sha256": "20c1a2368a6df8a806b6298b12d10c136887baa29bf7ff547887c6f230c90c5d"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "7a7a11c33b828cfff0ac42a418ca8362382269067de54d86c2e953368c5d0eac"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/upstream-geometry.csv",
+      "bytes": 13060,
+      "sha256": "6cd25261af7c77afed203274d6526019314f136ada8877794204cd8687076c2b"
+    },
+    {
+      "path": "artifacts/neutral-clamped-female/upstream-resample.csv",
+      "bytes": 2996,
+      "sha256": "00e7cfdbd451716643fbc95c8cf8b1cb41535247737e52dcc4664cda75a0556b"
+    },
+    {
+      "path": "artifacts/neutral-female/area.csv",
+      "bytes": 9208,
+      "sha256": "8c38bbe187767138cb96f87c9386241e3a491a87e2f5fa2225e6adef9ef36c87"
+    },
+    {
+      "path": "artifacts/neutral-female/case.json",
+      "bytes": 1015,
+      "sha256": "42e9748f46c43db5a1f622c34b9eaa21ebd6898a8eb486bd48bcafe98734cd4c"
+    },
+    {
+      "path": "artifacts/neutral-female/geometry.csv",
+      "bytes": 12835,
+      "sha256": "56ee0d1c8771898e50db845f6c42f114c6e4682ae3da0a75b419043f775e3843"
+    },
+    {
+      "path": "artifacts/neutral-female/independent-cells.csv",
+      "bytes": 4241,
+      "sha256": "88f5db3124c200164c456617e2e82d795a4e16a33530245b532af96f4bc0faaf"
+    },
+    {
+      "path": "artifacts/neutral-female/inspect.json",
+      "bytes": 2689,
+      "sha256": "c1b505bb6fcd8e0117c791d4d4a43a8d11c10f91fa32e551e7092afd4c174aee"
+    },
+    {
+      "path": "artifacts/neutral-female/resample.csv",
+      "bytes": 2994,
+      "sha256": "363fcaade083761c0270f29516e40a8c3e38c8f7ac5c8e3deb77de57c955cda5"
+    },
+    {
+      "path": "artifacts/neutral-female/upstream-area.csv",
+      "bytes": 9202,
+      "sha256": "61ba93eaf8fc093d3712504010e9f7fb68a4901f5e7c4220da7f9d8bf0da675a"
+    },
+    {
+      "path": "artifacts/neutral-female/upstream-body.csv",
+      "bytes": 258,
+      "sha256": "20c1a2368a6df8a806b6298b12d10c136887baa29bf7ff547887c6f230c90c5d"
+    },
+    {
+      "path": "artifacts/neutral-female/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "7a7a11c33b828cfff0ac42a418ca8362382269067de54d86c2e953368c5d0eac"
+    },
+    {
+      "path": "artifacts/neutral-female/upstream-geometry.csv",
+      "bytes": 13060,
+      "sha256": "6cd25261af7c77afed203274d6526019314f136ada8877794204cd8687076c2b"
+    },
+    {
+      "path": "artifacts/neutral-female/upstream-resample.csv",
+      "bytes": 2996,
+      "sha256": "00e7cfdbd451716643fbc95c8cf8b1cb41535247737e52dcc4664cda75a0556b"
+    },
+    {
+      "path": "artifacts/neutral-male/area.csv",
+      "bytes": 9227,
+      "sha256": "4d99dbf0aa5c827f595c581eca2f312f079ad0f7f90697916ff91d5e7786426d"
+    },
+    {
+      "path": "artifacts/neutral-male/case.json",
+      "bytes": 1011,
+      "sha256": "52098c30ea725a0cb2b4fa3b42b2a04192ca4316b33bf6676bad3210689f0f57"
+    },
+    {
+      "path": "artifacts/neutral-male/geometry.csv",
+      "bytes": 12668,
+      "sha256": "ee936242e043cd51d6f9d5b0c2d3a1316f9c126198a49dea83b26ab39e02b472"
+    },
+    {
+      "path": "artifacts/neutral-male/independent-cells.csv",
+      "bytes": 4174,
+      "sha256": "4a1eb5a9d8f05cf6be54b77cae2f9322d88fd6f584f7f69851bcc5f57dc5cd1a"
+    },
+    {
+      "path": "artifacts/neutral-male/inspect.json",
+      "bytes": 2668,
+      "sha256": "0aafde194bac24b88527cbb170ae3c5b8b3f9b96f3421d800897282faad6c1df"
+    },
+    {
+      "path": "artifacts/neutral-male/resample.csv",
+      "bytes": 2950,
+      "sha256": "80c3645d252cf2e5b43d7236dfc70883b16083359ef4d68f4b5513683ab7084a"
+    },
+    {
+      "path": "artifacts/neutral-male/upstream-area.csv",
+      "bytes": 9215,
+      "sha256": "3b0c7966dea59d9a561b603136280f4b7cd4610aed6f77b0d580f967b2aeff8b"
+    },
+    {
+      "path": "artifacts/neutral-male/upstream-body.csv",
+      "bytes": 240,
+      "sha256": "d96fe5bc15623a17ca7fc49b3b877184a1748d16dfc643106b6402876f02466b"
+    },
+    {
+      "path": "artifacts/neutral-male/upstream-contact.csv",
+      "bytes": 163,
+      "sha256": "24353554a39abe24295222c2ed060d39c8c747716f561afa6b44173892ed2caf"
+    },
+    {
+      "path": "artifacts/neutral-male/upstream-geometry.csv",
+      "bytes": 12728,
+      "sha256": "e0871bd361b24d4b8d72ef3fa66696d4329bacef271302d80722d12971486081"
+    },
+    {
+      "path": "artifacts/neutral-male/upstream-resample.csv",
+      "bytes": 2937,
+      "sha256": "b868d3081d4244b568d0399846630b555dd3ce22c9f8cb8fe46ab923b1911fd7"
+    },
+    {
+      "path": "artifacts/neutral-three-way/area.csv",
+      "bytes": 9329,
+      "sha256": "08c4993a210aa9f68f743ca13aefd546ec53b8d6459863fef782b8578ff7c387"
+    },
+    {
+      "path": "artifacts/neutral-three-way/case.json",
+      "bytes": 1051,
+      "sha256": "579ffa4b3c36aaa01481120d84bc315116098f3db067eb5b59e9a927d28367f8"
+    },
+    {
+      "path": "artifacts/neutral-three-way/geometry.csv",
+      "bytes": 13775,
+      "sha256": "a002376a562ad826c3a89561d93eab4da0327fa2e2e3de3ce5d6609de41487cb"
+    },
+    {
+      "path": "artifacts/neutral-three-way/independent-cells.csv",
+      "bytes": 4265,
+      "sha256": "fb3c9925d759bc07dd2966aefbf1379d10110b5b90a31691054de5fcb051b683"
+    },
+    {
+      "path": "artifacts/neutral-three-way/inspect.json",
+      "bytes": 2807,
+      "sha256": "52332fdafb8e0bc08f1a35c16be37a30e9d4c96b10c39e7a9866ea84e8c1c7a3"
+    },
+    {
+      "path": "artifacts/neutral-three-way/resample.csv",
+      "bytes": 3006,
+      "sha256": "28ec6ca0f4e9e20ea414ef5c6b5399063434d791317f8a68a2419dd45571c241"
+    },
+    {
+      "path": "artifacts/neutral-three-way/upstream-area.csv",
+      "bytes": 9287,
+      "sha256": "bbf882c1ae09139f183d6518e394313fba8ded8f689e70e36a3600a0e6cd2dd3"
+    },
+    {
+      "path": "artifacts/neutral-three-way/upstream-body.csv",
+      "bytes": 340,
+      "sha256": "ecad7d4ba949d0fa3737429b67ae3460cc8e5845a3486993dcf8b70dfd9e196a"
+    },
+    {
+      "path": "artifacts/neutral-three-way/upstream-contact.csv",
+      "bytes": 160,
+      "sha256": "9291bb69f34feeb94a9f974f1c8f39a62d20827f00eaa2d5a5670248d113e3b8"
+    },
+    {
+      "path": "artifacts/neutral-three-way/upstream-geometry.csv",
+      "bytes": 13825,
+      "sha256": "7ae570ddd2a7894176c100da1a38c447776f88faa0ce7b59280972330f349a51"
+    },
+    {
+      "path": "artifacts/neutral-three-way/upstream-resample.csv",
+      "bytes": 3005,
+      "sha256": "0d7b7bdaf6bc800cd36985529be30a4698b4cea7de487cf35f84bf2895902f24"
+    },
+    {
+      "path": "artifacts/open-adult-mid/area.csv",
+      "bytes": 9221,
+      "sha256": "23ecad56ce3237c920675f79862ebd4c09d5d7f67e5eb0fa768cce10e1534b69"
+    },
+    {
+      "path": "artifacts/open-adult-mid/case.json",
+      "bytes": 1083,
+      "sha256": "8d0abdcbffd9ecc0d09750c0a6451234a6a9a0eaf8033fa617d79090ae8b2a97"
+    },
+    {
+      "path": "artifacts/open-adult-mid/geometry.csv",
+      "bytes": 13130,
+      "sha256": "1f776c6d8f96f4655dbead97e86462d29fe00c23f2237d47c7da7bdfe41f7112"
+    },
+    {
+      "path": "artifacts/open-adult-mid/independent-cells.csv",
+      "bytes": 4190,
+      "sha256": "af898b4d3f38b331f5c3c708bfa8ef18a377fc490b796c871fa1f60c4d7f007b"
+    },
+    {
+      "path": "artifacts/open-adult-mid/inspect.json",
+      "bytes": 2791,
+      "sha256": "176ca2d6e928b5ae46e58bc6dadfbc8bf5dd79c788fb4e55bc6dbb6cd1fdbc7a"
+    },
+    {
+      "path": "artifacts/open-adult-mid/resample.csv",
+      "bytes": 2992,
+      "sha256": "190d85d1291e6bb35963fb686e9f625cbc56f245d7605b75e017934d705296f1"
+    },
+    {
+      "path": "artifacts/open-adult-mid/upstream-area.csv",
+      "bytes": 9217,
+      "sha256": "648ec063b0b2f142f5bb592e9dae07dc4a8a5b737e45151b96bf51b638f6ff69"
+    },
+    {
+      "path": "artifacts/open-adult-mid/upstream-body.csv",
+      "bytes": 293,
+      "sha256": "b929ac98bc142c944f2354a9076cd58c409f74497fdc2f17c1e3de53967a84ad"
+    },
+    {
+      "path": "artifacts/open-adult-mid/upstream-contact.csv",
+      "bytes": 160,
+      "sha256": "fdedc73840685eab540f3d9bcb5e529293c4d3ee0bbcabd97be09ae60c009c20"
+    },
+    {
+      "path": "artifacts/open-adult-mid/upstream-geometry.csv",
+      "bytes": 13161,
+      "sha256": "44e4b2c870bedd82345ddb3b537f679905111a3e7d844d18e1ef6cbabfcbfbee"
+    },
+    {
+      "path": "artifacts/open-adult-mid/upstream-resample.csv",
+      "bytes": 2997,
+      "sha256": "8948f6b051acc327a12be93af8a6652ed51ba7c362f674d2e2971da193b3fd4d"
+    },
+    {
+      "path": "artifacts/open-child/area.csv",
+      "bytes": 9231,
+      "sha256": "636885c1a96010b6d560c3e9ab83bf52db5a2a848ceee6737c5f1fc1bc9d2a20"
+    },
+    {
+      "path": "artifacts/open-child/case.json",
+      "bytes": 1063,
+      "sha256": "203754e529f65f582eb6f5bb1184d8084392009c3f71ae76f05c9d04dadf70e7"
+    },
+    {
+      "path": "artifacts/open-child/geometry.csv",
+      "bytes": 13084,
+      "sha256": "a9d2e931558e5c066c3b1fc9af859b8b2d97d0e9706e853da6fbfa376904ea45"
+    },
+    {
+      "path": "artifacts/open-child/independent-cells.csv",
+      "bytes": 4227,
+      "sha256": "101104876386140e4c7a4f618ad5057904df6f6c28f43adde0a7ddada10651d9"
+    },
+    {
+      "path": "artifacts/open-child/inspect.json",
+      "bytes": 2753,
+      "sha256": "ba17b921f50be6d0dc34b1ef2f3c80eda2abe2457f5e36bdd5c813547c57675e"
+    },
+    {
+      "path": "artifacts/open-child/resample.csv",
+      "bytes": 2978,
+      "sha256": "fa97054ead6a61463858d2ed0092c6b34f98a95b27aad321d4db5ff88b838134"
+    },
+    {
+      "path": "artifacts/open-child/upstream-area.csv",
+      "bytes": 9216,
+      "sha256": "24206928292635ab63f0a2686fd9fe4439fa2f1fcb25c83193e9ad6dc3cf0244"
+    },
+    {
+      "path": "artifacts/open-child/upstream-body.csv",
+      "bytes": 273,
+      "sha256": "6a189f1a88663d704cad1eae0e5409505c03b9e2e5af5fd0c40f8beb30c5d21c"
+    },
+    {
+      "path": "artifacts/open-child/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "bb81be253c4be20a5ebaf49d2c57f21b69d52de6efc45821e6301d0193de0e9f"
+    },
+    {
+      "path": "artifacts/open-child/upstream-geometry.csv",
+      "bytes": 13154,
+      "sha256": "038c9dce3edf6cfadc0cb64661d980b0dcee262062a9672f03762a049a000cd2"
+    },
+    {
+      "path": "artifacts/open-child/upstream-resample.csv",
+      "bytes": 2972,
+      "sha256": "e546c3300018e5f9306a0003b5fe5825e7589adbb144e5ea9be06dbbbd293818"
+    },
+    {
+      "path": "artifacts/open-child-axis/area.csv",
+      "bytes": 9231,
+      "sha256": "636885c1a96010b6d560c3e9ab83bf52db5a2a848ceee6737c5f1fc1bc9d2a20"
+    },
+    {
+      "path": "artifacts/open-child-axis/case.json",
+      "bytes": 1102,
+      "sha256": "7fc999fc292cf2dced16f9fc5f26e3aa1c163c8e0ddbbbc6dbdf6cfec606bb94"
+    },
+    {
+      "path": "artifacts/open-child-axis/geometry.csv",
+      "bytes": 13084,
+      "sha256": "a9d2e931558e5c066c3b1fc9af859b8b2d97d0e9706e853da6fbfa376904ea45"
+    },
+    {
+      "path": "artifacts/open-child-axis/independent-cells.csv",
+      "bytes": 4227,
+      "sha256": "101104876386140e4c7a4f618ad5057904df6f6c28f43adde0a7ddada10651d9"
+    },
+    {
+      "path": "artifacts/open-child-axis/inspect.json",
+      "bytes": 2798,
+      "sha256": "e5ceaeffa53f699f7b12512e909567438290cbfcd80c86b589af433e41e0ff86"
+    },
+    {
+      "path": "artifacts/open-child-axis/resample.csv",
+      "bytes": 2978,
+      "sha256": "fa97054ead6a61463858d2ed0092c6b34f98a95b27aad321d4db5ff88b838134"
+    },
+    {
+      "path": "artifacts/open-child-axis/upstream-area.csv",
+      "bytes": 9216,
+      "sha256": "24206928292635ab63f0a2686fd9fe4439fa2f1fcb25c83193e9ad6dc3cf0244"
+    },
+    {
+      "path": "artifacts/open-child-axis/upstream-body.csv",
+      "bytes": 273,
+      "sha256": "6a189f1a88663d704cad1eae0e5409505c03b9e2e5af5fd0c40f8beb30c5d21c"
+    },
+    {
+      "path": "artifacts/open-child-axis/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "bb81be253c4be20a5ebaf49d2c57f21b69d52de6efc45821e6301d0193de0e9f"
+    },
+    {
+      "path": "artifacts/open-child-axis/upstream-geometry.csv",
+      "bytes": 13154,
+      "sha256": "038c9dce3edf6cfadc0cb64661d980b0dcee262062a9672f03762a049a000cd2"
+    },
+    {
+      "path": "artifacts/open-child-axis/upstream-resample.csv",
+      "bytes": 2972,
+      "sha256": "e546c3300018e5f9306a0003b5fe5825e7589adbb144e5ea9be06dbbbd293818"
+    },
+    {
+      "path": "artifacts/open-child-mid/area.csv",
+      "bytes": 9061,
+      "sha256": "a5efa57599289864fc70a3e914c7dc0978341e08680273d5d22a84c99becfaed"
+    },
+    {
+      "path": "artifacts/open-child-mid/case.json",
+      "bytes": 1082,
+      "sha256": "10b0be8ad52a14efad6b5bd88a7f614e19418566e351c9c632fa13c24526f39f"
+    },
+    {
+      "path": "artifacts/open-child-mid/geometry.csv",
+      "bytes": 13046,
+      "sha256": "69a8907c37dadf403872eb1fcbfd50b315fd96d1a86efe87587aaafafece2d08"
+    },
+    {
+      "path": "artifacts/open-child-mid/independent-cells.csv",
+      "bytes": 4190,
+      "sha256": "8d53a6ee4ac5da45d2bb2b94f0a940c936d2afc1735af21a93c8da493bcf4651"
+    },
+    {
+      "path": "artifacts/open-child-mid/inspect.json",
+      "bytes": 2802,
+      "sha256": "bdceb85ba1dc0d34f1f68a9f7d742474c9f72938a624b2aaff0d0fcbf8ba6695"
+    },
+    {
+      "path": "artifacts/open-child-mid/resample.csv",
+      "bytes": 2976,
+      "sha256": "45d5aaf91378c81a814030ea4b4cc3ca45cc59a61cc158256d8873b5e277df7d"
+    },
+    {
+      "path": "artifacts/open-child-mid/upstream-area.csv",
+      "bytes": 9058,
+      "sha256": "cd55134975c2b06831ca7253e3e6f3db1dfcec8ba1742c844622cb454590c03e"
+    },
+    {
+      "path": "artifacts/open-child-mid/upstream-body.csv",
+      "bytes": 303,
+      "sha256": "a7fafa89ac3a1e31d5b963fab2896e521821f6782946eae14cfb4371150dae13"
+    },
+    {
+      "path": "artifacts/open-child-mid/upstream-contact.csv",
+      "bytes": 161,
+      "sha256": "cabe4fb74416529ae9069b537daaf3e63286924ccc60b9196d56f811e7520b87"
+    },
+    {
+      "path": "artifacts/open-child-mid/upstream-geometry.csv",
+      "bytes": 13069,
+      "sha256": "642064e6548dc900a1b94975d7dfa1ec52c136ed1ee7565d70cf4c7ff7176760"
+    },
+    {
+      "path": "artifacts/open-child-mid/upstream-resample.csv",
+      "bytes": 2982,
+      "sha256": "55f2d5b7e1ed98fd900d83db512f63fd8fbd588cd7bd2605cb539f8f24124188"
+    },
+    {
+      "path": "artifacts/open-clamped-female/area.csv",
+      "bytes": 8942,
+      "sha256": "1fa0a78397b626f0cb9d12f055c2341b8537739e36b0103178d52492e313744a"
+    },
+    {
+      "path": "artifacts/open-clamped-female/case.json",
+      "bytes": 1108,
+      "sha256": "ecb121d831ed37addc8b61d5844d33eeeb9a525c0d6d7656b16ef92afde4029f"
+    },
+    {
+      "path": "artifacts/open-clamped-female/geometry.csv",
+      "bytes": 12783,
+      "sha256": "6d05d1cdfa7397ad1c318ab8fc32266dfe0365daa29eeb52e6226319aaaa130b"
+    },
+    {
+      "path": "artifacts/open-clamped-female/independent-cells.csv",
+      "bytes": 4274,
+      "sha256": "01392058f71f00b873c658a047d7885804ef36b38a914afc6f136e409326ed07"
+    },
+    {
+      "path": "artifacts/open-clamped-female/inspect.json",
+      "bytes": 2796,
+      "sha256": "70c28772b4c250328e20f69ecdf1accbe545859bdb5e1eb2f5adb56bd7b00d7b"
+    },
+    {
+      "path": "artifacts/open-clamped-female/resample.csv",
+      "bytes": 3013,
+      "sha256": "348cff4c3b66265851c6ae63d6cd09e11217a559593551890e9eedbdb019bf64"
+    },
+    {
+      "path": "artifacts/open-clamped-female/upstream-area.csv",
+      "bytes": 8950,
+      "sha256": "e22bc2f2a3d70e25916162d22d5bde935edcb222537572be98298c8bc9f4c898"
+    },
+    {
+      "path": "artifacts/open-clamped-female/upstream-body.csv",
+      "bytes": 264,
+      "sha256": "43f5b3e910f5d8ff08646035828e03048aa26a03f548690b54e6a23855863d69"
+    },
+    {
+      "path": "artifacts/open-clamped-female/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "9c9ab8e2d13a8420c9a6d76e07620435fbd4eadffc1c59d3c24e6303206970d2"
+    },
+    {
+      "path": "artifacts/open-clamped-female/upstream-geometry.csv",
+      "bytes": 12959,
+      "sha256": "a9db50c8107886603e4f7138bd33948814bac5def39005a4d91ac60661be7ff0"
+    },
+    {
+      "path": "artifacts/open-clamped-female/upstream-resample.csv",
+      "bytes": 3008,
+      "sha256": "af3afafe7d96c9cfe220356a076e40649d48055763646ce7ac5a98d96aa036cb"
+    },
+    {
+      "path": "artifacts/open-female/area.csv",
+      "bytes": 8942,
+      "sha256": "1fa0a78397b626f0cb9d12f055c2341b8537739e36b0103178d52492e313744a"
+    },
+    {
+      "path": "artifacts/open-female/case.json",
+      "bytes": 1065,
+      "sha256": "1beb76e5c4c1aefbce401851baa77d2d04471830cb368a0535144a7d8b05ef49"
+    },
+    {
+      "path": "artifacts/open-female/geometry.csv",
+      "bytes": 12783,
+      "sha256": "6d05d1cdfa7397ad1c318ab8fc32266dfe0365daa29eeb52e6226319aaaa130b"
+    },
+    {
+      "path": "artifacts/open-female/independent-cells.csv",
+      "bytes": 4274,
+      "sha256": "01392058f71f00b873c658a047d7885804ef36b38a914afc6f136e409326ed07"
+    },
+    {
+      "path": "artifacts/open-female/inspect.json",
+      "bytes": 2747,
+      "sha256": "afbaa0d7cc882a805a91fec68718296aa0cf9dbbbe978732c2693cc11de5acaa"
+    },
+    {
+      "path": "artifacts/open-female/resample.csv",
+      "bytes": 3013,
+      "sha256": "348cff4c3b66265851c6ae63d6cd09e11217a559593551890e9eedbdb019bf64"
+    },
+    {
+      "path": "artifacts/open-female/upstream-area.csv",
+      "bytes": 8950,
+      "sha256": "e22bc2f2a3d70e25916162d22d5bde935edcb222537572be98298c8bc9f4c898"
+    },
+    {
+      "path": "artifacts/open-female/upstream-body.csv",
+      "bytes": 264,
+      "sha256": "43f5b3e910f5d8ff08646035828e03048aa26a03f548690b54e6a23855863d69"
+    },
+    {
+      "path": "artifacts/open-female/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "9c9ab8e2d13a8420c9a6d76e07620435fbd4eadffc1c59d3c24e6303206970d2"
+    },
+    {
+      "path": "artifacts/open-female/upstream-geometry.csv",
+      "bytes": 12959,
+      "sha256": "a9db50c8107886603e4f7138bd33948814bac5def39005a4d91ac60661be7ff0"
+    },
+    {
+      "path": "artifacts/open-female/upstream-resample.csv",
+      "bytes": 3008,
+      "sha256": "af3afafe7d96c9cfe220356a076e40649d48055763646ce7ac5a98d96aa036cb"
+    },
+    {
+      "path": "artifacts/open-male/area.csv",
+      "bytes": 9157,
+      "sha256": "7946ec82dd406b1d76c9428a12104ff043253b3052f9d159f82f726713d11b0f"
+    },
+    {
+      "path": "artifacts/open-male/case.json",
+      "bytes": 1061,
+      "sha256": "a3e283bdf21c71c8c4cb50cab76900cbfde196db64c418075fac87c619c6acb3"
+    },
+    {
+      "path": "artifacts/open-male/geometry.csv",
+      "bytes": 12560,
+      "sha256": "cc90be67c27b647247d0ad9a8a0946d009b291d5ce05e87e9b1de7f84872676b"
+    },
+    {
+      "path": "artifacts/open-male/independent-cells.csv",
+      "bytes": 4166,
+      "sha256": "c1a31471f910d6f90aef34492e159c8f013bbb488ee47775a18ec83266b8ab82"
+    },
+    {
+      "path": "artifacts/open-male/inspect.json",
+      "bytes": 2714,
+      "sha256": "d2d5a0784721586566f9f8e59c5d6d3cba0b586f1abee389eaefbb3da3bb2ad2"
+    },
+    {
+      "path": "artifacts/open-male/resample.csv",
+      "bytes": 2950,
+      "sha256": "e978152a7f7b3fcdcfefb0e0add391b6b4d3d866239b5d8959c35fe3683c72d2"
+    },
+    {
+      "path": "artifacts/open-male/upstream-area.csv",
+      "bytes": 9157,
+      "sha256": "5f40c367bd6c72b6de26fe954ed33fcd646138b1cf9d97c52c59352c127532ef"
+    },
+    {
+      "path": "artifacts/open-male/upstream-body.csv",
+      "bytes": 230,
+      "sha256": "8b42d0c67a840ae16b4dafdcccfce683a4bb40f09373018982657c4aedcc5612"
+    },
+    {
+      "path": "artifacts/open-male/upstream-contact.csv",
+      "bytes": 162,
+      "sha256": "9ded934e667bd8781b38f1c22920d9ae3274d7b662bec9e3f80ef65c081e3d84"
+    },
+    {
+      "path": "artifacts/open-male/upstream-geometry.csv",
+      "bytes": 12639,
+      "sha256": "fb5833d79f6a8afb45093d8d6d1c932d26e76d9f2df26166d80a4c62349b5463"
+    },
+    {
+      "path": "artifacts/open-male/upstream-resample.csv",
+      "bytes": 2964,
+      "sha256": "88de1fb27ff116157e0967256d9596a35c08c9d49d08c9828d2dc3175e2034fe"
+    },
+    {
+      "path": "artifacts/open-three-way/area.csv",
+      "bytes": 9318,
+      "sha256": "d86f6e928582026775b08f0133c20ca96088dc0cfc007767dc9e2ca1b2a9abf3"
+    },
+    {
+      "path": "artifacts/open-three-way/case.json",
+      "bytes": 1101,
+      "sha256": "8e34e42e137892628fd3b7dd0b98ba53636e48b5d4439f1aa641fc1749c70850"
+    },
+    {
+      "path": "artifacts/open-three-way/geometry.csv",
+      "bytes": 13629,
+      "sha256": "8ed817d5d52e85ced669a754c0c40f45fbf004188f786d5c9e965afc432785f4"
+    },
+    {
+      "path": "artifacts/open-three-way/independent-cells.csv",
+      "bytes": 4262,
+      "sha256": "a637a8c640e28191ad276c6c7328f651986ac2232aeea038d8ae31108b4edb2e"
+    },
+    {
+      "path": "artifacts/open-three-way/inspect.json",
+      "bytes": 2876,
+      "sha256": "9ee9d915bfd883805ecfa9151b0b74f0a012b711e67ba6c06622aaf5fa66cf58"
+    },
+    {
+      "path": "artifacts/open-three-way/resample.csv",
+      "bytes": 2986,
+      "sha256": "82b123e3503cb34138a323577b14b30d1a4d7051e0aac1b9e4e7275067e8deb0"
+    },
+    {
+      "path": "artifacts/open-three-way/upstream-area.csv",
+      "bytes": 9328,
+      "sha256": "7b25e30cde367b393561cbfbe0fe7ea760eabf1cc44328a4afd03c52ae39cb97"
+    },
+    {
+      "path": "artifacts/open-three-way/upstream-body.csv",
+      "bytes": 358,
+      "sha256": "a8619c4a3aebadaaf2eefe495c367f1e06935338f34836d75fd37402511c37cc"
+    },
+    {
+      "path": "artifacts/open-three-way/upstream-contact.csv",
+      "bytes": 160,
+      "sha256": "121eaaa481cdd9fb25738f6b6f546bf91af843fcffaf7eabb73de26fa569224c"
+    },
+    {
+      "path": "artifacts/open-three-way/upstream-geometry.csv",
+      "bytes": 13636,
+      "sha256": "bc0f5620887e0607cca0fd22e7aef50d223e0c9ff591fc0e1089b1de06bd4dd5"
+    },
+    {
+      "path": "artifacts/open-three-way/upstream-resample.csv",
+      "bytes": 2993,
+      "sha256": "ff1bdd1d1a3e150b3d89be690f3132c4bf14ec7d3b7e15672f329745d2537d0c"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "ecc5e5494df5dfd1a9144cb23722c6b94b9b7ea9d7ae347387290cdcbe8118cc"
+    },
+    {
+      "path": "artifacts/upstream-tests.log",
+      "bytes": 290,
+      "sha256": "6321e476c94a9f3e55628dd20624247f8390d7cbb30faaea024bb5677bd88093"
+    },
+    {
+      "path": "artifacts/upstream_sagittal_probe.exe",
+      "bytes": 567560,
+      "sha256": "b916ab80bb2c674f9f5fd72c750e5c4e9cfd26fae8fcc78f7350b202ada33ea4"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 118302,
+      "sha256": "f0dded2218fca06fe91991e9a396c5154b56bbad0d346c6efebadd57bbd3a4bd"
+    }
+  ]
+}

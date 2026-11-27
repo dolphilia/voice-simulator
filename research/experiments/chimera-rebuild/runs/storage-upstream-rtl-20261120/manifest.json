@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "run_id": "storage-upstream-rtl-20261120",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "upstream_dirty": false,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "15.6.1",
+    "machine": "arm64",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)"
+  },
+  "inputs": [
+    {
+      "path": "cases/uniform-tube-rigid.json",
+      "bytes": 863,
+      "sha256": "eb5b55e43147f559409c932fd99e74b5379de94d1e51f303355f2dd97a47669d"
+    },
+    {
+      "path": "cases/upstream-melody.json",
+      "bytes": 78,
+      "sha256": "076b7590874b4d61f427283a008ef0553ea9f6938d4bc20d3e9d9a58e42af2d0"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 6051,
+      "sha256": "869a5031f9f8e0f35260a719a4434df5ad86f80e613e59f6ff491bd6b481b88b"
+    }
+  ],
+  "cases": [
+    {
+      "id": "airway",
+      "cwd": "$UPSTREAM",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "airway",
+        "--",
+        "--nocapture"
+      ],
+      "status": "pass",
+      "outputs": [],
+      "exit_code": 0,
+      "log": {
+        "path": "artifacts/airway.log",
+        "bytes": 1087,
+        "sha256": "e3e1d2d8780b3bfa292e260777f5ca9ced59c7762e7fcb2db1f371d83ab1fa17"
+      }
+    },
+    {
+      "id": "vowels",
+      "cwd": "$UPSTREAM",
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "render",
+        "vowels",
+        "male",
+        "$ARTIFACTS/vowels.wav"
+      ],
+      "status": "pass",
+      "outputs": [
+        {
+          "path": "artifacts/vowels.wav",
+          "bytes": 576044,
+          "sha256": "4c385a6d4560a88d3dca30abfb34f7ff246c72dcc20783ab35b1530b6ff3c7a8",
+          "sample_rate_hz": 48000,
+          "frames": 288000,
+          "channels": 1,
+          "sample_bytes": 2
+        }
+      ],
+      "exit_code": 0,
+      "log": {
+        "path": "artifacts/vowels.log",
+        "bytes": 891,
+        "sha256": "f36cf20ce8f413ae5720581b06d2b3a3b561869b7b4da012d8c7a29c1e6d449e"
+      }
+    },
+    {
+      "id": "ipa-vcv",
+      "cwd": "$UPSTREAM",
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "render",
+        "speech",
+        "$ARTIFACTS/ipa-vcv.wav",
+        "ɑpɑ / ɑbɑ / ɑsɑ / ɑzɑ / ɑmɑ",
+        "male"
+      ],
+      "status": "pass",
+      "outputs": [
+        {
+          "path": "artifacts/ipa-vcv.wav",
+          "bytes": 405098,
+          "sha256": "c5833604d90ba110db60cb64e4bd63582786719d427d870471fef5e0e58eb2fd",
+          "sample_rate_hz": 48000,
+          "frames": 202527,
+          "channels": 1,
+          "sample_bytes": 2
+        }
+      ],
+      "exit_code": 0,
+      "log": {
+        "path": "artifacts/ipa-vcv.log",
+        "bytes": 535,
+        "sha256": "fcea72094966ffa4ad5c40feaa920ec94e32f241214c8be587f9fff63c677181"
+      }
+    },
+    {
+      "id": "melody",
+      "cwd": "$UPSTREAM",
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "render",
+        "notes",
+        "$WORKSPACE/cases/upstream-melody.json",
+        "$ARTIFACTS/melody.wav",
+        "female",
+        "--artic",
+        "$ARTIFACTS/articulators.json",
+        "--tele",
+        "$ARTIFACTS/voice.tele"
+      ],
+      "status": "pass",
+      "outputs": [
+        {
+          "path": "artifacts/melody.wav",
+          "bytes": 259244,
+          "sha256": "1635488862d5d0ef3b2b1914c0f456ae3755935b174490a897c068c0c986ddf6",
+          "sample_rate_hz": 48000,
+          "frames": 129600,
+          "channels": 1,
+          "sample_bytes": 2
+        },
+        {
+          "path": "artifacts/articulators.json",
+          "bytes": 27178,
+          "sha256": "09ae3151c3d45980f5f33320a64a068e66423c222fd3d68cd42164ddc361f761"
+        },
+        {
+          "path": "artifacts/voice.tele",
+          "bytes": 125108,
+          "sha256": "fdd021ccc77c60404ed487e46e91bf03d95df3c7b2a64dd78d313617d015f25d"
+        }
+      ],
+      "exit_code": 0,
+      "log": {
+        "path": "artifacts/melody.log",
+        "bytes": 998,
+        "sha256": "c297510e21b9dd9d23546989a0674c722168cb296027674fc7a6d650b7c14d74"
+      }
+    }
+  ],
+  "storage": {
+    "volume_uuid": "3D26C0E2-12EF-4613-A693-E21C0D51D2E7",
+    "artifacts_root": "/Volumes/RTL9210B-CG/voice-simulator/scratch/chimera-runs/storage-upstream-rtl-20261120/artifacts",
+    "estimated_peak_bytes": 1073741824
+  }
+}

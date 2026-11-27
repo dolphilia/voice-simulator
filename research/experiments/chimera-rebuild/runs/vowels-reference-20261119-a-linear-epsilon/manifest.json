@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "run_id": "vowels-reference-20261119-a-linear-epsilon",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "vowel-transfer-epsilon",
+  "upstream_vowel_table_sha256": "2dee540ced5171444c314243643a654281e94f37a1a2c5c9bcf5176776eef24f",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/vowel-transfer-epsilon.json",
+      "bytes": 1783,
+      "sha256": "9b6830db32ec331a8d80e3ede77d134e057976ea36e327ee9cac83c57e48c16d"
+    },
+    {
+      "path": "tools/upstream_vowel_probe.rs",
+      "bytes": 5186,
+      "sha256": "6a61bfd6fe8bfbf49c56b77ca1780663445312a2a8c1e706f9c8bfc62b198295"
+    },
+    {
+      "path": "tools/measure_vowel_transfer.py",
+      "bytes": 15911,
+      "sha256": "af11f7355ae0a876dbf97a4e3705227918dfdedeb7010c922ac5b3202e42a414"
+    },
+    {
+      "path": "tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19482,
+      "sha256": "31492a4991f14ca5eaccdebe58ab8636fee1260e149190fe722625125bd27a43"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5501,
+      "sha256": "b46d996f3a8755fe7df848d6c7fcc45a8f9f836e45313d8b76abd35802a9ef57"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6538,
+      "sha256": "f5248a5f54aae6845074adaf04108c25ccf99c251ac0c6b968e64016ea0ea02b"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 5875,
+      "sha256": "e24e56ab33da69cd549cb4f62eaf9ce308344aa436f963619b4d3c4a5b3968c6"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 10030,
+      "sha256": "b8a7b2590aa7ab896fffa83c534fc52b69e38bd408a89c8523136231ce7cd8ee"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 5044,
+      "sha256": "e2502c767357c6b5695bae93e102e509b8feb5c8f7054566de1090785c95d288"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 16000,
+      "sha256": "affd33e252356aa8bb54ef5ee8b5bf0fa4b280e6b6d99220aa8e769ee819a434"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 12993,
+      "sha256": "26bb98fb24965abef5f9d09544f882404282a2e751014c27fa2183ec27d447a0"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4488,
+      "sha256": "1f4fc0f122e76d0cbc96659e149556be7470c895b98f2a371020ca15cfe3c20e"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 24003,
+      "sha256": "c247f2c45aafc52073ae02318843b32d584e330b337672c704c24f8dbc4d6e29"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human.rs",
+      "bytes": 12703,
+      "sha256": "0a08749a2f302159963289eb45abcd8d77f2166850b3671bd6938dc143b3b561"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 5950,
+      "sha256": "a06f8153b461d388dd2284774314c16f1951fc7f2424527753baba8ef0deab12"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6839,
+      "sha256": "ec5e15f72f739b5555427f991da6e98678a9f2c97859a2402f4cc6fbaa3d9451"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 25738,
+      "sha256": "353dc0585b915315338d257b8778afbdd24080c0ab75adf6f79d807bb8bc97f5"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 6352,
+      "sha256": "78143e96c902a204ec14e123e66aba502909fe5ac571471cf191bd17a1e91d0f"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11608,
+      "sha256": "15c0e42561e804ea859813dc1ca57f104381ae20ec9b822c60d75ff756078c8d"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 3943,
+      "sha256": "e92cca36c4828353f393012d560a0fac67aa3773152a9779273e5e5dfca3de9f"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7323,
+      "sha256": "e8817ea02256d2ed0d9c69dda9485253e2fe4122cb5e31216efea460abdba2f9"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 8481,
+      "sha256": "33c04929918a60ac26bf16cb99e08eb53d59c6346357967963f39046fb56f9ff"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 4999,
+      "sha256": "ed1c50737848c303cfef3f42ebc82ef7edaa22e2f6ec090c44db9fb7df92f462"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy.rs",
+      "bytes": 15949,
+      "sha256": "b8ff35f0f556a6478c14994d5565223c97eb76595fe212d4c432f082b92c467e"
+    },
+    {
+      "path": "crates/vocal-core/src/articulators.rs",
+      "bytes": 11437,
+      "sha256": "02a8e1e9110785d46e33e27d831f1a67421d2c77eccf07f3574ea23c955d92f1"
+    },
+    {
+      "path": "crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 9844,
+      "sha256": "4466f50d733b3d20c4521ca1a01f7463069d10222f557962e80e490f85a4ec3d"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 236,
+      "sha256": "79377bc7f5a764ae7cf8c9a6a02f0dd10bd3fec93d8704566e173b50ddcf4bb1"
+    },
+    {
+      "path": "crates/vocal-core/src/output.rs",
+      "bytes": 6076,
+      "sha256": "6dcc28a83b20b040aa757bf4a88e77926d181f2588b8ce981ff756b7df1e185d"
+    },
+    {
+      "path": "crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "crates/vocal-core/src/voice.rs",
+      "bytes": 7648,
+      "sha256": "9ffe34c7bc7080a835608d4941778e62e942647201f3a4674554e464ee738a4f"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/vowel-transfer-epsilon.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "transfer",
+        "$WORKSPACE/cases/vowel-transfer-epsilon.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "golden_analysis",
+        "analysis_matches_typescript",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_vowel_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_vowel_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_vowel_probe.exe",
+        "ɛ",
+        "96000",
+        "120.0",
+        "4600.0",
+        "700",
+        "150.0",
+        "-0.15",
+        "$ARTIFACTS"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 812,
+      "sha256": "29fd1b83342d76bcd409f58422edd5988674f7a044c08623f790c5cd798fc16a"
+    },
+    {
+      "path": "artifacts/independent-response.csv",
+      "bytes": 160037,
+      "sha256": "d9117d70ab78e1b21abd10b391fdef97032122550cb15794954515218962190d"
+    },
+    {
+      "path": "artifacts/lips-peaks.csv",
+      "bytes": 320,
+      "sha256": "472bf9695d2344897fec19ae46d9bad2c1335f825b351487e73386cb3eae8e75"
+    },
+    {
+      "path": "artifacts/peaks.csv",
+      "bytes": 316,
+      "sha256": "8e44cda11489486bde4825bd70dee37a20641efa82d1a3e2cfad00a9168b4a7e"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 60157,
+      "sha256": "903becd9a21a8e9d260fe57ec9070c82168d11c1154f00da9b0be58c767a5af3"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 126406,
+      "sha256": "35ca9940db738ad58b83704834a317950679de992ba05afdc94027c6ce212a8d"
+    },
+    {
+      "path": "artifacts/upstream-analysis-test.log",
+      "bytes": 1533,
+      "sha256": "3d540934b81e941a444cc3b6e9375939069565bb2155d316ec336281997943fd"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "d373ea984515d6679fbdc7a56fc3627672a54e4c8fd9a8cc77f61bbc296f4f14"
+    },
+    {
+      "path": "artifacts/upstream-linear-branches.csv",
+      "bytes": 3734,
+      "sha256": "3924354f5b86036b31e8a0d32874e78ae2b515ae8d4337654ca415cea45d13de"
+    },
+    {
+      "path": "artifacts/upstream-linear-nodes.csv",
+      "bytes": 5587,
+      "sha256": "dcc5591a2f5a502b546b6d39b0697e4ddc2293bc2c490b7bb67e39824c2b3cc9"
+    },
+    {
+      "path": "artifacts/upstream-peaks.csv",
+      "bytes": 316,
+      "sha256": "b6687b7c3dd60313a7894ecebc7efeb8af4c62157d0aa54e06c3ab781f5e6515"
+    },
+    {
+      "path": "artifacts/upstream-pose.csv",
+      "bytes": 210,
+      "sha256": "f9d4112922181c27437b874edc3f0cd2a95f6d282467b4131484e66b8e5623cd"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 38520,
+      "sha256": "a7f4c5e3c9c288bc78c92ee78853cfe40f045248024c406bb916642fe18a087f"
+    },
+    {
+      "path": "artifacts/upstream-vowel-settings.csv",
+      "bytes": 68,
+      "sha256": "6730b35d50047a5dee49a4875e7f8d1a8d4abd27acb5e34e58bb35f4adfae55e"
+    },
+    {
+      "path": "artifacts/upstream_vowel_probe.exe",
+      "bytes": 679528,
+      "sha256": "e2d4a15a45236a0e28ce804d1358a9b621d4cfacc9b8f4beda7a3485152ae4d4"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2536,
+      "sha256": "2c793adba8aa5954026fd4ccff7479c7934673904c1147d32333ba6c8e6c5c4e"
+    }
+  ]
+}

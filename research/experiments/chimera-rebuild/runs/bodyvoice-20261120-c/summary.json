@@ -1,0 +1,681 @@
+{
+  "checks": {
+    "male/sample_rate_and_count": true,
+    "male/pcm_vs_upstream": true,
+    "male/all_trace_components_vs_upstream": true,
+    "male/pitch_from_phase": true,
+    "male/steady_glottal_area_from_phase": true,
+    "male/steady_voicing": true,
+    "male/bounded_pcm": true,
+    "male/pcm_trace_matches_wave": true,
+    "male/host_block_invariance": true,
+    "female/sample_rate_and_count": true,
+    "female/pcm_vs_upstream": true,
+    "female/all_trace_components_vs_upstream": true,
+    "female/pitch_from_phase": true,
+    "female/steady_glottal_area_from_phase": true,
+    "female/steady_voicing": true,
+    "female/bounded_pcm": true,
+    "female/pcm_trace_matches_wave": true,
+    "female/host_block_invariance": true,
+    "child/sample_rate_and_count": true,
+    "child/pcm_vs_upstream": true,
+    "child/all_trace_components_vs_upstream": true,
+    "child/pitch_from_phase": true,
+    "child/steady_glottal_area_from_phase": true,
+    "child/steady_voicing": true,
+    "child/bounded_pcm": true,
+    "child/pcm_trace_matches_wave": true,
+    "child/host_block_invariance": true,
+    "three-way/sample_rate_and_count": true,
+    "three-way/pcm_vs_upstream": true,
+    "three-way/all_trace_components_vs_upstream": true,
+    "three-way/pitch_from_phase": true,
+    "three-way/steady_glottal_area_from_phase": true,
+    "three-way/steady_voicing": true,
+    "three-way/bounded_pcm": true,
+    "three-way/pcm_trace_matches_wave": true,
+    "three-way/host_block_invariance": true,
+    "female-110/sample_rate_and_count": true,
+    "female-110/pcm_vs_upstream": true,
+    "female-110/all_trace_components_vs_upstream": true,
+    "female-110/pitch_from_phase": true,
+    "female-110/steady_glottal_area_from_phase": true,
+    "female-110/steady_voicing": true,
+    "female-110/bounded_pcm": true,
+    "female-110/pcm_trace_matches_wave": true,
+    "female-110/host_block_invariance": true,
+    "child-64k-direct/sample_rate_and_count": true,
+    "child-64k-direct/pcm_vs_upstream": true,
+    "child-64k-direct/all_trace_components_vs_upstream": true,
+    "child-64k-direct/pitch_from_phase": true,
+    "child-64k-direct/steady_glottal_area_from_phase": true,
+    "child-64k-direct/steady_voicing": true,
+    "child-64k-direct/bounded_pcm": true,
+    "child-64k-direct/pcm_trace_matches_wave": true,
+    "child-64k-direct/host_block_invariance": true,
+    "child-64k-direct/direct_glottal_area": true,
+    "child-64k-direct/direct_lung_boundary": true,
+    "body_endpoint_area_order": true,
+    "female_open_phase_increases_at_equal_pitch": true,
+    "child_open_phase_increases": true,
+    "body_endpoint_lung_resistance_order": true
+  },
+  "cases": {
+    "male": {
+      "frame_count": 38400,
+      "internal_rate_hz": 96000,
+      "output_rate_hz": 48000,
+      "expected": {
+        "scale": 1.0,
+        "f0_hz": 110.00000000000004,
+        "base_open_quotient": 0.6000000000000001,
+        "abduction_cm2": 0.00225,
+        "closed_area_cm2": 0.014750000000000001,
+        "amplitude_coefficient_cm2": 0.17,
+        "lung_compensation_resistance_dyn_s_cm5": 7.195468
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 4.163780431554187e-12,
+        "steady_glottal_area_cm2": 1.729633880565018e-09
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 7.275957614183426e-12,
+          "max_abs_diff_over_reference_peak": 7.354390455835013e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 4.001776687800884e-11,
+          "max_abs_diff_over_reference_peak": 4.137305686570582e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 3.427658157306723e-11,
+          "max_abs_diff_over_reference_peak": 1.670740502243169e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 2.7755575615628914e-17,
+          "max_abs_diff_over_reference_peak": 1.7906823000705593e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 9.663381206337363e-13,
+          "max_abs_diff_over_reference_peak": 2.3448387975345544e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 3.885780586188048e-16,
+          "max_abs_diff_over_reference_peak": 3.8857805861881795e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 2.2168933355715126e-12,
+          "max_abs_diff_over_reference_peak": 5.140715311854121e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 1.1461088433861732e-07,
+          "max_abs_diff_over_reference_peak": 2.794497141096234e-13,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.222929447889328,
+      "steady_pcm_rms": 0.11299183731743678,
+      "steady_minimum_voicing": 0.9999999999999661,
+      "steady_pitch_hz": 109.99999999999721,
+      "steady_expected_open_quotient": 0.6022050000352003,
+      "steady_last_open_phase": 0.6020833333325525,
+      "steady_peak_to_peak_area_cm2": 0.14024999980139596,
+      "steady_peak_to_peak_flow_cm3_s": 397.59130179885125
+    },
+    "female": {
+      "frame_count": 38400,
+      "internal_rate_hz": 96000,
+      "output_rate_hz": 48000,
+      "expected": {
+        "scale": 0.9,
+        "f0_hz": 205.00000000000006,
+        "base_open_quotient": 0.7300000000000001,
+        "abduction_cm2": 0.0018225,
+        "closed_area_cm2": 0.011947500000000002,
+        "amplitude_coefficient_cm2": 0.10251000000000002,
+        "lung_compensation_resistance_dyn_s_cm5": 8.775676268861451
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 5.314859663485549e-12,
+        "steady_glottal_area_cm2": 1.023230014607357e-09
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 3.637978807091713e-12,
+          "max_abs_diff_over_reference_peak": 4.117201869999514e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 2.546585164964199e-11,
+          "max_abs_diff_over_reference_peak": 2.7475650711164925e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 2.7064572805102216e-11,
+          "max_abs_diff_over_reference_peak": 1.2331455242113361e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 2.7755575615628914e-17,
+          "max_abs_diff_over_reference_peak": 2.8756816085666685e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 3.979039320256561e-13,
+          "max_abs_diff_over_reference_peak": 1.5490805483092256e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 3.3306690738754696e-16,
+          "max_abs_diff_over_reference_peak": 3.3306690738755825e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 1.2505552149377763e-12,
+          "max_abs_diff_over_reference_peak": 4.7475030732034554e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 5.931360647082329e-08,
+          "max_abs_diff_over_reference_peak": 8.67614595945298e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.385827898979187,
+      "steady_pcm_rms": 0.17608032426966772,
+      "steady_minimum_voicing": 0.9999999999999661,
+      "steady_pitch_hz": 204.99999999999875,
+      "steady_expected_open_quotient": 0.7317860500352003,
+      "steady_last_open_phase": 0.7317708333319646,
+      "steady_peak_to_peak_area_cm2": 0.08457074990967367,
+      "steady_peak_to_peak_flow_cm3_s": 246.35469590893413
+    },
+    "child": {
+      "frame_count": 38400,
+      "internal_rate_hz": 96000,
+      "output_rate_hz": 48000,
+      "expected": {
+        "scale": 0.74,
+        "f0_hz": 259.99999999999994,
+        "base_open_quotient": 0.7300000000000001,
+        "abduction_cm2": 0.0012320999999999999,
+        "closed_area_cm2": 0.0080771,
+        "amplitude_coefficient_cm2": 0.04403,
+        "lung_compensation_resistance_dyn_s_cm5": 12.636635539849564
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 1.9326762412674725e-12,
+        "steady_glottal_area_cm2": 4.899583100348437e-10
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 1.8189894035458565e-12,
+          "max_abs_diff_over_reference_peak": 2.2180359821485246e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 1.9099388737231493e-11,
+          "max_abs_diff_over_reference_peak": 2.191305848753242e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 1.9326762412674725e-11,
+          "max_abs_diff_over_reference_peak": 1.6247423948978114e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 6.938893903907228e-18,
+          "max_abs_diff_over_reference_peak": 1.562748873130615e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 1.7053025658242404e-13,
+          "max_abs_diff_over_reference_peak": 1.4266139440412327e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 2.220446049250313e-16,
+          "max_abs_diff_over_reference_peak": 2.2204460492503885e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 7.247535904753022e-13,
+          "max_abs_diff_over_reference_peak": 5.545874560441538e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 2.4563632905483246e-08,
+          "max_abs_diff_over_reference_peak": 6.542591854005071e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.21147094666957855,
+      "steady_pcm_rms": 0.1013023141015161,
+      "steady_minimum_voicing": 0.9999999999999661,
+      "steady_pitch_hz": 259.999999999998,
+      "steady_expected_open_quotient": 0.7312074580352003,
+      "steady_last_open_phase": 0.7308333333327623,
+      "steady_peak_to_peak_area_cm2": 0.03632474871155715,
+      "steady_peak_to_peak_flow_cm3_s": 113.57743748491853
+    },
+    "three-way": {
+      "frame_count": 38400,
+      "internal_rate_hz": 96000,
+      "output_rate_hz": 48000,
+      "expected": {
+        "scale": 0.894,
+        "f0_hz": 169.49934069301725,
+        "base_open_quotient": 0.6754000000000001,
+        "abduction_cm2": 0.001798281,
+        "closed_area_cm2": 0.011788731000000002,
+        "amplitude_coefficient_cm2": 0.10830094800000001,
+        "lung_compensation_resistance_dyn_s_cm5": 8.886545935484719
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 5.059064278611913e-12,
+        "steady_glottal_area_cm2": 1.0877552192312123e-09
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 3.637978807091713e-12,
+          "max_abs_diff_over_reference_peak": 4.0042201262059296e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 3.2741809263825417e-11,
+          "max_abs_diff_over_reference_peak": 3.5233430448220117e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 2.7966962079517543e-11,
+          "max_abs_diff_over_reference_peak": 1.48761162364817e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 2.7755575615628914e-17,
+          "max_abs_diff_over_reference_peak": 2.7443539616066335e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 4.547473508864641e-13,
+          "max_abs_diff_over_reference_peak": 1.6832558313043216e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 1.6653345369377348e-16,
+          "max_abs_diff_over_reference_peak": 1.6653345369377913e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 1.3073986337985843e-12,
+          "max_abs_diff_over_reference_peak": 4.574427555761098e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 6.82193785905838e-08,
+          "max_abs_diff_over_reference_peak": 1.3190495614931167e-13,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.29423949122428894,
+      "steady_pcm_rms": 0.14742733561328147,
+      "steady_minimum_voicing": 0.9999999999999661,
+      "steady_pitch_hz": 169.4993406930173,
+      "steady_expected_open_quotient": 0.6771623154152003,
+      "steady_last_open_phase": 0.6770967238970035,
+      "steady_peak_to_peak_area_cm2": 0.08934827976438403,
+      "steady_peak_to_peak_flow_cm3_s": 259.583253866128
+    },
+    "female-110": {
+      "frame_count": 38400,
+      "internal_rate_hz": 96000,
+      "output_rate_hz": 48000,
+      "expected": {
+        "scale": 0.9,
+        "f0_hz": 110.0,
+        "base_open_quotient": 0.7300000000000001,
+        "abduction_cm2": 0.0018225,
+        "closed_area_cm2": 0.011947500000000002,
+        "amplitude_coefficient_cm2": 0.10251000000000002,
+        "lung_compensation_resistance_dyn_s_cm5": 8.775676268861451
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 4.121147867408581e-12,
+        "steady_glottal_area_cm2": 1.1144842965160606e-09
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 5.4569682106375694e-12,
+          "max_abs_diff_over_reference_peak": 5.787017689866907e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 3.2741809263825417e-11,
+          "max_abs_diff_over_reference_peak": 3.774414079579709e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 2.9103830456733704e-11,
+          "max_abs_diff_over_reference_peak": 2.957553792147377e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 1.3877787807814457e-17,
+          "max_abs_diff_over_reference_peak": 1.4378408042819313e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 5.115907697472721e-13,
+          "max_abs_diff_over_reference_peak": 1.8760033363495496e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 2.220446049250313e-16,
+          "max_abs_diff_over_reference_peak": 2.2204460492503885e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 1.3642420526593924e-12,
+          "max_abs_diff_over_reference_peak": 4.978333901801453e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 8.185452315956354e-08,
+          "max_abs_diff_over_reference_peak": 4.121488558988038e-13,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.10975947231054306,
+      "steady_pcm_rms": 0.04853576524154226,
+      "steady_minimum_voicing": 0.9999999999999661,
+      "steady_pitch_hz": 109.99999999999721,
+      "steady_expected_open_quotient": 0.7317860500352003,
+      "steady_last_open_phase": 0.7316666666659841,
+      "steady_peak_to_peak_area_cm2": 0.0845707499097178,
+      "steady_peak_to_peak_flow_cm3_s": 261.0767569906415
+    },
+    "child-64k-direct": {
+      "frame_count": 51200,
+      "internal_rate_hz": 64000,
+      "output_rate_hz": 64000,
+      "expected": {
+        "scale": 0.74,
+        "f0_hz": 259.99999999999994,
+        "base_open_quotient": 0.7300000000000001,
+        "abduction_cm2": 0.0012320999999999999,
+        "closed_area_cm2": 0.0080771,
+        "amplitude_coefficient_cm2": 0.04403,
+        "lung_compensation_resistance_dyn_s_cm5": 12.636635539849564
+      },
+      "absolute_errors": {
+        "pcm": 0.0,
+        "pitch_hz": 5.172751116333529e-12,
+        "steady_glottal_area_cm2": 4.596872188455947e-10,
+        "direct_glottal_area_cm2": 9.298117831235686e-16,
+        "direct_lung_boundary_dyn_cm2": 3.092281986027956e-11
+      },
+      "series_vs_upstream": {
+        "gate": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lung_boundary_dyn_cm2": {
+          "max_absolute_difference": 1.8189894035458565e-12,
+          "max_abs_diff_over_reference_peak": 2.2172928317595734e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_sub_dyn_cm2": {
+          "max_absolute_difference": 1.9099388737231493e-11,
+          "max_abs_diff_over_reference_peak": 2.193878297880063e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "pressure_supra_dyn_cm2": {
+          "max_absolute_difference": 1.6655121726216748e-11,
+          "max_abs_diff_over_reference_peak": 1.346842604362864e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_area_cm2": {
+          "max_absolute_difference": 1.3877787807814457e-17,
+          "max_abs_diff_over_reference_peak": 3.1254983955895e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_flow_cm3_s": {
+          "max_absolute_difference": 1.2789769243681803e-13,
+          "max_abs_diff_over_reference_peak": 1.0662043250022457e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_phase": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_voicing": {
+          "max_absolute_difference": 4.718447854656915e-16,
+          "max_abs_diff_over_reference_peak": 4.718447854657022e-16,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "glottal_f0_hz": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "lip_flow_cm3_s": {
+          "max_absolute_difference": 7.531752999057062e-13,
+          "max_abs_diff_over_reference_peak": 5.8444943440414705e-15,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "nose_flow_cm3_s": {
+          "max_absolute_difference": 0.0,
+          "max_abs_diff_over_reference_peak": 0.0,
+          "first_sample_over_tolerance": null,
+          "status": true
+        },
+        "radiation_derivative_cm3_s2": {
+          "max_absolute_difference": 1.909211277961731e-08,
+          "max_abs_diff_over_reference_peak": 4.6779310508208986e-14,
+          "first_sample_over_tolerance": null,
+          "status": true
+        }
+      },
+      "first_pcm_frame_over_tolerance": null,
+      "peak_pcm": 0.22906991839408875,
+      "steady_pcm_rms": 0.10873045336206223,
+      "steady_minimum_voicing": 0.9999999999999775,
+      "steady_pitch_hz": 259.999999999998,
+      "steady_expected_open_quotient": 0.7312074580354428,
+      "steady_last_open_phase": 0.730937499999719,
+      "steady_peak_to_peak_area_cm2": 0.03632473948707751,
+      "steady_peak_to_peak_flow_cm3_s": 113.98615430881324
+    }
+  },
+  "female_minus_male_last_open_phase_at_equal_pitch": 0.12958333333343164
+}

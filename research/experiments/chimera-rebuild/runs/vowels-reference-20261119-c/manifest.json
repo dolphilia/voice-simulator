@@ -1,0 +1,2017 @@
+{
+  "schema_version": 1,
+  "run_id": "vowels-reference-20261119-c",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "vowel-benchmark",
+  "upstream_vowel_table_sha256": "2dee540ced5171444c314243643a654281e94f37a1a2c5c9bcf5176776eef24f",
+  "scipy_version": "1.17.1",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/vowel-benchmark.json",
+      "bytes": 2059,
+      "sha256": "b30597cc7c2d34b5fef66e671c76cc43c29b50739fa0acfd418fc7ae41bf5976"
+    },
+    {
+      "path": "cases/vowel-transfer-i.json",
+      "bytes": 1798,
+      "sha256": "26de730116bfa728d701df296d71e21fa5a40b1b56b437a57b7c7059250edb8e"
+    },
+    {
+      "path": "cases/vowel-voice-i.json",
+      "bytes": 2265,
+      "sha256": "9e6a3befd846420789cbac2d3bb5a6845241091920af8a7747f5b36da5c2b4aa"
+    },
+    {
+      "path": "cases/vowel-transfer-e.json",
+      "bytes": 1784,
+      "sha256": "f51659fb6b11f00f54cbe4e6cbfcf8eb43290aee7fe0109cdb3e08d55057ee0f"
+    },
+    {
+      "path": "cases/vowel-voice-e.json",
+      "bytes": 2204,
+      "sha256": "97118b527f673bacb8a84340bb48143cada0ef9853e18db94af70e0d76f097d0"
+    },
+    {
+      "path": "cases/vowel-transfer-epsilon.json",
+      "bytes": 1783,
+      "sha256": "9b6830db32ec331a8d80e3ede77d134e057976ea36e327ee9cac83c57e48c16d"
+    },
+    {
+      "path": "cases/vowel-voice-epsilon.json",
+      "bytes": 2209,
+      "sha256": "490dac89352afeba263c243b89c75ed7ee35f04a98938e2dda9d4bd08013a7db"
+    },
+    {
+      "path": "cases/vowel-transfer-ash.json",
+      "bytes": 1804,
+      "sha256": "1686dc5998e4e4c65a2866ed1f7a6ffdd3860ebc651161c5993a29d137d2c801"
+    },
+    {
+      "path": "cases/vowel-voice-ash.json",
+      "bytes": 2225,
+      "sha256": "eaada79c0697ff6b75d6a9d05464f54c8b2652d980fdb535713735cc1dba3858"
+    },
+    {
+      "path": "cases/vowel-transfer-alpha.json",
+      "bytes": 1769,
+      "sha256": "b320aa771e6e7ddcf671f397358d59dc32e274a101d6a89b9625b1fd8c412822"
+    },
+    {
+      "path": "cases/vowel-voice-alpha.json",
+      "bytes": 2271,
+      "sha256": "3560321678b3078bccbaf498d720f206807436c0d03be45b4acb7c44986d1d92"
+    },
+    {
+      "path": "cases/vowel-transfer-open-o.json",
+      "bytes": 1844,
+      "sha256": "d27387976fa4cd6bda4e9bd9350cf818e8d1cac9123df0b9a064b6633b523d02"
+    },
+    {
+      "path": "cases/vowel-voice-open-o.json",
+      "bytes": 2237,
+      "sha256": "13a7c5edc67d41fce6b88bbffa149e9fcef27f685ff23025d41414ed6f2e081c"
+    },
+    {
+      "path": "cases/vowel-transfer-o.json",
+      "bytes": 1795,
+      "sha256": "a8ae4c2e3eb9e93790361ae944616a70800099b43659a80754ed1e16ad4d80cf"
+    },
+    {
+      "path": "cases/vowel-voice-o.json",
+      "bytes": 2213,
+      "sha256": "a72c8dd5856b6de00047e3f372263b3cb4350d58c4c325da37e1a93e09fa47bb"
+    },
+    {
+      "path": "cases/vowel-transfer-u.json",
+      "bytes": 1772,
+      "sha256": "4c6b2d2439649fceccb84cad6e071d5d42b32ac4c0d2c08a19b1a59655154413"
+    },
+    {
+      "path": "cases/vowel-voice-u.json",
+      "bytes": 2271,
+      "sha256": "09dbf45d5c5b3e7408a449a153f6bae6b4366ec0bdd430be00fee3dab2e977a7"
+    },
+    {
+      "path": "cases/vowel-transfer-wedge.json",
+      "bytes": 1789,
+      "sha256": "f0c705f7de4498a32addbef662a1b7391941e44591ee6ad0a9697b393eedd4c7"
+    },
+    {
+      "path": "cases/vowel-voice-wedge.json",
+      "bytes": 2213,
+      "sha256": "cb81cf6c94ec366230b8fd89fe0874c2f1602211a7a2f62cbbd7e68de502f908"
+    },
+    {
+      "path": "cases/vowel-transfer-rhotic.json",
+      "bytes": 1850,
+      "sha256": "c0eeb91158e543b0c28d3c0014ac3ab61723de96e577ee2a61c329ce06d2057f"
+    },
+    {
+      "path": "cases/vowel-voice-rhotic.json",
+      "bytes": 2271,
+      "sha256": "fae7131b90587aac7ef244b1bf6491549ee606e96ae3d8701dc9b9f6386d407d"
+    },
+    {
+      "path": "cases/tract-slew-ten-vowels.json",
+      "bytes": 8701,
+      "sha256": "85057d59b010d158450c00f308e7fafd29ef883b13dd99e4dc412add980db04c"
+    },
+    {
+      "path": "tools/measure_vowel_benchmark.py",
+      "bytes": 11649,
+      "sha256": "8e10ea203dd11c38696da370aba6f680cd88056f0478d6e4780a839c702ea00f"
+    },
+    {
+      "path": "tools/measure_vowel_transfer.py",
+      "bytes": 15911,
+      "sha256": "af11f7355ae0a876dbf97a4e3705227918dfdedeb7010c922ac5b3202e42a414"
+    },
+    {
+      "path": "tools/measure_vowel_voice.py",
+      "bytes": 16032,
+      "sha256": "719d209115a6a9b27faed484705a9c9a7663c725c117a5340f85a2a05e49361d"
+    },
+    {
+      "path": "tools/measure_tract_control.py",
+      "bytes": 14528,
+      "sha256": "b03990471d964cc55746c1566a00e51e39dc1f7f9387ad3c5aad301dc45652c7"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19482,
+      "sha256": "31492a4991f14ca5eaccdebe58ab8636fee1260e149190fe722625125bd27a43"
+    },
+    {
+      "path": "tools/vowel_boundary.py",
+      "bytes": 6719,
+      "sha256": "6a05ff766d2988627f5afc16cc5e71bece0173affba8031d9c4e5f4095d52d7d"
+    },
+    {
+      "path": "tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "tools/upstream_sagittal_probe.rs",
+      "bytes": 10602,
+      "sha256": "62d15e354833b312a6cf82d02e729a381782be4b89b3fb407ea33b4b29211230"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6538,
+      "sha256": "f5248a5f54aae6845074adaf04108c25ccf99c251ac0c6b968e64016ea0ea02b"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 5875,
+      "sha256": "e24e56ab33da69cd549cb4f62eaf9ce308344aa436f963619b4d3c4a5b3968c6"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 10030,
+      "sha256": "b8a7b2590aa7ab896fffa83c534fc52b69e38bd408a89c8523136231ce7cd8ee"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 5044,
+      "sha256": "e2502c767357c6b5695bae93e102e509b8feb5c8f7054566de1090785c95d288"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 16000,
+      "sha256": "affd33e252356aa8bb54ef5ee8b5bf0fa4b280e6b6d99220aa8e769ee819a434"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 12993,
+      "sha256": "26bb98fb24965abef5f9d09544f882404282a2e751014c27fa2183ec27d447a0"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4488,
+      "sha256": "1f4fc0f122e76d0cbc96659e149556be7470c895b98f2a371020ca15cfe3c20e"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 24003,
+      "sha256": "c247f2c45aafc52073ae02318843b32d584e330b337672c704c24f8dbc4d6e29"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human.rs",
+      "bytes": 12703,
+      "sha256": "0a08749a2f302159963289eb45abcd8d77f2166850b3671bd6938dc143b3b561"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 5950,
+      "sha256": "a06f8153b461d388dd2284774314c16f1951fc7f2424527753baba8ef0deab12"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6839,
+      "sha256": "ec5e15f72f739b5555427f991da6e98678a9f2c97859a2402f4cc6fbaa3d9451"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 25738,
+      "sha256": "353dc0585b915315338d257b8778afbdd24080c0ab75adf6f79d807bb8bc97f5"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 6352,
+      "sha256": "78143e96c902a204ec14e123e66aba502909fe5ac571471cf191bd17a1e91d0f"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11608,
+      "sha256": "15c0e42561e804ea859813dc1ca57f104381ae20ec9b822c60d75ff756078c8d"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 3943,
+      "sha256": "e92cca36c4828353f393012d560a0fac67aa3773152a9779273e5e5dfca3de9f"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7323,
+      "sha256": "e8817ea02256d2ed0d9c69dda9485253e2fe4122cb5e31216efea460abdba2f9"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 8481,
+      "sha256": "33c04929918a60ac26bf16cb99e08eb53d59c6346357967963f39046fb56f9ff"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 4999,
+      "sha256": "ed1c50737848c303cfef3f42ebc82ef7edaa22e2f6ec090c44db9fb7df92f462"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy.rs",
+      "bytes": 15949,
+      "sha256": "b8ff35f0f556a6478c14994d5565223c97eb76595fe212d4c432f082b92c467e"
+    },
+    {
+      "path": "crates/vocal-core/src/articulators.rs",
+      "bytes": 11437,
+      "sha256": "02a8e1e9110785d46e33e27d831f1a67421d2c77eccf07f3574ea23c955d92f1"
+    },
+    {
+      "path": "crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 9844,
+      "sha256": "4466f50d733b3d20c4521ca1a01f7463069d10222f557962e80e490f85a4ec3d"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 236,
+      "sha256": "79377bc7f5a764ae7cf8c9a6a02f0dd10bd3fec93d8704566e173b50ddcf4bb1"
+    },
+    {
+      "path": "crates/vocal-core/src/output.rs",
+      "bytes": 6076,
+      "sha256": "6dcc28a83b20b040aa757bf4a88e77926d181f2588b8ce981ff756b7df1e185d"
+    },
+    {
+      "path": "crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "crates/vocal-core/src/voice.rs",
+      "bytes": 7648,
+      "sha256": "9ffe34c7bc7080a835608d4941778e62e942647201f3a4674554e464ee738a4f"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-i",
+        "vowel-transfer-i"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-i",
+        "vowel-voice-i",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-i"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-e",
+        "vowel-transfer-e"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-e",
+        "vowel-voice-e",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-e"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-epsilon",
+        "vowel-transfer-epsilon"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-epsilon",
+        "vowel-voice-epsilon",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-epsilon"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-ash",
+        "vowel-transfer-ash"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-ash",
+        "vowel-voice-ash",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-ash"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-alpha",
+        "vowel-transfer-alpha"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-alpha",
+        "vowel-voice-alpha",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-alpha"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-open-o",
+        "vowel-transfer-open-o"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-open-o",
+        "vowel-voice-open-o",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-open-o"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-o",
+        "vowel-transfer-o"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-o",
+        "vowel-voice-o",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-o"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-u",
+        "vowel-transfer-u"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-u",
+        "vowel-voice-u",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-u"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-wedge",
+        "vowel-transfer-wedge"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-wedge",
+        "vowel-voice-wedge",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-wedge"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_transfer.py",
+        "vowels-reference-20261119-c-linear-rhotic",
+        "vowel-transfer-rhotic"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_vowel_voice.py",
+        "vowels-reference-20261119-c-voice-rhotic",
+        "vowel-voice-rhotic",
+        "--linear-run",
+        "vowels-reference-20261119-c-linear-rhotic"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_tract_control.py",
+        "vowels-reference-20261119-c-continuity",
+        "tract-slew-ten-vowels"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "geometry_continuity",
+        "no_area_jumps_on_the_way_between_calibrated_vowels",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$UPSTREAM/target/release/chimera",
+        "render",
+        "vowels",
+        "male",
+        "$ARTIFACTS/upstream-vowel-sequence",
+        "--float"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--message-format=json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "render",
+        "$ARTIFACTS/minimum-boundary/articulation-input.json",
+        "$ARTIFACTS/minimum-boundary/articulators.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-0.json",
+        "$ARTIFACTS/minimum-boundary/area-0.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-0.json",
+        "$ARTIFACTS/minimum-boundary/resample-0.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-1.json",
+        "$ARTIFACTS/minimum-boundary/area-1.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-1.json",
+        "$ARTIFACTS/minimum-boundary/resample-1.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-2.json",
+        "$ARTIFACTS/minimum-boundary/area-2.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-2.json",
+        "$ARTIFACTS/minimum-boundary/resample-2.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-3.json",
+        "$ARTIFACTS/minimum-boundary/area-3.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-3.json",
+        "$ARTIFACTS/minimum-boundary/resample-3.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-4.json",
+        "$ARTIFACTS/minimum-boundary/area-4.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-4.json",
+        "$ARTIFACTS/minimum-boundary/resample-4.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-5.json",
+        "$ARTIFACTS/minimum-boundary/area-5.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-5.json",
+        "$ARTIFACTS/minimum-boundary/resample-5.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-6.json",
+        "$ARTIFACTS/minimum-boundary/area-6.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-6.json",
+        "$ARTIFACTS/minimum-boundary/resample-6.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-7.json",
+        "$ARTIFACTS/minimum-boundary/area-7.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-7.json",
+        "$ARTIFACTS/minimum-boundary/resample-7.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-8.json",
+        "$ARTIFACTS/minimum-boundary/area-8.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-8.json",
+        "$ARTIFACTS/minimum-boundary/resample-8.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-9.json",
+        "$ARTIFACTS/minimum-boundary/area-9.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-9.json",
+        "$ARTIFACTS/minimum-boundary/resample-9.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-10.json",
+        "$ARTIFACTS/minimum-boundary/area-10.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-10.json",
+        "$ARTIFACTS/minimum-boundary/resample-10.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-11.json",
+        "$ARTIFACTS/minimum-boundary/area-11.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-11.json",
+        "$ARTIFACTS/minimum-boundary/resample-11.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-12.json",
+        "$ARTIFACTS/minimum-boundary/area-12.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-12.json",
+        "$ARTIFACTS/minimum-boundary/resample-12.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-13.json",
+        "$ARTIFACTS/minimum-boundary/area-13.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-13.json",
+        "$ARTIFACTS/minimum-boundary/resample-13.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-14.json",
+        "$ARTIFACTS/minimum-boundary/area-14.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-14.json",
+        "$ARTIFACTS/minimum-boundary/resample-14.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-15.json",
+        "$ARTIFACTS/minimum-boundary/area-15.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-15.json",
+        "$ARTIFACTS/minimum-boundary/resample-15.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-16.json",
+        "$ARTIFACTS/minimum-boundary/area-16.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-16.json",
+        "$ARTIFACTS/minimum-boundary/resample-16.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-17.json",
+        "$ARTIFACTS/minimum-boundary/area-17.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-17.json",
+        "$ARTIFACTS/minimum-boundary/resample-17.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-18.json",
+        "$ARTIFACTS/minimum-boundary/area-18.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-18.json",
+        "$ARTIFACTS/minimum-boundary/resample-18.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-19.json",
+        "$ARTIFACTS/minimum-boundary/area-19.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-19.json",
+        "$ARTIFACTS/minimum-boundary/resample-19.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-20.json",
+        "$ARTIFACTS/minimum-boundary/area-20.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-20.json",
+        "$ARTIFACTS/minimum-boundary/resample-20.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-21.json",
+        "$ARTIFACTS/minimum-boundary/area-21.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-21.json",
+        "$ARTIFACTS/minimum-boundary/resample-21.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-22.json",
+        "$ARTIFACTS/minimum-boundary/area-22.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-22.json",
+        "$ARTIFACTS/minimum-boundary/resample-22.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-23.json",
+        "$ARTIFACTS/minimum-boundary/area-23.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-23.json",
+        "$ARTIFACTS/minimum-boundary/resample-23.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-24.json",
+        "$ARTIFACTS/minimum-boundary/area-24.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-24.json",
+        "$ARTIFACTS/minimum-boundary/resample-24.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-25.json",
+        "$ARTIFACTS/minimum-boundary/area-25.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-25.json",
+        "$ARTIFACTS/minimum-boundary/resample-25.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-26.json",
+        "$ARTIFACTS/minimum-boundary/area-26.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-26.json",
+        "$ARTIFACTS/minimum-boundary/resample-26.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-27.json",
+        "$ARTIFACTS/minimum-boundary/area-27.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-27.json",
+        "$ARTIFACTS/minimum-boundary/resample-27.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-28.json",
+        "$ARTIFACTS/minimum-boundary/area-28.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-28.json",
+        "$ARTIFACTS/minimum-boundary/resample-28.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "area",
+        "$ARTIFACTS/minimum-boundary/pose-29.json",
+        "$ARTIFACTS/minimum-boundary/area-29.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE/target/release/vocal-cli",
+        "resample",
+        "$ARTIFACTS/minimum-boundary/pose-29.json",
+        "$ARTIFACTS/minimum-boundary/resample-29.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_sagittal_probe.rs",
+        "-o",
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--area",
+        "0.9915939580254856",
+        "2.53195052957716",
+        "7.0184797574961",
+        "5.674213737618196",
+        "8.112244536268284",
+        "-0.4554054771036936",
+        "0.6010930356771018",
+        "0.0",
+        "0.685223033888618",
+        "0.4174739601647832",
+        "0.42365879651793303",
+        "0.0",
+        "-0.15",
+        "-0.4700973440822288"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--resample",
+        "18",
+        "18",
+        "0.9915939580254856",
+        "2.53195052957716",
+        "7.0184797574961",
+        "5.674213737618196",
+        "8.112244536268284",
+        "-0.4554054771036936",
+        "0.6010930356771018",
+        "0.0",
+        "0.685223033888618",
+        "0.4174739601647832",
+        "0.42365879651793303",
+        "0.0",
+        "-0.15",
+        "-0.4700973440822288"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--area",
+        "0.9908339721689181",
+        "2.5436562473711866",
+        "7.034474586763103",
+        "5.672108232770969",
+        "8.146215213666952",
+        "-0.474541122189607",
+        "0.6182614418034363",
+        "0.0",
+        "0.6835217166885214",
+        "0.4269845687177744",
+        "0.41948130854644633",
+        "0.0",
+        "-0.15",
+        "-0.4868553726448592"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--resample",
+        "18",
+        "18",
+        "0.9908339721689181",
+        "2.5436562473711866",
+        "7.034474586763103",
+        "5.672108232770969",
+        "8.146215213666952",
+        "-0.474541122189607",
+        "0.6182614418034363",
+        "0.0",
+        "0.6835217166885214",
+        "0.4269845687177744",
+        "0.41948130854644633",
+        "0.0",
+        "-0.15",
+        "-0.4868553726448592"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--area",
+        "0.9908339721657091",
+        "2.5436562474206132",
+        "7.03447458683064",
+        "5.672108232762079",
+        "8.146215213810393",
+        "-0.4745411222704063",
+        "0.6182614418759291",
+        "0.0",
+        "0.6835217166813377",
+        "0.42698456875793245",
+        "0.41948130852880705",
+        "0.0",
+        "-0.15",
+        "-0.48685537271561913"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--resample",
+        "18",
+        "18",
+        "0.9908339721657091",
+        "2.5436562474206132",
+        "7.03447458683064",
+        "5.672108232762079",
+        "8.146215213810393",
+        "-0.4745411222704063",
+        "0.6182614418759291",
+        "0.0",
+        "0.6835217166813377",
+        "0.42698456875793245",
+        "0.41948130852880705",
+        "0.0",
+        "-0.15",
+        "-0.48685537271561913"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--area",
+        "0.9907325480135115",
+        "2.54521843768095",
+        "7.036609181815445",
+        "5.671827241948589",
+        "8.150748781277423",
+        "-0.4770948758209771",
+        "0.6205526569306566",
+        "0.0",
+        "0.6832946668577813",
+        "0.42825381002214097",
+        "0.4189238005539385",
+        "0.0",
+        "-0.15",
+        "-0.48909182070314416"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/minimum-boundary/upstream_sagittal_probe.exe",
+        "--resample",
+        "18",
+        "18",
+        "0.9907325480135115",
+        "2.54521843768095",
+        "7.036609181815445",
+        "5.671827241948589",
+        "8.150748781277423",
+        "-0.4770948758209771",
+        "0.6205526569306566",
+        "0.0",
+        "0.6832946668577813",
+        "0.42825381002214097",
+        "0.4189238005539385",
+        "0.0",
+        "-0.15",
+        "-0.48909182070314416"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1303,
+      "sha256": "25a9813d7fe0b56d9edcbd21d635faa735157a824d414966e082de33312a26c0"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-0.csv",
+      "bytes": 9384,
+      "sha256": "93484ff261be3cc09fbe0b43fe99c2f13c9c1da4130efcf7932113c275c05e66"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-1.csv",
+      "bytes": 9373,
+      "sha256": "bfadf67c8820b05f2c21261a81beb1a33f60c3430d3e9a7404f7d59a4f80757f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-10.csv",
+      "bytes": 9364,
+      "sha256": "54a4f5cb3b933a7770e427b24b1fcfeb7649e602ed5fc1ecf38c29393f935a6e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-11.csv",
+      "bytes": 9364,
+      "sha256": "da73374a8ef31cf123b2fdac5936ac6cb12e66cae9cf5f3de1113f2ae30c7958"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-12.csv",
+      "bytes": 9345,
+      "sha256": "203ee489e1365051492a354b095cb428306f8c13f6b6393408cdd0c0b60d8de5"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-13.csv",
+      "bytes": 9344,
+      "sha256": "65213be9fb83e70cf0b5c99edb5b76e2bd6e85353e08a0f66b24350722e08ef5"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-14.csv",
+      "bytes": 9380,
+      "sha256": "5017cb1bd04a65b3191485412ab133db7900d301dc555c41749a611ba3c56e4e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-15.csv",
+      "bytes": 9366,
+      "sha256": "f71205f7d7b7e1ee0dab0bdead7e112fc8e5313629a55ce148224e4e442bb9b8"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-16.csv",
+      "bytes": 9373,
+      "sha256": "b5b89fab2417d7f82baf01a1f8772c90967b64b894fa2c01c69f3c3a622776e7"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-17.csv",
+      "bytes": 9376,
+      "sha256": "f5d2640728bed1c7674b61c6ad1cd4e27e3de3b74b80d33afb0b4aabeb387393"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-18.csv",
+      "bytes": 9364,
+      "sha256": "4f0f626abdf55b23093116c83074d410258ddbb29ea0fc7c4647063b784071db"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-19.csv",
+      "bytes": 9385,
+      "sha256": "220e00cfd38de707c5e2ae5c27741f0314071b6722a5e53d2fb5b486a827cba6"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-2.csv",
+      "bytes": 9375,
+      "sha256": "f47d4f4ef817e35ef675074ed7ec2222ea91e363f7388ce59add3ffe79065395"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-20.csv",
+      "bytes": 9380,
+      "sha256": "2218682423aa7fc7167a73062df24c491cafbf3d6f609c7bb2f0f79e2175c25f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-21.csv",
+      "bytes": 9364,
+      "sha256": "39e432886bbd39fa6fe46b85f34564686f28f48096c19c1ff47be2e88e9f3b6e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-22.csv",
+      "bytes": 9343,
+      "sha256": "49364668520bedfdd41f2f5dc5496a97465c027637900baba03b737c363fd3fb"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-23.csv",
+      "bytes": 9380,
+      "sha256": "b8d5b2cb644d5ab760875a62894a2b2c8d807b28b944daad21772c9ff1738c22"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-24.csv",
+      "bytes": 9380,
+      "sha256": "a50f8c2d37c0dfbf369336820ed32e96aead5a157214bb7069e399b9d05b3cbf"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-25.csv",
+      "bytes": 9372,
+      "sha256": "b2fc9cfcdcc49b3f8b2ed27651c889b5fd3053b4cd86ad48d08560c9b5cc737c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-26.csv",
+      "bytes": 9369,
+      "sha256": "7651c89a10206dd630a7aaa7818b21bc75091efd6779368259e53d811eaf7058"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-27.csv",
+      "bytes": 9353,
+      "sha256": "d30a349c1f20ebcc6a30c7bb0086b1a1a7bb17506033d7aa75700e35e049ee9e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-28.csv",
+      "bytes": 9388,
+      "sha256": "9a928e883d379f67b3e239f18fb599e0e3e1931bd7d90a43354c9eced6535f75"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-29.csv",
+      "bytes": 9364,
+      "sha256": "6a6d7b03db5b255b743bd14b4bdb79a249e38040bf01e2af6553fd948455147b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-3.csv",
+      "bytes": 9369,
+      "sha256": "f59be1378cd268a5d109981009c67e0ed652e3d69ee68d6e150f9efa5b5207be"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-4.csv",
+      "bytes": 9377,
+      "sha256": "45b1fa74514497526ada3e7e9abcebdd05a6d037e7f673365391fe51405d710e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-5.csv",
+      "bytes": 9372,
+      "sha256": "4f0ae43a3322da66fb3cea8bacb9f9324e57060e5debdb060c09ab27217c3f20"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-6.csv",
+      "bytes": 9363,
+      "sha256": "c45741188da9ec8cc48a2014b38a8c6527a67a50fa7b1ec1aa602f1fb37c504c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-7.csv",
+      "bytes": 9361,
+      "sha256": "58d49d02decf88a9906ae604936938b4bfefcddaacf2d685140c73aa670e67ae"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-8.csv",
+      "bytes": 9390,
+      "sha256": "7322d11f8c8130a4fc14008b7b27f0506be1862371ac215579b61f8344bf1c4f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/area-9.csv",
+      "bytes": 9383,
+      "sha256": "7960349d3d4b6ebea1c91ef30b4b2ef00428d83b8702616f82c69f1cea46a58f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/articulation-input.json",
+      "bytes": 8647,
+      "sha256": "fb1e3e3b79c4a49808da47fb76c501deaeae00a5c36b2cb3daf57c1982cbb47c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/articulators.csv",
+      "bytes": 1365480,
+      "sha256": "266cd13ab32dd0762a3408859964703196f95cf922c4abcd6e549204bc0f0c38"
+    },
+    {
+      "path": "artifacts/minimum-boundary/boundary.csv",
+      "bytes": 1080,
+      "sha256": "49e7319b34b4c44a723791deb9e1e5e6b35390de986d2e01d01cc2378437d57e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/build.jsonl",
+      "bytes": 20992,
+      "sha256": "5ee52475d7a558db697a7022ee7047a6e3a41af0a49eed0ca688ebcb39c4ca7b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-0.json",
+      "bytes": 824,
+      "sha256": "cd979bb38e5e622c2ffe56e1950712aedf17b42b611f07b7336c5aecec58347d"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-1.json",
+      "bytes": 828,
+      "sha256": "2254f349beea3eccd0f4cfaf8fccd525b6ef095f6a1bbb65dd0d006eaf8addbb"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-10.json",
+      "bytes": 832,
+      "sha256": "480be8569beed22952c5748ddc6bc8ed3887b4d2b6bfa31336f4827f4995dd7a"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-11.json",
+      "bytes": 828,
+      "sha256": "997afb3f72daf5ba553e648296f5dce597a72ec9d87d2179fe731da71a0f3b77"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-12.json",
+      "bytes": 826,
+      "sha256": "af88f8607a426a2b4e300a831845db8a09b0c1f5f00d0a8ad287be3014d7584f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-13.json",
+      "bytes": 829,
+      "sha256": "6a4ad2e4e0ba9c76a3618c061109e3d4c5660d465390d4167909b6dd55f4295f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-14.json",
+      "bytes": 829,
+      "sha256": "f31948e2e2b47525f8e1ebd996953e0bdbe836e31c340fff1d73d54851b35feb"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-15.json",
+      "bytes": 830,
+      "sha256": "79a199599230ada690c3d4d6cc5d49f71890f2ff0e9110f4348d8681c88ea99c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-16.json",
+      "bytes": 831,
+      "sha256": "24732b1b5d7de6783e30ead0efeda7c9018646eb89cf0a966e30a4cb24f17868"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-17.json",
+      "bytes": 828,
+      "sha256": "28adcd9da42e0bde01128b2d07182d9af9f110cc34ee7ce8bd9ebb9e10901b7f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-18.json",
+      "bytes": 830,
+      "sha256": "0650ddf27b1c798a092c48c92e70b3764b62c20078c453eaf0f85e4f0f947a6c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-19.json",
+      "bytes": 832,
+      "sha256": "4efe3d2f95b212c7212034e1118ddcbb973eb0fcd1e70b2f600968dc747df998"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-2.json",
+      "bytes": 829,
+      "sha256": "3ab9515a0aad73e7b8817b6978a54dbcfdb8fe82d1b6bb5e1682ef4fdb0d044c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-20.json",
+      "bytes": 828,
+      "sha256": "491b100dc617ec01a2c3d93ec48708c69ff4e743b8637cd0a662665b26c099e4"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-21.json",
+      "bytes": 831,
+      "sha256": "91b6807561b707e062f4c76ec6fc1f285c53b914502f2f12a19bb77913dab40a"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-22.json",
+      "bytes": 829,
+      "sha256": "6b888a5a69564c21c1f10d3f82db2948231908f9fbae7f6df3f3f729d9b1917c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-23.json",
+      "bytes": 827,
+      "sha256": "1e3625139b9b9ef2d8c28807b68b79451bf7a8aa853034d43f953e7d177db3fa"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-24.json",
+      "bytes": 828,
+      "sha256": "bae6cf805fe3f69080f171b0eaf41c9a965bea80d2eb191730d74b8055459554"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-25.json",
+      "bytes": 830,
+      "sha256": "17f9ef06deec424c81311e2e65379674d355bcce0a3c11fe55ba6855f89e3759"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-26.json",
+      "bytes": 829,
+      "sha256": "af8943787f51b6177b418d9c5d51c3381bdb4637b35fab9c022432e89cdb1652"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-27.json",
+      "bytes": 831,
+      "sha256": "e80cb5c23986e977016f36a4c60a21a77076aa06767708f2c3a8c9dbb65db332"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-28.json",
+      "bytes": 830,
+      "sha256": "eecc8bb3073a1b7ce93648d4e2bc5e58d23e8800ae343e66960a29ca79bdf8b8"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-29.json",
+      "bytes": 829,
+      "sha256": "943d986cf973f41278c7ff00184bff53b55606f0e38e377b3f4a7cb1162dfdbd"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-3.json",
+      "bytes": 827,
+      "sha256": "ca318b7eb0e39285c03a963398cfe56e85fd467bf836dae4ebfa19045aab1872"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-4.json",
+      "bytes": 831,
+      "sha256": "34d16d4793912eb98a27585775fbef93af13a30b4aa988d2727066d29a6234f5"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-5.json",
+      "bytes": 828,
+      "sha256": "222dc924b345d5bd9030680644e1cb8db80754d631dbeb8f940ce74ae5c465ec"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-6.json",
+      "bytes": 829,
+      "sha256": "cb8c7f52aa351100fd4d9be3a128243e74ee3c8f00e73ef099225ba864a3423b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-7.json",
+      "bytes": 830,
+      "sha256": "81477434000fe022fed968508817327574564058b96538f0c7158ea8c57c144d"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-8.json",
+      "bytes": 829,
+      "sha256": "3c7286deea22a60de5e7d1a90c25175c04bf2f8e7ccac904c3cc5c9f4239d967"
+    },
+    {
+      "path": "artifacts/minimum-boundary/pose-9.json",
+      "bytes": 827,
+      "sha256": "de4cede9bbee1c7c90775561563bd45bdbe43d3b863cefdceb87d920e5fb3e2c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-0.csv",
+      "bytes": 2971,
+      "sha256": "bd88fffe4ef96723d2f809ff10ece656a4ef0e4c7088f78444df48595502fb8b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-1.csv",
+      "bytes": 2959,
+      "sha256": "0211e941882dfef9d4c2076f88b50bcc19714de4eedace96d1807933cea89241"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-10.csv",
+      "bytes": 2950,
+      "sha256": "a0cb02c97d75f91ac63b7ce018135047a15cb3c6906615871f70cad405762ff4"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-11.csv",
+      "bytes": 2985,
+      "sha256": "2efb62419b8a5ef162a5cb204d876f4b1f3cfd843067e13076c75ac26d99d255"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-12.csv",
+      "bytes": 2968,
+      "sha256": "c1f6707d5aea07bd7e7b1c7918fe156733598559a742cfb57513fb0023bec866"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-13.csv",
+      "bytes": 2962,
+      "sha256": "63fe8437dc2598e78643121016a6deeaafec94cfb50c23e3c3def1936f287b4c"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-14.csv",
+      "bytes": 2974,
+      "sha256": "56150903eaa2cdea76d45f89967b1c24d94cdcf26839e7cd3f8848a65a04d960"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-15.csv",
+      "bytes": 2972,
+      "sha256": "4fe8d2623733a303492a416843cb7f2dd4910cab1de78919df2b2f066b5afdd4"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-16.csv",
+      "bytes": 2949,
+      "sha256": "8ab00206f88b022d4cc4527fcab3b086e68fed99757c4e3b38d4a71db011fc7f"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-17.csv",
+      "bytes": 2959,
+      "sha256": "98729004b85d439e58e54e42c6d0360e36e94fb6edd6c4f61851a3882e70f643"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-18.csv",
+      "bytes": 2964,
+      "sha256": "9493ceaeeaca745f4e8ed52c992b42d2804719b6dc740d5eb35b6aa1bbc57994"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-19.csv",
+      "bytes": 2967,
+      "sha256": "df8be00b68a8c2b3d11460d71e3ffb2b98a3af224dfbb14f557cee2511aa4097"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-2.csv",
+      "bytes": 2956,
+      "sha256": "c898db3f431b73b3587ff928014c5ea0762a92fa480d892a87694813b4b4ee46"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-20.csv",
+      "bytes": 2964,
+      "sha256": "aa51756b1ee63e34f2b148049599e3807b5951f45ad03ffe06b7ae7bc9504cb2"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-21.csv",
+      "bytes": 2960,
+      "sha256": "343db46f5b273b0226653ddb34a2c171ecd6e98093be15eb419b31b58d393c3a"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-22.csv",
+      "bytes": 2972,
+      "sha256": "4888f41fb25f97a4551dbd8b73332f3541ac8130d3bc792dea0c0f7572930c23"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-23.csv",
+      "bytes": 2962,
+      "sha256": "35c3eaa9af887be2f728889311b3050f8cbe5a504aad72ca6faf9e288fb89c45"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-24.csv",
+      "bytes": 2958,
+      "sha256": "1615db1cd5ff42931a4805674afd7a9a4a2c2a179a40016df949588117ed0a0a"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-25.csv",
+      "bytes": 2981,
+      "sha256": "c2fb1ca85cb9342e46e2b51bd6fa34be4ebd1b7eb98b791caa299efa354f55f5"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-26.csv",
+      "bytes": 2971,
+      "sha256": "59e0cd3cae7cb48fc75bc0679b10d9f1e288546bacd6013b7e68fad4a6dec6e7"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-27.csv",
+      "bytes": 2972,
+      "sha256": "aa53a20903b07d6a492b3be3263a5c69a538c4f434274951c98e86d380427549"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-28.csv",
+      "bytes": 2966,
+      "sha256": "416ae30004e0a38a3c1d7408692bc62fe2aafcaa285966b1f61b3fb11f65974b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-29.csv",
+      "bytes": 2966,
+      "sha256": "c02902ae5f51694ec2fad6389105e90304e347ba98f1d05096552a4743e23609"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-3.csv",
+      "bytes": 2971,
+      "sha256": "c6f144cd87492e33401415d530e04a907d1ba06a7d3b4cb44134c64efde21e00"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-4.csv",
+      "bytes": 2971,
+      "sha256": "9db5b050e97205687437dd91716123d7fbfa8ddda65d6865d62993d4a20891db"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-5.csv",
+      "bytes": 2970,
+      "sha256": "a7d9583f50ab707761606462c60e6e14023507aaeecd727de77323e244395f0e"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-6.csv",
+      "bytes": 2959,
+      "sha256": "235c648d9d5577745f926b679828c18929216f5076d56b8d8fcbafc652b31199"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-7.csv",
+      "bytes": 2962,
+      "sha256": "94c5cce00d1ffd0cc0c80c2d50c0ca832ba1b0a2b08bfe2aacece1c4b47e7d81"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-8.csv",
+      "bytes": 2967,
+      "sha256": "d02c987dabe972300761ab85d6a78f5bf8dfb9da36bce0d2570e1dce99bfc8a8"
+    },
+    {
+      "path": "artifacts/minimum-boundary/resample-9.csv",
+      "bytes": 2970,
+      "sha256": "d70a7bd6a65b7909deaae2eb7018a80a0c58aeebc98d853316e69df98067b924"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-area-after_boundary.csv",
+      "bytes": 9361,
+      "sha256": "a97f617f3375e4cb8722794d27dce0ae7a85673bb13efb50ebf264300667cd60"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-area-before_boundary.csv",
+      "bytes": 9378,
+      "sha256": "e2c8d8574ae45b2569892ce59c6f563be4c073b60f83523d1b05922c7273fbc6"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-area-final.csv",
+      "bytes": 9373,
+      "sha256": "9d48daa51c2d3ddcdb5b4715afc73cbd1a2a5ac28f71ee7e21ccd6428920e19b"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-area-initial.csv",
+      "bytes": 9382,
+      "sha256": "d7edeb1ec0df3334d659c8f85443dd33a11e12661c4e43f729ea90e6fcb9ffcc"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "f28f3c955bfcbbeb259323c74e525347b503d13e73fbb512a6a99dce683faa21"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-resample-after_boundary.csv",
+      "bytes": 2969,
+      "sha256": "767a272d3e4f7c0426d78c459c8ea5f6db8a45cbbb18fb09c359c2c634a5757a"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-resample-before_boundary.csv",
+      "bytes": 2959,
+      "sha256": "91de780eba94d96c0b856d13012b855ffc5c293cbc2169beacb61a6ecdaee0a7"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-resample-final.csv",
+      "bytes": 2959,
+      "sha256": "4f7cbae190fa33c806c77f81eacd3db2e7b7ae61e42c86df600ea617ec2c1cb1"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream-resample-initial.csv",
+      "bytes": 2972,
+      "sha256": "458b9be31846d11d7fb5b416946c54482e436d9df6530fe2a3fc831dd46e8ee2"
+    },
+    {
+      "path": "artifacts/minimum-boundary/upstream_sagittal_probe.exe",
+      "bytes": 567016,
+      "sha256": "e4c239caf25de5d8aba1f76f211a88581d8f74fbfdec99a04e0032d96c120229"
+    },
+    {
+      "path": "artifacts/upstream-continuity.log",
+      "bytes": 175,
+      "sha256": "a0d6cbb386e85ea9bc643823edaded25a703c40c402159c584ddcd29c2a5b96f"
+    },
+    {
+      "path": "artifacts/upstream-vowel-sequence.log",
+      "bytes": 663,
+      "sha256": "328c40bd8801d7bff83f08ddb1d91e714e0f25aa94437522804d5bfddbea4314"
+    },
+    {
+      "path": "artifacts/upstream-vowel-sequence.wav",
+      "bytes": 1152044,
+      "sha256": "54d5f6445d945be0b057b2dca53c6a4da6ca59dfdff4fae74cc0a07306fa47a8",
+      "sample_rate_hz": 48000,
+      "frames": 288000,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/vowels.csv",
+      "bytes": 1837,
+      "sha256": "4a204803f154bd0409ea8b85c0f16b356126e74534a09a2dc3930fef2f1861e9"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 29240,
+      "sha256": "347975f3ce3b3fa634ec3af2ac58f4f46d283725e4f8d60b9f79c3507b1cf414"
+    }
+  ]
+}

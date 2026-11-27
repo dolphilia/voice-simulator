@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "run_id": "pcm-voiced-20261119-c",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "pcm-voiced",
+  "scipy_version": "1.17.1",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/pcm-voiced.json",
+      "bytes": 4274,
+      "sha256": "3c32edfe03f70600058416e0a22d5ddcbfa44a9ac66f430ed8e9b7610fadbd1c"
+    },
+    {
+      "path": "tools/upstream_pcm_probe.rs",
+      "bytes": 2215,
+      "sha256": "9f0b450c0e5fe69e2c59610bbf383d5d4d5a8f27a9e6ec7a4bf34b9057b1ba30"
+    },
+    {
+      "path": "tools/upstream_network_probe.rs",
+      "bytes": 19671,
+      "sha256": "f649198367a5cd3afcedb1fbdf44d772ca847f00c43cc9fef8017b4d9052487c"
+    },
+    {
+      "path": "tools/measure_pcm_output.py",
+      "bytes": 10502,
+      "sha256": "3800376a1abdb42daee578c417968aee5ba3522f1d6f4c97ceb7557f04b6c127"
+    },
+    {
+      "path": "tools/measure_junction.py",
+      "bytes": 15719,
+      "sha256": "359722c37e9fe8635bd223f705d37027d366d4e64f3150d212a6dbe0e758c860"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19422,
+      "sha256": "bdd3ad7dd25845ced7f838763bff3ee4cbd7d3192dc36e6605fcd13dce8e9397"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5501,
+      "sha256": "b46d996f3a8755fe7df848d6c7fcc45a8f9f836e45313d8b76abd35802a9ef57"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 10781,
+      "sha256": "5f4cfedcda600ca464ddec9ec72b76d75edc5a60b799008766806f05acc0964d"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 3533,
+      "sha256": "2982d6a970eee2eaeed30d459e7f53975a550bc4fc049379f2025178bf5a2658"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4474,
+      "sha256": "ad0bdba22ae1b598b2385e18098d42f372f0064f1dacefa2a840aa4b707ca473"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 23427,
+      "sha256": "370a0b582ba1854667973d4621f516a086fa02258068bdc1374f4496b2a6e429"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 4850,
+      "sha256": "21d041a886a33f64aeee39ea070a6d96da56ad25549fe87362006fa7da270ff6"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6839,
+      "sha256": "ec5e15f72f739b5555427f991da6e98678a9f2c97859a2402f4cc6fbaa3d9451"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 21287,
+      "sha256": "8d97fe8ff2b1b8d6d3ea1a797489aafba9c62014024c0affd9e43dc332ab6927"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11551,
+      "sha256": "c5332213c5a23fa6ba7813ec1bb6e06a7b9f7d50a6b0850715e0da24b1f184de"
+    },
+    {
+      "path": "crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 5797,
+      "sha256": "ad03fe7f6c7f846b06fbd23e61ed40654b087fe8c6da7b25c2560032d23f471a"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 182,
+      "sha256": "f78c88029e346c62ea3407995157ddeda111d26061d1cf08632c00bd0b5b10a4"
+    },
+    {
+      "path": "crates/vocal-core/src/output.rs",
+      "bytes": 6076,
+      "sha256": "6dcc28a83b20b040aa757bf4a88e77926d181f2588b8ce981ff756b7df1e185d"
+    },
+    {
+      "path": "crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/pcm-voiced.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/pcm-voiced.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/pcm-voiced.json",
+        "$ARTIFACTS/block-128.wav",
+        "$ARTIFACTS/block-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/pcm-voiced.json",
+        "$ARTIFACTS/block-1.wav",
+        "$ARTIFACTS/block-1.csv",
+        "1"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/pcm-voiced.json",
+        "$ARTIFACTS/block-77.wav",
+        "$ARTIFACTS/block-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$WORKSPACE/cases/pcm-voiced.json",
+        "$ARTIFACTS/block-4096.wav",
+        "$ARTIFACTS/block-4096.csv",
+        "4096"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "engine",
+        "output_does_not_depend_on_the_host_block_size",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_network_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_network_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_network_probe.exe",
+        "$ARTIFACTS/upstream-input.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_pcm_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_pcm_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_pcm_probe.exe",
+        "2",
+        "48000",
+        "8e-06",
+        "$ARTIFACTS/common-input-upstream-radiation.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_pcm_probe.exe",
+        "2",
+        "48000",
+        "8e-06",
+        "$ARTIFACTS/end-to-end-upstream-radiation.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/block-1.csv",
+      "bytes": 8774243,
+      "sha256": "0904ba788d4e68bb58d4e5c6cad725c4673631297dfb0825f1f5cd5718ec29e4"
+    },
+    {
+      "path": "artifacts/block-1.wav",
+      "bytes": 384058,
+      "sha256": "c0b50be7f7bc586a756d0f03f8716b0eae9c3ba11147f57ce25e7758e044f181",
+      "sample_rate_hz": 48000,
+      "frames": 96000,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/block-128.csv",
+      "bytes": 8774243,
+      "sha256": "0904ba788d4e68bb58d4e5c6cad725c4673631297dfb0825f1f5cd5718ec29e4"
+    },
+    {
+      "path": "artifacts/block-128.wav",
+      "bytes": 384058,
+      "sha256": "c0b50be7f7bc586a756d0f03f8716b0eae9c3ba11147f57ce25e7758e044f181",
+      "sample_rate_hz": 48000,
+      "frames": 96000,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/block-4096.csv",
+      "bytes": 8774243,
+      "sha256": "0904ba788d4e68bb58d4e5c6cad725c4673631297dfb0825f1f5cd5718ec29e4"
+    },
+    {
+      "path": "artifacts/block-4096.wav",
+      "bytes": 384058,
+      "sha256": "c0b50be7f7bc586a756d0f03f8716b0eae9c3ba11147f57ce25e7758e044f181",
+      "sample_rate_hz": 48000,
+      "frames": 96000,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/block-77.csv",
+      "bytes": 8774243,
+      "sha256": "0904ba788d4e68bb58d4e5c6cad725c4673631297dfb0825f1f5cd5718ec29e4"
+    },
+    {
+      "path": "artifacts/block-77.wav",
+      "bytes": 384058,
+      "sha256": "c0b50be7f7bc586a756d0f03f8716b0eae9c3ba11147f57ce25e7758e044f181",
+      "sample_rate_hz": 48000,
+      "frames": 96000,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 2691,
+      "sha256": "36a0b85b0f3a80b24fe74f9a578175dd0f65f2efeb91c4277e8c4164f9e9b74b"
+    },
+    {
+      "path": "artifacts/common-input-upstream-pcm.csv",
+      "bytes": 8774243,
+      "sha256": "0904ba788d4e68bb58d4e5c6cad725c4673631297dfb0825f1f5cd5718ec29e4"
+    },
+    {
+      "path": "artifacts/common-input-upstream-radiation.txt",
+      "bytes": 3897147,
+      "sha256": "52e50d5a64be556821360c51b6e6a4dac575715a058f9e98085a108c3a2671b4"
+    },
+    {
+      "path": "artifacts/end-to-end-upstream-pcm.csv",
+      "bytes": 8777458,
+      "sha256": "83bf911cc9a8915365810d9cb63f2e720378b679f2a9bf7bae26e45e8a0b621c"
+    },
+    {
+      "path": "artifacts/end-to-end-upstream-radiation.txt",
+      "bytes": 3897198,
+      "sha256": "8a428398a939ec7e39ce77bb072bdaa2f7cbe9fb7c7f8b14b78ce2ac894faf69"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 6352,
+      "sha256": "f45fdf07f3e26bd057d846fd13b6c4655ea43f0409a0e25a9b549b511d1cc2d7"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 77472059,
+      "sha256": "680bc7786054f69186903ac07670ce671b98306c563157177247f4486391b40b"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "ad57e977b85311ba85057efaf20a15be17210c871318e635293ed8b064c615b5"
+    },
+    {
+      "path": "artifacts/upstream-input.txt",
+      "bytes": 682,
+      "sha256": "f888cb0506962cee3bbae4eeb0df7133bfc03d4f1a0010d1fd4d89cdc9b8da5d"
+    },
+    {
+      "path": "artifacts/upstream-network-test.log",
+      "bytes": 170,
+      "sha256": "692b515fc8cf827cab5736e8e09cf5ace2c00275516ed1bcf3a1a36e154eb449"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 77472481,
+      "sha256": "b17f9204e29d9d3a115845998c88ddb71fc7d92291bc9058a06c90e7ed1a06c5"
+    },
+    {
+      "path": "artifacts/upstream_network_probe.exe",
+      "bytes": 500792,
+      "sha256": "1a715ef369232f91e4be663929e9fa3bc107f25b565a18825a7c75b67406e82c"
+    },
+    {
+      "path": "artifacts/upstream_pcm_probe.exe",
+      "bytes": 462664,
+      "sha256": "5092d4b3a38d09c9a874a4e4b8ad2f50b45b0986be943a80e694cf767ade47ee"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 3460,
+      "sha256": "73fa5ea2f1294a861235f04af0923b514f869f78974b080b6fbd790973b1839c"
+    }
+  ]
+}

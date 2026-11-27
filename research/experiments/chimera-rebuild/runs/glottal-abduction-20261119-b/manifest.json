@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "run_id": "glottal-abduction-20261119-b",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "glottal-abduction",
+  "scipy_version": "1.17.1",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/glottal-abduction.json",
+      "bytes": 3888,
+      "sha256": "7485a4844286b29ee6f551b5fa3157591c92b1aaecb4c1071aa94e8c4a593f0c"
+    },
+    {
+      "path": "tools/upstream_network_probe.rs",
+      "bytes": 15240,
+      "sha256": "555844f23a098244b83e27b55d8dba80357bd57c100c37b616692a92ed559399"
+    },
+    {
+      "path": "tools/measure_glottal_coupling.py",
+      "bytes": 9766,
+      "sha256": "269c2e464d3daa407eff522d7ecd22def27c8b61fc1b47d355360d285c56036f"
+    },
+    {
+      "path": "tools/measure_junction.py",
+      "bytes": 15045,
+      "sha256": "4e7244ffb9cf2ff405ca8efce6b26e24f04a77cce398e0ea4ee6c68e4c48b283"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19422,
+      "sha256": "bdd3ad7dd25845ced7f838763bff3ee4cbd7d3192dc36e6605fcd13dce8e9397"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 9891,
+      "sha256": "96dc625084c8483f361d71553200013acc0e28e0ea2a1319f6caa0f363994b5c"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 3059,
+      "sha256": "44a7b4b8474220afb8db9fe838d7d3fa7a62144699cf56827c075df8abb73db0"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 18122,
+      "sha256": "40ccaf9e9205c57000c4785b5e4727d8f80c3ceddada1844d6de545fa3ee0735"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 4850,
+      "sha256": "21d041a886a33f64aeee39ea070a6d96da56ad25549fe87362006fa7da270ff6"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 7399,
+      "sha256": "ff72e59f58123877a346ab5c3f183df5e5e44e69dd2d4ba43be97599c1e293f8"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 21287,
+      "sha256": "8d97fe8ff2b1b8d6d3ea1a797489aafba9c62014024c0affd9e43dc332ab6927"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11551,
+      "sha256": "c5332213c5a23fa6ba7813ec1bb6e06a7b9f7d50a6b0850715e0da24b1f184de"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 4604,
+      "sha256": "0a1938dc46a355fa0dca33f08d29b3bb0503551e197292ef53ce71488eb8638d"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 138,
+      "sha256": "30bf529d08f33239763c1249813f92f51ab24ff9a9b6a2026e6684b9b14f2f58"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/glottal-abduction.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/glottal-abduction.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "lung_port",
+        "folds_held_apart_meet_for_less_of_the_cycle",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_network_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_network_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_network_probe.exe",
+        "$ARTIFACTS/upstream-input.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1086,
+      "sha256": "ada3f434dc701a6b02a7e7abcc973fafb720cb9841c37bafa89bb33f2cf43409"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 4360,
+      "sha256": "8f9ef547afb1f4dc9c15ce71b43b41b28355a458e0b5a84f809a98a9dbb44449"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 20479889,
+      "sha256": "507b8571df26af9878ad69b657912b528dfda593888325b67abcaddd46e475b2"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "c50855f28b593cd648cbe9467c55dba3be9696a5b0048056fbb23897af61a981"
+    },
+    {
+      "path": "artifacts/upstream-input.txt",
+      "bytes": 549,
+      "sha256": "f62aca2b886d43d735e9d9d0ffd290bd74e58ec1bffa03a84b2f5f3911177796"
+    },
+    {
+      "path": "artifacts/upstream-network-test.log",
+      "bytes": 168,
+      "sha256": "d42565e1db79201e6c69979c200316f87688a0206a49ece65f2c7b9b717aa1fd"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 20480435,
+      "sha256": "d6b019286da0bb6819065b12158487e78c05f8d7b726fd738737f66b0a7133eb"
+    },
+    {
+      "path": "artifacts/upstream_network_probe.exe",
+      "bytes": 500296,
+      "sha256": "098ee4a901e30af78e09ab04eb61ac7955b9d17b4260d59181489ba444d75113"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 5870,
+      "sha256": "72626e03d5fabf857cc54c22a048e396637f1e2d6d2cd8024161e22d710e83a9"
+    }
+  ]
+}

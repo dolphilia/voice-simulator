@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "run_id": "contour-buffer-reuse-20261119-c",
+  "case_id": "contour-buffer-reuse",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "baseline_profile": false,
+  "reference_profile": "contour-buffer-reuse-20261119-a",
+  "reference_live": "fan-crossing-allocations-20261119-b-live",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/contour-buffer-reuse.json",
+      "bytes": 2434,
+      "sha256": "c0dbdcb75d809e98a384831ce4d1945a7b2b695e3d9228d0efa5f63e727108e8"
+    },
+    {
+      "path": "cases/bilabial-p.json",
+      "bytes": 2003,
+      "sha256": "26b7a137c273865d6014f3aeda2f2900866b3926a1c0e530e85a51f7112530aa"
+    },
+    {
+      "path": "cases/worklet-ipa-voice.json",
+      "bytes": 1136,
+      "sha256": "8e7acfcf5593a61e7bf989a7f34c6aca0fa01c891bb58c0d3cb1efb08d2d2357"
+    },
+    {
+      "path": "tools/measure_contour_buffers.py",
+      "bytes": 8945,
+      "sha256": "676010c5686f71793389b45d103567a68e0d1736335dc20f2f5db7d701578b17"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 20298,
+      "sha256": "b3b3aa5234b0e98362ab334a647d6ce37dbae69bf57c92e636af042d4396d3c1"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 156,
+      "sha256": "ac7cb09f7c04feac27f22b385771ddd88bb039f7046f15c214d0187c2f4b1b29"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 4580,
+      "sha256": "159914b68b62e5dadec5f4914653fbdd864f905dd8cd474a7d765c6880992535"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 280,
+      "sha256": "54736bfe58bc7360cbd02962b78b0709bd027b291c7761e1aa7b8facad270171"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 193,
+      "sha256": "e71047017e1444dd5f12619b2b6bd45f2835da1328d07618a23ec451eb69e743"
+    },
+    {
+      "path": "crates/vocal-wasm/Cargo.toml",
+      "bytes": 317,
+      "sha256": "c2dc58d262080905cd7c6c576eedfc3ef643a5f4f6df8dc8cadfa3d46ca6dd4d"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6538,
+      "sha256": "f5248a5f54aae6845074adaf04108c25ccf99c251ac0c6b968e64016ea0ea02b"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 6315,
+      "sha256": "3799c956d619840dcbb4fa6ed0f0bd5aa1f4a7d41d2589105a67ec9671a1eeff"
+    },
+    {
+      "path": "crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 10475,
+      "sha256": "116f187cf3bf06c38130f5e1b4a06811660731bb5737fef3f123be12c1460260"
+    },
+    {
+      "path": "crates/vocal-cli/src/english_case.rs",
+      "bytes": 4199,
+      "sha256": "57e860dc82e317c35a750385a1c422c15b1e1dcfb788f646c6dfea1707be1df4"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 6046,
+      "sha256": "c4003720c317b9d9efbaf39ec21de32242be6264672bfb59bdf4365e6ea8734c"
+    },
+    {
+      "path": "crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 16422,
+      "sha256": "5ca3f89614b17a313c7045208fd6a13c29e5606da2950e56dfc3f963e72d6bad"
+    },
+    {
+      "path": "crates/vocal-cli/src/ipa_case.rs",
+      "bytes": 3451,
+      "sha256": "8345379856ae4591e78bbbbbe78441fa75e832397f578839245858fecb3a946d"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 14489,
+      "sha256": "1cdec756c56f77678908b2d5327bb0b9a821118db3ca2a458ae445522ba9a9a5"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 3910,
+      "sha256": "c24039315571c642dab37042f30084b9b87bc130e74313e9f0d3c8f87498f2da"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 24003,
+      "sha256": "c247f2c45aafc52073ae02318843b32d584e330b337672c704c24f8dbc4d6e29"
+    },
+    {
+      "path": "crates/vocal-cli/src/song_case.rs",
+      "bytes": 3688,
+      "sha256": "668404841c971b0b98f31f24c4d742270cf37f55f640d1d51db6857aa38ffe5d"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case/observed_score.rs",
+      "bytes": 3500,
+      "sha256": "c0af9f0be6b5ce539e3045fd97dd623ca8bf770d49c1d7c30c1f75949658bd1f"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case/speech_voice.rs",
+      "bytes": 22963,
+      "sha256": "2b1f188da70a68472fe5c1105b44db42775904abb7a1794d31a07aa42800c4e9"
+    },
+    {
+      "path": "crates/vocal-cli/src/timing_case.rs",
+      "bytes": 4164,
+      "sha256": "a2814b781ec9a2e2e637b1bce72cc64e6f12aa095ac3eb4c148e9232ec304c90"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human/frication.rs",
+      "bytes": 5016,
+      "sha256": "4082e84c694801975088b0badbeeb36682b9b985eba755fbe9fc5887fb04feb8"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/human.rs",
+      "bytes": 14326,
+      "sha256": "efebcec9cbf8b7fe5a5abcf5ff1c30a52d46b4cbe5bdfffb3efb82e8a73bdb38"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 5950,
+      "sha256": "a06f8153b461d388dd2284774314c16f1951fc7f2424527753baba8ef0deab12"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6931,
+      "sha256": "7856b410182aa15637a747e3d5369ecfa2fdd6919badbddd8fb701957e176c37"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 25949,
+      "sha256": "b60d54b610b941b963ba228a938d78cfdca40c4da4a29c6eb6c0c6d917746477"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control/allocation_tests.rs",
+      "bytes": 5201,
+      "sha256": "2f083bbac04a780dce6f4c4523b7b732aecbc907c1c827a464aae3a84ef3d32b"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 6573,
+      "sha256": "56362844406ef9d8da92e329131f9ac0c7660d2349c507d90d5afacbc6e2d71d"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11608,
+      "sha256": "15c0e42561e804ea859813dc1ca57f104381ae20ec9b822c60d75ff756078c8d"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 3943,
+      "sha256": "e92cca36c4828353f393012d560a0fac67aa3773152a9779273e5e5dfca3de9f"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7323,
+      "sha256": "e8817ea02256d2ed0d9c69dda9485253e2fe4122cb5e31216efea460abdba2f9"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 9976,
+      "sha256": "6b0667cc900bd7ea9b4fa18284e30d46e057dbb5259a3c96d30e62dab1257cde"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 4999,
+      "sha256": "ed1c50737848c303cfef3f42ebc82ef7edaa22e2f6ec090c44db9fb7df92f462"
+    },
+    {
+      "path": "crates/vocal-core/src/anatomy.rs",
+      "bytes": 17737,
+      "sha256": "ac792ece7c087ae4ee031a4b189f4b94ed1edff0ca2a5b95b26377ba4bbcf06b"
+    },
+    {
+      "path": "crates/vocal-core/src/articulators.rs",
+      "bytes": 11733,
+      "sha256": "97da13fa0dbc1730e6b72fa564bfbebedb98445b9350f651ebb2314bf506d7fc"
+    },
+    {
+      "path": "crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "crates/vocal-core/src/glottis.rs",
+      "bytes": 10586,
+      "sha256": "a9cf45a47750ddf2189dae4b324203386af2672111a7672bc393e20245473f72"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 270,
+      "sha256": "7e631b9af675cee1e46ea1d75f9b2aad7485e59479a330b6f83a5c0a1ebad8c7"
+    },
+    {
+      "path": "crates/vocal-core/src/output.rs",
+      "bytes": 7060,
+      "sha256": "645696288fe7326f96411f7de373b608943acf9646b14fd609c56c6fee084029"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/catalog.rs",
+      "bytes": 1878,
+      "sha256": "df3ab7d02fb7f68c155a1b081d6f02dfaabbe2c0b00a4e525f85ca65b72acb81"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english/spelling.rs",
+      "bytes": 4147,
+      "sha256": "c0f2d0bc6dfc9bc218c92c5502f20fec9a6137e80357018100759d4cc5f08e69"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english.rs",
+      "bytes": 11995,
+      "sha256": "2aaf053bfd4447389bf739a20e5302921bc5a9b32533dfbebd730726e4209da9"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/gestures.rs",
+      "bytes": 2327,
+      "sha256": "64f4723e253bbc726a6e7921552d47aba09143acffc2271fb94a25a6943ffc24"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/normalization.rs",
+      "bytes": 4279,
+      "sha256": "4b5a0ed2d6ba2a2c675c56332c8daeb843cbe41d50720660d8423bf4efb621b4"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa.rs",
+      "bytes": 10536,
+      "sha256": "a38e7ae2cf442463613d7600cf85e70d4f1e7795e45a131895f3f6b9d073c9f6"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa_plan.rs",
+      "bytes": 2427,
+      "sha256": "5931bba0cfcc4f4e25c52bbe9063d883423799854c2077a2c990db5f55ebf113"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/song.rs",
+      "bytes": 12970,
+      "sha256": "10432cf7391faa8c2257b7ff89b8331d065efcb3b3818c8ed4177888efc613d4"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/speech.rs",
+      "bytes": 17292,
+      "sha256": "4e40cb36bb7a1a2f97157d704d3a0a5e525560c9224e880b738ccce536a46ea6"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/syllables.rs",
+      "bytes": 7390,
+      "sha256": "4a57f232d9dd56be0c4568a8bd504af136758e92e4bc1b35303b66272a2dfe29"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing/durations.rs",
+      "bytes": 5395,
+      "sha256": "41853fd785eacefdbd1df39c08a9d08da4555f1c96d61ac323194a0d37dc21aa"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing.rs",
+      "bytes": 3979,
+      "sha256": "2c5b0e7e14d1ea78ab9f595545ab0c89b1d8d2e912b5520505d9a32656665ade"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics.rs",
+      "bytes": 1732,
+      "sha256": "8503dadf8cf3e19abef226e076628dc7ea1e06892af7e357235e240b10ccb16e"
+    },
+    {
+      "path": "crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "crates/vocal-core/src/score.rs",
+      "bytes": 6641,
+      "sha256": "a2a3b22096c4c472c0325e8e69f95584dbcb805ab75fe66bf325ad3ec80f5b01"
+    },
+    {
+      "path": "crates/vocal-core/src/voice.rs",
+      "bytes": 12853,
+      "sha256": "a84c76412852e1e15a1ea8d17cebe776b92a3462c5d4d8f544960704bfdccd2d"
+    },
+    {
+      "path": "crates/vocal-wasm/src/lib.rs",
+      "bytes": 22177,
+      "sha256": "5b80ea105b749b16944465f5188077c483e555b5cddc755c01a75c339de6fb62"
+    },
+    {
+      "path": "crates/vocal-wasm/src/planning.rs",
+      "bytes": 8382,
+      "sha256": "0349074275947cdca74d9985ad58116d9334466b65fc4355d15f90b98a6e1787"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/english/lts.generated.json",
+      "bytes": 2184,
+      "sha256": "9a2f07d25d87ef5e4cc2ae36025b1dea14305db2d9109cfce8a8da7797f3e154"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/catalog.generated.json",
+      "bytes": 5202,
+      "sha256": "69b3de13295a1c21cc859eda67e25d696176d8303049ae5b198e6cbc47977f6a"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/ipa/nfc.generated.json",
+      "bytes": 11335,
+      "sha256": "ce9003b078b588e9142a9d5b5896787d8efaa7432818c2612ccc7478d39e1b98"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/timing.generated.json",
+      "bytes": 6749,
+      "sha256": "0a0850aaddf3feb2b57687564c5f44742bb390c43ef50dae1b58a77f35953a3e"
+    },
+    {
+      "path": "crates/vocal-core/src/phonetics/vowel-gesture-targets.generated.json",
+      "bytes": 6729,
+      "sha256": "5934175faeed19d9b98d458e16f43084b8d4b232768eb6e9627a3db20d81b999"
+    },
+    {
+      "path": "runs/contour-buffer-reuse-20261119-a/manifest.json",
+      "bytes": 13577,
+      "sha256": "c3ab81aaa29454a40f6c1ea94714cd83a1c6dbb02a7ccdacbc8480bd23cc7f1b"
+    },
+    {
+      "path": "runs/worklet-live-ipa-20261119-d/manifest.json",
+      "bytes": 34605,
+      "sha256": "e7a733a019e70bbf9bbeb15eae743bd7ac6642a94834fea296b133414cf18c4c"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/manifest.json",
+      "bytes": 34618,
+      "sha256": "573fed9eee5536478870552c6cd2a1d856e4d1f9e79c684fd44bd375d00baee9"
+    },
+    {
+      "path": "runs/sagittal-neutral-20261119-g/manifest.json",
+      "bytes": 9278,
+      "sha256": "ed061641439f5896a4d0d86474b552db2b8cb7d24b4a86fac3bed9fcba96e681"
+    },
+    {
+      "path": "runs/sagittal-open-jaw-20261119-d/manifest.json",
+      "bytes": 8761,
+      "sha256": "961bf44368c0f67cf3c9b25d620fc00e58faf756bd2d91a9817be2d63188d2d2"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-vowels/manifest.json",
+      "bytes": 16929,
+      "sha256": "dfe4ad45ee63119e91bc651491819b8048768ba4e1f2fc91224689ca93a87c8c"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-lips/manifest.json",
+      "bytes": 16919,
+      "sha256": "e52f3b957c1cbe8de90ce5600b891762d88988fc1a16c40a5289d1312781b0f7"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-contact/manifest.json",
+      "bytes": 16934,
+      "sha256": "41568c143f58e43fec6aed728f03345a027d52c2ddbd578145f8342f5c4d4e83"
+    },
+    {
+      "path": "runs/contour-buffer-reuse-20261119-a/summary.json",
+      "bytes": 5025,
+      "sha256": "430415f14981688ef38268794a8e8db7922edf4aeeefbc80b3b976dd18dd8cf9"
+    },
+    {
+      "path": "runs/worklet-live-ipa-20261119-d/summary.json",
+      "bytes": 38604,
+      "sha256": "396a693192477415ffd05e1419adcea8fbeadb38a48993cca4117f179b15e705"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/summary.json",
+      "bytes": 38215,
+      "sha256": "2afc6f458b369197fd702e64cf6e6bc1e94095f57552a0bac132493d313703ba"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/browser.wav",
+      "bytes": 199370,
+      "sha256": "d9e69e80ed091e6c49e8810d2de5fd3514be6c6dd683fa1ded7f1eeab70f5f4a",
+      "sample_rate_hz": 48000,
+      "frames": 49828,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/offline.wav",
+      "bytes": 199370,
+      "sha256": "d9e69e80ed091e6c49e8810d2de5fd3514be6c6dd683fa1ded7f1eeab70f5f4a",
+      "sample_rate_hz": 48000,
+      "frames": 49828,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/voicing.csv",
+      "bytes": 13670508,
+      "sha256": "c9754f1c061159873e6b1577dd23bc651ca192e829ae89edb630d82f4aa782bd"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/pcm-128.csv",
+      "bytes": 4612887,
+      "sha256": "2a9f47a14636e64453c95b1242cfd3e07ac7bd3c4f8ed187b2cbed97594e6c4e"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/pcm-77.csv",
+      "bytes": 4612887,
+      "sha256": "2a9f47a14636e64453c95b1242cfd3e07ac7bd3c4f8ed187b2cbed97594e6c4e"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-live/artifacts/browser.json",
+      "bytes": 3947747,
+      "sha256": "4474aa6ddc7452552ee1efb4ab197cd692a20efb0b646a28fba82d30c675ed16"
+    },
+    {
+      "path": "runs/sagittal-neutral-20261119-g/artifacts/trace.csv",
+      "bytes": 12668,
+      "sha256": "ee936242e043cd51d6f9d5b0c2d3a1316f9c126198a49dea83b26ab39e02b472"
+    },
+    {
+      "path": "runs/sagittal-open-jaw-20261119-d/artifacts/trace.csv",
+      "bytes": 12693,
+      "sha256": "1f4cfc31167fde386582f8ff4ebaa5232ee3b9b1eaa9ff72531466d840cdfaed"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-vowels/artifacts/trace.csv",
+      "bytes": 1987862,
+      "sha256": "800997f98fae51accca327ac51bd93b7ba7c9db7528ca0b253ce62422e29ab16"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-lips/artifacts/trace.csv",
+      "bytes": 1911479,
+      "sha256": "65b2d1ee32a6abad642d88ef1708d85b3d3a9e4432b184549719332193d1b4f8"
+    },
+    {
+      "path": "runs/fan-crossing-allocations-20261119-b-contact/artifacts/trace.csv",
+      "bytes": 2628512,
+      "sha256": "adddf1c889e2b72f3b2988294c125973a1d6b487c57cc48f553db291178a1601"
+    },
+    {
+      "path": "tools/measure_worklet_ipa.py",
+      "bytes": 15017,
+      "sha256": "a7ddd2cf84e927356aa7cdb719af95618d570093d433696090e87fa92c479497"
+    },
+    {
+      "path": "tools/measure_worklet_live_ipa.py",
+      "bytes": 6110,
+      "sha256": "8fd3c580daf4eb938c352b971dc25f35eb1db4b2af34144097b071890080dcfc"
+    },
+    {
+      "path": "tools/measure_sagittal.py",
+      "bytes": 9765,
+      "sha256": "e71490c0a553ae5536fe52a020d82f7a0da089e52f0295cde73dccf2578f2f8b"
+    },
+    {
+      "path": "tools/measure_tract_control.py",
+      "bytes": 14528,
+      "sha256": "b03990471d964cc55746c1566a00e51e39dc1f7f9387ad3c5aad301dc45652c7"
+    },
+    {
+      "path": "tools/measure_fan_crossing_allocations.py",
+      "bytes": 9705,
+      "sha256": "f29929a8e5ceddb1b4694ee48442fb170b584893ee649c19a67ca9b6b3d2f92d"
+    },
+    {
+      "path": "tools/measure_wasm_fixed.py",
+      "bytes": 10753,
+      "sha256": "928076b54ad285a1c9fae71272d757146cb9c99fa81c6dd46dd5ffc2d7e6102e"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5501,
+      "sha256": "b46d996f3a8755fe7df848d6c7fcc45a8f9f836e45313d8b76abd35802a9ef57"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-core",
+        "profile_geometry_allocations",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_worklet_ipa.py",
+        "contour-buffer-reuse-20261119-c-live",
+        "--live"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_sagittal.py",
+        "contour-buffer-reuse-20261119-c-sagittal-neutral",
+        "sagittal-neutral"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_sagittal.py",
+        "contour-buffer-reuse-20261119-c-sagittal-open-jaw",
+        "sagittal-open-jaw"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_tract_control.py",
+        "contour-buffer-reuse-20261119-c-tract-slew-vowels",
+        "tract-slew-vowels"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_tract_control.py",
+        "contour-buffer-reuse-20261119-c-tract-slew-lips",
+        "tract-slew-lips"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/dolphilia/github/voice-simulator/research/.venv/bin/python",
+        "$WORKSPACE/tools/measure_tract_control.py",
+        "contour-buffer-reuse-20261119-c-tract-slew-contact",
+        "tract-slew-contact"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "geometry_continuity"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 813,
+      "sha256": "5f8b1549aa212039f96bf80350fe42a56f5d125dd8b0e1b7beb061e0ebbdd49e"
+    },
+    {
+      "path": "artifacts/stage-allocations.log",
+      "bytes": 4613,
+      "sha256": "46e1c8e6a71638e0071b113ff01b41b9cd3e163ed85f0d3b42bd704e16141831"
+    },
+    {
+      "path": "artifacts/upstream-geometry-tests.log",
+      "bytes": 607,
+      "sha256": "abe9338fbdbdcef7be61016dde100b01087377aa052557037e587cc926756a40"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 15253,
+      "sha256": "c31e7d5927810b25bcf67d2fa9d870e8de84d962a5a266d44bd5be404c89d6d8"
+    }
+  ]
+}

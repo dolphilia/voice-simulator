@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "run_id": "soft-wall-20261119-e",
+  "upstream_run_id": "upstream-20261119-a",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "rigid_run_id": "uniform-tube-20261119-e",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/uniform-tube-soft-wall.json",
+      "bytes": 1207,
+      "sha256": "120a0cc48d7e025969413b6a688ba09de533214b59df57f1aa0eadff2081f38a"
+    },
+    {
+      "path": "cases/uniform-tube-rigid.json",
+      "bytes": 863,
+      "sha256": "eb5b55e43147f559409c932fd99e74b5379de94d1e51f303355f2dd97a47669d"
+    },
+    {
+      "path": "runs/upstream-20261119-a/manifest.json",
+      "bytes": 4457,
+      "sha256": "15851feaabec8988b7afd9f2735bad9e46566bf4fe3a790e18f7ac730778db0c"
+    },
+    {
+      "path": "runs/upstream-20261119-a/artifacts/airway.log",
+      "bytes": 1310,
+      "sha256": "c1c0250c5e116d3e8007f9fc6c38b8f69fbe3cc03a52c69dedb71d89426a87b3"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19411,
+      "sha256": "cfb9093e1266177d0bcdde69503a04f4d2d0e6c0d4915dbcee76e5b853170ec7"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2732,
+      "sha256": "b10951e3ea40d509dc855c1bd1f577398273de8dad8d25808d953346c7a23b73"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 80,
+      "sha256": "2b2e4b804ac5667d25868b641a7aedb46501dcd73b34280fbcc33b0a7d67e6b7"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 9891,
+      "sha256": "96dc625084c8483f361d71553200013acc0e28e0ea2a1319f6caa0f363994b5c"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 5794,
+      "sha256": "4c357a7e0807354aa2d82a9b254a7d2a65cff08896d51c66ec1677e04abedd52"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 8133,
+      "sha256": "80aa18e269bbdd756c91977beab03a58cdb6488e1c81f2e5fb31ead762eae0de"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 10892,
+      "sha256": "4ffd5483cfd5fb0267e861a6a592b68c363052e39167d8b23e158334f0ff6f2a"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 121,
+      "sha256": "be8a911ce3d15137e0d2165b7a391f5d2514be6d1ddf95f19b7b8bdeea78c825"
+    },
+    {
+      "path": "runs/uniform-tube-20261119-e/manifest.json",
+      "bytes": 4217,
+      "sha256": "89b6ff3857c53372e2c879e84cf62910cb9196f8d44331d8c5d7a6073d78205a"
+    },
+    {
+      "path": "runs/uniform-tube-20261119-e/summary.json",
+      "bytes": 1572,
+      "sha256": "60fcea8a728c5802af314a788bf3cff134323ba7a4e1ae1122e94eb7f14d7eaa"
+    },
+    {
+      "path": "tools/upstream_wall_probe.rs",
+      "bytes": 2738,
+      "sha256": "9adeafda289a771a2b0e79041e3e21ee13f34cf54b8765797e0f11648c7157dc"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/uniform-tube-soft-wall.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/uniform-tube-soft-wall.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_wall_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_wall_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_wall_probe.exe",
+        "96000",
+        "17.5",
+        "3.0",
+        "40",
+        "0",
+        "1.0",
+        "48000",
+        "1.5",
+        "1600.0",
+        "300000.0",
+        "0.0"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 626,
+      "sha256": "8ed0c5c34c2796ab38e35f6c914e3f1cdb61a0fa7926a45d532becc1694bc4d6"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 1698,
+      "sha256": "46e7df766cc55cb64990d5311fe117a828aef77c4023d990c1616b1b746aea54"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 9832993,
+      "sha256": "0441e63199d70139b1b588e67a67336e9cb3e574ac500c0f99fca14679e927ad"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "1212947304ae9741d8094709d0d74c04bba6c9d15585be2884b28ed1c39328d3"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 9810848,
+      "sha256": "e3ecf83ae37e6bd4a488022e2f297475186ae33e08c28d2cae6419728224ab15"
+    },
+    {
+      "path": "artifacts/upstream_wall_probe.exe",
+      "bytes": 462824,
+      "sha256": "b1c40d6d511c066bc1d1a614aa3b13343dc4a132b0f29c1b639f32a8b74b717e"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 4522,
+      "sha256": "66b71b6e6812d49d9d7e01618a4af3e7f4dd12e6dd2e04702be04be23a752b3c"
+    }
+  ]
+}

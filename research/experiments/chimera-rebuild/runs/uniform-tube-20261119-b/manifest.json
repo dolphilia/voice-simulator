@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "run_id": "uniform-tube-20261119-b",
+  "upstream_run_id": "upstream-20261119-a",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/uniform-tube-rigid.json",
+      "bytes": 863,
+      "sha256": "eb5b55e43147f559409c932fd99e74b5379de94d1e51f303355f2dd97a47669d"
+    },
+    {
+      "path": "runs/upstream-20261119-a/manifest.json",
+      "bytes": 4457,
+      "sha256": "15851feaabec8988b7afd9f2735bad9e46566bf4fe3a790e18f7ac730778db0c"
+    },
+    {
+      "path": "runs/upstream-20261119-a/artifacts/airway.log",
+      "bytes": 1310,
+      "sha256": "c1c0250c5e116d3e8007f9fc6c38b8f69fbe3cc03a52c69dedb71d89426a87b3"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 9673,
+      "sha256": "8ae9002abb3ffbadac2cd4f50e51244f41e196a3bc1c73e268fd0d2971accea6"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2732,
+      "sha256": "b10951e3ea40d509dc855c1bd1f577398273de8dad8d25808d953346c7a23b73"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 80,
+      "sha256": "2b2e4b804ac5667d25868b641a7aedb46501dcd73b34280fbcc33b0a7d67e6b7"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 6297,
+      "sha256": "360f340b90e0f1ca78691efb1194009118eb593b0b98e601ad64ce84822e5a5a"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 6067,
+      "sha256": "7762fb1df8d2abaa5aea32d314af62abe9bb69b16871818335b1a8c19a490ec1"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 121,
+      "sha256": "be8a911ce3d15137e0d2165b7a391f5d2514be6d1ddf95f19b7b8bdeea78c825"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/uniform-tube-rigid.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/uniform-tube-rigid.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 559,
+      "sha256": "317720e4e919f58325442c00115fe25ed7e3a595e352c3cf7c3ee2253c75b63d"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 1332,
+      "sha256": "34de7609c4274d09584dafa46f297e5887a9ce60996a365fce87f367d04abef9"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 4062601,
+      "sha256": "9d810d72e8e4aedaa6b7cfbe8a0c2e22857bb1a0c702a4842dec7b48537f27df"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 1572,
+      "sha256": "0e1797f9efbfeba11f8791d56c173b28e9ba9fe6ee1df01be6608447c43bf1dc"
+    }
+  ]
+}

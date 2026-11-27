@@ -1,0 +1,154 @@
+{
+  "checks": {
+    "pcm_bitwise_unchanged": true,
+    "observations_bitwise_unchanged": true,
+    "dense_native_traces_unchanged": true,
+    "native_allocation_reduction": false,
+    "only_grid_source_changed": true,
+    "native_geometry_traces_unchanged": true
+  },
+  "live": {
+    "pcm": {
+      "first_bit_difference_frame": null,
+      "first_bit_difference_values": null,
+      "maximum_absolute_error": 0.0,
+      "first_frame_over_tolerance": null
+    },
+    "wav_byte_agreement": {
+      "browser.wav": true,
+      "offline.wav": true
+    },
+    "observations": {
+      "observations": {
+        "different_values": 0,
+        "first_index": null,
+        "maximum_absolute_error": 0.0
+      },
+      "tract_geometry": {
+        "different_values": 0,
+        "first_index": null,
+        "maximum_absolute_error": 0.0
+      },
+      "tract_acoustics": {
+        "different_values": 0,
+        "first_index": null,
+        "maximum_absolute_error": 0.0
+      },
+      "glottal": {
+        "different_values": 0,
+        "first_index": null,
+        "maximum_absolute_error": 0.0
+      }
+    },
+    "dense_native_traces": {
+      "voicing.csv": {
+        "byte_equal": true,
+        "first_different_line": null
+      },
+      "pcm-128.csv": {
+        "byte_equal": true,
+        "first_different_line": null
+      },
+      "pcm-77.csv": {
+        "byte_equal": true,
+        "first_different_line": null
+      }
+    }
+  },
+  "geometry": {
+    "tract-slew-vowels": {
+      "candidate_run": "fan-crossing-allocations-20261119-a-vowels",
+      "candidate_status": "pass",
+      "reference_run": "tract-slew-vowels-20261119-d",
+      "byte_equal": true,
+      "first_different_line": null
+    },
+    "tract-slew-lips": {
+      "candidate_run": "fan-crossing-allocations-20261119-a-lips",
+      "candidate_status": "pass",
+      "reference_run": "tract-slew-lips-20261119-b",
+      "byte_equal": true,
+      "first_different_line": null
+    },
+    "tract-slew-contact": {
+      "candidate_run": "fan-crossing-allocations-20261119-a-contact",
+      "candidate_status": "pass",
+      "reference_run": "tract-slew-contact-20261119-d",
+      "byte_equal": true,
+      "first_different_line": null
+    }
+  },
+  "allocation": {
+    "all": {
+      "before": 45656,
+      "after": 23370,
+      "reduction_fraction": 0.48812861398282814
+    },
+    "after_32_quanta": {
+      "before": 41752,
+      "after": 21450,
+      "reduction_fraction": 0.48625215558536117
+    }
+  },
+  "candidate_manifests": {
+    "fan-crossing-allocations-20261119-a-live": "8278e139c8fb7e93c277b89127dd64fdea09c99cc0687b5153ed21a316aa909a",
+    "fan-crossing-allocations-20261119-a-vowels": "65ee84a1a6479a9152cc10b8077739d6e655f12c069c60b68748fe6e58c4a87e",
+    "fan-crossing-allocations-20261119-a-lips": "bf06a42ca8e839e541e3c0df92322b7f2c684f584334975118c491463506d488",
+    "fan-crossing-allocations-20261119-a-contact": "ddff1bd2f3ae8d45ed23f07ac9bc0bd7ec3d5513e9f2fb69e834b70dee69da91"
+  },
+  "changed_live_inputs": [
+    "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/grid.rs"
+  ],
+  "timing": {
+    "reference": {
+      "all": {
+        "blocks": 390,
+        "median_ms": 1.0,
+        "p95_ms": 2.0,
+        "p99_ms": 2.0,
+        "maximum_ms": 4.0,
+        "over_budget_blocks": 2
+      },
+      "warm": {
+        "blocks": 358,
+        "median_ms": 1.0,
+        "p95_ms": 2.0,
+        "p99_ms": 2.0,
+        "maximum_ms": 3.0,
+        "over_budget_blocks": 1
+      },
+      "slowest_block": {
+        "output_frame": 0,
+        "context_frame": 4736,
+        "process_ms": 4.0
+      }
+    },
+    "candidate": {
+      "all": {
+        "blocks": 390,
+        "median_ms": 1.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 4.0,
+        "over_budget_blocks": 2
+      },
+      "warm": {
+        "blocks": 358,
+        "median_ms": 1.0,
+        "p95_ms": 1.0,
+        "p99_ms": 1.0,
+        "maximum_ms": 4.0,
+        "over_budget_blocks": 1
+      },
+      "slowest_block": {
+        "output_frame": 0,
+        "context_frame": 4736,
+        "process_ms": 4.0
+      }
+    }
+  },
+  "wasm_memory_growths": {
+    "reference": 0,
+    "candidate": 0
+  }
+}

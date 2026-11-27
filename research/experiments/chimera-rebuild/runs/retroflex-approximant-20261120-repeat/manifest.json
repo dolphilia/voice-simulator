@@ -1,0 +1,2226 @@
+{
+  "schema_version": 1,
+  "run_id": "retroflex-approximant-20261120-repeat",
+  "case_id": "retroflex-approximant",
+  "revision": 1,
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "upper_source_sha256": {
+    "crates/chimera-cli/src/render.rs": "9f8b766a10a7acd08b0ca79b7160fba1e0183628c19bf01d65c8fab95a4f35bb",
+    "public/data/mandarin.txt.gz": "15529cebf851d13def12c14eb94bbc0f088f324c497a120db5cbe0dd0137853d",
+    "crates/chimera/src/phonetics/ipa.rs": "83e111bf5642115dd249824e9e002adb239ba8ff03d1087c88643d5e46ec3408",
+    "crates/chimera/src/phonetics/planner.rs": "106b109a6a7b1ff4fcb023a75b88ee427ed7e9dce6356e1ee47de57e20e4dfdf",
+    "crates/chimera/src/phonetics/mandarin.rs": "a5ca62a0ddcc22a9a6a140df55cf1feae4382b436d78b3f14ed21c5863b83f47",
+    "crates/chimera/src/phonetics/sing.rs": "1791917dce07fb9e1f72cf23148da48a9cae64f6a0c587d6a6400aaa0a9ad057",
+    "crates/chimera/src/phonetics/durations.rs": "05f2d89469d0d64ebbc3e82db69b4b044232fa6218655b5a9da2ed63a6f0e02f",
+    "crates/chimera/src/phonetics/inventory.rs": "ba98a1322c8925ba7a3d48b01b8d7f92abb3cf47642fd910c0d74ae092ebad72",
+    "crates/chimera/src/control/articulators.rs": "848e0ea24a0c2d5c0842400ea093f7addb047cb0f359d1890c20abac27c95b8e",
+    "crates/chimera/src/anatomy/human.rs": "9df76b032b617c4be389d7cc58c70d546ce83a8c75bac2ccc1e70edfbe00e564",
+    "crates/chimera/src/voice/human_airway.rs": "f92adb2f09015542e991dfb4f6684bf0c900dd5e1f75d166dcf1d790fceba044",
+    "crates/chimera/src/voice/human_voice.rs": "85ddbe404a66a19b4a3c148188c76a89fbcd1825b9e257824fe2af4e7f425a16",
+    "crates/chimera/tests/mandarin.rs": "68705c6b8634864c8b60129f0dcffb661e9076244e9cd1819768a31c30f3fa58",
+    "crates/chimera/tests/apical.rs": "74988a2bd27ba2904bcbbf5dd0680c5e6a1b5bd713ea235666a5b21dd9ff2f26",
+    "crates/chimera/tests/sounds.rs": "62c8d7d9c81f3ba86ccc35601a15097d428c94dad336dacb5476dfa6e6779f99"
+  },
+  "node": "v24.19.0",
+  "bun": "1.4.4",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "research/experiments/chimera-rebuild/cases/retroflex-approximant.json",
+      "bytes": 4532,
+      "sha256": "742e9b23ed351ce0f9aa513021e17d3c412fc8b972a328b44c2213cbf36fffd2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/song-voice-flat.json",
+      "bytes": 2683,
+      "sha256": "c0fd96c072bd13ce4362d28ad2978d31731f33a735f65e4b65db5bcbd0bace4a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/sibilant-s.json",
+      "bytes": 1825,
+      "sha256": "4c21c24e8edc560d7534e5e27c7b94472cd5dfe2992db87fa2e99a53d29b45b1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_bilabial_probe.rs",
+      "bytes": 23870,
+      "sha256": "fdb13e2efd2c0f9d23c02662e2de041164248d2e110311f61fb7bc6e75d36ef7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_retroflex_approximant.py",
+      "bytes": 19575,
+      "sha256": "5dde57a76eb25633f6ef75c78e1e4aa3e643fc8611f478ed980d08e0dd15b6ab"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.toml",
+      "bytes": 156,
+      "sha256": "ac7cb09f7c04feac27f22b385771ddd88bb039f7046f15c214d0187c2f4b1b29"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/Cargo.lock",
+      "bytes": 4602,
+      "sha256": "51fd15f4fbc7be7695e9172397562c3b39ad04a23a8d2e0f0dfab9f926bc2b73"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/Cargo.toml",
+      "bytes": 280,
+      "sha256": "54736bfe58bc7360cbd02962b78b0709bd027b291c7761e1aa7b8facad270171"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/Cargo.toml",
+      "bytes": 212,
+      "sha256": "c90a25193f234d2fd9253e67f2116bf135731db0309808a292f97449d8e86329"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/Cargo.toml",
+      "bytes": 356,
+      "sha256": "56d9e6aac3cc84b5849413a374244cd13cb04347b1427c877089765deab05001"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/tract.rs",
+      "bytes": 6654,
+      "sha256": "34d99fa70762d797dc11a8fe9503d7e090111b08223627875031d8f320300f54"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case/voiced.rs",
+      "bytes": 7004,
+      "sha256": "35968888b30c1dd99dc6930fca53cbd6872464fbe57177cfd3fc343848f3fe3e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/articulation_case.rs",
+      "bytes": 10734,
+      "sha256": "f45e7689c90a13f8bec1635e2ba6ede0d399e538825edb1e9ae7008c66d2e4fc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/english_case.rs",
+      "bytes": 4199,
+      "sha256": "57e860dc82e317c35a750385a1c422c15b1e1dcfb788f646c6dfea1707be1df4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/transfer.rs",
+      "bytes": 4171,
+      "sha256": "103ebfef2c664cc4b0be22b6d7eb1a870edcbc735822698a2f397e0118bdd661"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case/voice.rs",
+      "bytes": 6372,
+      "sha256": "76e955e372bffd6166c5cbbf4585776124acf9ce2e111f21943c3a9ff7f7da03"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/geometry_case.rs",
+      "bytes": 18414,
+      "sha256": "30591fd013eacc070a39de066053c76fcac4859b94722d8bcbf0b4731b31cd5b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/ipa_case.rs",
+      "bytes": 3451,
+      "sha256": "8345379856ae4591e78bbbbbe78441fa75e832397f578839245858fecb3a946d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/main.rs",
+      "bytes": 14737,
+      "sha256": "8640e88c4c2dd1dcd366b73719795c9e0d8f0b46194db53aed35921d23e33546"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/breath_drive.rs",
+      "bytes": 3117,
+      "sha256": "d838676900bcf4994314ef05ea98c439511404c618bb7855c69c82243dca9910"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/glottal_drive.rs",
+      "bytes": 4262,
+      "sha256": "7522391bfde004feb11e1cf66d597baa3688dffc17b3c0a0bad246e4d6fa1510"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case/pcm.rs",
+      "bytes": 4063,
+      "sha256": "667e4db570c3e01be686d52389810e73c3c3c923977722183caa4813d5860362"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/network_case.rs",
+      "bytes": 24003,
+      "sha256": "c247f2c45aafc52073ae02318843b32d584e330b337672c704c24f8dbc4d6e29"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/song_case.rs",
+      "bytes": 4087,
+      "sha256": "7c50445715ea65ec287f9b46cac12ed2928357ca61f0b5d2a76a4fa4a12722bb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/observed_score.rs",
+      "bytes": 3500,
+      "sha256": "c0af9f0be6b5ce539e3045fd97dd623ca8bf770d49c1d7c30c1f75949658bd1f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice/beat_pattern.rs",
+      "bytes": 8964,
+      "sha256": "c125a3d976d25532f5966db923a729e56bbdc1a84668e3f3f15039b8e5d348b1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case/speech_voice.rs",
+      "bytes": 38503,
+      "sha256": "3e7efb7989c5c1943065b9815f03d7272da0fa81d6c0053a6937002f7f6e3111"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-cli/src/timing_case.rs",
+      "bytes": 4164,
+      "sha256": "a2814b781ec9a2e2e637b1bce72cc64e6f12aa095ac3eb4c148e9232ec304c90"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/frequency.rs",
+      "bytes": 8147,
+      "sha256": "8d44c836f1870189ef16eeba32252e73caf6bfd986b10bafc797f82f94d3ae13"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human/frication.rs",
+      "bytes": 5271,
+      "sha256": "a0dc18749fe328e3554e2bf0e2702ede81847e10ee3070b0767dee2dcad555df"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/human.rs",
+      "bytes": 15076,
+      "sha256": "708493a4076d93c86c938aba700f9937d57a814a6af3173f256806e65b56f105"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 5950,
+      "sha256": "a06f8153b461d388dd2284774314c16f1951fc7f2424527753baba8ef0deab12"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 6931,
+      "sha256": "7856b410182aa15637a747e3d5369ecfa2fdd6919badbddd8fb701957e176c37"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/network.rs",
+      "bytes": 25949,
+      "sha256": "b60d54b610b941b963ba228a938d78cfdca40c4da4a29c6eb6c0c6d917746477"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control/allocation_tests.rs",
+      "bytes": 5238,
+      "sha256": "cdbe06412a984a818d58378aa320cc9392c383e9cf82edaac245c9adcd85fca4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway/tract_control.rs",
+      "bytes": 7742,
+      "sha256": "dd596d642cdc9529d945131f72a182443a76ba3199d6a7c40fc7c2573e70bc10"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/airway.rs",
+      "bytes": 11608,
+      "sha256": "15c0e42561e804ea859813dc1ca57f104381ae20ec9b822c60d75ff756078c8d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/area.rs",
+      "bytes": 4137,
+      "sha256": "a10e96a4c00b58a593c6c0e0c333164fc159e28b7cf0876c03a1fcb150a5b312"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/body.rs",
+      "bytes": 4741,
+      "sha256": "acc84c10f9b26c57083a9f8b5a09f83f2cd9c7255354533ac2699adbec3cbfe6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/contact.rs",
+      "bytes": 7410,
+      "sha256": "3f397be2c8c5667f8bc039b74e6e66d386c78c29cf25930bf78f3c3de54d47e9"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/grid.rs",
+      "bytes": 10175,
+      "sha256": "e4faa8b52910676778a72a1740b15049b8e9281b6b2a8dafb823100e4663defa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy/resample.rs",
+      "bytes": 5088,
+      "sha256": "208f772323689cc698f56c92a5888fc3a485d8a22048c8be83c7b6f53ff0bc79"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/anatomy.rs",
+      "bytes": 19648,
+      "sha256": "90f2d7a51e398c86eb5f8c832837bcabeaf3e705617622e09a12c7a97c7402ad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/articulators.rs",
+      "bytes": 11435,
+      "sha256": "4fc1f43b4de18f55b251af97f429d78f94b12f86e816ba4c82d1da304ecd790d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/breath.rs",
+      "bytes": 4824,
+      "sha256": "8d4f0ad345c5eb65471aa5f34ad81844df470fa416099032b0b2dfb9ea3fb69d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/glottis.rs",
+      "bytes": 10927,
+      "sha256": "806ebca6acc18b3a1bf79e1e1a07f75acfe28a3ff48c59dbd66593041acf9343"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/lib.rs",
+      "bytes": 270,
+      "sha256": "7e631b9af675cee1e46ea1d75f9b2aad7485e59479a330b6f83a5c0a1ebad8c7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/output.rs",
+      "bytes": 7410,
+      "sha256": "c953c7e7757cd7b68f483f411fb7c45faf98bf565ff4e8163ae6ac2886ef3b9a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox/player.rs",
+      "bytes": 7619,
+      "sha256": "318fbcfa464640271f254dd7be27f33d7bd2f68178fa125b4bd0afd8fbaa1f58"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/beatbox.rs",
+      "bytes": 17409,
+      "sha256": "fd11e870baa9b4f01cddb260baf1b6e35934b8d66c821eba1520caeb686eff04"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/catalog.rs",
+      "bytes": 3791,
+      "sha256": "d783ec20e83da0d2c7057d67aedc9884bbed914e1139b0bccae61885a9bc615c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/spelling.rs",
+      "bytes": 4147,
+      "sha256": "c0f2d0bc6dfc9bc218c92c5502f20fec9a6137e80357018100759d4cc5f08e69"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english.rs",
+      "bytes": 12700,
+      "sha256": "1f038c4508fb80dccac459dd27bd946adc32ae0eb8bd1c0f3446110deec1067f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/gestures.rs",
+      "bytes": 2129,
+      "sha256": "085cadb444da27a21db1879026125b7ec59d3620a57b78bc0864af8b6faa87e8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/normalization.rs",
+      "bytes": 4279,
+      "sha256": "4b5a0ed2d6ba2a2c675c56332c8daeb843cbe41d50720660d8423bf4efb621b4"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa.rs",
+      "bytes": 10536,
+      "sha256": "a38e7ae2cf442463613d7600cf85e70d4f1e7795e45a131895f3f6b9d073c9f6"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa_plan.rs",
+      "bytes": 2427,
+      "sha256": "5931bba0cfcc4f4e25c52bbe9063d883423799854c2077a2c990db5f55ebf113"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/korean.rs",
+      "bytes": 9831,
+      "sha256": "4cd316a6732982c2a301bfaab6b4ff9e0dfc3248d30e9804dd625d60e7373846"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/mandarin.rs",
+      "bytes": 21579,
+      "sha256": "5a6e2ae0031800e9492e0511db32cb77fb7bc2af2f5d0516c582b1139c2969f8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/russian.rs",
+      "bytes": 13470,
+      "sha256": "95103b529eb68d0b1b791df6c130c1b169c17ea505fb7b474939d9053f854f7d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/song.rs",
+      "bytes": 19474,
+      "sha256": "2517f2159cbc1c547eec56eaf0ab091300bdb8c335c0a0b99063018b5e2d719c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/speech.rs",
+      "bytes": 31319,
+      "sha256": "027259c91d69bc72ae71ae6d592b5e84fcf74abdaeef753a5db6127815aa433c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/syllables.rs",
+      "bytes": 9457,
+      "sha256": "7d6c9f4bdcf53e7574ae843531ebb9da1d005c8decbeb89ec7cef97ea524f7f7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing/durations.rs",
+      "bytes": 5395,
+      "sha256": "41853fd785eacefdbd1df39c08a9d08da4555f1c96d61ac323194a0d37dc21aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.rs",
+      "bytes": 3979,
+      "sha256": "2c5b0e7e14d1ea78ab9f595545ab0c89b1d8d2e912b5520505d9a32656665ade"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowels.rs",
+      "bytes": 3840,
+      "sha256": "8aa9a3fe71634983e8c15fe051a261051476c053601cda32c9a7afb1d25d1dad"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics.rs",
+      "bytes": 1808,
+      "sha256": "845e4dbfbfe1a10897ede1357ca5673e2c2fa402b40b4db217dbbd829eea2598"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/random.rs",
+      "bytes": 948,
+      "sha256": "47a93c8dc5f12aa37255fe864a4ba5580d4c455446907bd02f79c3148f049519"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/score.rs",
+      "bytes": 6652,
+      "sha256": "3697b9c1009b538684cf03e6a482b3d45d5997e6951088d90c845665645616fd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/voice.rs",
+      "bytes": 17854,
+      "sha256": "d363ded145c9e454dedf1ae2486e2ddce1f6e891ed00ead8481b79e48d876a77"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/lib.rs",
+      "bytes": 37138,
+      "sha256": "44f2ea9604ec0bbd2b1f6fd5e28be4af93b54990e3e2d661d5de3038fcee3797"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/src/planning.rs",
+      "bytes": 10948,
+      "sha256": "2c86172e9f3c0182eee7ced535245d0d0c250e56ff41b986505d5f6bea54ac6a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/consonant-targets.generated.json",
+      "bytes": 2092,
+      "sha256": "f8c86f2d7ef4992f8531d67c07e57f4382a38cc738cf7fa247b3aabd40465bc0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/english/lts.generated.json",
+      "bytes": 2184,
+      "sha256": "9a2f07d25d87ef5e4cc2ae36025b1dea14305db2d9109cfce8a8da7797f3e154"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/catalog.generated.json",
+      "bytes": 5202,
+      "sha256": "69b3de13295a1c21cc859eda67e25d696176d8303049ae5b198e6cbc47977f6a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/ipa/nfc.generated.json",
+      "bytes": 11335,
+      "sha256": "ce9003b078b588e9142a9d5b5896787d8efaa7432818c2612ccc7478d39e1b98"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/timing.generated.json",
+      "bytes": 6749,
+      "sha256": "0a0850aaddf3feb2b57687564c5f44742bb390c43ef50dae1b58a77f35953a3e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-core/src/phonetics/vowel-targets.generated.json",
+      "bytes": 30671,
+      "sha256": "2dee540ced5171444c314243643a654281e94f37a1a2c5c9bcf5176776eef24f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_retroflex_fricative.py",
+      "bytes": 19518,
+      "sha256": "706cd78b53a1de6e0246ebb4687af39c9db1f7d86b2f05eb636d6fec6341b06c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_labial_velar.py",
+      "bytes": 11719,
+      "sha256": "2c5ef4e1d56f925938b47db6fb39487d378e87d149b0dab64a931c1e9a4c197b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_alveolar_stop.py",
+      "bytes": 12440,
+      "sha256": "a6a069a84630a815064fddc1600e172bc144fb513641af7218ca256b3cd3e595"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_sibilant.py",
+      "bytes": 15728,
+      "sha256": "3ea2723beff416dd9aa8d681578a4660d00d464b45626ac077a28752d961d5c0"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_speech_timing.py",
+      "bytes": 15992,
+      "sha256": "cb728ef827a71f6ee98e294c866eeb55c0c831418a2c1db9a0e91c9cbbff4ca2"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_postalveolar_affricate.py",
+      "bytes": 16445,
+      "sha256": "eb71c727bf13a243b58e4955d76cc3cdecc25ec2b08962298d080cdf6bb96473"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_uniform_tube.py",
+      "bytes": 20345,
+      "sha256": "b67acefff6c9dfe827099a691642fccbbd5d3c3dd282d359a2632ff1ed126abd"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_bilabial_stop.py",
+      "bytes": 13191,
+      "sha256": "5613444ff016fb9fb733accf48c21a4c8f8569410e7c847e233900900292199b"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_wasm_fixed.py",
+      "bytes": 10753,
+      "sha256": "928076b54ad285a1c9fae71272d757146cb9c99fa81c6dd46dd5ffc2d7e6102e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_velar_stops.py",
+      "bytes": 17080,
+      "sha256": "3378c9bae621ab1368be6b138bbe15def709bbc64aedf05967e53723d7d9a72e"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/upstream_baseline.py",
+      "bytes": 5501,
+      "sha256": "b46d996f3a8755fe7df848d6c7fcc45a8f9f836e45313d8b76abd35802a9ef57"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_alveolopalatal_affricates.py",
+      "bytes": 14857,
+      "sha256": "0f9605d3fc392ee4e86079c9fcda97d1dbede8812697931712cb30952308d7ca"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_alveolopalatal_fricatives.py",
+      "bytes": 12033,
+      "sha256": "9c46ccb79dec14f78b9562dfd4be7e6118e7c1eb72b87e6417ac5cc5926fda78"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_velar_fricative.py",
+      "bytes": 18210,
+      "sha256": "02f94e36af5c07d27a5fd772c5375912d9d52582d71bfa789469be50f6ae7261"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_vowel_voice.py",
+      "bytes": 16032,
+      "sha256": "719d209115a6a9b27faed484705a9c9a7663c725c117a5340f85a2a05e49361d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_song_plan.py",
+      "bytes": 9564,
+      "sha256": "701c8f8dd24560157eacd8e3912f055d275a9d53a6f7712e3241527c28c7ebeb"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/data/mandarin.txt.gz",
+      "bytes": 207607,
+      "sha256": "15529cebf851d13def12c14eb94bbc0f088f324c497a120db5cbe0dd0137853d"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/data/cmudict.txt.gz",
+      "bytes": 868793,
+      "sha256": "336293a10a93c3ba183483308a22eab8e2b6a5e1ac91262dd0d3d4b85da285b5"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/korean-lyrics.json",
+      "bytes": 3730,
+      "sha256": "256d03a702c9d2749719777e8f43980ee5aa591fd5764677afbc1230b83a01d7"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-live-song.json",
+      "bytes": 1143,
+      "sha256": "ccd869574680bd95f0b3fc73378dda06435faa551cff9529d8700860b473d95d"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tools/capture-worklet.mjs",
+      "bytes": 39100,
+      "sha256": "84f9323c1d32cd966794e1990463884f20e7296ffc950fddc6bb0231f9fbd581"
+    },
+    {
+      "path": "web/shared/audio/fft.ts",
+      "bytes": 1213,
+      "sha256": "d0e8e02d7b8f21cc6c99a2f05941d47303519ff3df4da780cd96676c1825e960"
+    },
+    {
+      "path": "web/prototypes/chimera-research/package.json",
+      "bytes": 686,
+      "sha256": "79377405f3586f40f9ddb3ab6f3dd2d973e5ec2973cd5625796124e35587c083"
+    },
+    {
+      "path": "web/prototypes/chimera-research/bun.lock",
+      "bytes": 19949,
+      "sha256": "42f37d9732b61aaeda17c48cad7d5431fecde421ccacec4cefc6c9cc33c9b897"
+    },
+    {
+      "path": "web/prototypes/chimera-research/index.html",
+      "bytes": 307,
+      "sha256": "5377c2e115e91f6ab3b4490c030e43ff29ee3c460aaa5b5cd997e9710286ec42"
+    },
+    {
+      "path": "web/prototypes/chimera-research/tsconfig.json",
+      "bytes": 285,
+      "sha256": "c5684a5f39874bbdc82089d04d819cd1f149ec26c07f0b8b86e9915394fd6055"
+    },
+    {
+      "path": "web/prototypes/chimera-research/vite.config.ts",
+      "bytes": 249,
+      "sha256": "a4caba6fad8a89d44c4cafebf86e30dd9864a27009eca337eb6b6a1373d9e320"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/fixed-processor.ts",
+      "bytes": 8115,
+      "sha256": "973510abf2e13c7fa91ae6c352ea43207e840206b040f91b6ec35888df9b0da5"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/fixed-worklet-types.ts",
+      "bytes": 2073,
+      "sha256": "d1c4f61a8b3e952795e061284fc6178cd60e619c1ef30c681b093fe896560905"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/glottal-scope.tsx",
+      "bytes": 3720,
+      "sha256": "53e91c5d01b2e9ae493a81dd7b91cc7f024d78970e9c9733e8e1e1b755a6c98a"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/ipa-timeline.tsx",
+      "bytes": 8984,
+      "sha256": "62b3496811841bb9ca92eaeff2aa1f0a7d2b66766d2fc831e9d41af800110306"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/live-processor.ts",
+      "bytes": 7381,
+      "sha256": "4ac710eac2cc389ce5fe58414bed0b1ab3cd72757a66ae328eb3a836d4dd34b5"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/live-worklet-types.ts",
+      "bytes": 1434,
+      "sha256": "109080fe6ab4f9ff6e6513b3613de88c22c6723e0e7d811f8d6891ca29b821fd"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/main.tsx",
+      "bytes": 31970,
+      "sha256": "a34185d4e90568b7971b6b906a8ca58624378716cf05d8be1030e5ab68c9fba1"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/manual-replay.ts",
+      "bytes": 3323,
+      "sha256": "f5f0dd65698859c1f2ba88b4893a99f0f290bc306e6259864f600ff8d5facabb"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/pcm-spectrum.ts",
+      "bytes": 1496,
+      "sha256": "33c04904f637ae5116c1c4828360cc28c78f6a0151987c65107db778248870d5"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/realtime-fixed-voice.ts",
+      "bytes": 5236,
+      "sha256": "351f020dcfcd887ca50038247e9634ea77bee36f047bdc14b8cbe6dc0e2500e2"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/realtime-speech-capture.ts",
+      "bytes": 3165,
+      "sha256": "4d6559dbadda69dace1c139861f6c6322273a6475a00f14433ec43615519a777"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/render-fixed-voice.ts",
+      "bytes": 19044,
+      "sha256": "577918d9cb4ecf1756cede3357c930654d231442be71ef27edbb35788903b782"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/speech-spectrum.tsx",
+      "bytes": 3904,
+      "sha256": "baca44621e5cbc1f72be70312c4c84e88772d876d3bb63efbf42598d9f446889"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/style.css",
+      "bytes": 5505,
+      "sha256": "8b0474e563e1ff27096b6d1aee932cc0e573435331a2b7d209a22149f3a09ced"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/tract-acoustics.tsx",
+      "bytes": 3534,
+      "sha256": "0d7b22ea65812d3b0d71df85d7bf9da1b8ca97090f028970c5d823b57e247a11"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/tract-profile.tsx",
+      "bytes": 4215,
+      "sha256": "739a3f91018cd3bef5acce04aa6a4654ecf5bdd8e68293545de8c60aae168b11"
+    },
+    {
+      "path": "web/prototypes/chimera-research/src/worklet-clock.ts",
+      "bytes": 601,
+      "sha256": "d8e32aa54656919ead6fd5efbb53d59920299fcd9821c4ff6868272b6d285dc3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/host/fixed-voice.ts",
+      "bytes": 14574,
+      "sha256": "80dc6ff9fd2c4567f7345a2a984cb0ba533f34d4ff4596efbdce10ec05f011cc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/crates/vocal-wasm/host/planning.ts",
+      "bytes": 5205,
+      "sha256": "a0eca2198b279fa4253a697d020154e04236f89043cf89bbf7d9093728834698"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/vowel-voice-i.json",
+      "bytes": 2265,
+      "sha256": "9e6a3befd846420789cbac2d3bb5a6845241091920af8a7747f5b36da5c2b4aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-fixed-voice.json",
+      "bytes": 1189,
+      "sha256": "f22b9e208377f1f9828a9abb4da8741dca44546aa6a54bd321e292c0eebd8154"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-realtime-voice.json",
+      "bytes": 1514,
+      "sha256": "24876f09222966d3e38596d2a2574a81f8c3e2e89c261cf4c90113c8c18aa9ef"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-realtime-voice-44100.json",
+      "bytes": 1911,
+      "sha256": "895575387f5ebbc8c291f3104b539953e9e297566f0d1fbec71bf6cdedeb9193"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-realtime-voice-32000.json",
+      "bytes": 2429,
+      "sha256": "daa4e9a23c6355df6837b09e724121e2aa85278f54c835ef8b44c346fc0006f8"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-realtime-voice-16000.json",
+      "bytes": 3144,
+      "sha256": "f9518641ac87dd80fda80b0bdeafebefbd1b619bb28e14e13e449f2580c11650"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-realtime-voice-96000.json",
+      "bytes": 2586,
+      "sha256": "1d0061120818dad2237e7f83f2dbcc03ec7c200591cfd7cc720eb7b90eeb6b60"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/bilabial-p.json",
+      "bytes": 2003,
+      "sha256": "26b7a137c273865d6014f3aeda2f2900866b3926a1c0e530e85a51f7112530aa"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-ipa-voice.json",
+      "bytes": 1136,
+      "sha256": "8e7acfcf5593a61e7bf989a7f34c6aca0fa01c891bb58c0d3cb1efb08d2d2357"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/song-voice-long.json",
+      "bytes": 2671,
+      "sha256": "9c69b5f19f63e2a6c8b729a40a1445e246387833b2eb5bebd4459c2c6bfa9796"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-song-voice.json",
+      "bytes": 1283,
+      "sha256": "0a808e2f00bd003c76914448093ddf7fc9138cada9e3fb1e2c266fc00349a85a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/beatbox-pattern-hum.json",
+      "bytes": 3066,
+      "sha256": "165761680ad52e00efb67ce2c0293bb1528a2d42786851c87fdfc89cfee5c7e3"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-beatbox-pattern.json",
+      "bytes": 1285,
+      "sha256": "5cce20455228928be08d3ee5d858d330aa5661365883bf23098c6190bebfca48"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-live-beatbox.json",
+      "bytes": 2010,
+      "sha256": "f7d75ac7e507f5410fd79ecddef8edcba160af7915d0eb35159892535d34e69f"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/english-mom-pop.json",
+      "bytes": 1352,
+      "sha256": "28d6b0fb55dc21640c4851332469ab3cf2796191f30934839582c341874957b1"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-english-voice.json",
+      "bytes": 1593,
+      "sha256": "9a09bd549de496024f8881fbf16ec15bf1bafe73621b1c7807ee1dd9ae12e907"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-tract-profile.json",
+      "bytes": 919,
+      "sha256": "9c445f6a4cf8271e77b064a74fe85aac4aca03bbbbd955ce65bf3e245391d451"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-glottal-scope.json",
+      "bytes": 957,
+      "sha256": "f3daf88460fa66f18cdef6863a8c6756dfe291730d50c7aa810fbed78f2b4628"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-pcm-spectrum.json",
+      "bytes": 1127,
+      "sha256": "5ef52571b56cddd27ec60a3784ac62f6bc61ed81f7c06865b9fca9f0f4e7c2bc"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/cases/worklet-live-ipa.json",
+      "bytes": 819,
+      "sha256": "c11f2e783b5c49b9be0793cf5020df37b137f9cb976236fadc7cfaf2d1a0795c"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/data/CMUDICT-LICENSE.txt",
+      "bytes": 1754,
+      "sha256": "bd4ce8e44170a5f9f481310ca85c51de3c4f851a65e679b40e603b143bd3542a"
+    },
+    {
+      "path": "research/experiments/chimera-rebuild/tools/measure_worklet_english_body.py",
+      "bytes": 13756,
+      "sha256": "fe3bb5d3f238bec3b83dc855e4ad3de09c9b6bf376dfe232b4cf1080de246ebd"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "mandarin",
+        "--test",
+        "apical",
+        "--test",
+        "sounds"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "--extern",
+        "serde_json=$UPSTREAM/target/release/deps/libserde_json-f2e90e468d4ad724.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_bilabial_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_bilabial_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/male-vcv/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/male-vcv/case.json",
+        "$ARTIFACTS/male-vcv/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/male-vcv/case.json",
+        "$ARTIFACTS/male-vcv/pcm-128.wav",
+        "$ARTIFACTS/male-vcv/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/male-vcv/case.json",
+        "$ARTIFACTS/male-vcv/pcm-77.wav",
+        "$ARTIFACTS/male-vcv/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/male-vcv/case.json",
+        "$ARTIFACTS/male-vcv/upstream-voicing.csv",
+        "$ARTIFACTS/male-vcv/upstream-pcm.f32",
+        "$ARTIFACTS/male-vcv/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/female-vcv/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/female-vcv/case.json",
+        "$ARTIFACTS/female-vcv/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/female-vcv/case.json",
+        "$ARTIFACTS/female-vcv/pcm-128.wav",
+        "$ARTIFACTS/female-vcv/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/female-vcv/case.json",
+        "$ARTIFACTS/female-vcv/pcm-77.wav",
+        "$ARTIFACTS/female-vcv/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/female-vcv/case.json",
+        "$ARTIFACTS/female-vcv/upstream-voicing.csv",
+        "$ARTIFACTS/female-vcv/upstream-pcm.f32",
+        "$ARTIFACTS/female-vcv/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/mixed-fast-palatalized/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/mixed-fast-palatalized/case.json",
+        "$ARTIFACTS/mixed-fast-palatalized/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/mixed-fast-palatalized/case.json",
+        "$ARTIFACTS/mixed-fast-palatalized/pcm-128.wav",
+        "$ARTIFACTS/mixed-fast-palatalized/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/mixed-fast-palatalized/case.json",
+        "$ARTIFACTS/mixed-fast-palatalized/pcm-77.wav",
+        "$ARTIFACTS/mixed-fast-palatalized/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/mixed-fast-palatalized/case.json",
+        "$ARTIFACTS/mixed-fast-palatalized/upstream-voicing.csv",
+        "$ARTIFACTS/mixed-fast-palatalized/upstream-pcm.f32",
+        "$ARTIFACTS/mixed-fast-palatalized/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/male-final/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/male-final/case.json",
+        "$ARTIFACTS/male-final/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/male-final/case.json",
+        "$ARTIFACTS/male-final/pcm-128.wav",
+        "$ARTIFACTS/male-final/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/male-final/case.json",
+        "$ARTIFACTS/male-final/pcm-77.wav",
+        "$ARTIFACTS/male-final/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/male-final/case.json",
+        "$ARTIFACTS/male-final/upstream-voicing.csv",
+        "$ARTIFACTS/male-final/upstream-pcm.f32",
+        "$ARTIFACTS/male-final/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/ri-nar/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/ri-nar/case.json",
+        "$ARTIFACTS/ri-nar/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/ri-nar/case.json",
+        "$ARTIFACTS/ri-nar/pcm-128.wav",
+        "$ARTIFACTS/ri-nar/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/ri-nar/case.json",
+        "$ARTIFACTS/ri-nar/pcm-77.wav",
+        "$ARTIFACTS/ri-nar/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/ri-nar/case.json",
+        "$ARTIFACTS/ri-nar/upstream-voicing.csv",
+        "$ARTIFACTS/ri-nar/upstream-pcm.f32",
+        "$ARTIFACTS/ri-nar/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "syllables",
+        "日 哪儿"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/nar-followed/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/nar-followed/case.json",
+        "$ARTIFACTS/nar-followed/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/nar-followed/case.json",
+        "$ARTIFACTS/nar-followed/pcm-128.wav",
+        "$ARTIFACTS/nar-followed/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/nar-followed/case.json",
+        "$ARTIFACTS/nar-followed/pcm-77.wav",
+        "$ARTIFACTS/nar-followed/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/nar-followed/case.json",
+        "$ARTIFACTS/nar-followed/upstream-voicing.csv",
+        "$ARTIFACTS/nar-followed/upstream-pcm.f32",
+        "$ARTIFACTS/nar-followed/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "syllables",
+        "哪儿 妈"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/na-followed/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/na-followed/case.json",
+        "$ARTIFACTS/na-followed/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/na-followed/case.json",
+        "$ARTIFACTS/na-followed/pcm-128.wav",
+        "$ARTIFACTS/na-followed/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/na-followed/case.json",
+        "$ARTIFACTS/na-followed/pcm-77.wav",
+        "$ARTIFACTS/na-followed/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/na-followed/case.json",
+        "$ARTIFACTS/na-followed/upstream-voicing.csv",
+        "$ARTIFACTS/na-followed/upstream-pcm.f32",
+        "$ARTIFACTS/na-followed/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "syllables",
+        "哪 妈"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/nar-melisma/case.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$ARTIFACTS/nar-melisma/case.json",
+        "$ARTIFACTS/nar-melisma/voicing.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/nar-melisma/case.json",
+        "$ARTIFACTS/nar-melisma/pcm-128.wav",
+        "$ARTIFACTS/nar-melisma/pcm-128.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/nar-melisma/case.json",
+        "$ARTIFACTS/nar-melisma/pcm-77.wav",
+        "$ARTIFACTS/nar-melisma/pcm-77.csv",
+        "77"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_bilabial_probe.exe",
+        "$ARTIFACTS/nar-melisma/case.json",
+        "$ARTIFACTS/nar-melisma/upstream-voicing.csv",
+        "$ARTIFACTS/nar-melisma/upstream-pcm.f32",
+        "$ARTIFACTS/nar-melisma/upstream-plan.json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera-cli",
+        "--",
+        "syllables",
+        "哪儿 ~"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$ARTIFACTS/remaining-symbols.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "npx",
+        "--yes",
+        "--package=bun@1.4.4",
+        "--",
+        "bun",
+        "run",
+        "build"
+      ],
+      "cwd": "$REPOSITORY/web/prototypes/chimera-research",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "node",
+        "$REPOSITORY/web/prototypes/chimera-research/tools/capture-worklet.mjs",
+        "$ARTIFACTS/browser",
+        "$WORKSPACE/cases/retroflex-approximant.json",
+        "$ARTIFACTS/browser-inputs.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/browser/ri-nar-case.json",
+        "$ARTIFACTS/browser/ri-nar-replay.wav",
+        "$ARTIFACTS/browser/ri-nar-replay.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render-pcm",
+        "$ARTIFACTS/browser/nar-followed-case.json",
+        "$ARTIFACTS/browser/nar-followed-replay.wav",
+        "$ARTIFACTS/browser/nar-followed-replay.csv",
+        "128"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/browser/browser-run.json",
+      "bytes": 1227,
+      "sha256": "34bf5d3ce4ade0b373d01bf30d8a1ce4c98365fe367fcf123c70241824f4987b"
+    },
+    {
+      "path": "artifacts/browser/nar-followed-case.json",
+      "bytes": 1093,
+      "sha256": "a48e30cd95d833c12507ea97d2e2ecc7168acc9c70a2e2c11df14d435e6a7b1a"
+    },
+    {
+      "path": "artifacts/browser/nar-followed-replay.csv",
+      "bytes": 8274368,
+      "sha256": "d967bd47719c7eeb9059194211c2b26136cb5fe1077af3a2dc81a73d26a36960"
+    },
+    {
+      "path": "artifacts/browser/nar-followed-replay.wav",
+      "bytes": 364858,
+      "sha256": "43332aefb62cf094f6eeed6b55a44067eb757365bc47c2e4a1679c420506bc71",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/browser/nar-followed.json",
+      "bytes": 661450,
+      "sha256": "c27a14ca921435b2e6ad98c42d1ad5d2b52319cd563d8064e3a889f6884226b6"
+    },
+    {
+      "path": "artifacts/browser/nar-followed.png",
+      "bytes": 80873,
+      "sha256": "31d8688331dd919eceda3aeb0f284e98cbdaa647c60af392346e78a66064fe9a"
+    },
+    {
+      "path": "artifacts/browser/nar-followed.wav",
+      "bytes": 364858,
+      "sha256": "43332aefb62cf094f6eeed6b55a44067eb757365bc47c2e4a1679c420506bc71",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/browser/ri-nar-case.json",
+      "bytes": 1093,
+      "sha256": "371a10ba018aa065873ec8980c7a99a9f9dd33c23a9ec0ea202631449c99f732"
+    },
+    {
+      "path": "artifacts/browser/ri-nar-replay.csv",
+      "bytes": 8415738,
+      "sha256": "afdee1abd92c45514c4279b2a0fbd2003b0a8fca8cefc87e5f93e000805eee1a"
+    },
+    {
+      "path": "artifacts/browser/ri-nar-replay.wav",
+      "bytes": 364858,
+      "sha256": "7583b3aeaf4c8d7193a640a82f5faf3e7c5c2c81262818329c9383383288b4c4",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/browser/ri-nar.json",
+      "bytes": 650794,
+      "sha256": "b13836d330b0521f3367cf431656ffbe0a108ea16d27b3102c388e8130d89f35"
+    },
+    {
+      "path": "artifacts/browser/ri-nar.png",
+      "bytes": 80618,
+      "sha256": "6a389209f46e86c0920ac0fce60f3332f8b7b002e301c5a78e59726d1524a153"
+    },
+    {
+      "path": "artifacts/browser/ri-nar.wav",
+      "bytes": 364858,
+      "sha256": "7583b3aeaf4c8d7193a640a82f5faf3e7c5c2c81262818329c9383383288b4c4",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/browser-build.log",
+      "bytes": 843,
+      "sha256": "6591fc1949499c70f85d9d1fe8bb566e5f5670f7307712d975409e963cbec8a2"
+    },
+    {
+      "path": "artifacts/browser-inputs.json",
+      "bytes": 1301,
+      "sha256": "4b15e77137a06d7144e775af4aa842c689b5afd6107372bfbe47c49cc343cfa3"
+    },
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 17193,
+      "sha256": "38f56d901b9a980d6627fdcc48adf7495395cbaae0b30a22418729e65b19781a"
+    },
+    {
+      "path": "artifacts/female-vcv/case.json",
+      "bytes": 872,
+      "sha256": "c029d49e0a5bee0a4af27e3849826c377ce120544a044e00252cb539e34b1187"
+    },
+    {
+      "path": "artifacts/female-vcv/pcm-128.csv",
+      "bytes": 4775832,
+      "sha256": "3fd60f55c9ff33dcc8df6662a76ef40e4580b792dd6486b8e5de2ae0812b2ede"
+    },
+    {
+      "path": "artifacts/female-vcv/pcm-128.wav",
+      "bytes": 206878,
+      "sha256": "3b5a4fda2951241721d55b0d23ed6c701e44dacc3bd62a50becf8b11023725bb",
+      "sample_rate_hz": 48000,
+      "frames": 51705,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/female-vcv/pcm-77.csv",
+      "bytes": 4775832,
+      "sha256": "3fd60f55c9ff33dcc8df6662a76ef40e4580b792dd6486b8e5de2ae0812b2ede"
+    },
+    {
+      "path": "artifacts/female-vcv/pcm-77.wav",
+      "bytes": 206878,
+      "sha256": "3b5a4fda2951241721d55b0d23ed6c701e44dacc3bd62a50becf8b11023725bb",
+      "sample_rate_hz": 48000,
+      "frames": 51705,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/female-vcv/settings.json",
+      "bytes": 5168,
+      "sha256": "d112a7039c6c7c8e292bfbd3c5899cbf38b70dee1bfb08571519cda3c822acaf"
+    },
+    {
+      "path": "artifacts/female-vcv/upstream-pcm.f32",
+      "bytes": 206820,
+      "sha256": "968fa70bae259d634a060f5ddbc433c761e0054404c2ab6a434dad05d4d4f459"
+    },
+    {
+      "path": "artifacts/female-vcv/upstream-plan.json",
+      "bytes": 2822,
+      "sha256": "1866761e9b21417f279ec575d92108515e5aa61007545b60df7d7065b6700968"
+    },
+    {
+      "path": "artifacts/female-vcv/upstream-voicing.csv",
+      "bytes": 37468991,
+      "sha256": "70be6406cae9d2f09af35b0f7a109555be504224edda5c842c873675eaec0911"
+    },
+    {
+      "path": "artifacts/female-vcv/voicing.csv",
+      "bytes": 37636848,
+      "sha256": "d90bd74301d4313f73ff4ff8b80f3ecebdaa8426804b359153d38e988f4b424e"
+    },
+    {
+      "path": "artifacts/male-final/case.json",
+      "bytes": 868,
+      "sha256": "5cee61b2f3e0f39694baccdc5e25229c9a688ddbe8e3948cdf1a4cbb94b1a774"
+    },
+    {
+      "path": "artifacts/male-final/pcm-128.csv",
+      "bytes": 4590074,
+      "sha256": "36647ece2bf82a386d7da00e17606106b060469bc5dc78036a64426fa2b6609c"
+    },
+    {
+      "path": "artifacts/male-final/pcm-128.wav",
+      "bytes": 197038,
+      "sha256": "cc9478b70aa10894e501c4b651d66375102e07693619f14a3ea33300a5b9ec32",
+      "sample_rate_hz": 48000,
+      "frames": 49245,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/male-final/pcm-77.csv",
+      "bytes": 4590074,
+      "sha256": "36647ece2bf82a386d7da00e17606106b060469bc5dc78036a64426fa2b6609c"
+    },
+    {
+      "path": "artifacts/male-final/pcm-77.wav",
+      "bytes": 197038,
+      "sha256": "cc9478b70aa10894e501c4b651d66375102e07693619f14a3ea33300a5b9ec32",
+      "sample_rate_hz": 48000,
+      "frames": 49245,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/male-final/settings.json",
+      "bytes": 4232,
+      "sha256": "4da8ffc5b6ecb6c9dbcc49ccfa82c25d3eb65055fc1f01f0ff2c2f0024347c81"
+    },
+    {
+      "path": "artifacts/male-final/upstream-pcm.f32",
+      "bytes": 196980,
+      "sha256": "01eb59e9a3fd36bec087f0014b3a83179538bf304d682052a40331b11db0d950"
+    },
+    {
+      "path": "artifacts/male-final/upstream-plan.json",
+      "bytes": 2279,
+      "sha256": "4c47ac499f2d09ac30e93c4540bc444ea4ca866ac0f4fb56adfc72ae0376ed55"
+    },
+    {
+      "path": "artifacts/male-final/upstream-voicing.csv",
+      "bytes": 37001726,
+      "sha256": "849e1eeedac9bb910b1681afea91a555c8504d4dbd0c115967f80ed6be90f1d8"
+    },
+    {
+      "path": "artifacts/male-final/voicing.csv",
+      "bytes": 37195155,
+      "sha256": "c1ec90be3a6dc0205c337583b7628b54a15f0650297599eafa8b642b1a60dbc9"
+    },
+    {
+      "path": "artifacts/male-vcv/case.json",
+      "bytes": 866,
+      "sha256": "823f7627f76cb5ffb90cf4e9187d7759e35b14aba95b0fc83c6776814c689a2e"
+    },
+    {
+      "path": "artifacts/male-vcv/pcm-128.csv",
+      "bytes": 4744171,
+      "sha256": "f4865bc4e26ddb2ee3e90f0c2701111130be009b7fd8b728b4a121c0d3bfa327"
+    },
+    {
+      "path": "artifacts/male-vcv/pcm-128.wav",
+      "bytes": 206878,
+      "sha256": "8c1ba79b682ee94687148257e619e2b01e504b132a1133e76ee989c0f70010cd",
+      "sample_rate_hz": 48000,
+      "frames": 51705,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/male-vcv/pcm-77.csv",
+      "bytes": 4744171,
+      "sha256": "f4865bc4e26ddb2ee3e90f0c2701111130be009b7fd8b728b4a121c0d3bfa327"
+    },
+    {
+      "path": "artifacts/male-vcv/pcm-77.wav",
+      "bytes": 206878,
+      "sha256": "8c1ba79b682ee94687148257e619e2b01e504b132a1133e76ee989c0f70010cd",
+      "sample_rate_hz": 48000,
+      "frames": 51705,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/male-vcv/settings.json",
+      "bytes": 5172,
+      "sha256": "018a11bed2f696964ffaa74f51a91cd70ef9678cf062969422ebb2826962d6dd"
+    },
+    {
+      "path": "artifacts/male-vcv/upstream-pcm.f32",
+      "bytes": 206820,
+      "sha256": "773940f6e22e62b7d1957bb7f47b8bca3ee3877be7291da46545f35508fbe6a0"
+    },
+    {
+      "path": "artifacts/male-vcv/upstream-plan.json",
+      "bytes": 2834,
+      "sha256": "027f32ac51b2f9ad34272de083d29428aa551c24ae91bafc7eb51e114b2c59b0"
+    },
+    {
+      "path": "artifacts/male-vcv/upstream-voicing.csv",
+      "bytes": 39019467,
+      "sha256": "2333d2c96d4ada91dfaf124193f460769bcd0d74a5164334394e7d1bb48c636e"
+    },
+    {
+      "path": "artifacts/male-vcv/voicing.csv",
+      "bytes": 39210118,
+      "sha256": "0b026b2ddbc04d39e4a3569f18a716fc7efca4a521066cf23841052ceef2e836"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/case.json",
+      "bytes": 939,
+      "sha256": "02e536a57f169f5e3d74561df92235b26af25f4bf65b653ab98689ec5d806f88"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/pcm-128.csv",
+      "bytes": 3948947,
+      "sha256": "fa15317c4fa167bc3b7ec2bbc3fa74bed4070e8fbed50f6b259d7c9b84b88325"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/pcm-128.wav",
+      "bytes": 167222,
+      "sha256": "a881515cc05a50ba87cc8b2d998ad44dc6951296dd6e0c2df210d5cbb51d75c7",
+      "sample_rate_hz": 48000,
+      "frames": 41791,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/pcm-77.csv",
+      "bytes": 3948947,
+      "sha256": "fa15317c4fa167bc3b7ec2bbc3fa74bed4070e8fbed50f6b259d7c9b84b88325"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/pcm-77.wav",
+      "bytes": 167222,
+      "sha256": "a881515cc05a50ba87cc8b2d998ad44dc6951296dd6e0c2df210d5cbb51d75c7",
+      "sample_rate_hz": 48000,
+      "frames": 41791,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/settings.json",
+      "bytes": 6037,
+      "sha256": "911de4328f015b6f56f62876f0308f6ecff94f2d4094c5ef461fcb37c44678a4"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/upstream-pcm.f32",
+      "bytes": 167164,
+      "sha256": "852588696e3ef3d3f0682edb66033923f25fccb75e981b5cbad160e4e6a3fff9"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/upstream-plan.json",
+      "bytes": 3550,
+      "sha256": "c4703a997a0a8ead710a65cc6e4e451581b7074c449edf114a3a643ebdaf9cdd"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/upstream-voicing.csv",
+      "bytes": 31118507,
+      "sha256": "745b7fd4e19e76e007345298c5c08786464041fac9102fabc9d02cc74dee8a06"
+    },
+    {
+      "path": "artifacts/mixed-fast-palatalized/voicing.csv",
+      "bytes": 31277942,
+      "sha256": "d479e224b3a6020947f561b313270204f469fc23c74bb26f91169254f0897565"
+    },
+    {
+      "path": "artifacts/na-followed/case.json",
+      "bytes": 1056,
+      "sha256": "cd06937ba4e085908afc300529046983288fa95d42f59d128228e1d872ec90b6"
+    },
+    {
+      "path": "artifacts/na-followed/pcm-128.csv",
+      "bytes": 8273347,
+      "sha256": "27cd8b579f328b8a813cb5120e23f18b6b50a870f4cc37e7f9adc70449ecc2f0"
+    },
+    {
+      "path": "artifacts/na-followed/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "b29c6437cbc7450f63cf5df3f8293e6199db166e5b477047df96ed99bf2ce399",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/na-followed/pcm-77.csv",
+      "bytes": 8273347,
+      "sha256": "27cd8b579f328b8a813cb5120e23f18b6b50a870f4cc37e7f9adc70449ecc2f0"
+    },
+    {
+      "path": "artifacts/na-followed/pcm-77.wav",
+      "bytes": 364858,
+      "sha256": "b29c6437cbc7450f63cf5df3f8293e6199db166e5b477047df96ed99bf2ce399",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/na-followed/settings.json",
+      "bytes": 9661,
+      "sha256": "fab9c62a059e8379d83a2df09723173215ec4c89e54bdbbcd700a5f3aaf3e216"
+    },
+    {
+      "path": "artifacts/na-followed/upstream-pcm.f32",
+      "bytes": 364800,
+      "sha256": "a402df05da28558823007e186106af33142d57aea0bc58dd89dd6d9e23e995d9"
+    },
+    {
+      "path": "artifacts/na-followed/upstream-plan.json",
+      "bytes": 4894,
+      "sha256": "5d94501260f699390a1076769d223b0acafd3d09807595707ad0f221b7715093"
+    },
+    {
+      "path": "artifacts/na-followed/upstream-syllables.json",
+      "bytes": 256,
+      "sha256": "6c52f82a8e5bc364bfdeae0bec3391f5205f69038d0cb64f972656aed3eed0c4"
+    },
+    {
+      "path": "artifacts/na-followed/upstream-voicing.csv",
+      "bytes": 78369419,
+      "sha256": "9e09a0fab24ec24813f0be15c86660b486a1b98a9f35e08b0b2130e73bb372ab"
+    },
+    {
+      "path": "artifacts/na-followed/voicing.csv",
+      "bytes": 79867436,
+      "sha256": "e1c76ad106a3a76fb50b4695bb2f4a34fa6ca619c5272ba09b068b1a1cc3a7c8"
+    },
+    {
+      "path": "artifacts/nar-followed/case.json",
+      "bytes": 1061,
+      "sha256": "44661dbda65c83fd0f678ade9fb3ddb5dcec161b7cf8441b3c29841e94dc2b80"
+    },
+    {
+      "path": "artifacts/nar-followed/pcm-128.csv",
+      "bytes": 8274368,
+      "sha256": "d967bd47719c7eeb9059194211c2b26136cb5fe1077af3a2dc81a73d26a36960"
+    },
+    {
+      "path": "artifacts/nar-followed/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "43332aefb62cf094f6eeed6b55a44067eb757365bc47c2e4a1679c420506bc71",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/nar-followed/pcm-77.csv",
+      "bytes": 8274368,
+      "sha256": "d967bd47719c7eeb9059194211c2b26136cb5fe1077af3a2dc81a73d26a36960"
+    },
+    {
+      "path": "artifacts/nar-followed/pcm-77.wav",
+      "bytes": 364858,
+      "sha256": "43332aefb62cf094f6eeed6b55a44067eb757365bc47c2e4a1679c420506bc71",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/nar-followed/settings.json",
+      "bytes": 11493,
+      "sha256": "a364d47ad746b997937a9799ea7f2c95e74573ac7d90a9e39adace2acfce13aa"
+    },
+    {
+      "path": "artifacts/nar-followed/upstream-pcm.f32",
+      "bytes": 364800,
+      "sha256": "bb3e167a325826a07f3cd61b6f9505ce3dad93d2a8bc7b7d7d36d4f740065301"
+    },
+    {
+      "path": "artifacts/nar-followed/upstream-plan.json",
+      "bytes": 5968,
+      "sha256": "c341f4b03f1bfdefe22be1f655a547f09fd288c7f5dc2ad23914853f48f2efbe"
+    },
+    {
+      "path": "artifacts/nar-followed/upstream-syllables.json",
+      "bytes": 271,
+      "sha256": "dbab39a4c81fdc2a697126a7056a215e680b93e4e9d742b174d1a51e7e29a260"
+    },
+    {
+      "path": "artifacts/nar-followed/upstream-voicing.csv",
+      "bytes": 86406817,
+      "sha256": "6eba55bdd3a2c6dddeafe53db848d4f40d7085dbda5d36db53932d6a04032e4d"
+    },
+    {
+      "path": "artifacts/nar-followed/voicing.csv",
+      "bytes": 87772721,
+      "sha256": "7e0edd3586beadf07fcbb1b3b8b314dbd795673fca8559ae227ded5a8b2d5a61"
+    },
+    {
+      "path": "artifacts/nar-melisma/case.json",
+      "bytes": 1057,
+      "sha256": "4dd9ccaf6d021acfe519fefb3538628c5134e4efc9f19743e6e98051078e5969"
+    },
+    {
+      "path": "artifacts/nar-melisma/pcm-128.csv",
+      "bytes": 8328383,
+      "sha256": "5ddcd21f3d1e592ad5a072221cc9fa6123731609c6527b28575a313f78cf6f6c"
+    },
+    {
+      "path": "artifacts/nar-melisma/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "41504df313a7397d923c525d49cae8e0dc1619cc79afc24f9938a67e605d5d18",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/nar-melisma/pcm-77.csv",
+      "bytes": 8328383,
+      "sha256": "5ddcd21f3d1e592ad5a072221cc9fa6123731609c6527b28575a313f78cf6f6c"
+    },
+    {
+      "path": "artifacts/nar-melisma/pcm-77.wav",
+      "bytes": 364858,
+      "sha256": "41504df313a7397d923c525d49cae8e0dc1619cc79afc24f9938a67e605d5d18",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/nar-melisma/settings.json",
+      "bytes": 9567,
+      "sha256": "96a8ef37f3fb7caf0b4342e10c2e388e33a4c1445a034536c4fc6a307bf02eb8"
+    },
+    {
+      "path": "artifacts/nar-melisma/upstream-pcm.f32",
+      "bytes": 364800,
+      "sha256": "142eaa7cffbc0f12f679b4cd7132545c9c80c5d95d50a43a5208af0ca1cab038"
+    },
+    {
+      "path": "artifacts/nar-melisma/upstream-plan.json",
+      "bytes": 4711,
+      "sha256": "3ad4ae97466ada4843a0d29ae472d27bbcbb440e2b2eaa686697531d81d60f1b"
+    },
+    {
+      "path": "artifacts/nar-melisma/upstream-syllables.json",
+      "bytes": 248,
+      "sha256": "1aff22c27810c7424c7807c105a9dfd67db015d00077df13330509e9d9909324"
+    },
+    {
+      "path": "artifacts/nar-melisma/upstream-voicing.csv",
+      "bytes": 84660628,
+      "sha256": "22cc10f1808b1646053e9d403b88db3b207f2c425548513ee9ea87de2dc00d01"
+    },
+    {
+      "path": "artifacts/nar-melisma/voicing.csv",
+      "bytes": 88985955,
+      "sha256": "41e70873425dc92d443745406400998f1415aba0fdb2885e84b050ed95656ea4"
+    },
+    {
+      "path": "artifacts/remaining-symbols-plan.json",
+      "bytes": 15565,
+      "sha256": "f1cd4c07ed8922cad8ae76f836b5692b40725edca53cde7e32582e2aed03f5f3"
+    },
+    {
+      "path": "artifacts/remaining-symbols.json",
+      "bytes": 640,
+      "sha256": "b9d03f8a52bef241c85e1f7d533925acb3c819e4abdeeee8dd04b1659d3363a2"
+    },
+    {
+      "path": "artifacts/ri-nar/case.json",
+      "bytes": 1049,
+      "sha256": "4f0e3f38de290beb2849c1d4aa0bbf4b57c12f258e2f81cd254604282c581498"
+    },
+    {
+      "path": "artifacts/ri-nar/pcm-128.csv",
+      "bytes": 8415738,
+      "sha256": "afdee1abd92c45514c4279b2a0fbd2003b0a8fca8cefc87e5f93e000805eee1a"
+    },
+    {
+      "path": "artifacts/ri-nar/pcm-128.wav",
+      "bytes": 364858,
+      "sha256": "7583b3aeaf4c8d7193a640a82f5faf3e7c5c2c81262818329c9383383288b4c4",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/ri-nar/pcm-77.csv",
+      "bytes": 8415738,
+      "sha256": "afdee1abd92c45514c4279b2a0fbd2003b0a8fca8cefc87e5f93e000805eee1a"
+    },
+    {
+      "path": "artifacts/ri-nar/pcm-77.wav",
+      "bytes": 364858,
+      "sha256": "7583b3aeaf4c8d7193a640a82f5faf3e7c5c2c81262818329c9383383288b4c4",
+      "sample_rate_hz": 48000,
+      "frames": 91200,
+      "channels": 1,
+      "sample_bytes": 4,
+      "sample_format": "float32"
+    },
+    {
+      "path": "artifacts/ri-nar/settings.json",
+      "bytes": 10838,
+      "sha256": "1061d34245742d728e29f9a226fcb535d9ffc7a8a7002ba1a32ebd1f167d20e2"
+    },
+    {
+      "path": "artifacts/ri-nar/upstream-pcm.f32",
+      "bytes": 364800,
+      "sha256": "f46d91d29997c32696638a36448d667a1e4d87feda3fec098d98131505394bcb"
+    },
+    {
+      "path": "artifacts/ri-nar/upstream-plan.json",
+      "bytes": 5438,
+      "sha256": "fbd5229b4e8f6e84d871b179909f2469601e543890cbd0c2798a3a12ad282114"
+    },
+    {
+      "path": "artifacts/ri-nar/upstream-syllables.json",
+      "bytes": 262,
+      "sha256": "5694ff4c48e92b917e6bfa2829c810b74357e0cbd93e4aefb57e2090cf285eda"
+    },
+    {
+      "path": "artifacts/ri-nar/upstream-voicing.csv",
+      "bytes": 85823730,
+      "sha256": "08edf002ae07d2ad87dec5558cc597ef0eeb997c08506902240bc0adb6009496"
+    },
+    {
+      "path": "artifacts/ri-nar/voicing.csv",
+      "bytes": 87171459,
+      "sha256": "f0a2694c56c45d14ef80a1c0206c21ecf79dc6efd73d67c3c13c5b2df0efd08b"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "723460e38372b286a364199cd57fa120bd41b8bafd285c75e65b73e7a2a4c86c"
+    },
+    {
+      "path": "artifacts/upstream-tests.log",
+      "bytes": 1338,
+      "sha256": "1906c5941026bddbdd8926cdf97e4d0ae869aed2bd0dad8f2c5985db0b4636a2"
+    },
+    {
+      "path": "artifacts/upstream_bilabial_probe.exe",
+      "bytes": 1166488,
+      "sha256": "f9a141e037aeb91d525652fca67e9ead818a4ea5ff9c3827a1c94938c2cb2c91"
+    },
+    {
+      "path": "artifacts/vocal_wasm.wasm",
+      "bytes": 1318648,
+      "sha256": "07c5fe050773b41f284e228f77fe0bf5f67826c6c027aa851eab7fb37c438c5e"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 125761,
+      "sha256": "d98f8c2e420bbb47532efe048f2ba60f78c4f3ad7135fba3b3289a33ef1f6f0e"
+    }
+  ]
+}

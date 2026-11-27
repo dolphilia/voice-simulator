@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "run_id": "steady-quarter-20261119-e",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "case_id": "steady-constriction-quarter",
+  "full_run": "steady-full-20261119-g",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/steady-constriction-quarter.json",
+      "bytes": 2463,
+      "sha256": "1d960a07b55cfb903d4f101b2ca6a522421e5806de16495d5b02282dd057b16a"
+    },
+    {
+      "path": "tools/upstream_network_probe.rs",
+      "bytes": 13032,
+      "sha256": "946038d2ecce6ac43dcebdd055e3efc1edc7664d680083d64659d5c7bc3f26bd"
+    },
+    {
+      "path": "tools/measure_pressure_port.py",
+      "bytes": 9912,
+      "sha256": "9994fd80ce225ef8199d2a77e70341333f8bf32e23c9d850ab6269ee5dbf9bac"
+    },
+    {
+      "path": "tools/measure_junction.py",
+      "bytes": 14577,
+      "sha256": "dd4bd37c3e7c683cf7ac96efd28c3ef3d4bf37d41b0c9c318c63cebe322edee7"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19422,
+      "sha256": "bdd3ad7dd25845ced7f838763bff3ee4cbd7d3192dc36e6605fcd13dce8e9397"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 9891,
+      "sha256": "96dc625084c8483f361d71553200013acc0e28e0ea2a1319f6caa0f363994b5c"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case/constriction.rs",
+      "bytes": 3221,
+      "sha256": "ff5dbf1157a39227c5e777d9738002e01a0921f3ca3cf94a211e55cb48fd6cfc"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 17342,
+      "sha256": "16e86f063d4e9d6e6b3b207fe35af5764656b1e8712933079ff4a1b1c0084d44"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 4850,
+      "sha256": "21d041a886a33f64aeee39ea070a6d96da56ad25549fe87362006fa7da270ff6"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/turbulence.rs",
+      "bytes": 7399,
+      "sha256": "ff72e59f58123877a346ab5c3f183df5e5e44e69dd2d4ba43be97599c1e293f8"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 19965,
+      "sha256": "24998c94d5d524b274c870eb9bfd5b21fe63cfa68da56e31eb8f3ab8ec1b334d"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11551,
+      "sha256": "c5332213c5a23fa6ba7813ec1bb6e06a7b9f7d50a6b0850715e0da24b1f184de"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 121,
+      "sha256": "be8a911ce3d15137e0d2165b7a391f5d2514be6d1ddf95f19b7b8bdeea78c825"
+    },
+    {
+      "path": "runs/steady-full-20261119-g/manifest.json",
+      "bytes": 7039,
+      "sha256": "4fa0f74c3d1707a5af079c8f053b378afc152f4ccf69d15b1bde3080f368ec5e"
+    },
+    {
+      "path": "runs/steady-full-20261119-g/summary.json",
+      "bytes": 4988,
+      "sha256": "875b9312c8fded1703c70a93f030268fd6c23a6c6720a6892492ba43f10aced3"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/steady-constriction-quarter.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/steady-constriction-quarter.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "chimera",
+        "--test",
+        "airway_adversarial",
+        "steady_flow_through_a_short_constriction_obeys_bernoulli_with_jet_loss",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "-p",
+        "chimera",
+        "--message-format=json"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2024",
+        "-C",
+        "opt-level=3",
+        "-C",
+        "panic=abort",
+        "-C",
+        "lto=fat",
+        "-C",
+        "codegen-units=1",
+        "--extern",
+        "chimera=$UPSTREAM/target/release/libchimera.rlib",
+        "-L",
+        "dependency=$UPSTREAM/target/release/deps",
+        "$WORKSPACE/tools/upstream_network_probe.rs",
+        "-o",
+        "$ARTIFACTS/upstream_network_probe.exe"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$ARTIFACTS/upstream_network_probe.exe",
+        "$ARTIFACTS/upstream-input.txt"
+      ],
+      "cwd": "$UPSTREAM",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 1022,
+      "sha256": "b6d38fdb2871a028630ca51023dbe405dbffb8a79c91b88f89269fa4b3564a59"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 2788,
+      "sha256": "d5744bc8510582bdc0d0c8660c093a33803226ddbe03bb139f7928570494148d"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 6779120,
+      "sha256": "6f95ac8e9cb42439a1eb680a775bf70fe08f627db11bfe7af6b4409652928cb9"
+    },
+    {
+      "path": "artifacts/upstream-build.jsonl",
+      "bytes": 20357,
+      "sha256": "e4cd2700d012cde16fbc28b3b26dd60f4ffa03691a3af907ad1f18c2a26c7427"
+    },
+    {
+      "path": "artifacts/upstream-input.txt",
+      "bytes": 318,
+      "sha256": "47d8badccd4833ff9e971670b598f69831f33eb443a5633583aebd968ef940a9"
+    },
+    {
+      "path": "artifacts/upstream-network-test.log",
+      "bytes": 316,
+      "sha256": "8d2299a87f3dcb18819fecea6d87d970c95cac777b668cb67c3400fa294cab1d"
+    },
+    {
+      "path": "artifacts/upstream-trace.csv",
+      "bytes": 6755304,
+      "sha256": "c28741973fcb2afc3226b3994f38d1058a349c6d77b687ec070b490115bd1e28"
+    },
+    {
+      "path": "artifacts/upstream_network_probe.exe",
+      "bytes": 482584,
+      "sha256": "b511363f1c89d1169754b7de38838e1eeba902b3892b61f7dd428a429c5ab1dd"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 5056,
+      "sha256": "94bdc34297ea6111dc6fa62823334402f86a7e511714f518460bb75fd6e93d3c"
+    }
+  ]
+}

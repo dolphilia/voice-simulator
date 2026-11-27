@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "run_id": "uniform-tube-20261119-f",
+  "upstream_run_id": "upstream-20261119-a",
+  "upstream_revision": "c6147d0198890475dbe8a65a0bb8f56240c539b7",
+  "candidate_head": "384954fb32e0a00241cc5c8b5642b7b0dd57e3c7",
+  "candidate_diff_status": "?? research/experiments/chimera-rebuild/",
+  "environment": {
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "python": "3.14.4",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "inputs": [
+    {
+      "path": "cases/uniform-tube-rigid.json",
+      "bytes": 863,
+      "sha256": "eb5b55e43147f559409c932fd99e74b5379de94d1e51f303355f2dd97a47669d"
+    },
+    {
+      "path": "runs/upstream-20261119-a/manifest.json",
+      "bytes": 4457,
+      "sha256": "15851feaabec8988b7afd9f2735bad9e46566bf4fe3a790e18f7ac730778db0c"
+    },
+    {
+      "path": "runs/upstream-20261119-a/artifacts/airway.log",
+      "bytes": 1310,
+      "sha256": "c1c0250c5e116d3e8007f9fc6c38b8f69fbe3cc03a52c69dedb71d89426a87b3"
+    },
+    {
+      "path": "tools/measure_uniform_tube.py",
+      "bytes": 19411,
+      "sha256": "cfb9093e1266177d0bcdde69503a04f4d2d0e6c0d4915dbcee76e5b853170ec7"
+    },
+    {
+      "path": "tools/upstream_baseline.py",
+      "bytes": 5045,
+      "sha256": "3127dc5d8e441c2025cc7a8817f130c73e893a9e60716bb8ff227cfd42904b42"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 135,
+      "sha256": "116217f84aceb1c2dde5c562a9b1a20d8c84006935d7b52e6964a74403698318"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 2949,
+      "sha256": "e30787692cfa2e975a24a8e048365f2a122d1708eed21064c03657aac42a2c5c"
+    },
+    {
+      "path": "crates/vocal-cli/Cargo.toml",
+      "bytes": 261,
+      "sha256": "b1481a4534d2bd7ffce9c244336148733bdc1723cf9653e324b88f0e4c9c1fb3"
+    },
+    {
+      "path": "crates/vocal-core/Cargo.toml",
+      "bytes": 113,
+      "sha256": "7207c7663f3040d10a5847afe84c0dd91a29c268a53919ae773800c6184718ce"
+    },
+    {
+      "path": "crates/vocal-cli/src/main.rs",
+      "bytes": 9891,
+      "sha256": "96dc625084c8483f361d71553200013acc0e28e0ea2a1319f6caa0f363994b5c"
+    },
+    {
+      "path": "crates/vocal-cli/src/network_case.rs",
+      "bytes": 10278,
+      "sha256": "cadd5dea02731537774c30754df25839389b7ecc5ebd92631e8f0f3674cc853c"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network/geometry.rs",
+      "bytes": 4264,
+      "sha256": "43f389acf7fdae3d3d9192f6b03a859e5a3c18e62134d60afffad3e36353f3a5"
+    },
+    {
+      "path": "crates/vocal-core/src/airway/network.rs",
+      "bytes": 12597,
+      "sha256": "097f19e6188d7d4efc1341ec76be389bba61e2c301089254bed2c3d1b41dcdf5"
+    },
+    {
+      "path": "crates/vocal-core/src/airway.rs",
+      "bytes": 11321,
+      "sha256": "761a441ab58dbb6f5d56fbfd73f69852b645b655eb4738453a4bab6547b9c600"
+    },
+    {
+      "path": "crates/vocal-core/src/lib.rs",
+      "bytes": 121,
+      "sha256": "be8a911ce3d15137e0d2165b7a391f5d2514be6d1ddf95f19b7b8bdeea78c825"
+    }
+  ],
+  "source_snapshot": "artifacts/source",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "inspect",
+        "$WORKSPACE/cases/uniform-tube-rigid.json"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "run",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "$WORKSPACE/Cargo.toml",
+        "-p",
+        "vocal-cli",
+        "--",
+        "render",
+        "$WORKSPACE/cases/uniform-tube-rigid.json",
+        "$ARTIFACTS/trace.csv"
+      ],
+      "cwd": "$WORKSPACE",
+      "exit_code": 0
+    }
+  ],
+  "status": "pass",
+  "outputs": [
+    {
+      "path": "artifacts/cargo.log",
+      "bytes": 930,
+      "sha256": "a0df1c6a077c1951b24e20c753ebb0fab04a79928c501ca85d45943d416e185b"
+    },
+    {
+      "path": "artifacts/settings.json",
+      "bytes": 1332,
+      "sha256": "34de7609c4274d09584dafa46f297e5887a9ce60996a365fce87f367d04abef9"
+    },
+    {
+      "path": "artifacts/trace.csv",
+      "bytes": 4062601,
+      "sha256": "9d810d72e8e4aedaa6b7cfbe8a0c2e22857bb1a0c702a4842dec7b48537f27df"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 1572,
+      "sha256": "60fcea8a728c5802af314a788bf3cff134323ba7a4e1ae1122e94eb7f14d7eaa"
+    }
+  ]
+}
