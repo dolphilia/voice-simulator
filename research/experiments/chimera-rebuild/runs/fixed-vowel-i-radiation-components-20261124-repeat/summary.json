@@ -1,0 +1,568 @@
+{
+  "checks": {
+    "registered_voice_and_geometry": true,
+    "only_registered_lung_pressure_changed": true,
+    "baseline/upstream_components_and_pcm_match": true,
+    "candidate/baseline/independent_pcm_and_branch_balance": true,
+    "upstream/baseline/independent_pcm_and_branch_balance": true,
+    "smoothed/upstream_components_and_pcm_match": true,
+    "candidate/smoothed/independent_pcm_and_branch_balance": true,
+    "upstream/smoothed/independent_pcm_and_branch_balance": true,
+    "candidate/bitwise_before_switch": true,
+    "candidate/independent_pressure_gate_and_area": true,
+    "upstream/bitwise_before_switch": true,
+    "upstream/independent_pressure_gate_and_area": true,
+    "replay_uses_registered_low_pressure_case": true,
+    "upstream/unmodified_and_smoothed_reference_bits": true,
+    "upstream/physical_and_applied_pressure_verified": true,
+    "upstream/area_and_gate_reproduce_baseline": true,
+    "upstream/replay_unchanged_before_switch": true,
+    "upstream/replay_independent_pcm_and_branch_balance": true,
+    "upstream/pcm_differences_add_to_total": true,
+    "candidate/unmodified_and_smoothed_reference_bits": true,
+    "candidate/physical_and_applied_pressure_verified": true,
+    "candidate/area_and_gate_reproduce_baseline": true,
+    "candidate/replay_unchanged_before_switch": true,
+    "candidate/replay_independent_pcm_and_branch_balance": true,
+    "candidate/pcm_differences_add_to_total": true,
+    "replay_agrees_between_implementations": true,
+    "editions_agree_on_pcm_delta": true,
+    "saved_pressure_replay_conditions_reused": true,
+    "all_previous_observations_and_pcm_are_bit_equal": true,
+    "upstream_baseline/flow_sum_and_derivative_bits": true,
+    "upstream_baseline/component_output_sum_and_limiter_inactive": true,
+    "upstream_smoothed/flow_sum_and_derivative_bits": true,
+    "upstream_smoothed/component_output_sum_and_limiter_inactive": true,
+    "upstream_pressure_replay/flow_sum_and_derivative_bits": true,
+    "upstream_pressure_replay/component_output_sum_and_limiter_inactive": true,
+    "upstream/full/linear_component_differences_sum": true,
+    "upstream/full/independent_pcm_difference_onset": true,
+    "upstream/without_area/linear_component_differences_sum": true,
+    "upstream/without_area/independent_pcm_difference_onset": true,
+    "upstream/area/linear_component_differences_sum": true,
+    "upstream/area/independent_pcm_difference_onset": true,
+    "candidate_baseline/flow_sum_and_derivative_bits": true,
+    "candidate_baseline/component_output_sum_and_limiter_inactive": true,
+    "candidate_smoothed/flow_sum_and_derivative_bits": true,
+    "candidate_smoothed/component_output_sum_and_limiter_inactive": true,
+    "candidate_pressure_replay/flow_sum_and_derivative_bits": true,
+    "candidate_pressure_replay/component_output_sum_and_limiter_inactive": true,
+    "candidate/full/linear_component_differences_sum": true,
+    "candidate/full/independent_pcm_difference_onset": true,
+    "candidate/without_area/linear_component_differences_sum": true,
+    "candidate/without_area/independent_pcm_difference_onset": true,
+    "candidate/area/linear_component_differences_sum": true,
+    "candidate/area/independent_pcm_difference_onset": true,
+    "all_radiation_components_match_upstream": true
+  },
+  "results": {
+    "baseline": {
+      "upstream_series_peak_relative_error": 3.1215682881063765e-13,
+      "upstream_pcm_max_error": 2.3283064365386963e-10,
+      "editions": {
+        "candidate": {
+          "pressure_relative_error": 8.13062866298764e-12,
+          "minimum_work_erg_s": 1.0935842062111797e-12,
+          "negative_work_samples": 0,
+          "independent_pcm_error": 0.0
+        },
+        "upstream": {
+          "pressure_relative_error": 9.035864671287045e-12,
+          "minimum_work_erg_s": 1.0936603428484672e-12,
+          "negative_work_samples": 0,
+          "independent_pcm_error": 0.0
+        }
+      }
+    },
+    "smoothed": {
+      "upstream_series_peak_relative_error": 3.1215653789600987e-13,
+      "upstream_pcm_max_error": 2.3283064365386963e-10,
+      "editions": {
+        "candidate": {
+          "pressure_relative_error": 8.390422683607475e-12,
+          "minimum_work_erg_s": -2.290759154710764e-17,
+          "negative_work_samples": 0,
+          "independent_pcm_error": 0.0
+        },
+        "upstream": {
+          "pressure_relative_error": 9.414142964044299e-12,
+          "minimum_work_erg_s": 8.932529694622038e-17,
+          "negative_work_samples": 0,
+          "independent_pcm_error": 0.0
+        }
+      }
+    },
+    "candidate": {
+      "first_internal_sample": {
+        "lung_boundary_dyn_cm2": 38446,
+        "pressure_sub_dyn_cm2": 38422,
+        "pressure_supra_dyn_cm2": 38421,
+        "glottal_area_cm2": 38423,
+        "glottal_flow_cm3_s": 38422,
+        "lip_flow_cm3_s": 38412,
+        "nose_flow_cm3_s": null,
+        "radiation_derivative_cm3_s2": 38401,
+        "pressure_34": 38400,
+        "pressure_35": 38400,
+        "pressure_36": 38400,
+        "flow_34_35": 38400,
+        "flow_35_36": 38400,
+        "filtered_pressure_drop_dyn_cm2": 38422,
+        "glottal_voicing": 38423
+      },
+      "first_eligible_sample": 38400,
+      "eligible_samples_by_branch": [
+        15764,
+        15773
+      ],
+      "first_pcm_frame": 19210,
+      "first_pcm_frame_internal_end": 38421,
+      "pcm_delta_peak": 1.430511474609375e-06,
+      "pcm_delta_rms_relative_to_baseline": 4.1569076002981975e-06,
+      "hypotheses": {
+        "branch_change_starts_at_first_eligible_sample": true,
+        "pressure_precedes_glottal_flow": true,
+        "radiation_precedes_output_frame_end": true
+      },
+      "pressure_gate": {
+        "variants": {
+          "baseline": {
+            "filtered_pressure_min_dyn_cm2": 2986.97559968963,
+            "filtered_pressure_max_dyn_cm2": 3633.629341003456,
+            "transition_fraction": 1.0,
+            "independent_pressure_max_error_dyn_cm2": 1.318767317570746e-11,
+            "independent_voicing_max_error": 5.10702591327572e-15
+          },
+          "smoothed": {
+            "filtered_pressure_min_dyn_cm2": 2986.9764017647335,
+            "filtered_pressure_max_dyn_cm2": 3633.6311822707366,
+            "transition_fraction": 1.0,
+            "independent_pressure_max_error_dyn_cm2": 1.0913936421275139e-11,
+            "independent_voicing_max_error": 5.10702591327572e-15
+          }
+        },
+        "max_area_change_cm2": 6.727313746346386e-08,
+        "independent_area_change_max_error_cm2": 4.898050338512553e-16,
+        "max_filtered_pressure_change_dyn_cm2": 0.0019064452885686478,
+        "max_voicing_change": 7.140662259264019e-07,
+        "hypotheses": {
+          "transition_fraction_ge_target": true,
+          "pressure_then_voicing_then_area": true
+        }
+      }
+    },
+    "upstream": {
+      "first_internal_sample": {
+        "lung_boundary_dyn_cm2": 38446,
+        "pressure_sub_dyn_cm2": 38422,
+        "pressure_supra_dyn_cm2": 38421,
+        "glottal_area_cm2": 38423,
+        "glottal_flow_cm3_s": 38422,
+        "lip_flow_cm3_s": 38412,
+        "nose_flow_cm3_s": null,
+        "radiation_derivative_cm3_s2": 38401,
+        "pressure_34": 38400,
+        "pressure_35": 38400,
+        "pressure_36": 38400,
+        "flow_34_35": 38400,
+        "flow_35_36": 38400,
+        "filtered_pressure_drop_dyn_cm2": 38422,
+        "glottal_voicing": 38423
+      },
+      "first_eligible_sample": 38400,
+      "eligible_samples_by_branch": [
+        15764,
+        15773
+      ],
+      "first_pcm_frame": 19210,
+      "first_pcm_frame_internal_end": 38421,
+      "pcm_delta_peak": 1.430511474609375e-06,
+      "pcm_delta_rms_relative_to_baseline": 4.1569076002980866e-06,
+      "hypotheses": {
+        "branch_change_starts_at_first_eligible_sample": true,
+        "pressure_precedes_glottal_flow": true,
+        "radiation_precedes_output_frame_end": true
+      },
+      "pressure_gate": {
+        "variants": {
+          "baseline": {
+            "filtered_pressure_min_dyn_cm2": 2986.975599689629,
+            "filtered_pressure_max_dyn_cm2": 3633.629341003452,
+            "transition_fraction": 1.0,
+            "independent_pressure_max_error_dyn_cm2": 1.4551915228366852e-11,
+            "independent_voicing_max_error": 5.10702591327572e-15
+          },
+          "smoothed": {
+            "filtered_pressure_min_dyn_cm2": 2986.976401764732,
+            "filtered_pressure_max_dyn_cm2": 3633.6311822707357,
+            "transition_fraction": 1.0,
+            "independent_pressure_max_error_dyn_cm2": 1.2732925824820995e-11,
+            "independent_voicing_max_error": 5.662137425588298e-15
+          }
+        },
+        "max_area_change_cm2": 6.727313751897501e-08,
+        "independent_area_change_max_error_cm2": 4.998338113025176e-16,
+        "max_filtered_pressure_change_dyn_cm2": 0.0019064452885686478,
+        "max_voicing_change": 7.140662265925357e-07,
+        "hypotheses": {
+          "transition_fraction_ge_target": true,
+          "pressure_then_voicing_then_area": true
+        }
+      }
+    }
+  },
+  "pcm_delta_comparison": {
+    "max_absolute_error": 0.0,
+    "max_relative_error": 0.0
+  },
+  "pressure_replay": {
+    "editions": {
+      "upstream": {
+        "first_pressure_input_difference_from_physical_sample": 38422,
+        "first_area_difference_from_coupled_sample": 38423,
+        "first_radiation_difference_from_coupled_sample": 38429,
+        "first_pcm_frame_full_effect": 19210,
+        "first_pcm_frame_without_area_path": 19210,
+        "first_pcm_frame_area_path": 19325,
+        "peak_physical_glottal_flow_change_cm3_s": 7.29316511893785e-05,
+        "peak_physical_pressure_not_fed_to_model_dyn_cm2": 0.004366429726815113,
+        "total_delta_pcm_rms": 1.7668759599608646e-07,
+        "without_area_path_delta_pcm_rms": 1.7278293666380783e-07,
+        "area_path_delta_pcm_rms": 2.337931703858523e-08,
+        "area_path_rms_ratio": 0.13232008113972568,
+        "area_path_signed_projection": 0.03060934124233032,
+        "cross_term_relative_to_total_energy": 0.026201474739013467,
+        "independent_pcm_error": 0.0,
+        "pressure_relative_error": 9.586050086500206e-12,
+        "minimum_work_erg_s": 4.406192767786601e-17,
+        "negative_work_samples": 0,
+        "hypotheses": {
+          "area_path_follows_area_and_radiation": true,
+          "direct_pcm_difference_preserves_onset": true
+        }
+      },
+      "candidate": {
+        "first_pressure_input_difference_from_physical_sample": 38422,
+        "first_area_difference_from_coupled_sample": 38423,
+        "first_radiation_difference_from_coupled_sample": 38429,
+        "first_pcm_frame_full_effect": 19210,
+        "first_pcm_frame_without_area_path": 19210,
+        "first_pcm_frame_area_path": 19325,
+        "peak_physical_glottal_flow_change_cm3_s": 7.293165123201106e-05,
+        "peak_physical_pressure_not_fed_to_model_dyn_cm2": 0.004366429725905618,
+        "total_delta_pcm_rms": 1.7668759599608646e-07,
+        "without_area_path_delta_pcm_rms": 1.7278293666380783e-07,
+        "area_path_delta_pcm_rms": 2.337931703858523e-08,
+        "area_path_rms_ratio": 0.13232008113972568,
+        "area_path_signed_projection": 0.03060934124233032,
+        "cross_term_relative_to_total_energy": 0.026201474739013467,
+        "independent_pcm_error": 0.0,
+        "pressure_relative_error": 8.257163198551472e-12,
+        "minimum_work_erg_s": -2.379581806943102e-17,
+        "negative_work_samples": 0,
+        "hypotheses": {
+          "area_path_follows_area_and_radiation": true,
+          "direct_pcm_difference_preserves_onset": true
+        }
+      }
+    },
+    "state_peak_relative_error": 3.567506198572837e-13,
+    "area_pcm_cross_edition_error": 0.0,
+    "area_pcm_cross_edition_tolerance": 1.4901161193847656e-08
+  },
+  "radiation_components": {
+    "by_edition": {
+      "upstream": {
+        "full": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38401,
+              "first_linear_output_difference_frame": 19200,
+              "first_pcm_difference_frame_with_component_only": 19212,
+              "rms": 1.366803954373986e-08,
+              "rms_relative_to_total": 0.07735206937680673,
+              "projection_onto_total": 0.042667456391459406,
+              "linear_change_at_first_stored_pcm_frame": 4.4334992712983724e-12
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38412,
+              "first_linear_output_difference_frame": 19206,
+              "first_pcm_difference_frame_with_component_only": 19210,
+              "rms": 1.6954352105346343e-07,
+              "rms_relative_to_total": 0.9595042625496519,
+              "projection_onto_total": 0.9573325436070217,
+              "linear_change_at_first_stored_pcm_frame": -1.0468717520789482e-10
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 1.7669908063038954e-07,
+          "component_output_sum_error": 1.2451244828899714e-15,
+          "first_pcm_difference_frame": 19210,
+          "independent_first_pcm_frame": 19210,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        },
+        "without_area": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38401,
+              "first_linear_output_difference_frame": 19200,
+              "first_pcm_difference_frame_with_component_only": 19212,
+              "rms": 1.262102096912195e-08,
+              "rms_relative_to_total": 0.07304858224374726,
+              "projection_onto_total": 0.03756294079241204,
+              "linear_change_at_first_stored_pcm_frame": 4.4334992712983724e-12
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38412,
+              "first_linear_output_difference_frame": 19206,
+              "first_pcm_difference_frame_with_component_only": 19210,
+              "rms": 1.6663769467516953e-07,
+              "rms_relative_to_total": 0.9644740607094031,
+              "projection_onto_total": 0.9624370592067371,
+              "linear_change_at_first_stored_pcm_frame": -1.0468717520789482e-10
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 1.7277571420904972e-07,
+          "component_output_sum_error": 9.784988795897212e-16,
+          "first_pcm_difference_frame": 19210,
+          "independent_first_pcm_frame": 19210,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        },
+        "area": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38429,
+              "first_linear_output_difference_frame": 19214,
+              "first_pcm_difference_frame_with_component_only": 19365,
+              "rms": 3.3211469124051355e-09,
+              "rms_relative_to_total": 0.14211458008108346,
+              "projection_onto_total": 0.11815777033901866,
+              "linear_change_at_first_stored_pcm_frame": 1.3530340282799991e-11
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38465,
+              "first_linear_output_difference_frame": 19232,
+              "first_pcm_difference_frame_with_component_only": 19325,
+              "rms": 2.069066855256719e-08,
+              "rms_relative_to_total": 0.885370551348338,
+              "projection_onto_total": 0.8818422296614944,
+              "linear_change_at_first_stored_pcm_frame": 8.795415868633535e-11
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 2.3369501640931243e-08,
+          "component_output_sum_error": 1.2546510194343487e-15,
+          "first_pcm_difference_frame": 19325,
+          "independent_first_pcm_frame": 19325,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        }
+      },
+      "candidate": {
+        "full": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38401,
+              "first_linear_output_difference_frame": 19200,
+              "first_pcm_difference_frame_with_component_only": 19212,
+              "rms": 1.3668039543303719e-08,
+              "rms_relative_to_total": 0.07735206937586965,
+              "projection_onto_total": 0.042667456390401884,
+              "linear_change_at_first_stored_pcm_frame": 4.433501747161911e-12
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38412,
+              "first_linear_output_difference_frame": 19206,
+              "first_pcm_difference_frame_with_component_only": 19210,
+              "rms": 1.6954352105052812e-07,
+              "rms_relative_to_total": 0.9595042625520338,
+              "projection_onto_total": 0.9573325436094174,
+              "linear_change_at_first_stored_pcm_frame": -1.0468717530012588e-10
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 1.7669908062689182e-07,
+          "component_output_sum_error": 1.2082233734288296e-15,
+          "first_pcm_difference_frame": 19210,
+          "independent_first_pcm_frame": 19210,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        },
+        "without_area": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38401,
+              "first_linear_output_difference_frame": 19200,
+              "first_pcm_difference_frame_with_component_only": 19212,
+              "rms": 1.2621020968745695e-08,
+              "rms_relative_to_total": 0.0730485822516234,
+              "projection_onto_total": 0.03756294079921118,
+              "linear_change_at_first_stored_pcm_frame": 4.433501747161911e-12
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38412,
+              "first_linear_output_difference_frame": 19206,
+              "first_pcm_difference_frame_with_component_only": 19210,
+              "rms": 1.6663769465115117e-07,
+              "rms_relative_to_total": 0.9644740607031312,
+              "projection_onto_total": 0.9624370592001055,
+              "linear_change_at_first_stored_pcm_frame": -1.0468717530012588e-10
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 1.7277571418527023e-07,
+          "component_output_sum_error": 1.2046268053603388e-15,
+          "first_pcm_difference_frame": 19210,
+          "independent_first_pcm_frame": 19210,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        },
+        "area": {
+          "parts": {
+            "wall": {
+              "first_radiation_derivative_difference_sample": 38429,
+              "first_linear_output_difference_frame": 19214,
+              "first_pcm_difference_frame_with_component_only": 19365,
+              "rms": 3.321146912539312e-09,
+              "rms_relative_to_total": 0.14211458008209973,
+              "projection_onto_total": 0.1181577703316793,
+              "linear_change_at_first_stored_pcm_frame": 1.353023384011839e-11
+            },
+            "lip": {
+              "first_radiation_derivative_difference_sample": 38465,
+              "first_linear_output_difference_frame": 19232,
+              "first_pcm_difference_frame_with_component_only": 19325,
+              "rms": 2.069066855343873e-08,
+              "rms_relative_to_total": 0.8853705513561938,
+              "projection_onto_total": 0.8818422296685621,
+              "linear_change_at_first_stored_pcm_frame": 8.795353866465512e-11
+            },
+            "nose": {
+              "first_radiation_derivative_difference_sample": null,
+              "first_linear_output_difference_frame": null,
+              "first_pcm_difference_frame_with_component_only": null,
+              "rms": 0.0,
+              "rms_relative_to_total": 0.0,
+              "projection_onto_total": 0.0,
+              "linear_change_at_first_stored_pcm_frame": 0.0
+            }
+          },
+          "total_rms": 2.336950164170827e-08,
+          "component_output_sum_error": 9.710626880102695e-16,
+          "first_pcm_difference_frame": 19325,
+          "independent_first_pcm_frame": 19325,
+          "hypotheses": {
+            "wall_changes_before_lip": true,
+            "lip_alone_preserves_stored_pcm_onset": true,
+            "nose_unchanged": true,
+            "lip_projection_matches_prediction": true
+          }
+        }
+      }
+    },
+    "output_reconstruction": {
+      "upstream": {
+        "baseline": {
+          "peak_before_f32": 0.0659498065034362,
+          "component_sum_error": 8.482797797526587e-16,
+          "independent_pcm_max_error": 0.0
+        },
+        "smoothed": {
+          "peak_before_f32": 0.06594987506072778,
+          "component_sum_error": 8.482797797526587e-16,
+          "independent_pcm_max_error": 0.0
+        },
+        "pressure_replay": {
+          "peak_before_f32": 0.06594982054825856,
+          "component_sum_error": 8.482797797526587e-16,
+          "independent_pcm_max_error": 0.0
+        }
+      },
+      "candidate": {
+        "baseline": {
+          "peak_before_f32": 0.06594980650343149,
+          "component_sum_error": 7.494005416219807e-16,
+          "independent_pcm_max_error": 0.0
+        },
+        "smoothed": {
+          "peak_before_f32": 0.06594987506072239,
+          "component_sum_error": 7.494005416219807e-16,
+          "independent_pcm_max_error": 0.0
+        },
+        "pressure_replay": {
+          "peak_before_f32": 0.0659498205482534,
+          "component_sum_error": 7.494005416219807e-16,
+          "independent_pcm_max_error": 0.0
+        }
+      }
+    },
+    "cross_edition_flows_peak_relative_error": {
+      "baseline": 5.199806175665558e-15,
+      "smoothed": 5.180643222435276e-15,
+      "pressure_replay": 5.778413508805947e-15
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "checks": {
+    "ordinary_probe_and_archived_pcm_equal_for_each_side": true,
+    "full_trace_output_recalculated_with_limiter_inactive": true,
+    "archived_first_peak_and_unequal_count_reproduced": true,
+    "full_pcm_precast_conversion_and_adjacent_midpoints": true
+  },
+  "hypotheses": {
+    "precast_and_pcm_peak_differ": true,
+    "largest_pcm_difference_is_one_ulp": true,
+    "multi_ulp_differences_are_mainly_quiet": true,
+    "radiation_and_precast_differ_before_pcm": true
+  },
+  "matched_pcm": {
+    "different_bits": 1992,
+    "first_bit_difference": 31350,
+    "peak_frame": 129260
+  },
+  "archive_matches": {
+    "upstream_normal": true,
+    "research_normal": true
+  },
+  "output_replay": {
+    "upstream_normal": true,
+    "research_normal": true
+  },
+  "comparison": {
+    "full": {
+      "precast": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 31148,
+        "peak": 9.020562075079397e-14,
+        "rms": 8.155743631738778e-15,
+        "absolute_p99": 3.3269966642768195e-14
+      },
+      "pcm": {
+        "frames": 144727,
+        "first_nonzero_frame": 31350,
+        "peak_frame": 129260,
+        "peak": 1.862645149230957e-09,
+        "rms": 4.896181364542457e-12,
+        "absolute_p99": 3.552713678800501e-15
+      },
+      "change_at_rounding": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 129260,
+        "peak": 1.8626410934474702e-09,
+        "rms": 4.8961771535661e-12,
+        "absolute_p99": 3.382447100186422e-14
+      }
+    },
+    "segments": {
+      "opening": {
+        "precast": {
+          "frames": 16704,
+          "first_nonzero_frame": 2440,
+          "peak_frame": 8565,
+          "peak": 8.670147932932082e-14,
+          "rms": 1.1474461247732365e-14,
+          "absolute_p99": 4.294302760610158e-14
+        },
+        "pcm": {
+          "frames": 16704,
+          "first_nonzero_frame": null,
+          "peak_frame": 0,
+          "peak": 0.0,
+          "rms": 0.0,
+          "absolute_p99": 0.0
+        },
+        "change_at_rounding": {
+          "frames": 16704,
+          "first_nonzero_frame": 2440,
+          "peak_frame": 8565,
+          "peak": 8.670147932932082e-14,
+          "rms": 1.1474461247732365e-14,
+          "absolute_p99": 4.294302760610158e-14
+        }
+      },
+      "later": {
+        "precast": {
+          "frames": 128023,
+          "first_nonzero_frame": 16704,
+          "peak_frame": 31148,
+          "peak": 9.020562075079397e-14,
+          "rms": 7.616822443217812e-15,
+          "absolute_p99": 3.090160072272141e-14
+        },
+        "pcm": {
+          "frames": 128023,
+          "first_nonzero_frame": 31350,
+          "peak_frame": 129260,
+          "peak": 1.862645149230957e-09,
+          "rms": 5.205809559232121e-12,
+          "absolute_p99": 3.552713678800501e-15
+        },
+        "change_at_rounding": {
+          "frames": 128023,
+          "first_nonzero_frame": 16704,
+          "peak_frame": 129260,
+          "peak": 1.8626410934474702e-09,
+          "rms": 5.2058034319768515e-12,
+          "absolute_p99": 3.1505284492361337e-14
+        }
+      }
+    },
+    "precast_where_pcm_equal": {
+      "frames": 142735,
+      "first_nonzero_frame": null,
+      "peak_frame": null,
+      "peak": 9.020562075079397e-14,
+      "rms": 8.182318139295596e-15,
+      "absolute_p99": 3.338994011836683e-14
+    },
+    "precast_where_pcm_differs": {
+      "frames": 1992,
+      "first_nonzero_frame": null,
+      "peak_frame": null,
+      "peak": 1.9592670398544754e-14,
+      "rms": 5.9502655726801916e-15,
+      "absolute_p99": 1.8558138939006e-14
+    },
+    "pcm_rms_excluding_focus_outlier": 1.540911128252707e-14,
+    "pcm_squared_error_fraction_at_outlier": 0.9999900953943421,
+    "pcm_unequal_values": 1992,
+    "signed_zero_mismatches": 0,
+    "pcm_unequal_first": 31350,
+    "pcm_one_ulp": 1311,
+    "pcm_one_ulp_with_exact_midpoint_tie": 0,
+    "pcm_more_than_one_ulp": 681,
+    "pcm_max_ulp_distance": 159,
+    "pcm_all_one_ulp_straddle": true,
+    "witnesses": {
+      "31148": {
+        "precast": [
+          -0.016866792698249852,
+          -0.016866792698340058
+        ],
+        "pcm": [
+          -0.016866791993379593,
+          -0.016866791993379593
+        ],
+        "ulp_distance": 0,
+        "midpoint": null,
+        "from_midpoint": null,
+        "dc_difference": {
+          "current_minus_previous_input": -1.2710318908482066e-13,
+          "previous_dc_state": 3.689459448070547e-14,
+          "measured_research_minus_upstream": -9.020562075079397e-14,
+          "floating_point_residual": 2.9738533212197293e-18
+        }
+      },
+      "31350": {
+        "precast": [
+          4.248667936684533e-05,
+          4.248667938431053e-05
+        ],
+        "pcm": [
+          4.2486677557462826e-05,
+          4.2486681195441633e-05
+        ],
+        "ulp_distance": 1,
+        "midpoint": 4.248667937645223e-05,
+        "from_midpoint": [
+          -9.606898609959558e-15,
+          7.858297346174936e-15
+        ],
+        "dc_difference": {
+          "current_minus_previous_input": 4.5306206702955265e-14,
+          "previous_dc_state": -2.7841257865231955e-14,
+          "measured_research_minus_upstream": 1.7465195956134494e-14,
+          "floating_point_residual": 2.4711841118264164e-19
+        }
+      },
+      "129260": {
+        "precast": [
+          -0.021176370792091885,
+          -0.02117637079208783
+        ],
+        "pcm": [
+          -0.021176371723413467,
+          -0.021176369860768318
+        ],
+        "ulp_distance": 1,
+        "midpoint": -0.021176370792090893,
+        "from_midpoint": [
+          -9.922618282587337e-16,
+          3.0635216585750413e-15
+        ],
+        "dc_difference": {
+          "current_minus_previous_input": 1.119243586700236e-14,
+          "previous_dc_state": -7.137542694552075e-15,
+          "measured_research_minus_upstream": 4.055783486833775e-15,
+          "floating_point_residual": 8.903143834902444e-19
+        }
+      }
+    }
+  },
+  "amplitude_by_ulp": {
+    "threshold": 1e-06,
+    "groups": {
+      "quiet": {
+        "frames": 8007,
+        "one_ulp": 1304,
+        "multiple_ulp": 681
+      },
+      "above_quiet": {
+        "frames": 136720,
+        "one_ulp": 7,
+        "multiple_ulp": 0
+      }
+    },
+    "multiple_ulp_quiet_fraction": 1.0,
+    "multiple_ulp_maximum_amplitude": 4.818300425313282e-08,
+    "multiple_ulp_first_frame": 139522
+  },
+  "radiation_and_source_differences": {
+    "glottal_flow_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4879,
+      "peak_frame": 71103,
+      "peak": 1.4722445484949276e-11,
+      "rms": 1.847872834090963e-12,
+      "absolute_p99": 7.005951374594588e-12
+    },
+    "wall_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 71129,
+      "peak": 3.40527606113028e-12,
+      "rms": 2.937650874006036e-13,
+      "absolute_p99": 1.0906830993917538e-12
+    },
+    "lip_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4907,
+      "peak_frame": 157623,
+      "peak": 5.5933924159035087e-11,
+      "rms": 5.719499980178521e-12,
+      "absolute_p99": 2.3255637415786226e-11
+    },
+    "nose_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 40733,
+      "peak_frame": 238582,
+      "peak": 3.2159164220502134e-11,
+      "rms": 8.724840845796616e-13,
+      "absolute_p99": 2.9558577807620168e-12
+    },
+    "total_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 157623,
+      "peak": 5.667288860422559e-11,
+      "rms": 5.894802947076583e-12,
+      "absolute_p99": 2.4243718144134618e-11
+    },
+    "radiation_derivative_cm3_s2": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 62283,
+      "peak": 2.837623469531536e-07,
+      "rms": 2.2271428271286566e-08,
+      "absolute_p99": 9.822542779147625e-08
+    }
+  },
+  "output_stage_differences": {
+    "decimated": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 31148,
+      "peak": 1.869630068540573e-07,
+      "rms": 1.6939503602392182e-08,
+      "absolute_p99": 6.910666797921286e-08
+    },
+    "gain_applied": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 31148,
+      "peak": 8.997316780501308e-14,
+      "rms": 8.152141898514385e-15,
+      "absolute_p99": 3.325769781098438e-14
+    },
+    "dc_removed": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 31148,
+      "peak": 9.020562075079397e-14,
+      "rms": 8.155743631738778e-15,
+      "absolute_p99": 3.3269966642768195e-14
+    },
+    "envelope": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 9895,
+      "peak": 3.90729115729016e-14,
+      "rms": 5.149715988318358e-15,
+      "absolute_p99": 1.7708057242771247e-14
+    },
+    "hold_frames": {
+      "frames": 144727,
+      "first_nonzero_frame": null,
+      "peak_frame": 0,
+      "peak": 0.0,
+      "rms": 0.0,
+      "absolute_p99": 0.0
+    }
+  },
+  "max_envelope": {
+    "upstream_normal": 0.40375715612221247,
+    "research_normal": 0.4037571561222143
+  },
+  "fk61_01_indexed_comparison": {
+    "full": {
+      "precast": {
+        "frames": 116132,
+        "first_nonzero_frame": 1984,
+        "peak_frame": 26939,
+        "peak": 8.311754062795274e-14,
+        "rms": 8.807361404608638e-15,
+        "absolute_p99": 3.2554419229779976e-14
+      },
+      "pcm": {
+        "frames": 116132,
+        "first_nonzero_frame": 2937,
+        "peak_frame": 16682,
+        "peak": 1.862645149230957e-09,
+        "rms": 5.468604261521711e-12,
+        "absolute_p99": 1.0658141036401503e-14
+      },
+      "change_at_rounding": {
+        "frames": 116132,
+        "first_nonzero_frame": 1984,
+        "peak_frame": 16682,
+        "peak": 1.8626336827087808e-09,
+        "rms": 5.468574501514219e-12,
+        "absolute_p99": 3.430559655792645e-14
+      }
+    },
+    "pcm_one_ulp": 1400,
+    "pcm_more_than_one_ulp": 955
+  }
+}

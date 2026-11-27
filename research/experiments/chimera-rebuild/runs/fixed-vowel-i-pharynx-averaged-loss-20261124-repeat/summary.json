@@ -1,0 +1,3342 @@
+{
+  "checks": {
+    "reference/candidate/steady_split_and_harmonics_match_reference": true,
+    "reference/candidate/frequency_variance_matches_time_samples": true,
+    "reference/candidate/signed_pressure_expansion_matches_time_average": true,
+    "reference/candidate/averaged_outlet_pressure_loss_and_flow_balance": true,
+    "reference/upstream/steady_split_and_harmonics_match_reference": true,
+    "reference/upstream/frequency_variance_matches_time_samples": true,
+    "reference/upstream/signed_pressure_expansion_matches_time_average": true,
+    "reference/upstream/averaged_outlet_pressure_loss_and_flow_balance": true,
+    "reference/both_editions_agree": true,
+    "lower/candidate/steady_split_and_harmonics_match_reference": true,
+    "lower/candidate/frequency_variance_matches_time_samples": true,
+    "lower/candidate/signed_pressure_expansion_matches_time_average": true,
+    "lower/candidate/averaged_outlet_pressure_loss_and_flow_balance": true,
+    "lower/upstream/steady_split_and_harmonics_match_reference": true,
+    "lower/upstream/frequency_variance_matches_time_samples": true,
+    "lower/upstream/signed_pressure_expansion_matches_time_average": true,
+    "lower/upstream/averaged_outlet_pressure_loss_and_flow_balance": true,
+    "lower/both_editions_agree": true,
+    "averaged_kinetic_loss_halves_steady_flow_errors": true,
+    "averaged_kinetic_loss_preserves_harmonics_and_reversal": true
+  },
+  "frequencies_hz": [
+    110,
+    220,
+    330,
+    440,
+    550,
+    660,
+    2090,
+    2200,
+    2310,
+    2420
+  ],
+  "pressures": {
+    "reference": {
+      "candidate": {
+        "mean_glottal_flow_cm3_s": 134.13776720775437,
+        "observed_outlet_flows_cm3_s": [
+          102.14544472250472,
+          31.992322467471908
+        ],
+        "dc_models": {
+          "steady": {
+            "oral_and_nasal_cm3_s": [
+              99.06564164260867,
+              35.0721255651457
+            ],
+            "outlet_relative_error": [
+              0.03015115444710095,
+              0.09626694344573355
+            ],
+            "mean_flow_l2_error": 0.027110805221590182
+          },
+          "signed_time_average": {
+            "oral_and_nasal_cm3_s": [
+              102.19552163374036,
+              31.94224557401401
+            ],
+            "outlet_relative_error": [
+              0.0004902510471384949,
+              0.0015652784666950667
+            ],
+            "mean_flow_l2_error": 0.0004408155535402776
+          },
+          "positive_square_average": {
+            "oral_and_nasal_cm3_s": [
+              102.94649654750742,
+              31.191270660246943
+            ],
+            "outlet_relative_error": [
+              0.007842266751874192,
+              0.025038876375400133
+            ],
+            "mean_flow_l2_error": 0.007051476695300307
+          }
+        },
+        "ac_models": {
+          "steady": {
+            "pharynx_relative_l2_error": 0.0017363204281230186,
+            "error_by_frequency": [
+              0.0011820364271722264,
+              0.0017437525955598466,
+              0.0046756727333969504,
+              0.006952246302054895,
+              0.023914521003943433,
+              0.03242583511846511,
+              0.001163265346189133,
+              0.012406834424719859,
+              0.0056218629635246,
+              0.011718536133865903
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1688,
+                "missed": 146,
+                "false_positive": 66,
+                "mismatched": 212
+              },
+              "branches": {
+                "true_positive": 5,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                16,
+                20,
+                30,
+                104,
+                42
+              ]
+            },
+            "mismatch_fraction": 0.0012990196078431372
+          },
+          "signed_time_average": {
+            "pharynx_relative_l2_error": 0.0018353142246524375,
+            "error_by_frequency": [
+              0.0013225636999895521,
+              0.001846331427557718,
+              0.004838667946166066,
+              0.006913007273825727,
+              0.02356009744188139,
+              0.0315949407771063,
+              0.0011370236764018285,
+              0.01242650483272183,
+              0.005845703157371422,
+              0.01144473223782522
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1690,
+                "missed": 144,
+                "false_positive": 71,
+                "mismatched": 215
+              },
+              "branches": {
+                "true_positive": 5,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                15,
+                21,
+                31,
+                104,
+                44
+              ]
+            },
+            "mismatch_fraction": 0.0013174019607843138
+          }
+        },
+        "nose_mean_error_reduction_fraction": 0.9837402288816054,
+        "all_branch_mean_error_reduction_fraction": 0.9837402264544608,
+        "mean_loss_path_correction_dyn_cm2": {
+          "observed": -16.239370284345846,
+          "estimated": -16.50257529548814,
+          "variance": -20.44648957779261,
+          "sign_correction": 3.9439142823045277
+        },
+        "dc_hypothesis_met": true,
+        "ac_hypothesis_met": true,
+        "branch_averages": [
+          {
+            "nodes": [
+              30,
+              49
+            ],
+            "observed_cm3_s": 31.992322461523454,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3891.359333633422,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 24.892411976039167
+          },
+          {
+            "nodes": [
+              31,
+              32
+            ],
+            "observed_cm3_s": 102.14544472304532,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 5092.003557676647,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.047901645978664927
+          },
+          {
+            "nodes": [
+              32,
+              33
+            ],
+            "observed_cm3_s": 102.14544472103374,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 5069.309895457297,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.054836192184387116
+          },
+          {
+            "nodes": [
+              33,
+              34
+            ],
+            "observed_cm3_s": 102.14544472167236,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 5034.107451248314,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.23024058996112542
+          },
+          {
+            "nodes": [
+              34,
+              35
+            ],
+            "observed_cm3_s": 102.14544472092673,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4996.87005411574,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.4129314664606231
+          },
+          {
+            "nodes": [
+              35,
+              36
+            ],
+            "observed_cm3_s": 102.14544472141357,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4962.611547183834,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.27770829451151735
+          },
+          {
+            "nodes": [
+              36,
+              37
+            ],
+            "observed_cm3_s": 102.14544472105601,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4932.953275479272,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.08523486625169438
+          },
+          {
+            "nodes": [
+              37,
+              38
+            ],
+            "observed_cm3_s": 102.14544472143037,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4907.729796280002,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0042020318999657505
+          },
+          {
+            "nodes": [
+              38,
+              39
+            ],
+            "observed_cm3_s": 102.14544472121382,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4886.272343852293,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1333967398844974
+          },
+          {
+            "nodes": [
+              39,
+              40
+            ],
+            "observed_cm3_s": 102.14544472151715,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4868.157275289493,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.35450382119742296
+          },
+          {
+            "nodes": [
+              40,
+              41
+            ],
+            "observed_cm3_s": 102.14544472136998,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4853.107033833228,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.3274350039734699
+          },
+          {
+            "nodes": [
+              41,
+              42
+            ],
+            "observed_cm3_s": 102.14544472165413,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4840.903517475191,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.2507616089804737
+          },
+          {
+            "nodes": [
+              42,
+              43
+            ],
+            "observed_cm3_s": 102.14544472160199,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4831.342895392063,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.3220241394023037
+          },
+          {
+            "nodes": [
+              43,
+              44
+            ],
+            "observed_cm3_s": 102.14544472183451,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4824.192051921549,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4695141833877081
+          },
+          {
+            "nodes": [
+              44,
+              45
+            ],
+            "observed_cm3_s": 102.14544472186236,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4819.205666550285,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.8232078660553093
+          },
+          {
+            "nodes": [
+              45,
+              46
+            ],
+            "observed_cm3_s": 102.14544472211904,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4816.149849826374,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.02753709140811259
+          },
+          {
+            "nodes": [
+              46,
+              47
+            ],
+            "observed_cm3_s": 102.14544472215273,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4814.106509331078,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.8266584733625414
+          },
+          {
+            "nodes": [
+              47,
+              48
+            ],
+            "observed_cm3_s": 102.14544472238696,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 4813.420869757114,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.915449741985114
+          },
+          {
+            "nodes": [
+              49,
+              50
+            ],
+            "observed_cm3_s": 31.99232246203388,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3836.5687533242517,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              50,
+              51
+            ],
+            "observed_cm3_s": 31.992322462503992,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3786.7921118319737,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              51,
+              52
+            ],
+            "observed_cm3_s": 31.992322462962754,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3741.77476097315,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              52,
+              53
+            ],
+            "observed_cm3_s": 31.992322463381715,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3701.26472963089,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0014773603681873936
+          },
+          {
+            "nodes": [
+              53,
+              54
+            ],
+            "observed_cm3_s": 31.99232246376631,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3664.328454984203,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.316207460804615e-06
+          },
+          {
+            "nodes": [
+              54,
+              55
+            ],
+            "observed_cm3_s": 31.992322464093487,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3630.7269847446314,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.792726383708293e-06
+          },
+          {
+            "nodes": [
+              55,
+              56
+            ],
+            "observed_cm3_s": 31.99232246436348,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3600.204311019986,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 6.28491508115705e-06
+          },
+          {
+            "nodes": [
+              56,
+              57
+            ],
+            "observed_cm3_s": 31.992322464574986,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3572.5229155065995,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 6.794966221376533e-06
+          },
+          {
+            "nodes": [
+              57,
+              58
+            ],
+            "observed_cm3_s": 31.992322464732204,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3547.4640956809285,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 7.325155840337194e-06
+          },
+          {
+            "nodes": [
+              58,
+              59
+            ],
+            "observed_cm3_s": 31.992322464840168,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3524.8276937913,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 7.877829413158413e-06
+          },
+          {
+            "nodes": [
+              59,
+              60
+            ],
+            "observed_cm3_s": 31.99232246799673,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4068.1775227926005,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -7.052927685139831e-07
+          },
+          {
+            "nodes": [
+              60,
+              61
+            ],
+            "observed_cm3_s": 31.992322468008556,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4054.7125905105822,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -5.972606561671242e-07
+          },
+          {
+            "nodes": [
+              61,
+              62
+            ],
+            "observed_cm3_s": 31.992322467978223,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4042.9630143893505,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -4.902493130333123e-07
+          },
+          {
+            "nodes": [
+              62,
+              63
+            ],
+            "observed_cm3_s": 31.99232246791685,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4032.779459408303,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -3.843656381721752e-07
+          },
+          {
+            "nodes": [
+              63,
+              64
+            ],
+            "observed_cm3_s": 31.992322467834377,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4024.030788421542,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -2.7994864396700867e-07
+          },
+          {
+            "nodes": [
+              64,
+              65
+            ],
+            "observed_cm3_s": 31.99232246774068,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4016.602769573819,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -2.7245418291007013e-05
+          },
+          {
+            "nodes": [
+              65,
+              66
+            ],
+            "observed_cm3_s": 31.99232246768165,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4009.5668572527416,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              66,
+              67
+            ],
+            "observed_cm3_s": 31.99232246761833,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4004.210272086219,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              67,
+              68
+            ],
+            "observed_cm3_s": 31.992322467557962,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 4000.420389168237,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              68,
+              69
+            ],
+            "observed_cm3_s": 31.99232246750562,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3998.10200023828,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00014647711864079936
+          },
+          {
+            "nodes": [
+              69,
+              70
+            ],
+            "observed_cm3_s": 31.992322467488716,
+            "steady_cm3_s": 35.0721255651457,
+            "averaged_loss_cm3_s": 31.94224557401401,
+            "estimated_variance_cm6_s2": 3997.0079116426814,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              13,
+              14
+            ],
+            "observed_cm3_s": 134.13776720711505,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 18862.548880112852,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.16872491287213978
+          },
+          {
+            "nodes": [
+              14,
+              15
+            ],
+            "observed_cm3_s": 134.13776720796773,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 18722.91682646934,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.22940954203445466
+          },
+          {
+            "nodes": [
+              15,
+              16
+            ],
+            "observed_cm3_s": 134.13776720668736,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 18591.713840706416,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.4877642429990576
+          },
+          {
+            "nodes": [
+              16,
+              17
+            ],
+            "observed_cm3_s": 134.1377672071904,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 18455.908221275222,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.7129254294804226
+          },
+          {
+            "nodes": [
+              17,
+              18
+            ],
+            "observed_cm3_s": 134.13776720705766,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 18319.04219121251,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.3126685904154636
+          },
+          {
+            "nodes": [
+              18,
+              19
+            ],
+            "observed_cm3_s": 134.13776720483963,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17662.171733814324,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.19702159808924086
+          },
+          {
+            "nodes": [
+              19,
+              20
+            ],
+            "observed_cm3_s": 134.13776720607086,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17539.697438903557,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0008763144577392701
+          },
+          {
+            "nodes": [
+              20,
+              21
+            ],
+            "observed_cm3_s": 134.13776720320618,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17422.13705042227,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0007936874896916662
+          },
+          {
+            "nodes": [
+              21,
+              22
+            ],
+            "observed_cm3_s": 134.1377672033118,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17309.45006331359,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.02958627129223397
+          },
+          {
+            "nodes": [
+              22,
+              23
+            ],
+            "observed_cm3_s": 134.13776720283576,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17207.641796676286,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.33951937718679476
+          },
+          {
+            "nodes": [
+              23,
+              24
+            ],
+            "observed_cm3_s": 134.13776719836153,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17165.702694952175,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.05036251833556462
+          },
+          {
+            "nodes": [
+              24,
+              25
+            ],
+            "observed_cm3_s": 134.13776720002025,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17167.995114341113,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 9.003665565771196e-05
+          },
+          {
+            "nodes": [
+              25,
+              26
+            ],
+            "observed_cm3_s": 134.13776719357332,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17180.42596540158,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00021586707952408232
+          },
+          {
+            "nodes": [
+              26,
+              27
+            ],
+            "observed_cm3_s": 134.13776719426096,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17197.55430729236,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00013576047827958514
+          },
+          {
+            "nodes": [
+              27,
+              28
+            ],
+            "observed_cm3_s": 134.13776719165378,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17217.172618520995,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.190588808632308e-05
+          },
+          {
+            "nodes": [
+              28,
+              29
+            ],
+            "observed_cm3_s": 134.1377671882178,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17249.713510370435,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0031640933483025034
+          },
+          {
+            "nodes": [
+              29,
+              30
+            ],
+            "observed_cm3_s": 134.13776718901184,
+            "steady_cm3_s": 134.13776720775437,
+            "averaged_loss_cm3_s": 134.13776720775437,
+            "estimated_variance_cm6_s2": 17316.894706727446,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0019730576604082557
+          },
+          {
+            "nodes": [
+              71,
+              72
+            ],
+            "observed_cm3_s": -1.6884508606077967e-12,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 4.35735476113763,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              72,
+              73
+            ],
+            "observed_cm3_s": -3.697343468426576e-11,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 1.0903466703210571,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              30,
+              31
+            ],
+            "observed_cm3_s": 102.14544472229454,
+            "steady_cm3_s": 99.06564164260867,
+            "averaged_loss_cm3_s": 102.19552163374036,
+            "estimated_variance_cm6_s2": 5072.996436105921,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.006316404306572757
+          },
+          {
+            "nodes": [
+              18,
+              71
+            ],
+            "observed_cm3_s": -2.34987235595933e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 9.790354805236255,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -0.0016010561345360683
+          },
+          {
+            "nodes": [
+              59,
+              75
+            ],
+            "observed_cm3_s": -3.0934283519930735e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 149.325632916048,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          }
+        ]
+      },
+      "upstream": {
+        "mean_glottal_flow_cm3_s": 134.13776720775428,
+        "observed_outlet_flows_cm3_s": [
+          102.14544472250464,
+          31.992322467471926
+        ],
+        "dc_models": {
+          "steady": {
+            "oral_and_nasal_cm3_s": [
+              99.06564164260861,
+              35.07212556514567
+            ],
+            "outlet_relative_error": [
+              0.030151154447100696,
+              0.09626694344573206
+            ],
+            "mean_flow_l2_error": 0.027110805221589786
+          },
+          "signed_time_average": {
+            "oral_and_nasal_cm3_s": [
+              102.19552163374014,
+              31.942245574014137
+            ],
+            "outlet_relative_error": [
+              0.0004902510471372431,
+              0.0015652784666916233
+            ],
+            "mean_flow_l2_error": 0.0004408155535393162
+          },
+          "positive_square_average": {
+            "oral_and_nasal_cm3_s": [
+              102.9464965475072,
+              31.191270660247085
+            ],
+            "outlet_relative_error": [
+              0.007842266751872808,
+              0.025038876375396233
+            ],
+            "mean_flow_l2_error": 0.007051476695299226
+          }
+        },
+        "ac_models": {
+          "steady": {
+            "pharynx_relative_l2_error": 0.0017363204281307294,
+            "error_by_frequency": [
+              0.0011820364271850623,
+              0.0017437525955775488,
+              0.004675672733367645,
+              0.006952246302050069,
+              0.023914521003955247,
+              0.03242583511840839,
+              0.001163265346199492,
+              0.012406834424761072,
+              0.00562186296349936,
+              0.01171853613387588
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1688,
+                "missed": 146,
+                "false_positive": 66,
+                "mismatched": 212
+              },
+              "branches": {
+                "true_positive": 5,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                16,
+                20,
+                30,
+                104,
+                42
+              ]
+            },
+            "mismatch_fraction": 0.0012990196078431372
+          },
+          "signed_time_average": {
+            "pharynx_relative_l2_error": 0.001835314224657062,
+            "error_by_frequency": [
+              0.001322563699997719,
+              0.0018463314275725777,
+              0.004838667946131915,
+              0.006913007273817814,
+              0.0235600974418879,
+              0.03159494077706219,
+              0.001137023676412981,
+              0.012426504832762662,
+              0.0058457031573564576,
+              0.011444732237834748
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1690,
+                "missed": 144,
+                "false_positive": 71,
+                "mismatched": 215
+              },
+              "branches": {
+                "true_positive": 5,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                15,
+                21,
+                31,
+                104,
+                44
+              ]
+            },
+            "mismatch_fraction": 0.0013174019607843138
+          }
+        },
+        "nose_mean_error_reduction_fraction": 0.9837402288816409,
+        "all_branch_mean_error_reduction_fraction": 0.983740226454496,
+        "mean_loss_path_correction_dyn_cm2": {
+          "observed": -16.239370284345835,
+          "estimated": -16.502575295487393,
+          "variance": -20.44648957779178,
+          "sign_correction": 3.9439142823044335
+        },
+        "dc_hypothesis_met": true,
+        "ac_hypothesis_met": true,
+        "branch_averages": [
+          {
+            "nodes": [
+              30,
+              49
+            ],
+            "observed_cm3_s": 31.99232246152347,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3891.3593336332615,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 24.892411976038364
+          },
+          {
+            "nodes": [
+              31,
+              32
+            ],
+            "observed_cm3_s": 102.14544472304522,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 5092.0035576765595,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.047901645978664587
+          },
+          {
+            "nodes": [
+              32,
+              33
+            ],
+            "observed_cm3_s": 102.14544472103364,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 5069.309895457015,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.05483619218438594
+          },
+          {
+            "nodes": [
+              33,
+              34
+            ],
+            "observed_cm3_s": 102.14544472167225,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 5034.107451247999,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.23024058996112004
+          },
+          {
+            "nodes": [
+              34,
+              35
+            ],
+            "observed_cm3_s": 102.1454447209266,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4996.8700541154985,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.4129314664606164
+          },
+          {
+            "nodes": [
+              35,
+              36
+            ],
+            "observed_cm3_s": 102.14544472141347,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4962.611547183552,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.2777082945115116
+          },
+          {
+            "nodes": [
+              36,
+              37
+            ],
+            "observed_cm3_s": 102.1454447210559,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4932.953275479007,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.08523486625169277
+          },
+          {
+            "nodes": [
+              37,
+              38
+            ],
+            "observed_cm3_s": 102.14544472143028,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4907.72979627975,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.004202031899965675
+          },
+          {
+            "nodes": [
+              38,
+              39
+            ],
+            "observed_cm3_s": 102.1454447212137,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4886.27234385207,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.13339673988449516
+          },
+          {
+            "nodes": [
+              39,
+              40
+            ],
+            "observed_cm3_s": 102.14544472151704,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4868.157275289278,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.35450382119741697
+          },
+          {
+            "nodes": [
+              40,
+              41
+            ],
+            "observed_cm3_s": 102.14544472136986,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4853.1070338330155,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.32743500397346487
+          },
+          {
+            "nodes": [
+              41,
+              42
+            ],
+            "observed_cm3_s": 102.14544472165402,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4840.903517474968,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.25076160898046956
+          },
+          {
+            "nodes": [
+              42,
+              43
+            ],
+            "observed_cm3_s": 102.14544472160188,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4831.342895391841,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.3220241394022984
+          },
+          {
+            "nodes": [
+              43,
+              44
+            ],
+            "observed_cm3_s": 102.14544472183441,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4824.192051921343,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4695141833876881
+          },
+          {
+            "nodes": [
+              44,
+              45
+            ],
+            "observed_cm3_s": 102.14544472186228,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4819.20566655007,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.823207866055277
+          },
+          {
+            "nodes": [
+              45,
+              46
+            ],
+            "observed_cm3_s": 102.14544472211892,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4816.14984982616,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.027537091408112075
+          },
+          {
+            "nodes": [
+              46,
+              47
+            ],
+            "observed_cm3_s": 102.14544472215262,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4814.106509330867,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.8266584733625276
+          },
+          {
+            "nodes": [
+              47,
+              48
+            ],
+            "observed_cm3_s": 102.14544472238684,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 4813.420869756901,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.9154497419850987
+          },
+          {
+            "nodes": [
+              49,
+              50
+            ],
+            "observed_cm3_s": 31.992322462033894,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3836.5687533240957,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              50,
+              51
+            ],
+            "observed_cm3_s": 31.992322462504003,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3786.792111831864,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              51,
+              52
+            ],
+            "observed_cm3_s": 31.992322462962772,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3741.7747609730263,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              52,
+              53
+            ],
+            "observed_cm3_s": 31.992322463381733,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3701.26472963078,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0014773603681873411
+          },
+          {
+            "nodes": [
+              53,
+              54
+            ],
+            "observed_cm3_s": 31.992322463766328,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3664.3284549841114,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.316207460804535e-06
+          },
+          {
+            "nodes": [
+              54,
+              55
+            ],
+            "observed_cm3_s": 31.992322464093498,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3630.726984744494,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.792726383708305e-06
+          },
+          {
+            "nodes": [
+              55,
+              56
+            ],
+            "observed_cm3_s": 31.992322464363497,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3600.2043110198506,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 6.28491508115713e-06
+          },
+          {
+            "nodes": [
+              56,
+              57
+            ],
+            "observed_cm3_s": 31.992322464575004,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3572.5229155064735,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 6.794966221376587e-06
+          },
+          {
+            "nodes": [
+              57,
+              58
+            ],
+            "observed_cm3_s": 31.99232246473222,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3547.464095680747,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 7.3251558403373585e-06
+          },
+          {
+            "nodes": [
+              58,
+              59
+            ],
+            "observed_cm3_s": 31.992322464840182,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3524.82769379113,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 7.877829413158618e-06
+          },
+          {
+            "nodes": [
+              59,
+              60
+            ],
+            "observed_cm3_s": 31.99232246799674,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4068.177522792434,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -7.052927685136883e-07
+          },
+          {
+            "nodes": [
+              60,
+              61
+            ],
+            "observed_cm3_s": 31.99232246800857,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4054.7125905104117,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -5.972606561668156e-07
+          },
+          {
+            "nodes": [
+              61,
+              62
+            ],
+            "observed_cm3_s": 31.992322467978234,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4042.9630143891377,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -4.902493130327367e-07
+          },
+          {
+            "nodes": [
+              62,
+              63
+            ],
+            "observed_cm3_s": 31.992322467916868,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4032.779459408138,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -3.843656381717273e-07
+          },
+          {
+            "nodes": [
+              63,
+              64
+            ],
+            "observed_cm3_s": 31.992322467834395,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4024.0307884213494,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -2.79948643966351e-07
+          },
+          {
+            "nodes": [
+              64,
+              65
+            ],
+            "observed_cm3_s": 31.992322467740692,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4016.602769573649,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -2.7245418290910533e-05
+          },
+          {
+            "nodes": [
+              65,
+              66
+            ],
+            "observed_cm3_s": 31.99232246768166,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4009.5668572525674,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              66,
+              67
+            ],
+            "observed_cm3_s": 31.992322467618347,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4004.210272086044,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              67,
+              68
+            ],
+            "observed_cm3_s": 31.992322467557983,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 4000.4203891680754,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              68,
+              69
+            ],
+            "observed_cm3_s": 31.99232246750563,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3998.102000238118,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00014647711864131333
+          },
+          {
+            "nodes": [
+              69,
+              70
+            ],
+            "observed_cm3_s": 31.992322467488737,
+            "steady_cm3_s": 35.07212556514567,
+            "averaged_loss_cm3_s": 31.942245574014137,
+            "estimated_variance_cm6_s2": 3997.0079116425204,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              13,
+              14
+            ],
+            "observed_cm3_s": 134.13776720711496,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 18862.548880112863,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.16872491287213978
+          },
+          {
+            "nodes": [
+              14,
+              15
+            ],
+            "observed_cm3_s": 134.13776720796764,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 18722.916826469347,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.22940954203445466
+          },
+          {
+            "nodes": [
+              15,
+              16
+            ],
+            "observed_cm3_s": 134.13776720668724,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 18591.713840706616,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.487764242999069
+          },
+          {
+            "nodes": [
+              16,
+              17
+            ],
+            "observed_cm3_s": 134.13776720719028,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 18455.908221275535,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.7129254294804281
+          },
+          {
+            "nodes": [
+              17,
+              18
+            ],
+            "observed_cm3_s": 134.1377672070576,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 18319.042191213095,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.312668590415499
+          },
+          {
+            "nodes": [
+              18,
+              19
+            ],
+            "observed_cm3_s": 134.13776720483952,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17662.171733814503,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1970215980892417
+          },
+          {
+            "nodes": [
+              19,
+              20
+            ],
+            "observed_cm3_s": 134.13776720607075,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17539.69743890345,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0008763144577392665
+          },
+          {
+            "nodes": [
+              20,
+              21
+            ],
+            "observed_cm3_s": 134.1377672032061,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17422.137050422778,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0007936874896916758
+          },
+          {
+            "nodes": [
+              21,
+              22
+            ],
+            "observed_cm3_s": 134.13776720331168,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17309.450063314347,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.029586271292234578
+          },
+          {
+            "nodes": [
+              22,
+              23
+            ],
+            "observed_cm3_s": 134.13776720283568,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17207.641796677206,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.3395193771868025
+          },
+          {
+            "nodes": [
+              23,
+              24
+            ],
+            "observed_cm3_s": 134.13776719836144,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17165.70269495259,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.050362518335565175
+          },
+          {
+            "nodes": [
+              24,
+              25
+            ],
+            "observed_cm3_s": 134.13776720002016,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17167.995114341316,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 9.003665565771252e-05
+          },
+          {
+            "nodes": [
+              25,
+              26
+            ],
+            "observed_cm3_s": 134.13776719357324,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17180.42596540198,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00021586707952408454
+          },
+          {
+            "nodes": [
+              26,
+              27
+            ],
+            "observed_cm3_s": 134.13776719426087,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17197.55430729324,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0001357604782795883
+          },
+          {
+            "nodes": [
+              27,
+              28
+            ],
+            "observed_cm3_s": 134.1377671916537,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17217.172618522054,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 2.1905888086323737e-05
+          },
+          {
+            "nodes": [
+              28,
+              29
+            ],
+            "observed_cm3_s": 134.1377671882177,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17249.71351037093,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.003164093348302549
+          },
+          {
+            "nodes": [
+              29,
+              30
+            ],
+            "observed_cm3_s": 134.13776718901178,
+            "steady_cm3_s": 134.13776720775428,
+            "averaged_loss_cm3_s": 134.13776720775428,
+            "estimated_variance_cm6_s2": 17316.894706727344,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0019730576604082457
+          },
+          {
+            "nodes": [
+              71,
+              72
+            ],
+            "observed_cm3_s": -1.6883798063342208e-12,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 4.357354761137421,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              72,
+              73
+            ],
+            "observed_cm3_s": -3.697326889096075e-11,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 1.0903466703211795,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              30,
+              31
+            ],
+            "observed_cm3_s": 102.14544472229444,
+            "steady_cm3_s": 99.06564164260861,
+            "averaged_loss_cm3_s": 102.19552163374014,
+            "estimated_variance_cm6_s2": 5072.996436106119,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.006316404306572832
+          },
+          {
+            "nodes": [
+              18,
+              71
+            ],
+            "observed_cm3_s": -2.349869513788387e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 9.790354805235237,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -0.0016010561345359568
+          },
+          {
+            "nodes": [
+              59,
+              75
+            ],
+            "observed_cm3_s": -3.0934287901610938e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 149.32563291604737,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          }
+        ]
+      }
+    },
+    "lower": {
+      "candidate": {
+        "mean_glottal_flow_cm3_s": 109.5005876510991,
+        "observed_outlet_flows_cm3_s": [
+          82.7926454568055,
+          26.707942182603947
+        ],
+        "dc_models": {
+          "steady": {
+            "oral_and_nasal_cm3_s": [
+              80.80194636023433,
+              28.69864129086477
+            ],
+            "outlet_relative_error": [
+              0.024044395315399876,
+              0.07453584760107251
+            ],
+            "mean_flow_l2_error": 0.02150027068612103
+          },
+          "signed_time_average": {
+            "oral_and_nasal_cm3_s": [
+              82.81516858950047,
+              26.685419061598623
+            ],
+            "outlet_relative_error": [
+              0.00027204267445134157,
+              0.0008433117329419259
+            ],
+            "mean_flow_l2_error": 0.0002432579118427691
+          },
+          "positive_square_average": {
+            "oral_and_nasal_cm3_s": [
+              83.25009680616877,
+              26.250490844930326
+            ],
+            "outlet_relative_error": [
+              0.005525265521343064,
+              0.017127914031938387
+            ],
+            "mean_flow_l2_error": 0.004940640038720865
+          }
+        },
+        "ac_models": {
+          "steady": {
+            "pharynx_relative_l2_error": 0.0013276735764881276,
+            "error_by_frequency": [
+              0.0008818398861043164,
+              0.0014380330248232453,
+              0.003641819735664852,
+              0.006030236822509497,
+              0.019331682378197212,
+              0.030687676805587667,
+              0.002174703536229556,
+              0.008947438544282088,
+              0.004494356392599851,
+              0.022432374330890455
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1031,
+                "missed": 44,
+                "false_positive": 25,
+                "mismatched": 69
+              },
+              "branches": {
+                "true_positive": 4,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                10,
+                14,
+                28,
+                17
+              ]
+            },
+            "mismatch_fraction": 0.0004227941176470588
+          },
+          "signed_time_average": {
+            "pharynx_relative_l2_error": 0.0013868976495519812,
+            "error_by_frequency": [
+              0.0009710210718244937,
+              0.001504945934581,
+              0.003709279795909544,
+              0.006002706512552922,
+              0.018977097820703438,
+              0.030214168981914064,
+              0.0021452706893875448,
+              0.008955923727667334,
+              0.004646609049630111,
+              0.022290684226028545
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1033,
+                "missed": 42,
+                "false_positive": 27,
+                "mismatched": 69
+              },
+              "branches": {
+                "true_positive": 4,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                10,
+                15,
+                27,
+                17
+              ]
+            },
+            "mismatch_fraction": 0.0004227941176470588
+          }
+        },
+        "nose_mean_error_reduction_fraction": 0.9886858235321149,
+        "all_branch_mean_error_reduction_fraction": 0.988685820965045,
+        "mean_loss_path_correction_dyn_cm2": {
+          "observed": -10.323361601132042,
+          "estimated": -10.4399174947419,
+          "variance": -12.689589621383996,
+          "sign_correction": 2.2496721266420967
+        },
+        "dc_hypothesis_met": true,
+        "ac_hypothesis_met": true,
+        "branch_averages": [
+          {
+            "nodes": [
+              30,
+              49
+            ],
+            "observed_cm3_s": 26.707942180320696,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2413.782577419458,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 16.100063040132625
+          },
+          {
+            "nodes": [
+              31,
+              32
+            ],
+            "observed_cm3_s": 82.7926454581982,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3147.4552217856353,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.030850724605736915
+          },
+          {
+            "nodes": [
+              32,
+              33
+            ],
+            "observed_cm3_s": 82.7926454562421,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3131.0107462823817,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.035310406877167785
+          },
+          {
+            "nodes": [
+              33,
+              34
+            ],
+            "observed_cm3_s": 82.79264545674475,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3108.1362824016214,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1482546464789499
+          },
+          {
+            "nodes": [
+              34,
+              35
+            ],
+            "observed_cm3_s": 82.79264545603785,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3084.6730477542374,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.2659052241904437
+          },
+          {
+            "nodes": [
+              35,
+              36
+            ],
+            "observed_cm3_s": 82.79264545641367,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3063.4656617059036,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.17884429495996093
+          },
+          {
+            "nodes": [
+              36,
+              37
+            ],
+            "observed_cm3_s": 82.79264545606016,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3045.2202019811853,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.05489603736456516
+          },
+          {
+            "nodes": [
+              37,
+              38
+            ],
+            "observed_cm3_s": 82.79264545637402,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3029.7518926319713,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.002706557054037241
+          },
+          {
+            "nodes": [
+              38,
+              39
+            ],
+            "observed_cm3_s": 82.79264545614967,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3016.607993792604,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.08592762967680821
+          },
+          {
+            "nodes": [
+              39,
+              40
+            ],
+            "observed_cm3_s": 82.79264545638426,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3005.5143999438314,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.22836727246480976
+          },
+          {
+            "nodes": [
+              40,
+              41
+            ],
+            "observed_cm3_s": 82.79264545624665,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2996.29591212567,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.21094005655946355
+          },
+          {
+            "nodes": [
+              41,
+              42
+            ],
+            "observed_cm3_s": 82.79264545644548,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2988.821889017633,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1615519114639849
+          },
+          {
+            "nodes": [
+              42,
+              43
+            ],
+            "observed_cm3_s": 82.79264545635601,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2982.9719101645533,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.2074689626755755
+          },
+          {
+            "nodes": [
+              43,
+              44
+            ],
+            "observed_cm3_s": 82.79264545652963,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2978.6025918015534,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.9467798027761473
+          },
+          {
+            "nodes": [
+              44,
+              45
+            ],
+            "observed_cm3_s": 82.79264545648755,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2975.531460468443,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.1746747611610378
+          },
+          {
+            "nodes": [
+              45,
+              46
+            ],
+            "observed_cm3_s": 82.79264545664125,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2973.600623016535,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.017741943680212955
+          },
+          {
+            "nodes": [
+              46,
+              47
+            ],
+            "observed_cm3_s": 82.79264545663248,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2972.3213299871304,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.5326119372323521
+          },
+          {
+            "nodes": [
+              47,
+              48
+            ],
+            "observed_cm3_s": 82.79264545674435,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 2971.858130841118,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.5898184226711639
+          },
+          {
+            "nodes": [
+              49,
+              50
+            ],
+            "observed_cm3_s": 26.7079421808266,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2381.0956877472595,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              50,
+              51
+            ],
+            "observed_cm3_s": 26.707942181287983,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2351.371037522891,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              51,
+              52
+            ],
+            "observed_cm3_s": 26.70794218175549,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2324.4565040195284,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              52,
+              53
+            ],
+            "observed_cm3_s": 26.707942182214502,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2300.2020530566574,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00109831402333478
+          },
+          {
+            "nodes": [
+              53,
+              54
+            ],
+            "observed_cm3_s": 26.70794218269238,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2278.1470249821473,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 3.91503262181783e-06
+          },
+          {
+            "nodes": [
+              54,
+              55
+            ],
+            "observed_cm3_s": 26.707942183164985,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2258.0784604563332,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.233042205308999e-06
+          },
+          {
+            "nodes": [
+              55,
+              56
+            ],
+            "observed_cm3_s": 26.707942183631456,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2239.8447407061813,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.563559234392502e-06
+          },
+          {
+            "nodes": [
+              56,
+              57
+            ],
+            "observed_cm3_s": 26.707942184090538,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2223.3050821224933,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.90814937345886e-06
+          },
+          {
+            "nodes": [
+              57,
+              58
+            ],
+            "observed_cm3_s": 26.70794218454058,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2208.329676646592,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.268477709165909e-06
+          },
+          {
+            "nodes": [
+              58,
+              59
+            ],
+            "observed_cm3_s": 26.70794218497822,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2194.7995286225614,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.646308112749821e-06
+          },
+          {
+            "nodes": [
+              59,
+              60
+            ],
+            "observed_cm3_s": 26.707942179644068,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2499.2121145116025,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.0808968798827154e-06
+          },
+          {
+            "nodes": [
+              60,
+              61
+            ],
+            "observed_cm3_s": 26.707942180058733,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2490.8893615961765,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.2349036604825942e-06
+          },
+          {
+            "nodes": [
+              61,
+              62
+            ],
+            "observed_cm3_s": 26.70794218046189,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2483.6105785929085,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.3958489624514245e-06
+          },
+          {
+            "nodes": [
+              62,
+              63
+            ],
+            "observed_cm3_s": 26.7079421808484,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2477.2876428798304,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.5644234513548158e-06
+          },
+          {
+            "nodes": [
+              63,
+              64
+            ],
+            "observed_cm3_s": 26.70794218121361,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2471.843209897247,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.741251167854937e-06
+          },
+          {
+            "nodes": [
+              64,
+              65
+            ],
+            "observed_cm3_s": 26.70794218155238,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2467.2100599882897,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0002956906250472399
+          },
+          {
+            "nodes": [
+              65,
+              66
+            ],
+            "observed_cm3_s": 26.70794218183882,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2462.9075112376045,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              66,
+              67
+            ],
+            "observed_cm3_s": 26.707942182087773,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2459.6272107977247,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              67,
+              68
+            ],
+            "observed_cm3_s": 26.70794218229599,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2457.3035677317616,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              68,
+              69
+            ],
+            "observed_cm3_s": 26.707942182463142,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2455.8813395752663,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0018203541223392047
+          },
+          {
+            "nodes": [
+              69,
+              70
+            ],
+            "observed_cm3_s": 26.707942182561325,
+            "steady_cm3_s": 28.69864129086477,
+            "averaged_loss_cm3_s": 26.685419061598623,
+            "estimated_variance_cm6_s2": 2455.2590238637426,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              13,
+              14
+            ],
+            "observed_cm3_s": 109.50058765097519,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11760.652537176064,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1087325316495631
+          },
+          {
+            "nodes": [
+              14,
+              15
+            ],
+            "observed_cm3_s": 109.50058765228984,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11674.65647499945,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.1478648535697619
+          },
+          {
+            "nodes": [
+              15,
+              16
+            ],
+            "observed_cm3_s": 109.50058765124307,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11593.92930311447,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.6037379345667324
+          },
+          {
+            "nodes": [
+              16,
+              17
+            ],
+            "observed_cm3_s": 109.50058765239218,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11510.25819279622,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.45966339658713357
+          },
+          {
+            "nodes": [
+              17,
+              18
+            ],
+            "observed_cm3_s": 109.500587652207,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11425.885525838961,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4913550464773107
+          },
+          {
+            "nodes": [
+              18,
+              19
+            ],
+            "observed_cm3_s": 109.50058765250377,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 11020.836931594926,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.12715445783901705
+          },
+          {
+            "nodes": [
+              19,
+              20
+            ],
+            "observed_cm3_s": 109.50058765380616,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10944.541783696615,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.000565626520221096
+          },
+          {
+            "nodes": [
+              20,
+              21
+            ],
+            "observed_cm3_s": 109.50058765201778,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10871.145222134302,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0005123497317309244
+          },
+          {
+            "nodes": [
+              21,
+              22
+            ],
+            "observed_cm3_s": 109.5005876526277,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10800.614597222093,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.019100703892393992
+          },
+          {
+            "nodes": [
+              22,
+              23
+            ],
+            "observed_cm3_s": 109.50058765218293,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10736.363829442513,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.2192057330931257
+          },
+          {
+            "nodes": [
+              23,
+              24
+            ],
+            "observed_cm3_s": 109.50058764971769,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10706.850243088104,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.032512335566975296
+          },
+          {
+            "nodes": [
+              24,
+              25
+            ],
+            "observed_cm3_s": 109.50058765030352,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10702.685036409313,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.8110159018018525e-05
+          },
+          {
+            "nodes": [
+              25,
+              26
+            ],
+            "observed_cm3_s": 109.50058764685387,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10703.827052874156,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00013927998674884072
+          },
+          {
+            "nodes": [
+              26,
+              27
+            ],
+            "observed_cm3_s": 109.50058764592826,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10707.218000578514,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 8.757364566727276e-05
+          },
+          {
+            "nodes": [
+              27,
+              28
+            ],
+            "observed_cm3_s": 109.50058764564339,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10711.689229067702,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4124914463767299e-05
+          },
+          {
+            "nodes": [
+              28,
+              29
+            ],
+            "observed_cm3_s": 109.50058764111895,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10723.264291553522,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.002039378698654896
+          },
+          {
+            "nodes": [
+              29,
+              30
+            ],
+            "observed_cm3_s": 109.50058764308315,
+            "steady_cm3_s": 109.5005876510991,
+            "averaged_loss_cm3_s": 109.5005876510991,
+            "estimated_variance_cm6_s2": 10754.284005991514,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0012711140300877975
+          },
+          {
+            "nodes": [
+              71,
+              72
+            ],
+            "observed_cm3_s": -7.46136947782361e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 2.670835473410659,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              72,
+              73
+            ],
+            "observed_cm3_s": -4.002774052954313e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 0.6681670992060545,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              30,
+              31
+            ],
+            "observed_cm3_s": 82.79264545734368,
+            "steady_cm3_s": 80.80194636023433,
+            "averaged_loss_cm3_s": 82.81516858950047,
+            "estimated_variance_cm6_s2": 3140.870580548956,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.004070339288980438
+          },
+          {
+            "nodes": [
+              18,
+              71
+            ],
+            "observed_cm3_s": -1.1880428729682536e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 6.003208557961032,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -0.000995482149212584
+          },
+          {
+            "nodes": [
+              59,
+              75
+            ],
+            "observed_cm3_s": 5.756177034281033e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 78.23884262567536,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          }
+        ]
+      },
+      "upstream": {
+        "mean_glottal_flow_cm3_s": 109.50058765109902,
+        "observed_outlet_flows_cm3_s": [
+          82.7926454568054,
+          26.707942182603965
+        ],
+        "dc_models": {
+          "steady": {
+            "oral_and_nasal_cm3_s": [
+              80.80194636023428,
+              28.698641290864742
+            ],
+            "outlet_relative_error": [
+              0.024044395315399217,
+              0.07453584760107072
+            ],
+            "mean_flow_l2_error": 0.021500270686120558
+          },
+          "signed_time_average": {
+            "oral_and_nasal_cm3_s": [
+              82.81516858950019,
+              26.685419061598836
+            ],
+            "outlet_relative_error": [
+              0.0002720426744491105,
+              0.0008433117329346092
+            ],
+            "mean_flow_l2_error": 0.00024325791184064932
+          },
+          "positive_square_average": {
+            "oral_and_nasal_cm3_s": [
+              83.25009680616843,
+              26.250490844930596
+            ],
+            "outlet_relative_error": [
+              0.005525265521340153,
+              0.017127914031928933
+            ],
+            "mean_flow_l2_error": 0.004940640038718135
+          }
+        },
+        "ac_models": {
+          "steady": {
+            "pharynx_relative_l2_error": 0.0013276735764734815,
+            "error_by_frequency": [
+              0.0008818398860786839,
+              0.0014380330248419393,
+              0.0036418197356180436,
+              0.006030236822540979,
+              0.019331682378169093,
+              0.030687676805583885,
+              0.002174703536247221,
+              0.008947438544275267,
+              0.0044943563926136566,
+              0.02243237433091686
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1031,
+                "missed": 44,
+                "false_positive": 25,
+                "mismatched": 69
+              },
+              "branches": {
+                "true_positive": 4,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                10,
+                14,
+                28,
+                17
+              ]
+            },
+            "mismatch_fraction": 0.0004227941176470588
+          },
+          "signed_time_average": {
+            "pharynx_relative_l2_error": 0.0013868976495470867,
+            "error_by_frequency": [
+              0.0009710210718149306,
+              0.0015049459346051688,
+              0.0037092797958674147,
+              0.006002706512571082,
+              0.018977097820689442,
+              0.030214168981913037,
+              0.0021452706894021143,
+              0.008955923727662936,
+              0.004646609049629742,
+              0.022290684226054784
+            ],
+            "reversal": {
+              "samples": {
+                "true_positive": 1033,
+                "missed": 42,
+                "false_positive": 27,
+                "mismatched": 69
+              },
+              "branches": {
+                "true_positive": 4,
+                "missed": 0,
+                "false_positive": 0
+              },
+              "branch_recall": 1.0,
+              "mismatched_samples_by_branch": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                10,
+                15,
+                27,
+                17
+              ]
+            },
+            "mismatch_fraction": 0.0004227941176470588
+          }
+        },
+        "nose_mean_error_reduction_fraction": 0.9886858235322128,
+        "all_branch_mean_error_reduction_fraction": 0.9886858209651433,
+        "mean_loss_path_correction_dyn_cm2": {
+          "observed": -10.323361601132033,
+          "estimated": -10.43991749474069,
+          "variance": -12.689589621382524,
+          "sign_correction": 2.2496721266418396
+        },
+        "dc_hypothesis_met": true,
+        "ac_hypothesis_met": true,
+        "branch_averages": [
+          {
+            "nodes": [
+              30,
+              49
+            ],
+            "observed_cm3_s": 26.70794218032071,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2413.7825774191783,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 16.100063040131317
+          },
+          {
+            "nodes": [
+              31,
+              32
+            ],
+            "observed_cm3_s": 82.79264545819812,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3147.455221785153,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.030850724605735326
+          },
+          {
+            "nodes": [
+              32,
+              33
+            ],
+            "observed_cm3_s": 82.792645456242,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3131.010746282051,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.03531040687716656
+          },
+          {
+            "nodes": [
+              33,
+              34
+            ],
+            "observed_cm3_s": 82.79264545674465,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3108.1362824012244,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.14825464647894343
+          },
+          {
+            "nodes": [
+              34,
+              35
+            ],
+            "observed_cm3_s": 82.79264545603776,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3084.673047753879,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.26590522419043233
+          },
+          {
+            "nodes": [
+              35,
+              36
+            ],
+            "observed_cm3_s": 82.79264545641358,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3063.465661705554,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.17884429495995394
+          },
+          {
+            "nodes": [
+              36,
+              37
+            ],
+            "observed_cm3_s": 82.79264545606007,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3045.2202019808374,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.05489603736456284
+          },
+          {
+            "nodes": [
+              37,
+              38
+            ],
+            "observed_cm3_s": 82.79264545637392,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3029.7518926316025,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0027065570540371173
+          },
+          {
+            "nodes": [
+              38,
+              39
+            ],
+            "observed_cm3_s": 82.79264545614957,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3016.6079937922364,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.08592762967680513
+          },
+          {
+            "nodes": [
+              39,
+              40
+            ],
+            "observed_cm3_s": 82.79264545638418,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3005.5143999434763,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.22836727246480076
+          },
+          {
+            "nodes": [
+              40,
+              41
+            ],
+            "observed_cm3_s": 82.79264545624656,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2996.2959121253207,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.210940056559455
+          },
+          {
+            "nodes": [
+              41,
+              42
+            ],
+            "observed_cm3_s": 82.79264545644541,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2988.821889017291,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.16155191146397882
+          },
+          {
+            "nodes": [
+              42,
+              43
+            ],
+            "observed_cm3_s": 82.79264545635594,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2982.971910164213,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.20746896267556686
+          },
+          {
+            "nodes": [
+              43,
+              44
+            ],
+            "observed_cm3_s": 82.79264545652954,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2978.602591801212,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.946779802776113
+          },
+          {
+            "nodes": [
+              44,
+              45
+            ],
+            "observed_cm3_s": 82.79264545648745,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2975.531460468105,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.174674761160995
+          },
+          {
+            "nodes": [
+              45,
+              46
+            ],
+            "observed_cm3_s": 82.79264545664115,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2973.6006230161947,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.017741943680212226
+          },
+          {
+            "nodes": [
+              46,
+              47
+            ],
+            "observed_cm3_s": 82.7926454566324,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2972.3213299867966,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.5326119372323307
+          },
+          {
+            "nodes": [
+              47,
+              48
+            ],
+            "observed_cm3_s": 82.79264545674427,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 2971.858130840783,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.5898184226711426
+          },
+          {
+            "nodes": [
+              49,
+              50
+            ],
+            "observed_cm3_s": 26.707942180826617,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2381.0956877469557,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              50,
+              51
+            ],
+            "observed_cm3_s": 26.707942181288004,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2351.371037522602,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              51,
+              52
+            ],
+            "observed_cm3_s": 26.70794218175551,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2324.456504019279,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              52,
+              53
+            ],
+            "observed_cm3_s": 26.70794218221452,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2300.2020530564014,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0010983140233347503
+          },
+          {
+            "nodes": [
+              53,
+              54
+            ],
+            "observed_cm3_s": 26.707942182692403,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2278.1470249818813,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 3.915032621817788e-06
+          },
+          {
+            "nodes": [
+              54,
+              55
+            ],
+            "observed_cm3_s": 26.707942183165,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2258.0784604560413,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.233042205308965e-06
+          },
+          {
+            "nodes": [
+              55,
+              56
+            ],
+            "observed_cm3_s": 26.70794218363147,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2239.84474070589,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.563559234392473e-06
+          },
+          {
+            "nodes": [
+              56,
+              57
+            ],
+            "observed_cm3_s": 26.70794218409056,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2223.3050821222146,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 4.908149373458841e-06
+          },
+          {
+            "nodes": [
+              57,
+              58
+            ],
+            "observed_cm3_s": 26.707942184540602,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2208.3296766463222,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.268477709165901e-06
+          },
+          {
+            "nodes": [
+              58,
+              59
+            ],
+            "observed_cm3_s": 26.707942184978233,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2194.7995286222913,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.646308112749852e-06
+          },
+          {
+            "nodes": [
+              59,
+              60
+            ],
+            "observed_cm3_s": 26.707942179644082,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2499.212114511337,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.080896879882499e-06
+          },
+          {
+            "nodes": [
+              60,
+              61
+            ],
+            "observed_cm3_s": 26.70794218005875,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2490.8893615959264,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.2349036604822914e-06
+          },
+          {
+            "nodes": [
+              61,
+              62
+            ],
+            "observed_cm3_s": 26.70794218046191,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2483.6105785926347,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.3958489624511992e-06
+          },
+          {
+            "nodes": [
+              62,
+              63
+            ],
+            "observed_cm3_s": 26.707942180848416,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2477.287642879577,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.5644234513544734e-06
+          },
+          {
+            "nodes": [
+              63,
+              64
+            ],
+            "observed_cm3_s": 26.70794218121363,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2471.843209897011,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.7412511678545632e-06
+          },
+          {
+            "nodes": [
+              64,
+              65
+            ],
+            "observed_cm3_s": 26.7079421815524,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2467.210059988052,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0002956906250471764
+          },
+          {
+            "nodes": [
+              65,
+              66
+            ],
+            "observed_cm3_s": 26.70794218183884,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2462.9075112373657,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              66,
+              67
+            ],
+            "observed_cm3_s": 26.70794218208779,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2459.627210797481,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              67,
+              68
+            ],
+            "observed_cm3_s": 26.70794218229601,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2457.303567731525,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              68,
+              69
+            ],
+            "observed_cm3_s": 26.70794218246316,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2455.8813395750312,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0018203541223388627
+          },
+          {
+            "nodes": [
+              69,
+              70
+            ],
+            "observed_cm3_s": 26.70794218256134,
+            "steady_cm3_s": 28.698641290864742,
+            "averaged_loss_cm3_s": 26.685419061598836,
+            "estimated_variance_cm6_s2": 2455.2590238635044,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              13,
+              14
+            ],
+            "observed_cm3_s": 109.50058765097512,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11760.652537176082,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.10873253164956308
+          },
+          {
+            "nodes": [
+              14,
+              15
+            ],
+            "observed_cm3_s": 109.50058765228978,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11674.656474999587,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.14786485356976262
+          },
+          {
+            "nodes": [
+              15,
+              16
+            ],
+            "observed_cm3_s": 109.50058765124301,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11593.92930311462,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.603737934566742
+          },
+          {
+            "nodes": [
+              16,
+              17
+            ],
+            "observed_cm3_s": 109.50058765239213,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11510.258192796142,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.45966339658713185
+          },
+          {
+            "nodes": [
+              17,
+              18
+            ],
+            "observed_cm3_s": 109.50058765220696,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11425.885525838794,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4913550464772996
+          },
+          {
+            "nodes": [
+              18,
+              19
+            ],
+            "observed_cm3_s": 109.5005876525037,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 11020.836931594451,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.12715445783901438
+          },
+          {
+            "nodes": [
+              19,
+              20
+            ],
+            "observed_cm3_s": 109.5005876538061,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10944.541783696744,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0005656265202210997
+          },
+          {
+            "nodes": [
+              20,
+              21
+            ],
+            "observed_cm3_s": 109.50058765201771,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10871.145222134583,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0005123497317309301
+          },
+          {
+            "nodes": [
+              21,
+              22
+            ],
+            "observed_cm3_s": 109.50058765262763,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10800.614597222027,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.01910070389239393
+          },
+          {
+            "nodes": [
+              22,
+              23
+            ],
+            "observed_cm3_s": 109.50058765218287,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10736.363829442325,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.21920573309312388
+          },
+          {
+            "nodes": [
+              23,
+              24
+            ],
+            "observed_cm3_s": 109.50058764971759,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10706.850243087989,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.03251233556697511
+          },
+          {
+            "nodes": [
+              24,
+              25
+            ],
+            "observed_cm3_s": 109.50058765030344,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10702.685036408917,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 5.811015901801728e-05
+          },
+          {
+            "nodes": [
+              25,
+              26
+            ],
+            "observed_cm3_s": 109.50058764685379,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10703.827052874045,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00013927998674883967
+          },
+          {
+            "nodes": [
+              26,
+              27
+            ],
+            "observed_cm3_s": 109.50058764592819,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10707.218000578683,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 8.757364566727336e-05
+          },
+          {
+            "nodes": [
+              27,
+              28
+            ],
+            "observed_cm3_s": 109.50058764564334,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10711.689229067066,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 1.4124914463766913e-05
+          },
+          {
+            "nodes": [
+              28,
+              29
+            ],
+            "observed_cm3_s": 109.50058764111888,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10723.264291552838,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.002039378698654833
+          },
+          {
+            "nodes": [
+              29,
+              30
+            ],
+            "observed_cm3_s": 109.50058764308308,
+            "steady_cm3_s": 109.50058765109902,
+            "averaged_loss_cm3_s": 109.50058765109902,
+            "estimated_variance_cm6_s2": 10754.284005989948,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0012711140300877056
+          },
+          {
+            "nodes": [
+              71,
+              72
+            ],
+            "observed_cm3_s": -7.46136781989056e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 2.6708354734105133,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              72,
+              73
+            ],
+            "observed_cm3_s": -4.002772335809368e-10,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 0.6681670992060336,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          },
+          {
+            "nodes": [
+              30,
+              31
+            ],
+            "observed_cm3_s": 82.79264545734361,
+            "steady_cm3_s": 80.80194636023428,
+            "averaged_loss_cm3_s": 82.81516858950019,
+            "estimated_variance_cm6_s2": 3140.8705805484583,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.00407033928898024
+          },
+          {
+            "nodes": [
+              18,
+              71
+            ],
+            "observed_cm3_s": -1.188042790071601e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 6.003208557960944,
+            "estimated_mean_kinetic_pressure_dyn_cm2": -0.0009954821492122376
+          },
+          {
+            "nodes": [
+              59,
+              75
+            ],
+            "observed_cm3_s": 5.756176607955392e-09,
+            "steady_cm3_s": 0.0,
+            "averaged_loss_cm3_s": 0.0,
+            "estimated_variance_cm6_s2": 78.23884262567988,
+            "estimated_mean_kinetic_pressure_dyn_cm2": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

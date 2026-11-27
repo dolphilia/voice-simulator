@@ -1,0 +1,355 @@
+{
+  "checks": {
+    "ordinary_probe_and_archived_pcm_equal_for_each_side": true,
+    "full_trace_output_recalculated_with_limiter_inactive": true,
+    "archived_first_peak_and_unequal_count_reproduced": true,
+    "full_pcm_precast_conversion_and_adjacent_midpoints": true
+  },
+  "hypotheses": {
+    "precast_and_pcm_peak_differ": true,
+    "largest_pcm_difference_is_one_ulp": true,
+    "multi_ulp_differences_are_mainly_quiet": true,
+    "radiation_and_precast_differ_before_pcm": true,
+    "precast_rms_male_over_female_between_0p5_and_2": true
+  },
+  "matched_pcm": {
+    "different_bits": 1254,
+    "first_bit_difference": 9333,
+    "peak_frame": 82703
+  },
+  "archive_matches": {
+    "upstream_normal": true,
+    "research_normal": true
+  },
+  "output_replay": {
+    "upstream_normal": true,
+    "research_normal": true
+  },
+  "comparison": {
+    "full": {
+      "precast": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 8620,
+        "peak": 1.5691614674295806e-13,
+        "rms": 1.292667423460068e-14,
+        "absolute_p99": 5.2398077196591504e-14
+      },
+      "pcm": {
+        "frames": 144727,
+        "first_nonzero_frame": 9333,
+        "peak_frame": 82703,
+        "peak": 2.3283064365386963e-10,
+        "rms": 6.136035143224843e-13,
+        "absolute_p99": 0.0
+      },
+      "change_at_rounding": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 82703,
+        "peak": 2.328255626488085e-10,
+        "rms": 6.137182131223769e-13,
+        "absolute_p99": 5.2983627534548206e-14
+      }
+    },
+    "segments": {
+      "opening": {
+        "precast": {
+          "frames": 16704,
+          "first_nonzero_frame": 2440,
+          "peak_frame": 8620,
+          "peak": 1.5691614674295806e-13,
+          "rms": 1.9276311177096508e-14,
+          "absolute_p99": 7.309729861335057e-14
+        },
+        "pcm": {
+          "frames": 16704,
+          "first_nonzero_frame": 9333,
+          "peak_frame": 9333,
+          "peak": 3.637978807091713e-12,
+          "rms": 2.8148154369326806e-14,
+          "absolute_p99": 0.0
+        },
+        "change_at_rounding": {
+          "frames": 16704,
+          "first_nonzero_frame": 2440,
+          "peak_frame": 9333,
+          "peak": 3.5772704243264286e-12,
+          "rms": 3.372612197044211e-14,
+          "absolute_p99": 7.319712110737132e-14
+        }
+      },
+      "later": {
+        "precast": {
+          "frames": 128023,
+          "first_nonzero_frame": 16704,
+          "peak_frame": 31039,
+          "peak": 1.536964999715451e-13,
+          "rms": 1.1849869938001606e-14,
+          "absolute_p99": 4.691701888104301e-14
+        },
+        "pcm": {
+          "frames": 128023,
+          "first_nonzero_frame": 52082,
+          "peak_frame": 82703,
+          "peak": 2.3283064365386963e-10,
+          "rms": 6.523277754511529e-13,
+          "absolute_p99": 0.0
+        },
+        "change_at_rounding": {
+          "frames": 128023,
+          "first_nonzero_frame": 16704,
+          "peak_frame": 82703,
+          "peak": 2.328255626488085e-10,
+          "rms": 6.524152318240044e-13,
+          "absolute_p99": 4.8045734057922086e-14
+        }
+      }
+    },
+    "precast_where_pcm_equal": {
+      "frames": 143473,
+      "first_nonzero_frame": null,
+      "peak_frame": null,
+      "peak": 1.5691614674295806e-13,
+      "rms": 1.2939954179377735e-14,
+      "absolute_p99": 5.253745355426884e-14
+    },
+    "precast_where_pcm_differs": {
+      "frames": 1254,
+      "first_nonzero_frame": null,
+      "peak_frame": null,
+      "peak": 6.070838276528434e-14,
+      "rms": 1.1304753073354589e-14,
+      "absolute_p99": 2.9045751915393274e-14
+    },
+    "pcm_rms_excluding_focus_outlier": 4.4059583504424405e-14,
+    "pcm_squared_error_fraction_at_outlier": 0.994844128350304,
+    "pcm_unequal_values": 1254,
+    "signed_zero_mismatches": 0,
+    "pcm_unequal_first": 9333,
+    "pcm_one_ulp": 1187,
+    "pcm_one_ulp_with_exact_midpoint_tie": 0,
+    "pcm_more_than_one_ulp": 67,
+    "pcm_max_ulp_distance": 5,
+    "pcm_all_one_ulp_straddle": true,
+    "witnesses": {
+      "8620": {
+        "precast": [
+          0.03595603433039514,
+          0.035956034330238223
+        ],
+        "pcm": [
+          0.03595603257417679,
+          0.03595603257417679
+        ],
+        "ulp_distance": 0,
+        "midpoint": null,
+        "from_midpoint": null,
+        "dc_difference": {
+          "current_minus_previous_input": -1.7967745347124975e-13,
+          "previous_dc_state": 2.276647884185251e-14,
+          "measured_research_minus_upstream": -1.5691614674295806e-13,
+          "floating_point_residual": -5.172113560825418e-18
+        }
+      },
+      "9333": {
+        "precast": [
+          -3.3872862390052494e-05,
+          -3.387286232934411e-05
+        ],
+        "pcm": [
+          -3.3872864150907844e-05,
+          -3.387286051292904e-05
+        ],
+        "ulp_distance": 1,
+        "midpoint": -3.387286233191844e-05,
+        "from_midpoint": [
+          -5.813405312693476e-14,
+          2.5743296383495817e-15
+        ],
+        "dc_difference": {
+          "current_minus_previous_input": 8.908932619400289e-14,
+          "previous_dc_state": -2.83807233014481e-14,
+          "measured_research_minus_upstream": 6.070838276528434e-14,
+          "floating_point_residual": -2.201272704533909e-19
+        }
+      },
+      "82703": {
+        "precast": [
+          0.003021624987011107,
+          0.003021624987016188
+        ],
+        "pcm": [
+          0.003021624870598316,
+          0.00302162510342896
+        ],
+        "ulp_distance": 1,
+        "midpoint": 0.003021624987013638,
+        "from_midpoint": [
+          -2.5309615514501616e-15,
+          2.5500435096859064e-15
+        ],
+        "dc_difference": {
+          "current_minus_previous_input": 1.8249562017819132e-15,
+          "previous_dc_state": 3.256244496006588e-15,
+          "measured_research_minus_upstream": 5.081005061136068e-15,
+          "floating_point_residual": -1.9563665243304808e-19
+        }
+      }
+    }
+  },
+  "amplitude_by_ulp": {
+    "threshold": 1e-06,
+    "groups": {
+      "quiet": {
+        "frames": 7012,
+        "one_ulp": 1149,
+        "multiple_ulp": 67
+      },
+      "above_quiet": {
+        "frames": 137715,
+        "one_ulp": 38,
+        "multiple_ulp": 0
+      }
+    },
+    "multiple_ulp_quiet_fraction": 1.0,
+    "multiple_ulp_maximum_amplitude": 1.291071072273553e-07,
+    "multiple_ulp_first_frame": 57781
+  },
+  "radiation_and_source_differences": {
+    "glottal_flow_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4879,
+      "peak_frame": 76381,
+      "peak": 4.3968384488835e-11,
+      "rms": 3.253462141016633e-12,
+      "absolute_p99": 1.261923898709938e-11
+    },
+    "wall_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 132847,
+      "peak": 6.394884621840902e-12,
+      "rms": 5.505936610567718e-13,
+      "absolute_p99": 2.0401458300511877e-12
+    },
+    "lip_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4912,
+      "peak_frame": 155699,
+      "peak": 7.271694357768865e-11,
+      "rms": 7.56735095017097e-12,
+      "absolute_p99": 2.903498108608448e-11
+    },
+    "nose_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 40735,
+      "peak_frame": 236663,
+      "peak": 3.058175934711471e-11,
+      "rms": 1.3538014866657288e-12,
+      "absolute_p99": 5.7411853049416095e-12
+    },
+    "total_cm3_s": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 155699,
+      "peak": 7.389644451905042e-11,
+      "rms": 8.033019331471508e-12,
+      "absolute_p99": 3.126388037344441e-11
+    },
+    "radiation_derivative_cm3_s2": {
+      "frames": 289454,
+      "first_nonzero_frame": 4880,
+      "peak_frame": 16903,
+      "peak": 3.710738383233547e-07,
+      "rms": 3.128697547640871e-08,
+      "absolute_p99": 1.3096723705530167e-07
+    }
+  },
+  "output_stage_differences": {
+    "decimated": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 8620,
+      "peak": 2.849992597475648e-07,
+      "rms": 2.3492865549840443e-08,
+      "absolute_p99": 9.517911621514929e-08
+    },
+    "gain_applied": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 8620,
+      "peak": 1.567496132892643e-13,
+      "rms": 1.2921066581690703e-14,
+      "absolute_p99": 5.234860071465224e-14
+    },
+    "dc_removed": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 8620,
+      "peak": 1.5691614674295806e-13,
+      "rms": 1.292667423460068e-14,
+      "absolute_p99": 5.2398077196591504e-14
+    },
+    "envelope": {
+      "frames": 144727,
+      "first_nonzero_frame": 2440,
+      "peak_frame": 7784,
+      "peak": 4.671263376110346e-14,
+      "rms": 9.39226173441027e-15,
+      "absolute_p99": 4.552941357260907e-14
+    },
+    "hold_frames": {
+      "frames": 144727,
+      "first_nonzero_frame": null,
+      "peak_frame": 0,
+      "peak": 0.0,
+      "rms": 0.0,
+      "absolute_p99": 0.0
+    }
+  },
+  "max_envelope": {
+    "upstream_normal": 0.36052443083776253,
+    "research_normal": 0.36052443083776403
+  },
+  "male_over_female": {
+    "precast": {
+      "peak": 1.7395384615384615,
+      "rms": 1.5849780005707161
+    },
+    "pcm": {
+      "peak": 0.125,
+      "rms": 0.12532287279350504
+    }
+  },
+  "fk61_02_comparison": {
+    "full": {
+      "precast": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 31148,
+        "peak": 9.020562075079397e-14,
+        "rms": 8.155743631738778e-15,
+        "absolute_p99": 3.3269966642768195e-14
+      },
+      "pcm": {
+        "frames": 144727,
+        "first_nonzero_frame": 31350,
+        "peak_frame": 129260,
+        "peak": 1.862645149230957e-09,
+        "rms": 4.896181364542457e-12,
+        "absolute_p99": 3.552713678800501e-15
+      },
+      "change_at_rounding": {
+        "frames": 144727,
+        "first_nonzero_frame": 2440,
+        "peak_frame": 129260,
+        "peak": 1.8626410934474702e-09,
+        "rms": 4.8961771535661e-12,
+        "absolute_p99": 3.382447100186422e-14
+      }
+    },
+    "pcm_one_ulp": 1311,
+    "pcm_more_than_one_ulp": 681
+  }
+}

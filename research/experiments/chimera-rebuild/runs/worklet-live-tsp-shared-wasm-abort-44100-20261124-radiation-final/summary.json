@@ -1,0 +1,202 @@
+{
+  "checks": {
+    "firefox/browser_and_page_are_healthy": true,
+    "firefox/calls_overlap_while_wasm_is_held": true,
+    "firefox/stop_closes_only_realtime_context_before_response": true,
+    "firefox/surviving_offline_call_completes_after_response": true,
+    "firefox/restarted_call_uses_its_own_context": true,
+    "firefox/both_outputs_reuse_one_original_module_and_planner": true,
+    "firefox/observed_events_are_ordered": true,
+    "firefox/offline_pcm_matches_saved_reference": true,
+    "firefox/offline_plan_and_observations_match": true,
+    "firefox/offline_render_clock_matches_case": true,
+    "firefox/offline_pcm_is_within_fixed_upstream_tolerance": true,
+    "firefox/restarted_pcm_matches_saved_reference": true,
+    "firefox/restarted_plan_and_observations_match": true,
+    "firefox/restarted_render_clock_matches_case": true,
+    "firefox/restarted_pcm_is_within_fixed_upstream_tolerance": true,
+    "chromium/browser_and_page_are_healthy": true,
+    "chromium/calls_overlap_while_wasm_is_held": true,
+    "chromium/stop_closes_only_realtime_context_before_response": true,
+    "chromium/surviving_offline_call_completes_after_response": true,
+    "chromium/restarted_call_uses_its_own_context": true,
+    "chromium/both_outputs_reuse_one_original_module_and_planner": true,
+    "chromium/observed_events_are_ordered": true,
+    "chromium/offline_pcm_matches_saved_reference": true,
+    "chromium/offline_plan_and_observations_match": true,
+    "chromium/offline_render_clock_matches_case": true,
+    "chromium/offline_pcm_is_within_fixed_upstream_tolerance": true,
+    "chromium/restarted_pcm_matches_saved_reference": true,
+    "chromium/restarted_plan_and_observations_match": true,
+    "chromium/restarted_render_clock_matches_case": true,
+    "chromium/restarted_pcm_is_within_fixed_upstream_tolerance": true
+  },
+  "wasm_sha256": "acf248cda507615684e2243ebcb2d572df5328cf9963f1343ba9bc3698e651f6",
+  "reference_wasm_sha256": "550b9b169189e9cfa5d7b5528186df26aa9af8765da605d868b778d4271ababc",
+  "browsers": {
+    "firefox": {
+      "checks": {
+        "browser_and_page_are_healthy": true,
+        "calls_overlap_while_wasm_is_held": true,
+        "stop_closes_only_realtime_context_before_response": true,
+        "surviving_offline_call_completes_after_response": true,
+        "restarted_call_uses_its_own_context": true,
+        "both_outputs_reuse_one_original_module_and_planner": true,
+        "observed_events_are_ordered": true,
+        "offline_pcm_matches_saved_reference": true,
+        "offline_plan_and_observations_match": true,
+        "offline_render_clock_matches_case": true,
+        "offline_pcm_is_within_fixed_upstream_tolerance": true,
+        "restarted_pcm_matches_saved_reference": true,
+        "restarted_plan_and_observations_match": true,
+        "restarted_render_clock_matches_case": true,
+        "restarted_pcm_is_within_fixed_upstream_tolerance": true
+      },
+      "engine": "firefox",
+      "browser": "157.0",
+      "wasm_requests": 1,
+      "after_restart": {
+        "calls": {
+          "stopped": {
+            "outcome": "rejected",
+            "error": "AbortError",
+            "message": "The operation was aborted. "
+          },
+          "offline": {
+            "outcome": "fulfilled"
+          },
+          "restarted": {
+            "outcome": "fulfilled"
+          }
+        },
+        "fetches": 1,
+        "compilations": 1,
+        "planners": 1,
+        "offlineNodes": [
+          44100
+        ],
+        "contexts": [
+          {
+            "state": "closed",
+            "rate": 44100,
+            "nodes": 0
+          },
+          {
+            "state": "closed",
+            "rate": 44100,
+            "nodes": 1
+          }
+        ]
+      },
+      "signals": {
+        "offline": {
+          "first_nonzero_frame": 2247,
+          "upstream_pcm": {
+            "first_bit_difference_frame": 2593,
+            "first_bit_difference_values": [
+              -8.261792291963665e-12,
+              -8.26179055724019e-12
+            ],
+            "maximum_absolute_error": 1.1641532182693481e-10,
+            "first_frame_over_tolerance": null
+          }
+        },
+        "restarted": {
+          "first_nonzero_frame": 2247,
+          "upstream_pcm": {
+            "first_bit_difference_frame": 2593,
+            "first_bit_difference_values": [
+              -8.261792291963665e-12,
+              -8.26179055724019e-12
+            ],
+            "maximum_absolute_error": 1.1641532182693481e-10,
+            "first_frame_over_tolerance": null
+          }
+        }
+      },
+      "stop_to_rejection_ms": 3
+    },
+    "chromium": {
+      "checks": {
+        "browser_and_page_are_healthy": true,
+        "calls_overlap_while_wasm_is_held": true,
+        "stop_closes_only_realtime_context_before_response": true,
+        "surviving_offline_call_completes_after_response": true,
+        "restarted_call_uses_its_own_context": true,
+        "both_outputs_reuse_one_original_module_and_planner": true,
+        "observed_events_are_ordered": true,
+        "offline_pcm_matches_saved_reference": true,
+        "offline_plan_and_observations_match": true,
+        "offline_render_clock_matches_case": true,
+        "offline_pcm_is_within_fixed_upstream_tolerance": true,
+        "restarted_pcm_matches_saved_reference": true,
+        "restarted_plan_and_observations_match": true,
+        "restarted_render_clock_matches_case": true,
+        "restarted_pcm_is_within_fixed_upstream_tolerance": true
+      },
+      "engine": "chromium",
+      "browser": "156.0.8078.4",
+      "wasm_requests": 1,
+      "after_restart": {
+        "calls": {
+          "stopped": {
+            "outcome": "rejected",
+            "error": "AbortError",
+            "message": "signal is aborted without reason"
+          },
+          "offline": {
+            "outcome": "fulfilled"
+          },
+          "restarted": {
+            "outcome": "fulfilled"
+          }
+        },
+        "fetches": 1,
+        "compilations": 1,
+        "planners": 1,
+        "offlineNodes": [
+          44100
+        ],
+        "contexts": [
+          {
+            "state": "closed",
+            "rate": 44100,
+            "nodes": 0
+          },
+          {
+            "state": "closed",
+            "rate": 44100,
+            "nodes": 1
+          }
+        ]
+      },
+      "signals": {
+        "offline": {
+          "first_nonzero_frame": 2247,
+          "upstream_pcm": {
+            "first_bit_difference_frame": 2593,
+            "first_bit_difference_values": [
+              -8.261792291963665e-12,
+              -8.26179055724019e-12
+            ],
+            "maximum_absolute_error": 1.1641532182693481e-10,
+            "first_frame_over_tolerance": null
+          }
+        },
+        "restarted": {
+          "first_nonzero_frame": 2247,
+          "upstream_pcm": {
+            "first_bit_difference_frame": 2593,
+            "first_bit_difference_values": [
+              -8.261792291963665e-12,
+              -8.26179055724019e-12
+            ],
+            "maximum_absolute_error": 1.1641532182693481e-10,
+            "first_frame_over_tolerance": null
+          }
+        }
+      },
+      "stop_to_rejection_ms": 0.7999999821186066
+    }
+  }
+}
